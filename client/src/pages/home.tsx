@@ -10,10 +10,10 @@ import { Link } from "wouter";
 
 export default function Home() {
   const [showBirthForm, setShowBirthForm] = useState(false);
-  const [selectedSystem, setSelectedSystem] = useState(null);
+  const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [showSystemDialog, setShowSystemDialog] = useState(false);
 
-  const features = [
+  const personalSystems = [
     {
       icon: "♈",
       title: "Western Astrology",
@@ -43,6 +43,21 @@ export default function Home() {
       title: "Numerology",
       description: "Ancient number science revealing life patterns, destiny, and personal cycles through birth data.",
       features: ["Life path calculation", "Destiny number analysis", "Personal year cycles"]
+    }
+  ];
+
+  const spaceSystems = [
+    {
+      icon: "🏛️",
+      title: "Vaastu Shastra",
+      description: "Sacred Indian architecture aligning living spaces with cosmic energies and directional flow.",
+      features: ["Directional energy analysis", "Five element balancing", "Sacred geometry principles"]
+    },
+    {
+      icon: "🧭",
+      title: "Feng Shui",
+      description: "Chinese geomancy optimizing Chi energy flow in spaces for harmony and prosperity.",
+      features: ["Chi energy optimization", "Bagua map analysis", "Five elements balancing"]
     }
   ];
 
@@ -173,8 +188,56 @@ export default function Home() {
         "Personal strengths and challenges"
       ],
       route: "/numerology"
+    },
+    "Vaastu Shastra": {
+      icon: "🏛️",
+      origin: "Ancient India",
+      timeRange: "5,000+ years",
+      accuracy: "High",
+      difficulty: "Intermediate",
+      requirements: ["Birth place", "Building location"],
+      overview: "Sacred Indian architectural science that harmonizes buildings with natural elements and cosmic forces through directional energy flow and elemental balance.",
+      keyFeatures: [
+        "Directional energy analysis",
+        "Five element balancing (Panchamahabhuta)",
+        "Sacred geometry principles",
+        "Room placement guidelines",
+        "Remedial space corrections"
+      ],
+      predictions: [
+        "Home and office energy optimization",
+        "Health and wellness through space design",
+        "Financial prosperity and abundance",
+        "Relationship harmony in living spaces",
+        "Career and business success enhancement"
+      ],
+      route: "/spaces"
+    },
+    "Feng Shui": {
+      icon: "🧭",
+      origin: "Ancient China",
+      timeRange: "4,000+ years",
+      accuracy: "High",
+      difficulty: "Intermediate",
+      requirements: ["Birth date", "Building location"],
+      overview: "Ancient Chinese practice that optimizes the flow of energy (Chi) in living and working spaces through compass directions, five elements theory, and environmental factors.",
+      keyFeatures: [
+        "Chi energy flow optimization",
+        "Bagua map analysis",
+        "Five elements balancing",
+        "Compass school methods",
+        "Flying star calculations"
+      ],
+      predictions: [
+        "Chi energy flow optimization",
+        "Wealth and prosperity enhancement",
+        "Love and relationship attraction",
+        "Career advancement and recognition",
+        "Health and vitality improvement"
+      ],
+      route: "/spaces"
     }
-  };
+  } as const;
 
   const handleSystemClick = (systemName: string) => {
     setSelectedSystem(systemName);
@@ -254,11 +317,11 @@ export default function Home() {
       {/* System Information Dialog */}
       <Dialog open={showSystemDialog} onOpenChange={setShowSystemDialog}>
         <DialogContent className="cosmic-card max-w-2xl max-h-[80vh] overflow-y-auto">
-          {selectedSystem && systemDetails[selectedSystem] && (
+          {selectedSystem && systemDetails[selectedSystem as keyof typeof systemDetails] && (
             <>
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-3 text-2xl">
-                  <span className="text-3xl">{systemDetails[selectedSystem].icon}</span>
+                  <span className="text-3xl">{systemDetails[selectedSystem as keyof typeof systemDetails].icon}</span>
                   <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
                     {selectedSystem}
                   </span>
@@ -270,7 +333,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-2">Overview</h4>
                   <p className="text-gray-300 leading-relaxed">
-                    {systemDetails[selectedSystem].overview}
+                    {systemDetails[selectedSystem as keyof typeof systemDetails].overview}
                   </p>
                 </div>
 
@@ -281,14 +344,14 @@ export default function Home() {
                       <Globe className="h-4 w-4 text-yellow-500" />
                       <span className="text-sm font-medium text-gray-400">Origin</span>
                     </div>
-                    <p className="text-white">{systemDetails[selectedSystem].origin}</p>
+                    <p className="text-white">{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
                   </div>
                   <div className="p-4 bg-black/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="h-4 w-4 text-yellow-500" />
                       <span className="text-sm font-medium text-gray-400">Heritage</span>
                     </div>
-                    <p className="text-white">{systemDetails[selectedSystem].timeRange}</p>
+                    <p className="text-white">{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
                   </div>
                   <div className="p-4 bg-black/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
@@ -296,7 +359,7 @@ export default function Home() {
                       <span className="text-sm font-medium text-gray-400">Accuracy</span>
                     </div>
                     <Badge variant="outline" className="text-green-400 border-green-400">
-                      {systemDetails[selectedSystem].accuracy}
+                      {systemDetails[selectedSystem as keyof typeof systemDetails].accuracy}
                     </Badge>
                   </div>
                   <div className="p-4 bg-black/30 rounded-lg">
@@ -305,7 +368,7 @@ export default function Home() {
                       <span className="text-sm font-medium text-gray-400">Difficulty</span>
                     </div>
                     <Badge variant="outline" className="text-blue-400 border-blue-400">
-                      {systemDetails[selectedSystem].difficulty}
+                      {systemDetails[selectedSystem as keyof typeof systemDetails].difficulty}
                     </Badge>
                   </div>
                 </div>
@@ -314,7 +377,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-3">Requirements</h4>
                   <div className="flex flex-wrap gap-2">
-                    {systemDetails[selectedSystem].requirements.map((req, idx) => (
+                    {systemDetails[selectedSystem as keyof typeof systemDetails].requirements.map((req, idx) => (
                       <Badge key={idx} variant="secondary" className="bg-purple-500/20 text-purple-300">
                         {req}
                       </Badge>
@@ -326,7 +389,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-3">Key Features</h4>
                   <ul className="space-y-2">
-                    {systemDetails[selectedSystem].keyFeatures.map((feature, idx) => (
+                    {systemDetails[selectedSystem as keyof typeof systemDetails].keyFeatures.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
                         <span className="text-gray-300">{feature}</span>
@@ -339,7 +402,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-3">What You'll Discover</h4>
                   <ul className="space-y-2">
-                    {systemDetails[selectedSystem].predictions.map((prediction, idx) => (
+                    {systemDetails[selectedSystem as keyof typeof systemDetails].predictions.map((prediction, idx) => (
                       <li key={idx} className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
                         <span className="text-gray-300">{prediction}</span>
@@ -350,7 +413,7 @@ export default function Home() {
 
                 {/* Action Buttons */}
                 <div className="flex gap-4 pt-4 border-t border-gray-700">
-                  <Link href={systemDetails[selectedSystem].route}>
+                  <Link href={systemDetails[selectedSystem as keyof typeof systemDetails].route}>
                     <Button className="cosmic-button flex-1">
                       Explore {selectedSystem}
                     </Button>
@@ -380,39 +443,92 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {features.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="cosmic-card hover:cosmic-glow transition-all duration-300 cursor-pointer group"
-                onClick={() => handleSystemClick(feature.title)}
-              >
-                <CardHeader className="text-center">
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                  <CardTitle className="text-yellow-500 text-xl group-hover:text-yellow-400 transition-colors">
-                    {feature.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-400 text-sm">
-                    {feature.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-gray-400">
-                    {feature.features.map((item, idx) => (
-                      <li key={idx} className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 text-center">
-                    <span className="text-yellow-500 text-sm group-hover:text-yellow-400 transition-colors">
-                      Click to explore →
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Personal Systems */}
+          <div className="mb-16">
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex items-center gap-3">
+                <User className="h-6 w-6 text-yellow-500" />
+                <h3 className="text-2xl font-semibold text-white">Personal Systems</h3>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {personalSystems.map((system, index) => (
+                <Card 
+                  key={index} 
+                  className="cosmic-card hover:cosmic-glow transition-all duration-300 cursor-pointer group"
+                  onClick={() => handleSystemClick(system.title)}
+                >
+                  <CardHeader className="text-center">
+                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{system.icon}</div>
+                    <CardTitle className="text-yellow-500 text-xl group-hover:text-yellow-400 transition-colors">
+                      {system.title}
+                    </CardTitle>
+                    <CardDescription className="text-gray-400 text-sm">
+                      {system.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-sm text-gray-400">
+                      {system.features.map((item, idx) => (
+                        <li key={idx} className="flex items-center space-x-2">
+                          <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-4 text-center">
+                      <span className="text-yellow-500 text-sm group-hover:text-yellow-400 transition-colors">
+                        Click to explore →
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Space Systems */}
+          <div>
+            <div className="flex items-center justify-center mb-8">
+              <div className="flex items-center gap-3">
+                <Globe className="h-6 w-6 text-purple-500" />
+                <h3 className="text-2xl font-semibold text-white">Space & Environment Systems</h3>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {spaceSystems.map((system, index) => (
+                <Card 
+                  key={index} 
+                  className="cosmic-card hover:cosmic-glow transition-all duration-300 cursor-pointer group"
+                  onClick={() => handleSystemClick(system.title)}
+                >
+                  <CardHeader className="text-center">
+                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{system.icon}</div>
+                    <CardTitle className="text-purple-400 text-2xl group-hover:text-purple-300 transition-colors">
+                      {system.title}
+                    </CardTitle>
+                    <CardDescription className="text-gray-400">
+                      {system.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 text-gray-400">
+                      {system.features.map((item, idx) => (
+                        <li key={idx} className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-6 text-center">
+                      <span className="text-purple-400 group-hover:text-purple-300 transition-colors">
+                        Click to explore →
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
           
           {/* Synthesis Feature */}
