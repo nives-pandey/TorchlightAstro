@@ -395,6 +395,71 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Numerology calculation routes
+  app.post("/api/numerology/calculate", async (req, res) => {
+    try {
+      const { fullName, birthDate } = req.body;
+      
+      if (!fullName || !birthDate) {
+        return res.status(400).json({ message: "Full name and birth date are required" });
+      }
+
+      const { NumerologyCalculator } = await import('./numerology');
+      const { TarotAstrology } = await import('./tarot-astrology');
+      const { ColorAstrology } = await import('./color-astrology');
+      const { GemstoneAstrology } = await import('./gemstone-astrology');
+      
+      const birth = new Date(birthDate);
+      
+      // Calculate complete numerology profile
+      const numerologyProfile = NumerologyCalculator.calculateCompleteProfile(fullName, birth);
+      
+      // Calculate additional systems
+      const tarotCards = TarotAstrology.calculateBirthCards(birth);
+      const yearCard = TarotAstrology.calculateYearCard(birth);
+      
+      // For color and gemstone calculations, we need sun sign
+      // Using a simplified calculation based on birth date
+      const sunSign = getSimpleSunSign(birth);
+      const colors = ColorAstrology.calculatePersonalColors(birth, sunSign);
+      const gemstones = GemstoneAstrology.calculatePersonalGemstones(birth, sunSign);
+      
+      const response = {
+        ...numerologyProfile,
+        tarotCards: {
+          birthCards: tarotCards,
+          yearCard: yearCard
+        },
+        colors,
+        gemstones
+      };
+      
+      res.json(response);
+    } catch (error) {
+      console.error("Numerology calculation error:", error);
+      res.status(500).json({ message: "Failed to calculate numerology" });
+    }
+  });
+
+  // Helper function to get simple sun sign from birth date
+  function getSimpleSunSign(birthDate: Date): string {
+    const month = birthDate.getMonth() + 1;
+    const day = birthDate.getDate();
+    
+    if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return 'Aries';
+    if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return 'Taurus';
+    if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return 'Gemini';
+    if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) return 'Cancer';
+    if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) return 'Leo';
+    if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) return 'Virgo';
+    if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) return 'Libra';
+    if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) return 'Scorpio';
+    if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) return 'Sagittarius';
+    if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) return 'Capricorn';
+    if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return 'Aquarius';
+    return 'Pisces';
+  }
+
   const httpServer = createServer(app);
   return httpServer;
 }

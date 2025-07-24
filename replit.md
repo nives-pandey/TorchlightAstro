@@ -2,7 +2,7 @@
 
 ## Overview
 
-Torchlight is a comprehensive astrology web application that integrates multiple astrological systems including Western, Vedic, Chinese Zodiac, and Human Design. The application provides users with detailed natal chart analysis, compatibility readings, and daily guidance based on authentic astronomical calculations. Built as a full-stack TypeScript application with a React frontend and Express backend, it uses PostgreSQL for data persistence and Drizzle ORM for database operations.
+Torchlight is a comprehensive astrology web application that integrates multiple astrological systems including Western, Vedic, Chinese Zodiac, Human Design, Numerology, and other input-based metaphysical systems. The application provides users with detailed natal chart analysis, compatibility readings, daily guidance, numerological profiles, tarot birth cards, color recommendations, and gemstone guidance - all based on authentic astronomical calculations and traditional methodologies. Built as a full-stack TypeScript application with a React frontend and Express backend, it uses PostgreSQL for data persistence and Drizzle ORM for database operations.
 
 ## User Preferences
 
@@ -45,6 +45,8 @@ The server provides RESTful endpoints for:
 - **Chart Generation**: Calculate and store astrological charts
 - **Compatibility Analysis**: Multi-person compatibility calculations
 - **Daily Guidance**: Personalized daily astrological insights
+- **Numerology Calculations**: Complete numerological profiles with life path, destiny, and personality analysis
+- **Input-Based Systems**: Tarot birth cards, color recommendations, and gemstone guidance
 
 ### Database Schema
 The application uses five main tables:
@@ -92,6 +94,14 @@ The application performs authentic astrological calculations rather than using p
 - Information about different astrological arts: palmistry, face reading, anjana, kavade
 - Clear explanation of Torchlight's role as illumination rather than decision-making
 - Emphasis on personal responsibility and free will in all readings
+
+### Input-Based Systems Implementation (July 24, 2025)
+- Numerology system with complete calculations (Life Path, Destiny, Soul Urge, Personality)
+- Tarot birth card analysis based on birth date calculations
+- Color astrology recommendations for different purposes and timing
+- Gemstone astrology with healing, protection, and prosperity stones
+- Cross-system integration providing comprehensive metaphysical profiles
+- User-friendly interface with tabbed navigation for different calculation types
 
 ## External Dependencies
 

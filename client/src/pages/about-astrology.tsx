@@ -215,11 +215,56 @@ export default function AboutAstrology() {
                   <h4 className="text-white font-semibold">Numerology</h4>
                 </div>
                 <p className="text-sm text-gray-300">
-                  Number vibration analysis using birth dates and names to reveal 
-                  life path, personality traits, and timing of important events.
+                  Mathematical analysis of birth dates and names revealing life path, 
+                  destiny, soul urge, and personality numbers for comprehensive insights.
                 </p>
                 <div className="text-xs text-gray-400">
                   <strong>Study Time:</strong> 1-3 years for different systems
+                </div>
+              </div>
+
+              {/* Tarot Birth Cards */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Star className="h-5 w-5 text-blue-400" />
+                  <h4 className="text-white font-semibold">Tarot Birth Cards</h4>
+                </div>
+                <p className="text-sm text-gray-300">
+                  Personal Tarot cards calculated from birth date revealing life themes, 
+                  yearly influences, and spiritual guidance through archetypal symbolism.
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Study Time:</strong> 2-4 years including symbolism mastery
+                </div>
+              </div>
+
+              {/* Color Astrology */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Eye className="h-5 w-5 text-purple-400" />
+                  <h4 className="text-white font-semibold">Color Astrology</h4>
+                </div>
+                <p className="text-sm text-gray-300">
+                  Personal color analysis based on astrological factors revealing 
+                  lucky colors, healing colors, and optimal color choices for different purposes.
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Study Time:</strong> 6 months to 2 years
+                </div>
+              </div>
+
+              {/* Gemstone Astrology */}
+              <div className="space-y-3">
+                <div className="flex items-center space-x-2">
+                  <Heart className="h-5 w-5 text-pink-400" />
+                  <h4 className="text-white font-semibold">Gemstone Astrology</h4>
+                </div>
+                <p className="text-sm text-gray-300">
+                  Crystal and gemstone recommendations based on birth data and astrological 
+                  factors for healing, protection, prosperity, and spiritual development.
+                </p>
+                <div className="text-xs text-gray-400">
+                  <strong>Study Time:</strong> 1-3 years including crystal properties
                 </div>
               </div>
             </div>
