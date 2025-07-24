@@ -37,11 +37,11 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
   const form = useForm<BirthDataFormData>({
     resolver: zodResolver(birthDataSchema),
     defaultValues: {
-      birthDate: "",
-      birthTime: "",
-      city: "",
-      country: "",
-      timezone: "UTC",
+      birthDate: "1975-06-14",
+      birthTime: "09:18",
+      city: "Manipal",
+      country: "India",
+      timezone: "Asia/Kolkata",
       systems: {
         western: true,
         vedic: true,
@@ -66,6 +66,8 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
         <Form {...form}>
           <form onSubmit={form.handleSubmit((data) => {
             onSubmit?.(data);
+            // Navigate to analysis page
+            window.location.href = '/analysis';
             onClose?.();
           })} className="space-y-6">
             {/* Birth Date and Time */}
@@ -169,13 +171,14 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
+                      <SelectItem value="Asia/Kolkata">India Standard Time (IST)</SelectItem>
                       <SelectItem value="UTC">UTC</SelectItem>
-                      <SelectItem value="EST">Eastern Time (EST)</SelectItem>
-                      <SelectItem value="PST">Pacific Time (PST)</SelectItem>
-                      <SelectItem value="GMT">Greenwich Mean Time</SelectItem>
-                      <SelectItem value="CET">Central European Time</SelectItem>
-                      <SelectItem value="JST">Japan Standard Time</SelectItem>
-                      <SelectItem value="IST">India Standard Time</SelectItem>
+                      <SelectItem value="America/New_York">Eastern Time (EST)</SelectItem>
+                      <SelectItem value="America/Los_Angeles">Pacific Time (PST)</SelectItem>
+                      <SelectItem value="Europe/London">Greenwich Mean Time (GMT)</SelectItem>
+                      <SelectItem value="Europe/Berlin">Central European Time (CET)</SelectItem>
+                      <SelectItem value="Asia/Tokyo">Japan Standard Time (JST)</SelectItem>
+                      <SelectItem value="Australia/Sydney">Australian Eastern Time</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

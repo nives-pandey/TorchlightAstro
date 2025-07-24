@@ -83,8 +83,9 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 className="border-2 border-yellow-500 text-yellow-500 px-8 py-4 text-lg h-auto hover:bg-yellow-500 hover:text-black"
+                onClick={() => window.location.href = '/analysis'}
               >
-                Explore Demo
+                View Krishna Raj Demo
               </Button>
             </div>
             
