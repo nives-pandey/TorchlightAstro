@@ -29,8 +29,8 @@ export default function Landing() {
             Your Complete Cosmic Guide
           </h2>
           <p className="text-xl md:text-2xl mb-8 text-purple-200">
-            Discover authentic insights from Western, Vedic, Chinese, and Human Design astrology 
-            with comprehensive lifestyle recommendations for personal growth and decision-making.
+            <strong>Torchlight</strong> illuminates your path with authentic insights from Western, Vedic, Chinese, Human Design, and Numerology systems. 
+            We provide comprehensive lifestyle recommendations while empowering you to make your own decisions.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             <Badge variant="outline" className="border-yellow-400 text-yellow-400 px-4 py-2">
@@ -45,6 +45,9 @@ export default function Landing() {
             <Badge variant="outline" className="border-blue-400 text-blue-400 px-4 py-2">
               Human Design
             </Badge>
+            <Badge variant="outline" className="border-green-400 text-green-400 px-4 py-2">
+              Numerology & Input Systems
+            </Badge>
           </div>
           <Button 
             size="lg"
@@ -56,8 +59,48 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* What is Torchlight Section */}
       <section className="container mx-auto px-4 py-20">
+        <div className="max-w-4xl mx-auto mb-20">
+          <h3 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            What is Torchlight?
+          </h3>
+          <Card className="bg-black/40 border-yellow-500/30 backdrop-blur-sm">
+            <CardContent className="p-8">
+              <p className="text-lg text-gray-200 leading-relaxed mb-6">
+                <strong className="text-yellow-400">Torchlight</strong> is your comprehensive astrological guidance system that combines the wisdom of multiple ancient traditions with modern astronomical precision. Like a torch illuminating a dark path, we provide insights to help you navigate life's journey while preserving your autonomy to choose your direction.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <h4 className="text-yellow-400 font-semibold mb-3">Our Philosophy</h4>
+                  <ul className="text-gray-300 space-y-2 text-sm">
+                    <li>• <strong>Illumination, not direction:</strong> We light your path but you choose where to walk</li>
+                    <li>• <strong>Multiple perspectives:</strong> Five ancient systems provide complete cosmic insights</li>
+                    <li>• <strong>Authentic calculations:</strong> Precise astronomical data, not generic horoscopes</li>
+                    <li>• <strong>Personal responsibility:</strong> You maintain full control over your decisions</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="text-purple-400 font-semibold mb-3">The Science</h4>
+                  <ul className="text-gray-300 space-y-2 text-sm">
+                    <li>• <strong>Mathematical precision:</strong> Swiss Ephemeris calculations for accuracy</li>
+                    <li>• <strong>4,000+ years of study:</strong> Time-tested patterns and correlations</li>
+                    <li>• <strong>Cross-cultural validation:</strong> Consistent findings across civilizations</li>
+                    <li>• <strong>No paid APIs:</strong> 100% open-source knowledge base for unlimited access</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <p className="text-gray-400 text-sm italic text-center">
+                "Astrology is not fortune-telling, but rather the illumination of natural patterns and potential paths. 
+                Your free will remains the most powerful force in shaping your destiny."
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
         <h3 className="text-3xl font-bold text-center mb-12">
           Comprehensive Cosmic Guidance
         </h3>
@@ -119,8 +162,27 @@ export default function Landing() {
           <Card className="bg-green-800/30 border-green-600 backdrop-blur-sm">
             <CardHeader>
               <Sparkles className="h-12 w-12 text-green-400 mb-4" />
-              <CardTitle className="text-white">Lifestyle Recommendations</CardTitle>
+              <CardTitle className="text-white">AI Assistant & Numerology</CardTitle>
               <CardDescription className="text-green-200">
+                Interactive cosmic guidance with numerology and input-based systems
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-green-100">
+              <ul className="space-y-2">
+                <li>• Conversational AI astrological guidance</li>
+                <li>• Complete numerology profiles</li>
+                <li>• Tarot birth cards and yearly cards</li>
+                <li>• Color astrology recommendations</li>
+                <li>• Gemstone guidance systems</li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-orange-800/30 border-orange-600 backdrop-blur-sm">
+            <CardHeader>
+              <Moon className="h-12 w-12 text-orange-400 mb-4" />
+              <CardTitle className="text-white">Lifestyle Recommendations</CardTitle>
+              <CardDescription className="text-orange-200">
                 Comprehensive guidance for career, health, and personal growth
               </CardDescription>
             </CardHeader>
