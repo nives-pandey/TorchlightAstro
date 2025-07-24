@@ -1,0 +1,117 @@
+# Torchlight Astrology Application
+
+## Overview
+
+Torchlight is a comprehensive astrology web application that integrates multiple astrological systems including Western, Vedic, Chinese Zodiac, and Human Design. The application provides users with detailed natal chart analysis, compatibility readings, and daily guidance based on authentic astronomical calculations. Built as a full-stack TypeScript application with a React frontend and Express backend, it uses PostgreSQL for data persistence and Drizzle ORM for database operations.
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Full-Stack Application Structure
+The application follows a monorepo structure with clear separation between client, server, and shared components:
+
+- **Client**: React frontend with TypeScript, built with Vite
+- **Server**: Express.js backend with TypeScript
+- **Shared**: Common schemas and types used across both client and server
+- **Database**: PostgreSQL with Drizzle ORM for type-safe database operations
+
+### Technology Stack
+- **Frontend**: React 18, TypeScript, Tailwind CSS, shadcn/ui components
+- **Backend**: Express.js, TypeScript, ESM modules
+- **Database**: PostgreSQL with Drizzle ORM
+- **Build Tools**: Vite for frontend, esbuild for backend bundling
+- **State Management**: TanStack Query for server state management
+- **Routing**: Wouter for client-side routing
+- **Form Management**: React Hook Form with Zod validation
+
+## Key Components
+
+### Frontend Architecture
+The client application uses a component-based architecture with:
+- **UI Components**: shadcn/ui component library for consistent design
+- **Page Components**: Home, Chart, Compatibility, Daily guidance pages
+- **Feature Components**: Specialized components for birth data forms, chart wheels, compatibility analysis
+- **Cosmic Theme**: Dark theme with space/astrology-inspired styling and animations
+
+### Backend API Structure
+The server provides RESTful endpoints for:
+- **User Management**: Create and retrieve user profiles
+- **Birth Data**: Store and manage birth information with location data
+- **Chart Generation**: Calculate and store astrological charts
+- **Compatibility Analysis**: Multi-person compatibility calculations
+- **Daily Guidance**: Personalized daily astrological insights
+
+### Database Schema
+The application uses five main tables:
+- **users**: User profiles and authentication data
+- **birth_data**: Birth information including date, time, location, and system preferences
+- **charts**: Generated astrological charts with interpretations
+- **compatibility**: Relationship compatibility analysis results
+- **daily_guidance**: Personalized daily astrological guidance
+
+## Data Flow
+
+### Chart Generation Process
+1. User inputs birth data through multi-step form
+2. System validates and geocodes location information
+3. Astronomical calculations performed using birth data
+4. Multiple astrological systems generate interpretations
+5. Results synthesized and stored in database
+6. Visual chart wheel and detailed analysis presented to user
+
+### Real-time Calculations
+The application performs authentic astrological calculations rather than using pre-generated content:
+- Planetary positions calculated from astronomical data
+- House systems computed based on birth time and location
+- Aspects and patterns identified through geometric analysis
+- Multiple astrological traditions integrated for comprehensive readings
+
+## External Dependencies
+
+### Core Libraries
+- **Neon Database**: Serverless PostgreSQL hosting (@neondatabase/serverless)
+- **Drizzle**: Type-safe ORM with schema validation
+- **TanStack Query**: Server state management and caching
+- **Radix UI**: Headless component primitives for accessibility
+- **React Hook Form**: Form validation and management
+- **Wouter**: Lightweight client-side routing
+
+### UI and Styling
+- **Tailwind CSS**: Utility-first CSS framework
+- **shadcn/ui**: Pre-built component library
+- **Lucide React**: Icon library
+- **Class Variance Authority**: Component variant management
+
+### Development Tools
+- **TypeScript**: Type safety across full stack
+- **Vite**: Fast development and build tooling
+- **ESBuild**: Backend bundling for production
+- **PostCSS**: CSS processing with Tailwind
+
+## Deployment Strategy
+
+### Build Process
+The application uses a two-stage build process:
+1. **Frontend Build**: Vite compiles React application to static assets
+2. **Backend Build**: ESBuild bundles Express server with external dependencies
+
+### Environment Configuration
+- **Development**: Hot module replacement with Vite dev server
+- **Production**: Compiled static frontend served by Express server
+- **Database**: Environment-based connection strings for different deployment stages
+
+### Hosting Considerations
+The application is designed for deployment on platforms supporting:
+- Node.js runtime for Express backend
+- Static file serving for React frontend
+- PostgreSQL database connectivity
+- Environment variable configuration for database URLs and API keys
+
+### Performance Optimizations
+- Code splitting with Vite for optimal loading
+- TanStack Query for intelligent caching and background updates
+- Lazy loading of components for faster initial page loads
+- Optimized bundle sizes through proper dependency management

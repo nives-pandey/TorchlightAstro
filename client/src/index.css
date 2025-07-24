@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+
+  /* Cosmic theme colors */
+  --cosmic-blue: hsl(220, 35%, 8%);
+  --deep-space: hsl(220, 20%, 12%);
+  --cosmic-purple: hsl(250, 60%, 25%);
+  --mystical-purple: hsl(250, 45%, 45%);
+  --celestial-gold: hsl(45, 85%, 65%);
+  --bright-gold: hsl(51, 100%, 50%);
+  --stardust: hsl(220, 15%, 35%);
+  --cosmic-gray: hsl(220, 10%, 50%);
+  --space-black: hsl(0, 0%, 0%);
+  --nebula-dark: hsl(240, 60%, 8%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background: linear-gradient(135deg, var(--nebula-dark) 0%, var(--deep-space) 50%, var(--cosmic-purple) 100%);
+    color: var(--foreground);
+    min-height: 100vh;
+  }
+
+  /* Cosmic theme utilities */
+  .cosmic-glow {
+    box-shadow: 0 0 20px rgba(246, 213, 92, 0.3);
+  }
+
+  .star-animation {
+    animation: twinkle 3s infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .cosmic-border {
+    border-image: linear-gradient(45deg, var(--celestial-gold), var(--mystical-purple), var(--celestial-gold)) 1;
+  }
+
+  .planet-symbol {
+    font-size: 1.5rem;
+    color: var(--celestial-gold);
+    text-shadow: 0 0 10px rgba(246, 213, 92, 0.5);
+  }
+
+  /* Starfield background */
+  .starfield {
+    background-image: 
+      radial-gradient(circle at 25% 25%, var(--bright-gold) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, var(--celestial-gold) 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px;
+  }
+
+  /* Nebula background */
+  .nebula {
+    background: radial-gradient(ellipse at center, rgba(85, 60, 154, 0.3) 0%, transparent 70%);
+  }
+
+  /* Cosmic gradient backgrounds */
+  .cosmic-gradient {
+    background: linear-gradient(135deg, var(--nebula-dark) 0%, var(--deep-space) 50%, var(--cosmic-purple) 100%);
+  }
+
+  .cosmic-card {
+    background: linear-gradient(135deg, rgba(15, 20, 25, 0.5) 0%, rgba(45, 27, 105, 0.3) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(246, 213, 92, 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cosmic-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--celestial-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bright-gold);
+}
+
+/* Form styling */
+.cosmic-input {
+  background: rgba(15, 20, 25, 0.5);
+  border: 1px solid rgba(246, 213, 92, 0.3);
+  color: white;
+}
+
+.cosmic-input:focus {
+  border-color: var(--celestial-gold);
+  box-shadow: 0 0 0 2px rgba(246, 213, 92, 0.2);
+}
+
+.cosmic-button {
+  background: linear-gradient(to right, var(--celestial-gold), var(--bright-gold));
+  color: var(--cosmic-blue);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cosmic-button:hover {
+  box-shadow: 0 10px 25px rgba(246, 213, 92, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Tab styling */
+.tab-active {
+  background: linear-gradient(to right, var(--celestial-gold), var(--bright-gold));
+  color: var(--cosmic-blue);
+}
+
+.tab-inactive {
+  color: var(--cosmic-gray);
+}
+
+.tab-inactive:hover {
+  color: white;
+}
