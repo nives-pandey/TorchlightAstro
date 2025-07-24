@@ -95,6 +95,13 @@ The application performs authentic astrological calculations rather than using p
 - Clear explanation of Torchlight's role as illumination rather than decision-making
 - Emphasis on personal responsibility and free will in all readings
 
+### Design System Refinement (July 24, 2025)
+- Restored cosmic color scheme with dark gradient backgrounds and golden accents
+- Maintained Apple-inspired clean layout structure and typography
+- Updated language to be honest about AI system (removed corporate "we" pronouns)
+- Separated "Numerology" as standalone feature in navigation and forms
+- Implemented clean navigation with cosmic-themed active states and hover effects
+
 ### Input-Based Systems Implementation (July 24, 2025)
 - Numerology system with complete calculations (Life Path, Destiny, Soul Urge, Personality)
 - Tarot birth card analysis based on birth date calculations

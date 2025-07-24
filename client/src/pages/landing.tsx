@@ -5,7 +5,7 @@ import { Stars, Sparkles, Users, Calendar, Moon, Sun } from "lucide-react";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
       {/* Clean Header */}
       <header className="clean-nav fixed top-0 w-full z-50">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -13,7 +13,7 @@ export default function Landing() {
             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
               <Stars className="h-4 w-4 text-white" />
             </div>
-            <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <h1 className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Torchlight
             </h1>
           </div>
@@ -29,27 +29,27 @@ export default function Landing() {
       {/* Clean Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="container mx-auto text-center max-w-4xl">
-          <h2 className="text-4xl md:text-6xl font-semibold mb-6 text-gray-900 dark:text-white leading-tight">
+          <h2 className="text-4xl md:text-6xl font-semibold mb-6 bg-gradient-to-r from-yellow-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight">
             Your Complete<br />Cosmic Guide
           </h2>
-          <p className="text-lg md:text-xl mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            <strong className="text-blue-600 dark:text-blue-400">Torchlight</strong> illuminates your path with authentic insights from Western, Vedic, Chinese, Human Design, and Numerology systems. Get comprehensive guidance while maintaining full control over your decisions.
+          <p className="text-lg md:text-xl mb-12 text-purple-200 max-w-3xl mx-auto leading-relaxed">
+            <strong className="text-yellow-400">Torchlight</strong> illuminates your path with authentic insights from Western, Vedic, Chinese, Human Design, and Numerology systems. Get comprehensive guidance while maintaining full control over your decisions.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <Badge variant="outline" className="border-yellow-400 text-yellow-400 px-4 py-2">
               Western Astrology
             </Badge>
-            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">
+            <Badge variant="outline" className="border-purple-400 text-purple-400 px-4 py-2">
               Vedic Wisdom
             </Badge>
-            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">
+            <Badge variant="outline" className="border-pink-400 text-pink-400 px-4 py-2">
               Chinese Zodiac
             </Badge>
-            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">
+            <Badge variant="outline" className="border-blue-400 text-blue-400 px-4 py-2">
               Human Design
             </Badge>
-            <Badge variant="secondary" className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">
+            <Badge variant="outline" className="border-green-400 text-green-400 px-4 py-2">
               Numerology
             </Badge>
           </div>
@@ -64,18 +64,18 @@ export default function Landing() {
       </section>
 
       {/* What is Torchlight Section */}
-      <section className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 px-6">
         <div className="container mx-auto max-w-5xl">
-          <h3 className="text-3xl md:text-4xl font-semibold text-center mb-4 text-gray-900 dark:text-white">
+          <h3 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
             What is Torchlight?
           </h3>
-          <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-purple-200 mb-12 max-w-2xl mx-auto">
             A comprehensive astrological guidance system combining ancient wisdom with modern precision
           </p>
           
           <div className="clean-card p-8 md:p-12 mb-8">
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-center max-w-4xl mx-auto">
-              <strong className="text-blue-600 dark:text-blue-400">Torchlight</strong> combines the wisdom of multiple ancient traditions with modern astronomical precision. Like a torch illuminating a path, this system offers insights to help you navigate life's journey while preserving your autonomy to choose your direction.
+            <p className="text-lg text-gray-200 leading-relaxed mb-8 text-center max-w-4xl mx-auto">
+              <strong className="text-yellow-400">Torchlight</strong> combines the wisdom of multiple ancient traditions with modern astronomical precision. Like a torch illuminating a path, this system offers insights to help you navigate life's journey while preserving your autonomy to choose your direction.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
