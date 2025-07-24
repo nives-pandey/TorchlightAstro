@@ -33,7 +33,7 @@ export default function Landing() {
             Your Complete<br />Cosmic Guide
           </h2>
           <p className="text-lg md:text-xl mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            <strong className="text-blue-600 dark:text-blue-400">Torchlight</strong> illuminates your path with authentic insights from Western, Vedic, Chinese, Human Design, and Numerology systems. We provide comprehensive guidance while empowering you to make your own decisions.
+            <strong className="text-blue-600 dark:text-blue-400">Torchlight</strong> illuminates your path with authentic insights from Western, Vedic, Chinese, Human Design, and Numerology systems. Get comprehensive guidance while maintaining full control over your decisions.
           </p>
           
           <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -75,7 +75,7 @@ export default function Landing() {
           
           <div className="clean-card p-8 md:p-12 mb-8">
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-center max-w-4xl mx-auto">
-              <strong className="text-blue-600 dark:text-blue-400">Torchlight</strong> combines the wisdom of multiple ancient traditions with modern astronomical precision. Like a torch illuminating a path, we provide insights to help you navigate life's journey while preserving your autonomy to choose your direction.
+              <strong className="text-blue-600 dark:text-blue-400">Torchlight</strong> combines the wisdom of multiple ancient traditions with modern astronomical precision. Like a torch illuminating a path, this system offers insights to help you navigate life's journey while preserving your autonomy to choose your direction.
             </p>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -84,7 +84,7 @@ export default function Landing() {
                 <ul className="space-y-3 text-gray-600 dark:text-gray-400">
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Illumination, not direction:</strong> We light your path but you choose where to walk</span>
+                    <span><strong className="text-gray-900 dark:text-white">Illumination, not direction:</strong> The system lights your path but you choose where to walk</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
