@@ -80,52 +80,52 @@ export default function Landing() {
             
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Our Philosophy</h4>
-                <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                <h4 className="text-xl font-semibold mb-4 text-yellow-400">Our Philosophy</h4>
+                <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Illumination, not direction:</strong> The system lights your path but you choose where to walk</span>
+                    <span><strong className="text-white">Illumination, not direction:</strong> The system lights your path but you choose where to walk</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Multiple perspectives:</strong> Five ancient systems provide complete cosmic insights</span>
+                    <span><strong className="text-white">Multiple perspectives:</strong> Five ancient systems provide complete cosmic insights</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Authentic calculations:</strong> Precise astronomical data, not generic horoscopes</span>
+                    <span><strong className="text-white">Authentic calculations:</strong> Precise astronomical data, not generic horoscopes</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Personal responsibility:</strong> You maintain full control over your decisions</span>
+                    <span><strong className="text-white">Personal responsibility:</strong> You maintain full control over your decisions</span>
                   </li>
                 </ul>
               </div>
               
               <div>
-                <h4 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">The Science</h4>
-                <ul className="space-y-3 text-gray-600 dark:text-gray-400">
+                <h4 className="text-xl font-semibold mb-4 text-purple-400">The Science</h4>
+                <ul className="space-y-3 text-gray-300">
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Mathematical precision:</strong> Swiss Ephemeris calculations for accuracy</span>
+                    <span><strong className="text-white">Mathematical precision:</strong> Swiss Ephemeris calculations for accuracy</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">4,000+ years of study:</strong> Time-tested patterns and correlations</span>
+                    <span><strong className="text-white">4,000+ years of study:</strong> Time-tested patterns and correlations</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">Cross-cultural validation:</strong> Consistent findings across civilizations</span>
+                    <span><strong className="text-white">Cross-cultural validation:</strong> Consistent findings across civilizations</span>
                   </li>
                   <li className="flex items-start">
                     <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span><strong className="text-gray-900 dark:text-white">No paid APIs:</strong> 100% open-source knowledge base for unlimited access</span>
+                    <span><strong className="text-white">No paid APIs:</strong> 100% open-source knowledge base for unlimited access</span>
                   </li>
                 </ul>
               </div>
             </div>
             
-            <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-blue-500">
-              <p className="text-gray-700 dark:text-gray-300 italic text-center">
+            <div className="mt-8 p-6 bg-black/30 rounded-lg border-l-4 border-yellow-500">
+              <p className="text-gray-300 italic text-center">
                 "Astrology is not fortune-telling, but rather the illumination of natural patterns and potential paths. Your free will remains the most powerful force in shaping your destiny."
               </p>
             </div>
@@ -136,10 +136,10 @@ export default function Landing() {
       {/* Features Section */}
       <section className="py-20 px-6">
         <div className="container mx-auto max-w-6xl">
-          <h3 className="text-3xl font-semibold text-center mb-4 text-gray-900 dark:text-white">
+          <h3 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
             Comprehensive Cosmic Guidance
           </h3>
-          <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-purple-200 mb-12 max-w-2xl mx-auto">
             Professional-grade tools for deep cosmic insights and personal growth
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -149,26 +149,26 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-4">
                   <Sun className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Natal Chart Analysis</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <h4 className="text-xl font-semibold text-white mb-2">Natal Chart Analysis</h4>
+                <p className="text-purple-200 text-sm mb-4">
                   Deep insights from multiple astrological systems with authentic astronomical calculations
                 </p>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
                   Planetary positions & aspects
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
                   House interpretations
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
                   Cross-system comparisons
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
                   Personality insights
                 </li>
               </ul>
@@ -179,26 +179,26 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
                   <Users className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Compatibility Analysis</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <h4 className="text-xl font-semibold text-white mb-2">Compatibility Analysis</h4>
+                <p className="text-purple-200 text-sm mb-4">
                   Relationship insights across all astrological systems
                 </p>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
                   Multi-person compatibility
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
                   Strengths & challenges
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
                   Communication guidance
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
                   Relationship timing
                 </li>
               </ul>
@@ -209,26 +209,26 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg flex items-center justify-center mb-4">
                   <Calendar className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Daily Guidance</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <h4 className="text-xl font-semibold text-white mb-2">Daily Guidance</h4>
+                <p className="text-purple-200 text-sm mb-4">
                   Personalized daily insights with optimal timing recommendations
                 </p>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
                   Daily horoscopes
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
                   Lucky numbers & colors
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
                   Optimal timing
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
                   Auspicious activities
                 </li>
               </ul>
@@ -239,26 +239,26 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">AI Assistant & Numerology</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <h4 className="text-xl font-semibold text-white mb-2">AI Assistant & Numerology</h4>
+                <p className="text-purple-200 text-sm mb-4">
                   Interactive cosmic guidance with complete numerology calculations
                 </p>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
                   Conversational AI guidance
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
                   Complete numerology profiles
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
                   Life path and destiny numbers
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
                   Personality analysis
                 </li>
               </ul>
@@ -269,26 +269,26 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4">
                   <Moon className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Lifestyle Recommendations</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <h4 className="text-xl font-semibold text-white mb-2">Lifestyle Recommendations</h4>
+                <p className="text-purple-200 text-sm mb-4">
                   Comprehensive guidance for career, health, and personal growth
                 </p>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
                   Career path guidance
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
                   Health recommendations
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
                   Personal development
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
                   Timing for decisions
                 </li>
               </ul>
@@ -299,12 +299,12 @@ export default function Landing() {
                 <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-800 rounded-lg flex items-center justify-center mb-4">
                   <Stars className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Educational Content</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                <h4 className="text-xl font-semibold text-white mb-2">Educational Content</h4>
+                <p className="text-purple-200 text-sm mb-4">
                   Learn about astrology's scientific foundations and methodology
                 </p>
               </div>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
                   Scientific background
@@ -329,12 +329,12 @@ export default function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 px-6">
         <div className="container mx-auto text-center max-w-3xl">
-          <h3 className="text-3xl font-semibold mb-4 text-gray-900 dark:text-white">
+          <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
             Ready to illuminate your path?
           </h3>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-lg text-purple-200 mb-8">
             Join thousands who have discovered deeper insights into their cosmic blueprint with Torchlight's comprehensive astrological guidance.
           </p>
           <Button 
