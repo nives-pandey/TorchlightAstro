@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import ChartWheel from "@/components/chart-wheel";
+import { LifestyleRecommendations } from "@/components/lifestyle-recommendations";
 import { Star, Eye, Home, Zap, Target } from "lucide-react";
 
 export default function Chart() {
@@ -92,7 +93,7 @@ export default function Chart() {
 
         {/* Chart Navigation Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5 bg-black/30 border border-yellow-500/20 rounded-lg p-1 mb-8">
+          <TabsList className="grid w-full grid-cols-6 bg-black/30 border border-yellow-500/20 rounded-lg p-1 mb-8">
             <TabsTrigger 
               value="overview" 
               className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-300 data-[state=active]:text-black text-gray-400"
@@ -116,6 +117,12 @@ export default function Chart() {
               className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-300 data-[state=active]:text-black text-gray-400"
             >
               Aspects
+            </TabsTrigger>
+            <TabsTrigger 
+              value="lifestyle"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-300 data-[state=active]:text-black text-gray-400"
+            >
+              Lifestyle
             </TabsTrigger>
             <TabsTrigger 
               value="interpretations"
@@ -355,6 +362,42 @@ export default function Chart() {
                     </div>
                   </CardContent>
                 </Card>
+              </TabsContent>
+
+              {/* Lifestyle Tab */}
+              <TabsContent value="lifestyle" className="space-y-6">
+                <LifestyleRecommendations 
+                  recommendations={{
+                    luckyNumbers: [3, 7, 9, 21, 25],
+                    luckyColors: ["Deep Blue", "Silver", "Emerald Green", "Royal Purple"],
+                    favorableStones: ["Sapphire", "Moonstone", "Garnet", "Amethyst"],
+                    careerGuidance: "Your Capricorn Sun and Pisces Moon combination suggests careers in counseling, architecture, or healing professions. You excel in structured environments where you can help others while building lasting foundations.",
+                    subjects: ["Psychology", "Architecture", "Finance", "Art Therapy", "Real Estate"],
+                    personalityTraits: ["Intuitive", "Practical", "Empathetic", "Determined", "Creative"],
+                    foods: ["Root vegetables", "Fish", "Whole grains", "Herbal teas", "Dark leafy greens"],
+                    avoidItems: ["Excessive caffeine", "Spicy foods late at night", "Overstimulating environments"],
+                    auspiciousDates: ["10th, 15th, 25th of each month", "New Moon in Earth signs", "Venus-Jupiter conjunctions"],
+                    dailyPractices: ["Morning meditation", "Evening journaling", "Nature walks", "Structured goal-setting"]
+                  }}
+                  systemComparison={{
+                    westernTraits: ["Ambitious", "Security-focused", "Intuitive partnerships"],
+                    vedicTraits: ["Spiritual wisdom", "Creative communication", "Stable foundation"],
+                    chineseTraits: ["Strategic thinking", "Family-oriented", "Patient approach"],
+                    humanDesignTraits: ["Generator energy", "Emotional authority", "Manifesting type"],
+                    commonPatterns: ["Leadership potential", "Creative expression", "Service orientation"],
+                    uniqueInsights: {
+                      western: "Strong focus on building security through structured achievement",
+                      vedic: "Spiritual wisdom combined with practical application in daily life",
+                      chinese: "Patient, methodical approach to long-term success",
+                      humanDesign: "Natural ability to respond to life with emotional clarity"
+                    },
+                    synthesizedGuidance: {
+                      strengths: ["Natural leadership abilities", "Strong intuition", "Practical wisdom"],
+                      challenges: ["Tendency to be overly cautious", "Emotional sensitivity", "Perfectionist tendencies"],
+                      recommendations: ["Trust your intuition in business decisions", "Create structured routines for creativity", "Balance ambition with emotional well-being"]
+                    }
+                  }}
+                />
               </TabsContent>
             </div>
           </div>

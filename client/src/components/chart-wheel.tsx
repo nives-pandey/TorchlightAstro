@@ -1,86 +1,161 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ChartWheelProps {
   chartData: {
-    user: {
-      name: string;
-      birthDate: string;
-      location: string;
-    };
-    planets: Record<string, {
-      sign: string;
-      degree: number;
-      house: number;
-      symbol: string;
-    }>;
-    houses: Record<string, {
-      sign: string;
-      degree: number;
-    }>;
+    sun: string;
+    moon: string;
+    rising: string;
+    planets?: Record<string, { sign: string; house: number; degrees: number }>;
+    houses?: Record<number, string>;
   };
 }
 
 export default function ChartWheel({ chartData }: ChartWheelProps) {
-  const planetPositions = [
-    { symbol: "☉", position: "top-2 left-1/2 transform -translate-x-1/2", color: "text-yellow-500" },
-    { symbol: "☽", position: "top-6 right-6", color: "text-blue-300" },
-    { symbol: "☿", position: "right-2 top-1/2 transform -translate-y-1/2", color: "text-yellow-400" },
-    { symbol: "♀", position: "bottom-6 right-6", color: "text-pink-400" },
-    { symbol: "♂", position: "bottom-2 left-1/2 transform -translate-x-1/2", color: "text-red-400" },
-    { symbol: "♃", position: "bottom-6 left-6", color: "text-yellow-500" },
-    { symbol: "♄", position: "left-2 top-1/2 transform -translate-y-1/2", color: "text-gray-400" },
-    { symbol: "♅", position: "top-6 left-6", color: "text-purple-400" },
+  const zodiacSigns = [
+    "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+    "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"
   ];
 
+  const planetSymbols: Record<string, string> = {
+    sun: "☉",
+    moon: "☽",
+    mercury: "☿",
+    venus: "♀",
+    mars: "♂",
+    jupiter: "♃",
+    saturn: "♄",
+    uranus: "♅",
+    neptune: "♆",
+    pluto: "♇"
+  };
+
   return (
-    <Card className="cosmic-card cosmic-glow">
+    <Card className="cosmic-card">
       <CardHeader>
-        <CardTitle className="text-yellow-500 text-center">Natal Chart Wheel</CardTitle>
+        <CardTitle className="text-yellow-500">Birth Chart Wheel</CardTitle>
+        <CardDescription className="text-gray-400">
+          Your cosmic blueprint at the moment of birth
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        {/* Chart Wheel Visualization */}
-        <div className="aspect-square bg-black/50 rounded-full border border-yellow-500/30 flex items-center justify-center relative overflow-hidden mb-6">
-          {/* Chart rings */}
-          <div className="absolute inset-4 border border-yellow-500/20 rounded-full"></div>
-          <div className="absolute inset-8 border border-yellow-500/10 rounded-full"></div>
-          
-          {/* Planetary positions around the wheel */}
-          {planetPositions.map((planet, index) => (
-            <div 
-              key={index}
-              className={`absolute ${planet.position} ${planet.color} text-xl font-bold`}
-              title={`${planet.symbol} - Planet position`}
-            >
-              {planet.symbol}
+      <CardContent className="flex justify-center">
+        <div className="relative w-80 h-80">
+          {/* Outer circle - Zodiac signs */}
+          <div className="absolute inset-0 rounded-full border-2 border-yellow-500/30 bg-gradient-to-r from-purple-900/20 to-blue-900/20">
+            {/* Zodiac wheel segments */}
+            <svg className="w-full h-full" viewBox="0 0 200 200">
+              {zodiacSigns.map((sign, index) => {
+                const angle = (index * 30) - 90; // Start from top
+                const x = 100 + 85 * Math.cos((angle * Math.PI) / 180);
+                const y = 100 + 85 * Math.sin((angle * Math.PI) / 180);
+                
+                return (
+                  <g key={sign}>
+                    {/* Zodiac sign division lines */}
+                    <line
+                      x1="100"
+                      y1="100"
+                      x2={100 + 90 * Math.cos((angle * Math.PI) / 180)}
+                      y2={100 + 90 * Math.sin((angle * Math.PI) / 180)}
+                      stroke="rgba(255, 255, 255, 0.1)"
+                      strokeWidth="0.5"
+                    />
+                    
+                    {/* Zodiac sign names */}
+                    <text
+                      x={x}
+                      y={y}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="fill-white text-xs"
+                      transform={`rotate(${angle > 90 && angle < 270 ? angle + 180 : angle}, ${x}, ${y})`}
+                    >
+                      {sign.slice(0, 3)}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Inner circle - Houses */}
+          <div className="absolute inset-4 rounded-full border border-yellow-500/50 bg-black/30">
+            <svg className="w-full h-full" viewBox="0 0 200 200">
+              {Array.from({ length: 12 }, (_, index) => {
+                const houseNumber = index + 1;
+                const angle = (index * 30) - 90;
+                const x = 100 + 60 * Math.cos((angle * Math.PI) / 180);
+                const y = 100 + 60 * Math.sin((angle * Math.PI) / 180);
+                
+                return (
+                  <g key={houseNumber}>
+                    {/* House division lines */}
+                    <line
+                      x1="100"
+                      y1="100"
+                      x2={100 + 75 * Math.cos((angle * Math.PI) / 180)}
+                      y2={100 + 75 * Math.sin((angle * Math.PI) / 180)}
+                      stroke="rgba(255, 255, 255, 0.2)"
+                      strokeWidth="1"
+                    />
+                    
+                    {/* House numbers */}
+                    <text
+                      x={x}
+                      y={y}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="fill-yellow-500 text-sm font-bold"
+                    >
+                      {houseNumber}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+
+          {/* Center circle - Key planets */}
+          <div className="absolute inset-16 rounded-full border border-yellow-500 bg-gradient-to-r from-yellow-500/10 to-purple-500/10 flex flex-col items-center justify-center">
+            <div className="text-center space-y-2">
+              <div className="text-yellow-500 text-2xl">☉</div>
+              <div className="text-white text-xs">{chartData.sun}</div>
+              <div className="text-purple-400 text-xl">☽</div>
+              <div className="text-white text-xs">{chartData.moon}</div>
+              <div className="text-blue-400 text-lg">↗</div>
+              <div className="text-white text-xs">{chartData.rising}</div>
             </div>
-          ))}
-          
-          {/* Center information */}
-          <div className="text-center z-10 bg-black/60 rounded-full p-4">
-            <div className="text-yellow-500 font-medium text-lg">{chartData.user.name}</div>
-            <div className="text-gray-400 text-sm">{chartData.user.birthDate}</div>
-            <div className="text-gray-400 text-xs">{chartData.user.location}</div>
           </div>
-        </div>
-        
-        {/* Chart Statistics */}
-        <div className="space-y-3">
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-400">Sun Sign:</span>
-            <span className="text-yellow-500">Capricorn ♑</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-400">Moon Sign:</span>
-            <span className="text-blue-300">Pisces ♓</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-400">Rising Sign:</span>
-            <span className="text-purple-400">Virgo ♍</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-400">Dominant Element:</span>
-            <span className="text-yellow-500">Earth</span>
-          </div>
+
+          {/* Floating planet positions */}
+          {chartData.planets && Object.entries(chartData.planets).map(([planet, data]) => {
+            const signIndex = zodiacSigns.findIndex(sign => 
+              sign.toLowerCase() === data.sign.toLowerCase()
+            );
+            if (signIndex === -1) return null;
+            
+            const baseAngle = signIndex * 30;
+            const degreesInSign = data.degrees || 15; // Default to middle of sign
+            const angle = baseAngle + (degreesInSign / 30) * 30 - 90;
+            
+            const radius = 70; // Position between houses and zodiac
+            const x = 160 + radius * Math.cos((angle * Math.PI) / 180);
+            const y = 160 + radius * Math.sin((angle * Math.PI) / 180);
+            
+            return (
+              <div
+                key={planet}
+                className="absolute w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-black text-sm font-bold shadow-lg"
+                style={{
+                  left: `${x}px`,
+                  top: `${y}px`,
+                  transform: 'translate(-50%, -50%)'
+                }}
+                title={`${planet} in ${data.sign} (House ${data.house})`}
+              >
+                {planetSymbols[planet.toLowerCase()] || planet.charAt(0).toUpperCase()}
+              </div>
+            );
+          })}
         </div>
       </CardContent>
     </Card>

@@ -1,286 +1,316 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import { setupAuth, isAuthenticated } from "./replitAuth";
 import { 
-  insertUserSchema, 
   insertBirthDataSchema, 
   insertChartSchema,
   insertCompatibilitySchema,
-  insertDailyGuidanceSchema 
-} from "@shared/schema";
+  insertDailyGuidanceSchema,
+  insertSystemComparisonSchema
+} from "../shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Users
-  app.post("/api/users", async (req, res) => {
+  // Auth middleware
+  await setupAuth(app);
+
+  // Auth routes
+  app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
     try {
-      const userData = insertUserSchema.parse(req.body);
-      const user = await storage.createUser(userData);
+      const userId = req.user.claims.sub;
+      const user = await storage.getUser(userId);
       res.json(user);
     } catch (error) {
-      res.status(400).json({ error: "Invalid user data" });
+      console.error("Error fetching user:", error);
+      res.status(500).json({ message: "Failed to fetch user" });
     }
   });
 
-  app.get("/api/users/:id", async (req, res) => {
+  // Birth data endpoints
+  app.get("/api/birth-data", isAuthenticated, async (req: any, res) => {
     try {
-      const id = parseInt(req.params.id);
-      const user = await storage.getUser(id);
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-      res.json(user);
-    } catch (error) {
-      res.status(500).json({ error: "Internal server error" });
-    }
-  });
-
-  // Birth Data
-  app.post("/api/birth-data", async (req, res) => {
-    try {
-      const birthDataInput = insertBirthDataSchema.parse(req.body);
-      const birthData = await storage.createBirthData(birthDataInput);
+      const userId = req.user.claims.sub;
+      const birthData = await storage.getBirthDataByUserId(userId);
       res.json(birthData);
     } catch (error) {
-      res.status(400).json({ error: "Invalid birth data" });
+      console.error("Error fetching birth data:", error);
+      res.status(500).json({ error: "Failed to fetch birth data" });
     }
   });
 
-  app.get("/api/birth-data/user/:userId", async (req, res) => {
+  app.post("/api/birth-data", isAuthenticated, async (req: any, res) => {
     try {
-      const userId = parseInt(req.params.userId);
-      const birthDataRecords = await storage.getBirthDataByUserId(userId);
-      res.json(birthDataRecords);
+      const userId = req.user.claims.sub;
+      const birthDataInput = insertBirthDataSchema.parse({
+        ...req.body,
+        userId
+      });
+      const birthData = await storage.createBirthData(birthDataInput);
+      res.status(201).json(birthData);
     } catch (error) {
-      res.status(500).json({ error: "Internal server error" });
+      console.error("Error creating birth data:", error);
+      res.status(500).json({ error: "Failed to create birth data" });
     }
   });
 
-  // Charts
-  app.post("/api/charts", async (req, res) => {
-    try {
-      const chartData = insertChartSchema.parse(req.body);
-      const chart = await storage.createChart(chartData);
-      res.json(chart);
-    } catch (error) {
-      res.status(400).json({ error: "Invalid chart data" });
-    }
-  });
-
-  app.get("/api/charts/birth-data/:birthDataId", async (req, res) => {
+  // Chart endpoints
+  app.get("/api/charts/birth-data/:birthDataId", isAuthenticated, async (req, res) => {
     try {
       const birthDataId = parseInt(req.params.birthDataId);
       const charts = await storage.getChartsByBirthDataId(birthDataId);
       res.json(charts);
     } catch (error) {
-      res.status(500).json({ error: "Internal server error" });
+      console.error("Error fetching charts:", error);
+      res.status(500).json({ error: "Failed to fetch charts" });
     }
   });
 
-  // Generate natal chart
-  app.post("/api/charts/generate-natal", async (req, res) => {
+  app.post("/api/charts", isAuthenticated, async (req, res) => {
     try {
-      const { birthDataId } = req.body;
-      const birthData = await storage.getBirthData(birthDataId);
+      const chartInput = insertChartSchema.parse(req.body);
       
+      // Generate chart data based on birth information
+      const birthData = await storage.getBirthData(chartInput.birthDataId);
       if (!birthData) {
         return res.status(404).json({ error: "Birth data not found" });
       }
 
-      // Generate chart data (placeholder for actual astronomical calculations)
+      // Mock chart data generation for now - this would be replaced with actual calculations
       const chartData = {
-        planets: generatePlanetaryPositions(birthData),
-        houses: generateHouses(birthData),
-        aspects: generateAspects(),
-        patterns: detectChartPatterns()
+        western: {
+          planets: { sun: "Leo", moon: "Pisces", mercury: "Virgo" },
+          houses: { first: "Leo", tenth: "Taurus" },
+          aspects: ["Sun trine Moon", "Mercury square Mars"],
+          interpretation: "Strong creative potential with emotional sensitivity."
+        },
+        vedic: {
+          rashi: "Simha",
+          nakshatra: "Magha",
+          dashas: { current: "Venus", period: "18 years" },
+          interpretation: "Leadership qualities and royal nature."
+        },
+        chinese: {
+          sign: "Dragon",
+          element: "Water",
+          yin_yang: "Yang",
+          interpretation: "Powerful and charismatic personality."
+        },
+        humanDesign: {
+          type: "Generator",
+          strategy: "Respond",
+          authority: "Sacral",
+          interpretation: "Natural life force and sustainable energy."
+        }
+      };
+
+      // Mock lifestyle recommendations
+      const lifestyleRecommendations = {
+        luckyNumbers: [3, 7, 15, 28],
+        luckyColors: ["Gold", "Royal Blue", "Deep Purple"],
+        favorableStones: ["Ruby", "Sapphire", "Amethyst"],
+        careerGuidance: "Leadership roles, creative arts, spiritual teaching",
+        subjects: ["Philosophy", "Arts", "Psychology", "Business"],
+        personalityTraits: ["Creative", "Intuitive", "Leader", "Compassionate"],
+        foods: ["Citrus fruits", "Golden foods", "Spicy foods"],
+        avoidItems: ["Processed foods", "Negative people", "Cluttered spaces"],
+        auspiciousDates: ["3rd", "7th", "15th", "28th of any month"],
+        dailyPractices: ["Morning meditation", "Creative expression", "Physical exercise"]
       };
 
       const chart = await storage.createChart({
-        birthDataId,
-        chartType: "natal",
-        chartData,
-        interpretations: generateInterpretations(chartData)
+        ...chartInput,
+        chartData: chartData,
+        interpretations: {
+          western: chartData.western?.interpretation,
+          vedic: chartData.vedic?.interpretation,
+          chinese: chartData.chinese?.interpretation,
+          humanDesign: chartData.humanDesign?.interpretation
+        },
+        lifestyleRecommendations
       });
 
-      res.json(chart);
+      res.status(201).json(chart);
     } catch (error) {
-      res.status(500).json({ error: "Chart generation failed" });
+      console.error("Error creating chart:", error);
+      res.status(500).json({ error: "Failed to create chart" });
     }
   });
 
-  // Compatibility Analysis
-  app.post("/api/compatibility", async (req, res) => {
+  // System comparison endpoints
+  app.get("/api/system-comparisons/:chartId", isAuthenticated, async (req: any, res) => {
     try {
-      const compatibilityData = insertCompatibilitySchema.parse(req.body);
-      const compatibility = await storage.createCompatibility(compatibilityData);
-      res.json(compatibility);
+      const userId = req.user.claims.sub;
+      const chartId = parseInt(req.params.chartId);
+      const comparison = await storage.getSystemComparisonByUserAndChart(userId, chartId);
+      res.json(comparison);
     } catch (error) {
-      res.status(400).json({ error: "Invalid compatibility data" });
+      console.error("Error fetching system comparison:", error);
+      res.status(500).json({ error: "Failed to fetch system comparison" });
     }
   });
 
-  app.post("/api/compatibility/analyze", async (req, res) => {
+  app.post("/api/system-comparisons", isAuthenticated, async (req: any, res) => {
     try {
-      const { primaryUserId, partnerUserIds } = req.body;
+      const userId = req.user.claims.sub;
+      const comparisonInput = insertSystemComparisonSchema.parse({
+        ...req.body,
+        userId
+      });
       
-      // Get birth data for all users
-      const primaryBirthData = await storage.getBirthDataByUserId(primaryUserId);
-      const partnerBirthData = await Promise.all(
-        partnerUserIds.map((id: number) => storage.getBirthDataByUserId(id))
-      );
-
-      if (!primaryBirthData.length || partnerBirthData.some(data => !data.length)) {
-        return res.status(404).json({ error: "Birth data not found for one or more users" });
+      // Get the chart to analyze
+      const chart = await storage.getChart(comparisonInput.chartId);
+      if (!chart) {
+        return res.status(404).json({ error: "Chart not found" });
       }
 
-      // Analyze compatibility
-      const analysis = analyzeCompatibility(primaryBirthData[0], partnerBirthData.map(data => data[0]));
-      
-      const compatibility = await storage.createCompatibility({
-        primaryUserId,
-        partnerUserIds,
-        compatibilityScore: analysis.overallScore,
-        systemScores: analysis.systemScores,
-        analysis: analysis.detailedAnalysis
+      // Mock system analysis - this would be replaced with actual cross-system comparison
+      const systemAnalysis = {
+        westernTraits: ["Creative", "Leader", "Intuitive"],
+        vedicTraits: ["Royal nature", "Leadership", "Spiritual"],
+        chineseTraits: ["Powerful", "Charismatic", "Lucky"],
+        humanDesignTraits: ["Generator", "Life force", "Sustainable"],
+        commonPatterns: ["Leadership", "Creativity", "Strong personality"],
+        uniqueInsights: {
+          western: "Creative artistic expression",
+          vedic: "Spiritual leadership path",
+          chinese: "Natural magnetism and luck",
+          humanDesign: "Sustainable energy patterns"
+        },
+        synthesizedGuidance: {
+          strengths: ["Natural leadership", "Creative abilities", "Spiritual insight"],
+          challenges: ["Need for recognition", "Impatience", "Perfectionism"],
+          recommendations: ["Develop patience", "Channel creativity", "Lead with compassion"]
+        }
+      };
+
+      const comparison = await storage.createSystemComparison({
+        ...comparisonInput,
+        ...systemAnalysis
       });
 
-      res.json(compatibility);
+      res.status(201).json(comparison);
     } catch (error) {
-      res.status(500).json({ error: "Compatibility analysis failed" });
+      console.error("Error creating system comparison:", error);
+      res.status(500).json({ error: "Failed to create system comparison" });
     }
   });
 
-  // Daily Guidance
-  app.get("/api/daily-guidance/:userId/:date", async (req, res) => {
+  // Compatibility endpoints
+  app.get("/api/compatibility", isAuthenticated, async (req: any, res) => {
     try {
-      const { userId, date } = req.params;
-      let guidance = await storage.getDailyGuidance(parseInt(userId), date);
+      const userId = req.user.claims.sub;
+      const compatibility = await storage.getCompatibilityByUserId(userId);
+      res.json(compatibility);
+    } catch (error) {
+      console.error("Error fetching compatibility:", error);
+      res.status(500).json({ error: "Failed to fetch compatibility" });
+    }
+  });
+
+  app.post("/api/compatibility", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const compatibilityInput = insertCompatibilitySchema.parse({
+        ...req.body,
+        primaryUserId: userId
+      });
+      
+      // Mock compatibility analysis
+      const analysis = {
+        overall: "High compatibility with strong emotional connection",
+        strengths: ["Shared values", "Complementary skills", "Mutual respect"],
+        challenges: ["Communication styles", "Different life paces"],
+        recommendations: ["Practice active listening", "Plan regular quality time"]
+      };
+
+      const systemComparisons = {
+        western: "Venus-Mars harmony creates romantic attraction",
+        vedic: "Moon signs are complementary for emotional understanding",
+        chinese: "Dragon-Phoenix pairing brings balance and prosperity",
+        humanDesign: "Generator-Projector combination offers mutual growth"
+      };
+
+      const compatibility = await storage.createCompatibility({
+        ...compatibilityInput,
+        analysis: analysis,
+        systemComparisons: systemComparisons
+      });
+
+      res.status(201).json(compatibility);
+    } catch (error) {
+      console.error("Error creating compatibility:", error);
+      res.status(500).json({ error: "Failed to create compatibility" });
+    }
+  });
+
+  // Daily guidance endpoints
+  app.get("/api/daily-guidance/:date", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const date = req.params.date;
+      const guidance = await storage.getDailyGuidanceByUserAndDate(userId, date);
       
       if (!guidance) {
-        // Generate new guidance for the date
-        const birthDataRecords = await storage.getBirthDataByUserId(parseInt(userId));
-        if (!birthDataRecords.length) {
-          return res.status(404).json({ error: "Birth data not found" });
-        }
-
-        const guidanceData = generateDailyGuidance(birthDataRecords[0], date);
-        guidance = await storage.createDailyGuidance({
-          userId: parseInt(userId),
-          date,
-          ...guidanceData
-        });
+        return res.status(404).json({ error: "Daily guidance not found" });
       }
-
+      
       res.json(guidance);
     } catch (error) {
-      res.status(500).json({ error: "Failed to get daily guidance" });
+      console.error("Error fetching daily guidance:", error);
+      res.status(500).json({ error: "Failed to fetch daily guidance" });
+    }
+  });
+
+  app.post("/api/daily-guidance", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const guidanceInput = insertDailyGuidanceSchema.parse({
+        ...req.body,
+        userId
+      });
+      
+      // Mock daily guidance generation
+      const guidanceData = {
+        horoscope: {
+          western: "Today brings creative opportunities and leadership chances",
+          vedic: "Favorable time for spiritual practices and learning",
+          chinese: "Lucky day for new beginnings and important decisions",
+          humanDesign: "Trust your sacral response in all interactions"
+        },
+        transits: {
+          current: "Moon in favorable aspect to your Sun",
+          upcoming: "Mercury entering your career sector next week"
+        },
+        optimalTiming: {
+          best_hours: ["9-11 AM", "2-4 PM", "7-9 PM"],
+          avoid_hours: ["12-1 PM", "6-7 PM"],
+          lucky_direction: "East"
+        },
+        luckyElements: {
+          colors: ["Gold", "Royal Blue"],
+          numbers: [3, 7],
+          activities: ["Creative work", "Leadership tasks", "Spiritual practice"]
+        },
+        systemInsights: {
+          western: "Focus on creative self-expression today",
+          vedic: "Good day for dharmic activities and service",
+          chinese: "Dragon energy supports bold initiatives",
+          humanDesign: "Generator energy is high - follow your gut feelings"
+        }
+      };
+
+      const guidance = await storage.createDailyGuidance({
+        ...guidanceInput,
+        ...guidanceData
+      });
+
+      res.status(201).json(guidance);
+    } catch (error) {
+      console.error("Error creating daily guidance:", error);
+      res.status(500).json({ error: "Failed to create daily guidance" });
     }
   });
 
   const httpServer = createServer(app);
   return httpServer;
-}
-
-// Placeholder functions for astrological calculations
-function generatePlanetaryPositions(birthData: any) {
-  // This would integrate with Swiss Ephemeris or similar library
-  return {
-    sun: { sign: "Capricorn", degree: 25.5, house: 4 },
-    moon: { sign: "Pisces", degree: 12.3, house: 7 },
-    mercury: { sign: "Aquarius", degree: 8.7, house: 6 },
-    venus: { sign: "Sagittarius", degree: 18.2, house: 3 },
-    mars: { sign: "Aries", degree: 22.1, house: 8 },
-    jupiter: { sign: "Taurus", degree: 15.9, house: 9 },
-    saturn: { sign: "Capricorn", degree: 28.4, house: 4 },
-    uranus: { sign: "Capricorn", degree: 6.7, house: 4 },
-    neptune: { sign: "Capricorn", degree: 13.1, house: 4 },
-    pluto: { sign: "Scorpio", degree: 16.8, house: 2 }
-  };
-}
-
-function generateHouses(birthData: any) {
-  return {
-    first: { sign: "Virgo", degree: 15.0 },
-    second: { sign: "Libra", degree: 10.5 },
-    third: { sign: "Scorpio", degree: 8.2 },
-    fourth: { sign: "Sagittarius", degree: 15.0 },
-    fifth: { sign: "Capricorn", degree: 20.3 },
-    sixth: { sign: "Aquarius", degree: 22.1 },
-    seventh: { sign: "Pisces", degree: 15.0 },
-    eighth: { sign: "Aries", degree: 10.5 },
-    ninth: { sign: "Taurus", degree: 8.2 },
-    tenth: { sign: "Gemini", degree: 15.0 },
-    eleventh: { sign: "Cancer", degree: 20.3 },
-    twelfth: { sign: "Leo", degree: 22.1 }
-  };
-}
-
-function generateAspects() {
-  return [
-    { planets: ["sun", "jupiter"], aspect: "trine", orb: 2.3, strength: "strong" },
-    { planets: ["moon", "venus"], aspect: "sextile", orb: 1.8, strength: "moderate" },
-    { planets: ["mercury", "mars"], aspect: "square", orb: 3.2, strength: "weak" }
-  ];
-}
-
-function detectChartPatterns() {
-  return {
-    pattern: "bowl",
-    dominantElement: "earth",
-    dominantModality: "cardinal",
-    stelliums: []
-  };
-}
-
-function generateInterpretations(chartData: any) {
-  return {
-    sunSign: "Strong foundation-building energy with focus on security and achievement.",
-    moonSign: "Intuitive emotional nature seeks harmony in partnerships.",
-    risingSign: "Practical, analytical approach to life with attention to detail.",
-    dominantThemes: ["earth energy", "cardinal leadership", "practical wisdom"]
-  };
-}
-
-function analyzeCompatibility(primaryData: any, partnerData: any[]) {
-  return {
-    overallScore: 85,
-    systemScores: {
-      western: 88,
-      vedic: 82,
-      chinese: 90,
-      humanDesign: 78
-    },
-    detailedAnalysis: {
-      strengths: ["Complementary sun-moon harmony", "Shared creative vision", "Natural communication flow"],
-      challenges: ["Different decision-making styles", "Need to balance individual vs shared time"],
-      recommendations: ["Focus on mutual goals", "Respect individual space", "Communicate openly"]
-    }
-  };
-}
-
-function generateDailyGuidance(birthData: any, date: string) {
-  return {
-    horoscope: {
-      overall: "Today brings harmonious energy perfect for practical achievements and relationship growth.",
-      love: "Venus-Jupiter trine brings warmth to partnerships. Express appreciation today.",
-      career: "Practical Virgo moon supports detailed work and financial planning.",
-      health: "Perfect day for health check-ups and starting new wellness routines.",
-      growth: "Mercury in Aquarius opens new perspectives and innovative solutions."
-    },
-    transits: [
-      { planet: "Mercury", sign: "Aquarius", aspect: "continuing", influence: "Innovation in communication" },
-      { planet: "Venus", aspect: "trine Jupiter", timing: "peak today", influence: "Relationship harmony" },
-      { planet: "Moon", sign: "Virgo", timing: "until 3:15 PM", influence: "Detail-oriented energy" }
-    ],
-    optimalTiming: {
-      best: "2:30-4:30 PM",
-      avoid: "7:00-9:00 PM",
-      social: "10:00 AM-12:00 PM"
-    },
-    luckyElements: {
-      colors: ["blue", "gold", "green"],
-      numbers: [3, 7, 12, 21],
-      direction: "Northeast",
-      element: "Earth & Air"
-    }
-  };
 }

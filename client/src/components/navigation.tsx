@@ -2,11 +2,15 @@ import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Menu, LogOut, User } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Navigation() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user } = useAuth();
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -44,14 +48,30 @@ export default function Navigation() {
             ))}
           </div>
           
-          {/* CTA Buttons */}
+          {/* User Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" className="text-white hover:text-yellow-500">
-              Sign In
-            </Button>
-            <Button className="cosmic-button">
-              Get Started
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={user?.profileImageUrl || ""} alt={user?.firstName || ""} />
+                    <AvatarFallback className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
+                      {user?.firstName?.[0] || "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuItem className="flex items-center">
+                  <User className="mr-2 h-4 w-4" />
+                  <span>{user?.firstName} {user?.lastName}</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => window.location.href = '/api/logout'}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
           
           {/* Mobile Menu */}

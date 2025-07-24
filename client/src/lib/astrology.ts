@@ -219,57 +219,372 @@ export function calculateCompatibilityScore(
   return Math.min(score, 100);
 }
 
-export function generateLifestyleRecommendations(chartData: {
+export interface ComprehensiveRecommendations {
+  luckyNumbers: number[];
+  auspiciousDates: string[];
+  favorableDays: string[];
+  beneficialFoods: string[];
+  avoidFoods: string[];
+  careerSuggestions: string[];
+  educationSubjects: string[];
+  personalityTraits: string[];
+  gemstones: string[];
+  beneficialColors: string[];
+  colorsToAvoid: string[];
+  bestTimes: string[];
+  timesToAvoid: string[];
+  favorableDirections: string[];
+  directionsToAvoid: string[];
+  recommendedActivities: string[];
+  activitiesToAvoid: string[];
+  monthlyGuidance: Record<string, string>;
+}
+
+export function generateComprehensiveRecommendations(chartData: {
   sun: string;
   moon: string;
   rising: string;
   dominantElement: string;
-}): {
-  bestTimes: string[];
-  favorableDirections: string[];
-  beneficialColors: string[];
-  recommendedActivities: string[];
-  dietarySuggestions: string[];
-} {
-  const recommendations = {
-    bestTimes: [] as string[],
-    favorableDirections: [] as string[],
-    beneficialColors: [] as string[],
-    recommendedActivities: [] as string[],
-    dietarySuggestions: [] as string[]
+  planets?: Record<string, { sign: string; house: number }>;
+}): ComprehensiveRecommendations {
+  const sunSign = chartData.sun.toLowerCase();
+  const moonSign = chartData.moon.toLowerCase();
+  const risingSign = chartData.rising.toLowerCase();
+  const element = chartData.dominantElement.toLowerCase();
+  
+  const recommendations: ComprehensiveRecommendations = {
+    luckyNumbers: [],
+    auspiciousDates: [],
+    favorableDays: [],
+    beneficialFoods: [],
+    avoidFoods: [],
+    careerSuggestions: [],
+    educationSubjects: [],
+    personalityTraits: [],
+    gemstones: [],
+    beneficialColors: [],
+    colorsToAvoid: [],
+    bestTimes: [],
+    timesToAvoid: [],
+    favorableDirections: [],
+    directionsToAvoid: [],
+    recommendedActivities: [],
+    activitiesToAvoid: [],
+    monthlyGuidance: {}
   };
 
-  // Recommendations based on dominant element
-  switch (chartData.dominantElement.toLowerCase()) {
-    case 'fire':
-      recommendations.bestTimes = ['sunrise', 'midday'];
-      recommendations.favorableDirections = ['south', 'southeast'];
-      recommendations.beneficialColors = ['red', 'orange', 'gold'];
-      recommendations.recommendedActivities = ['exercise', 'leadership', 'creative projects'];
-      recommendations.dietarySuggestions = ['spicy foods', 'citrus fruits', 'warm beverages'];
-      break;
-    case 'earth':
-      recommendations.bestTimes = ['mid-morning', 'early afternoon'];
-      recommendations.favorableDirections = ['southwest', 'northeast'];
-      recommendations.beneficialColors = ['brown', 'yellow', 'green'];
-      recommendations.recommendedActivities = ['gardening', 'organizing', 'practical tasks'];
-      recommendations.dietarySuggestions = ['root vegetables', 'grains', 'dairy products'];
-      break;
-    case 'air':
-      recommendations.bestTimes = ['mid-morning', 'early evening'];
-      recommendations.favorableDirections = ['east', 'west'];
-      recommendations.beneficialColors = ['light blue', 'white', 'silver'];
-      recommendations.recommendedActivities = ['reading', 'socializing', 'learning'];
-      recommendations.dietarySuggestions = ['light meals', 'fruits', 'herbal teas'];
-      break;
-    case 'water':
-      recommendations.bestTimes = ['evening', 'night'];
-      recommendations.favorableDirections = ['north', 'northwest'];
-      recommendations.beneficialColors = ['blue', 'sea green', 'purple'];
-      recommendations.recommendedActivities = ['meditation', 'swimming', 'emotional healing'];
-      recommendations.dietarySuggestions = ['seafood', 'soups', 'hydrating foods'];
-      break;
-  }
+  // Lucky Numbers based on planetary influences
+  const baseNumbers = getZodiacNumbers(sunSign);
+  const moonNumbers = getZodiacNumbers(moonSign);
+  recommendations.luckyNumbers = [...new Set([...baseNumbers, ...moonNumbers])].slice(0, 7);
+
+  // Auspicious Dates (next 6 months)
+  recommendations.auspiciousDates = generateAuspiciousDates(sunSign, moonSign);
+
+  // Favorable Days
+  recommendations.favorableDays = getFavorableDays(sunSign, element);
+
+  // Food Recommendations
+  const foodData = getFoodRecommendations(element, sunSign, moonSign);
+  recommendations.beneficialFoods = foodData.beneficial;
+  recommendations.avoidFoods = foodData.avoid;
+
+  // Career and Education
+  recommendations.careerSuggestions = getCareerSuggestions(sunSign, element, chartData.planets);
+  recommendations.educationSubjects = getEducationSubjects(sunSign, element);
+
+  // Personality Traits
+  recommendations.personalityTraits = getPersonalityTraits(sunSign, moonSign, risingSign);
+
+  // Gemstones
+  recommendations.gemstones = getGemstones(sunSign, moonSign, element);
+
+  // Colors
+  const colorData = getColorRecommendations(element, sunSign);
+  recommendations.beneficialColors = colorData.beneficial;
+  recommendations.colorsToAvoid = colorData.avoid;
+
+  // Timing
+  const timingData = getTimingRecommendations(element, sunSign);
+  recommendations.bestTimes = timingData.best;
+  recommendations.timesToAvoid = timingData.avoid;
+
+  // Directions
+  const directionData = getDirectionRecommendations(element, sunSign);
+  recommendations.favorableDirections = directionData.favorable;
+  recommendations.directionsToAvoid = directionData.avoid;
+
+  // Activities
+  const activityData = getActivityRecommendations(element, sunSign, moonSign);
+  recommendations.recommendedActivities = activityData.recommended;
+  recommendations.activitiesToAvoid = activityData.avoid;
+
+  // Monthly Guidance
+  recommendations.monthlyGuidance = getMonthlyGuidance(sunSign, element);
 
   return recommendations;
+}
+
+function getZodiacNumbers(sign: string): number[] {
+  const numberMap: Record<string, number[]> = {
+    aries: [1, 9, 14, 23],
+    taurus: [2, 6, 15, 24],
+    gemini: [3, 5, 14, 23],
+    cancer: [2, 7, 16, 25],
+    leo: [1, 4, 13, 22],
+    virgo: [3, 6, 15, 24],
+    libra: [6, 7, 16, 25],
+    scorpio: [4, 8, 13, 22],
+    sagittarius: [3, 9, 18, 27],
+    capricorn: [8, 10, 19, 28],
+    aquarius: [4, 11, 20, 29],
+    pisces: [7, 12, 21, 30]
+  };
+  return numberMap[sign] || [1, 7, 14, 21];
+}
+
+function generateAuspiciousDates(sunSign: string, moonSign: string): string[] {
+  const today = new Date();
+  const dates = [];
+  
+  // Generate next 6 months of favorable dates
+  for (let i = 1; i <= 180; i += 15) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+    dates.push(date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
+  }
+  
+  return dates.slice(0, 12);
+}
+
+function getFavorableDays(sunSign: string, element: string): string[] {
+  const dayMap: Record<string, string[]> = {
+    fire: ['Tuesday', 'Sunday'],
+    earth: ['Wednesday', 'Saturday'],
+    air: ['Wednesday', 'Friday'],
+    water: ['Monday', 'Thursday']
+  };
+  
+  const signDays: Record<string, string> = {
+    aries: 'Tuesday', taurus: 'Friday', gemini: 'Wednesday',
+    cancer: 'Monday', leo: 'Sunday', virgo: 'Wednesday',
+    libra: 'Friday', scorpio: 'Tuesday', sagittarius: 'Thursday',
+    capricorn: 'Saturday', aquarius: 'Saturday', pisces: 'Thursday'
+  };
+  
+  const elementDays = dayMap[element] || ['Sunday'];
+  const signDay = signDays[sunSign];
+  
+  return [...new Set([...elementDays, signDay])].filter(Boolean);
+}
+
+function getFoodRecommendations(element: string, sunSign: string, moonSign: string): { beneficial: string[], avoid: string[] } {
+  const elementFoods: Record<string, { beneficial: string[], avoid: string[] }> = {
+    fire: {
+      beneficial: ['Spicy foods', 'Red pepper', 'Ginger', 'Cinnamon', 'Citrus fruits', 'Pomegranate', 'Beef', 'Hot soups'],
+      avoid: ['Cold foods', 'Excessive dairy', 'Raw vegetables in winter', 'Iced drinks']
+    },
+    earth: {
+      beneficial: ['Root vegetables', 'Grains', 'Beans', 'Dairy products', 'Honey', 'Dates', 'Almonds', 'Whole grains'],
+      avoid: ['Processed foods', 'Excessive sugar', 'Fast food', 'Artificial additives']
+    },
+    air: {
+      beneficial: ['Light foods', 'Fruits', 'Salads', 'Herbal teas', 'Coconut', 'Green vegetables', 'Fish'],
+      avoid: ['Heavy meals', 'Fried foods', 'Excessive meat', 'Dense foods before sleep']
+    },
+    water: {
+      beneficial: ['Seafood', 'Soups', 'Hydrating fruits', 'Cucumber', 'Melons', 'Rice', 'Milk', 'Coconut water'],
+      avoid: ['Dehydrating foods', 'Excessive salt', 'Spicy foods', 'Alcohol in excess']
+    }
+  };
+  
+  return elementFoods[element] || elementFoods.earth;
+}
+
+function getCareerSuggestions(sunSign: string, element: string, planets?: Record<string, any>): string[] {
+  const careerMap: Record<string, string[]> = {
+    aries: ['Leadership roles', 'Entrepreneurship', 'Military', 'Sports', 'Emergency services', 'Sales'],
+    taurus: ['Banking', 'Real estate', 'Agriculture', 'Art', 'Food industry', 'Interior design'],
+    gemini: ['Communication', 'Writing', 'Teaching', 'Media', 'Technology', 'Transportation'],
+    cancer: ['Healthcare', 'Hospitality', 'Real estate', 'Social work', 'Food service', 'Childcare'],
+    leo: ['Entertainment', 'Management', 'Politics', 'Theater', 'Fashion', 'Government'],
+    virgo: ['Healthcare', 'Research', 'Analytics', 'Administration', 'Quality control', 'Editing'],
+    libra: ['Law', 'Diplomacy', 'Art', 'Fashion', 'Counseling', 'Public relations'],
+    scorpio: ['Investigation', 'Psychology', 'Surgery', 'Research', 'Insurance', 'Occult sciences'],
+    sagittarius: ['Education', 'Travel', 'Publishing', 'Philosophy', 'Sports', 'International trade'],
+    capricorn: ['Management', 'Government', 'Engineering', 'Architecture', 'Business', 'Administration'],
+    aquarius: ['Technology', 'Social work', 'Innovation', 'Science', 'Humanitarian work', 'Electronics'],
+    pisces: ['Arts', 'Healing', 'Psychology', 'Spirituality', 'Film', 'Marine biology']
+  };
+  
+  return careerMap[sunSign] || ['General management', 'Consulting', 'Service industry'];
+}
+
+function getEducationSubjects(sunSign: string, element: string): string[] {
+  const subjectMap: Record<string, string[]> = {
+    aries: ['Sports science', 'Engineering', 'Military studies', 'Business administration', 'Physical education'],
+    taurus: ['Economics', 'Agriculture', 'Fine arts', 'Architecture', 'Culinary arts', 'Music'],
+    gemini: ['Communications', 'Literature', 'Computer science', 'Languages', 'Journalism'],
+    cancer: ['Psychology', 'History', 'Social work', 'Nutrition', 'Early childhood education'],
+    leo: ['Performing arts', 'Political science', 'Management', 'Fashion design', 'Film studies'],
+    virgo: ['Medicine', 'Mathematics', 'Research methodology', 'Library science', 'Statistics'],
+    libra: ['Law', 'Arts', 'International relations', 'Interior design', 'Counseling'],
+    scorpio: ['Psychology', 'Forensic science', 'Medicine', 'Occult studies', 'Investigation'],
+    sagittarius: ['Philosophy', 'International studies', 'Adventure sports', 'Theology', 'Travel and tourism'],
+    capricorn: ['Business administration', 'Government studies', 'Engineering', 'Geology', 'Management'],
+    aquarius: ['Science', 'Technology', 'Social sciences', 'Innovation studies', 'Humanitarian studies'],
+    pisces: ['Arts', 'Marine biology', 'Spirituality', 'Film studies', 'Healing arts']
+  };
+  
+  return subjectMap[sunSign] || ['General studies', 'Liberal arts', 'Business'];
+}
+
+function getPersonalityTraits(sunSign: string, moonSign: string, risingSign: string): string[] {
+  const traitMap: Record<string, string[]> = {
+    aries: ['Leadership', 'Courage', 'Initiative', 'Pioneering spirit', 'Independence'],
+    taurus: ['Reliability', 'Patience', 'Determination', 'Practicality', 'Loyalty'],
+    gemini: ['Adaptability', 'Communication', 'Curiosity', 'Versatility', 'Intelligence'],
+    cancer: ['Nurturing', 'Intuition', 'Emotional depth', 'Protective nature', 'Sensitivity'],
+    leo: ['Confidence', 'Creativity', 'Generosity', 'Leadership', 'Warmth'],
+    virgo: ['Attention to detail', 'Analytical mind', 'Service orientation', 'Perfectionism', 'Practicality'],
+    libra: ['Diplomacy', 'Balance', 'Aesthetic sense', 'Cooperation', 'Fairness'],
+    scorpio: ['Intensity', 'Transformation', 'Depth', 'Intuition', 'Determination'],
+    sagittarius: ['Optimism', 'Adventure', 'Philosophy', 'Freedom-loving', 'Honesty'],
+    capricorn: ['Ambition', 'Discipline', 'Responsibility', 'Persistence', 'Structure'],
+    aquarius: ['Innovation', 'Independence', 'Humanitarian nature', 'Originality', 'Forward-thinking'],
+    pisces: ['Compassion', 'Intuition', 'Creativity', 'Spirituality', 'Empathy']
+  };
+  
+  const sunTraits = traitMap[sunSign] || [];
+  const moonTraits = traitMap[moonSign] || [];
+  
+  return [...new Set([...sunTraits.slice(0, 3), ...moonTraits.slice(0, 2)])];
+}
+
+function getGemstones(sunSign: string, moonSign: string, element: string): string[] {
+  const gemstoneMap: Record<string, string[]> = {
+    aries: ['Diamond', 'Ruby', 'Red Coral', 'Bloodstone'],
+    taurus: ['Emerald', 'Rose Quartz', 'Sapphire', 'Jade'],
+    gemini: ['Emerald', 'Agate', 'Citrine', 'Pearl'],
+    cancer: ['Pearl', 'Moonstone', 'Silver', 'Opal'],
+    leo: ['Ruby', 'Gold', 'Peridot', 'Amber'],
+    virgo: ['Sapphire', 'Peridot', 'Agate', 'Carnelian'],
+    libra: ['Opal', 'Diamond', 'Jade', 'Lapis Lazuli'],
+    scorpio: ['Topaz', 'Garnet', 'Beryl', 'Coral'],
+    sagittarius: ['Turquoise', 'Topaz', 'Amethyst', 'Ruby'],
+    capricorn: ['Garnet', 'Onyx', 'Blue Sapphire', 'Amethyst'],
+    aquarius: ['Amethyst', 'Garnet', 'Sapphire', 'Aquamarine'],
+    pisces: ['Aquamarine', 'Amethyst', 'Moonstone', 'Pearl']
+  };
+  
+  return gemstoneMap[sunSign] || ['Clear Quartz', 'Amethyst', 'Rose Quartz'];
+}
+
+function getColorRecommendations(element: string, sunSign: string): { beneficial: string[], avoid: string[] } {
+  const colorMap: Record<string, { beneficial: string[], avoid: string[] }> = {
+    fire: {
+      beneficial: ['Red', 'Orange', 'Gold', 'Yellow', 'Bright colors'],
+      avoid: ['Dark blue', 'Black', 'Dark green', 'Cool colors']
+    },
+    earth: {
+      beneficial: ['Brown', 'Green', 'Yellow', 'Beige', 'Earth tones'],
+      avoid: ['Bright red', 'Electric blue', 'Hot pink', 'Neon colors']
+    },
+    air: {
+      beneficial: ['Light blue', 'White', 'Silver', 'Pale yellow', 'Pastels'],
+      avoid: ['Dark colors', 'Heavy browns', 'Deep reds', 'Black']
+    },
+    water: {
+      beneficial: ['Blue', 'Sea green', 'Purple', 'Silver', 'White'],
+      avoid: ['Bright orange', 'Hot red', 'Neon yellow', 'Harsh colors']
+    }
+  };
+  
+  return colorMap[element] || colorMap.earth;
+}
+
+function getTimingRecommendations(element: string, sunSign: string): { best: string[], avoid: string[] } {
+  const timingMap: Record<string, { best: string[], avoid: string[] }> = {
+    fire: {
+      best: ['6-8 AM', '12-2 PM', 'Sunrise', 'Midday'],
+      avoid: ['10 PM-12 AM', 'Late night', 'Pre-dawn hours']
+    },
+    earth: {
+      best: ['9-11 AM', '2-4 PM', 'Mid-morning', 'Early afternoon'],
+      avoid: ['Midnight-3 AM', 'Very early morning', 'Late evening']
+    },
+    air: {
+      best: ['10 AM-12 PM', '4-6 PM', 'Mid-morning', 'Early evening'],
+      avoid: ['3-5 AM', 'Deep night', 'Heavy afternoon']
+    },
+    water: {
+      best: ['6-8 PM', '8-10 PM', 'Evening', 'Twilight hours'],
+      avoid: ['12-3 PM', 'Harsh midday', 'Peak afternoon sun']
+    }
+  };
+  
+  return timingMap[element] || timingMap.earth;
+}
+
+function getDirectionRecommendations(element: string, sunSign: string): { favorable: string[], avoid: string[] } {
+  const directionMap: Record<string, { favorable: string[], avoid: string[] }> = {
+    fire: {
+      favorable: ['South', 'Southeast', 'East'],
+      avoid: ['North', 'Northwest']
+    },
+    earth: {
+      favorable: ['Southwest', 'Northeast', 'South'],
+      avoid: ['Southeast', 'Northwest']
+    },
+    air: {
+      favorable: ['East', 'West', 'Northeast'],
+      avoid: ['South', 'Southwest']
+    },
+    water: {
+      favorable: ['North', 'Northeast', 'Northwest'],
+      avoid: ['South', 'Southeast']
+    }
+  };
+  
+  return directionMap[element] || directionMap.earth;
+}
+
+function getActivityRecommendations(element: string, sunSign: string, moonSign: string): { recommended: string[], avoid: string[] } {
+  const activityMap: Record<string, { recommended: string[], avoid: string[] }> = {
+    fire: {
+      recommended: ['Exercise', 'Leadership activities', 'Competitive sports', 'Creative projects', 'Outdoor activities'],
+      avoid: ['Passive activities', 'Excessive meditation', 'Sedentary lifestyle', 'Isolation']
+    },
+    earth: {
+      recommended: ['Gardening', 'Organizing', 'Practical tasks', 'Building projects', 'Financial planning'],
+      avoid: ['Impulsive decisions', 'Risky investments', 'Unstable situations', 'Chaotic environments']
+    },
+    air: {
+      recommended: ['Reading', 'Socializing', 'Learning', 'Communication', 'Travel', 'Networking'],
+      avoid: ['Isolation', 'Routine work', 'Physical labor', 'Emotional drama']
+    },
+    water: {
+      recommended: ['Meditation', 'Swimming', 'Emotional healing', 'Artistic pursuits', 'Spiritual practices'],
+      avoid: ['Harsh criticism', 'Aggressive sports', 'Emotional stress', 'Dry environments']
+    }
+  };
+  
+  return activityMap[element] || activityMap.earth;
+}
+
+function getMonthlyGuidance(sunSign: string, element: string): Record<string, string> {
+  return {
+    'January': 'Focus on new beginnings and goal setting. Excellent time for planning.',
+    'February': 'Strengthen relationships and social connections. Good for collaboration.',
+    'March': 'Take initiative in projects. Energy levels are high for action.',
+    'April': 'Financial matters require attention. Good time for investments.',
+    'May': 'Communication and learning are favored. Expand your knowledge.',
+    'June': 'Home and family matters take priority. Focus on security.',
+    'July': 'Creative projects flourish. Express your artistic side.',
+    'August': 'Career advancement opportunities arise. Show leadership.',
+    'September': 'Health and daily routines need attention. Organize your life.',
+    'October': 'Partnerships and relationships are highlighted. Seek balance.',
+    'November': 'Transformation and deep changes occur. Embrace renewal.',
+    'December': 'Spiritual growth and wisdom seeking. Reflect and plan ahead.'
+  };
 }

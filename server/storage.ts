@@ -1,161 +1,168 @@
-import { 
-  users, 
-  birthData, 
-  charts, 
-  compatibility, 
+import {
+  users,
+  birthData,
+  charts,
+  compatibility,
   dailyGuidance,
-  type User, 
-  type InsertUser, 
-  type BirthData, 
+  systemComparisons,
+  type User,
+  type UpsertUser,
+  type InsertUser,
+  type BirthData,
   type InsertBirthData,
   type Chart,
   type InsertChart,
   type Compatibility,
   type InsertCompatibility,
   type DailyGuidance,
-  type InsertDailyGuidance
-} from "@shared/schema";
+  type InsertDailyGuidance,
+  type SystemComparison,
+  type InsertSystemComparison,
+} from "../shared/schema";
+import { db } from "./db";
+import { eq, and } from "drizzle-orm";
 
 export interface IStorage {
-  // Users
-  getUser(id: number): Promise<User | undefined>;
+  // User operations - required for Replit Auth
+  getUser(id: string): Promise<User | undefined>;
+  upsertUser(user: UpsertUser): Promise<User>;
   getUserByEmail(email: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
-  
-  // Birth Data
+
+  // Birth data operations
   getBirthData(id: number): Promise<BirthData | undefined>;
-  getBirthDataByUserId(userId: number): Promise<BirthData[]>;
-  createBirthData(data: InsertBirthData): Promise<BirthData>;
-  
-  // Charts
+  getBirthDataByUserId(userId: string): Promise<BirthData[]>;
+  createBirthData(insertData: InsertBirthData): Promise<BirthData>;
+
+  // Chart operations
   getChart(id: number): Promise<Chart | undefined>;
   getChartsByBirthDataId(birthDataId: number): Promise<Chart[]>;
-  createChart(chart: InsertChart): Promise<Chart>;
-  
-  // Compatibility
+  createChart(insertChart: InsertChart): Promise<Chart>;
+
+  // Compatibility operations
   getCompatibility(id: number): Promise<Compatibility | undefined>;
-  getCompatibilityByUserId(userId: number): Promise<Compatibility[]>;
-  createCompatibility(compatibility: InsertCompatibility): Promise<Compatibility>;
-  
-  // Daily Guidance
-  getDailyGuidance(userId: number, date: string): Promise<DailyGuidance | undefined>;
-  createDailyGuidance(guidance: InsertDailyGuidance): Promise<DailyGuidance>;
+  getCompatibilityByUserId(userId: string): Promise<Compatibility[]>;
+  createCompatibility(insertCompatibility: InsertCompatibility): Promise<Compatibility>;
+
+  // Daily guidance operations
+  getDailyGuidance(id: number): Promise<DailyGuidance | undefined>;
+  getDailyGuidanceByUserAndDate(userId: string, date: string): Promise<DailyGuidance | undefined>;
+  createDailyGuidance(insertGuidance: InsertDailyGuidance): Promise<DailyGuidance>;
+
+  // System comparison operations
+  getSystemComparison(id: number): Promise<SystemComparison | undefined>;
+  getSystemComparisonByUserAndChart(userId: string, chartId: number): Promise<SystemComparison | undefined>;
+  createSystemComparison(insertComparison: InsertSystemComparison): Promise<SystemComparison>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private birthData: Map<number, BirthData>;
-  private charts: Map<number, Chart>;
-  private compatibility: Map<number, Compatibility>;
-  private dailyGuidance: Map<string, DailyGuidance>;
-  private currentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.birthData = new Map();
-    this.charts = new Map();
-    this.compatibility = new Map();
-    this.dailyGuidance = new Map();
-    this.currentId = 1;
-  }
-
-  // Users
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByEmail(email: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(user => user.email === email);
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
-    const user: User = { 
-      ...insertUser, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.users.set(id, user);
+export class DatabaseStorage implements IStorage {
+  // User operations - required for Replit Auth
+  async getUser(id: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
     return user;
   }
 
-  // Birth Data
+  async upsertUser(userData: UpsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(userData)
+      .onConflictDoUpdate({
+        target: users.id,
+        set: {
+          ...userData,
+          updatedAt: new Date(),
+        },
+      })
+      .returning();
+    return user;
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user;
+  }
+
+  // Birth data operations
   async getBirthData(id: number): Promise<BirthData | undefined> {
-    return this.birthData.get(id);
-  }
-
-  async getBirthDataByUserId(userId: number): Promise<BirthData[]> {
-    return Array.from(this.birthData.values()).filter(data => data.userId === userId);
-  }
-
-  async createBirthData(insertData: InsertBirthData): Promise<BirthData> {
-    const id = this.currentId++;
-    const data: BirthData = { 
-      ...insertData, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.birthData.set(id, data);
+    const [data] = await db.select().from(birthData).where(eq(birthData.id, id));
     return data;
   }
 
-  // Charts
+  async getBirthDataByUserId(userId: string): Promise<BirthData[]> {
+    return await db.select().from(birthData).where(eq(birthData.userId, userId));
+  }
+
+  async createBirthData(insertData: InsertBirthData): Promise<BirthData> {
+    const [data] = await db.insert(birthData).values(insertData).returning();
+    return data;
+  }
+
+  // Chart operations
   async getChart(id: number): Promise<Chart | undefined> {
-    return this.charts.get(id);
-  }
-
-  async getChartsByBirthDataId(birthDataId: number): Promise<Chart[]> {
-    return Array.from(this.charts.values()).filter(chart => chart.birthDataId === birthDataId);
-  }
-
-  async createChart(insertChart: InsertChart): Promise<Chart> {
-    const id = this.currentId++;
-    const chart: Chart = { 
-      ...insertChart, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.charts.set(id, chart);
+    const [chart] = await db.select().from(charts).where(eq(charts.id, id));
     return chart;
   }
 
-  // Compatibility
-  async getCompatibility(id: number): Promise<Compatibility | undefined> {
-    return this.compatibility.get(id);
+  async getChartsByBirthDataId(birthDataId: number): Promise<Chart[]> {
+    return await db.select().from(charts).where(eq(charts.birthDataId, birthDataId));
   }
 
-  async getCompatibilityByUserId(userId: number): Promise<Compatibility[]> {
-    return Array.from(this.compatibility.values()).filter(comp => comp.primaryUserId === userId);
+  async createChart(insertChart: InsertChart): Promise<Chart> {
+    const [chart] = await db.insert(charts).values(insertChart).returning();
+    return chart;
+  }
+
+  // Compatibility operations
+  async getCompatibility(id: number): Promise<Compatibility | undefined> {
+    const [comp] = await db.select().from(compatibility).where(eq(compatibility.id, id));
+    return comp;
+  }
+
+  async getCompatibilityByUserId(userId: string): Promise<Compatibility[]> {
+    return await db.select().from(compatibility).where(eq(compatibility.primaryUserId, userId));
   }
 
   async createCompatibility(insertCompatibility: InsertCompatibility): Promise<Compatibility> {
-    const id = this.currentId++;
-    const compatibility: Compatibility = { 
-      ...insertCompatibility, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.compatibility.set(id, compatibility);
-    return compatibility;
+    const [comp] = await db.insert(compatibility).values(insertCompatibility).returning();
+    return comp;
   }
 
-  // Daily Guidance
-  async getDailyGuidance(userId: number, date: string): Promise<DailyGuidance | undefined> {
-    const key = `${userId}-${date}`;
-    return this.dailyGuidance.get(key);
+  // Daily guidance operations
+  async getDailyGuidance(id: number): Promise<DailyGuidance | undefined> {
+    const [guidance] = await db.select().from(dailyGuidance).where(eq(dailyGuidance.id, id));
+    return guidance;
+  }
+
+  async getDailyGuidanceByUserAndDate(userId: string, date: string): Promise<DailyGuidance | undefined> {
+    const [guidance] = await db
+      .select()
+      .from(dailyGuidance)
+      .where(and(eq(dailyGuidance.userId, userId), eq(dailyGuidance.date, date)));
+    return guidance;
   }
 
   async createDailyGuidance(insertGuidance: InsertDailyGuidance): Promise<DailyGuidance> {
-    const id = this.currentId++;
-    const guidance: DailyGuidance = { 
-      ...insertGuidance, 
-      id, 
-      createdAt: new Date() 
-    };
-    const key = `${guidance.userId}-${guidance.date}`;
-    this.dailyGuidance.set(key, guidance);
+    const [guidance] = await db.insert(dailyGuidance).values(insertGuidance).returning();
     return guidance;
+  }
+
+  // System comparison operations
+  async getSystemComparison(id: number): Promise<SystemComparison | undefined> {
+    const [comparison] = await db.select().from(systemComparisons).where(eq(systemComparisons.id, id));
+    return comparison;
+  }
+
+  async getSystemComparisonByUserAndChart(userId: string, chartId: number): Promise<SystemComparison | undefined> {
+    const [comparison] = await db
+      .select()
+      .from(systemComparisons)
+      .where(and(eq(systemComparisons.userId, userId), eq(systemComparisons.chartId, chartId)));
+    return comparison;
+  }
+
+  async createSystemComparison(insertComparison: InsertSystemComparison): Promise<SystemComparison> {
+    const [comparison] = await db.insert(systemComparisons).values(insertComparison).returning();
+    return comparison;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
