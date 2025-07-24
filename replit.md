@@ -124,7 +124,7 @@ The application performs authentic astrological calculations rather than using p
 
 ### Educational Content Addition (July 24, 2025)
 - Comprehensive "About Astrology" page explaining the science and mathematics behind astrology
-- Complete Astrology Systems Guide with 8 major systems (Western, Vedic, Chinese, Human Design, KP, Lal Kitab, Hellenistic, Numerology)
+- Complete Astrology Systems Guide with 10 major systems (Western, Vedic, Chinese, Human Design, KP, Lal Kitab, Hellenistic, Numerology, Vaastu Shastra, Feng Shui)
 - Interactive tooltips and hover cards for newcomer education
 - Detailed system comparisons with accuracy ratings, difficulty levels, and required inputs
 - Category filtering (Ancient, Traditional, Modern) for easy navigation

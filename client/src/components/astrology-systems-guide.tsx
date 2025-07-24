@@ -305,6 +305,72 @@ const astrologySystem: AstrologySystem[] = [
     difficulty: 'Beginner',
     timeRange: '4,000+ years',
     category: 'Ancient'
+  },
+  {
+    id: 'vaastu',
+    name: 'Vaastu Shastra',
+    icon: <Compass className="w-5 h-5" />,
+    origin: 'Ancient India',
+    description: 'Sacred Indian architecture system aligning living spaces with cosmic energies and directions.',
+    detailedDescription: 'Vaastu Shastra is an ancient Indian architectural science that harmonizes buildings with natural elements and cosmic forces. It uses directional energy flow, elemental balance (Panchamahabhuta), and sacred geometry to create spaces that support health, prosperity, and spiritual well-being.',
+    predictions: [
+      'Home and office energy optimization',
+      'Health and wellness through space design',
+      'Financial prosperity and abundance',
+      'Relationship harmony in living spaces',
+      'Career and business success enhancement',
+      'Spiritual growth and peace'
+    ],
+    inputs: {
+      birthDate: false,
+      birthTime: false,
+      birthPlace: true,
+      name: false
+    },
+    specialFeatures: [
+      'Directional energy analysis',
+      'Five element balancing',
+      'Sacred geometry principles',
+      'Room placement guidelines',
+      'Remedial space corrections'
+    ],
+    accuracy: 'High',
+    difficulty: 'Intermediate',
+    timeRange: '5,000+ years',
+    category: 'Ancient'
+  },
+  {
+    id: 'feng-shui',
+    name: 'Feng Shui',
+    icon: <Globe className="w-5 h-5" />,
+    origin: 'Ancient China',
+    description: 'Chinese geomancy system optimizing energy flow (Chi) in spaces for harmony and prosperity.',
+    detailedDescription: 'Feng Shui is an ancient Chinese practice that optimizes the flow of energy (Chi) in living and working spaces. It combines compass directions, five elements theory, and environmental factors to create harmonious spaces that support health, wealth, relationships, and personal growth.',
+    predictions: [
+      'Chi energy flow optimization',
+      'Wealth and prosperity enhancement',
+      'Love and relationship attraction',
+      'Career advancement and recognition',
+      'Health and vitality improvement',
+      'Family harmony and protection'
+    ],
+    inputs: {
+      birthDate: true,
+      birthTime: false,
+      birthPlace: true,
+      name: false
+    },
+    specialFeatures: [
+      'Bagua map analysis',
+      'Five elements balancing',
+      'Compass school methods',
+      'Flying star calculations',
+      'Form school landscape reading'
+    ],
+    accuracy: 'High',
+    difficulty: 'Intermediate',
+    timeRange: '4,000+ years',
+    category: 'Traditional'
   }
 ];
 
@@ -344,8 +410,22 @@ export default function AstrologySystemsGuide() {
           </h2>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto">
             Discover the rich diversity of astrological traditions from around the world. Each system offers unique insights 
-            into personality, relationships, timing, and life purpose through different methodologies and cultural perspectives.
+            into personality, relationships, timing, life purpose, and living spaces through different methodologies and cultural perspectives.
           </p>
+          <div className="flex justify-center gap-4 mt-6">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-orange-400">10</div>
+              <div className="text-sm text-gray-400">Complete Systems</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-purple-400">5,000+</div>
+              <div className="text-sm text-gray-400">Years Heritage</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-pink-400">3</div>
+              <div className="text-sm text-gray-400">Categories</div>
+            </div>
+          </div>
         </div>
 
         {/* Category Filter */}
