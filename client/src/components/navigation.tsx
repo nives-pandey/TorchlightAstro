@@ -17,11 +17,10 @@ export default function Navigation() {
 
   const navItems = [
     { path: "/", label: t('nav.home') },
-    { path: "/chart", label: t('nav.chart') },
-    { path: "/compatibility", label: t('nav.compatibility') },
-    { path: "/daily", label: t('nav.daily') },
+    { path: "/personal", label: t('nav.personal') },
+    { path: "/couples", label: t('nav.couples') },
+    { path: "/spaces", label: t('nav.spaces') },
     { path: "/ai-assistant", label: t('nav.ai') },
-    { path: "/numerology", label: t('nav.numerology') },
     { path: "/about-astrology", label: t('nav.about') },
   ];
 

@@ -7,6 +7,9 @@ import { useAuth } from "@/hooks/useAuth";
 import Navigation from "@/components/navigation";
 import Landing from "@/pages/landing";
 import Home from "@/pages/home";
+import Personal from "@/pages/personal";
+import Couples from "@/pages/couples";
+import Spaces from "@/pages/spaces";
 import Chart from "@/pages/chart";
 import Compatibility from "@/pages/compatibility";
 import Daily from "@/pages/daily";
@@ -38,6 +41,9 @@ function Router() {
           <>
             <Navigation />
             <Route path="/" component={Home} />
+            <Route path="/personal" component={Personal} />
+            <Route path="/couples" component={Couples} />
+            <Route path="/spaces" component={Spaces} />
             <Route path="/chart" component={Chart} />
             <Route path="/compatibility" component={Compatibility} />
             <Route path="/daily" component={Daily} />

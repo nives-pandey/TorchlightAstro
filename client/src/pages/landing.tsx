@@ -141,193 +141,197 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Comprehensive Sections */}
       <section className="py-20 px-6">
-        <div className="container mx-auto max-w-6xl">
-          <h3 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+        <div className="container mx-auto max-w-7xl">
+          <h3 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
             {t('landing.guidance')}
           </h3>
-          <p className="text-center text-purple-200 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-purple-200 mb-16 max-w-3xl mx-auto text-lg">
             {t('landing.guidanceSubtitle')}
           </p>
+
+          {/* Three Main Sections */}
+          <div className="grid lg:grid-cols-3 gap-12 mb-16">
+            
+            {/* Personal Astrology Section */}
+            <div className="clean-card p-8">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                  <Sun className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3">{t('sections.personal')}</h4>
+                <p className="text-purple-200">{t('sections.personalDesc')}</p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-yellow-400">
+                  <h5 className="font-semibold text-white mb-2">{t('personal.natal.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('personal.natal.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-orange-400">
+                  <h5 className="font-semibold text-white mb-2">{t('personal.numerology.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('personal.numerology.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-pink-400">
+                  <h5 className="font-semibold text-white mb-2">{t('personal.daily.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('personal.daily.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-purple-400">
+                  <h5 className="font-semibold text-white mb-2">{t('personal.design.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('personal.design.desc')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Couples Section */}
+            <div className="clean-card p-8">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                  <Users className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3">{t('sections.couples')}</h4>
+                <p className="text-purple-200">{t('sections.couplesDesc')}</p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-pink-400">
+                  <h5 className="font-semibold text-white mb-2">{t('couples.synastry.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('couples.synastry.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-rose-400">
+                  <h5 className="font-semibold text-white mb-2">{t('couples.composite.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('couples.composite.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-red-400">
+                  <h5 className="font-semibold text-white mb-2">{t('couples.chinese.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('couples.chinese.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-purple-400">
+                  <h5 className="font-semibold text-white mb-2">{t('couples.numerology.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('couples.numerology.desc')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Spaces Section */}
+            <div className="clean-card p-8">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                  <Moon className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-3">{t('sections.spaces')}</h4>
+                <p className="text-purple-200">{t('sections.spacesDesc')}</p>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-green-400">
+                  <h5 className="font-semibold text-white mb-2">{t('spaces.vastu.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('spaces.vastu.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-emerald-400">
+                  <h5 className="font-semibold text-white mb-2">{t('spaces.fengshui.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('spaces.fengshui.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-teal-400">
+                  <h5 className="font-semibold text-white mb-2">{t('spaces.timing.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('spaces.timing.desc')}</p>
+                </div>
+                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-cyan-400">
+                  <h5 className="font-semibold text-white mb-2">{t('spaces.remedies.title')}</h5>
+                  <p className="text-purple-100 text-sm">{t('spaces.remedies.desc')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Features Grid */}
+      <section className="py-16 px-6 bg-black/20">
+        <div className="container mx-auto max-w-6xl">
+          <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Additional Features
+          </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mb-4">
-                  <Sun className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{t('features.natal.title')}</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  {t('features.natal.desc')}
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Planetary positions & aspects
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  House interpretations
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Cross-system comparisons
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Personality insights
-                </li>
-              </ul>
-            </div>
-
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{t('features.compatibility.title')}</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  {t('features.compatibility.desc')}
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Multi-person compatibility
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Strengths & challenges
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Communication guidance
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Relationship timing
-                </li>
-              </ul>
-            </div>
-
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg flex items-center justify-center mb-4">
-                  <Calendar className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{t('features.daily.title')}</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  {t('features.daily.desc')}
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
-                  Daily horoscopes
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
-                  Lucky numbers & colors
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
-                  Optimal timing
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-pink-400 rounded-full mr-2"></span>
-                  Auspicious activities
-                </li>
-              </ul>
-            </div>
-
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mb-4">
-                  <Sparkles className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{t('features.ai.title')}</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  {t('features.ai.desc')}
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
-                  Conversational AI guidance
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
-                  Complete numerology profiles
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
-                  Life path and destiny numbers
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-green-400 rounded-full mr-2"></span>
-                  Personality analysis
-                </li>
-              </ul>
-            </div>
-
+            {/* AI Assistant */}
             <div className="clean-card p-6">
               <div className="mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4">
-                  <Moon className="h-6 w-6 text-white" />
+                  <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{t('features.lifestyle.title')}</h4>
+                <h4 className="text-xl font-semibold text-white mb-2">AI Assistant</h4>
                 <p className="text-purple-200 text-sm mb-4">
-                  {t('features.lifestyle.desc')}
+                  Interactive cosmic guidance with conversational AI
                 </p>
               </div>
               <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Career path guidance
+                  Real-time astrological guidance
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Health recommendations
+                  Cross-system analysis
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Personal development
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Timing for decisions
+                  Personalized insights
                 </li>
               </ul>
             </div>
 
+            {/* Educational Content */}
             <div className="clean-card p-6">
               <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-800 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
                   <Stars className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-white mb-2">{t('features.education.title')}</h4>
+                <h4 className="text-xl font-semibold text-white mb-2">Educational Content</h4>
                 <p className="text-purple-200 text-sm mb-4">
-                  {t('features.education.desc')}
+                  Learn about astrology's scientific foundations
                 </p>
               </div>
               <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
-                  Scientific background
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
+                  Mathematical foundations
                 </li>
                 <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
-                  Multiple traditions
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
-                  Calculation methods
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-gray-400 rounded-full mr-2"></span>
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
                   Historical context
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
+                  System comparisons
+                </li>
+              </ul>
+            </div>
+
+            {/* Premium Tools */}
+            <div className="clean-card p-6">
+              <div className="mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                  <Calendar className="h-6 w-6 text-white" />
+                </div>
+                <h4 className="text-xl font-semibold text-white mb-2">Advanced Timing</h4>
+                <p className="text-purple-200 text-sm mb-4">
+                  Precise timing for important life decisions
+                </p>
+              </div>
+              <ul className="space-y-2 text-sm text-purple-100">
+                <li className="flex items-center">
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
+                  Transit analysis
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
+                  Electional astrology
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
+                  Muhurta calculations
                 </li>
               </ul>
             </div>
