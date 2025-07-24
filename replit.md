@@ -9,6 +9,8 @@ Torchlight is a comprehensive astrology web application that integrates multiple
 Preferred communication style: Simple, everyday language.
 Remove references to "urban professionals" and age groups to avoid alienating users.
 Focus on inclusive language that welcomes all seekers of astrological guidance.
+Brand name: "Torchlight" confirmed after SEO and relevance analysis - stronger than "Lamplight" for modern astrology applications.
+Domain situation: Primary domains (torchlight.com, gettorchlight.com) are taken by established businesses. Alternatives to consider: mytorchlight.com, torchlight.co, torchlight.dev, torchlight.tech
 
 ## System Architecture
 
