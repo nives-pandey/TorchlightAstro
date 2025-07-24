@@ -43,19 +43,19 @@ const astrologyData = {
     ]
   },
   vedic: {
-    rashi: "Mithuna (Gemini)",
-    nakshatra: "Punarvasu",
-    pada: 3,
-    ascendant: "Simha (Leo)",
-    moonNakshatra: "Anuradha",
-    dasha: "Venus Mahadasha",
-    doshas: { vata: 40, pitta: 35, kapha: 25 },
+    rashi: "Mesha (Aries)",
+    nakshatra: "Ashwini", 
+    pada: 4,
+    ascendant: "Karkata (Cancer)",
+    sunSign: "Vrishabha (Taurus)",
+    dasha: "Guru (Jupiter) Mahadasha", 
+    doshas: { vata: 30, pitta: 40, kapha: 30 },
     traits: [
-      "Quick learning ability with strong communication skills",
-      "Emotionally resilient with deep transformation capacity",
-      "Good fortune in partnerships and collaborations", 
-      "Strong spiritual inclinations in later life",
-      "Success through creative and intellectual pursuits"
+      "Mesha Rashi (Aries Moon) - Dynamic, pioneering spirit with natural leadership",
+      "Ashwini Nakshatra - Quick to act, healing abilities, swift achievement of goals",
+      "Cancer Ascendant - Nurturing nature, strong family bonds, intuitive wisdom",
+      "Taurus Sun - Practical approach, appreciation for beauty and material stability", 
+      "Jupiter Mahadasha - Current period of wisdom, teaching, and spiritual expansion"
     ]
   },
   chinese: {
