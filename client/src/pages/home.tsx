@@ -15,31 +15,31 @@ export default function Home() {
 
   const personalSystems = [
     {
-      icon: "♈",
+      icon: "☉",
       title: "Western Astrology",
       description: "12 zodiac signs, planetary aspects, house systems with precise Swiss Ephemeris calculations.",
       features: ["Complete natal chart analysis", "Planetary dignities & aspects", "Transit predictions"]
     },
     {
-      icon: "🕉",
+      icon: "ॐ",
       title: "Vedic (Jyotish)",
       description: "Ancient Indian astrology with 27 Nakshatras, Dasha periods, and Ayurvedic connections.",
       features: ["Nakshatra analysis", "Planetary periods (Dasha)", "Dosha constitution"]
     },
     {
-      icon: "🐉",
+      icon: "☯",
       title: "Chinese Zodiac",
       description: "12 animal signs with Five Element theory for personality insights and compatibility.",
       features: ["Animal sign characteristics", "Five element integration", "Annual predictions"]
     },
     {
-      icon: "⚡",
+      icon: "◊",
       title: "Human Design",
       description: "Modern synthesis system with energy types, strategy, and authority for decision-making.",
       features: ["Energy type analysis", "Strategy & Authority", "Centers & channels"]
     },
     {
-      icon: "🔢",
+      icon: "∞",
       title: "Numerology",
       description: "Ancient number science revealing life patterns, destiny, and personal cycles through birth data.",
       features: ["Life path calculation", "Destiny number analysis", "Personal year cycles"]
@@ -48,13 +48,13 @@ export default function Home() {
 
   const spaceSystems = [
     {
-      icon: "🏛️",
+      icon: "⚹",
       title: "Vaastu Shastra",
       description: "Sacred Indian architecture aligning living spaces with cosmic energies and directional flow.",
       features: ["Directional energy analysis", "Five element balancing", "Sacred geometry principles"]
     },
     {
-      icon: "🧭",
+      icon: "☰",
       title: "Feng Shui",
       description: "Chinese geomancy optimizing Chi energy flow in spaces for harmony and prosperity.",
       features: ["Chi energy optimization", "Bagua map analysis", "Five elements balancing"]
@@ -70,7 +70,7 @@ export default function Home() {
 
   const systemDetails = {
     "Western Astrology": {
-      icon: "♈",
+      icon: "☉",
       origin: "Ancient Mesopotamia, Greece",
       timeRange: "4,000+ years",
       accuracy: "High",
@@ -94,7 +94,7 @@ export default function Home() {
       route: "/chart"
     },
     "Vedic (Jyotish)": {
-      icon: "🕉",
+      icon: "ॐ",
       origin: "Ancient India",
       timeRange: "5,000+ years", 
       accuracy: "Very High",
@@ -118,7 +118,7 @@ export default function Home() {
       route: "/chart"
     },
     "Chinese Zodiac": {
-      icon: "🐉",
+      icon: "☯",
       origin: "Ancient China",
       timeRange: "4,000+ years",
       accuracy: "Moderate",
@@ -142,7 +142,7 @@ export default function Home() {
       route: "/compatibility"
     },
     "Human Design": {
-      icon: "⚡",
+      icon: "◊",
       origin: "Modern (1987)",
       timeRange: "37+ years",
       accuracy: "High",
@@ -166,7 +166,7 @@ export default function Home() {
       route: "/personal"
     },
     "Numerology": {
-      icon: "🔢",
+      icon: "∞",
       origin: "Ancient Babylon, Greece",
       timeRange: "4,000+ years",
       accuracy: "Moderate",
@@ -190,7 +190,7 @@ export default function Home() {
       route: "/numerology"
     },
     "Vaastu Shastra": {
-      icon: "🏛️",
+      icon: "⚹",
       origin: "Ancient India",
       timeRange: "5,000+ years",
       accuracy: "High",
@@ -214,7 +214,7 @@ export default function Home() {
       route: "/spaces"
     },
     "Feng Shui": {
-      icon: "🧭",
+      icon: "☰",
       origin: "Ancient China",
       timeRange: "4,000+ years",
       accuracy: "High",
