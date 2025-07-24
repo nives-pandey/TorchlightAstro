@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Stars, Sparkles, Users, Calendar, Moon, Sun } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
-import { TranslationDebug } from "@/components/translation-debug";
 
 export default function Landing() {
   const { t } = useTranslation();
@@ -357,9 +356,6 @@ export default function Landing() {
           </Button>
         </div>
       </section>
-      
-      {/* Translation Debug Component */}
-      <TranslationDebug />
     </div>
   );
 }
