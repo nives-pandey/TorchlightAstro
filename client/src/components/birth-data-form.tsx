@@ -27,11 +27,12 @@ const birthDataSchema = z.object({
 type BirthDataFormData = z.infer<typeof birthDataSchema>;
 
 interface BirthDataFormProps {
-  onSubmit: (data: BirthDataFormData) => void;
+  onSubmit?: (data: BirthDataFormData) => void;
+  onClose?: () => void;
   isLoading?: boolean;
 }
 
-export default function BirthDataForm({ onSubmit, isLoading = false }: BirthDataFormProps) {
+export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: BirthDataFormProps) {
   const form = useForm<BirthDataFormData>({
     resolver: zodResolver(birthDataSchema),
     defaultValues: {
@@ -61,7 +62,10 @@ export default function BirthDataForm({ onSubmit, isLoading = false }: BirthData
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit((data) => {
+            onSubmit?.(data);
+            onClose?.();
+          })} className="space-y-6">
             {/* Birth Date and Time */}
             <div className="grid md:grid-cols-2 gap-4">
               <FormField

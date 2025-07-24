@@ -92,7 +92,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createBirthData(insertData: InsertBirthData): Promise<BirthData> {
-    const [data] = await db.insert(birthData).values(insertData).returning();
+    const [data] = await db.insert(birthData).values([insertData]).returning();
     return data;
   }
 
@@ -107,7 +107,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createChart(insertChart: InsertChart): Promise<Chart> {
-    const [chart] = await db.insert(charts).values(insertChart).returning();
+    const [chart] = await db.insert(charts).values([insertChart]).returning();
     return chart;
   }
 
@@ -122,7 +122,10 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createCompatibility(insertCompatibility: InsertCompatibility): Promise<Compatibility> {
-    const [comp] = await db.insert(compatibility).values(insertCompatibility).returning();
+    const [comp] = await db.insert(compatibility).values({
+      ...insertCompatibility,
+      partnerUserIds: insertCompatibility.partnerUserIds
+    }).returning();
     return comp;
   }
 
@@ -141,7 +144,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createDailyGuidance(insertGuidance: InsertDailyGuidance): Promise<DailyGuidance> {
-    const [guidance] = await db.insert(dailyGuidance).values(insertGuidance).returning();
+    const [guidance] = await db.insert(dailyGuidance).values([insertGuidance]).returning();
     return guidance;
   }
 
@@ -160,7 +163,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createSystemComparison(insertComparison: InsertSystemComparison): Promise<SystemComparison> {
-    const [comparison] = await db.insert(systemComparisons).values(insertComparison).returning();
+    const [comparison] = await db.insert(systemComparisons).values([insertComparison]).returning();
     return comparison;
   }
 }
