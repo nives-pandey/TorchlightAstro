@@ -23,6 +23,7 @@ export default function Navigation() {
     { path: "/3d-demo", label: "3D Cosmos" },
     { path: "/ai-assistant", label: t('nav.ai') },
     { path: "/about-astrology", label: t('nav.about') },
+    { path: "/astrology-guide", label: "Systems Guide" },
   ];
 
   return (

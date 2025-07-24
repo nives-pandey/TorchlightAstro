@@ -18,6 +18,7 @@ import Daily from "@/pages/daily";
 import AIAssistant from "@/pages/ai-assistant";
 import Numerology from "@/pages/numerology";
 import AboutAstrology from "@/pages/about-astrology";
+import AstrologyGuide from "@/pages/astrology-guide";
 import ComprehensiveAnalysis from "@/pages/comprehensive-analysis";
 import ComprehensiveTest from "@/pages/comprehensive-test";
 import NotFound from "@/pages/not-found";
@@ -55,6 +56,7 @@ function Router() {
             <Route path="/daily" component={Daily} />
             <Route path="/ai-assistant" component={AIAssistant} />
             <Route path="/numerology" component={Numerology} />
+            <Route path="/astrology-guide" component={AstrologyGuide} />
             <Route path="/about-astrology" component={AboutAstrology} />
             <Route path="/analysis" component={ComprehensiveAnalysis} />
             <Route path="/test" component={ComprehensiveTest} />
