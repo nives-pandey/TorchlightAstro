@@ -21,6 +21,7 @@ const birthDataSchema = z.object({
     vedic: z.boolean().default(true),
     chinese: z.boolean().default(true),
     humanDesign: z.boolean().default(true),
+    numerology: z.boolean().default(true),
   })
 });
 
@@ -46,6 +47,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
         vedic: true,
         chinese: true,
         humanDesign: true,
+        numerology: true,
       }
     }
   });
@@ -188,7 +190,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                 <h3 className="text-white font-medium">Select Astrological Systems</h3>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                 <FormField
                   control={form.control}
                   name="systems.western"
@@ -256,6 +258,24 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel className="text-white">Human Design</FormLabel>
+                      </div>
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="systems.numerology"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-white">Numerology & Input Systems</FormLabel>
                       </div>
                     </FormItem>
                   )}

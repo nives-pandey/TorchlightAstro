@@ -51,6 +51,7 @@ export const birthData = pgTable("birth_data", {
     vedic: boolean;
     chinese: boolean;
     humanDesign: boolean;
+    numerology: boolean;
   }>().notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -75,6 +76,7 @@ export const compatibility = pgTable("compatibility", {
     vedic: number;
     chinese: number;
     humanDesign: number;
+    numerology: number;
   }>().notNull(),
   analysis: jsonb("analysis").notNull(),
   systemComparisons: jsonb("system_comparisons"), // Cross-system analysis
