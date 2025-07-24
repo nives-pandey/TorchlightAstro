@@ -2,6 +2,8 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
+import { astrologyEngine } from "./astrology-engine";
+import { kundaliGenerator } from "./kundali-generator";
 import { astrologyAI } from "./astrology-ai";
 import { 
   insertBirthDataSchema, 
@@ -530,6 +532,90 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) return 'Aquarius';
     return 'Pisces';
   }
+
+  // Comprehensive Chart Generation
+  app.post("/api/generate-chart", async (req, res) => {
+    try {
+      const birthData = req.body;
+      
+      // Validate required fields
+      if (!birthData.birthDate || !birthData.birthTime || !birthData.city) {
+        return res.status(400).json({ error: "Missing required birth data" });
+      }
+      
+      // Generate comprehensive astrological analysis
+      const chart = await astrologyEngine.generateComprehensiveChart(birthData);
+      
+      res.json({
+        success: true,
+        chart,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error("Error generating chart:", error);
+      res.status(500).json({ 
+        error: "Failed to generate chart",
+        details: error instanceof Error ? error.message : "Unknown error"
+      });
+    }
+  });
+
+  // Vedic Kundali Generation
+  app.post("/api/generate-kundali", async (req, res) => {
+    try {
+      const birthData = req.body;
+      
+      // Generate traditional Kundali
+      const kundali = await kundaliGenerator.generateKundali(birthData);
+      
+      res.json({
+        success: true,
+        kundali,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error("Error generating Kundali:", error);
+      res.status(500).json({ 
+        error: "Failed to generate Kundali",
+        details: error instanceof Error ? error.message : "Unknown error"
+      });
+    }
+  });
+
+  // Get Krishna Raj Demo Chart
+  app.get("/api/demo-chart", async (req, res) => {
+    try {
+      const krishnaRajData = {
+        name: "Krishna Raj",
+        birthDate: "1975-06-14",
+        birthTime: "09:18",
+        city: "Manipal",
+        country: "India",
+        latitude: 13.3415,
+        longitude: 74.7421,
+        timezone: "Asia/Kolkata"
+      };
+      
+      const [chart, kundali] = await Promise.all([
+        astrologyEngine.generateComprehensiveChart(krishnaRajData),
+        kundaliGenerator.generateKundali(krishnaRajData)
+      ]);
+      
+      res.json({
+        success: true,
+        profile: krishnaRajData,
+        chart,
+        kundali,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error("Error generating demo chart:", error);
+      res.status(500).json({ 
+        error: "Failed to generate demo chart",
+        details: error instanceof Error ? error.message : "Unknown error"
+      });
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;
