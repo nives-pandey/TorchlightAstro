@@ -30,7 +30,7 @@ export default function Landing() {
           </h2>
           <p className="text-xl md:text-2xl mb-8 text-purple-200">
             Discover authentic insights from Western, Vedic, Chinese, and Human Design astrology 
-            with comprehensive lifestyle recommendations for urban professionals.
+            with comprehensive lifestyle recommendations for personal growth and decision-making.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-12">
             <Badge variant="outline" className="border-yellow-400 text-yellow-400 px-4 py-2">
@@ -155,15 +155,15 @@ export default function Landing() {
           <Card className="bg-indigo-800/30 border-indigo-600 backdrop-blur-sm">
             <CardHeader>
               <Stars className="h-12 w-12 text-indigo-400 mb-4" />
-              <CardTitle className="text-white">Professional Focus</CardTitle>
+              <CardTitle className="text-white">Life Guidance</CardTitle>
               <CardDescription className="text-indigo-200">
-                Designed for urban professionals aged 25-45 seeking authentic guidance
+                Comprehensive support for anyone seeking authentic astrological insights
               </CardDescription>
             </CardHeader>
             <CardContent className="text-indigo-100">
               <ul className="space-y-2">
-                <li>• Career advancement</li>
-                <li>• Work-life balance</li>
+                <li>• Career and life direction</li>
+                <li>• Personal balance</li>
                 <li>• Decision timing</li>
                 <li>• Stress management</li>
               </ul>
@@ -179,8 +179,8 @@ export default function Landing() {
             Start Your Cosmic Journey Today
           </h3>
           <p className="text-xl text-purple-200 mb-8">
-            Join thousands of professionals who trust Torchlight for authentic astrological guidance 
-            that integrates seamlessly with modern life.
+            Join thousands who trust Torchlight for authentic astrological guidance 
+            that integrates seamlessly with modern life and personal growth.
           </p>
           <Button 
             size="lg"
@@ -196,7 +196,7 @@ export default function Landing() {
       <footer className="container mx-auto px-4 py-8 border-t border-purple-800">
         <div className="flex justify-center items-center">
           <p className="text-purple-300">
-            © 2025 Torchlight. Authentic cosmic guidance for modern professionals.
+            © 2025 Torchlight. Authentic cosmic guidance for personal enlightenment and growth.
           </p>
         </div>
       </footer>

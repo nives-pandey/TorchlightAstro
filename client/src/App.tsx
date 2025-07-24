@@ -11,6 +11,7 @@ import Chart from "@/pages/chart";
 import Compatibility from "@/pages/compatibility";
 import Daily from "@/pages/daily";
 import AIAssistant from "@/pages/ai-assistant";
+import AboutAstrology from "@/pages/about-astrology";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -40,6 +41,7 @@ function Router() {
             <Route path="/compatibility" component={Compatibility} />
             <Route path="/daily" component={Daily} />
             <Route path="/ai-assistant" component={AIAssistant} />
+            <Route path="/about-astrology" component={AboutAstrology} />
           </>
         )}
         <Route component={NotFound} />

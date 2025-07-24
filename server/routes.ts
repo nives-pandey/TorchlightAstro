@@ -58,10 +58,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
         systemComparison = await storage.getSystemComparisonByUserAndChart(userId, charts[0].id);
       }
 
-      // Generate AI response
+      // Use Swiss Ephemeris for enhanced precision if available
+      let enhancedCharts = charts;
+      try {
+        const swissEph = await import('./swiss-ephemeris');
+        const julianDay = swissEph.SwissEphemeris.dateToJulianDay(new Date(primaryBirthData.birthDate));
+        const preciseCalculations = await swissEph.swissEph.calculatePlanetaryPositions(
+          julianDay, 
+          primaryBirthData.birthLatitude, 
+          primaryBirthData.birthLongitude
+        );
+        
+        // Enhance chart data with Swiss Ephemeris precision
+        enhancedCharts = charts.map(chart => {
+          const chartData = typeof chart.chartData === 'string' ? JSON.parse(chart.chartData) : chart.chartData;
+          return {
+            ...chart,
+            chartData: {
+              ...chartData,
+              precisionLevel: 'swiss-ephemeris',
+              enhancedPlanets: preciseCalculations.planets,
+              enhancedHouses: preciseCalculations.houses,
+              enhancedAspects: preciseCalculations.aspects
+            }
+          };
+        });
+      } catch (error) {
+        console.log('Using standard astronomical calculations');
+      }
+
+      // Generate AI response with enhanced precision
       const aiResponse = await astrologyAI.generatePersonalizedInsight(
         question,
-        charts,
+        enhancedCharts,
         primaryBirthData,
         systemComparison,
         conversationHistory

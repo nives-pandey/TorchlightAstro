@@ -18,6 +18,7 @@ export default function Navigation() {
     { path: "/compatibility", label: "Compatibility" },
     { path: "/daily", label: "Daily Guidance" },
     { path: "/ai-assistant", label: "AI Assistant" },
+    { path: "/about-astrology", label: "About Astrology" },
   ];
 
   return (

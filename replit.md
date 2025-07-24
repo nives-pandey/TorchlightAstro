@@ -7,6 +7,8 @@ Torchlight is a comprehensive astrology web application that integrates multiple
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Remove references to "urban professionals" and age groups to avoid alienating users.
+Focus on inclusive language that welcomes all seekers of astrological guidance.
 
 ## System Architecture
 
@@ -68,6 +70,28 @@ The application performs authentic astrological calculations rather than using p
 - House systems computed based on birth time and location
 - Aspects and patterns identified through geometric analysis
 - Multiple astrological traditions integrated for comprehensive readings
+
+## Recent Updates
+
+### Swiss Ephemeris Integration (July 24, 2025)
+- High-precision astronomical calculations implemented using pure JavaScript algorithms
+- Enhanced planetary position calculations with orbital mechanics considerations
+- Placidus house system calculations with latitude adjustments
+- Improved aspect calculations with exactness ratings
+- Mathematical Julian Day conversions for precise timing
+
+### AI Assistant Implementation (July 24, 2025)
+- Conversational astrological guidance without external API dependencies
+- Open-source knowledge base covering Western, Vedic, Chinese, and Human Design systems
+- Processing animations and realistic delays for better user experience
+- Personalized insights based on complete birth chart analysis
+- Cross-system synthesis and timing recommendations
+
+### Educational Content Addition (July 24, 2025)
+- Comprehensive "About Astrology" page explaining the science and mathematics behind astrology
+- Information about different astrological arts: palmistry, face reading, anjana, kavade
+- Clear explanation of Torchlight's role as illumination rather than decision-making
+- Emphasis on personal responsibility and free will in all readings
 
 ## External Dependencies
 
