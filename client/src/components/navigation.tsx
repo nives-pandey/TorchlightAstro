@@ -17,6 +17,7 @@ export default function Navigation() {
     { path: "/chart", label: "Natal Charts" },
     { path: "/compatibility", label: "Compatibility" },
     { path: "/daily", label: "Daily Guidance" },
+    { path: "/ai-assistant", label: "AI Assistant" },
   ];
 
   return (
@@ -54,9 +55,9 @@ export default function Navigation() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src={user?.profileImageUrl || ""} alt={user?.firstName || ""} />
+                    <AvatarImage src={(user as any)?.profileImageUrl || ""} alt={(user as any)?.firstName || ""} />
                     <AvatarFallback className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
-                      {user?.firstName?.[0] || "U"}
+                      {(user as any)?.firstName?.[0] || "U"}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
@@ -64,7 +65,7 @@ export default function Navigation() {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <DropdownMenuItem className="flex items-center">
                   <User className="mr-2 h-4 w-4" />
-                  <span>{user?.firstName} {user?.lastName}</span>
+                  <span>{(user as any)?.firstName} {(user as any)?.lastName}</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => window.location.href = '/api/logout'}>
                   <LogOut className="mr-2 h-4 w-4" />

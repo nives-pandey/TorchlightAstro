@@ -119,6 +119,24 @@ export const insertSystemComparisonSchema = createInsertSchema(systemComparisons
 // Types
 export type UpsertUser = typeof users.$inferInsert;
 export type User = typeof users.$inferSelect;
+
+// Add message schema for AI chat conversation history
+export const messages = pgTable("messages", {
+  id: serial("id").primaryKey(),
+  userId: varchar("user_id").notNull().references(() => users.id),
+  role: varchar("role", { enum: ["user", "assistant"] }).notNull(),
+  content: text("content").notNull(),
+  metadata: jsonb("metadata"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertMessageSchema = createInsertSchema(messages).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertMessage = z.infer<typeof insertMessageSchema>;
+export type Message = typeof messages.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type BirthData = typeof birthData.$inferSelect;
 export type InsertBirthData = z.infer<typeof insertBirthDataSchema>;

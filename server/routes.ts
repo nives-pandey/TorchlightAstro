@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
+import { astrologyAI } from "./astrology-ai";
 import { 
   insertBirthDataSchema, 
   insertChartSchema,
@@ -23,6 +24,60 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
+    }
+  });
+
+  // AI Chat endpoint
+  app.post("/api/ai-chat", isAuthenticated, async (req: any, res) => {
+    try {
+      const { question, conversationHistory = [] } = req.body;
+      const userId = req.user.claims.sub;
+
+      if (!question || typeof question !== 'string') {
+        return res.status(400).json({ message: "Question is required" });
+      }
+
+      // Get user's birth data and charts
+      const birthDataList = await storage.getBirthDataByUserId(userId);
+      if (birthDataList.length === 0) {
+        return res.json({
+          response: "I'd love to provide personalized guidance, but I need your birth information first. Please create your astrological chart to unlock detailed insights about your cosmic blueprint!",
+          insights: [],
+          recommendations: ["Create your birth chart to get started with personalized guidance"],
+          timing: [],
+          processingTime: 100
+        });
+      }
+
+      const primaryBirthData = birthDataList[0];
+      const charts = await storage.getChartsByBirthDataId(primaryBirthData.id);
+      
+      // Get system comparison if available
+      let systemComparison;
+      if (charts.length > 0) {
+        systemComparison = await storage.getSystemComparisonByUserAndChart(userId, charts[0].id);
+      }
+
+      // Generate AI response
+      const aiResponse = await astrologyAI.generatePersonalizedInsight(
+        question,
+        charts,
+        primaryBirthData,
+        systemComparison,
+        conversationHistory
+      );
+
+      res.json(aiResponse);
+    } catch (error) {
+      console.error("AI Chat error:", error);
+      res.status(500).json({ 
+        message: "Failed to generate AI response",
+        response: "I apologize, but I'm experiencing some cosmic interference right now. Please try asking your question again in a moment.",
+        insights: [],
+        recommendations: [],
+        timing: [],
+        processingTime: 0
+      });
     }
   });
 
