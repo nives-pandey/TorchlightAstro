@@ -275,7 +275,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormLabel className="text-white">Numerology & Input Systems</FormLabel>
+                        <FormLabel className="text-white">Numerology</FormLabel>
                       </div>
                     </FormItem>
                   )}

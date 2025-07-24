@@ -14,36 +14,36 @@ export default function Navigation() {
 
   const navItems = [
     { path: "/", label: "Home" },
-    { path: "/chart", label: "Natal Charts" },
+    { path: "/chart", label: "Charts" },
     { path: "/compatibility", label: "Compatibility" },
-    { path: "/daily", label: "Daily Guidance" },
+    { path: "/daily", label: "Daily" },
     { path: "/ai-assistant", label: "AI Assistant" },
     { path: "/numerology", label: "Numerology" },
-    { path: "/about-astrology", label: "About Astrology" },
+    { path: "/about-astrology", label: "About" },
   ];
 
   return (
-    <header className="relative z-50 bg-black/40 backdrop-blur-md border-b border-yellow-500/20">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="clean-nav fixed top-0 w-full z-50">
+      <nav className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 cosmic-gradient rounded-full cosmic-glow flex items-center justify-center">
-              <span className="text-yellow-500 text-xl font-bold">☉</span>
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-75 transition-opacity">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-sm font-bold">☉</span>
             </div>
-            <span className="text-xl font-serif font-semibold text-yellow-500">Torchlight</span>
+            <span className="text-xl font-semibold text-gray-900 dark:text-white">Torchlight</span>
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`transition-colors duration-300 ${
+                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   location === item.path
-                    ? "text-yellow-500"
-                    : "text-white hover:text-yellow-500"
+                    ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 {item.label}
@@ -55,23 +55,26 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-4">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                  <Avatar className="h-8 w-8">
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
+                  <Avatar className="h-7 w-7">
                     <AvatarImage src={(user as any)?.profileImageUrl || ""} alt={(user as any)?.firstName || ""} />
-                    <AvatarFallback className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white">
+                    <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm">
                       {(user as any)?.firstName?.[0] || "U"}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuItem className="flex items-center">
+              <DropdownMenuContent className="w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" align="end" forceMount>
+                <DropdownMenuItem className="flex items-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                   <User className="mr-2 h-4 w-4" />
-                  <span>{(user as any)?.firstName} {(user as any)?.lastName}</span>
+                  <span className="font-medium">{(user as any)?.firstName} {(user as any)?.lastName}</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => window.location.href = '/api/logout'}>
+                <DropdownMenuItem 
+                  onClick={() => window.location.href = '/api/logout'}
+                  className="text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
                   <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
+                  <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -80,33 +83,34 @@ export default function Navigation() {
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden text-white">
+              <Button variant="ghost" size="sm" className="md:hidden text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] cosmic-card border-yellow-500/20">
-              <div className="flex flex-col space-y-4 mt-8">
+            <SheetContent side="right" className="w-[300px] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
+              <div className="flex flex-col space-y-2 mt-8">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
                     href={item.path}
                     onClick={() => setMobileOpen(false)}
-                    className={`text-lg transition-colors duration-300 ${
+                    className={`px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
                       location === item.path
-                        ? "text-yellow-500"
-                        : "text-white hover:text-yellow-500"
+                        ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     }`}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <div className="pt-4 space-y-3">
-                  <Button variant="ghost" className="w-full text-white hover:text-yellow-500">
-                    Sign In
-                  </Button>
-                  <Button className="w-full cosmic-button">
-                    Get Started
-                  </Button>
+                <div className="pt-6 space-y-3">
+                  <DropdownMenuItem 
+                    onClick={() => window.location.href = '/api/logout'}
+                    className="w-full justify-start px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Sign out</span>
+                  </DropdownMenuItem>
                 </div>
               </div>
             </SheetContent>
