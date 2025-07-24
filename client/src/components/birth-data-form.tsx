@@ -190,7 +190,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                 <h3 className="text-white font-medium">Select Astrological Systems</h3>
               </div>
               
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <FormField
                   control={form.control}
                   name="systems.western"
