@@ -45,10 +45,11 @@ export default function Numerology() {
 
   const numerologyMutation = useMutation({
     mutationFn: async (data: { fullName: string; birthDate: string }) => {
-      return await apiRequest("POST", "/api/numerology/calculate", data);
+      const response = await apiRequest("POST", "/api/numerology/calculate", data);
+      return response.json();
     },
-    onSuccess: (data) => {
-      setNumerologyData(data);
+    onSuccess: (response) => {
+      setNumerologyData(response as NumerologyData);
       toast({
         title: "Numerology Calculated",
         description: "Your complete numerological profile has been generated."
