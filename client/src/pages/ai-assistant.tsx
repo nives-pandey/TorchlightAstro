@@ -19,7 +19,7 @@ export default function AIAssistant() {
             <Sparkles className="h-8 w-8 text-yellow-400 animate-pulse" />
           </div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Your personal cosmic guide powered by authentic astrological knowledge from multiple ancient traditions
+            Interactive cosmic guidance with personalized insights, daily cosmic weather, actionable steps, and intelligent conversation flow
           </p>
         </div>
 
@@ -41,16 +41,16 @@ export default function AIAssistant() {
               </CardHeader>
               <CardContent className="text-gray-300 space-y-3">
                 <p className="text-sm">
-                  Our AI assistant analyzes your complete astrological profile across four ancient systems:
+                  Our enhanced AI assistant provides interactive cosmic insights through:
                 </p>
                 <ul className="text-sm space-y-1">
-                  <li>• <span className="text-yellow-400">Western:</span> Planets, houses, aspects</li>
-                  <li>• <span className="text-purple-400">Vedic:</span> Nakshatras, doshas, dharma</li>
-                  <li>• <span className="text-pink-400">Chinese:</span> Animals, elements, compatibility</li>
-                  <li>• <span className="text-blue-400">Human Design:</span> Type, strategy, authority</li>
+                  <li>• <span className="text-pink-400">Personality Highlights:</span> Your unique cosmic profile</li>
+                  <li>• <span className="text-cyan-400">Cosmic Weather:</span> Daily planetary influences</li>
+                  <li>• <span className="text-green-400">Action Steps:</span> Practical guidance for today</li>
+                  <li>• <span className="text-orange-400">Smart Follow-ups:</span> Deeper conversation paths</li>
                 </ul>
                 <p className="text-sm text-gray-400">
-                  Responses are generated using comprehensive astrological knowledge bases and authentic astronomical calculations.
+                  Each response combines insights from Western, Vedic, Chinese, Human Design, and Numerology systems with authentic astronomical calculations.
                 </p>
               </CardContent>
             </Card>
@@ -104,16 +104,35 @@ export default function AIAssistant() {
               </CardContent>
             </Card>
 
-            {/* Processing Info */}
+            {/* Interactive Features */}
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-green-400 text-sm">Real-Time Analysis</CardTitle>
+                <CardTitle className="text-green-400 text-sm flex items-center space-x-2">
+                  <Sparkles className="h-4 w-4" />
+                  <span>Interactive Features</span>
+                </CardTitle>
               </CardHeader>
-              <CardContent className="text-gray-300">
-                <p className="text-sm">
-                  Each response involves deep analysis of your birth chart data, 
-                  cross-referencing multiple astrological traditions, and 
-                  calculating current planetary transits for personalized timing guidance.
+              <CardContent className="text-gray-300 space-y-3">
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
+                    <span className="text-sm">**Personality Highlights** show your cosmic profile instantly</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <span className="text-sm">**Cosmic Weather** reveals today's planetary influences</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                    <span className="text-sm">**Action Steps** provide practical daily guidance</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                    <span className="text-sm">**Smart Follow-ups** suggest deeper conversation paths</span>
+                  </div>
+                </div>
+                <p className="text-xs text-gray-400 mt-3">
+                  Click any follow-up question to continue the conversation automatically!
                 </p>
               </CardContent>
             </Card>

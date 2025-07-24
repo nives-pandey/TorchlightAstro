@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Bot, User, Send, Sparkles, Clock, Target, Calendar } from "lucide-react";
+import { Bot, User, Send, Sparkles, Clock, Target, Calendar, Star, CheckCircle, MessageCircle, Zap } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/useAuth";
@@ -20,6 +20,10 @@ interface ChatMessage {
   recommendations?: string[];
   timing?: string[];
   processingTime?: number;
+  personalityHighlights?: string[];
+  cosmicWeather?: string;
+  actionItems?: string[];
+  followUpQuestions?: string[];
 }
 
 interface ProcessingState {
@@ -54,18 +58,28 @@ export default function AIChat() {
       const welcomeMessage: ChatMessage = {
         id: "welcome",
         role: "assistant",
-        content: `Welcome to your personal astrological AI assistant! I'm here to provide insights based on your complete cosmic blueprint across Western, Vedic, Chinese, and Human Design systems.
+        content: `🌟 Welcome to your enhanced AI Astrological Assistant! I'm here to provide interactive cosmic guidance through personalized insights from your complete celestial blueprint.
 
-Ask me anything about:
-• Your personality and life purpose
-• Career guidance and timing
-• Relationships and compatibility  
-• Health and wellness recommendations
-• Spiritual growth and development
-• Optimal timing for decisions
+I now offer:
+✨ **Personality Highlights** - Your unique cosmic profile across multiple systems
+🌙 **Cosmic Weather** - Today's planetary influences and optimal timing
+🎯 **Action Steps** - Practical guidance you can apply immediately
+💭 **Smart Follow-ups** - Deeper conversation paths tailored to your interests
+
+I analyze your birth chart across Western, Vedic, Chinese, Human Design, and Numerology systems to provide comprehensive guidance.
+
+Ready to explore your cosmic potential? Try asking:
+• "What are my core strengths and how can I use them today?"
+• "What does today's cosmic weather mean for me?"
+• "How can I improve my relationships based on my chart?"
 
 How can I illuminate your path today?`,
-        timestamp: new Date()
+        timestamp: new Date(),
+        personalityHighlights: [
+          "Your cosmic journey begins with understanding your unique astrological blueprint",
+          "Multiple ancient systems reveal different aspects of your personality and potential",
+          "Today's planetary energies offer specific opportunities for growth and action"
+        ]
       };
       setMessages([welcomeMessage]);
     }
@@ -106,6 +120,10 @@ How can I illuminate your path today?`,
           recommendations: data.recommendations,
           timing: data.timing,
           processingTime: data.processingTime,
+          personalityHighlights: data.personalityHighlights,
+          cosmicWeather: data.cosmicWeather,
+          actionItems: data.actionItems,
+          followUpQuestions: data.followUpQuestions,
           timestamp: new Date()
         };
         
@@ -214,6 +232,68 @@ How can I illuminate your path today?`,
                           <div className="space-y-1">
                             {message.timing.map((time, index) => (
                               <p key={index} className="text-blue-300 text-xs">• {time}</p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Personality Highlights */}
+                      {message.personalityHighlights && message.personalityHighlights.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-center space-x-1">
+                            <Star className="h-4 w-4 text-pink-400" />
+                            <span className="text-pink-400 text-xs font-medium">Your Cosmic Profile</span>
+                          </div>
+                          <div className="space-y-1">
+                            {message.personalityHighlights.map((highlight, index) => (
+                              <p key={index} className="text-pink-300 text-xs">• {highlight}</p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Cosmic Weather */}
+                      {message.cosmicWeather && (
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-center space-x-1">
+                            <Zap className="h-4 w-4 text-cyan-400" />
+                            <span className="text-cyan-400 text-xs font-medium">Today's Cosmic Weather</span>
+                          </div>
+                          <p className="text-cyan-300 text-xs">{message.cosmicWeather}</p>
+                        </div>
+                      )}
+
+                      {/* Action Items */}
+                      {message.actionItems && message.actionItems.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-center space-x-1">
+                            <CheckCircle className="h-4 w-4 text-green-400" />
+                            <span className="text-green-400 text-xs font-medium">Action Steps</span>
+                          </div>
+                          <div className="space-y-1">
+                            {message.actionItems.map((action, index) => (
+                              <p key={index} className="text-green-300 text-xs">• {action}</p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Follow-up Questions */}
+                      {message.followUpQuestions && message.followUpQuestions.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          <div className="flex items-center space-x-1">
+                            <MessageCircle className="h-4 w-4 text-orange-400" />
+                            <span className="text-orange-400 text-xs font-medium">Continue Our Conversation</span>
+                          </div>
+                          <div className="space-y-1">
+                            {message.followUpQuestions.map((question, index) => (
+                              <button
+                                key={index}
+                                onClick={() => setInputValue(question)}
+                                className="block text-left text-orange-300 text-xs hover:text-orange-200 transition-colors p-1 rounded hover:bg-orange-400/10"
+                              >
+                                • {question}
+                              </button>
                             ))}
                           </div>
                         </div>

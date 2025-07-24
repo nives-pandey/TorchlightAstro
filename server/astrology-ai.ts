@@ -134,6 +134,10 @@ export class AstrologyAI {
     recommendations: string[];
     timing: string[];
     processingTime: number;
+    personalityHighlights?: string[];
+    cosmicWeather?: string;
+    actionItems?: string[];
+    followUpQuestions?: string[];
   }> {
     const startTime = Date.now();
     
@@ -167,12 +171,22 @@ export class AstrologyAI {
 
     const processingTime = Date.now() - startTime;
 
+    // Generate additional interactive elements
+    const personalityHighlights = this.generatePersonalityHighlights(chartAnalysis, intent);
+    const cosmicWeather = this.generateCosmicWeather(birthData);
+    const actionItems = this.generateActionItems(chartAnalysis, intent, question);
+    const followUpQuestions = this.generateFollowUpQuestions(intent, conversationHistory);
+
     return {
       response,
       insights,
       recommendations,
       timing,
-      processingTime
+      processingTime,
+      personalityHighlights,
+      cosmicWeather,
+      actionItems,
+      followUpQuestions
     };
   }
 
@@ -514,6 +528,96 @@ export class AstrologyAI {
     }
 
     return timing;
+  }
+
+  private generatePersonalityHighlights(chartAnalysis: any, intent: any): string[] {
+    const highlights = [];
+    
+    // Key personality traits from multiple systems
+    if (chartAnalysis.western?.sun?.sign) {
+      const signData = this.knowledge.western.signs[chartAnalysis.western.sun.sign as keyof typeof this.knowledge.western.signs];
+      if (signData) {
+        highlights.push(`Core nature: ${signData.traits.slice(0, 2).join(" & ")} (${chartAnalysis.western.sun.sign})`);
+      }
+    }
+
+    if (chartAnalysis.humanDesign?.type) {
+      highlights.push(`Energy type: ${chartAnalysis.humanDesign.type} - naturally designed to ${chartAnalysis.humanDesign.strategy.toLowerCase()}`);
+    }
+
+    if (chartAnalysis.chinese?.animal && chartAnalysis.chinese?.element) {
+      highlights.push(`Chinese archetype: ${chartAnalysis.chinese.element} ${chartAnalysis.chinese.animal} - brings ${chartAnalysis.chinese.element.toLowerCase()} energy`);
+    }
+
+    return highlights;
+  }
+
+  private generateCosmicWeather(birthData: BirthData): string {
+    const currentDate = new Date();
+    const currentDay = currentDate.toLocaleDateString('en-US', { weekday: 'long' });
+    const dayPlanet = this.transits.weekly.planetary_days[currentDay as keyof typeof this.transits.weekly.planetary_days];
+    
+    // Get moon phase (simplified)
+    const dayOfMonth = currentDate.getDate();
+    let moonPhase = "";
+    if (dayOfMonth <= 7) moonPhase = "New Moon energy";
+    else if (dayOfMonth <= 14) moonPhase = "Waxing Moon energy"; 
+    else if (dayOfMonth <= 21) moonPhase = "Full Moon energy";
+    else moonPhase = "Waning Moon energy";
+
+    return `Today's cosmic weather: ${dayPlanet} day with ${moonPhase} - ideal for ${dayPlanet.toLowerCase()}-focused activities and ${moonPhase.toLowerCase().replace(' energy', '')} manifestation work.`;
+  }
+
+  private generateActionItems(chartAnalysis: any, intent: any, question: string): string[] {
+    const actions = [];
+    
+    // Based on question category
+    if (intent.category === "career") {
+      actions.push("Update your resume to highlight your natural leadership abilities");
+      actions.push("Network with people in your field this week during Venus hours (2-4 PM)");
+      actions.push("Research opportunities that align with your core strengths");
+    } else if (intent.category === "relationships") {
+      actions.push("Practice active listening in your conversations today");
+      actions.push("Express appreciation to someone important in your life");
+      actions.push("Reflect on your relationship patterns and communication style");
+    } else if (intent.category === "health") {
+      actions.push("Establish a morning routine that energizes your body");
+      actions.push("Pay attention to your body's natural rhythms");
+      actions.push("Consider stress management techniques suited to your personality");
+    } else {
+      // General actions
+      actions.push("Spend 10 minutes in meditation or reflection today");
+      actions.push("Take one small step toward a meaningful goal");
+      actions.push("Connect with nature to ground your energy");
+    }
+
+    return actions;
+  }
+
+  private generateFollowUpQuestions(intent: any, conversationHistory: Array<{role: string, content: string}>): string[] {
+    const questions = [];
+    
+    // Category-specific follow-ups
+    if (intent.category === "career") {
+      questions.push("What specific career challenges are you facing right now?");
+      questions.push("Are you looking to change careers or advance in your current field?");
+      questions.push("What work environments energize you most?");
+    } else if (intent.category === "relationships") {
+      questions.push("What relationship patterns do you notice in your life?");
+      questions.push("Are you seeking a romantic partner or working on existing relationships?");
+      questions.push("How do you prefer to communicate in relationships?");
+    } else if (intent.category === "spirituality") {
+      questions.push("What spiritual practices resonate most with you?");
+      questions.push("Are you exploring a specific spiritual path?");
+      questions.push("What does spiritual growth mean to you personally?");
+    } else {
+      // General follow-ups
+      questions.push("What area of your life would you like to focus on improving?");
+      questions.push("Are there any patterns in your life you'd like to understand better?");
+      questions.push("What goals are most important to you right now?");
+    }
+
+    return questions.slice(0, 3); // Return max 3 questions
   }
 }
 

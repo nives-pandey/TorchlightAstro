@@ -65,8 +65,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const julianDay = swissEph.SwissEphemeris.dateToJulianDay(new Date(primaryBirthData.birthDate));
         const preciseCalculations = await swissEph.swissEph.calculatePlanetaryPositions(
           julianDay, 
-          primaryBirthData.birthLatitude, 
-          primaryBirthData.birthLongitude
+          primaryBirthData.latitude || 0, 
+          primaryBirthData.longitude || 0
         );
         
         // Enhance chart data with Swiss Ephemeris precision
