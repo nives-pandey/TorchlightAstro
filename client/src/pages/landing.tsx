@@ -246,91 +246,91 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Additional Features Grid */}
+      {/* Advanced Astrological Tools */}
       <section className="py-16 px-6 bg-black/20">
         <div className="container mx-auto max-w-6xl">
           <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Additional Features
+            Advanced Astrological Tools & AI Guidance
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* AI Assistant */}
+            {/* AI Astrological Assistant */}
             <div className="clean-card p-6">
               <div className="mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4">
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-white mb-2">AI Assistant</h4>
+                <h4 className="text-xl font-semibold text-white mb-2">AI Astrological Assistant</h4>
                 <p className="text-purple-200 text-sm mb-4">
-                  Interactive cosmic guidance with conversational AI
+                  Conversational AI for personalized birth chart interpretation and cosmic timing guidance
                 </p>
               </div>
               <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Real-time astrological guidance
+                  Real-time birth chart analysis
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Cross-system analysis
+                  Multi-system astrological synthesis
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Personalized insights
+                  Personalized cosmic timing advice
                 </li>
               </ul>
             </div>
 
-            {/* Educational Content */}
+            {/* Astrological Education & Research */}
             <div className="clean-card p-6">
               <div className="mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
                   <Stars className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-white mb-2">Educational Content</h4>
+                <h4 className="text-xl font-semibold text-white mb-2">Astrological Education & Research</h4>
                 <p className="text-purple-200 text-sm mb-4">
-                  Learn about astrology's scientific foundations
+                  Comprehensive learning resources on astronomical calculations and astrological traditions
                 </p>
               </div>
               <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Mathematical foundations
+                  Swiss Ephemeris calculations explained
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Historical context
+                  Historical astrological traditions
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  System comparisons
+                  Cross-cultural astrology comparisons
                 </li>
               </ul>
             </div>
 
-            {/* Premium Tools */}
+            {/* Advanced Astrological Timing */}
             <div className="clean-card p-6">
               <div className="mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
                   <Calendar className="h-6 w-6 text-white" />
                 </div>
-                <h4 className="text-xl font-semibold text-white mb-2">Advanced Timing</h4>
+                <h4 className="text-xl font-semibold text-white mb-2">Advanced Astrological Timing</h4>
                 <p className="text-purple-200 text-sm mb-4">
-                  Precise timing for important life decisions
+                  Precise planetary transit analysis and electional astrology for optimal decision timing
                 </p>
               </div>
               <ul className="space-y-2 text-sm text-purple-100">
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Transit analysis
+                  Planetary transit predictions
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Electional astrology
+                  Electional astrology for events
                 </li>
                 <li className="flex items-center">
                   <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Muhurta calculations
+                  Vedic Muhurta timing calculations
                 </li>
               </ul>
             </div>
