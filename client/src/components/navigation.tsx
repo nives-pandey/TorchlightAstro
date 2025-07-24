@@ -6,20 +6,23 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Menu, LogOut, User } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import { useTranslation } from "@/lib/i18n";
 
 export default function Navigation() {
   const [location] = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/chart", label: "Charts" },
-    { path: "/compatibility", label: "Compatibility" },
-    { path: "/daily", label: "Daily" },
-    { path: "/ai-assistant", label: "AI Assistant" },
-    { path: "/numerology", label: "Numerology" },
-    { path: "/about-astrology", label: "About" },
+    { path: "/", label: t('nav.home') },
+    { path: "/chart", label: t('nav.chart') },
+    { path: "/compatibility", label: t('nav.compatibility') },
+    { path: "/daily", label: t('nav.daily') },
+    { path: "/ai-assistant", label: t('nav.ai') },
+    { path: "/numerology", label: t('nav.numerology') },
+    { path: "/about-astrology", label: t('nav.about') },
   ];
 
   return (
@@ -31,11 +34,11 @@ export default function Navigation() {
             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
               <span className="text-white text-sm font-bold">☉</span>
             </div>
-            <span className="text-xl font-semibold text-gray-900 dark:text-white">Torchlight</span>
+            <span className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Torchlight</span>
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.path}
@@ -51,8 +54,9 @@ export default function Navigation() {
             ))}
           </div>
           
-          {/* User Menu */}
+          {/* Language Switcher & User Menu */}
           <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
@@ -74,7 +78,7 @@ export default function Navigation() {
                   className="text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
                 >
                   <LogOut className="mr-2 h-4 w-4" />
-                  <span>Sign out</span>
+                  <span>{t('nav.signOut')}</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
