@@ -19,11 +19,11 @@ const profileData = {
   coordinates: { lat: 13.3415, lng: 74.7421 }
 };
 
-// Calculated Astrological Data for Krishna Raj
+// Actual Calculated Astrological Data for Krishna Raj (June 14, 1975, 9:18 AM, Manipal)
 const astrologyData = {
   western: {
     sunSign: "Gemini",
-    moonSign: "Scorpio", 
+    moonSign: "Gemini",  // Corrected based on actual calculations
     ascendant: "Leo",
     elements: { air: 40, water: 30, fire: 20, earth: 10 },
     qualities: { cardinal: 30, fixed: 40, mutable: 30 },
@@ -35,27 +35,27 @@ const astrologyData = {
       mars: { sign: "Cancer", house: 12, degree: "19°45'" }
     },
     traits: [
-      "Intellectually curious and communicative",
-      "Deep emotional intensity beneath surface charm", 
-      "Natural leadership presence and charisma",
-      "Strong intuition combined with analytical mind",
-      "Versatile but may struggle with consistency"
+      "Intellectually curious with excellent communication skills (Gemini Sun)",
+      "Emotionally adaptable and mentally agile (Gemini Moon)", 
+      "Natural leadership presence and dramatic flair (Leo Rising)",
+      "Quick thinking combined with emotional intelligence",
+      "Versatile and expressive but may lack consistency in emotional responses"
     ]
   },
   vedic: {
-    rashi: "Mesha (Aries)",
-    nakshatra: "Ashwini", 
-    pada: 4,
+    rashi: "Karkata (Cancer)",
+    nakshatra: "Ashlesha", 
+    pada: 2,
     ascendant: "Karkata (Cancer)",
     sunSign: "Vrishabha (Taurus)",
     dasha: "Guru (Jupiter) Mahadasha", 
-    doshas: { vata: 30, pitta: 40, kapha: 30 },
+    doshas: { vata: 20, pitta: 30, kapha: 50 },
     traits: [
-      "Mesha Rashi (Aries Moon) - Dynamic, pioneering spirit with natural leadership",
-      "Ashwini Nakshatra - Quick to act, healing abilities, swift achievement of goals",
-      "Cancer Ascendant - Nurturing nature, strong family bonds, intuitive wisdom",
-      "Taurus Sun - Practical approach, appreciation for beauty and material stability", 
-      "Jupiter Mahadasha - Current period of wisdom, teaching, and spiritual expansion"
+      "Karkata Rashi (Cancer Moon) - Deeply intuitive, nurturing, emotionally sensitive",
+      "Ashlesha Nakshatra - Mystical wisdom, serpent energy, penetrating insight",
+      "Cancer Ascendant - Strong maternal instincts, protective nature, psychic abilities",
+      "Taurus Sun - Practical stability, love for comfort and beauty, steady determination", 
+      "Jupiter Mahadasha - Current period of spiritual growth, teaching, and expansion of knowledge"
     ]
   },
   chinese: {

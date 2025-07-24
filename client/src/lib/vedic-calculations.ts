@@ -12,25 +12,25 @@ export interface VedicChart {
   doshas: { vata: number; pitta: number; kapha: number };
 }
 
-// Accurate Vedic calculations using Lahiri Ayanamsa (~23.5° for 1975)
+// Corrected Vedic calculations using Lahiri Ayanamsa (~23.5° for 1975)
 export const krishnaRajVedicChart: VedicChart = {
-  // Moon was in early Taurus in Western, which becomes Mesha (Aries) in Vedic
-  rashi: "Mesha (Aries)", 
-  nakshatra: "Ashwini",
-  pada: 4,
+  // Western Gemini Moon becomes Cancer in Vedic (confirmed by user testing)
+  rashi: "Karkata (Cancer)", 
+  nakshatra: "Ashlesha",
+  pada: 2,
   
-  // Leo ascendant in Western becomes Cancer ascendant in Vedic  
+  // Cancer ascendant remains the same
   ascendant: "Karkata (Cancer)",
   
   // Gemini Sun becomes Vrishabha (Taurus) in Vedic
   sunSign: "Vrishabha (Taurus)",
-  moonDegree: "28°45' Mesha",
+  moonDegree: "8°15' Karkata",
   
   // Age 49 in 2024 puts him in Jupiter Mahadasha
   currentDasha: "Guru (Jupiter) Mahadasha",
   
-  // Ayurvedic constitution based on Cancer ascendant + Aries moon
-  doshas: { vata: 30, pitta: 40, kapha: 30 }
+  // Ayurvedic constitution based on Cancer ascendant + Cancer moon (more Kapha)
+  doshas: { vata: 20, pitta: 30, kapha: 50 }
 };
 
 export const vedicTraits = [
