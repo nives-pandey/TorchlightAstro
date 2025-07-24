@@ -11,6 +11,8 @@ import Personal from "@/pages/personal";
 import Couples from "@/pages/couples";
 import Spaces from "@/pages/spaces";
 import Chart from "@/pages/chart";
+import Chart3D from "@/pages/3d-chart";
+import Chart3DDemo from "@/pages/3d-demo";
 import Compatibility from "@/pages/compatibility";
 import Daily from "@/pages/daily";
 import AIAssistant from "@/pages/ai-assistant";
@@ -47,6 +49,8 @@ function Router() {
             <Route path="/couples" component={Couples} />
             <Route path="/spaces" component={Spaces} />
             <Route path="/chart" component={Chart} />
+            <Route path="/3d-chart" component={Chart3D} />
+            <Route path="/3d-demo" component={Chart3DDemo} />
             <Route path="/compatibility" component={Compatibility} />
             <Route path="/daily" component={Daily} />
             <Route path="/ai-assistant" component={AIAssistant} />
