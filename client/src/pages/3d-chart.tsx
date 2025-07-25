@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import Chart3DVisualization from '@/components/3d-chart-visualization';
 import ThreeChartEngine from '@/components/three-chart-engine';
+import Advanced3DEngine from '@/components/advanced-3d-engine';
 import { apiRequest } from '@/lib/queryClient';
 import { Loader2, Orbit, Eye, Zap } from 'lucide-react';
 
@@ -43,24 +44,54 @@ export default function Chart3D() {
   const loadDemoChart = async () => {
     setLoading(true);
     try {
-      const response = await apiRequest('GET', '/api/demo-chart');
+      const response = await apiRequest('GET', '/api/demo-chart') as any;
       setChartData(response);
       
       // Convert chart data to 3D visualization format
-      if (response.chart?.westernChart?.planets) {
+      if (response?.chart?.westernChart?.planets) {
         const convertedPlanets = convertPlanetsTo3D(response.chart.westernChart.planets);
         setPlanets(convertedPlanets);
       }
       
-      if (response.chart?.westernChart?.aspects) {
+      if (response?.chart?.westernChart?.aspects) {
         const convertedAspects = convertAspectsTo3D(response.chart.westernChart.aspects);
         setAspects(convertedAspects);
       }
     } catch (error) {
       console.error('Error loading chart:', error);
+      // Load demo data for testing
+      loadDemoData();
     } finally {
       setLoading(false);
     }
+  };
+
+  const loadDemoData = () => {
+    // Demo planets for testing 3D visualization
+    const demoPlanets = [
+      { name: 'Sun', longitude: 83.45, latitude: 0, distance: 1, color: '#FFA500', size: 20, speed: 0.9856 },
+      { name: 'Moon', longitude: 113.24, latitude: 0, distance: 0.38, color: '#C0C0C0', size: 12, speed: 13.1764 },
+      { name: 'Mercury', longitude: 75.12, latitude: 0, distance: 0.39, color: '#8C7853', size: 8, speed: 1.6071 },
+      { name: 'Venus', longitude: 91.33, latitude: 0, distance: 0.72, color: '#FFC649', size: 10, speed: 1.1767 },
+      { name: 'Mars', longitude: 156.78, latitude: 0, distance: 1.52, color: '#CD5C5C', size: 9, speed: 0.5240 },
+      { name: 'Jupiter', longitude: 67.89, latitude: 0, distance: 5.20, color: '#D2691E', size: 18, speed: 0.0831 },
+      { name: 'Saturn', longitude: 223.45, latitude: 0, distance: 9.54, color: '#FAD5A5', size: 16, speed: 0.0334 },
+      { name: 'Uranus', longitude: 345.67, latitude: 0, distance: 19.19, color: '#4FD0E7', size: 14, speed: 0.0117 },
+      { name: 'Neptune', longitude: 278.90, latitude: 0, distance: 30.07, color: '#4169E1', size: 14, speed: 0.0060 },
+      { name: 'Pluto', longitude: 201.23, latitude: 0, distance: 39.48, color: '#8B4513', size: 6, speed: 0.0040 }
+    ];
+
+    const demoAspects = [
+      { planet1: 'Sun', planet2: 'Mercury', angle: 8, type: 'conjunction', orb: 8, strength: 0.9, color: '#FF0000' },
+      { planet1: 'Moon', planet2: 'Mars', angle: 43, type: 'semisextile', orb: 13, strength: 0.4, color: '#DDA0DD' },
+      { planet1: 'Venus', planet2: 'Jupiter', angle: 23, type: 'semisextile', orb: 7, strength: 0.6, color: '#DDA0DD' },
+      { planet1: 'Mars', planet2: 'Saturn', angle: 67, type: 'sextile', orb: 7, strength: 0.8, color: '#00CED1' },
+      { planet1: 'Jupiter', planet2: 'Uranus', angle: 82, type: 'square', orb: 8, strength: 0.7, color: '#FF1493' },
+      { planet1: 'Saturn', planet2: 'Neptune', angle: 55, type: 'sextile', orb: 5, strength: 0.9, color: '#00CED1' }
+    ];
+
+    setPlanets(demoPlanets);
+    setAspects(demoAspects);
   };
 
   const convertPlanetsTo3D = (chartPlanets: any[]): Planet[] => {
@@ -308,12 +339,32 @@ export default function Chart3D() {
         </Card>
 
         {/* 3D Visualization Tabs */}
-        <Tabs defaultValue="canvas" className="w-full mb-6">
-          <TabsList className="grid w-full grid-cols-2 bg-slate-800">
+        <Tabs defaultValue="advanced" className="w-full mb-6">
+          <TabsList className="grid w-full grid-cols-3 bg-slate-800">
+            <TabsTrigger value="advanced">Advanced 3D</TabsTrigger>
             <TabsTrigger value="canvas">Canvas 2D</TabsTrigger>
-            <TabsTrigger value="threejs">Three.js 3D</TabsTrigger>
+            <TabsTrigger value="threejs">Three.js Engine</TabsTrigger>
           </TabsList>
           
+          <TabsContent value="advanced" className="mt-6">
+            <Card className="cosmic-card">
+              <CardHeader>
+                <CardTitle className="text-orange-400 flex items-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  Advanced Planetary Aspect Visualization
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-4 relative">
+                <Advanced3DEngine
+                  planets={planets}
+                  aspects={aspects}
+                  width={800}
+                  height={600}
+                />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           <TabsContent value="canvas" className="mt-6">
             <Card className="cosmic-card">
               <CardHeader>

@@ -20,7 +20,7 @@ export default function Navigation() {
     { path: "/personal", label: t('nav.personal') },
     { path: "/couples", label: t('nav.couples') },
     { path: "/spaces", label: t('nav.spaces') },
-    { path: "/3d-demo", label: "3D Cosmos" },
+    { path: "/3d-chart", label: "🌌 3D Cosmos" },
     { path: "/ai-assistant", label: t('nav.ai') },
     { path: "/features", label: "Features" },
     { path: "/pricing", label: "Pricing" },
