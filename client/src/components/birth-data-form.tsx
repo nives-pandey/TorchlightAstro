@@ -8,9 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Calendar, MapPin, Clock, Settings } from "lucide-react";
+import { Calendar, MapPin, Clock, Settings, User, CheckCircle2, AlertTriangle } from "lucide-react";
 
 const birthDataSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  genderAtBirth: z.enum(["Male", "Female"], {
+    required_error: "Please select your gender at birth"
+  }),
   birthDate: z.string().min(1, "Birth date is required"),
   birthTime: z.string().min(1, "Birth time is required"),
   city: z.string().min(1, "City is required"),
@@ -22,6 +27,9 @@ const birthDataSchema = z.object({
     chinese: z.boolean().default(true),
     humanDesign: z.boolean().default(true),
     numerology: z.boolean().default(true),
+  }),
+  confirmed: z.boolean().refine(val => val === true, {
+    message: "Please confirm that all information is accurate"
   })
 });
 
@@ -34,23 +42,36 @@ interface BirthDataFormProps {
 }
 
 export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: BirthDataFormProps) {
+  const [step, setStep] = useState<'input' | 'confirm'>('input');
+  
   const form = useForm<BirthDataFormData>({
     resolver: zodResolver(birthDataSchema),
     defaultValues: {
-      birthDate: "1975-06-14",
-      birthTime: "09:18",
-      city: "Manipal",
-      country: "India",
-      timezone: "Asia/Kolkata",
+      firstName: "",
+      lastName: "",
+      genderAtBirth: undefined,
+      birthDate: "",
+      birthTime: "",
+      city: "",
+      country: "",
+      timezone: "",
       systems: {
         western: true,
         vedic: true,
         chinese: true,
         humanDesign: true,
         numerology: true,
-      }
+      },
+      confirmed: false
     }
   });
+
+  const watchedValues = form.watch();
+
+  const validateRequiredFields = () => {
+    const { firstName, lastName, genderAtBirth, birthDate, birthTime, city, country, timezone } = watchedValues;
+    return firstName && lastName && genderAtBirth && birthDate && birthTime && city && country && timezone;
+  };
 
   return (
     <Card className="cosmic-card cosmic-glow max-w-2xl mx-auto">
@@ -70,8 +91,84 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
             window.location.href = '/analysis';
             onClose?.();
           })} className="space-y-6">
-            {/* Birth Date and Time */}
-            <div className="grid md:grid-cols-2 gap-4">
+
+            {step === 'input' && (
+              <>
+                {/* Personal Information */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-purple-300 flex items-center">
+                    <User className="mr-2 h-5 w-5" />
+                    Personal Information
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white">First Name</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Enter your first name"
+                              className="cosmic-input"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white">Last Name</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Enter your last name"
+                              className="cosmic-input"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="genderAtBirth"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-white">Gender at Birth</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="cosmic-input">
+                              <SelectValue placeholder="Select your gender at birth" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Male">Male</SelectItem>
+                            <SelectItem value="Female">Female</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                {/* Birth Date and Time */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-purple-300 flex items-center">
+                    <Calendar className="mr-2 h-5 w-5" />
+                    Birth Date & Time
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="birthDate"
@@ -113,16 +210,23 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                   </FormItem>
                 )}
               />
-            </div>
+                  </div>
+                </div>
 
-            {/* Location */}
-            <div className="grid md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="city"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-white flex items-center">
+                {/* Location */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-purple-300 flex items-center">
+                    <MapPin className="mr-2 h-5 w-5" />
+                    Birth Location
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <FormField
+                      control={form.control}
+                      name="city"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white flex items-center">
                       <MapPin className="mr-2 h-4 w-4" />
                       City
                     </FormLabel>
@@ -285,6 +389,10 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                 />
               </div>
             </div>
+
+                </div>
+              </>
+            )}
 
             <Button 
               type="submit" 

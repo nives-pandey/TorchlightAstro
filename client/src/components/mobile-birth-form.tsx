@@ -58,7 +58,8 @@ const FORM_STEPS = [
   { id: 'personal', title: 'About You', icon: User, description: 'Basic information' },
   { id: 'birth', title: 'Birth Details', icon: Calendar, description: 'When you were born' },
   { id: 'location', title: 'Birth Location', icon: MapPin, description: 'Where you were born' },
-  { id: 'systems', title: 'Astrology Systems', icon: Sparkles, description: 'Choose your analysis' }
+  { id: 'systems', title: 'Astrology Systems', icon: Sparkles, description: 'Choose your analysis' },
+  { id: 'confirm', title: 'Confirm', icon: CheckCircle, description: 'Review & confirm all details' }
 ];
 
 export default function MobileBirthForm({ onComplete, loading }: MobileBirthFormProps) {
@@ -99,7 +100,8 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
       0: () => watchedValues.firstName && watchedValues.lastName && watchedValues.email && watchedValues.genderAtBirth,
       1: () => watchedValues.birthDate && watchedValues.birthTime,
       2: () => watchedValues.birthCity && watchedValues.birthCountry && watchedValues.timezone,
-      3: () => true // Systems step is always valid
+      3: () => Object.values(watchedValues.systems).some(Boolean), // At least one system selected
+      4: () => true // Confirmation step - allow user to review
     };
     
     return stepValidations[currentStep as keyof typeof stepValidations]?.() || false;
@@ -123,6 +125,12 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
   };
 
   const onSubmit = (data: BirthFormData) => {
+    // Add final validation and confirmation
+    if (!data.firstName || !data.lastName || !data.genderAtBirth || !data.birthDate || 
+        !data.birthTime || !data.birthCity || !data.birthCountry || !data.timezone) {
+      console.error('Missing required birth data fields');
+      return;
+    }
     onComplete(data);
   };
 
