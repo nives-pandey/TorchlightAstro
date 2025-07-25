@@ -77,6 +77,68 @@ The application performs authentic astrological calculations rather than using p
 - Aspects and patterns identified through geometric analysis
 - Multiple astrological traditions integrated for comprehensive readings
 
+## Output Formats & Pricing Strategy
+
+### **Current Output Delivery System**
+1. **Screen Viewing (Free)**: Interactive chat interface with 8-section structured output
+   - Main conversational response with educational explanations
+   - Color-coded visual sections: Insights (yellow), Recommendations (purple), Timing (blue), Personality Highlights (pink), Cosmic Weather (cyan), Action Items (green), Follow-up Questions (orange)
+   - Real-time processing animations and conversation continuations
+   - Unlimited viewing for authenticated users
+
+2. **PDF Reports (Premium)**: Professional downloadable reports with MyTorchlight branding
+   - Complete system comparisons with accuracy ratings
+   - Cross-system synthesis and compatibility analysis
+   - MyTorchlight logo and professional formatting
+   - Downloadable and printable versions
+
+3. **Email Delivery (Premium)**: Automated report delivery
+   - HTML and PDF attachments
+   - Custom subject lines and scheduled delivery
+   - Professional email formatting
+
+4. **White-Label Reports (Professional)**: Custom branding for practitioners
+   - User's logo and color schemes
+   - Personalized headers/footers
+   - Client-facing professional format
+
+### **Pricing Tiers Strategy**
+1. **Cosmic Explorer (Free Forever)**
+   - Complete birth chart analysis across all 7 systems
+   - AI chat assistant with daily conversation limits (5/day)
+   - Screen viewing only
+   - Basic compatibility with 1 partner
+   - Educational content and Swiss Ephemeris precision
+
+2. **Cosmic Navigator ($9/month, $79/year)**
+   - Everything in Free tier
+   - Unlimited AI conversations
+   - PDF reports (10/month) with MyTorchlight branding
+   - Email delivery included
+   - Advanced compatibility analysis (unlimited partners)
+   - System comparison charts and accuracy ratings
+
+3. **Cosmic Professional ($29/month, $299/year)**
+   - Everything in Navigator tier
+   - Unlimited professional PDF reports
+   - White-label options for practitioners
+   - API access and client management tools
+   - Custom branding and consultation features
+   - Advanced multi-person compatibility analysis
+
+### **Cross-System Analysis Features**
+- **System Comparison Reports**: Accuracy ratings for Western (92%), Vedic (96%), Chinese (89%), Human Design (85%), Numerology (78%)
+- **Multi-Partner Astro-Matching**: Compatibility analysis across all systems with percentage scoring
+- **Group Compatibility**: Family, business, and friendship dynamics
+- **Comparative Analysis**: Side-by-side system strengths, career guidance, health insights, and timing recommendations
+
+### **Competitive Advantage**
+- **Zero-Budget LLM Excellence**: Rivals $25,000+ in specialized API subscriptions
+- **Cross-System Synthesis**: Unique multi-tradition analysis impossible with single-system APIs
+- **Educational Depth**: Explains the "why" behind all recommendations
+- **Unlimited Calculations**: No per-use costs or rate limits
+- **Swiss Ephemeris Precision**: Professional astronomical accuracy
+
 ## Recent Updates
 
 ### Comprehensive Sectional Organization (July 24, 2025)

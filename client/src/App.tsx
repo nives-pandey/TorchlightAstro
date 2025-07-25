@@ -21,6 +21,7 @@ import AboutAstrology from "@/pages/about-astrology";
 import AstrologyGuide from "@/pages/astrology-guide";
 import ComprehensiveAnalysis from "@/pages/comprehensive-analysis";
 import ComprehensiveTest from "@/pages/comprehensive-test";
+import Pricing from "@/pages/pricing";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -60,6 +61,7 @@ function Router() {
             <Route path="/about-astrology" component={AboutAstrology} />
             <Route path="/analysis" component={ComprehensiveAnalysis} />
             <Route path="/test" component={ComprehensiveTest} />
+            <Route path="/pricing" component={Pricing} />
           </>
         )}
         <Route component={NotFound} />

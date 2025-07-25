@@ -22,6 +22,7 @@ export default function Navigation() {
     { path: "/spaces", label: t('nav.spaces') },
     { path: "/3d-demo", label: "3D Cosmos" },
     { path: "/ai-assistant", label: t('nav.ai') },
+    { path: "/pricing", label: "Pricing" },
     { path: "/about-astrology", label: t('nav.about') },
     { path: "/astrology-guide", label: "Systems Guide" },
   ];
