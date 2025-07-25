@@ -14,6 +14,7 @@ import Chart from "@/pages/chart";
 import Chart3D from "@/pages/3d-chart";
 import Chart3DDemo from "@/pages/3d-demo";
 import BirthFormPage from "@/pages/birth-form";
+import EnhancedDemo from "@/pages/enhanced-demo";
 import Compatibility from "@/pages/compatibility";
 import Daily from "@/pages/daily";
 import AIAssistant from "@/pages/ai-assistant";
@@ -66,6 +67,7 @@ function Router() {
             <Route path="/pricing" component={Pricing} />
             <Route path="/features" component={FeatureDashboard} />
             <Route path="/birth-form" component={BirthFormPage} />
+            <Route path="/enhanced-demo" component={EnhancedDemo} />
           </>
         )}
         <Route component={NotFound} />

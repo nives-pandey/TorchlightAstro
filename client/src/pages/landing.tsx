@@ -44,19 +44,19 @@ export default function Landing() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <Badge variant="outline" className="border-yellow-400 text-yellow-400 px-4 py-2">
+            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
               {t('badges.western')}
             </Badge>
-            <Badge variant="outline" className="border-purple-400 text-purple-400 px-4 py-2">
+            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
               {t('badges.vedic')}
             </Badge>
-            <Badge variant="outline" className="border-pink-400 text-pink-400 px-4 py-2">
+            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
               {t('badges.chinese')}
             </Badge>
-            <Badge variant="outline" className="border-blue-400 text-blue-400 px-4 py-2">
+            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
               {t('badges.humanDesign')}
             </Badge>
-            <Badge variant="outline" className="border-green-400 text-green-400 px-4 py-2">
+            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
               {t('badges.numerology')}
             </Badge>
           </div>
