@@ -21,23 +21,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register report generation routes
   registerReportRoutes(app);
 
-  // Auth routes
-  app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
+  // Auth routes - demo mode without authentication
+  app.get('/api/auth/user', async (req: any, res) => {
     try {
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-      res.json(user);
+      // Demo user for testing
+      const demoUser = {
+        id: 'demo-user',
+        email: 'demo@torchlight.app',
+        firstName: 'Demo',
+        lastName: 'User',
+        profileImageUrl: null,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
+      res.json(demoUser);
     } catch (error) {
-      console.error("Error fetching user:", error);
+      console.error("Error fetching demo user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
     }
   });
 
-  // AI Chat endpoint
-  app.post("/api/ai-chat", isAuthenticated, async (req: any, res) => {
+  // AI Chat endpoint - demo mode
+  app.post("/api/ai-chat", async (req: any, res) => {
     try {
       const { question, conversationHistory = [] } = req.body;
-      const userId = req.user.claims.sub;
+      const userId = 'demo-user';
 
       if (!question || typeof question !== 'string') {
         return res.status(400).json({ message: "Question is required" });
@@ -116,10 +124,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Birth data endpoints
-  app.get("/api/birth-data", isAuthenticated, async (req: any, res) => {
+  // Demo chart endpoint for testing
+  app.get("/api/demo-chart", async (req: any, res) => {
     try {
-      const userId = req.user.claims.sub;
+      const demoChart = {
+        chart: {
+          westernChart: {
+            planets: [
+              { name: 'Sun', degree: 83.45, sign: 'Gemini' },
+              { name: 'Moon', degree: 113.24, sign: 'Leo' },
+              { name: 'Mercury', degree: 75.12, sign: 'Gemini' },
+              { name: 'Venus', degree: 91.33, sign: 'Cancer' },
+              { name: 'Mars', degree: 156.78, sign: 'Virgo' },
+              { name: 'Jupiter', degree: 67.89, sign: 'Gemini' },
+              { name: 'Saturn', degree: 223.45, sign: 'Scorpio' },
+              { name: 'Uranus', degree: 345.67, sign: 'Pisces' },
+              { name: 'Neptune', degree: 278.90, sign: 'Capricorn' },
+              { name: 'Pluto', degree: 201.23, sign: 'Libra' }
+            ],
+            aspects: [
+              { planet1: 'Sun', planet2: 'Mercury', aspect: 'conjunction', orb: 8, exactness: 0.9 },
+              { planet1: 'Moon', planet2: 'Mars', aspect: 'semisextile', orb: 13, exactness: 0.4 },
+              { planet1: 'Venus', planet2: 'Jupiter', aspect: 'semisextile', orb: 7, exactness: 0.6 },
+              { planet1: 'Mars', planet2: 'Saturn', aspect: 'sextile', orb: 7, exactness: 0.8 },
+              { planet1: 'Jupiter', planet2: 'Uranus', aspect: 'square', orb: 8, exactness: 0.7 },
+              { planet1: 'Saturn', planet2: 'Neptune', aspect: 'sextile', orb: 5, exactness: 0.9 }
+            ]
+          }
+        }
+      };
+      res.json(demoChart);
+    } catch (error) {
+      console.error("Error generating demo chart:", error);
+      res.status(500).json({ error: "Failed to generate demo chart" });
+    }
+  });
+
+  // Birth data endpoints - demo mode
+  app.get("/api/birth-data", async (req: any, res) => {
+    try {
+      const userId = 'demo-user';
       const birthData = await storage.getBirthDataByUserId(userId);
       res.json(birthData);
     } catch (error) {
@@ -128,9 +172,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post("/api/birth-data", isAuthenticated, async (req: any, res) => {
+  app.post("/api/birth-data", async (req: any, res) => {
     try {
-      const userId = req.user.claims.sub;
+      const userId = 'demo-user';
       const birthDataInput = insertBirthDataSchema.parse({
         ...req.body,
         userId
@@ -143,8 +187,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Chart endpoints
-  app.get("/api/charts/birth-data/:birthDataId", isAuthenticated, async (req, res) => {
+  // Chart endpoints - demo mode
+  app.get("/api/charts/birth-data/:birthDataId", async (req, res) => {
     try {
       const birthDataId = parseInt(req.params.birthDataId);
       const charts = await storage.getChartsByBirthDataId(birthDataId);

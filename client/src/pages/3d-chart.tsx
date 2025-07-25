@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import Chart3DVisualization from '@/components/3d-chart-visualization';
 import ThreeChartEngine from '@/components/three-chart-engine';
 import Advanced3DEngine from '@/components/advanced-3d-engine';
+import AdvancedPlanetaryAspects from '@/components/advanced-planetary-aspects';
 import { apiRequest } from '@/lib/queryClient';
 import { Loader2, Orbit, Eye, Zap } from 'lucide-react';
 
@@ -339,13 +340,23 @@ export default function Chart3D() {
         </Card>
 
         {/* 3D Visualization Tabs */}
-        <Tabs defaultValue="advanced" className="w-full mb-6">
-          <TabsList className="grid w-full grid-cols-3 bg-slate-800">
+        <Tabs defaultValue="planetary-aspects" className="w-full mb-6">
+          <TabsList className="grid w-full grid-cols-4 bg-slate-800">
+            <TabsTrigger value="planetary-aspects">Planetary Aspects</TabsTrigger>
             <TabsTrigger value="advanced">Advanced 3D</TabsTrigger>
             <TabsTrigger value="canvas">Canvas 2D</TabsTrigger>
             <TabsTrigger value="threejs">Three.js Engine</TabsTrigger>
           </TabsList>
           
+          <TabsContent value="planetary-aspects" className="mt-6">
+            <AdvancedPlanetaryAspects
+              planets={planets}
+              aspects={aspects}
+              width={800}
+              height={600}
+            />
+          </TabsContent>
+
           <TabsContent value="advanced" className="mt-6">
             <Card className="cosmic-card">
               <CardHeader>
