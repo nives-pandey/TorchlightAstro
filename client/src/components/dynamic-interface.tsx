@@ -103,7 +103,7 @@ export default function DynamicInterface() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {/* Today's Cosmic Weather */}
           <Card 
-            className="transition-all duration-500 hover:scale-105 cursor-pointer border-0 shadow-2xl"
+            className="cosmic-card time-card transition-all duration-500 cursor-pointer border-0 shadow-2xl"
             style={{ 
               backgroundColor: theme.card, 
               borderLeft: `4px solid ${theme.primary}`
@@ -143,7 +143,7 @@ export default function DynamicInterface() {
 
           {/* Energy & Recommendations */}
           <Card 
-            className="transition-all duration-500 hover:scale-105 cursor-pointer border-0 shadow-2xl"
+            className="cosmic-card time-card transition-all duration-500 cursor-pointer border-0 shadow-2xl"
             style={{ 
               backgroundColor: theme.card,
               borderLeft: `4px solid ${theme.secondary}`
@@ -181,7 +181,7 @@ export default function DynamicInterface() {
 
           {/* Lucky Elements */}
           <Card 
-            className="transition-all duration-500 hover:scale-105 cursor-pointer border-0 shadow-2xl"
+            className="cosmic-card time-card transition-all duration-500 cursor-pointer border-0 shadow-2xl"
             style={{ 
               backgroundColor: theme.card,
               borderLeft: `4px solid ${theme.accent}`
@@ -283,14 +283,17 @@ export default function DynamicInterface() {
           </Card>
         </div>
 
-        {/* Personalization Controls */}
+        {/* Interactive Personalization Controls */}
         <Card 
-          className="transition-all duration-500 border-0 shadow-2xl"
-          style={{ backgroundColor: theme.card }}
+          className="transition-all duration-500 border-0 shadow-2xl hover:shadow-3xl"
+          style={{ 
+            backgroundColor: theme.card,
+            borderLeft: `4px solid ${theme.primary}`
+          }}
         >
           <CardHeader>
             <CardTitle className="flex items-center gap-2" style={{ color: theme.text }}>
-              <Palette className="h-5 w-5" style={{ color: theme.primary }} />
+              <Palette className="h-5 w-5 animate-pulse" style={{ color: theme.primary }} />
               Personalize Your Experience
             </CardTitle>
             <CardDescription style={{ color: theme.secondary }}>
@@ -298,9 +301,9 @@ export default function DynamicInterface() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Button
-                variant="outline"
+                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2"
                 onClick={() => {
                   CookieManager.savePreferences({ personalizedGreeting: !userPrefs.personalizedGreeting });
                   setUserPrefs(CookieManager.getPreferences());
@@ -308,48 +311,142 @@ export default function DynamicInterface() {
                 }}
                 style={{ 
                   borderColor: theme.primary,
-                  color: userPrefs.personalizedGreeting ? theme.text : theme.primary,
-                  backgroundColor: userPrefs.personalizedGreeting ? theme.primary + '20' : 'transparent'
+                  color: userPrefs.personalizedGreeting ? '#ffffff' : theme.primary,
+                  backgroundColor: userPrefs.personalizedGreeting ? theme.primary : 'transparent',
+                  boxShadow: userPrefs.personalizedGreeting ? `0 4px 15px ${theme.primary}40` : 'none'
                 }}
               >
-                {userPrefs.personalizedGreeting ? '✓' : '○'} Personal Greetings
+                <span className="mr-2 text-lg">
+                  {userPrefs.personalizedGreeting ? '✓' : '○'}
+                </span>
+                Personal Greetings
               </Button>
               
               <Button
-                variant="outline"
+                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2"
                 onClick={() => {
                   const newColors = dailyData.colors;
                   CookieManager.setFavoriteColors(newColors);
                   setUserPrefs(CookieManager.getPreferences());
                   handleInteraction('set_daily_colors', { colors: newColors });
                 }}
-                style={{ borderColor: theme.secondary, color: theme.secondary }}
+                style={{ 
+                  borderColor: theme.secondary,
+                  color: theme.secondary,
+                  backgroundColor: 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = theme.secondary;
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.boxShadow = `0 4px 15px ${theme.secondary}40`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = theme.secondary;
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
+                <Palette className="mr-2 h-4 w-4" />
                 Use Today's Colors
               </Button>
               
               <Button
-                variant="outline"
+                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2"
                 onClick={() => {
                   CookieManager.addPreferredSystem(`${timeOfDay}_system`);
                   handleInteraction('add_time_based_system', { time: timeOfDay });
                 }}
-                style={{ borderColor: theme.accent, color: theme.accent }}
+                style={{ 
+                  borderColor: theme.accent,
+                  color: theme.accent,
+                  backgroundColor: 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = theme.accent;
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.boxShadow = `0 4px 15px ${theme.accent}40`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = theme.accent;
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                Add {timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1)} System
+                <Star className="mr-2 h-4 w-4" />
+                Add {timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1)} Mode
               </Button>
               
               <Button
-                variant="outline"
+                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2 group"
                 onClick={() => {
                   setDailyData(getDailyParticulars());
                   setTheme(getTimeBasedTheme());
                   handleInteraction('refresh_cosmic_data');
                 }}
-                style={{ borderColor: theme.primary, color: theme.primary }}
+                style={{ 
+                  borderColor: theme.primary,
+                  color: theme.primary,
+                  backgroundColor: 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = theme.primary;
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.boxShadow = `0 4px 15px ${theme.primary}40`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = theme.primary;
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                🔄 Refresh Cosmic Data
+                <Sparkles className="mr-2 h-4 w-4 group-hover:animate-spin" />
+                Refresh Cosmic Data
               </Button>
+            </div>
+            
+            {/* Quick Action Buttons */}
+            <div className="mt-6 pt-6 border-t" style={{ borderColor: theme.primary + '30' }}>
+              <h4 className="text-sm font-semibold mb-3" style={{ color: theme.text }}>
+                Quick Actions
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  className="rounded-full px-4 py-1 text-xs font-medium transition-all duration-200 hover:scale-105"
+                  onClick={() => window.location.href = '/birth-form'}
+                  style={{ 
+                    backgroundColor: theme.primary + '20',
+                    color: theme.primary,
+                    border: `1px solid ${theme.primary}50`
+                  }}
+                >
+                  🔮 Get Reading
+                </Button>
+                <Button
+                  size="sm"
+                  className="rounded-full px-4 py-1 text-xs font-medium transition-all duration-200 hover:scale-105"
+                  onClick={() => window.location.href = '/compatibility'}
+                  style={{ 
+                    backgroundColor: theme.secondary + '20',
+                    color: theme.secondary,
+                    border: `1px solid ${theme.secondary}50`
+                  }}
+                >
+                  💕 Love Match
+                </Button>
+                <Button
+                  size="sm"
+                  className="rounded-full px-4 py-1 text-xs font-medium transition-all duration-200 hover:scale-105"
+                  onClick={() => window.location.href = '/daily'}
+                  style={{ 
+                    backgroundColor: theme.accent + '20',
+                    color: theme.accent,
+                    border: `1px solid ${theme.accent}50`
+                  }}
+                >
+                  📅 Daily Guide
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
