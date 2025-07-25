@@ -307,6 +307,103 @@
     }
   }
 
+  /* Dynamic Theme Support */
+  .dynamic-theme {
+    transition: background 1s ease-in-out, color 0.5s ease-in-out;
+  }
+
+  /* Time-based gradient backgrounds */
+  .dawn-bg {
+    background: linear-gradient(135deg, hsl(15, 80%, 25%) 0%, hsl(35, 90%, 35%) 50%, hsl(45, 85%, 65%) 100%);
+  }
+
+  .morning-bg {
+    background: linear-gradient(135deg, hsl(45, 100%, 50%) 0%, hsl(60, 100%, 60%) 50%, hsl(200, 80%, 70%) 100%);
+  }
+
+  .afternoon-bg {
+    background: linear-gradient(135deg, hsl(200, 100%, 70%) 0%, hsl(220, 80%, 60%) 50%, hsl(240, 70%, 50%) 100%);
+  }
+
+  .evening-bg {
+    background: linear-gradient(135deg, hsl(280, 70%, 30%) 0%, hsl(320, 80%, 40%) 50%, hsl(350, 90%, 50%) 100%);
+  }
+
+  .night-bg {
+    background: linear-gradient(135deg, hsl(240, 60%, 8%) 0%, hsl(260, 80%, 15%) 50%, hsl(280, 70%, 25%) 100%);
+  }
+
+  .midnight-bg {
+    background: linear-gradient(135deg, hsl(240, 100%, 5%) 0%, hsl(270, 80%, 10%) 50%, hsl(300, 90%, 8%) 100%);
+  }
+
+  /* Time-adaptive cards */
+  .time-card {
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .time-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Animated background particles */
+  .cosmic-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .cosmic-particles::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    50% { transform: translateY(-20px) rotate(180deg); opacity: 0.4; }
+  }
+
+  /* Time-based text effects */
+  .dawn-text { color: hsl(35, 90%, 70%); }
+  .morning-text { color: hsl(45, 100%, 60%); }
+  .afternoon-text { color: hsl(220, 80%, 70%); }
+  .evening-text { color: hsl(320, 80%, 60%); }
+  .night-text { color: hsl(260, 80%, 70%); }
+  .midnight-text { color: hsl(270, 80%, 50%); }
+
+  /* Cookie preference indicators */
+  .preference-badge {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preference-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      left: 100%;
+    }
+  }
+
   .clean-button {
     background: linear-gradient(135deg, var(--celestial-gold) 0%, hsl(51, 100%, 60%) 100%);
     color: var(--space-black);

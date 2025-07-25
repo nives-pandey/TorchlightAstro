@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/useAuth";
 import Navigation from "@/components/navigation";
+import TimeAdaptiveNavigation from "@/components/time-adaptive-navigation";
 import Landing from "@/pages/landing";
 import Home from "@/pages/home";
 import Personal from "@/pages/personal";
@@ -15,6 +16,7 @@ import Chart3D from "@/pages/3d-chart";
 import Chart3DDemo from "@/pages/3d-demo";
 import BirthFormPage from "@/pages/birth-form";
 import EnhancedDemo from "@/pages/enhanced-demo";
+import CosmicTimeInterface from "@/pages/cosmic-time-interface";
 import Compatibility from "@/pages/compatibility";
 import Daily from "@/pages/daily";
 import AIAssistant from "@/pages/ai-assistant";
@@ -68,6 +70,7 @@ function Router() {
             <Route path="/features" component={FeatureDashboard} />
             <Route path="/birth-form" component={BirthFormPage} />
             <Route path="/enhanced-demo" component={EnhancedDemo} />
+            <Route path="/cosmic-time" component={CosmicTimeInterface} />
           </>
         )}
         <Route component={NotFound} />

@@ -1,0 +1,225 @@
+// Dynamic time-based interface system
+export interface TimeBasedTheme {
+  background: string;
+  primary: string;
+  secondary: string;
+  accent: string;
+  text: string;
+  card: string;
+  greeting: string;
+  cosmicElement: string;
+  energyLevel: 'low' | 'medium' | 'high';
+}
+
+export interface DailyParticulars {
+  date: string;
+  moonPhase: string;
+  moonSign: string;
+  sunSign: string;
+  dominantElement: string;
+  luckyNumbers: number[];
+  colors: string[];
+  recommendation: string;
+  warning: string;
+  bestTime: string;
+  energy: string;
+}
+
+export function getTimeOfDay(): 'dawn' | 'morning' | 'afternoon' | 'evening' | 'night' | 'midnight' {
+  const hour = new Date().getHours();
+  
+  if (hour >= 5 && hour < 7) return 'dawn';
+  if (hour >= 7 && hour < 12) return 'morning';
+  if (hour >= 12 && hour < 17) return 'afternoon';
+  if (hour >= 17 && hour < 21) return 'evening';
+  if (hour >= 21 && hour < 24) return 'night';
+  return 'midnight';
+}
+
+export function getTimeBasedTheme(): TimeBasedTheme {
+  const timeOfDay = getTimeOfDay();
+  
+  const themes: Record<string, TimeBasedTheme> = {
+    dawn: {
+      background: 'linear-gradient(135deg, hsl(15, 80%, 25%) 0%, hsl(35, 90%, 35%) 50%, hsl(45, 85%, 65%) 100%)',
+      primary: 'hsl(35, 90%, 60%)',
+      secondary: 'hsl(15, 70%, 50%)',
+      accent: 'hsl(45, 85%, 70%)',
+      text: 'hsl(30, 20%, 90%)',
+      card: 'rgba(255, 140, 0, 0.1)',
+      greeting: 'Welcome to the Dawn',
+      cosmicElement: '🌅',
+      energyLevel: 'medium'
+    },
+    morning: {
+      background: 'linear-gradient(135deg, hsl(45, 100%, 50%) 0%, hsl(60, 100%, 60%) 50%, hsl(200, 80%, 70%) 100%)',
+      primary: 'hsl(45, 100%, 55%)',
+      secondary: 'hsl(200, 80%, 60%)',
+      accent: 'hsl(60, 100%, 65%)',
+      text: 'hsl(220, 30%, 20%)',
+      card: 'rgba(255, 223, 0, 0.15)',
+      greeting: 'Good Morning, Cosmic Soul',
+      cosmicElement: '☀️',
+      energyLevel: 'high'
+    },
+    afternoon: {
+      background: 'linear-gradient(135deg, hsl(200, 100%, 70%) 0%, hsl(220, 80%, 60%) 50%, hsl(240, 70%, 50%) 100%)',
+      primary: 'hsl(220, 80%, 65%)',
+      secondary: 'hsl(200, 90%, 70%)',
+      accent: 'hsl(240, 70%, 60%)',
+      text: 'hsl(0, 0%, 95%)',
+      card: 'rgba(0, 123, 255, 0.15)',
+      greeting: 'Afternoon Clarity',
+      cosmicElement: '🌞',
+      energyLevel: 'high'
+    },
+    evening: {
+      background: 'linear-gradient(135deg, hsl(280, 70%, 30%) 0%, hsl(320, 80%, 40%) 50%, hsl(350, 90%, 50%) 100%)',
+      primary: 'hsl(320, 80%, 50%)',
+      secondary: 'hsl(280, 70%, 40%)',
+      accent: 'hsl(350, 90%, 60%)',
+      text: 'hsl(320, 20%, 90%)',
+      card: 'rgba(255, 20, 147, 0.15)',
+      greeting: 'Evening Reflection',
+      cosmicElement: '🌇',
+      energyLevel: 'medium'
+    },
+    night: {
+      background: 'linear-gradient(135deg, hsl(240, 60%, 8%) 0%, hsl(260, 80%, 15%) 50%, hsl(280, 70%, 25%) 100%)',
+      primary: 'hsl(260, 80%, 60%)',
+      secondary: 'hsl(240, 60%, 40%)',
+      accent: 'hsl(280, 70%, 50%)',
+      text: 'hsl(260, 30%, 90%)',
+      card: 'rgba(138, 43, 226, 0.2)',
+      greeting: 'Mystical Night',
+      cosmicElement: '🌙',
+      energyLevel: 'low'
+    },
+    midnight: {
+      background: 'linear-gradient(135deg, hsl(240, 100%, 5%) 0%, hsl(270, 80%, 10%) 50%, hsl(300, 90%, 8%) 100%)',
+      primary: 'hsl(270, 80%, 40%)',
+      secondary: 'hsl(240, 60%, 20%)',
+      accent: 'hsl(300, 90%, 30%)',
+      text: 'hsl(270, 40%, 85%)',
+      card: 'rgba(75, 0, 130, 0.3)',
+      greeting: 'Deep Midnight Wisdom',
+      cosmicElement: '✨',
+      energyLevel: 'low'
+    }
+  };
+  
+  return themes[timeOfDay];
+}
+
+export function getDailyParticulars(): DailyParticulars {
+  const today = new Date();
+  const dayOfYear = Math.floor((today.getTime() - new Date(today.getFullYear(), 0, 0).getTime()) / 86400000);
+  
+  // Calculate moon phase based on lunar cycle (approximate)
+  const lunarCycle = 29.53;
+  const moonPhaseIndex = Math.floor((dayOfYear % lunarCycle) / (lunarCycle / 8));
+  const moonPhases = ['New Moon', 'Waxing Crescent', 'First Quarter', 'Waxing Gibbous', 
+                     'Full Moon', 'Waning Gibbous', 'Last Quarter', 'Waning Crescent'];
+  
+  // Calculate moon sign (simplified)
+  const moonSigns = ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 
+                    'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+  const moonSignIndex = Math.floor((dayOfYear * 2.33) % 12); // Moon changes sign ~every 2.33 days
+  
+  // Sun sign based on date
+  const sunSignIndex = Math.floor((today.getMonth() * 30 + today.getDate()) / 30.4) % 12;
+  
+  // Elements cycle
+  const elements = ['Fire', 'Earth', 'Air', 'Water'];
+  const elementIndex = dayOfYear % 4;
+  
+  // Generate lucky numbers
+  const luckyNumbers = Array.from({length: 3}, (_, i) => ((dayOfYear + i * 7) % 49) + 1);
+  
+  // Time-based colors
+  const timeOfDay = getTimeOfDay();
+  const colorSets = {
+    dawn: ['#FF6B35', '#F7931E', '#FFD23F'],
+    morning: ['#4ECDC4', '#44A08D', '#093637'],
+    afternoon: ['#667eea', '#764ba2', '#f093fb'],
+    evening: ['#ff6b6b', '#ee5a52', '#ff9068'],
+    night: ['#8360c3', '#2ebf91', '#8360c3'],
+    midnight: ['#2C1810', '#8E3A59', '#B83DBA']
+  };
+  
+  return {
+    date: today.toLocaleDateString('en-US', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    }),
+    moonPhase: moonPhases[moonPhaseIndex],
+    moonSign: moonSigns[moonSignIndex],
+    sunSign: moonSigns[sunSignIndex],
+    dominantElement: elements[elementIndex],
+    luckyNumbers,
+    colors: colorSets[timeOfDay] || colorSets.night,
+    recommendation: getTimeBasedRecommendation(timeOfDay, moonPhases[moonPhaseIndex]),
+    warning: getTimeBasedWarning(timeOfDay),
+    bestTime: getBestTimeForActivities(timeOfDay),
+    energy: getEnergyDescription(timeOfDay, moonPhases[moonPhaseIndex])
+  };
+}
+
+function getTimeBasedRecommendation(timeOfDay: string, moonPhase: string): string {
+  const recommendations = {
+    dawn: `Perfect time for new beginnings and setting intentions. The ${moonPhase} energy supports fresh starts.`,
+    morning: `High energy period ideal for important decisions and creative work. Your cosmic alignment is strongest now.`,
+    afternoon: `Focus on communication and social connections. The universe supports collaborative efforts.`,
+    evening: `Time for introspection and planning. The ${moonPhase} encourages reflection on today's experiences.`,
+    night: `Perfect for meditation and spiritual practices. Your intuition is heightened during this mystical hour.`,
+    midnight: `Deep wisdom and subconscious insights emerge. Trust your dreams and inner guidance tonight.`
+  };
+  
+  return recommendations[timeOfDay as keyof typeof recommendations] || recommendations.night;
+}
+
+function getTimeBasedWarning(timeOfDay: string): string {
+  const warnings = {
+    dawn: 'Avoid making hasty decisions. Let the morning clarity guide you.',
+    morning: 'Don\'t overcommit your energy. Save some for the day ahead.',
+    afternoon: 'Be mindful of communication misunderstandings. Think before speaking.',
+    evening: 'Avoid starting new projects. Focus on completing existing tasks.',
+    night: 'Don\'t make major life decisions. Wait for daylight clarity.',
+    midnight: 'Limit exposure to negative energy. Protect your psychic space.'
+  };
+  
+  return warnings[timeOfDay as keyof typeof warnings] || warnings.night;
+}
+
+function getBestTimeForActivities(timeOfDay: string): string {
+  const activities = {
+    dawn: 'Meditation, goal setting, journaling',
+    morning: 'Important meetings, creative work, exercise',
+    afternoon: 'Social activities, learning, communication',
+    evening: 'Family time, planning, gentle exercise',
+    night: 'Reading, relaxation, spiritual practices',
+    midnight: 'Dream work, deep meditation, rest'
+  };
+  
+  return activities[timeOfDay as keyof typeof activities] || activities.night;
+}
+
+function getEnergyDescription(timeOfDay: string, moonPhase: string): string {
+  const baseEnergy = {
+    dawn: 'Gentle awakening energy with potential for growth',
+    morning: 'High vitality and clear thinking powers',
+    afternoon: 'Balanced energy perfect for action and communication',
+    evening: 'Calming energy shifting toward introspection',
+    night: 'Mystical energy enhancing intuition and dreams',
+    midnight: 'Deep, transformative energy for inner work'
+  };
+  
+  const moonModifier = moonPhase.includes('New') ? 'enhanced by new beginnings' :
+                      moonPhase.includes('Full') ? 'amplified by lunar fullness' :
+                      moonPhase.includes('Waxing') ? 'growing with lunar expansion' :
+                      'releasing with lunar contraction';
+  
+  return `${baseEnergy[timeOfDay as keyof typeof baseEnergy]} ${moonModifier}.`;
+}
