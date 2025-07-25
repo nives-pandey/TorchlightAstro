@@ -116,11 +116,13 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Clear canvas with cosmic background
+    // Clear canvas with feminine cosmic background
     const gradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, Math.max(width, height)/2);
-    gradient.addColorStop(0, '#0a0a2e');
-    gradient.addColorStop(0.5, '#16213e');
-    gradient.addColorStop(1, '#0f3460');
+    gradient.addColorStop(0, '#1a0b2e');
+    gradient.addColorStop(0.3, '#2d1b4e');
+    gradient.addColorStop(0.6, '#44267a');
+    gradient.addColorStop(0.8, '#5b2c87');
+    gradient.addColorStop(1, '#6b2c91');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
@@ -181,60 +183,79 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
   };
 
   const drawStarfield = (ctx: CanvasRenderingContext2D) => {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-    for (let i = 0; i < 100; i++) {
+    // Feminine starfield with soft, twinkling stars
+    const starColors = ['#ffd1dc', '#ffb6c1', '#dda0dd', '#e6e6fa', '#f0e68c', '#ffffff'];
+    
+    for (let i = 0; i < 150; i++) {
       const x = Math.random() * width;
       const y = Math.random() * height;
-      const size = Math.random() * 2;
+      const size = Math.random() * 3 + 0.5;
+      const color = starColors[Math.floor(Math.random() * starColors.length)];
+      
+      // Create twinkling effect
+      const alpha = 0.3 + Math.sin(Date.now() * 0.001 + i) * 0.4;
+      ctx.fillStyle = color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+      
       ctx.beginPath();
       ctx.arc(x, y, size, 0, Math.PI * 2);
       ctx.fill();
+      
+      // Add soft glow
+      ctx.shadowColor = color;
+      ctx.shadowBlur = size * 2;
+      ctx.fill();
+      ctx.shadowBlur = 0;
     }
   };
 
   const drawZodiacWheel = (ctx: CanvasRenderingContext2D, centerX: number, centerY: number, maxRadius: number) => {
     const zodiacSigns = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
     const zodiacColors = [
-      '#FF4500', '#8FBC8F', '#FFD700', '#87CEEB', '#FF6347', '#DDA0DD',
-      '#FFB6C1', '#DC143C', '#9370DB', '#2E8B57', '#00CED1', '#4682B4'
+      '#ff7eb3', '#ff65a3', '#ff9a8b', '#ffa726', '#ffb74d', '#aed581',
+      '#81c784', '#4dd0e1', '#42a5f5', '#ab47bc', '#7e57c2', '#5c6bc0'
     ];
 
-    // Draw zodiac sectors
+    // Draw elegant zodiac sectors with flowing gradients
     for (let i = 0; i < 12; i++) {
       const startAngle = (i * 30 - 90) * Math.PI / 180;
       const endAngle = ((i + 1) * 30 - 90) * Math.PI / 180;
       
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
-      ctx.arc(centerX, centerY, maxRadius * 1.1, startAngle, endAngle);
+      ctx.arc(centerX, centerY, maxRadius * 1.15, startAngle, endAngle);
       ctx.closePath();
       
-      const gradient = ctx.createRadialGradient(centerX, centerY, maxRadius * 0.8, centerX, centerY, maxRadius * 1.1);
+      const gradient = ctx.createRadialGradient(centerX, centerY, maxRadius * 0.7, centerX, centerY, maxRadius * 1.15);
       gradient.addColorStop(0, 'transparent');
-      gradient.addColorStop(1, zodiacColors[i] + '20');
+      gradient.addColorStop(0.7, zodiacColors[i] + '15');
+      gradient.addColorStop(1, zodiacColors[i] + '30');
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // Draw zodiac sign
+      // Draw elegant zodiac sign with soft glow
       const signAngle = (i * 30 + 15 - 90) * Math.PI / 180;
-      const signX = centerX + Math.cos(signAngle) * maxRadius * 1.15;
-      const signY = centerY + Math.sin(signAngle) * maxRadius * 1.15;
+      const signX = centerX + Math.cos(signAngle) * maxRadius * 1.25;
+      const signY = centerY + Math.sin(signAngle) * maxRadius * 1.25;
       
+      // Add soft glow effect
+      ctx.shadowColor = zodiacColors[i];
+      ctx.shadowBlur = 8;
       ctx.fillStyle = zodiacColors[i];
-      ctx.font = 'bold 20px serif';
+      ctx.font = 'bold 24px serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(zodiacSigns[i], signX, signY);
+      ctx.shadowBlur = 0;
     }
 
-    // Draw degree markers
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-    ctx.lineWidth = 1;
+    // Draw delicate degree markers
+    ctx.strokeStyle = 'rgba(255, 182, 193, 0.4)';
+    ctx.lineWidth = 2;
     for (let i = 0; i < 360; i += 30) {
       const angle = (i - 90) * Math.PI / 180;
       ctx.beginPath();
-      ctx.moveTo(centerX + Math.cos(angle) * maxRadius * 0.95, centerY + Math.sin(angle) * maxRadius * 0.95);
-      ctx.lineTo(centerX + Math.cos(angle) * maxRadius * 1.05, centerY + Math.sin(angle) * maxRadius * 1.05);
+      ctx.moveTo(centerX + Math.cos(angle) * maxRadius * 0.9, centerY + Math.sin(angle) * maxRadius * 0.9);
+      ctx.lineTo(centerX + Math.cos(angle) * maxRadius * 1.1, centerY + Math.sin(angle) * maxRadius * 1.1);
       ctx.stroke();
     }
   };
@@ -243,13 +264,22 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
     const distances = planets.map(p => p.distance);
     const uniqueDistances = Array.from(new Set(distances)).sort();
     
-    uniqueDistances.forEach(distance => {
-      const radius = maxRadius * (0.8 + distance * 0.05);
+    uniqueDistances.forEach((distance, index) => {
+      const radius = maxRadius * (0.6 + distance * 0.03);
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-      ctx.lineWidth = 1;
+      
+      // Flowing orbital paths with gradient strokes
+      const gradient = ctx.createLinearGradient(centerX - radius, centerY, centerX + radius, centerY);
+      gradient.addColorStop(0, 'rgba(255, 192, 203, 0.2)');
+      gradient.addColorStop(0.5, 'rgba(221, 160, 221, 0.3)');
+      gradient.addColorStop(1, 'rgba(255, 192, 203, 0.2)');
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 10]);
       ctx.stroke();
+      ctx.setLineDash([]);
     });
   };
 
@@ -261,40 +291,51 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       const planet2 = calculatedPlanets.find(p => p.name === aspect.planet2);
 
       if (planet1 && planet2 && planet1.x && planet1.y && planet2.x && planet2.y) {
-        // Draw aspect line with glow effect
+        // Draw flowing aspect connections with feminine curves
         const gradient = ctx.createLinearGradient(planet1.x, planet1.y, planet2.x, planet2.y);
-        gradient.addColorStop(0, aspect.color + '80');
-        gradient.addColorStop(0.5, aspect.color + 'FF');
-        gradient.addColorStop(1, aspect.color + '80');
+        gradient.addColorStop(0, aspect.color + '60');
+        gradient.addColorStop(0.5, aspect.color + 'CC');
+        gradient.addColorStop(1, aspect.color + '60');
 
-        // Glow effect
+        // Soft flowing glow effect
         ctx.shadowColor = aspect.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 15;
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = Math.max(1, aspect.strength * 4);
+        ctx.lineWidth = Math.max(2, aspect.strength * 6);
         
         ctx.beginPath();
         ctx.moveTo(planet1.x, planet1.y);
         
-        // Create curved aspect lines for visual appeal
+        // Create elegant flowing curves
         const midX = (planet1.x + planet2.x) / 2;
         const midY = (planet1.y + planet2.y) / 2;
-        const controlX = midX + (Math.random() - 0.5) * 20;
-        const controlY = midY + (Math.random() - 0.5) * 20;
+        const curve = Math.sin(rotation * 0.01) * 30;
+        const controlX = midX + curve;
+        const controlY = midY + curve * 0.5;
         
         ctx.quadraticCurveTo(controlX, controlY, planet2.x, planet2.y);
         ctx.stroke();
         
         ctx.shadowBlur = 0;
 
-        // Draw aspect symbol at midpoint
+        // Draw elegant aspect symbol with soft background
         const aspectType = aspectTypes.find(a => a.name === aspect.type);
         if (aspectType) {
+          // Soft circular background
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+          ctx.beginPath();
+          ctx.arc(midX, midY, 12, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Glowing symbol
+          ctx.shadowColor = aspect.color;
+          ctx.shadowBlur = 8;
           ctx.fillStyle = aspect.color;
-          ctx.font = '12px serif';
+          ctx.font = 'bold 16px serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(aspectType.symbol, midX, midY);
+          ctx.shadowBlur = 0;
         }
       }
     });
@@ -304,31 +345,33 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
     calculatedPlanets.forEach(planet => {
       if (!planet.x || !planet.y) return;
 
-      const size = planet.size * zoom * (viewMode === '3d' ? (1 + (planet.z || 0) * 0.01) : 1);
+      const size = planet.size * zoom * (viewMode === '3d' ? (1 + (planet.z || 0) * 0.01) : 1) * 0.6;
       
-      // Draw planet glow
-      const glowGradient = ctx.createRadialGradient(planet.x, planet.y, 0, planet.x, planet.y, size * 2);
+      // Draw soft, feminine planet glow
+      const glowGradient = ctx.createRadialGradient(planet.x, planet.y, 0, planet.x, planet.y, size * 3);
       glowGradient.addColorStop(0, planet.color + 'FF');
-      glowGradient.addColorStop(0.5, planet.color + '80');
+      glowGradient.addColorStop(0.3, planet.color + 'AA');
+      glowGradient.addColorStop(0.7, planet.color + '44');
       glowGradient.addColorStop(1, planet.color + '00');
       
       ctx.fillStyle = glowGradient;
       ctx.beginPath();
-      ctx.arc(planet.x, planet.y, size * 2, 0, Math.PI * 2);
+      ctx.arc(planet.x, planet.y, size * 3, 0, Math.PI * 2);
       ctx.fill();
 
-      // Draw planet body
+      // Draw elegant planet body with soft lighting
       const planetGradient = ctx.createRadialGradient(
-        planet.x - size * 0.3, 
-        planet.y - size * 0.3, 
+        planet.x - size * 0.4, 
+        planet.y - size * 0.4, 
         0, 
         planet.x, 
         planet.y, 
         size
       );
-      planetGradient.addColorStop(0, '#FFFFFF');
-      planetGradient.addColorStop(0.3, planet.color);
-      planetGradient.addColorStop(1, '#000000');
+      planetGradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)');
+      planetGradient.addColorStop(0.4, planet.color);
+      planetGradient.addColorStop(0.8, planet.color + 'CC');
+      planetGradient.addColorStop(1, planet.color + '66');
       
       ctx.fillStyle = planetGradient;
       ctx.beginPath();
@@ -408,41 +451,51 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
   };
 
   return (
-    <div className="space-y-6">
-      {/* Controls Panel */}
-      <Card className="bg-slate-800/50 border-purple-500/30">
-        <CardHeader>
-          <CardTitle className="text-purple-400 flex items-center gap-2">
-            <Orbit className="w-5 h-5" />
-            Advanced Cosmic Controls
+    <div className="space-y-8">
+      {/* Elegant Controls Panel */}
+      <Card className="bg-gradient-to-br from-purple-900/40 via-pink-900/30 to-rose-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
+            <div className="w-8 h-8 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-white" />
+            </div>
+            Cosmic Visualization Controls
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          {/* View Controls */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="flex items-center justify-between">
-              <label className="text-sm text-gray-300">Animation</label>
-              <Switch checked={isAnimating} onCheckedChange={setIsAnimating} />
+        <CardContent className="space-y-6 px-8 pb-8">
+          {/* Elegant View Controls */}
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+                <label className="text-rose-200 font-medium">Flowing Animation</label>
+                <Switch checked={isAnimating} onCheckedChange={setIsAnimating} />
+              </div>
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+                <label className="text-rose-200 font-medium">Sacred Connections</label>
+                <Switch checked={showAspects} onCheckedChange={setShowAspects} />
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm text-gray-300">Aspects</label>
-              <Switch checked={showAspects} onCheckedChange={setShowAspects} />
-            </div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm text-gray-300">Orbits</label>
-              <Switch checked={showOrbits} onCheckedChange={setShowOrbits} />
-            </div>
-            <div className="flex items-center justify-between">
-              <label className="text-sm text-gray-300">Labels</label>
-              <Switch checked={showLabels} onCheckedChange={setShowLabels} />
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+                <label className="text-rose-200 font-medium">Celestial Orbits</label>
+                <Switch checked={showOrbits} onCheckedChange={setShowOrbits} />
+              </div>
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+                <label className="text-rose-200 font-medium">Planet Names</label>
+                <Switch checked={showLabels} onCheckedChange={setShowLabels} />
+              </div>
             </div>
           </div>
 
-          {/* Zoom Control */}
-          <div className="space-y-2">
-            <label className="text-sm text-gray-300">Zoom Level</label>
-            <div className="flex items-center gap-2">
-              <Button size="sm" variant="outline" onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))}>
+          {/* Elegant Zoom Control */}
+          <div className="space-y-4">
+            <label className="text-rose-200 font-medium">Cosmic Zoom</label>
+            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+              <Button 
+                size="sm" 
+                className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 border-0 hover:from-pink-600 hover:to-rose-600" 
+                onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))}
+              >
                 <ZoomOut className="w-4 h-4" />
               </Button>
               <Slider
@@ -453,112 +506,158 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 step={0.1}
                 className="flex-1"
               />
-              <Button size="sm" variant="outline" onClick={() => setZoom(prev => Math.min(3, prev + 0.1))}>
+              <Button 
+                size="sm" 
+                className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 border-0 hover:from-pink-600 hover:to-rose-600" 
+                onClick={() => setZoom(prev => Math.min(3, prev + 0.1))}
+              >
                 <ZoomIn className="w-4 h-4" />
               </Button>
             </div>
           </div>
 
-          {/* Aspect Strength Filter */}
-          <div className="space-y-2">
-            <label className="text-sm text-gray-300">Minimum Aspect Strength</label>
-            <Slider
-              value={aspectStrength}
-              onValueChange={setAspectStrength}
-              min={0}
-              max={1}
-              step={0.1}
-              className="w-full"
-            />
+          {/* Elegant Aspect Strength Filter */}
+          <div className="space-y-4">
+            <label className="text-rose-200 font-medium">Connection Sensitivity</label>
+            <div className="p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+              <Slider
+                value={aspectStrength}
+                onValueChange={setAspectStrength}
+                min={0}
+                max={1}
+                step={0.1}
+                className="w-full"
+              />
+              <div className="flex justify-between text-xs text-rose-300 mt-2">
+                <span>Gentle</span>
+                <span>Powerful</span>
+              </div>
+            </div>
           </div>
 
-          {/* View Mode */}
-          <div className="flex items-center gap-2">
-            <Button 
-              size="sm" 
-              variant={viewMode === '2d' ? 'default' : 'outline'}
-              onClick={() => setViewMode('2d')}
-            >
-              2D View
-            </Button>
-            <Button 
-              size="sm" 
-              variant={viewMode === '3d' ? 'default' : 'outline'}
-              onClick={() => setViewMode('3d')}
-            >
-              3D View
-            </Button>
+          {/* Elegant View Mode */}
+          <div className="space-y-3">
+            <label className="text-rose-200 font-medium">Dimensional View</label>
+            <div className="flex gap-3">
+              <Button 
+                className={`rounded-full px-6 py-3 transition-all duration-300 ${
+                  viewMode === '2d' 
+                    ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
+                    : 'bg-white/10 text-rose-300 border border-pink-300/30 hover:bg-white/20'
+                }`}
+                onClick={() => setViewMode('2d')}
+              >
+                Flat View
+              </Button>
+              <Button 
+                className={`rounded-full px-6 py-3 transition-all duration-300 ${
+                  viewMode === '3d' 
+                    ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
+                    : 'bg-white/10 text-rose-300 border border-pink-300/30 hover:bg-white/20'
+                }`}
+                onClick={() => setViewMode('3d')}
+              >
+                Cosmic Depth
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Aspect Type Filters */}
-      <Card className="bg-slate-800/50 border-purple-500/30">
-        <CardHeader>
-          <CardTitle className="text-purple-400">Aspect Types</CardTitle>
+      {/* Sacred Aspect Connections */}
+      <Card className="bg-gradient-to-br from-rose-900/40 via-purple-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+              <Circle className="w-4 h-4 text-white" />
+            </div>
+            Sacred Geometric Connections
+          </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">
+        <CardContent className="px-8 pb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {aspectTypes.map(aspectType => (
               <Button
                 key={aspectType.name}
-                size="sm"
-                variant={selectedAspects.includes(aspectType.name) ? 'default' : 'outline'}
+                className={`rounded-2xl p-4 h-auto flex flex-col items-center gap-2 transition-all duration-300 ${
+                  selectedAspects.includes(aspectType.name)
+                    ? 'bg-gradient-to-br from-pink-500/30 to-rose-500/30 border-2 border-pink-400/50 shadow-lg scale-105'
+                    : 'bg-white/5 border border-pink-300/20 hover:bg-white/10 hover:border-pink-400/30'
+                }`}
                 onClick={() => toggleAspectType(aspectType.name)}
-                className="flex items-center gap-2"
-                style={{
-                  backgroundColor: selectedAspects.includes(aspectType.name) ? aspectType.color + '40' : 'transparent',
-                  borderColor: aspectType.color + '60',
-                  color: selectedAspects.includes(aspectType.name) ? '#FFFFFF' : aspectType.color
-                }}
               >
-                <span>{aspectType.symbol}</span>
-                <span className="text-xs capitalize">{aspectType.name}</span>
+                <span className="text-2xl" style={{ color: aspectType.color }}>
+                  {aspectType.symbol}
+                </span>
+                <span className="text-sm text-rose-200 capitalize font-medium">
+                  {aspectType.name}
+                </span>
+                <span className="text-xs text-rose-300/70">
+                  {aspectType.angle}°
+                </span>
               </Button>
             ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Main Visualization */}
-      <Card className="bg-slate-900/50 border-purple-500/30">
-        <CardHeader>
-          <CardTitle className="text-purple-400 flex items-center gap-2">
-            <Sparkles className="w-5 h-5" />
-            Advanced Planetary Aspect Visualization
+      {/* Celestial Mandala Visualization */}
+      <Card className="bg-gradient-to-br from-indigo-900/40 via-purple-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl overflow-hidden">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
+            <div className="w-8 h-8 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center">
+              <Sparkles className="w-4 h-4 text-white" />
+            </div>
+            Your Celestial Mandala
           </CardTitle>
+          <p className="text-rose-200/70 text-sm mt-2">
+            A beautiful representation of your cosmic blueprint and planetary relationships
+          </p>
         </CardHeader>
-        <CardContent className="p-0">
-          <canvas
-            ref={canvasRef}
-            width={width}
-            height={height}
-            className="w-full h-auto border-0 rounded-lg"
-            style={{ background: 'transparent' }}
-          />
+        <CardContent className="p-6">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-950/50 to-purple-950/50 border border-pink-300/20">
+            <canvas
+              ref={canvasRef}
+              width={width}
+              height={height}
+              className="w-full h-auto rounded-3xl"
+              style={{ background: 'transparent' }}
+            />
+            {/* Flowing overlay effects */}
+            <div className="absolute inset-0 bg-gradient-to-t from-pink-900/20 via-transparent to-purple-900/20 pointer-events-none rounded-3xl"></div>
+          </div>
         </CardContent>
       </Card>
 
-      {/* Statistics Panel */}
-      <div className="grid md:grid-cols-3 gap-4">
-        <Card className="bg-slate-800/50 border-blue-500/30">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-blue-400">{planets.length}</div>
-            <div className="text-sm text-gray-400">Active Planets</div>
+      {/* Elegant Cosmic Insights */}
+      <div className="grid md:grid-cols-3 gap-6">
+        <Card className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-0 rounded-2xl backdrop-blur-sm">
+          <CardContent className="p-6 text-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Circle className="w-6 h-6 text-white" />
+            </div>
+            <div className="text-2xl font-light text-blue-300 mb-1">{planets.length}</div>
+            <div className="text-sm text-blue-200">Celestial Bodies</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-800/50 border-green-500/30">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-green-400">
+        <Card className="bg-gradient-to-br from-rose-900/30 to-pink-900/30 border-0 rounded-2xl backdrop-blur-sm">
+          <CardContent className="p-6 text-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Triangle className="w-6 h-6 text-white" />
+            </div>
+            <div className="text-2xl font-light text-rose-300 mb-1">
               {aspects.filter(a => selectedAspects.includes(a.type) && a.strength >= aspectStrength[0]).length}
             </div>
-            <div className="text-sm text-gray-400">Visible Aspects</div>
+            <div className="text-sm text-rose-200">Sacred Connections</div>
           </CardContent>
         </Card>
-        <Card className="bg-slate-800/50 border-purple-500/30">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-purple-400">{Math.round(zoom * 100)}%</div>
-            <div className="text-sm text-gray-400">Zoom Level</div>
+        <Card className="bg-gradient-to-br from-purple-900/30 to-violet-900/30 border-0 rounded-2xl backdrop-blur-sm">
+          <CardContent className="p-6 text-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-violet-500 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Eye className="w-6 h-6 text-white" />
+            </div>
+            <div className="text-2xl font-light text-purple-300 mb-1">{Math.round(zoom * 100)}%</div>
+            <div className="text-sm text-purple-200">Cosmic Focus</div>
           </CardContent>
         </Card>
       </div>
