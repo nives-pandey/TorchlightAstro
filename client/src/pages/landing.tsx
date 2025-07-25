@@ -1,12 +1,234 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Stars, Sparkles, Users, Calendar, Moon, Sun } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Stars, Sparkles, Users, Calendar, Moon, Sun, Globe, Zap, Calculator, Eye, Heart, Home } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
 
+// System Information Modal Component
+function SystemInfoModal({ system }: { system: any }) {
+  return (
+    <>
+      <DialogHeader>
+        <DialogTitle className="text-rose-300 flex items-center gap-3 text-2xl">
+          {system.icon}
+          {system.title}
+        </DialogTitle>
+        <DialogDescription className="text-rose-200/80 text-base">
+          {system.description}
+        </DialogDescription>
+      </DialogHeader>
+      
+      <div className="space-y-6 mt-6">
+        {/* System Overview */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
+            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Origin</div>
+            <div className="text-white font-medium">{system.origin}</div>
+          </div>
+          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
+            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Heritage</div>
+            <div className="text-white font-medium">{system.timeRange}</div>
+          </div>
+          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
+            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Accuracy</div>
+            <div className="text-white font-medium">{system.accuracy}</div>
+          </div>
+          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
+            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Difficulty</div>
+            <div className="text-white font-medium">{system.difficulty}</div>
+          </div>
+        </div>
+
+        {/* Key Features */}
+        <div>
+          <h4 className="text-rose-300 font-semibold mb-3 flex items-center gap-2">
+            <Eye className="w-4 h-4" />
+            Key Features
+          </h4>
+          <ul className="space-y-2">
+            {system.keyFeatures.map((feature: string, index: number) => (
+              <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
+                <span className="w-1.5 h-1.5 bg-pink-400 rounded-full mt-2 flex-shrink-0"></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* What It Predicts */}
+        <div>
+          <h4 className="text-rose-300 font-semibold mb-3 flex items-center gap-2">
+            <Heart className="w-4 h-4" />
+            What It Reveals
+          </h4>
+          <ul className="space-y-2">
+            {system.predictions.map((prediction: string, index: number) => (
+              <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
+                <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
+                {prediction}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Required Information */}
+        <div>
+          <h4 className="text-rose-300 font-semibold mb-3 flex items-center gap-2">
+            <Calendar className="w-4 h-4" />
+            Required Information
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {system.inputs.map((input: string, index: number) => (
+              <Badge key={index} className="bg-white/10 text-rose-200 border-pink-300/30">
+                {input}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="pt-4 border-t border-pink-300/20">
+          <Button 
+            onClick={() => window.location.href = '/api/login'}
+            className="w-full rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-medium py-3"
+          >
+            Explore {system.title} Reading
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function Landing() {
   const { t } = useTranslation();
+  const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
+
+  const astrologySystemsInfo = {
+    western: {
+      title: "Western Astrology",
+      icon: <Sun className="w-6 h-6" />,
+      origin: "Ancient Greece & Rome",
+      timeRange: "2,000+ years",
+      accuracy: "High",
+      difficulty: "Beginner",
+      description: "The most popular astrology system worldwide, based on 12 zodiac signs and planetary positions.",
+      keyFeatures: [
+        "12 zodiac signs (Aries to Pisces)",
+        "Planetary aspects and house systems",
+        "Birth chart interpretation",
+        "Compatibility analysis",
+        "Daily and transit predictions"
+      ],
+      predictions: [
+        "Personality traits and character analysis",
+        "Love and relationship compatibility",
+        "Career guidance and life purpose",
+        "Daily, weekly, and monthly forecasts",
+        "Life transitions and major events"
+      ],
+      inputs: ["Birth date", "Birth time", "Birth location"]
+    },
+    vedic: {
+      title: "Vedic Wisdom (Jyotish)",
+      icon: <Stars className="w-6 h-6" />,
+      origin: "Ancient India",
+      timeRange: "5,000+ years",
+      accuracy: "Very High",
+      difficulty: "Advanced",
+      description: "Ancient Indian system using sidereal zodiac with precise timing predictions through Dasha periods.",
+      keyFeatures: [
+        "Sidereal zodiac system",
+        "27 Nakshatras (lunar mansions)",
+        "Dasha and Bhukti periods",
+        "Karmic and spiritual insights",
+        "Remedial measures and solutions"
+      ],
+      predictions: [
+        "Precise life event timing",
+        "Karmic patterns and spiritual purpose",
+        "Health and wellness guidance",
+        "Marriage and relationship timing",
+        "Career and financial predictions"
+      ],
+      inputs: ["Birth date", "Birth time", "Birth location", "Full name"]
+    },
+    chinese: {
+      title: "Chinese Zodiac",
+      icon: <Globe className="w-6 h-6" />,
+      origin: "Ancient China",
+      timeRange: "4,000+ years",
+      accuracy: "High",
+      difficulty: "Intermediate",
+      description: "Based on 12-year animal cycles and five elements, with detailed BaZi (Four Pillars) analysis.",
+      keyFeatures: [
+        "12 animal signs with unique traits",
+        "Five elements theory (Wood, Fire, Earth, Metal, Water)",
+        "BaZi Four Pillars system",
+        "Yin-Yang balance analysis",
+        "Chinese calendar calculations"
+      ],
+      predictions: [
+        "Personality based on animal signs",
+        "Annual and monthly forecasts",
+        "Compatibility between signs",
+        "BaZi life path analysis",
+        "Elemental balance and harmony"
+      ],
+      inputs: ["Birth date", "Birth time (optional)", "Birth location"]
+    },
+    humanDesign: {
+      title: "Human Design",
+      icon: <Zap className="w-6 h-6" />,
+      origin: "Modern Synthesis (1987)",
+      timeRange: "37+ years",
+      accuracy: "High",
+      difficulty: "Intermediate",
+      description: "Modern system combining astrology, I Ching, Kabbalah, and chakras for energy type identification.",
+      keyFeatures: [
+        "4 energy types (Generator, Manifestor, Projector, Reflector)",
+        "BodyGraph visualization",
+        "Decision-making authority",
+        "Strategy for optimal living",
+        "Centers, channels, and gates analysis"
+      ],
+      predictions: [
+        "Energy type and life strategy",
+        "Decision-making process",
+        "Relationship dynamics",
+        "Career and life purpose",
+        "Optimal living strategies"
+      ],
+      inputs: ["Birth date", "Birth time", "Birth location"]
+    },
+    numerology: {
+      title: "Numerology",
+      icon: <Calculator className="w-6 h-6" />,
+      origin: "Ancient Civilizations",
+      timeRange: "4,000+ years",
+      accuracy: "Moderate",
+      difficulty: "Beginner",
+      description: "Mathematical analysis of names and birth dates to reveal personality traits and life patterns.",
+      keyFeatures: [
+        "Life Path Number calculation",
+        "Destiny and Soul Urge numbers",
+        "Personality Number analysis",
+        "Name numerology",
+        "Yearly and monthly cycles"
+      ],
+      predictions: [
+        "Life purpose and spiritual path",
+        "Personality traits and talents",
+        "Compatible relationships",
+        "Career and life direction",
+        "Personal year cycles"
+      ],
+      inputs: ["Full name", "Birth date"]
+    }
+  };
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
@@ -44,21 +266,75 @@ export default function Landing() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
-              {t('badges.western')}
-            </Badge>
-            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
-              {t('badges.vedic')}
-            </Badge>
-            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
-              {t('badges.chinese')}
-            </Badge>
-            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
-              {t('badges.humanDesign')}
-            </Badge>
-            <Badge className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2">
-              {t('badges.numerology')}
-            </Badge>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Badge 
+                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
+                  onClick={() => setSelectedSystem('western')}
+                >
+                  {t('badges.western')}
+                </Badge>
+              </DialogTrigger>
+              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
+                <SystemInfoModal system={astrologySystemsInfo.western} />
+              </DialogContent>
+            </Dialog>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Badge 
+                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
+                  onClick={() => setSelectedSystem('vedic')}
+                >
+                  {t('badges.vedic')}
+                </Badge>
+              </DialogTrigger>
+              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
+                <SystemInfoModal system={astrologySystemsInfo.vedic} />
+              </DialogContent>
+            </Dialog>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Badge 
+                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
+                  onClick={() => setSelectedSystem('chinese')}
+                >
+                  {t('badges.chinese')}
+                </Badge>
+              </DialogTrigger>
+              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
+                <SystemInfoModal system={astrologySystemsInfo.chinese} />
+              </DialogContent>
+            </Dialog>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Badge 
+                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
+                  onClick={() => setSelectedSystem('humanDesign')}
+                >
+                  {t('badges.humanDesign')}
+                </Badge>
+              </DialogTrigger>
+              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
+                <SystemInfoModal system={astrologySystemsInfo.humanDesign} />
+              </DialogContent>
+            </Dialog>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Badge 
+                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
+                  onClick={() => setSelectedSystem('numerology')}
+                >
+                  {t('badges.numerology')}
+                </Badge>
+              </DialogTrigger>
+              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
+                <SystemInfoModal system={astrologySystemsInfo.numerology} />
+              </DialogContent>
+            </Dialog>
           </div>
           
           <Button 
