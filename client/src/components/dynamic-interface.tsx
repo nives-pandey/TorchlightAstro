@@ -50,26 +50,50 @@ export default function DynamicInterface() {
       style={{ background: theme.background }}
     >
       <div className="container mx-auto max-w-6xl">
-        {/* Dynamic Header with Time-based Greeting */}
+        {/* Dynamic Header with Curved Design */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="text-6xl animate-pulse">{theme.cosmicElement}</div>
+          <div className="flex items-center justify-center gap-6 mb-6">
+            <div 
+              className="text-6xl cosmic-pulse relative p-4 rounded-full"
+              style={{ 
+                background: `radial-gradient(circle, ${theme.primary}20, transparent)`,
+                animation: 'morph 8s ease-in-out infinite'
+              }}
+            >
+              {theme.cosmicElement}
+              <div 
+                className="absolute inset-0 rounded-full opacity-30"
+                style={{ 
+                  background: `conic-gradient(from 0deg, ${theme.primary}, ${theme.secondary}, ${theme.accent}, ${theme.primary})`,
+                  animation: 'spin 20s linear infinite'
+                }}
+              ></div>
+            </div>
             <div>
               <h1 
                 className="text-4xl md:text-6xl font-bold mb-2 animate-in slide-in-from-top duration-1000"
-                style={{ color: theme.text }}
+                style={{ 
+                  color: theme.text,
+                  textShadow: `0 0 20px ${theme.primary}40`,
+                  background: `linear-gradient(135deg, ${theme.text}, ${theme.primary})`,
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
               >
                 {personalizedGreeting}
               </h1>
-              <div className="flex items-center justify-center gap-2 text-lg" style={{ color: theme.secondary }}>
-                <Clock className="h-5 w-5" />
-                <span>{currentTime.toLocaleTimeString()}</span>
+              <div className="flex items-center justify-center gap-3 text-lg" style={{ color: theme.secondary }}>
+                <Clock className="h-5 w-5 animate-spin" style={{ animationDuration: '8s' }} />
+                <span className="font-medium">{currentTime.toLocaleTimeString()}</span>
                 <Badge 
-                  className="ml-2 px-3 py-1 transition-all duration-300 hover:scale-105"
+                  className="ml-2 px-4 py-2 transition-all duration-500 hover:scale-110 cursor-pointer rounded-full"
                   style={{ 
-                    backgroundColor: theme.accent + '30', 
+                    background: `linear-gradient(135deg, ${theme.accent}40, ${theme.primary}20)`,
                     color: theme.text,
-                    border: `1px solid ${theme.accent}50`
+                    border: `2px solid ${theme.accent}60`,
+                    backdropFilter: 'blur(10px)',
+                    animation: 'morph 6s ease-in-out infinite'
                   }}
                 >
                   {timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1)} Energy
@@ -78,35 +102,63 @@ export default function DynamicInterface() {
             </div>
           </div>
           
-          {/* Visit Status Indicator */}
-          <div className="flex justify-center gap-2 mb-6">
+          {/* Curved Visit Status Indicators */}
+          <div className="flex justify-center gap-3 mb-8">
             <Badge 
-              variant="outline" 
-              className="transition-all duration-300 hover:scale-105"
-              style={{ borderColor: theme.primary, color: theme.primary }}
+              className="px-6 py-2 transition-all duration-500 hover:scale-110 cursor-pointer rounded-full relative overflow-hidden"
+              style={{ 
+                background: `linear-gradient(135deg, ${theme.primary}30, ${theme.secondary}20)`,
+                color: theme.primary,
+                border: `2px solid ${theme.primary}50`,
+                backdropFilter: 'blur(10px)',
+                animation: 'morph 10s ease-in-out infinite'
+              }}
             >
-              {visitStatus === 'first' ? '✨ First Visit' : 
-               visitStatus === 'returning' ? '🌟 Welcome Back' : 
-               '⭐ Cosmic Regular'}
+              <div 
+                className="absolute inset-0 opacity-20"
+                style={{ 
+                  background: `conic-gradient(from 45deg, ${theme.primary}, transparent, ${theme.primary})`,
+                  animation: 'spin 15s linear infinite'
+                }}
+              ></div>
+              <span className="relative z-10">
+                {visitStatus === 'first' ? '✨ First Visit' : 
+                 visitStatus === 'returning' ? '🌟 Welcome Back' : 
+                 '⭐ Cosmic Regular'}
+              </span>
             </Badge>
             <Badge 
-              variant="outline"
-              className="transition-all duration-300 hover:scale-105"
-              style={{ borderColor: theme.secondary, color: theme.secondary }}
+              className="px-6 py-2 transition-all duration-500 hover:scale-110 cursor-pointer rounded-full relative overflow-hidden"
+              style={{ 
+                background: `linear-gradient(135deg, ${theme.secondary}30, ${theme.accent}20)`,
+                color: theme.secondary,
+                border: `2px solid ${theme.secondary}50`,
+                backdropFilter: 'blur(10px)',
+                animation: 'morph 12s ease-in-out infinite reverse'
+              }}
             >
-              Visit #{userPrefs.visitCount}
+              <div 
+                className="absolute inset-0 opacity-20"
+                style={{ 
+                  background: `radial-gradient(circle, ${theme.secondary}40, transparent)`,
+                  animation: 'cosmic-pulse 4s ease-in-out infinite'
+                }}
+              ></div>
+              <span className="relative z-10">Visit #{userPrefs.visitCount}</span>
             </Badge>
           </div>
         </div>
 
-        {/* Daily Particulars Dashboard */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {/* Today's Cosmic Weather */}
+        {/* Daily Particulars Dashboard - Organic Grid Layout */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+          {/* Today's Cosmic Weather - Flowing Organic Shape */}
           <Card 
-            className="cosmic-card time-card transition-all duration-500 cursor-pointer border-0 shadow-2xl"
+            className="cosmic-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
             style={{ 
               backgroundColor: theme.card, 
-              borderLeft: `4px solid ${theme.primary}`
+              borderLeft: `6px solid ${theme.primary}`,
+              borderRadius: '24px 32px 28px 20px',
+              animation: 'morph 20s ease-in-out infinite'
             }}
             onClick={() => handleInteraction('view_daily_weather')}
           >
@@ -141,12 +193,14 @@ export default function DynamicInterface() {
             </CardContent>
           </Card>
 
-          {/* Energy & Recommendations */}
+          {/* Energy & Recommendations - Curved Flowing Design */}
           <Card 
-            className="cosmic-card time-card transition-all duration-500 cursor-pointer border-0 shadow-2xl"
+            className="cosmic-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
             style={{ 
               backgroundColor: theme.card,
-              borderLeft: `4px solid ${theme.secondary}`
+              borderLeft: `6px solid ${theme.secondary}`,
+              borderRadius: '32px 20px 30px 26px',
+              animation: 'morph 25s ease-in-out infinite reverse'
             }}
             onClick={() => handleInteraction('view_energy_forecast')}
           >
@@ -179,12 +233,14 @@ export default function DynamicInterface() {
             </CardContent>
           </Card>
 
-          {/* Lucky Elements */}
+          {/* Lucky Elements - Organic Morphing Shape */}
           <Card 
-            className="cosmic-card time-card transition-all duration-500 cursor-pointer border-0 shadow-2xl"
+            className="cosmic-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
             style={{ 
               backgroundColor: theme.card,
-              borderLeft: `4px solid ${theme.accent}`
+              borderLeft: `6px solid ${theme.accent}`,
+              borderRadius: '28px 24px 32px 22px',
+              animation: 'morph 18s ease-in-out infinite'
             }}
             onClick={() => handleInteraction('view_lucky_elements')}
           >
@@ -206,14 +262,33 @@ export default function DynamicInterface() {
                   {dailyData.luckyNumbers.map((num, idx) => (
                     <Badge 
                       key={idx}
-                      className="h-8 w-8 flex items-center justify-center rounded-full font-bold"
+                      className="h-10 w-10 flex items-center justify-center rounded-full font-bold transition-all duration-400 hover:scale-125 cursor-pointer relative overflow-hidden"
                       style={{ 
-                        backgroundColor: theme.primary + '30', 
+                        background: `linear-gradient(135deg, ${theme.primary}40, ${theme.secondary}20)`,
                         color: theme.primary,
-                        border: `2px solid ${theme.primary}`
+                        border: `2px solid ${theme.primary}60`,
+                        backdropFilter: 'blur(10px)',
+                        animation: `morph ${8 + idx * 2}s ease-in-out infinite`
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}80, ${theme.secondary}60)`;
+                        e.currentTarget.style.transform = 'scale(1.3) rotate(10deg)';
+                        e.currentTarget.style.boxShadow = `0 5px 20px ${theme.primary}50`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}40, ${theme.secondary}20)`;
+                        e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                        e.currentTarget.style.boxShadow = 'none';
                       }}
                     >
-                      {num}
+                      <span className="relative z-10">{num}</span>
+                      <div 
+                        className="absolute inset-0 rounded-full opacity-30"
+                        style={{ 
+                          background: `conic-gradient(from ${idx * 120}deg, ${theme.primary}, transparent, ${theme.primary})`,
+                          animation: 'spin 10s linear infinite'
+                        }}
+                      ></div>
                     </Badge>
                   ))}
                 </div>
@@ -226,13 +301,31 @@ export default function DynamicInterface() {
                   {dailyData.colors.map((color, idx) => (
                     <div 
                       key={idx}
-                      className="w-6 h-6 rounded-full border-2 transition-transform hover:scale-125"
+                      className="w-8 h-8 rounded-full border-2 transition-all duration-400 hover:scale-150 cursor-pointer relative overflow-hidden"
                       style={{ 
                         backgroundColor: color,
-                        borderColor: theme.text
+                        borderColor: theme.text,
+                        boxShadow: `0 0 15px ${color}50`,
+                        animation: `cosmic-pulse ${3 + idx}s ease-in-out infinite`
                       }}
                       title={`Power color ${idx + 1}`}
-                    />
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.6) rotate(45deg)';
+                        e.currentTarget.style.boxShadow = `0 0 25px ${color}80, 0 5px 15px rgba(0,0,0,0.3)`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                        e.currentTarget.style.boxShadow = `0 0 15px ${color}50`;
+                      }}
+                    >
+                      <div 
+                        className="absolute inset-0 rounded-full opacity-40"
+                        style={{ 
+                          background: `radial-gradient(circle, transparent 30%, ${color} 70%)`,
+                          animation: 'cosmic-pulse 2s ease-in-out infinite'
+                        }}
+                      ></div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -283,12 +376,14 @@ export default function DynamicInterface() {
           </Card>
         </div>
 
-        {/* Interactive Personalization Controls */}
+        {/* Interactive Personalization Controls - Flowing Design */}
         <Card 
-          className="transition-all duration-500 border-0 shadow-2xl hover:shadow-3xl"
+          className="card-flow transition-all duration-500 border-0 shadow-2xl hover:shadow-3xl rounded-organic"
           style={{ 
             backgroundColor: theme.card,
-            borderLeft: `4px solid ${theme.primary}`
+            borderLeft: `6px solid ${theme.primary}`,
+            borderRadius: '30px 20px 28px 25px',
+            animation: 'morph 22s ease-in-out infinite'
           }}
         >
           <CardHeader>
@@ -303,7 +398,7 @@ export default function DynamicInterface() {
           <CardContent>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               <Button
-                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2"
+                className="h-12 px-6 py-2 rounded-full font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl active:scale-95 border-2 relative overflow-hidden backdrop-blur-md"
                 onClick={() => {
                   CookieManager.savePreferences({ personalizedGreeting: !userPrefs.personalizedGreeting });
                   setUserPrefs(CookieManager.getPreferences());
@@ -312,8 +407,11 @@ export default function DynamicInterface() {
                 style={{ 
                   borderColor: theme.primary,
                   color: userPrefs.personalizedGreeting ? '#ffffff' : theme.primary,
-                  backgroundColor: userPrefs.personalizedGreeting ? theme.primary : 'transparent',
-                  boxShadow: userPrefs.personalizedGreeting ? `0 4px 15px ${theme.primary}40` : 'none'
+                  background: userPrefs.personalizedGreeting ? 
+                    `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})` : 
+                    `linear-gradient(135deg, ${theme.primary}20, ${theme.secondary}10)`,
+                  boxShadow: userPrefs.personalizedGreeting ? `0 8px 25px ${theme.primary}50` : 'none',
+                  animation: 'morph 8s ease-in-out infinite'
                 }}
               >
                 <span className="mr-2 text-lg">
@@ -323,7 +421,7 @@ export default function DynamicInterface() {
               </Button>
               
               <Button
-                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2"
+                className="h-12 px-6 py-2 rounded-full font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl active:scale-95 border-2 relative overflow-hidden backdrop-blur-md"
                 onClick={() => {
                   const newColors = dailyData.colors;
                   CookieManager.setFavoriteColors(newColors);
@@ -333,17 +431,20 @@ export default function DynamicInterface() {
                 style={{ 
                   borderColor: theme.secondary,
                   color: theme.secondary,
-                  backgroundColor: 'transparent'
+                  background: `linear-gradient(135deg, ${theme.secondary}15, ${theme.accent}10)`,
+                  animation: 'morph 10s ease-in-out infinite'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = theme.secondary;
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${theme.secondary}, ${theme.accent})`;
                   e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.boxShadow = `0 4px 15px ${theme.secondary}40`;
+                  e.currentTarget.style.boxShadow = `0 8px 25px ${theme.secondary}50`;
+                  e.currentTarget.style.transform = 'scale(1.1) rotate(-2deg)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${theme.secondary}15, ${theme.accent}10)`;
                   e.currentTarget.style.color = theme.secondary;
                   e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
                 }}
               >
                 <Palette className="mr-2 h-4 w-4" />
@@ -351,7 +452,7 @@ export default function DynamicInterface() {
               </Button>
               
               <Button
-                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2"
+                className="h-12 px-6 py-2 rounded-full font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl active:scale-95 border-2 relative overflow-hidden backdrop-blur-md"
                 onClick={() => {
                   CookieManager.addPreferredSystem(`${timeOfDay}_system`);
                   handleInteraction('add_time_based_system', { time: timeOfDay });
@@ -359,17 +460,20 @@ export default function DynamicInterface() {
                 style={{ 
                   borderColor: theme.accent,
                   color: theme.accent,
-                  backgroundColor: 'transparent'
+                  background: `linear-gradient(135deg, ${theme.accent}15, ${theme.primary}10)`,
+                  animation: 'morph 12s ease-in-out infinite reverse'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = theme.accent;
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${theme.accent}, ${theme.primary})`;
                   e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.boxShadow = `0 4px 15px ${theme.accent}40`;
+                  e.currentTarget.style.boxShadow = `0 8px 25px ${theme.accent}50`;
+                  e.currentTarget.style.transform = 'scale(1.1) rotate(2deg)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${theme.accent}15, ${theme.primary}10)`;
                   e.currentTarget.style.color = theme.accent;
                   e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
                 }}
               >
                 <Star className="mr-2 h-4 w-4" />
@@ -377,7 +481,7 @@ export default function DynamicInterface() {
               </Button>
               
               <Button
-                className="h-12 px-4 py-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 border-2 group"
+                className="h-12 px-6 py-2 rounded-full font-semibold transition-all duration-500 transform hover:scale-110 hover:shadow-2xl active:scale-95 border-2 group relative overflow-hidden backdrop-blur-md"
                 onClick={() => {
                   setDailyData(getDailyParticulars());
                   setTheme(getTimeBasedTheme());
@@ -386,17 +490,20 @@ export default function DynamicInterface() {
                 style={{ 
                   borderColor: theme.primary,
                   color: theme.primary,
-                  backgroundColor: 'transparent'
+                  background: `linear-gradient(135deg, ${theme.primary}15, ${theme.secondary}10)`,
+                  animation: 'morph 6s ease-in-out infinite'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = theme.primary;
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`;
                   e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.boxShadow = `0 4px 15px ${theme.primary}40`;
+                  e.currentTarget.style.boxShadow = `0 8px 25px ${theme.primary}50`;
+                  e.currentTarget.style.transform = 'scale(1.1) rotate(-1deg)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}15, ${theme.secondary}10)`;
                   e.currentTarget.style.color = theme.primary;
                   e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
                 }}
               >
                 <Sparkles className="mr-2 h-4 w-4 group-hover:animate-spin" />
@@ -404,44 +511,84 @@ export default function DynamicInterface() {
               </Button>
             </div>
             
-            {/* Quick Action Buttons */}
-            <div className="mt-6 pt-6 border-t" style={{ borderColor: theme.primary + '30' }}>
-              <h4 className="text-sm font-semibold mb-3" style={{ color: theme.text }}>
+            {/* Quick Action Buttons - Curved Separator */}
+            <div className="mt-8 pt-6 relative" style={{ borderColor: theme.primary + '30' }}>
+              <div 
+                className="absolute top-0 left-0 right-0 h-px rounded-full"
+                style={{ 
+                  background: `linear-gradient(90deg, transparent, ${theme.primary}60, transparent)`,
+                  height: '2px'
+                }}
+              ></div>
+              <h4 className="text-sm font-semibold mb-4 text-glow" style={{ color: theme.text }}>
                 Quick Actions
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 <Button
                   size="sm"
-                  className="rounded-full px-4 py-1 text-xs font-medium transition-all duration-200 hover:scale-105"
+                  className="rounded-full px-6 py-2 text-sm font-medium transition-all duration-400 hover:scale-110 relative overflow-hidden backdrop-blur-md"
                   onClick={() => window.location.href = '/birth-form'}
                   style={{ 
-                    backgroundColor: theme.primary + '20',
+                    background: `linear-gradient(135deg, ${theme.primary}25, ${theme.secondary}15)`,
                     color: theme.primary,
-                    border: `1px solid ${theme.primary}50`
+                    border: `2px solid ${theme.primary}40`,
+                    animation: 'morph 8s ease-in-out infinite'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}80, ${theme.secondary}60)`;
+                    e.currentTarget.style.transform = 'scale(1.1) rotate(-2deg)';
+                    e.currentTarget.style.boxShadow = `0 5px 20px ${theme.primary}40`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}25, ${theme.secondary}15)`;
+                    e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
                   🔮 Get Reading
                 </Button>
                 <Button
                   size="sm"
-                  className="rounded-full px-4 py-1 text-xs font-medium transition-all duration-200 hover:scale-105"
+                  className="rounded-full px-6 py-2 text-sm font-medium transition-all duration-400 hover:scale-110 relative overflow-hidden backdrop-blur-md"
                   onClick={() => window.location.href = '/compatibility'}
                   style={{ 
-                    backgroundColor: theme.secondary + '20',
+                    background: `linear-gradient(135deg, ${theme.secondary}25, ${theme.accent}15)`,
                     color: theme.secondary,
-                    border: `1px solid ${theme.secondary}50`
+                    border: `2px solid ${theme.secondary}40`,
+                    animation: 'morph 10s ease-in-out infinite reverse'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${theme.secondary}80, ${theme.accent}60)`;
+                    e.currentTarget.style.transform = 'scale(1.1) rotate(2deg)';
+                    e.currentTarget.style.boxShadow = `0 5px 20px ${theme.secondary}40`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${theme.secondary}25, ${theme.accent}15)`;
+                    e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
                   💕 Love Match
                 </Button>
                 <Button
                   size="sm"
-                  className="rounded-full px-4 py-1 text-xs font-medium transition-all duration-200 hover:scale-105"
+                  className="rounded-full px-6 py-2 text-sm font-medium transition-all duration-400 hover:scale-110 relative overflow-hidden backdrop-blur-md"
                   onClick={() => window.location.href = '/daily'}
                   style={{ 
-                    backgroundColor: theme.accent + '20',
+                    background: `linear-gradient(135deg, ${theme.accent}25, ${theme.primary}15)`,
                     color: theme.accent,
-                    border: `1px solid ${theme.accent}50`
+                    border: `2px solid ${theme.accent}40`,
+                    animation: 'morph 12s ease-in-out infinite'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${theme.accent}80, ${theme.primary}60)`;
+                    e.currentTarget.style.transform = 'scale(1.1) rotate(-1deg)';
+                    e.currentTarget.style.boxShadow = `0 5px 20px ${theme.accent}40`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${theme.accent}25, ${theme.primary}15)`;
+                    e.currentTarget.style.transform = 'scale(1) rotate(0deg)';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
                   📅 Daily Guide
