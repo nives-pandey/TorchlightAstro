@@ -110,7 +110,9 @@ export default function Landing() {
   const astrologySystemsInfo = {
     western: {
       title: "Western Astrology",
-      icon: <Sun className="w-6 h-6" />,
+      icon: <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+        <Sun className="w-5 h-5 text-white" />
+      </div>,
       origin: "Ancient Greece & Rome",
       timeRange: "2,000+ years",
       accuracy: "High",
@@ -134,7 +136,9 @@ export default function Landing() {
     },
     vedic: {
       title: "Vedic Wisdom (Jyotish)",
-      icon: <Stars className="w-6 h-6" />,
+      icon: <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center">
+        <Stars className="w-5 h-5 text-white" />
+      </div>,
       origin: "Ancient India",
       timeRange: "5,000+ years",
       accuracy: "Very High",
@@ -158,7 +162,9 @@ export default function Landing() {
     },
     chinese: {
       title: "Chinese Zodiac",
-      icon: <Globe className="w-6 h-6" />,
+      icon: <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center">
+        <div className="text-white font-bold text-sm">☯</div>
+      </div>,
       origin: "Ancient China",
       timeRange: "4,000+ years",
       accuracy: "High",
@@ -182,7 +188,9 @@ export default function Landing() {
     },
     humanDesign: {
       title: "Human Design",
-      icon: <Zap className="w-6 h-6" />,
+      icon: <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+        <div className="text-white font-bold text-sm">◊</div>
+      </div>,
       origin: "Modern Synthesis (1987)",
       timeRange: "37+ years",
       accuracy: "High",
@@ -206,7 +214,9 @@ export default function Landing() {
     },
     numerology: {
       title: "Numerology",
-      icon: <Calculator className="w-6 h-6" />,
+      icon: <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+        <div className="text-white font-bold text-sm">∞</div>
+      </div>,
       origin: "Ancient Civilizations",
       timeRange: "4,000+ years",
       accuracy: "Moderate",
