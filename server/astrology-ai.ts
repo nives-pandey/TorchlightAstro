@@ -46,17 +46,49 @@ const ASTROLOGICAL_KNOWLEDGE = {
   },
   vedic: {
     nakshatras: {
-      Ashwini: { deity: "Ashwini Kumaras", symbol: "Horse's head", nature: "Swift", traits: ["healing", "pioneering", "spontaneous"] },
-      Bharani: { deity: "Yama", symbol: "Yoni", nature: "Creative", traits: ["nurturing", "creative", "transformative"] },
-      Krittika: { deity: "Agni", symbol: "Razor", nature: "Sharp", traits: ["cutting", "purifying", "determined"] },
-      Rohini: { deity: "Brahma", symbol: "Cart", nature: "Growth", traits: ["creative", "beautiful", "materialistic"] },
-      Mrigashira: { deity: "Soma", symbol: "Deer's head", nature: "Searching", traits: ["seeking", "restless", "curious"] },
-      Ardra: { deity: "Rudra", symbol: "Teardrop", nature: "Stormy", traits: ["emotional", "transformative", "intense"] }
+      Ashwini: { deity: "Ashwini Kumaras", symbol: "Horse's head", nature: "Swift", traits: ["healing", "pioneering", "spontaneous"], career: ["medicine", "transportation", "emergency services"], food: ["light", "easily digestible", "fresh fruits"], activities: ["early morning", "quick decisions", "healing practices"] },
+      Bharani: { deity: "Yama", symbol: "Yoni", nature: "Creative", traits: ["nurturing", "creative", "transformative"], career: ["arts", "fertility counseling", "agriculture"], food: ["nourishing", "organic", "fertility enhancing"], activities: ["creative projects", "gardening", "reproductive health"] },
+      Krittika: { deity: "Agni", symbol: "Razor", nature: "Sharp", traits: ["cutting", "purifying", "determined"], career: ["surgery", "criticism", "purification work"], food: ["spicy", "digestive", "purifying"], activities: ["cleansing rituals", "focused work", "precision tasks"] },
+      Rohini: { deity: "Brahma", symbol: "Cart", nature: "Growth", traits: ["creative", "beautiful", "materialistic"], career: ["arts", "luxury goods", "beauty industry"], food: ["rich", "beautiful presentation", "dairy"], activities: ["artistic creation", "shopping", "beauty treatments"] },
+      Mrigashira: { deity: "Soma", symbol: "Deer's head", nature: "Searching", traits: ["seeking", "restless", "curious"], career: ["research", "exploration", "investigation"], food: ["variety", "exotic", "light meals"], activities: ["travel", "learning", "exploration"] },
+      Ardra: { deity: "Rudra", symbol: "Teardrop", nature: "Stormy", traits: ["emotional", "transformative", "intense"], career: ["psychology", "research", "transformation work"], food: ["cooling", "soothing", "emotional comfort"], activities: ["emotional healing", "research", "meditation"] },
+      Punarvasu: { deity: "Aditi", symbol: "Bow and quiver", nature: "Renewal", traits: ["optimistic", "nurturing", "philosophical"], career: ["teaching", "counseling", "spiritual guidance"], food: ["wholesome", "traditional", "home-cooked"], activities: ["family time", "spiritual practices", "teaching"] },
+      Pushya: { deity: "Brihaspati", symbol: "Cow's udder", nature: "Nourishing", traits: ["caring", "spiritual", "protective"], career: ["childcare", "spiritual teaching", "nutrition"], food: ["milk products", "nourishing", "pure"], activities: ["caring for others", "spiritual study", "protective measures"] },
+      Ashlesha: { deity: "Nagas", symbol: "Serpent", nature: "Embracing", traits: ["mysterious", "intuitive", "possessive"], career: ["psychology", "occult sciences", "medicine"], food: ["detoxifying", "medicinal", "carefully prepared"], activities: ["meditation", "healing practices", "introspection"] },
+      Magha: { deity: "Pitrs", symbol: "Throne", nature: "Regal", traits: ["authoritative", "traditional", "proud"], career: ["leadership", "government", "traditional roles"], food: ["royal", "traditional", "ceremonial"], activities: ["leadership roles", "ceremonies", "ancestral worship"] },
+      PurvaPhalguni: { deity: "Bhaga", symbol: "Hammock", nature: "Relaxation", traits: ["pleasure-loving", "creative", "luxurious"], career: ["entertainment", "luxury services", "arts"], food: ["rich", "indulgent", "pleasurable"], activities: ["relaxation", "entertainment", "creative pursuits"] },
+      UttaraPhalguni: { deity: "Aryaman", symbol: "Bed", nature: "Partnership", traits: ["helpful", "generous", "partnership-oriented"], career: ["counseling", "partnerships", "service"], food: ["shared meals", "balanced", "partnership dining"], activities: ["collaborative work", "helping others", "partnerships"] },
+      Hasta: { deity: "Savitar", symbol: "Hand", nature: "Skillful", traits: ["skilled", "hardworking", "practical"], career: ["crafts", "manual work", "skilled trades"], food: ["handmade", "crafted", "practical meals"], activities: ["handicrafts", "skilled work", "practical tasks"] },
+      Chitra: { deity: "Tvashtar", symbol: "Pearl", nature: "Bright", traits: ["artistic", "attractive", "dynamic"], career: ["design", "architecture", "visual arts"], food: ["colorful", "beautifully presented", "visually appealing"], activities: ["artistic creation", "design work", "beautification"] },
+      Swati: { deity: "Vayu", symbol: "Sword", nature: "Independent", traits: ["independent", "flexible", "diplomatic"], career: ["trade", "diplomacy", "independent business"], food: ["light", "airy", "varied"], activities: ["independent work", "travel", "diplomatic activities"] },
+      Vishakha: { deity: "Indra-Agni", symbol: "Triumphal arch", nature: "Determined", traits: ["goal-oriented", "ambitious", "determined"], career: ["goal achievement", "competitive fields", "leadership"], food: ["energy-giving", "competitive nutrition", "achievement-focused"], activities: ["goal pursuit", "competitions", "achievement-oriented tasks"] },
+      Anuradha: { deity: "Mitra", symbol: "Lotus", nature: "Friendship", traits: ["friendly", "devoted", "harmonious"], career: ["counseling", "friendship-based work", "harmony creation"], food: ["harmonious combinations", "friendship meals", "balanced"], activities: ["social activities", "friendship building", "harmonious pursuits"] },
+      Jyeshtha: { deity: "Indra", symbol: "Earring", nature: "Senior", traits: ["protective", "responsible", "authoritative"], career: ["senior positions", "protection services", "authority roles"], food: ["substantial", "protective nutrition", "senior-appropriate"], activities: ["protective duties", "senior responsibilities", "authority exercises"] },
+      Mula: { deity: "Nirriti", symbol: "Bunch of roots", nature: "Foundational", traits: ["investigative", "foundational", "destructive-creative"], career: ["research", "investigation", "foundational work"], food: ["root vegetables", "foundational nutrition", "grounding"], activities: ["research", "foundational work", "investigation"] },
+      PurvaAshadha: { deity: "Apas", symbol: "Fan", nature: "Invincible", traits: ["invincible", "purifying", "inspirational"], career: ["inspiration work", "purification", "motivational roles"], food: ["purifying", "inspirational meals", "cleansing"], activities: ["purification practices", "inspirational work", "motivational activities"] },
+      UttaraAshadha: { deity: "Vishvedevas", symbol: "Elephant tusk", nature: "Universal", traits: ["universal", "righteous", "final victory"], career: ["universal service", "righteous causes", "final achievement"], food: ["universal appeal", "righteous eating", "victory celebration"], activities: ["universal service", "righteous actions", "victory pursuits"] },
+      Shravana: { deity: "Vishnu", symbol: "Ear", nature: "Learning", traits: ["learning", "listening", "knowledge-seeking"], career: ["education", "communication", "knowledge work"], food: ["brain food", "learning-supportive", "concentrated"], activities: ["learning", "listening", "knowledge acquisition"] },
+      Dhanishta: { deity: "Vasus", symbol: "Drum", nature: "Wealthy", traits: ["wealthy", "musical", "charitable"], career: ["music", "wealth management", "charity"], food: ["wealthy presentation", "musical ambiance", "charitable sharing"], activities: ["musical activities", "wealth building", "charitable work"] },
+      Shatabhisha: { deity: "Varuna", symbol: "Empty circle", nature: "Healing", traits: ["healing", "secretive", "mystical"], career: ["healing", "research", "mystical work"], food: ["healing foods", "mysterious preparations", "therapeutic"], activities: ["healing practices", "research", "mystical pursuits"] },
+      PurvaBhadrapada: { deity: "Aja Ekapada", symbol: "Sword", nature: "Fierce", traits: ["fierce", "transformative", "spiritual"], career: ["transformation work", "spiritual guidance", "fierce protection"], food: ["transformative", "spiritual nutrition", "fierce flavors"], activities: ["spiritual practices", "transformation work", "fierce protection"] },
+      UttaraBhadrapada: { deity: "Ahir Budhnya", symbol: "Snake", nature: "Deep", traits: ["deep", "mystical", "charitable"], career: ["deep research", "mystical work", "charitable service"], food: ["deep nutrition", "mystical preparation", "charitable meals"], activities: ["deep meditation", "mystical practices", "charitable service"] },
+      Revati: { deity: "Pushan", symbol: "Fish", nature: "Nourishing", traits: ["nourishing", "protective", "completion"], career: ["nourishment", "protection", "completion work"], food: ["nourishing", "protective nutrition", "complete meals"], activities: ["nourishing others", "protective actions", "completion tasks"] }
     },
     doshas: {
-      Vata: { elements: ["Air", "Space"], qualities: ["dry", "light", "cold", "rough"], traits: ["creative", "energetic", "anxious"] },
-      Pitta: { elements: ["Fire", "Water"], qualities: ["hot", "sharp", "light", "oily"], traits: ["intelligent", "focused", "irritable"] },
-      Kapha: { elements: ["Earth", "Water"], qualities: ["heavy", "slow", "cold", "oily"], traits: ["stable", "calm", "sluggish"] }
+      Vata: { elements: ["Air", "Space"], qualities: ["dry", "light", "cold", "rough"], traits: ["creative", "energetic", "anxious"], career: ["creative fields", "communication", "travel"], food: ["warm", "moist", "grounding", "regular meals"], activities: ["regular routine", "grounding exercises", "warm environments"] },
+      Pitta: { elements: ["Fire", "Water"], qualities: ["hot", "sharp", "light", "oily"], traits: ["intelligent", "focused", "irritable"], career: ["leadership", "analytical work", "competitive fields"], food: ["cooling", "sweet", "bitter", "avoid spicy"], activities: ["cooling activities", "moderate exercise", "avoid excessive heat"] },
+      Kapha: { elements: ["Earth", "Water"], qualities: ["heavy", "slow", "cold", "oily"], traits: ["stable", "calm", "sluggish"], career: ["stable positions", "nurturing roles", "slow-paced work"], food: ["light", "warm", "spicy", "stimulating"], activities: ["vigorous exercise", "stimulating activities", "variety"] }
+    },
+    dashas: {
+      Sun: { duration: 6, themes: ["authority", "recognition", "father", "government"], career: ["leadership roles", "government", "public service"], activities: ["leadership development", "public speaking", "authority building"] },
+      Moon: { duration: 10, themes: ["emotions", "mother", "public", "mind"], career: ["public relations", "hospitality", "healthcare"], activities: ["emotional healing", "nurturing others", "public service"] },
+      Mars: { duration: 7, themes: ["energy", "conflict", "brothers", "property"], career: ["military", "sports", "real estate"], activities: ["physical exercise", "competitive activities", "property matters"] },
+      Mercury: { duration: 17, themes: ["communication", "learning", "commerce", "friends"], career: ["communication", "education", "business"], activities: ["learning", "communication skills", "business development"] },
+      Jupiter: { duration: 16, themes: ["wisdom", "spirituality", "teaching", "children"], career: ["teaching", "counseling", "spiritual guidance"], activities: ["spiritual practices", "teaching", "wisdom sharing"] },
+      Venus: { duration: 20, themes: ["love", "beauty", "arts", "luxury"], career: ["arts", "beauty industry", "luxury goods"], activities: ["artistic pursuits", "beauty treatments", "romantic activities"] },
+      Saturn: { duration: 19, themes: ["discipline", "hard work", "delays", "service"], career: ["service roles", "disciplined work", "long-term projects"], activities: ["disciplined practices", "service to others", "patience building"] },
+      Rahu: { duration: 18, themes: ["ambition", "foreign", "technology", "unconventional"], career: ["technology", "foreign work", "unconventional fields"], activities: ["innovation", "foreign connections", "unconventional pursuits"] },
+      Ketu: { duration: 7, themes: ["spirituality", "detachment", "past life", "moksha"], career: ["spiritual work", "research", "occult sciences"], activities: ["spiritual practices", "meditation", "detachment exercises"] }
     }
   },
   chinese: {
@@ -75,28 +107,60 @@ const ASTROLOGICAL_KNOWLEDGE = {
       Pig: { element_years: ["Water", "Wood", "Fire", "Earth", "Metal"], traits: ["compassionate", "generous", "honest"], compatible: ["Rabbit", "Sheep"] }
     },
     elements: {
-      Wood: { traits: ["growth", "flexibility", "cooperation"], season: "Spring", direction: "East" },
-      Fire: { traits: ["passion", "energy", "transformation"], season: "Summer", direction: "South" },
-      Earth: { traits: ["stability", "practicality", "nurturing"], season: "Late Summer", direction: "Center" },
-      Metal: { traits: ["precision", "discipline", "organization"], season: "Autumn", direction: "West" },
-      Water: { traits: ["wisdom", "intuition", "adaptability"], season: "Winter", direction: "North" }
+      Wood: { traits: ["growth", "flexibility", "creativity"], career: ["creative fields", "agriculture", "education"], food: ["green vegetables", "sour flavors", "spring foods"], activities: ["planning", "creative projects", "growth-oriented tasks"] },
+      Fire: { traits: ["energy", "passion", "transformation"], career: ["entertainment", "sales", "leadership"], food: ["red foods", "bitter flavors", "summer foods"], activities: ["energetic pursuits", "passionate projects", "transformative work"] },
+      Earth: { traits: ["stability", "nurturing", "practicality"], career: ["real estate", "agriculture", "healthcare"], food: ["sweet flavors", "yellow foods", "grounding meals"], activities: ["practical tasks", "nurturing activities", "stable routines"] },
+      Metal: { traits: ["precision", "organization", "refinement"], career: ["finance", "engineering", "organization"], food: ["white foods", "spicy flavors", "autumn foods"], activities: ["organizing", "precision work", "refinement projects"] },
+      Water: { traits: ["flow", "adaptability", "wisdom"], career: ["communication", "transportation", "wisdom work"], food: ["salty flavors", "black foods", "winter foods"], activities: ["adaptive activities", "flowing movements", "wisdom seeking"] }
     }
   },
   humanDesign: {
     types: {
-      Manifestor: { strategy: "Inform", signature: "Peace", not_self: "Anger", aura: "Closed/Repelling" },
-      Generator: { strategy: "Respond", signature: "Satisfaction", not_self: "Frustration", aura: "Open/Enveloping" },
-      ManifestingGenerator: { strategy: "Respond then Inform", signature: "Satisfaction", not_self: "Frustration/Anger", aura: "Open/Enveloping" },
-      Projector: { strategy: "Wait for Invitation", signature: "Success", not_self: "Bitterness", aura: "Focused/Absorbing" },
-      Reflector: { strategy: "Wait a Lunar Cycle", signature: "Surprise", not_self: "Disappointment", aura: "Sampling" }
+      Generator: { strategy: "Respond", authority: ["Sacral", "Emotional"], traits: ["life force", "work satisfaction", "sustained energy"], career: ["satisfying work", "building", "sustained effort"], activities: ["responding to life", "following satisfaction", "sustainable work"] },
+      ManifestingGenerator: { strategy: "Respond and Inform", authority: ["Sacral", "Emotional"], traits: ["multi-passionate", "quick", "efficient"], career: ["multiple interests", "efficient work", "varied tasks"], activities: ["multi-tasking", "responding quickly", "efficient actions"] },
+      Projector: { strategy: "Wait for Invitation", authority: ["Splenic", "Emotional", "Ego", "Self"], traits: ["guidance", "efficiency", "recognition"], career: ["guidance roles", "management", "consulting"], activities: ["waiting for recognition", "guiding others", "efficient systems"] },
+      Manifestor: { strategy: "Inform before Acting", authority: ["Emotional", "Splenic", "Ego"], traits: ["initiation", "independence", "impact"], career: ["leadership", "initiation", "independent work"], activities: ["initiating projects", "independent action", "informing others"] },
+      Reflector: { strategy: "Wait a Lunar Cycle", authority: ["Lunar"], traits: ["community mirror", "wisdom", "uniqueness"], career: ["community roles", "evaluation", "unique perspectives"], activities: ["community involvement", "reflection", "unique contributions"] }
     },
-    authorities: {
-      Emotional: { description: "Wait for emotional clarity over time", process: "Ride the emotional wave" },
-      Sacral: { description: "Trust gut responses", process: "Listen to uh-huh/uh-uh sounds" },
-      Splenic: { description: "Trust intuitive hits in the moment", process: "Listen to spontaneous knowing" },
-      SelfProjected: { description: "Talk it out to hear your truth", process: "Listen to what you say" },
-      Mental: { description: "Process through discussion with others", process: "Think out loud with trusted advisors" },
-      Lunar: { description: "Wait 28+ days for clarity", process: "Feel through the full lunar cycle" }
+    centers: {
+      Head: { function: "Inspiration and mental pressure", defined: "consistent mental pressure", undefined: "inspiration comes and goes" },
+      Ajna: { function: "Mental processing and concepts", defined: "fixed way of thinking", undefined: "flexible mental processing" },
+      Throat: { function: "Communication and manifestation", defined: "consistent communication", undefined: "communication depends on others" },
+      G: { function: "Identity and direction", defined: "fixed sense of self", undefined: "fluid identity and direction" },
+      Heart: { function: "Willpower and ego", defined: "consistent willpower", undefined: "willpower comes and goes" },
+      Spleen: { function: "Intuition and health", defined: "reliable intuition", undefined: "sporadic intuitive hits" },
+      Sacral: { function: "Life force and sexuality", defined: "sustainable energy", undefined: "energy depends on others" },
+      SolarPlexus: { function: "Emotions and desires", defined: "emotional wave", undefined: "takes in others' emotions" },
+      Root: { function: "Pressure to act", defined: "consistent pressure", undefined: "pressure comes from others" }
+    }
+  },
+  numerology: {
+    lifePath: {
+      1: { traits: ["leadership", "independence", "pioneering"], career: ["leadership", "entrepreneurship", "innovation"], food: ["energizing", "protein-rich", "leadership fuel"], activities: ["leading projects", "independent work", "pioneering efforts"] },
+      2: { traits: ["cooperation", "sensitivity", "harmony"], career: ["counseling", "partnerships", "support roles"], food: ["harmonious combinations", "soothing", "partnership meals"], activities: ["cooperative work", "harmonizing", "supportive roles"] },
+      3: { traits: ["creativity", "communication", "joy"], career: ["arts", "communication", "entertainment"], food: ["colorful", "joyful", "creative presentation"], activities: ["creative expression", "communication", "joyful pursuits"] },
+      4: { traits: ["stability", "hard work", "organization"], career: ["organization", "building", "systematic work"], food: ["stable nutrition", "organized meals", "building foods"], activities: ["organizing", "building projects", "systematic work"] },
+      5: { traits: ["freedom", "adventure", "change"], career: ["travel", "sales", "varied work"], food: ["varied", "adventurous", "international"], activities: ["travel", "adventure", "changing activities"] },
+      6: { traits: ["nurturing", "responsibility", "service"], career: ["healthcare", "teaching", "service"], food: ["nurturing", "home-cooked", "service-oriented"], activities: ["nurturing others", "service work", "responsibility taking"] },
+      7: { traits: ["analysis", "spirituality", "introspection"], career: ["research", "analysis", "spiritual work"], food: ["pure", "spiritual", "analytical choices"], activities: ["analysis", "spiritual practices", "introspective work"] },
+      8: { traits: ["ambition", "material success", "authority"], career: ["business", "finance", "authority positions"], food: ["substantial", "success-oriented", "authoritative"], activities: ["business building", "authority exercises", "material success"] },
+      9: { traits: ["humanitarianism", "completion", "wisdom"], career: ["humanitarian work", "teaching", "completion"], food: ["universal appeal", "humanitarian choices", "wisdom foods"], activities: ["humanitarian service", "teaching", "completion work"] }
+    }
+  },
+  kp: {
+    significators: {
+      1: { houses: [1], planets: ["Sun"], meanings: ["self", "personality", "health"] },
+      2: { houses: [2], planets: ["Jupiter", "Venus"], meanings: ["wealth", "family", "speech"] },
+      3: { houses: [3], planets: ["Mars", "Mercury"], meanings: ["siblings", "communication", "courage"] },
+      4: { houses: [4], planets: ["Moon", "Mercury"], meanings: ["mother", "home", "education"] },
+      5: { houses: [5], planets: ["Jupiter", "Sun"], meanings: ["children", "creativity", "education"] },
+      6: { houses: [6], planets: ["Mars", "Saturn"], meanings: ["enemies", "health", "service"] },
+      7: { houses: [7], planets: ["Venus", "Jupiter"], meanings: ["spouse", "partnerships", "business"] },
+      8: { houses: [8], planets: ["Saturn", "Mars"], meanings: ["longevity", "transformation", "occult"] },
+      9: { houses: [9], planets: ["Jupiter", "Sun"], meanings: ["father", "dharma", "fortune"] },
+      10: { houses: [10], planets: ["Sun", "Mercury"], meanings: ["career", "reputation", "authority"] },
+      11: { houses: [11], planets: ["Jupiter", "Sun"], meanings: ["gains", "friends", "fulfillment"] },
+      12: { houses: [12], planets: ["Saturn", "Ketu"], meanings: ["losses", "expenses", "moksha"] }
     }
   }
 };
