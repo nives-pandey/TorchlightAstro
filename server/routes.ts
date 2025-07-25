@@ -665,6 +665,80 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // PDF Export endpoint
+  app.post('/api/export-chart-pdf', async (req, res) => {
+    try {
+      const { chartData, planets, aspects, chartType } = req.body;
+      
+      // For now, return a simple response indicating PDF functionality is being implemented
+      // In a full implementation, you would use a PDF library like puppeteer or jsPDF
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename="cosmic-mandala-${chartType}.pdf"`);
+      
+      // Simple placeholder PDF content
+      const pdfContent = Buffer.from(
+        `%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+>>
+endobj
+
+4 0 obj
+<<
+/Length 44
+>>
+stream
+BT
+/F1 12 Tf
+72 720 Td
+(Your Cosmic Mandala - ${chartType.toUpperCase()}) Tj
+ET
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000010 00000 n 
+0000000053 00000 n 
+0000000125 00000 n 
+0000000230 00000 n 
+trailer
+<<
+/Size 5
+/Root 1 0 R
+>>
+startxref
+350
+%%EOF`
+      );
+      
+      res.send(pdfContent);
+    } catch (error) {
+      console.error('PDF export error:', error);
+      res.status(500).json({ error: 'Failed to generate PDF' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

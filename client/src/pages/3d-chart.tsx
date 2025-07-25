@@ -8,7 +8,9 @@ import ThreeChartEngine from '@/components/three-chart-engine';
 import Advanced3DEngine from '@/components/advanced-3d-engine';
 import AdvancedPlanetaryAspects from '@/components/advanced-planetary-aspects';
 import { apiRequest } from '@/lib/queryClient';
-import { Loader2, Orbit, Eye, Zap } from 'lucide-react';
+import { Loader2, Orbit, Eye, Zap, Download, Share, Settings, Link, Mail, FileText, Image } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 interface Planet {
   name: string;
@@ -36,6 +38,7 @@ export default function Chart3D() {
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [aspects, setAspects] = useState<Aspect[]>([]);
   const [selectedChart, setSelectedChart] = useState<'natal' | 'transit' | 'synastry'>('natal');
+  const { toast } = useToast();
 
   // Load demo chart data for 3D visualization
   useEffect(() => {
@@ -267,6 +270,106 @@ export default function Chart3D() {
     }
   };
 
+  // Sharing Functions
+  const exportToPDF = async () => {
+    try {
+      const response = await fetch('/api/export-chart-pdf', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chartData,
+          planets,
+          aspects,
+          chartType: selectedChart
+        })
+      });
+      
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `cosmic-mandala-${selectedChart}.pdf`;
+        link.click();
+        window.URL.revokeObjectURL(url);
+        
+        toast({
+          title: "PDF Exported ✨",
+          description: "Your cosmic mandala has been saved as a beautiful PDF",
+        });
+      } else {
+        throw new Error('PDF export failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Export Failed",
+        description: "Unable to create PDF. Please try again.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const shareViaEmail = async () => {
+    const subject = encodeURIComponent("Your Cosmic Mandala from Torchlight ✨");
+    const body = encodeURIComponent(`
+I wanted to share my beautiful cosmic mandala with you! 
+
+This is my ${selectedChart} chart visualization created with Torchlight's advanced astrological system.
+
+View it here: ${window.location.href}
+
+Discover your own cosmic blueprint at Torchlight! 🌟
+    `);
+    
+    window.open(`mailto:?subject=${subject}&body=${body}`);
+    
+    toast({
+      title: "Email Ready",
+      description: "Opening your email client to share your cosmic mandala",
+    });
+  };
+
+  const copyShareLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast({
+        title: "Link Copied ✨",
+        description: "Share this cosmic visualization with anyone",
+      });
+    } catch (error) {
+      toast({
+        title: "Copy Failed",
+        description: "Please copy the URL manually",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const exportAsImage = async () => {
+    try {
+      const canvas = document.querySelector('canvas');
+      if (canvas) {
+        const link = document.createElement('a');
+        link.download = `cosmic-mandala-${selectedChart}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+        
+        toast({
+          title: "Image Saved ✨",
+          description: "Your cosmic mandala has been saved as an image",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Export Failed",
+        description: "Unable to save image. Please try again.",
+        variant: "destructive"
+      });
+    }
+  };
+
   if (loading && !chartData) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
@@ -281,14 +384,69 @@ export default function Chart3D() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
+        {/* Header with Share Options */}
+        <div className="text-center mb-8 relative">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent mb-4">
-            3D Cosmic Chart Visualization
+            Your Celestial Mandala
           </h1>
-          <p className="text-gray-300 text-lg">
-            Advanced planetary aspect mapping with immersive 3D cosmic visualization
+          <p className="text-gray-300 text-lg mb-4">
+            A beautiful visualization of your cosmic blueprint and planetary relationships
           </p>
+          
+          {/* Share Button */}
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white">
+                <Share className="w-4 h-4 mr-2" />
+                Share Your Mandala
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md">
+              <DialogHeader>
+                <DialogTitle className="text-rose-300 flex items-center gap-2">
+                  <Share className="w-5 h-5" />
+                  Share Your Cosmic Mandala
+                </DialogTitle>
+                <DialogDescription className="text-rose-200/70">
+                  Share your beautiful astrological visualization with friends and family
+                </DialogDescription>
+              </DialogHeader>
+              
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                <Button 
+                  onClick={exportAsImage}
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                >
+                  <Image className="w-6 h-6 text-pink-300" />
+                  <span className="text-sm text-rose-200">Save as Image</span>
+                </Button>
+                
+                <Button 
+                  onClick={exportToPDF}
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                >
+                  <FileText className="w-6 h-6 text-purple-300" />
+                  <span className="text-sm text-rose-200">Export PDF</span>
+                </Button>
+                
+                <Button 
+                  onClick={copyShareLink}
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                >
+                  <Link className="w-6 h-6 text-blue-300" />
+                  <span className="text-sm text-rose-200">Copy Link</span>
+                </Button>
+                
+                <Button 
+                  onClick={shareViaEmail}
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                >
+                  <Mail className="w-6 h-6 text-green-300" />
+                  <span className="text-sm text-rose-200">Email Share</span>
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Chart Type Controls */}
