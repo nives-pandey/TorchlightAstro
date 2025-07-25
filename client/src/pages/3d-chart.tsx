@@ -46,16 +46,19 @@ export default function Chart3D() {
     setLoading(true);
     try {
       const response = await apiRequest('GET', '/api/demo-chart') as any;
+      console.log('Demo chart response:', response);
       setChartData(response);
       
       // Convert chart data to 3D visualization format
       if (response?.chart?.westernChart?.planets) {
         const convertedPlanets = convertPlanetsTo3D(response.chart.westernChart.planets);
+        console.log('Converted planets:', convertedPlanets);
         setPlanets(convertedPlanets);
       }
       
       if (response?.chart?.westernChart?.aspects) {
         const convertedAspects = convertAspectsTo3D(response.chart.westernChart.aspects);
+        console.log('Converted aspects:', convertedAspects);
         setAspects(convertedAspects);
       }
     } catch (error) {
@@ -68,6 +71,7 @@ export default function Chart3D() {
   };
 
   const loadDemoData = () => {
+    console.log('Loading demo data for 3D visualization');
     // Demo planets for testing 3D visualization
     const demoPlanets = [
       { name: 'Sun', longitude: 83.45, latitude: 0, distance: 1, color: '#FFA500', size: 20, speed: 0.9856 },
@@ -96,6 +100,7 @@ export default function Chart3D() {
   };
 
   const convertPlanetsTo3D = (chartPlanets: any[]): Planet[] => {
+    console.log('Converting planets:', chartPlanets);
     const planetColors: Record<string, string> = {
       Sun: '#FFA500',
       Moon: '#C0C0C0', 
@@ -111,7 +116,7 @@ export default function Chart3D() {
 
     return chartPlanets.map(planet => ({
       name: planet.name,
-      longitude: planet.degree || Math.random() * 360,
+      longitude: planet.degree || planet.longitude || Math.random() * 360,
       latitude: 0,
       distance: getPlanetDistance(planet.name),
       color: planetColors[planet.name] || '#FFFFFF',
@@ -121,6 +126,7 @@ export default function Chart3D() {
   };
 
   const convertAspectsTo3D = (chartAspects: any[]): Aspect[] => {
+    console.log('Converting aspects:', chartAspects);
     const aspectColors: Record<string, string> = {
       conjunction: '#FF0000',
       opposition: '#FF4500', 

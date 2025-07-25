@@ -81,9 +81,18 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       startAnimation();
     } else {
       stopAnimation();
+      drawChart(); // Draw once when animation stops
     }
     return () => stopAnimation();
   }, [isAnimating, planets, aspects, zoom, showAspects, showOrbits, selectedAspects, viewMode, aspectStrength]);
+
+  // Initial draw when component mounts or data changes
+  useEffect(() => {
+    console.log('AdvancedPlanetaryAspects - planets:', planets, 'aspects:', aspects);
+    if (planets.length > 0) {
+      drawChart();
+    }
+  }, [planets, aspects]);
 
   const startAnimation = () => {
     const animate = () => {
