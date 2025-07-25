@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
+import { registerReportRoutes } from "./api-routes";
 import { astrologyEngine } from "./astrology-engine";
 import { kundaliGenerator } from "./kundali-generator";
 import { astrologyAI } from "./astrology-ai";
@@ -16,6 +17,9 @@ import {
 export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
+
+  // Register report generation routes
+  registerReportRoutes(app);
 
   // Auth routes
   app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
