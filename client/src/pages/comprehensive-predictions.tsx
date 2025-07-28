@@ -350,7 +350,7 @@ export default function ComprehensivePredictions() {
   return (
     <motion.div 
       className="min-h-screen p-6"
-      style={{background: 'var(--cosmic-gradient-3)'}}
+      style={{background: 'var(--cosmic-gradient-1)'}}
       variants={pageTransitions.home}
       initial="initial"
       animate="animate"

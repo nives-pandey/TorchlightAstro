@@ -300,7 +300,7 @@ export default function GemstoneGuidance() {
   return (
     <motion.div 
       className="min-h-screen p-6"
-      style={{background: 'var(--cosmic-gradient-3)'}}
+      style={{background: 'var(--cosmic-gradient-1)'}}
       variants={pageTransitions.home}
       initial="initial"
       animate="animate"

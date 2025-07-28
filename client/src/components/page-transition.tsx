@@ -33,15 +33,13 @@ function CelestialParticles() {
           }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ 
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0],
-            y: [-20, 20, -20]
+            opacity: 0.6,
+            scale: 1
           }}
           transition={{
-            duration: 3,
+            duration: 0.8,
             delay: particle.delay,
-            repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeOut"
           }}
         />
       ))}
@@ -83,52 +81,18 @@ function ConstellationOverlay() {
         </svg>
         
         {/* Floating stars */}
-        <motion.div
-          className="absolute top-20 left-20"
-          animate={{
-            y: [0, -10, 0],
-            rotate: [0, 5, 0]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <Stars className="w-4 h-4" style={{color: 'var(--cosmic-gold)'}} />
-        </motion.div>
+        {/* Static celestial elements - no floating animation */}
+        <div className="absolute top-20 left-20">
+          <Stars className="w-4 h-4 opacity-80" style={{color: 'var(--cosmic-gold)'}} />
+        </div>
         
-        <motion.div
-          className="absolute top-40 right-32"
-          animate={{
-            y: [0, 10, 0],
-            rotate: [0, -5, 0]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        >
-          <Sparkles className="w-3 h-3" style={{color: 'var(--cosmic-lavender)'}} />
-        </motion.div>
+        <div className="absolute top-40 right-32">
+          <Sparkles className="w-3 h-3 opacity-70" style={{color: 'var(--cosmic-lavender)'}} />
+        </div>
         
-        <motion.div
-          className="absolute bottom-32 left-1/3"
-          animate={{
-            y: [0, -15, 0],
-            x: [0, 5, 0]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        >
-          <Stars className="w-3 h-3" style={{color: 'var(--cosmic-purple)'}} />
-        </motion.div>
+        <div className="absolute bottom-32 left-1/3">
+          <Stars className="w-3 h-3 opacity-60" style={{color: 'var(--cosmic-purple)'}} />
+        </div>
       </div>
     </motion.div>
   );
@@ -229,13 +193,13 @@ export const staggerContainer = {
   }
 };
 
-// Floating element animation
-export const floatingAnimation = {
-  y: [0, -10, 0],
+// Static entrance animation (no floating)
+export const entranceAnimation = {
+  opacity: 1,
+  y: 0,
   transition: {
-    duration: 3,
-    repeat: Infinity,
-    ease: "easeInOut"
+    duration: 0.6,
+    ease: "easeOut"
   }
 };
 
