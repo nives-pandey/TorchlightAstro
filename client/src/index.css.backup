@@ -324,11 +324,29 @@
 
   /* Loading Animations */
   .cosmic-pulse {
-    /* No animation - static only */
+    animation: cosmic-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes cosmic-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
   }
 
   .cosmic-glow {
-    /* No animation - static only */
+    animation: cosmic-glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes cosmic-glow {
+    from {
+      text-shadow: 0 0 5px hsl(262, 83%, 58%), 0 0 10px hsl(262, 83%, 58%), 0 0 15px hsl(262, 83%, 58%);
+    }
+    to {
+      text-shadow: 0 0 10px hsl(328, 86%, 70%), 0 0 20px hsl(328, 86%, 70%), 0 0 30px hsl(328, 86%, 70%);
+    }
   }
 
   /* Dynamic Theme Support */

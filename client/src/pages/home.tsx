@@ -314,7 +314,7 @@ export default function Home() {
 
       {/* Birth Data Collection Modal */}
       {showBirthForm && (
-        <BirthDataForm onClose={() => setShowBirthForm(false)} />
+        <ModernBirthForm onClose={() => setShowBirthForm(false)} />
       )}
 
       {/* System Information Dialog */}
