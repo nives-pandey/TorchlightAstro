@@ -14,14 +14,14 @@ function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) 
           onClick={onClick}
           className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-1"
         >
-          <div className="bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-rose-500/20 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:from-pink-400/30 hover:via-purple-400/30 hover:to-rose-400/30 transition-all duration-300 shadow-lg hover:shadow-pink-500/20">
+          <div style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg hover:shadow-pink-500/20">
             <div className="text-3xl sm:text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
               {system.icon}
             </div>
-            <h3 className="text-white font-semibold text-sm sm:text-base mb-1 group-hover:text-pink-200 transition-colors">
+            <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
               {system.title}
             </h3>
-            <p className="text-pink-200/80 text-xs leading-relaxed">
+            <p className="text-xs leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
               {system.shortDesc}
             </p>
           </div>
@@ -205,7 +205,7 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-rose-900 text-white overflow-hidden">
+    <div className="min-h-screen text-white overflow-hidden" style={{background: 'var(--cosmic-gradient-1)'}}>
       {/* Floating particles background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
@@ -239,24 +239,24 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
-              <span className="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight font-accent">
+              <span style={{background: 'var(--cosmic-gradient-2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
                 Your Complete
               </span>
               <br />
-              <span className="text-white">
+              <span style={{color: 'var(--cosmic-lavender)'}}>
                 Cosmic Guide
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-pink-200/90 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
               Illuminate your path with authentic insights from five ancient wisdom traditions
             </p>
           </div>
 
           {/* Astrology Systems Grid */}
           <div className="mb-12">
-            <h3 className="text-xl font-semibold text-white mb-6 flex items-center justify-center gap-2">
-              <Sparkles className="w-5 h-5 text-pink-400" />
+            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+              <Sparkles className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
               Explore Ancient Wisdom
             </h3>
             
@@ -321,10 +321,15 @@ export default function Landing() {
             <Button 
               onClick={() => window.location.href = '/home'}
               size="lg"
-              className="bg-gradient-to-r from-pink-500 via-purple-500 to-rose-500 hover:from-pink-600 hover:via-purple-600 hover:to-rose-600 text-white font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl hover:shadow-pink-500/25 transform hover:scale-105 transition-all duration-300"
+              className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transform hover:scale-105 transition-all duration-300 font-accent"
+              style={{
+                background: 'var(--cosmic-gradient-2)',
+                color: 'var(--cosmic-lavender)',
+                border: 'none'
+              }}
             >
               Begin Your Cosmic Journey
-              <Stars className="ml-2 w-5 h-5" />
+              <Stars className="ml-2 w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
             </Button>
             <p className="text-pink-200/60 text-sm mt-4">
               Free forever • No signup required • Start exploring immediately
