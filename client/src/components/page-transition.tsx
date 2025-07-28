@@ -203,12 +203,11 @@ export const entranceAnimation = {
   }
 };
 
-// Shimmer loading animation
-export const shimmerAnimation = {
-  backgroundPosition: ['200% 0', '-200% 0'],
+// Static loading animation (no shimmer)
+export const staticAnimation = {
+  opacity: 1,
   transition: {
-    duration: 2,
-    repeat: Infinity,
-    ease: "linear"
+    duration: 0.3,
+    ease: "easeOut"
   }
 };

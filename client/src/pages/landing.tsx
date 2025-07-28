@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+// No animations needed
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar } from "lucide-react";
-import { pageTransitions, cardVariants, staggerContainer, floatingAnimation } from "@/components/page-transition";
+// No animations needed
 
 // Beautiful System Badge Component
 function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) {
@@ -207,20 +207,13 @@ export default function Landing() {
   };
 
   return (
-    <motion.div 
+    <div 
       className="min-h-screen text-white overflow-hidden" 
       style={{background: 'var(--cosmic-gradient-1)'}}
-      variants={pageTransitions.landing}
-      initial="initial"
-      animate="animate"
-      exit="exit"
     >
       {/* Floating particles background */}
-      <motion.div 
+      <div 
         className="fixed inset-0 overflow-hidden pointer-events-none"
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
       >
         {/* Static celestial background elements - no animation */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
@@ -229,7 +222,7 @@ export default function Landing() {
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
         <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
-      </motion.div>
+      </div>
 
       {/* Header */}
       <header className="relative z-10 px-4 py-6">
@@ -334,20 +327,8 @@ export default function Landing() {
           </div>
 
           {/* Call to Action */}
-          <motion.div 
-            className="text-center"
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(275, 70, 45, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+          <div className="text-center">
+            <div>
               <Button 
                 onClick={() => window.location.href = '/home'}
                 size="lg"
@@ -359,27 +340,20 @@ export default function Landing() {
                 }}
               >
                 Begin Your Cosmic Journey
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="inline-block ml-2"
-                >
+                <div className="inline-block ml-2">
                   <Stars className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
-                </motion.div>
+                </div>
               </Button>
-            </motion.div>
-            <motion.p 
+            </div>
+            <p 
               className="text-sm mt-4"
               style={{color: 'var(--cosmic-lavender)', opacity: 0.6}}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 0.6, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
             >
               Free forever • No signup required • Start exploring immediately
-            </motion.p>
-          </motion.div>
+            </p>
+          </div>
         </div>
       </main>
-    </motion.div>
+    </div>
   );
 }
