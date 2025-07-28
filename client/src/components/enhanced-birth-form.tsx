@@ -10,7 +10,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Calendar, MapPin, Clock, Settings, User, CheckCircle2, AlertTriangle, ChevronRight, ChevronLeft } from "lucide-react";
+import { Calendar, MapPin, Clock, Settings, User, CheckCircle2, AlertTriangle, ChevronRight, ChevronLeft, Globe } from "lucide-react";
+import { detectTimezoneFromCity, getTimezonesByRegion, validateBirthTimeAccuracy, WORLD_TIMEZONES, type TimezoneInfo } from "@/lib/timezone-handler";
 
 const enhancedBirthSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -28,6 +29,7 @@ const enhancedBirthSchema = z.object({
   birthCity: z.string().min(1, "Birth city is required"),
   birthCountry: z.string().min(1, "Birth country is required"),
   timezone: z.string().min(1, "Timezone is required"),
+  timezoneAutoDetected: z.boolean().default(false),
   systems: z.object({
     western: z.boolean().default(true),
     vedic: z.boolean().default(true),
@@ -60,6 +62,9 @@ const FORM_STEPS = [
 export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirthFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
+  const [timezoneGroups] = useState(() => getTimezonesByRegion());
+  const [timeAccuracyWarnings, setTimeAccuracyWarnings] = useState<string[]>([]);
+  const [detectedTimezone, setDetectedTimezone] = useState<string>('');
 
   const form = useForm<EnhancedBirthFormData>({
     resolver: zodResolver(enhancedBirthSchema),
@@ -72,6 +77,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
       birthCity: "",
       birthCountry: "",
       timezone: "",
+      timezoneAutoDetected: false,
       systems: {
         western: true,
         vedic: true,
@@ -84,9 +90,35 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
     }
   });
 
-  const { handleSubmit, formState: { errors }, watch } = form;
+  const { handleSubmit, formState: { errors }, watch, setValue, getValues } = form;
   const watchedValues = watch();
   const progress = ((currentStep + 1) / FORM_STEPS.length) * 100;
+
+  // Auto-detect timezone when city changes
+  const handleCityChange = (city: string) => {
+    if (city.length > 2) {
+      const detected = detectTimezoneFromCity(city, watchedValues.birthCountry);
+      if (detected && detected !== watchedValues.timezone) {
+        setDetectedTimezone(detected);
+        setValue('timezone', detected);
+        setValue('timezoneAutoDetected', true);
+      }
+    }
+  };
+
+  // Validate time accuracy when birth time or timezone changes
+  const validateTimeAccuracy = () => {
+    const { birthDate, birthTime, timezone } = getValues();
+    if (birthDate && birthTime && timezone) {
+      try {
+        const birthDateTime = `${birthDate}T${birthTime}:00`;
+        const validation = validateBirthTimeAccuracy(birthDateTime, timezone);
+        setTimeAccuracyWarnings(validation.warnings);
+      } catch (error) {
+        setTimeAccuracyWarnings(['Unable to validate timezone. Please check your selection.']);
+      }
+    }
+  };
 
   const validateCurrentStep = (): boolean => {
     const stepValidations = {
@@ -276,8 +308,13 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                           <FormControl>
                             <Input 
                               type="time" 
+                              step="60"
                               className="cosmic-input"
-                              {...field} 
+                              {...field}
+                              onChange={(e) => {
+                                field.onChange(e);
+                                setTimeout(validateTimeAccuracy, 100);
+                              }}
                             />
                           </FormControl>
                           <FormMessage />
@@ -295,6 +332,122 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                       name="birthCity"
                       render={({ field }) => (
                         <FormItem>
+                          <FormLabel className="text-white flex items-center">
+                            <MapPin className="mr-2 h-4 w-4" />
+                            Birth City *
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="e.g., Paris, New York, Mumbai"
+                              className="cosmic-input"
+                              {...field}
+                              onChange={(e) => {
+                                field.onChange(e);
+                                handleCityChange(e.target.value);
+                              }}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                          {detectedTimezone && (
+                            <div className="text-xs text-green-400 mt-1 flex items-center">
+                              <Globe className="mr-1 h-3 w-3" />
+                              Auto-detected timezone: {WORLD_TIMEZONES.find(tz => tz.identifier === detectedTimezone)?.displayName}
+                            </div>
+                          )}
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="birthCountry"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white">Birth Country *</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="e.g., United States, France, India"
+                              className="cosmic-input"
+                              {...field} 
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  {/* Advanced Timezone Selection */}
+                  <FormField
+                    control={form.control}
+                    name="timezone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-white flex items-center">
+                          <Globe className="mr-2 h-4 w-4" />
+                          Timezone * 
+                          {watchedValues.timezoneAutoDetected && (
+                            <Badge variant="outline" className="ml-2 text-green-400 border-green-400/30">
+                              Auto-detected
+                            </Badge>
+                          )}
+                        </FormLabel>
+                        <Select onValueChange={(value) => {
+                          field.onChange(value);
+                          setValue('timezoneAutoDetected', false);
+                          validateTimeAccuracy();
+                        }} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="cosmic-input">
+                              <SelectValue placeholder="Select your timezone" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent className="max-h-96">
+                            {Object.entries(timezoneGroups).map(([region, timezones]) => (
+                              <div key={region}>
+                                <div className="px-2 py-1.5 text-sm font-semibold text-gray-400 bg-gray-800">
+                                  {region}
+                                </div>
+                                {timezones.map((tz) => (
+                                  <SelectItem key={tz.identifier} value={tz.identifier}>
+                                    <div className="flex items-center justify-between w-full">
+                                      <span>{tz.displayName}</span>
+                                      <span className="text-xs text-gray-400 ml-2">
+                                        UTC{tz.utcOffset >= 0 ? '+' : ''}{tz.utcOffset}
+                                        {tz.hasDST && ' (DST)'}
+                                      </span>
+                                    </div>
+                                  </SelectItem>
+                                ))}
+                              </div>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                        
+                        {/* Time Accuracy Warnings */}
+                        {timeAccuracyWarnings.length > 0 && (
+                          <div className="mt-2 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                            <div className="flex items-center text-yellow-400 text-sm font-medium mb-1">
+                              <AlertTriangle className="h-4 w-4 mr-2" />
+                              Time Accuracy Notices
+                            </div>
+                            {timeAccuracyWarnings.map((warning, index) => (
+                              <p key={index} className="text-xs text-yellow-300 mb-1">
+                                • {warning}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+                        
+                        <p className="text-xs text-gray-400 mt-2">
+                          💡 DST (Daylight Saving) is automatically calculated for your birth date.
+                          <br />
+                          The system adjusts for historical timezone changes and leap years.
+                        </p>
+                      </FormItem>
+                    )}
+                  />
                           <FormLabel className="text-white flex items-center">
                             <MapPin className="mr-2 h-4 w-4" />
                             Birth City *

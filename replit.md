@@ -155,6 +155,16 @@ The application performs authentic astrological calculations rather than using p
 
 ## Recent Updates
 
+### Advanced Timezone & DST Handling System (July 28, 2025)
+- **Comprehensive World Timezone Database**: 80+ timezones covering all major cities and regions globally
+- **Automatic DST Calculation**: Historical daylight saving time detection for accurate birth time conversion
+- **Smart City Auto-Detection**: Automatic timezone detection when users enter city names (Paris → Europe/Paris)
+- **Regional Timezone Grouping**: User-friendly dropdown organized by Americas, Europe, Asia, Africa, Oceania
+- **Time Accuracy Validation**: Warns users about rounded times that may affect rising sign accuracy
+- **UTC Conversion**: Precise UTC time calculation considering DST rules active during birth date
+- **Astrological Precision**: Addresses critical timezone issues for accurate ascendant and house calculations
+- **Mobile-Optimized Interface**: Streamlined timezone selection with auto-detection badges and warnings
+
 ### Gemstone Guidance & Comprehensive Predictions System (July 28, 2025)
 - **Fixed card shaking animations**: Replaced unstable floating animations with smooth easeInOut transitions
 - **Gemstone & Crystal Guidance**: Complete birth-detail-based gemstone recommendations system
