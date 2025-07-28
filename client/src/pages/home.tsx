@@ -245,14 +245,17 @@ export default function Home() {
   };
 
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      style={{background: 'var(--cosmic-gradient-1)'}}
+    >
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden">
         {/* Cosmic Background Elements */}
-        <div className="absolute inset-0 nebula opacity-40"></div>
-        <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-500 rounded-full star-animation"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full star-animation" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-purple-500 rounded-full star-animation" style={{animationDelay: '2s'}}></div>
+        <div className="absolute inset-0 opacity-40"></div>
+        <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-500 rounded-full"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full"></div>
+        <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
