@@ -115,6 +115,41 @@
     font-weight: 400;
   }
 
+  /* Celestial animations and effects */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .celestial-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .celestial-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .celestial-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--cosmic-purple) 0%,
+      var(--cosmic-gold) 50%,
+      var(--cosmic-purple) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
   /* Cosmic utilities with clean structure */
   .clean-card {
     background: rgba(0, 0, 0, 0.4);

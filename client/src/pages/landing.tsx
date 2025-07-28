@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar } from "lucide-react";
+import { pageTransitions, cardVariants, staggerContainer, floatingAnimation } from "@/components/page-transition";
 
 // Beautiful System Badge Component
 function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) {
@@ -205,14 +207,42 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen text-white overflow-hidden" style={{background: 'var(--cosmic-gradient-1)'}}>
+    <motion.div 
+      className="min-h-screen text-white overflow-hidden" 
+      style={{background: 'var(--cosmic-gradient-1)'}}
+      variants={pageTransitions.landing}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       {/* Floating particles background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full animate-ping"></div>
-        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full animate-ping"></div>
-      </div>
+      <motion.div 
+        className="fixed inset-0 overflow-hidden pointer-events-none"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div 
+          className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full" 
+          variants={cardVariants}
+          animate={floatingAnimation}
+        />
+        <motion.div 
+          className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full" 
+          variants={cardVariants}
+          animate={{...floatingAnimation, transition: {...floatingAnimation.transition, delay: 1}}}
+        />
+        <motion.div 
+          className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full" 
+          variants={cardVariants}
+          animate={{...floatingAnimation, transition: {...floatingAnimation.transition, delay: 2}}}
+        />
+        <motion.div 
+          className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full" 
+          variants={cardVariants}
+          animate={{...floatingAnimation, transition: {...floatingAnimation.transition, delay: 0.5}}}
+        />
+      </motion.div>
 
       {/* Header */}
       <header className="relative z-10 px-4 py-6">
@@ -317,26 +347,52 @@ export default function Landing() {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center">
-            <Button 
-              onClick={() => window.location.href = '/home'}
-              size="lg"
-              className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transform hover:scale-105 transition-all duration-300 font-accent"
-              style={{
-                background: 'var(--cosmic-gradient-2)',
-                color: 'var(--cosmic-lavender)',
-                border: 'none'
+          <motion.div 
+            className="text-center"
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: "0 20px 40px rgba(275, 70, 45, 0.3)"
               }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              Begin Your Cosmic Journey
-              <Stars className="ml-2 w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
-            </Button>
-            <p className="text-pink-200/60 text-sm mt-4">
+              <Button 
+                onClick={() => window.location.href = '/home'}
+                size="lg"
+                className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
+                style={{
+                  background: 'var(--cosmic-gradient-2)',
+                  color: 'var(--cosmic-lavender)',
+                  border: 'none'
+                }}
+              >
+                Begin Your Cosmic Journey
+                <motion.div
+                  animate={{ rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="inline-block ml-2"
+                >
+                  <Stars className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
+                </motion.div>
+              </Button>
+            </motion.div>
+            <motion.p 
+              className="text-sm mt-4"
+              style={{color: 'var(--cosmic-lavender)', opacity: 0.6}}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 0.6, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
               Free forever • No signup required • Start exploring immediately
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 }

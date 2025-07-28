@@ -1,9 +1,11 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { AnimatePresence, motion } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/useAuth";
+import { PageTransition } from "@/components/page-transition";
 import Navigation from "@/components/navigation";
 import TimeAdaptiveNavigation from "@/components/time-adaptive-navigation";
 import Landing from "@/pages/landing";
@@ -32,6 +34,13 @@ import NotFound from "@/pages/not-found";
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
+  const [location] = useLocation();
+
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    in: { opacity: 1, y: 0 },
+    out: { opacity: 0, y: -20 }
+  };
 
   // For demo purposes, show the main app without authentication
   return (
@@ -39,7 +48,17 @@ function Router() {
       {/* Fixed starfield background */}
       <div className="fixed inset-0 starfield opacity-30 pointer-events-none"></div>
       
-      <Switch>
+      <PageTransition>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location}
+            initial="initial"
+            animate="in"
+            exit="out"
+            variants={pageVariants}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            <Switch>
         <Route path="/" component={Landing} />
         <Route path="/home" component={Home} />
         <Route path="/personal" component={Personal} />
@@ -63,7 +82,10 @@ function Router() {
         <Route path="/cosmic-time" component={CosmicTimeInterface} />
         <Route path="/flowing-river" component={FlowingRiverPage} />
         <Route component={NotFound} />
-      </Switch>
+            </Switch>
+          </motion.div>
+        </AnimatePresence>
+      </PageTransition>
     </div>
   );
 }
