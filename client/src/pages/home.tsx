@@ -462,7 +462,7 @@ export default function Home() {
                   onClick={() => handleSystemClick(system.title)}
                 >
                   <CardHeader className="text-center">
-                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{system.icon}</div>
+                    <div className="text-4xl mb-4">{system.icon}</div>
                     <CardTitle className="text-yellow-500 text-xl group-hover:text-yellow-400 transition-colors">
                       {system.title}
                     </CardTitle>
@@ -506,7 +506,7 @@ export default function Home() {
                   onClick={() => handleSystemClick(system.title)}
                 >
                   <CardHeader className="text-center">
-                    <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{system.icon}</div>
+                    <div className="text-5xl mb-4">{system.icon}</div>
                     <CardTitle className="text-purple-400 text-2xl group-hover:text-purple-300 transition-colors">
                       {system.title}
                     </CardTitle>

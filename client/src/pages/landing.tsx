@@ -14,10 +14,10 @@ function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) 
       <DialogTrigger asChild>
         <div 
           onClick={onClick}
-          className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+          className="group cursor-pointer"
         >
           <div style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg hover:shadow-pink-500/20">
-            <div className="text-3xl sm:text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+            <div className="text-3xl sm:text-4xl mb-3">
               {system.icon}
             </div>
             <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
