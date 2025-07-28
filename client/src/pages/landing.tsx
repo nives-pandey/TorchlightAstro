@@ -224,23 +224,54 @@ export default function Landing() {
       >
         <motion.div 
           className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full" 
-          variants={cardVariants}
-          animate={floatingAnimation}
+          animate={{
+            y: [0, -8, 0],
+            opacity: [0.3, 1, 0.3]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
         <motion.div 
           className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full" 
-          variants={cardVariants}
-          animate={{...floatingAnimation, transition: {...floatingAnimation.transition, delay: 1}}}
+          animate={{
+            y: [0, -6, 0],
+            opacity: [0.4, 1, 0.4]
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
         />
         <motion.div 
           className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full" 
-          variants={cardVariants}
-          animate={{...floatingAnimation, transition: {...floatingAnimation.transition, delay: 2}}}
+          animate={{
+            y: [0, -10, 0],
+            opacity: [0.2, 0.8, 0.2]
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
         />
         <motion.div 
           className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full" 
-          variants={cardVariants}
-          animate={{...floatingAnimation, transition: {...floatingAnimation.transition, delay: 0.5}}}
+          animate={{
+            y: [0, -7, 0],
+            opacity: [0.3, 0.9, 0.3]
+          }}
+          transition={{
+            duration: 3.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5
+          }}
         />
       </motion.div>
 

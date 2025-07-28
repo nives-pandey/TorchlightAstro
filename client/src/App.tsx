@@ -30,6 +30,8 @@ import ComprehensiveAnalysis from "@/pages/comprehensive-analysis";
 import ComprehensiveTest from "@/pages/comprehensive-test";
 import Pricing from "@/pages/pricing";
 import FeatureDashboard from "@/pages/feature-dashboard";
+import GemstoneGuidance from "@/pages/gemstone-guidance";
+import ComprehensivePredictions from "@/pages/comprehensive-predictions";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -81,6 +83,8 @@ function Router() {
         <Route path="/enhanced-demo" component={EnhancedDemo} />
         <Route path="/cosmic-time" component={CosmicTimeInterface} />
         <Route path="/flowing-river" component={FlowingRiverPage} />
+        <Route path="/gemstone-guidance" component={GemstoneGuidance} />
+        <Route path="/comprehensive-predictions" component={ComprehensivePredictions} />
         <Route component={NotFound} />
             </Switch>
           </motion.div>

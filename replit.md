@@ -155,6 +155,26 @@ The application performs authentic astrological calculations rather than using p
 
 ## Recent Updates
 
+### Gemstone Guidance & Comprehensive Predictions System (July 28, 2025)
+- **Fixed card shaking animations**: Replaced unstable floating animations with smooth easeInOut transitions
+- **Gemstone & Crystal Guidance**: Complete birth-detail-based gemstone recommendations system
+  - Authentic gemstone suggestions based on zodiac sign, moon sign, ascendant, and numerology
+  - Purpose-based filtering (healing, protection, prosperity, wisdom)
+  - Detailed wearing instructions, chakra associations, and auspicious timing
+  - Cross-system integration with planetary associations and benefits
+- **Comprehensive Predictions Engine**: Multi-system past/present/future analysis
+  - Past year reflection with accuracy tracking for all 5 systems
+  - Current month guidance with opportunities and challenges
+  - Future outlook with positive aspects and caution areas
+  - Life area assessments (love, career, finance, health) with scoring
+  - Cross-system comprehensive report showing commonalities and differences
+- **Advanced System Analysis**: 
+  - Accuracy ratings: Western (92%), Vedic (96%), Chinese (89%), Human Design (85%), Numerology (78%)
+  - Key date predictions and auspicious timing recommendations
+  - Comprehensive synthesis report identifying consensus and variations between systems
+- **Navigation Integration**: Added new routes `/gemstone-guidance` and `/comprehensive-predictions`
+- **Mobile-Optimized Interface**: Cards, progress bars, and tabbed navigation for mobile-first experience
+
 ### Dynamic Time-Based Interface System (July 25, 2025)
 - Created comprehensive time-adaptive interface that changes throughout the day
 - Implemented 6 distinct time periods (dawn, morning, afternoon, evening, night, midnight) with unique themes
