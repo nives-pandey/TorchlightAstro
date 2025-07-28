@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { AlertTriangle, CheckCircle, Star, TrendingUp, TrendingDown, Calendar, Clock, Heart, Briefcase, DollarSign, Shield } from "lucide-react";
-import { pageTransitions, cardVariants, staggerContainer } from "@/components/page-transition";
 
 interface PredictionPeriod {
   period: "past_year" | "current_month" | "next_3_months" | "next_year";
@@ -348,22 +346,13 @@ export default function ComprehensivePredictions() {
     : systemPredictions.filter(pred => pred.system.toLowerCase() === selectedSystem);
 
   return (
-    <motion.div 
+    <div 
       className="min-h-screen p-6"
       style={{background: 'var(--cosmic-gradient-1)'}}
-      variants={pageTransitions.home}
-      initial="initial"
-      animate="animate"
-      exit="exit"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div 
-          className="text-center mb-8"
-          variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="text-center mb-8">
           <h1 className="text-3xl font-bold mb-4" style={{color: 'var(--cosmic-lavender)'}}>
             <Star className="w-8 h-8 inline-block mr-3" style={{color: 'var(--cosmic-gold)'}} />
             Comprehensive Predictions & Analysis
@@ -371,15 +360,10 @@ export default function ComprehensivePredictions() {
           <p className="text-lg max-w-4xl mx-auto" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
             Past reflections, current guidance, and future insights from all five astrological systems
           </p>
-        </motion.div>
+        </div>
 
         {/* System Filter */}
-        <motion.div 
-          className="mb-8"
-          variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="mb-8">
           <div className="flex flex-wrap gap-2 justify-center">
             {["all", "western", "vedic", "chinese", "human design", "numerology"].map((system) => (
               <Button
@@ -398,17 +382,12 @@ export default function ComprehensivePredictions() {
               </Button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* System Predictions */}
-        <motion.div 
-          className="grid lg:grid-cols-2 gap-6 mb-8"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
+        <div className="grid lg:grid-cols-2 gap-6 mb-8">
           {filteredPredictions.map((prediction, index) => (
-            <motion.div key={index} variants={cardVariants}>
+            <div key={index}>
               <Card className="h-full border-2" style={{borderColor: 'var(--cosmic-purple)', background: 'var(--cosmic-indigo)'}}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
@@ -521,17 +500,13 @@ export default function ComprehensivePredictions() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Comprehensive Report */}
         {selectedSystem === "all" && (
-          <motion.div 
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div>
             <Card className="border-2" style={{borderColor: 'var(--cosmic-gold)', background: 'var(--cosmic-indigo)'}}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2" style={{color: 'var(--cosmic-gold)'}}>
@@ -595,9 +570,9 @@ export default function ComprehensivePredictions() {
                 </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }
