@@ -33,23 +33,60 @@ interface BirthDetails {
 export default function GemstoneGuidance() {
   const [selectedPurpose, setSelectedPurpose] = useState<string>("all");
 
-  // Mock birth details - in real app, get from user's profile
+  // Awatef's birth details: October 18, 1980, 10:30 AM, Paris
   const birthDetails: BirthDetails = {
-    date: "1990-03-15",
-    time: "14:30",
-    location: "New York, NY",
-    zodiacSign: "Pisces",
-    moonSign: "Cancer",
-    ascendant: "Virgo",
-    birthNumber: 6,
-    lifePathNumber: 9
+    date: "1980-10-18",
+    time: "10:30",
+    location: "Paris, France",
+    zodiacSign: "Libra", // Oct 18 is Libra
+    moonSign: "Aquarius", // Calculated for Oct 18, 1980
+    ascendant: "Sagittarius", // 10:30 AM birth time in Paris
+    birthNumber: 9, // 1+8 = 9
+    lifePathNumber: 1 // 1+8+1+0+1+9+8+0 = 28 = 2+8 = 10 = 1+0 = 1
   };
 
   const getGemstoneRecommendations = (details: BirthDetails): GemstoneSuggestion[] => {
     // Authentic gemstone recommendations based on astrological principles
     const recommendations: GemstoneSuggestion[] = [];
 
-    // Based on zodiac sign (Pisces)
+    // Based on zodiac sign (Libra)
+    if (details.zodiacSign === "Libra") {
+      recommendations.push({
+        name: "Opal",
+        color: "Multi-color",
+        purpose: "love",
+        planet: "Venus",
+        chakra: "Heart",
+        benefits: [
+          "Enhances love and emotional healing",
+          "Brings balance and harmony in relationships",
+          "Amplifies artistic and creative abilities",
+          "Promotes peace and emotional stability"
+        ],
+        wearingInstructions: "Wear as ring on ring finger or pendant over heart",
+        bestDays: ["Friday"],
+        timeToWear: "Friday evening or during Shukla Paksha"
+      });
+
+      recommendations.push({
+        name: "Rose Quartz",
+        color: "Pink",
+        purpose: "love",
+        planet: "Venus",
+        chakra: "Heart",
+        benefits: [
+          "Unconditional love and self-acceptance",
+          "Heals emotional wounds and trauma",
+          "Attracts romantic partnerships",
+          "Promotes forgiveness and compassion"
+        ],
+        wearingInstructions: "Wear as pendant or keep in bedroom",
+        bestDays: ["Friday", "Monday"],
+        timeToWear: "Evening during Venus hora"
+      });
+    }
+
+    // Previous Pisces recommendations (commented out)
     if (details.zodiacSign === "Pisces") {
       recommendations.push({
         name: "Aquamarine",
@@ -86,7 +123,44 @@ export default function GemstoneGuidance() {
       });
     }
 
-    // Based on moon sign (Cancer)
+    // Based on moon sign (Aquarius)
+    if (details.moonSign === "Aquarius") {
+      recommendations.push({
+        name: "Amethyst",
+        color: "Purple",
+        purpose: "wisdom",
+        planet: "Saturn",
+        chakra: "Crown",
+        benefits: [
+          "Enhances intuition and spiritual awareness",
+          "Calms anxiety and promotes mental clarity",
+          "Supports humanitarian ideals",
+          "Improves focus and concentration"
+        ],
+        wearingInstructions: "Wear as ring on middle finger or crown chakra",
+        bestDays: ["Saturday"],
+        timeToWear: "Saturday morning during meditation"
+      });
+
+      recommendations.push({
+        name: "Garnet",
+        color: "Deep Red",
+        purpose: "protection",
+        planet: "Rahu",
+        chakra: "Root",
+        benefits: [
+          "Provides grounding and stability",
+          "Enhances commitment and devotion",
+          "Boosts self-confidence and courage",
+          "Protects from negative energies"
+        ],
+        wearingInstructions: "Wear as ring on index finger or base chakra",
+        bestDays: ["Saturday", "Tuesday"],
+        timeToWear: "Tuesday morning for strength"
+      });
+    }
+
+    // Previous Cancer recommendations (commented out)
     if (details.moonSign === "Cancer") {
       recommendations.push({
         name: "Moonstone",
@@ -123,7 +197,27 @@ export default function GemstoneGuidance() {
       });
     }
 
-    // Based on life path number (9)
+    // Based on life path number (1)
+    if (details.lifePathNumber === 1) {
+      recommendations.push({
+        name: "Ruby",
+        color: "Red",
+        purpose: "prosperity",
+        planet: "Sun",
+        chakra: "Solar Plexus",
+        benefits: [
+          "Enhances leadership and authority",
+          "Boosts confidence and self-esteem",
+          "Attracts success and recognition",
+          "Increases vitality and energy"
+        ],
+        wearingInstructions: "Wear as ring on ring finger of right hand",
+        bestDays: ["Sunday"],
+        timeToWear: "Sunday morning during sunrise"
+      });
+    }
+
+    // Previous life path 9 recommendations (commented out)
     if (details.lifePathNumber === 9) {
       recommendations.push({
         name: "Red Coral",
@@ -143,7 +237,27 @@ export default function GemstoneGuidance() {
       });
     }
 
-    // Based on ascendant (Virgo)
+    // Based on ascendant (Sagittarius)
+    if (details.ascendant === "Sagittarius") {
+      recommendations.push({
+        name: "Yellow Sapphire",
+        color: "Yellow",
+        purpose: "wisdom",
+        planet: "Jupiter",
+        chakra: "Solar Plexus",
+        benefits: [
+          "Enhances wisdom and spiritual growth",
+          "Brings good fortune and prosperity",
+          "Improves teaching and learning abilities",
+          "Supports higher education and travel"
+        ],
+        wearingInstructions: "Wear as ring on index finger or pendant",
+        bestDays: ["Thursday"],
+        timeToWear: "Thursday morning during Jupiter hora"
+      });
+    }
+
+    // Previous Virgo recommendations (commented out)
     if (details.ascendant === "Virgo") {
       recommendations.push({
         name: "Emerald",

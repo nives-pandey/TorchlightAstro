@@ -66,25 +66,25 @@ export default function ComprehensivePredictions() {
         system: "Western",
         accuracy: 92,
         pastReflection: {
-          overview: "Saturn's influence brought significant restructuring in your professional life, leading to long-term benefits despite initial challenges.",
+          overview: "Venus-ruled Libra experienced harmony-seeking challenges in 2024. Jupiter's transit through Taurus brought financial stability and relationship clarity.",
           majorEvents: [
-            "Career transition during Jupiter retrograde (May-Aug)",
-            "Important relationship decision during Venus in 7th house",
-            "Financial breakthrough during Mars-Jupiter conjunction"
+            "Partnership decisions during Venus retrograde (July-Aug 2024)",
+            "Career advancement during Jupiter in 10th house aspect",
+            "Home/family harmony improvements during Cancer season"
           ],
           accuracy: "high"
         },
         currentGuidance: {
-          overview: "Mercury direct in your 10th house brings clarity to career matters. Venus in your relationship sector enhances partnerships.",
+          overview: "Venus in Libra brings natural grace and diplomatic skills to the forefront. Mercury supports clear communication in partnerships.",
           opportunities: [
-            "New professional partnerships forming",
-            "Creative projects gaining recognition",
-            "Investment opportunities emerging"
+            "Business partnerships highly favored",
+            "Artistic and creative ventures flourishing", 
+            "Relationship harmony and marriage prospects"
           ],
           challenges: [
-            "Communication delays mid-month",
-            "Need for patience in financial matters",
-            "Energy management during Mars square"
+            "Indecision regarding major life choices",
+            "Balancing personal needs with others' expectations",
+            "Avoiding confrontation leading to suppressed feelings"
           ]
         },
         futureOutlook: {
@@ -102,21 +102,21 @@ export default function ComprehensivePredictions() {
           keyDates: ["Feb 28", "Mar 15", "May 22", "Aug 14", "Oct 30"]
         },
         lifeAreas: {
-          love: { score: 78, insight: "Venus in compatible sign brings romantic opportunities. Existing relationships deepen." },
-          career: { score: 85, insight: "Strong planetary support for advancement. Leadership opportunities emerging." },
-          finance: { score: 72, insight: "Steady growth expected. Avoid speculation during retrograde periods." },
-          health: { score: 68, insight: "Focus on stress management. Yoga and meditation highly beneficial." }
+          love: { score: 92, insight: "Venus-ruled Libra excels in relationships. Perfect time for commitment and partnership decisions." },
+          career: { score: 78, insight: "Diplomatic skills and aesthetic sense create opportunities in beauty, arts, or counseling fields." },
+          finance: { score: 74, insight: "Venus brings luxury desires. Focus on balanced spending and partnerships for wealth building." },
+          health: { score: 71, insight: "Kidney and skin health important. Balance is key - avoid extremes in diet and lifestyle." }
         }
       },
       {
         system: "Vedic",
         accuracy: 96,
         pastReflection: {
-          overview: "Rahu-Ketu transit through your 6th-12th axis resolved karmic debts and cleared obstacles, preparing for new beginnings.",
+          overview: "Shani Sade Sati period ending brought relief and wisdom. Jupiter's aspect on 7th house brought relationship blessings and partnerships.",
           majorEvents: [
-            "Spiritual awakening during Guru transit",
-            "Property or home-related gains",
-            "Resolution of long-standing legal matter"
+            "Marriage or significant relationship commitment (Jupiter in 7th)",
+            "Educational achievement or teaching opportunity",
+            "Foreign travel or international connections materialized"
           ],
           accuracy: "high"
         },
@@ -148,10 +148,10 @@ export default function ComprehensivePredictions() {
           keyDates: ["Makar Sankranti", "Holi", "Guru Purnima", "Diwali", "Mauni Amavasya"]
         },
         lifeAreas: {
-          love: { score: 82, insight: "Venus-Jupiter combination favors marriage prospects. 7th lord well-placed." },
-          career: { score: 90, insight: "10th lord in exaltation promises significant professional advancement." },
-          finance: { score: 76, insight: "11th house strength indicates multiple income sources developing." },
-          health: { score: 74, insight: "Ayurvedic remedies recommended. Avoid cold foods during winter." }
+          love: { score: 94, insight: "Tula Lagna with Venus in own sign creates exceptional relationship harmony. Marriage yoga strong." },
+          career: { score: 82, insight: "Jupiter's influence supports teaching, counseling, or international business. Dharmic career path indicated." },
+          finance: { score: 79, insight: "Venus and Jupiter combination brings wealth through partnerships and aesthetic ventures." },
+          health: { score: 76, insight: "Vata constitution requires regular routine. Pranayama and yoga essential for balance." }
         }
       },
       {
