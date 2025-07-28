@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Calendar, MapPin, Clock, Settings, User, CheckCircle2, AlertTriangle } from "lucide-react";
+import CitySearch from "@/components/city-search";
+import { type CityData, getTimezoneForDate } from "@/lib/city-timezone";
 
 const birthDataSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -18,9 +20,13 @@ const birthDataSchema = z.object({
   }),
   birthDate: z.string().min(1, "Birth date is required"),
   birthTime: z.string().min(1, "Birth time is required"),
-  city: z.string().min(1, "City is required"),
-  country: z.string().min(1, "Country is required"),
-  timezone: z.string().min(1, "Timezone is required"),
+  location: z.object({
+    city: z.string(),
+    country: z.string(), 
+    timezone: z.string(),
+    latitude: z.number(),
+    longitude: z.number()
+  }).optional(),
   systems: z.object({
     western: z.boolean().default(true),
     vedic: z.boolean().default(true),
@@ -43,6 +49,7 @@ interface BirthDataFormProps {
 
 export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: BirthDataFormProps) {
   const [step, setStep] = useState<'input' | 'confirm'>('input');
+  const [selectedCity, setSelectedCity] = useState<CityData | null>(null);
   
   const form = useForm<BirthDataFormData>({
     resolver: zodResolver(birthDataSchema),
@@ -52,9 +59,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
       genderAtBirth: undefined,
       birthDate: "",
       birthTime: "",
-      city: "",
-      country: "",
-      timezone: "",
+      location: undefined,
       systems: {
         western: true,
         vedic: true,
@@ -69,8 +74,22 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
   const watchedValues = form.watch();
 
   const validateRequiredFields = () => {
-    const { firstName, lastName, genderAtBirth, birthDate, birthTime, city, country, timezone } = watchedValues;
-    return firstName && lastName && genderAtBirth && birthDate && birthTime && city && country && timezone;
+    const { firstName, lastName, genderAtBirth, birthDate, birthTime, location } = watchedValues;
+    return firstName && lastName && genderAtBirth && birthDate && birthTime && location;
+  };
+
+  const handleCitySelect = (city: CityData) => {
+    setSelectedCity(city);
+    const birthDate = form.getValues('birthDate');
+    const actualTimezone = birthDate ? getTimezoneForDate(city, new Date(birthDate)) : city.utcOffset;
+    
+    form.setValue('location', {
+      city: city.city,
+      country: city.country,
+      timezone: city.timezone,
+      latitude: city.latitude,
+      longitude: city.longitude
+    });
   };
 
   return (

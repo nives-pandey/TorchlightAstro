@@ -222,57 +222,13 @@ export default function Landing() {
         initial="hidden"
         animate="visible"
       >
-        <motion.div 
-          className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full" 
-          animate={{
-            y: [0, -8, 0],
-            opacity: [0.3, 1, 0.3]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full" 
-          animate={{
-            y: [0, -6, 0],
-            opacity: [0.4, 1, 0.4]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full" 
-          animate={{
-            y: [0, -10, 0],
-            opacity: [0.2, 0.8, 0.2]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-        <motion.div 
-          className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full" 
-          animate={{
-            y: [0, -7, 0],
-            opacity: [0.3, 0.9, 0.3]
-          }}
-          transition={{
-            duration: 3.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5
-          }}
-        />
+        {/* Static celestial background elements - no animation */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full opacity-80" />
+        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
+        <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
+        <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
+        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
       </motion.div>
 
       {/* Header */}
@@ -405,7 +361,7 @@ export default function Landing() {
                 Begin Your Cosmic Journey
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
                   className="inline-block ml-2"
                 >
                   <Stars className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
