@@ -20,7 +20,7 @@ import {
   type InsertSystemComparison,
 } from "../shared/schema";
 import { db } from "./db";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 
 export interface IStorage {
   // User operations - required for Replit Auth
@@ -52,6 +52,18 @@ export interface IStorage {
   getSystemComparison(id: number): Promise<SystemComparison | undefined>;
   getSystemComparisonByUserAndChart(userId: string, chartId: number): Promise<SystemComparison | undefined>;
   createSystemComparison(insertComparison: InsertSystemComparison): Promise<SystemComparison>;
+
+  // Admin analytics operations
+  getAdminAnalytics(): Promise<{
+    totalUsers: number;
+    newUsersThisWeek: number;
+    newUsersThisMonth: number;
+    totalCharts: number;
+    chartsThisWeek: number;
+    topCities: Array<{ city: string; count: number; country: string }>;
+    systemPopularity: Array<{ system: string; count: number; percentage: number }>;
+    dailyGrowth: Array<{ date: string; users: number; charts: number }>;
+  }>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -165,6 +177,109 @@ export class DatabaseStorage implements IStorage {
   async createSystemComparison(insertComparison: InsertSystemComparison): Promise<SystemComparison> {
     const [comparison] = await db.insert(systemComparisons).values([insertComparison]).returning();
     return comparison;
+  }
+
+  async getAdminAnalytics() {
+    const now = new Date();
+    const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    const monthAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+
+    // Get total users
+    const [totalUsersResult] = await db.select({ count: sql`count(*)` }).from(users);
+    const totalUsers = Number(totalUsersResult.count);
+
+    // Get new users this week
+    const [weekUsersResult] = await db
+      .select({ count: sql`count(*)` })
+      .from(users)
+      .where(sql`created_at >= ${weekAgo.toISOString()}`);
+    const newUsersThisWeek = Number(weekUsersResult.count);
+
+    // Get new users this month
+    const [monthUsersResult] = await db
+      .select({ count: sql`count(*)` })
+      .from(users)
+      .where(sql`created_at >= ${monthAgo.toISOString()}`);
+    const newUsersThisMonth = Number(monthUsersResult.count);
+
+    // Get total charts
+    const [totalChartsResult] = await db.select({ count: sql`count(*)` }).from(charts);
+    const totalCharts = Number(totalChartsResult.count);
+
+    // Get charts this week
+    const [weekChartsResult] = await db
+      .select({ count: sql`count(*)` })
+      .from(charts)
+      .where(sql`created_at >= ${weekAgo.toISOString()}`);
+    const chartsThisWeek = Number(weekChartsResult.count);
+
+    // Get top cities
+    const topCitiesResult = await db
+      .select({ 
+        city: birthData.city, 
+        country: birthData.country,
+        count: sql`count(*)` 
+      })
+      .from(birthData)
+      .groupBy(birthData.city, birthData.country)
+      .orderBy(sql`count(*) DESC`)
+      .limit(10);
+
+    const topCities = topCitiesResult.map(row => ({
+      city: row.city,
+      country: row.country,
+      count: Number(row.count)
+    }));
+
+    // Get system popularity
+    const systemsResult = await db
+      .select({ 
+        chartType: charts.chartType, 
+        count: sql`count(*)` 
+      })
+      .from(charts)
+      .groupBy(charts.chartType);
+
+    const totalSystemCount = systemsResult.reduce((sum, s) => sum + Number(s.count), 0);
+    const systemPopularity = systemsResult.map(row => ({
+      system: row.chartType,
+      count: Number(row.count),
+      percentage: Math.round((Number(row.count) / totalSystemCount) * 100)
+    }));
+
+    // Get daily growth for last 7 days
+    const dailyGrowth = [];
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
+      const nextDate = new Date(date.getTime() + 24 * 60 * 60 * 1000);
+      
+      const [usersResult] = await db
+        .select({ count: sql`count(*)` })
+        .from(users)
+        .where(sql`created_at >= ${date.toISOString()} AND created_at < ${nextDate.toISOString()}`);
+      
+      const [chartsResult] = await db
+        .select({ count: sql`count(*)` })
+        .from(charts)
+        .where(sql`created_at >= ${date.toISOString()} AND created_at < ${nextDate.toISOString()}`);
+
+      dailyGrowth.push({
+        date: date.toLocaleDateString(),
+        users: Number(usersResult.count),
+        charts: Number(chartsResult.count)
+      });
+    }
+
+    return {
+      totalUsers,
+      newUsersThisWeek,
+      newUsersThisMonth,
+      totalCharts,
+      chartsThisWeek,
+      topCities,
+      systemPopularity,
+      dailyGrowth
+    };
   }
 }
 

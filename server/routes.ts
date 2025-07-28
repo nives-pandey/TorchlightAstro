@@ -21,6 +21,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register report generation routes
   registerReportRoutes(app);
 
+  // Admin analytics route
+  app.get("/api/admin/analytics", async (req: any, res) => {
+    try {
+      const analytics = await storage.getAdminAnalytics();
+      res.json(analytics);
+    } catch (error) {
+      console.error("Error fetching admin analytics:", error);
+      res.status(500).json({ message: "Failed to fetch analytics" });
+    }
+  });
+
   // Auth routes - demo mode without authentication
   app.get('/api/auth/user', async (req: any, res) => {
     try {
