@@ -3,177 +3,155 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Stars, Sparkles, Users, Calendar, Moon, Sun, Globe, Zap, Calculator, Eye, Heart, Home } from "lucide-react";
-import { LanguageSwitcher } from "@/components/language-switcher";
-import { useTranslation } from "@/lib/i18n";
+import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar } from "lucide-react";
 
-// System Information Modal Component
-function SystemInfoModal({ system }: { system: any }) {
+// Beautiful System Badge Component
+function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) {
   return (
-    <>
-      <DialogHeader>
-        <DialogTitle className="text-rose-300 flex items-center gap-3 text-2xl">
-          {system.icon}
-          {system.title}
-        </DialogTitle>
-        <DialogDescription className="text-rose-200/80 text-base">
-          {system.description}
-        </DialogDescription>
-      </DialogHeader>
-      
-      <div className="space-y-6 mt-6">
-        {/* System Overview */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
-            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Origin</div>
-            <div className="text-white font-medium">{system.origin}</div>
-          </div>
-          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
-            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Heritage</div>
-            <div className="text-white font-medium">{system.timeRange}</div>
-          </div>
-          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
-            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Accuracy</div>
-            <div className="text-white font-medium">{system.accuracy}</div>
-          </div>
-          <div className="bg-white/10 rounded-2xl p-4 border border-pink-300/20">
-            <div className="text-xs text-rose-300 uppercase tracking-wide mb-1">Difficulty</div>
-            <div className="text-white font-medium">{system.difficulty}</div>
+    <Dialog>
+      <DialogTrigger asChild>
+        <div 
+          onClick={onClick}
+          className="group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-1"
+        >
+          <div className="bg-gradient-to-br from-pink-500/20 via-purple-500/20 to-rose-500/20 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:from-pink-400/30 hover:via-purple-400/30 hover:to-rose-400/30 transition-all duration-300 shadow-lg hover:shadow-pink-500/20">
+            <div className="text-3xl sm:text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
+              {system.icon}
+            </div>
+            <h3 className="text-white font-semibold text-sm sm:text-base mb-1 group-hover:text-pink-200 transition-colors">
+              {system.title}
+            </h3>
+            <p className="text-pink-200/80 text-xs leading-relaxed">
+              {system.shortDesc}
+            </p>
           </div>
         </div>
+      </DialogTrigger>
+      <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-lg mx-4">
+        <DialogHeader>
+          <DialogTitle className="text-rose-300 flex items-center gap-3 text-xl">
+            <span className="text-2xl">{system.icon}</span>
+            {system.title}
+          </DialogTitle>
+          <DialogDescription className="text-rose-200/80">
+            {system.description}
+          </DialogDescription>
+        </DialogHeader>
+        
+        <div className="space-y-4 mt-4">
+          {/* System Details */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-white/10 rounded-xl p-3 border border-pink-300/20">
+              <div className="text-xs text-rose-300 uppercase tracking-wide">Origin</div>
+              <div className="text-white text-sm font-medium">{system.origin}</div>
+            </div>
+            <div className="bg-white/10 rounded-xl p-3 border border-pink-300/20">
+              <div className="text-xs text-rose-300 uppercase tracking-wide">Heritage</div>
+              <div className="text-white text-sm font-medium">{system.timeRange}</div>
+            </div>
+          </div>
 
-        {/* Key Features */}
-        <div>
-          <h4 className="text-rose-300 font-semibold mb-3 flex items-center gap-2">
-            <Eye className="w-4 h-4" />
-            Key Features
-          </h4>
-          <ul className="space-y-2">
-            {system.keyFeatures.map((feature: string, index: number) => (
-              <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
-                <span className="w-1.5 h-1.5 bg-pink-400 rounded-full mt-2 flex-shrink-0"></span>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </div>
+          {/* Key Features */}
+          <div>
+            <h4 className="text-rose-300 font-semibold mb-2 flex items-center gap-2 text-sm">
+              <Eye className="w-4 h-4" />
+              Key Features
+            </h4>
+            <ul className="space-y-1">
+              {system.keyFeatures.slice(0, 3).map((feature: string, index: number) => (
+                <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
+                  <span className="w-1.5 h-1.5 bg-pink-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* What It Predicts */}
-        <div>
-          <h4 className="text-rose-300 font-semibold mb-3 flex items-center gap-2">
-            <Heart className="w-4 h-4" />
-            What It Reveals
-          </h4>
-          <ul className="space-y-2">
-            {system.predictions.map((prediction: string, index: number) => (
-              <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
-                <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 flex-shrink-0"></span>
-                {prediction}
-              </li>
-            ))}
-          </ul>
-        </div>
+          {/* What It Reveals */}
+          <div>
+            <h4 className="text-rose-300 font-semibold mb-2 flex items-center gap-2 text-sm">
+              <Heart className="w-4 h-4" />
+              What It Reveals
+            </h4>
+            <ul className="space-y-1">
+              {system.predictions.slice(0, 3).map((prediction: string, index: number) => (
+                <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
+                  <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  {prediction}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Required Information */}
-        <div>
-          <h4 className="text-rose-300 font-semibold mb-3 flex items-center gap-2">
-            <Calendar className="w-4 h-4" />
-            Required Information
-          </h4>
-          <div className="flex flex-wrap gap-2">
-            {system.inputs.map((input: string, index: number) => (
-              <Badge key={index} className="bg-white/10 text-rose-200 border-pink-300/30">
-                {input}
-              </Badge>
-            ))}
+          {/* Call to Action */}
+          <div className="pt-3 border-t border-pink-300/20">
+            <Button 
+              onClick={() => window.location.href = '/home'}
+              className="w-full rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-medium py-2.5"
+            >
+              Explore {system.title}
+            </Button>
           </div>
         </div>
-
-        {/* Call to Action */}
-        <div className="pt-4 border-t border-pink-300/20">
-          <Button 
-            onClick={() => window.location.href = '/api/login'}
-            className="w-full rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-medium py-3"
-          >
-            Explore {system.title} Reading
-          </Button>
-        </div>
-      </div>
-    </>
+      </DialogContent>
+    </Dialog>
   );
 }
 
 export default function Landing() {
-  const { t } = useTranslation();
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
 
   const astrologySystemsInfo = {
     western: {
       title: "Western Astrology",
-      icon: <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-        <Sun className="w-5 h-5 text-white" />
-      </div>,
-      origin: "Ancient Greece & Rome",
+      icon: "☉",
+      shortDesc: "12 zodiac signs & planetary wisdom",
+      origin: "Ancient Greece",
       timeRange: "2,000+ years",
-      accuracy: "High",
-      difficulty: "Beginner",
       description: "The most popular astrology system worldwide, based on 12 zodiac signs and planetary positions.",
       keyFeatures: [
         "12 zodiac signs (Aries to Pisces)",
         "Planetary aspects and house systems",
         "Birth chart interpretation",
-        "Compatibility analysis",
-        "Daily and transit predictions"
+        "Transit predictions"
       ],
       predictions: [
-        "Personality traits and character analysis",
-        "Love and relationship compatibility",
-        "Career guidance and life purpose",
-        "Daily, weekly, and monthly forecasts",
-        "Life transitions and major events"
-      ],
-      inputs: ["Birth date", "Birth time", "Birth location"]
+        "Personality traits and characteristics",
+        "Life patterns and potential challenges",
+        "Relationship compatibility insights",
+        "Career and life direction guidance"
+      ]
     },
     vedic: {
-      title: "Vedic Wisdom (Jyotish)",
-      icon: <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center">
-        <Stars className="w-5 h-5 text-white" />
-      </div>,
+      title: "Vedic Astrology",
+      icon: "ॐ",
+      shortDesc: "Ancient Indian cosmic wisdom",
       origin: "Ancient India",
       timeRange: "5,000+ years",
-      accuracy: "Very High",
-      difficulty: "Advanced",
-      description: "Ancient Indian system using sidereal zodiac with precise timing predictions through Dasha periods.",
+      description: "Ancient Indian astrology system using sidereal zodiac with 27 Nakshatras and planetary periods.",
       keyFeatures: [
         "Sidereal zodiac system",
         "27 Nakshatras (lunar mansions)",
-        "Dasha and Bhukti periods",
-        "Karmic and spiritual insights",
-        "Remedial measures and solutions"
+        "Planetary periods (Mahadasha)",
+        "Divisional charts analysis"
       ],
       predictions: [
-        "Precise life event timing",
-        "Karmic patterns and spiritual purpose",
-        "Health and wellness guidance",
-        "Marriage and relationship timing",
-        "Career and financial predictions"
-      ],
-      inputs: ["Birth date", "Birth time", "Birth location", "Full name"]
+        "Life events and precise timing",
+        "Career and spiritual path",
+        "Health and longevity insights",
+        "Karmic patterns and remedies"
+      ]
     },
     chinese: {
       title: "Chinese Zodiac",
-      icon: <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center">
-        <div className="text-white font-bold text-sm">☯</div>
-      </div>,
+      icon: "☯",
+      shortDesc: "12 animals & five elements",
       origin: "Ancient China",
       timeRange: "4,000+ years",
-      accuracy: "High",
-      difficulty: "Intermediate",
-      description: "Based on 12-year animal cycles and five elements, with detailed BaZi (Four Pillars) analysis.",
+      description: "Traditional Chinese system using 12 animal signs with Five Element theory for personality insights.",
       keyFeatures: [
-        "12 animal signs with unique traits",
-        "Five elements theory (Wood, Fire, Earth, Metal, Water)",
-        "BaZi Four Pillars system",
+        "12 animal zodiac signs",
+        "Five elements theory",
         "Yin-Yang balance analysis",
         "Chinese calendar calculations"
       ],
@@ -181,467 +159,179 @@ export default function Landing() {
         "Personality based on animal signs",
         "Annual and monthly forecasts",
         "Compatibility between signs",
-        "BaZi life path analysis",
         "Elemental balance and harmony"
-      ],
-      inputs: ["Birth date", "Birth time (optional)", "Birth location"]
+      ]
     },
     humanDesign: {
       title: "Human Design",
-      icon: <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
-        <div className="text-white font-bold text-sm">◊</div>
-      </div>,
-      origin: "Modern Synthesis (1987)",
-      timeRange: "37+ years",
-      accuracy: "High",
-      difficulty: "Intermediate",
+      icon: "◊",
+      shortDesc: "Energy types & life strategy",
+      origin: "Modern Synthesis",
+      timeRange: "35+ years",
       description: "Modern system combining astrology, I Ching, Kabbalah, and chakras for energy type identification.",
       keyFeatures: [
-        "4 energy types (Generator, Manifestor, Projector, Reflector)",
+        "4 energy types identification",
         "BodyGraph visualization",
         "Decision-making authority",
-        "Strategy for optimal living",
-        "Centers, channels, and gates analysis"
+        "Strategy for optimal living"
       ],
       predictions: [
         "Energy type and life strategy",
         "Decision-making process",
         "Relationship dynamics",
-        "Career and life purpose",
-        "Optimal living strategies"
-      ],
-      inputs: ["Birth date", "Birth time", "Birth location"]
+        "Career and life purpose"
+      ]
     },
     numerology: {
       title: "Numerology",
-      icon: <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
-        <div className="text-white font-bold text-sm">∞</div>
-      </div>,
+      icon: "∞",
+      shortDesc: "Numbers reveal life patterns",
       origin: "Ancient Civilizations",
       timeRange: "4,000+ years",
-      accuracy: "Moderate",
-      difficulty: "Beginner",
       description: "Mathematical analysis of names and birth dates to reveal personality traits and life patterns.",
       keyFeatures: [
         "Life Path Number calculation",
         "Destiny and Soul Urge numbers",
         "Personality Number analysis",
-        "Name numerology",
-        "Yearly and monthly cycles"
+        "Personal year cycles"
       ],
       predictions: [
         "Life purpose and spiritual path",
         "Personality traits and talents",
         "Compatible relationships",
-        "Career and life direction",
-        "Personal year cycles"
-      ],
-      inputs: ["Full name", "Birth date"]
+        "Career and life direction"
+      ]
     }
   };
-  
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
-      {/* Clean Header */}
-      <header className="clean-nav fixed top-0 w-full z-50">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-rose-900 text-white overflow-hidden">
+      {/* Floating particles background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full animate-ping"></div>
+        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full animate-ping"></div>
+      </div>
+
+      {/* Header */}
+      <header className="relative z-10 px-4 py-6">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
               <Stars className="h-4 w-4 text-white" />
             </div>
-            <h1 className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
               Torchlight
             </h1>
           </div>
-          <div className="flex items-center space-x-4">
-            <LanguageSwitcher />
-            <Button 
-              onClick={() => window.location.href = '/api/login'}
-              className="clean-button px-6 py-2 text-sm"
-            >
-              {t('nav.signIn')}
-            </Button>
-          </div>
+          <Button 
+            onClick={() => window.location.href = '/home'}
+            className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
+          >
+            Enter App
+          </Button>
         </div>
       </header>
 
-      {/* Clean Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="container mx-auto text-center max-w-4xl">
-          <h2 className="text-4xl md:text-6xl font-semibold mb-6 bg-gradient-to-r from-yellow-400 via-purple-400 to-pink-400 bg-clip-text text-transparent leading-tight">
-            {t('landing.title')}
-          </h2>
-          <p className="text-lg md:text-xl mb-12 text-purple-200 max-w-3xl mx-auto leading-relaxed">
-            {t('landing.subtitle')}
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Badge 
-                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
-                  onClick={() => setSelectedSystem('western')}
-                >
-                  {t('badges.western')}
-                </Badge>
-              </DialogTrigger>
-              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
-                <SystemInfoModal system={astrologySystemsInfo.western} />
-              </DialogContent>
-            </Dialog>
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Badge 
-                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
-                  onClick={() => setSelectedSystem('vedic')}
-                >
-                  {t('badges.vedic')}
-                </Badge>
-              </DialogTrigger>
-              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
-                <SystemInfoModal system={astrologySystemsInfo.vedic} />
-              </DialogContent>
-            </Dialog>
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Badge 
-                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
-                  onClick={() => setSelectedSystem('chinese')}
-                >
-                  {t('badges.chinese')}
-                </Badge>
-              </DialogTrigger>
-              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
-                <SystemInfoModal system={astrologySystemsInfo.chinese} />
-              </DialogContent>
-            </Dialog>
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Badge 
-                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
-                  onClick={() => setSelectedSystem('humanDesign')}
-                >
-                  {t('badges.humanDesign')}
-                </Badge>
-              </DialogTrigger>
-              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
-                <SystemInfoModal system={astrologySystemsInfo.humanDesign} />
-              </DialogContent>
-            </Dialog>
-
-            <Dialog>
-              <DialogTrigger asChild>
-                <Badge 
-                  className="cosmic-badge hover:scale-105 transition-transform duration-200 cursor-pointer px-4 py-2"
-                  onClick={() => setSelectedSystem('numerology')}
-                >
-                  {t('badges.numerology')}
-                </Badge>
-              </DialogTrigger>
-              <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-2xl">
-                <SystemInfoModal system={astrologySystemsInfo.numerology} />
-              </DialogContent>
-            </Dialog>
-          </div>
-          
-          <Button 
-            onClick={() => window.location.href = '/api/login'}
-            className="clean-button px-8 py-4 text-base font-medium"
-          >
-            {t('landing.startJourney')}
-          </Button>
-        </div>
-      </section>
-
-      {/* What is Torchlight Section */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto max-w-5xl">
-          <h3 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-            {t('landing.whatIs')}
-          </h3>
-          <p className="text-center text-purple-200 mb-12 max-w-2xl mx-auto">
-            {t('landing.whatIsSubtitle')}
-          </p>
-          
-          <div className="clean-card p-8 md:p-12 mb-8">
-            <p className="text-lg text-gray-200 leading-relaxed mb-8 text-center max-w-4xl mx-auto">
-              <strong className="text-yellow-400">Torchlight</strong> combines the wisdom of multiple ancient traditions with modern astronomical precision. Like a torch illuminating a path, this system offers insights to help you navigate life's journey while preserving your autonomy to choose your direction.
+      {/* Hero Section */}
+      <main className="relative z-10 px-4 pt-8 pb-16">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Main Headline */}
+          <div className="mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+              <span className="bg-gradient-to-r from-yellow-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                Your Complete
+              </span>
+              <br />
+              <span className="text-white">
+                Cosmic Guide
+              </span>
+            </h2>
+            <p className="text-lg sm:text-xl text-pink-200/90 max-w-2xl mx-auto leading-relaxed">
+              Illuminate your path with authentic insights from five ancient wisdom traditions
             </p>
+          </div>
+
+          {/* Astrology Systems Grid */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold text-white mb-6 flex items-center justify-center gap-2">
+              <Sparkles className="w-5 h-5 text-pink-400" />
+              Explore Ancient Wisdom
+            </h3>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-xl font-semibold mb-4 text-yellow-400">{t('landing.philosophy')}</h4>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('philosophy.illumination')}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('philosophy.multiple')}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('philosophy.authentic')}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('philosophy.responsibility')}</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-semibold mb-4 text-purple-400">{t('landing.science')}</h4>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('science.precision')}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('science.study')}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('science.validation')}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    <span>{t('science.openSource')}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="mt-8 p-6 bg-black/30 rounded-lg border-l-4 border-yellow-500">
-              <p className="text-gray-300 italic text-center">
-                {t('quote.astrology')}
-              </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+              {Object.entries(astrologySystemsInfo).map(([key, system]) => (
+                <SystemBadge
+                  key={key}
+                  system={system}
+                  onClick={() => setSelectedSystem(key)}
+                />
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Comprehensive Sections */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto max-w-7xl">
-          <h3 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-            {t('landing.guidance')}
-          </h3>
-          <p className="text-center text-purple-200 mb-16 max-w-3xl mx-auto text-lg">
-            {t('landing.guidanceSubtitle')}
-          </p>
+          {/* Features Preview */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <Sun className="w-5 h-5 text-yellow-400" />
+                  Personal Readings
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-pink-200/80 text-sm">
+                  Complete natal chart analysis across all systems with authentic astronomical calculations
+                </CardDescription>
+              </CardContent>
+            </Card>
 
-          {/* Three Main Sections */}
-          <div className="grid lg:grid-cols-3 gap-12 mb-16">
-            
-            {/* Personal Astrology Section */}
-            <div className="clean-card p-8">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <Sun className="h-8 w-8 text-white" />
-                </div>
-                <h4 className="text-2xl font-bold text-white mb-3">{t('sections.personal')}</h4>
-                <p className="text-purple-200">{t('sections.personalDesc')}</p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-yellow-400">
-                  <h5 className="font-semibold text-white mb-2">{t('personal.natal.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('personal.natal.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-orange-400">
-                  <h5 className="font-semibold text-white mb-2">{t('personal.numerology.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('personal.numerology.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-pink-400">
-                  <h5 className="font-semibold text-white mb-2">{t('personal.daily.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('personal.daily.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-purple-400">
-                  <h5 className="font-semibold text-white mb-2">{t('personal.design.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('personal.design.desc')}</p>
-                </div>
-              </div>
-            </div>
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <Heart className="w-5 h-5 text-pink-400" />
+                  Compatibility
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-pink-200/80 text-sm">
+                  Relationship insights and compatibility analysis across multiple astrological traditions
+                </CardDescription>
+              </CardContent>
+            </Card>
 
-            {/* Couples Section */}
-            <div className="clean-card p-8">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <Users className="h-8 w-8 text-white" />
-                </div>
-                <h4 className="text-2xl font-bold text-white mb-3">{t('sections.couples')}</h4>
-                <p className="text-purple-200">{t('sections.couplesDesc')}</p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-pink-400">
-                  <h5 className="font-semibold text-white mb-2">{t('couples.synastry.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('couples.synastry.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-rose-400">
-                  <h5 className="font-semibold text-white mb-2">{t('couples.composite.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('couples.composite.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-red-400">
-                  <h5 className="font-semibold text-white mb-2">{t('couples.chinese.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('couples.chinese.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-purple-400">
-                  <h5 className="font-semibold text-white mb-2">{t('couples.numerology.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('couples.numerology.desc')}</p>
-                </div>
-              </div>
-            </div>
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl sm:col-span-2 lg:col-span-1">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <Moon className="w-5 h-5 text-purple-400" />
+                  Daily Guidance
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-pink-200/80 text-sm">
+                  Personalized daily insights with optimal timing recommendations
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
 
-            {/* Spaces Section */}
-            <div className="clean-card p-8">
-              <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
-                  <Moon className="h-8 w-8 text-white" />
-                </div>
-                <h4 className="text-2xl font-bold text-white mb-3">{t('sections.spaces')}</h4>
-                <p className="text-purple-200">{t('sections.spacesDesc')}</p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-green-400">
-                  <h5 className="font-semibold text-white mb-2">{t('spaces.vastu.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('spaces.vastu.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-emerald-400">
-                  <h5 className="font-semibold text-white mb-2">{t('spaces.fengshui.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('spaces.fengshui.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-teal-400">
-                  <h5 className="font-semibold text-white mb-2">{t('spaces.timing.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('spaces.timing.desc')}</p>
-                </div>
-                <div className="p-4 bg-black/20 rounded-lg border-l-4 border-cyan-400">
-                  <h5 className="font-semibold text-white mb-2">{t('spaces.remedies.title')}</h5>
-                  <p className="text-purple-100 text-sm">{t('spaces.remedies.desc')}</p>
-                </div>
-              </div>
-            </div>
+          {/* Call to Action */}
+          <div className="text-center">
+            <Button 
+              onClick={() => window.location.href = '/home'}
+              size="lg"
+              className="bg-gradient-to-r from-pink-500 via-purple-500 to-rose-500 hover:from-pink-600 hover:via-purple-600 hover:to-rose-600 text-white font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl hover:shadow-pink-500/25 transform hover:scale-105 transition-all duration-300"
+            >
+              Begin Your Cosmic Journey
+              <Stars className="ml-2 w-5 h-5" />
+            </Button>
+            <p className="text-pink-200/60 text-sm mt-4">
+              Free forever • No signup required • Start exploring immediately
+            </p>
           </div>
         </div>
-      </section>
-
-      {/* Advanced Astrological Tools */}
-      <section className="py-16 px-6 bg-black/20">
-        <div className="container mx-auto max-w-6xl">
-          <h3 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Advanced Astrological Tools & AI Guidance
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            {/* AI Astrological Assistant */}
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center mb-4">
-                  <Sparkles className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">AI Astrological Assistant</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  Conversational AI for personalized birth chart interpretation and cosmic timing guidance
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Real-time birth chart analysis
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Multi-system astrological synthesis
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-purple-400 rounded-full mr-2"></span>
-                  Personalized cosmic timing advice
-                </li>
-              </ul>
-            </div>
-
-            {/* Astrological Education & Research */}
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
-                  <Stars className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">Astrological Education & Research</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  Comprehensive learning resources on astronomical calculations and astrological traditions
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Swiss Ephemeris calculations explained
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Historical astrological traditions
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-blue-400 rounded-full mr-2"></span>
-                  Cross-cultural astrology comparisons
-                </li>
-              </ul>
-            </div>
-
-            {/* Advanced Astrological Timing */}
-            <div className="clean-card p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
-                  <Calendar className="h-6 w-6 text-white" />
-                </div>
-                <h4 className="text-xl font-semibold text-white mb-2">Advanced Astrological Timing</h4>
-                <p className="text-purple-200 text-sm mb-4">
-                  Precise planetary transit analysis and electional astrology for optimal decision timing
-                </p>
-              </div>
-              <ul className="space-y-2 text-sm text-purple-100">
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Planetary transit predictions
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Electional astrology for events
-                </li>
-                <li className="flex items-center">
-                  <span className="w-1 h-1 bg-yellow-400 rounded-full mr-2"></span>
-                  Vedic Muhurta timing calculations
-                </li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto text-center max-w-3xl">
-          <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-            {t('landing.ready')}
-          </h3>
-          <p className="text-lg text-purple-200 mb-8">
-            {t('landing.readySubtitle')}
-          </p>
-          <Button 
-            onClick={() => window.location.href = '/api/login'}
-            className="clean-button px-8 py-4 text-base font-medium"
-          >
-            {t('landing.startJourney')}
-          </Button>
-        </div>
-      </section>
+      </main>
     </div>
   );
 }
