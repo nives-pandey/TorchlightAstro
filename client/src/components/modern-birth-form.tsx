@@ -48,7 +48,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   const [timeAccuracyWarnings, setTimeAccuracyWarnings] = useState<string[]>([]);
 
   // Create comprehensive city list with Manila and Philippines cities
-  const globalCities = [
+  const globalCities: string[] = [
     // Philippines - Comprehensive coverage
     "Manila", "Quezon City", "Makati", "Pasig", "Taguig", "Cebu City", "Davao", "Zamboanga", 
     "Antipolo", "Pasay", "Caloocan", "Las Piñas", "Marikina", "Muntinlupa", "Parañaque", 
@@ -530,7 +530,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                               <SelectValue placeholder="Select your birth city" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="max-h-60">
+                          <SelectContent className="max-h-60 z-[100] bg-white border-2 border-purple-300 shadow-xl">
                             {globalCities.map((city) => (
                               <SelectItem key={city} value={city}>
                                 {city}
@@ -576,7 +576,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                               <SelectValue placeholder="Select your timezone" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="max-h-60">
+                          <SelectContent className="max-h-60 z-[100] bg-white border-2 border-purple-300 shadow-xl">
                             {WORLD_TIMEZONES.map((tz) => (
                               <SelectItem key={tz.id} value={tz.id}>
                                 {tz.name} ({tz.cities[0]}) - UTC{tz.offset >= 0 ? '+' : ''}{tz.offset}
@@ -590,13 +590,13 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   />
 
                   {timeAccuracyWarnings.length > 0 && (
-                    <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                      <div className="flex items-center text-yellow-400 text-sm font-medium mb-1">
+                    <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                      <div className="flex items-center text-blue-400 text-sm font-medium mb-1">
                         <AlertTriangle className="h-4 w-4 mr-2" />
                         Time Accuracy Notice
                       </div>
                       {timeAccuracyWarnings.map((warning, index) => (
-                        <p key={index} className="text-xs text-yellow-300">
+                        <p key={index} className="text-xs text-blue-300">
                           • {warning}
                         </p>
                       ))}
@@ -626,7 +626,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         control={form.control}
                         name={`systems.${system.key}` as keyof BirthFormData['systems']}
                         render={({ field }) => (
-                          <Card className="bg-white/5 border-white/20 p-4">
+                          <Card className="bg-white/90 border-purple-300 p-4 hover:bg-white/95 transition-colors">
                             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
@@ -636,10 +636,10 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                                 />
                               </FormControl>
                               <div className="space-y-1 leading-none">
-                                <FormLabel className="text-white font-medium">
+                                <FormLabel className="text-gray-900 font-semibold">
                                   {system.label}
                                 </FormLabel>
-                                <p className="text-gray-300 text-sm">{system.desc}</p>
+                                <p className="text-gray-700 text-sm">{system.desc}</p>
                               </div>
                             </FormItem>
                           </Card>
@@ -652,7 +652,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                     control={form.control}
                     name="confirmed"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 bg-white/5 border border-white/20 rounded-lg p-4">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 bg-white/90 border border-purple-300 rounded-lg p-4">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
@@ -660,10 +660,10 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           />
                         </FormControl>
                         <div className="space-y-1 leading-none">
-                          <FormLabel className="text-white">
+                          <FormLabel className="text-gray-900 font-semibold">
                             I confirm that all information is accurate *
                           </FormLabel>
-                          <p className="text-gray-300 text-xs">
+                          <p className="text-gray-700 text-xs">
                             Accurate birth details ensure precise astrological calculations
                           </p>
                         </div>
