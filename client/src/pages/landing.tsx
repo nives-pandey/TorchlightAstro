@@ -249,17 +249,44 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight font-accent">
-              <span style={{background: 'var(--cosmic-gradient-2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+              <span 
+                style={{
+                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
                 Your Complete
               </span>
               <br />
-              <span style={{color: 'var(--cosmic-lavender)'}}>
+              <span 
+                className="block mt-2"
+                style={{
+                  color: 'hsl(240, 100%, 94%)',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+                }}
+              >
                 Cosmic Guide
               </span>
             </h2>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
-              Illuminate your path with authentic insights from five ancient wisdom traditions
+            <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-12 font-light" 
+               style={{
+                 color: 'hsl(240, 100%, 94%)', 
+                 opacity: 0.95,
+                 textShadow: '0 1px 4px rgba(0,0,0,0.2)'
+               }}>
+              Illuminate your path with authentic insights from{" "}
+              <span 
+                className="font-medium"
+                style={{
+                  color: 'hsl(51, 100%, 65%)',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                }}
+              >
+                five ancient wisdom traditions
+              </span>
             </p>
           </div>
 
