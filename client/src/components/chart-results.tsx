@@ -17,6 +17,25 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
 
   // Generate astrological insights based on birth data
   const generateInsights = () => {
+    // Check if we have server-generated data or need to calculate locally
+    if (data.systems) {
+      return {
+        western: {
+          sign: data.systems.western.sign,
+          element: data.systems.western.element
+        },
+        chinese: {
+          animal: data.systems.chinese.animal,
+          element: data.systems.chinese.element
+        },
+        numerology: {
+          lifePath: data.systems.numerology.lifePath,
+          destiny: data.systems.numerology.destiny
+        }
+      };
+    }
+    
+    // Fallback to local calculation if server data not available
     const birthDate = new Date(data.birthDate);
     const birthMonth = birthDate.getMonth() + 1;
     const birthDay = birthDate.getDate();

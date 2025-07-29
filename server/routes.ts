@@ -756,6 +756,11 @@ startxref
       const birthData = req.body;
       console.log('Generating chart for:', birthData);
       
+      // Validate required fields
+      if (!birthData.firstName || !birthData.lastName || !birthData.birthDate) {
+        return res.status(400).json({ error: 'Missing required birth data: firstName, lastName, birthDate' });
+      }
+      
       // Enhanced chart data with authentic calculations
       const chartData = {
         ...birthData,

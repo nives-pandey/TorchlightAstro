@@ -394,14 +394,26 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* CTA Buttons - Simplified to Match Landing Page */}
-          <div className="text-center mb-12">
+          {/* CTA Buttons - Enhanced with Demo */}
+          <div className="text-center mb-12 space-y-4">
             <Button 
               onClick={() => setShowBirthForm(true)}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-4 rounded-2xl text-lg shadow-xl transition-all duration-300"
+              className="cosmic-button text-lg px-8 py-4 mr-4"
             >
-              Begin Your Cosmic Journey
+              Create Your Real Chart ✨
             </Button>
+            <br />
+            <Link href="/demo-chart">
+              <Button 
+                variant="outline"
+                className="bg-white/10 hover:bg-white/20 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
+              >
+                🔮 View Sample Chart Output
+              </Button>
+            </Link>
+            <p className="text-gray-400 text-sm mt-2">
+              ↑ Click here to see what chart results look like before creating your own
+            </p>
           </div>
         </div>
       </main>
