@@ -246,65 +246,82 @@ export default function Home() {
 
   return (
     <div 
-      className="relative"
+      className="min-h-screen text-white overflow-hidden" 
       style={{background: 'var(--cosmic-gradient-1)'}}
     >
+      {/* Floating particles background - match landing page */}
+      <div 
+        className="fixed inset-0 overflow-hidden pointer-events-none"
+      >
+        {/* Static celestial background elements - same as landing page */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full opacity-80" />
+        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
+        <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
+        <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
+        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
+      </div>
+
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden">
-        {/* Cosmic Background Elements */}
-        <div className="absolute inset-0 opacity-40"></div>
-        <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-500 rounded-full"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full"></div>
-        <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+      <section className="relative z-10 pt-20 pb-32 overflow-hidden">
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* Main Headline */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6">
-              <span className="text-white">Illuminating Your</span><br/>
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+            {/* Main Headline - match landing page typography */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight font-accent">
+              <span style={{background: 'var(--cosmic-gradient-2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
+                Illuminating Your
+              </span>
+              <br />
+              <span style={{color: 'var(--cosmic-lavender)'}}>
                 Cosmic Blueprint
               </span>
             </h1>
             
-            {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+            {/* Subheadline - match landing page style */}
+            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-8" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
               Authentic ancient wisdom meets modern precision. Discover your complete astrological profile across{" "}
-              <span className="text-yellow-500">Western, Vedic, Chinese & Human Design</span> systems.
+              <span style={{color: 'var(--cosmic-gold)'}}>Western, Vedic, Chinese & Human Design</span> systems.
             </p>
             
             {/* Planetary Symbols Row */}
             <PlanetarySymbols />
             
-            {/* CTA Buttons */}
+            {/* CTA Buttons - match landing page style */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <Button 
                 onClick={() => setShowBirthForm(true)}
-                className="cosmic-button px-8 py-4 text-lg h-auto"
+                size="lg"
+                className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
+                style={{
+                  background: 'var(--cosmic-gradient-2)',
+                  color: 'var(--cosmic-lavender)',
+                  border: 'none'
+                }}
               >
                 Create Your Chart
               </Button>
               <Button 
-                variant="outline" 
-                className="border-2 border-yellow-500 text-yellow-500 px-8 py-4 text-lg h-auto hover:bg-yellow-500 hover:text-black"
                 onClick={() => window.location.href = '/analysis'}
+                className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"
+                style={{color: 'var(--cosmic-lavender)'}}
               >
                 View Krishna Raj Demo
               </Button>
             </div>
             
-            {/* Trust Indicators */}
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-400">
+            {/* Trust Indicators - match landing page style */}
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
               <div className="flex items-center space-x-2">
-                <Star className="h-5 w-5 text-yellow-500" />
+                <Star className="h-5 w-5" style={{color: 'var(--cosmic-gold)'}} />
                 <span>Swiss Ephemeris Precision</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Shield className="h-5 w-5 text-yellow-500" />
+                <Shield className="h-5 w-5" style={{color: 'var(--cosmic-gold)'}} />
                 <span>25,000+ Year Heritage</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Users className="h-5 w-5 text-yellow-500" />
+                <Users className="h-5 w-5" style={{color: 'var(--cosmic-gold)'}} />
                 <span>Multi-System Integration</span>
               </div>
             </div>
@@ -435,13 +452,13 @@ export default function Home() {
       </Dialog>
 
       {/* Features Overview */}
-      <section className="py-20 bg-black/20 backdrop-blur-sm">
+      <section className="relative z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-accent" style={{color: 'var(--cosmic-lavender)'}}>
               Comprehensive Astrological Systems
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
               The only platform integrating authentic calculations across multiple ancient wisdom traditions with modern precision.
             </p>
           </div>
@@ -450,42 +467,40 @@ export default function Home() {
           <div className="mb-16">
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center gap-3">
-                <User className="h-6 w-6 text-yellow-500" />
-                <h3 className="text-2xl font-semibold text-white">Personal Systems</h3>
+                <User className="h-6 w-6" style={{color: 'var(--cosmic-gold)'}} />
+                <h3 className="text-2xl font-semibold font-accent" style={{color: 'var(--cosmic-lavender)'}}>Personal Systems</h3>
               </div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
               {personalSystems.map((system, index) => (
-                <Card 
+                <div 
                   key={index} 
-                  className="cosmic-card hover:cosmic-glow transition-all duration-300 cursor-pointer group"
                   onClick={() => handleSystemClick(system.title)}
+                  className="group cursor-pointer"
                 >
-                  <CardHeader className="text-center">
-                    <div className="text-4xl mb-4">{system.icon}</div>
-                    <CardTitle className="text-yellow-500 text-xl group-hover:text-yellow-400 transition-colors">
+                  <div 
+                    style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} 
+                    className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
+                  >
+                    <div className="text-3xl sm:text-4xl mb-3">
+                      {system.icon}
+                    </div>
+                    <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
                       {system.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-400 text-sm">
+                    </h3>
+                    <p className="text-xs leading-relaxed mb-3" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                       {system.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2 text-sm text-gray-400">
-                      {system.features.map((item, idx) => (
-                        <li key={idx} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                          <span>{item}</span>
+                    </p>
+                    <ul className="space-y-1 text-xs">
+                      {system.features.slice(0, 2).map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2" style={{color: 'var(--cosmic-lavender)', opacity: 0.7}}>
+                          <span className="w-1 h-1 bg-pink-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                          {item}
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-4 text-center">
-                      <span className="text-yellow-500 text-sm group-hover:text-yellow-400 transition-colors">
-                        Click to explore →
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -494,103 +509,114 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center gap-3">
-                <Globe className="h-6 w-6 text-purple-500" />
-                <h3 className="text-2xl font-semibold text-white">Space & Environment Systems</h3>
+                <Globe className="h-6 w-6" style={{color: 'var(--cosmic-purple)'}} />
+                <h3 className="text-2xl font-semibold font-accent" style={{color: 'var(--cosmic-lavender)'}}>Space & Environment Systems</h3>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {spaceSystems.map((system, index) => (
-                <Card 
+                <div 
                   key={index} 
-                  className="cosmic-card hover:cosmic-glow transition-all duration-300 cursor-pointer group"
                   onClick={() => handleSystemClick(system.title)}
+                  className="group cursor-pointer"
                 >
-                  <CardHeader className="text-center">
-                    <div className="text-5xl mb-4">{system.icon}</div>
-                    <CardTitle className="text-purple-400 text-2xl group-hover:text-purple-300 transition-colors">
+                  <div 
+                    style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} 
+                    className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
+                  >
+                    <div className="text-4xl mb-4">
+                      {system.icon}
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
                       {system.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">
+                    </h3>
+                    <p className="text-sm leading-relaxed mb-4" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                       {system.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-3 text-gray-400">
+                    </p>
+                    <ul className="space-y-2 text-sm">
                       {system.features.map((item, idx) => (
-                        <li key={idx} className="flex items-center space-x-3">
-                          <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                          <span>{item}</span>
+                        <li key={idx} className="flex items-start gap-2" style={{color: 'var(--cosmic-lavender)', opacity: 0.7}}>
+                          <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                          {item}
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 text-center">
-                      <span className="text-purple-400 group-hover:text-purple-300 transition-colors">
-                        Click to explore →
-                      </span>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
           
           {/* Synthesis Feature */}
-          <Card className="mt-16 cosmic-card cosmic-glow">
-            <CardContent className="p-8">
-              <div className="text-center">
-                <div className="text-5xl mb-6">🌟</div>
-                <h3 className="text-yellow-500 font-semibold text-2xl mb-4">Unique Cross-System Synthesis</h3>
-                <p className="text-white text-lg mb-6 max-w-3xl mx-auto">
-                  Our proprietary synthesis engine identifies universal patterns across all systems, providing unified recommendations that resolve conflicts and highlight consistent themes.
-                </p>
-                <div className="grid md:grid-cols-3 gap-6 text-center">
-                  <div>
-                    <div className="text-yellow-500 text-lg font-medium mb-2">Pattern Detection</div>
-                    <p className="text-gray-400 text-sm">Identifies consistent themes across all systems</p>
-                  </div>
-                  <div>
-                    <div className="text-yellow-500 text-lg font-medium mb-2">Conflict Resolution</div>
-                    <p className="text-gray-400 text-sm">Harmonizes contradictory recommendations</p>
-                  </div>
-                  <div>
-                    <div className="text-yellow-500 text-lg font-medium mb-2">Priority Ranking</div>
-                    <p className="text-gray-400 text-sm">Orders guidance by importance and timing</p>
-                  </div>
+          <div className="mt-16">
+            <div 
+              style={{background: 'var(--cosmic-gradient-1)', opacity: 0.9}} 
+              className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
+            >
+              <div className="text-5xl mb-6">🌟</div>
+              <h3 className="font-semibold text-2xl mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Unique Cross-System Synthesis</h3>
+              <p className="text-lg mb-6 max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+                Our proprietary synthesis engine identifies universal patterns across all systems, providing unified recommendations that resolve conflicts and highlight consistent themes.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-lg font-medium mb-2" style={{color: 'var(--cosmic-gold)'}}>Pattern Detection</div>
+                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>Identifies consistent themes across all systems</p>
+                </div>
+                <div>
+                  <div className="text-lg font-medium mb-2" style={{color: 'var(--cosmic-gold)'}}>Conflict Resolution</div>
+                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>Harmonizes contradictory recommendations</p>
+                </div>
+                <div>
+                  <div className="text-lg font-medium mb-2" style={{color: 'var(--cosmic-gold)'}}>Priority Ranking</div>
+                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>Orders guidance by importance and timing</p>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Daily Guidance Preview */}
-      <section className="py-20">
+      <section className="relative z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-accent" style={{color: 'var(--cosmic-lavender)'}}>
               Daily Cosmic Guidance
             </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
               Personalized insights based on current planetary transits and your unique astrological blueprint.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {dailyAreas.map((area, index) => (
-              <Card key={index} className="cosmic-card">
-                <CardContent className="p-6 text-center">
+              <div key={index}>
+                <div 
+                  style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} 
+                  className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg"
+                >
                   <area.icon className={`h-12 w-12 mx-auto mb-4 ${area.color}`} />
-                  <h3 className="text-white font-medium mb-2">{area.title}</h3>
-                  <p className="text-gray-400 text-sm">
+                  <h3 className="font-medium mb-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+                    {area.title}
+                  </h3>
+                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                     Personalized guidance for your {area.title.toLowerCase()}
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Button className="cosmic-button px-8 py-4 text-lg h-auto">
+            <Button 
+              className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
+              style={{
+                background: 'var(--cosmic-gradient-2)',
+                color: 'var(--cosmic-lavender)',
+                border: 'none'
+              }}
+            >
               <Clock className="mr-2 h-5 w-5" />
               View Today's Guidance
             </Button>
@@ -599,26 +625,26 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-black border-t border-yellow-500/20">
+      <footer className="relative z-10 py-16 border-t border-pink-300/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             {/* Brand */}
             <div className="md:col-span-1">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 cosmic-gradient rounded-full cosmic-glow flex items-center justify-center">
-                  <span className="text-yellow-500 text-xl font-bold">☉</span>
+                <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold" style={{color: 'var(--cosmic-gold)'}}>☉</span>
                 </div>
-                <span className="text-xl font-serif font-semibold text-yellow-500">Torchlight</span>
+                <span className="text-xl font-semibold font-accent" style={{color: 'var(--cosmic-gold)'}}>Torchlight</span>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              <p className="text-sm leading-relaxed mb-4" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                 Illuminating your cosmic blueprint through authentic ancient wisdom for practical modern living.
               </p>
             </div>
             
             {/* Features */}
             <div>
-              <h4 className="text-yellow-500 font-semibold mb-4">Features</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Features</h4>
+              <ul className="space-y-2 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                 <li>Natal Charts</li>
                 <li>Compatibility Analysis</li>
                 <li>Daily Horoscopes</li>
@@ -629,8 +655,8 @@ export default function Home() {
             
             {/* Systems */}
             <div>
-              <h4 className="text-yellow-500 font-semibold mb-4">Astrological Systems</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Astrological Systems</h4>
+              <ul className="space-y-2 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                 <li>Western Astrology</li>
                 <li>Vedic (Jyotish)</li>
                 <li>Chinese Zodiac</li>
@@ -641,8 +667,8 @@ export default function Home() {
             
             {/* Support */}
             <div>
-              <h4 className="text-yellow-500 font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Support</h4>
+              <ul className="space-y-2 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
                 <li>Help Center</li>
                 <li>Privacy Policy</li>
                 <li>Terms of Service</li>
@@ -653,11 +679,11 @@ export default function Home() {
           </div>
           
           {/* Bottom Bar */}
-          <div className="border-t border-yellow-500/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+          <div className="border-t border-pink-300/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
               © 2024 Torchlight. Illuminating cosmic wisdom for 25,000+ years of human observation.
             </p>
-            <div className="mt-4 md:mt-0 flex items-center space-x-4 text-gray-400 text-sm">
+            <div className="mt-4 md:mt-0 flex items-center space-x-4 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
               <span>Powered by Swiss Ephemeris</span>
               <span>•</span>
               <span>Authentic Ancient Sources</span>
