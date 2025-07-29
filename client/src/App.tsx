@@ -35,6 +35,7 @@ import ComprehensivePredictions from "@/pages/comprehensive-predictions";
 import ComprehensiveLifestyle from "@/pages/comprehensive-lifestyle";
 import LifestyleIntelligence from "@/pages/lifestyle-intelligence";
 import DemoChart from "@/pages/demo-chart";
+import TimezoneAnalytics from "@/pages/timezone-analytics";
 import AdminDashboard from "@/pages/admin-dashboard";
 import NotFound from "@/pages/not-found";
 
@@ -92,6 +93,7 @@ function Router() {
         <Route path="/comprehensive-lifestyle" component={ComprehensiveLifestyle} />
         <Route path="/lifestyle-intelligence" component={LifestyleIntelligence} />
         <Route path="/demo-chart" component={DemoChart} />
+        <Route path="/timezone-analytics" component={TimezoneAnalytics} />
         <Route path="/admin" component={AdminDashboard} />
         <Route component={NotFound} />
             </Switch>

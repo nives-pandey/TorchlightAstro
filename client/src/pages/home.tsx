@@ -420,6 +420,14 @@ export default function Home() {
                   🌟 Lifestyle Intelligence Demo
                 </Button>
               </Link>
+              <Link href="/timezone-analytics">
+                <Button 
+                  variant="outline"
+                  className="bg-white/10 hover:bg-white/20 border-2 border-blue-400 text-white font-semibold px-4 py-2 rounded-xl text-sm"
+                >
+                  🌍 Timezone Analytics
+                </Button>
+              </Link>
             </div>
             <p className="text-gray-400 text-sm mt-2">
               ↑ See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)

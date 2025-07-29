@@ -130,14 +130,30 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
     }
   };
 
-  // Validate time accuracy
+  // Enhanced time accuracy validation with quality scoring
   const validateTimeAccuracy = () => {
     const { birthTime } = getValues();
     const warnings = [];
-    if (birthTime && (birthTime.endsWith(':00') || birthTime.endsWith(':30'))) {
-      warnings.push('Rounded times may affect rising sign accuracy. Try to get exact birth time from birth certificate.');
+    let qualityScore = 100;
+    
+    if (birthTime) {
+      if (birthTime.endsWith(':00')) {
+        warnings.push('⚠️ Rounded to hour - Rising sign may be affected. Check birth certificate for exact time.');
+        qualityScore = 70;
+      } else if (birthTime.endsWith(':30')) {
+        warnings.push('⚠️ Rounded to 30min - Consider getting exact birth time for highest accuracy.');
+        qualityScore = 85;
+      } else if (birthTime.endsWith(':15') || birthTime.endsWith(':45')) {
+        warnings.push('ℹ️ Good precision - 15min accuracy provides reliable chart calculations.');
+        qualityScore = 95;
+      } else {
+        warnings.push('✅ Excellent precision - Exact birth time ensures maximum chart accuracy.');
+        qualityScore = 100;
+      }
     }
+    
     setTimeAccuracyWarnings(warnings);
+    return qualityScore;
   };
 
   const onSubmit = async (data: BirthFormData) => {
