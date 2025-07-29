@@ -39,54 +39,7 @@
   --cosmic-gradient-3: linear-gradient(135deg, hsl(240, 45%, 12%), hsl(240, 35%, 20%));
 }
 
-.dark {
-  --background: hsl(0, 0%, 3%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(0, 0%, 8%);
-  --muted-foreground: hsl(0, 0%, 64%);
-  --popover: hsl(0, 0%, 3%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(0, 0%, 8%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(0, 0%, 15%);
-  --input: hsl(0, 0%, 15%);
-  --primary: hsl(221, 83%, 53%);
-  --primary-foreground: hsl(0, 0%, 98%);
-  --secondary: hsl(0, 0%, 8%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(0, 0%, 8%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62%, 50%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(221, 83%, 53%);
-
-  --surface: hsl(0, 0%, 8%);
-  --surface-secondary: hsl(0, 0%, 5%);
-  --text-primary: hsl(0, 0%, 98%);
-  --text-secondary: hsl(0, 0%, 64%);
-}
-
-.dark {
-  --background: hsl(240, 10%, 3.9%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(240, 3.7%, 15.9%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62.8%, 30.6%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
-}
+/* Removed conflicting dark mode styles that interfere with cosmic gradient */
 
 @layer base {
   * {
@@ -97,6 +50,7 @@
     @apply font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--cosmic-lavender);
+    background: var(--cosmic-gradient-1);
     min-height: 100vh;
     line-height: 1.65; /* Optimized for reading comfort */
     letter-spacing: 0.005em; /* Subtle letter spacing for elegance */

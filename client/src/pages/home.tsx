@@ -411,7 +411,7 @@ export default function Home() {
 
       {/* System Information Dialog */}
       <Dialog open={showSystemDialog} onOpenChange={setShowSystemDialog}>
-        <DialogContent className="cosmic-card max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="bg-white/5 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[80vh] overflow-y-auto">
           {selectedSystem && systemDetails[selectedSystem as keyof typeof systemDetails] && (
             <>
               <DialogHeader>
@@ -426,41 +426,49 @@ export default function Home() {
               <div className="space-y-6">
                 {/* Overview */}
                 <div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Overview</h4>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h4 className="text-lg font-semibold mb-2" 
+                      style={{
+                        color: 'hsl(51, 100%, 65%)',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                      }}>Overview</h4>
+                  <p className="leading-relaxed" 
+                     style={{
+                       color: 'hsl(240, 100%, 94%)', 
+                       opacity: 0.9
+                     }}>
                     {systemDetails[selectedSystem as keyof typeof systemDetails].overview}
                   </p>
                 </div>
 
                 {/* System Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-black/30 rounded-lg">
+                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Globe className="h-4 w-4 text-yellow-500" />
-                      <span className="text-sm font-medium text-gray-400">Origin</span>
+                      <Globe className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Origin</span>
                     </div>
-                    <p className="text-white">{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
+                    <p style={{color: 'hsl(240, 100%, 94%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
                   </div>
-                  <div className="p-4 bg-black/30 rounded-lg">
+                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Clock className="h-4 w-4 text-yellow-500" />
-                      <span className="text-sm font-medium text-gray-400">Heritage</span>
+                      <Clock className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Heritage</span>
                     </div>
-                    <p className="text-white">{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
+                    <p style={{color: 'hsl(240, 100%, 94%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
                   </div>
-                  <div className="p-4 bg-black/30 rounded-lg">
+                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Star className="h-4 w-4 text-yellow-500" />
-                      <span className="text-sm font-medium text-gray-400">Accuracy</span>
+                      <Star className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Accuracy</span>
                     </div>
                     <Badge variant="outline" className="text-green-400 border-green-400">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].accuracy}
                     </Badge>
                   </div>
-                  <div className="p-4 bg-black/30 rounded-lg">
+                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <User className="h-4 w-4 text-yellow-500" />
-                      <span className="text-sm font-medium text-gray-400">Difficulty</span>
+                      <User className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Difficulty</span>
                     </div>
                     <Badge variant="outline" className="text-blue-400 border-blue-400">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].difficulty}
