@@ -272,7 +272,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
           <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             {triggerMessage.title}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
+          <p className="text-purple-200 mt-2">
             {triggerMessage.subtitle}
           </p>
         </div>
@@ -281,14 +281,14 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
       {/* Impact Statistics */}
       <div className="grid grid-cols-2 gap-4">
         {impactStats.map((stat, index) => (
-          <div key={index} className="text-center p-3 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 rounded-xl border border-purple-200/30">
-            <div className="flex justify-center text-purple-500 mb-1">
+          <div key={index} className="text-center p-3 bg-gradient-to-br from-purple-800/20 to-pink-800/20 rounded-xl border border-purple-400/30">
+            <div className="flex justify-center text-purple-400 mb-1">
               {stat.icon}
             </div>
-            <div className="font-bold text-lg text-purple-600 dark:text-purple-400">
+            <div className="font-bold text-lg text-purple-200">
               {stat.stat}
             </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">
+            <div className="text-xs text-purple-300">
               {stat.label}
             </div>
           </div>
@@ -296,12 +296,12 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
       </div>
 
       {/* Mission Statement */}
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 p-6 rounded-xl border border-purple-200/30">
+      <div className="bg-gradient-to-r from-purple-800/20 to-pink-800/20 p-6 rounded-xl border border-purple-400/30">
         <div className="text-center space-y-3">
-          <div className="text-purple-600 dark:text-purple-400 font-semibold">
+          <div className="text-purple-200 font-semibold">
             Our Sacred Mission
           </div>
-          <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-purple-100 leading-relaxed">
             For thousands of years, ancient wisdom was locked away in temples and libraries. 
             Today, we're making it freely accessible to anyone with curiosity and an internet connection. 
             Your contribution ensures this knowledge remains free for seekers worldwide.
@@ -331,10 +331,10 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
   const renderAmountStep = () => (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+        <h2 className="text-xl font-bold text-white mb-2">
           Choose Your Contribution
         </h2>
-        <p className="text-gray-600 dark:text-gray-300 text-sm">
+        <p className="text-purple-200 text-sm">
           Every amount helps keep ancient wisdom accessible to all
         </p>
       </div>
@@ -352,10 +352,10 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
                 {tier.icon}
               </div>
               <div className="font-bold text-lg">${tier.amount}</div>
-              <div className="text-xs font-medium text-purple-600 dark:text-purple-400 mb-1">
+              <div className="text-xs font-medium text-purple-200 mb-1">
                 {tier.label}
               </div>
-              <div className="text-xs text-gray-600 dark:text-gray-400">
+              <div className="text-xs text-purple-300">
                 {tier.description}
               </div>
             </CardContent>
@@ -365,12 +365,12 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
 
       {/* Custom Amount */}
       <div className="space-y-3">
-        <div className="text-center text-sm text-gray-600 dark:text-gray-400">
+        <div className="text-center text-sm text-purple-200">
           Or choose your own amount
         </div>
         <div className="flex gap-2">
           <div className="flex-1 relative">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-300">$</span>
             <Input
               type="number"
               placeholder="Enter amount"

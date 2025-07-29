@@ -4,39 +4,57 @@
 @tailwind utilities;
 
 :root {
-  /* Transparent theme - all backgrounds allow cosmic gradient to show through */
-  --background: transparent; /* Let cosmic gradient be the main background */
-  --foreground: hsl(240, 100%, 94%); /* #E0E0FF Soft Lavender White - high contrast readability */
-  --muted: transparent; /* No blocking backgrounds */
-  --muted-foreground: hsl(240, 15%, 70%);
-  --popover: rgba(255, 255, 255, 0.05); /* Glass effect */
+  /* Cosmic theme - all elements use transparent/cosmic backgrounds */
+  --background: transparent; /* NEVER white - always transparent */
+  --foreground: hsl(240, 100%, 94%); /* White text for readability */
+  --muted: transparent; /* NO blocking backgrounds */
+  --muted-foreground: hsl(240, 30%, 80%); /* Light purple text */
+  --popover: rgba(30, 15, 50, 0.95); /* Dark cosmic popup */
   --popover-foreground: hsl(240, 100%, 94%);
-  --card: transparent; /* Let cosmic gradient show through */
+  --card: transparent; /* NEVER white cards */
   --card-foreground: hsl(240, 100%, 94%);
-  --border: hsl(315, 30%, 50%, 0.3); /* Pink border with transparency */
-  --input: rgba(255, 255, 255, 0.1); /* Glass input */
-  --primary: hsl(275, 70%, 45%); /* #6A1B9A Purple for intuition/spirituality */
+  --border: hsl(315, 30%, 50%, 0.3); /* Purple borders */
+  --input: rgba(255, 255, 255, 0.1); /* Glass inputs */
+  --primary: hsl(275, 70%, 45%); /* Purple primary */
   --primary-foreground: hsl(240, 100%, 94%);
-  --secondary: rgba(255, 255, 255, 0.05); /* Glass secondary */
+  --secondary: transparent; /* NO white secondary */
   --secondary-foreground: hsl(240, 100%, 94%);
-  --accent: hsl(51, 100%, 50%); /* #FFD700 Soft Gold - warmth/luxury */
+  --accent: hsl(51, 100%, 50%); /* Gold accent */
   --accent-foreground: hsl(240, 45%, 12%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(240, 100%, 94%);
   --ring: hsl(275, 70%, 45%);
   --radius: 1rem;
 
-  /* Enhanced cosmic theme - beautiful purple to indigo gradient */
-  --cosmic-purple: hsl(275, 70%, 45%); /* Spiritual purple accent */
-  --cosmic-deep-purple: hsl(285, 60%, 35%); /* Gradient end */
-  --cosmic-gold: hsl(51, 100%, 65%); /* Empowering gold highlights */
-  --cosmic-lavender: hsl(240, 100%, 94%); /* Soft readable text */
+  /* Enhanced cosmic theme - NO WHITE ANYWHERE */
+  --cosmic-purple: hsl(275, 70%, 45%);
+  --cosmic-deep-purple: hsl(285, 60%, 35%);
+  --cosmic-gold: hsl(51, 100%, 65%);
+  --cosmic-lavender: hsl(240, 100%, 94%);
   --cosmic-gradient-1: linear-gradient(135deg, hsl(260, 60%, 25%) 0%, hsl(275, 70%, 45%) 50%, hsl(285, 80%, 35%) 100%);
   --cosmic-gradient-2: linear-gradient(135deg, hsl(275, 70%, 45%), hsl(285, 60%, 35%));
   --cosmic-gradient-3: linear-gradient(135deg, hsl(260, 60%, 25%), hsl(275, 70%, 45%));
+  
+  /* Force override any white backgrounds */
+  --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
 }
 
-/* Removed conflicting dark mode styles that interfere with cosmic gradient */
+/* Force cosmic theme - NEVER white backgrounds */
+* {
+  color: var(--cosmic-lavender) !important;
+}
+
+/* Override any white backgrounds */
+.bg-white, 
+[style*="background: white"], 
+[style*="background-color: white"],
+[style*="background: #fff"],
+[style*="background-color: #fff"],
+[style*="background: #ffffff"],
+[style*="background-color: #ffffff"] {
+  background: var(--cosmic-gradient-1) !important;
+  color: var(--cosmic-lavender) !important;
+}
 
 @layer base {
   * {
