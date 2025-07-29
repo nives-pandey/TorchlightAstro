@@ -57,7 +57,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
   };
 
   return (
-    <Card className="border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-950 dark:to-indigo-950">
+    <Card className="border-purple-400/30 bg-gradient-to-br from-slate-800/40 via-purple-900/30 to-indigo-900/40 backdrop-blur-sm">
       <CardHeader className="text-center space-y-4">
         <div className="flex justify-center">
           <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
@@ -65,11 +65,11 @@ export default function ContributionSection({ onContribute }: ContributionSectio
           </div>
         </div>
         
-        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+        <CardTitle className="text-2xl font-bold text-white">
           Illuminating Ancient Wisdom for Everyone
         </CardTitle>
         
-        <div className="text-gray-600 dark:text-gray-300 leading-relaxed space-y-3">
+        <div className="text-purple-200 leading-relaxed space-y-3">
           <p>
             This project represents <strong>thousands of hours</strong> of dedicated work, drawing from 
             <strong> centuries of cumulative wisdom</strong> from master astrologers, numerologists, and ancient scholars.
@@ -84,12 +84,12 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
       <CardContent className="space-y-6">
         {/* Mission Statement */}
-        <div className="bg-purple-900/300 dark:bg-black/20 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+        <div className="bg-purple-800/30 rounded-lg p-4 border border-purple-400/50">
           <div className="flex items-start space-x-3">
             <Globe className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
             <div>
-              <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">Our Commitment</h4>
-              <p className="text-sm text-gray-600 dark:text-gray-300">
+              <h4 className="font-semibold text-purple-200 mb-2">Our Commitment</h4>
+              <p className="text-sm text-purple-100">
                 We want to keep Torchlight <strong>free for the world</strong> as long as we can. 
                 However, maintaining servers, supporting volunteers, and expanding our knowledge base requires resources.
               </p>
@@ -100,20 +100,20 @@ export default function ContributionSection({ onContribute }: ContributionSectio
         {/* Impact Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
-            <div className="text-2xl font-bold text-purple-600">1000+</div>
-            <div className="text-xs text-gray-500">Hours of Work</div>
+            <div className="text-2xl font-bold text-purple-200">1000+</div>
+            <div className="text-xs text-purple-300">Hours of Work</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-indigo-600">100+</div>
-            <div className="text-xs text-gray-500">Years of Wisdom</div>
+            <div className="text-2xl font-bold text-purple-200">100+</div>
+            <div className="text-xs text-purple-300">Years of Wisdom</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-purple-600">10+</div>
-            <div className="text-xs text-gray-500">Ancient Systems</div>
+            <div className="text-2xl font-bold text-purple-200">10+</div>
+            <div className="text-xs text-purple-300">Ancient Systems</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-indigo-600">∞</div>
-            <div className="text-xs text-gray-500">Free Access</div>
+            <div className="text-2xl font-bold text-purple-200">∞</div>
+            <div className="text-xs text-purple-300">Free Access</div>
           </div>
         </div>
 
@@ -121,11 +121,11 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
         {/* Contribution Appeal */}
         <div className="text-center space-y-4">
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+          <h3 className="text-lg font-semibold text-white">
             Be the Torchlight in Someone's Journey
           </h3>
           
-          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p className="text-sm text-purple-200 leading-relaxed">
             Your contribution helps us keep this ancient knowledge accessible to seekers worldwide. 
             Every donation, no matter the size, helps us illuminate more paths and reach more souls.
           </p>
@@ -142,7 +142,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
                 className={`h-auto p-3 flex flex-col items-center space-y-2 ${
                   selectedAmount === amount 
                     ? "bg-purple-600 hover:bg-purple-700 text-white" 
-                    : "border-purple-200 hover:border-purple-400 hover:bg-purple-50"
+                    : "border-purple-400/50 hover:border-purple-300 hover:bg-purple-800/30 text-white"
                 }`}
               >
                 <Icon className="h-5 w-5" />
@@ -156,18 +156,18 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
           {/* Custom Amount */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label className="text-sm font-medium text-purple-200">
               Or choose your own amount:
             </label>
             <div className="flex space-x-2">
               <div className="relative flex-1">
-                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-300">$</span>
                 <Input
                   type="number"
                   placeholder="25.00"
                   value={customAmount}
                   onChange={(e) => handleCustomAmountChange(e.target.value)}
-                  className="pl-8 border-purple-200 focus:border-purple-400"
+                  className="pl-8 border-purple-400/50 focus:border-purple-300 bg-purple-800/20 text-white"
                   min="1"
                   step="0.01"
                 />
@@ -189,19 +189,19 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
           {/* No Pressure Message */}
           <div className="text-center">
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-purple-300">
               Can't contribute right now? No worries! Sharing Torchlight with others who might benefit is equally valuable. ✨
             </p>
           </div>
         </div>
 
         {/* What Your Contribution Supports */}
-        <div className="bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900 rounded-lg p-4 space-y-3">
-          <h4 className="font-semibold text-purple-700 dark:text-purple-300 flex items-center">
+        <div className="bg-purple-800/30 rounded-lg p-4 space-y-3 border border-purple-400/30">
+          <h4 className="font-semibold text-purple-200 flex items-center">
             <Sparkles className="h-4 w-4 mr-2" />
             Your Contribution Supports:
           </h4>
-          <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-300">
+          <div className="grid md:grid-cols-2 gap-2 text-sm text-purple-100">
             <div className="flex items-center space-x-2">
               <BookOpen className="h-4 w-4 text-purple-500" />
               <span>Ancient text research & translations</span>
@@ -222,9 +222,9 @@ export default function ContributionSection({ onContribute }: ContributionSectio
         </div>
 
         {/* Gratitude Message */}
-        <div className="text-center p-4 bg-purple-900/300 dark:bg-black/20 rounded-lg border border-purple-200 dark:border-purple-700">
+        <div className="text-center p-4 bg-purple-800/40 rounded-lg border border-purple-400/50">
           <Heart className="h-6 w-6 text-red-500 mx-auto mb-2" />
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <p className="text-sm font-medium text-purple-100">
             Thank you for being part of our mission to illuminate ancient wisdom for the modern world. 
             Your support helps us be the torchlight in someone's spiritual journey.
           </p>
