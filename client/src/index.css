@@ -4,39 +4,36 @@
 @tailwind utilities;
 
 :root {
-  /* Research-backed color palette for women 25-60 targeting trust, spirituality, and readability */
-  --background: hsl(240, 45%, 12%); /* #1A1A3D Navy Indigo - calming cosmic immersion */
+  /* Transparent theme - all backgrounds allow cosmic gradient to show through */
+  --background: transparent; /* Let cosmic gradient be the main background */
   --foreground: hsl(240, 100%, 94%); /* #E0E0FF Soft Lavender White - high contrast readability */
-  --muted: hsl(250, 25%, 35%); /* #4A4A8A Muted Purple-Gray - subtle hierarchy */
+  --muted: transparent; /* No blocking backgrounds */
   --muted-foreground: hsl(240, 15%, 70%);
-  --popover: hsl(240, 45%, 12%);
+  --popover: rgba(255, 255, 255, 0.05); /* Glass effect */
   --popover-foreground: hsl(240, 100%, 94%);
-  --card: hsl(240, 45%, 12%);
+  --card: transparent; /* Let cosmic gradient show through */
   --card-foreground: hsl(240, 100%, 94%);
-  --border: hsl(250, 25%, 35%);
-  --input: hsl(240, 35%, 20%); /* #2A2A6D Indigo gradient */
-  --primary: hsl(275, 70%, 45%); /* #6A1B9A Purple for intuition/spirituality (23% preference) */
+  --border: hsl(315, 30%, 50%, 0.3); /* Pink border with transparency */
+  --input: rgba(255, 255, 255, 0.1); /* Glass input */
+  --primary: hsl(275, 70%, 45%); /* #6A1B9A Purple for intuition/spirituality */
   --primary-foreground: hsl(240, 100%, 94%);
-  --secondary: hsl(240, 35%, 20%); /* #2A2A6D Indigo gradient */
+  --secondary: rgba(255, 255, 255, 0.05); /* Glass secondary */
   --secondary-foreground: hsl(240, 100%, 94%);
-  --accent: hsl(51, 100%, 50%); /* #FFD700 Soft Gold - warmth/luxury (used sparingly) */
+  --accent: hsl(51, 100%, 50%); /* #FFD700 Soft Gold - warmth/luxury */
   --accent-foreground: hsl(240, 45%, 12%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(240, 100%, 94%);
   --ring: hsl(275, 70%, 45%);
-  --radius: 1rem; /* Increased for flowing, feminine appeal */
+  --radius: 1rem;
 
-  /* Enhanced cosmic theme with research-backed colors */
-  --cosmic-navy: hsl(240, 45%, 12%); /* Primary background - navy indigo */
-  --cosmic-indigo: hsl(240, 35%, 20%); /* Secondary gradient start */
+  /* Enhanced cosmic theme - beautiful purple to indigo gradient */
   --cosmic-purple: hsl(275, 70%, 45%); /* Spiritual purple accent */
   --cosmic-deep-purple: hsl(285, 60%, 35%); /* Gradient end */
-  --cosmic-gold: hsl(51, 100%, 50%); /* Empowering gold highlights */
+  --cosmic-gold: hsl(51, 100%, 65%); /* Empowering gold highlights */
   --cosmic-lavender: hsl(240, 100%, 94%); /* Soft readable text */
-  --cosmic-muted: hsl(250, 25%, 35%); /* Subtle borders/dividers */
-  --cosmic-gradient-1: linear-gradient(135deg, hsl(240, 35%, 20%), hsl(275, 70%, 45%));
+  --cosmic-gradient-1: linear-gradient(135deg, hsl(260, 60%, 25%) 0%, hsl(275, 70%, 45%) 50%, hsl(285, 80%, 35%) 100%);
   --cosmic-gradient-2: linear-gradient(135deg, hsl(275, 70%, 45%), hsl(285, 60%, 35%));
-  --cosmic-gradient-3: linear-gradient(135deg, hsl(240, 45%, 12%), hsl(240, 35%, 20%));
+  --cosmic-gradient-3: linear-gradient(135deg, hsl(260, 60%, 25%), hsl(275, 70%, 45%));
 }
 
 /* Removed conflicting dark mode styles that interfere with cosmic gradient */
@@ -51,10 +48,18 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--cosmic-lavender);
     background: var(--cosmic-gradient-1);
+    background-attachment: fixed; /* Keep gradient fixed during scroll */
     min-height: 100vh;
-    line-height: 1.65; /* Optimized for reading comfort */
-    letter-spacing: 0.005em; /* Subtle letter spacing for elegance */
-    font-size: 16px; /* Base font size for accessibility */
+    line-height: 1.65;
+    letter-spacing: 0.005em;
+    font-size: 16px;
+  }
+
+  /* Ensure html element also has the gradient */
+  html {
+    background: var(--cosmic-gradient-1);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {

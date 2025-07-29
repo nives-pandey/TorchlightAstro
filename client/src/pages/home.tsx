@@ -246,8 +246,7 @@ export default function Home() {
 
   return (
     <div 
-      className="min-h-screen text-white overflow-hidden" 
-      style={{background: 'var(--cosmic-gradient-1)'}}
+      className="min-h-screen text-white overflow-hidden"
     >
       {/* Floating particles background - match landing page */}
       <div 
@@ -535,7 +534,7 @@ export default function Home() {
       </Dialog>
 
       {/* Features Overview - Match Landing Page Background */}
-      <section className="relative z-10 py-20" style={{background: 'var(--cosmic-gradient-1)'}}>
+      <section className="relative z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
@@ -721,7 +720,7 @@ export default function Home() {
       </section>
 
       {/* Daily Guidance Preview - Match Landing Page Background */}
-      <section className="relative z-10 py-20" style={{background: 'var(--cosmic-gradient-1)'}}>
+      <section className="relative z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
