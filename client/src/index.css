@@ -39,22 +39,7 @@
   --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
 }
 
-/* Force cosmic theme - NEVER white backgrounds */
-* {
-  color: var(--cosmic-lavender) !important;
-}
-
-/* Override any white backgrounds */
-.bg-white, 
-[style*="background: white"], 
-[style*="background-color: white"],
-[style*="background: #fff"],
-[style*="background-color: #fff"],
-[style*="background: #ffffff"],
-[style*="background-color: #ffffff"] {
-  background: var(--cosmic-gradient-1) !important;
-  color: var(--cosmic-lavender) !important;
-}
+/* Targeted cosmic theme fixes - NO global overrides */
 
 @layer base {
   * {

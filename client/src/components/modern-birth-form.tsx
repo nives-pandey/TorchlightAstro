@@ -543,7 +543,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                                 }}
                                 placeholder="14:30 (2:30 PM)"
                               />
-                              <p className="text-xs text-gray-600 bg-blue-50 p-2 rounded">
+                              <p className="text-xs text-purple-200 bg-purple-900/30 border border-purple-400/30 p-2 rounded">
                                 💡 Use 24-hour format: 14:30 = 2:30 PM, 09:15 = 9:15 AM, 00:00 = Midnight
                               </p>
                             </div>

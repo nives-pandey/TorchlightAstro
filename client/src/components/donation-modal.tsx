@@ -406,7 +406,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
     if (!clientSecret || !stripePromise) {
       return (
         <div className="text-center py-8">
-          <div className="text-gray-600 dark:text-gray-400">
+          <div className="text-purple-200">
             Setting up secure payment...
           </div>
         </div>
@@ -426,7 +426,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md mx-4 bg-white dark:bg-gray-900 border border-purple-200/50 shadow-2xl">
+      <DialogContent className="max-w-md mx-4">
         <DialogHeader className="text-center">
           <DialogTitle className="sr-only">Contribution Modal</DialogTitle>
         </DialogHeader>
