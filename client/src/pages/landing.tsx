@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ContributionSection from "@/components/contribution-section";
-import TorchlightLogo from "@/components/torchlight-logo";
+import { TorchlightLogo } from "@/components/torchlight-logo";
 import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar } from "lucide-react";
 // No animations needed
 
@@ -229,7 +229,9 @@ export default function Landing() {
       {/* Header */}
       <header className="relative z-10 px-4 py-6">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <TorchlightLogo size="md" />
+          <div className="flex items-center space-x-3">
+            <TorchlightLogo size="md" />
+          </div>
           <Button 
             onClick={() => window.location.href = '/home'}
             className="bg-purple-800/40 hover:bg-purple-700/50 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
