@@ -173,6 +173,7 @@ The application performs authentic astrological calculations rather than using p
 - **Manila & Philippines Integration**: Complete Philippines city coverage with timezone auto-detection for Manila, Quezon City, Makati, Cebu City, Davao, and 30+ other cities
 - **Enhanced Form Experience**: 48px touch targets, better contrast, improved mobile font sizes (16px), and "Generate My Cosmic Profile ✨" button text
 - **Demo Systems**: Created `/demo-chart` and `/lifestyle-intelligence` routes showing comprehensive analysis and personalized recommendations
+- **Enhanced Gemstone System**: Comprehensive crystal therapy with planetary gemstone assignments (Navratna system), chakra alignment stones, cleansing/activation instructions, and intention-based recommendations
 - **Server Chart API**: Implemented `/api/generate-chart` endpoint with authentic astrological calculations for Western signs, Chinese animals, numerology, and Human Design
 - **Cross-System AI Synthesis**: Explains why different systems agree/disagree on recommendations with transparent methodology
 

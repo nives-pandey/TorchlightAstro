@@ -89,6 +89,24 @@ export default function LifestyleIntelligence() {
         purpose: "Grounding and electromagnetic protection", 
         wearing: "Left pocket or workspace",
         timing: "During stressful periods or technology use"
+      },
+      healing: {
+        name: "Amethyst",
+        purpose: "Spiritual protection and intuition enhancement",
+        wearing: "Third eye chakra or meditation space",
+        timing: "Full moon cleansing and daily meditation"
+      },
+      prosperity: {
+        name: "Citrine",
+        purpose: "Abundance attraction and solar plexus activation",
+        wearing: "Wallet or business area",
+        timing: "New moon manifestation and Jupiter hours"
+      },
+      love: {
+        name: "Rose Quartz",
+        purpose: "Heart chakra opening and self-love cultivation",
+        wearing: "Heart area or bedroom",
+        timing: "Venus days and relationship work"
       }
     }
   };
@@ -290,30 +308,145 @@ export default function LifestyleIntelligence() {
 
             {/* Gemstone Intelligence */}
             <TabsContent value="gemstones" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {Object.entries(lifestyleData.gemstones).map(([type, stone]) => (
-                  <Card key={type} className="bg-white/10 border-emerald-400/30">
-                    <CardHeader>
-                      <CardTitle className="text-white capitalize">{type} Stone</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <div className="text-center">
-                        <h4 className="text-xl font-semibold text-emerald-300 mb-2">{stone.name}</h4>
-                        <p className="text-sm text-gray-300">{stone.purpose}</p>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <div>
-                          <span className="text-emerald-400 font-medium">How to wear:</span>
-                          <p className="text-gray-300">{stone.wearing}</p>
+              <div className="space-y-6">
+                {/* Primary Recommendations */}
+                <Card className="bg-white/10 border-emerald-400/30">
+                  <CardHeader>
+                    <CardTitle className="text-white">Personalized Gemstone Recommendations</CardTitle>
+                    <p className="text-gray-300 text-sm">Based on your complete astrological profile synthesis</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {Object.entries(lifestyleData.gemstones).map(([type, stone]) => (
+                        <Card key={type} className="bg-emerald-500/10 border-emerald-400/20">
+                          <CardContent className="p-4">
+                            <div className="text-center mb-3">
+                              <h4 className="text-lg font-semibold text-emerald-300 capitalize">{type}</h4>
+                              <h5 className="text-xl font-bold text-white">{stone.name}</h5>
+                            </div>
+                            <div className="space-y-3 text-sm">
+                              <div>
+                                <span className="text-emerald-400 font-medium">Purpose:</span>
+                                <p className="text-gray-200">{stone.purpose}</p>
+                              </div>
+                              <div>
+                                <span className="text-emerald-400 font-medium">How to wear:</span>
+                                <p className="text-gray-200">{stone.wearing}</p>
+                              </div>
+                              <div>
+                                <span className="text-emerald-400 font-medium">Best timing:</span>
+                                <p className="text-gray-200">{stone.timing}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Planetary Gemstones */}
+                <Card className="bg-white/10 border-emerald-400/30">
+                  <CardHeader>
+                    <CardTitle className="text-white">Planetary Gemstone System</CardTitle>
+                    <p className="text-gray-300 text-sm">Traditional Jyotish recommendations based on your chart</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {[
+                        { planet: "Sun", stone: "Ruby", finger: "Ring finger", day: "Sunday", color: "#DC143C" },
+                        { planet: "Moon", stone: "Pearl", finger: "Little finger", day: "Monday", color: "#F8F8FF" },
+                        { planet: "Venus", stone: "Diamond", finger: "Middle finger", day: "Friday", color: "#E6E6FA" },
+                        { planet: "Jupiter", stone: "Yellow Sapphire", finger: "Index finger", day: "Thursday", color: "#FFD700" },
+                        { planet: "Mercury", stone: "Emerald", finger: "Little finger", day: "Wednesday", color: "#50C878" },
+                        { planet: "Mars", stone: "Red Coral", finger: "Ring finger", day: "Tuesday", color: "#FF7F50" },
+                        { planet: "Saturn", stone: "Blue Sapphire", finger: "Middle finger", day: "Saturday", color: "#0F52BA" },
+                        { planet: "Rahu", stone: "Hessonite", finger: "Middle finger", day: "Saturday", color: "#B87333" }
+                      ].map((gem, index) => (
+                        <div key={index} className="p-3 bg-white/5 rounded-lg border border-emerald-400/20">
+                          <div className="text-center">
+                            <div className="w-6 h-6 rounded-full mx-auto mb-2" style={{backgroundColor: gem.color}}></div>
+                            <h5 className="font-semibold text-white">{gem.planet}</h5>
+                            <p className="text-emerald-300 text-sm">{gem.stone}</p>
+                            <p className="text-xs text-gray-400">{gem.finger}</p>
+                            <p className="text-xs text-gray-400">{gem.day}</p>
+                          </div>
                         </div>
-                        <div>
-                          <span className="text-emerald-400 font-medium">Best timing:</span>
-                          <p className="text-gray-300">{stone.timing}</p>
-                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Cleansing & Care Instructions */}
+                <Card className="bg-white/10 border-emerald-400/30">
+                  <CardHeader>
+                    <CardTitle className="text-white">Gemstone Care & Activation</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div>
+                        <h4 className="text-emerald-300 font-semibold mb-3">Cleansing Methods</h4>
+                        <ul className="space-y-2 text-gray-200 text-sm">
+                          <li>• Running water (except pearls/opals)</li>
+                          <li>• Full moon moonlight (all stones)</li>
+                          <li>• Sea salt water (hard stones only)</li>
+                          <li>• Sage smoke cleansing</li>
+                          <li>• Crystal cluster charging</li>
+                        </ul>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      <div>
+                        <h4 className="text-emerald-300 font-semibold mb-3">Activation Timing</h4>
+                        <ul className="space-y-2 text-gray-200 text-sm">
+                          <li>• New moon for new intentions</li>
+                          <li>• Planetary hours for planet stones</li>
+                          <li>• Thursday for Jupiter stones</li>
+                          <li>• Friday for Venus stones</li>
+                          <li>• Sunday morning for all stones</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="text-emerald-300 font-semibold mb-3">Wearing Guidelines</h4>
+                        <ul className="space-y-2 text-gray-200 text-sm">
+                          <li>• Right hand for giving energy</li>
+                          <li>• Left hand for receiving energy</li>
+                          <li>• Direct skin contact preferred</li>
+                          <li>• Metal settings: gold/silver per planet</li>
+                          <li>• Remove during sleep initially</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Chakra Alignment */}
+                <Card className="bg-white/10 border-emerald-400/30">
+                  <CardHeader>
+                    <CardTitle className="text-white">Chakra Gemstone Alignment</CardTitle>
+                    <p className="text-gray-300 text-sm">Balance your energy centers with targeted crystal therapy</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {[
+                        { chakra: "Root", stone: "Red Jasper", color: "#DC143C", location: "Base of spine" },
+                        { chakra: "Sacral", stone: "Carnelian", color: "#FF8C00", location: "Below navel" },
+                        { chakra: "Solar Plexus", stone: "Citrine", color: "#FFD700", location: "Upper abdomen" },
+                        { chakra: "Heart", stone: "Rose Quartz", color: "#FFB6C1", location: "Center of chest" },
+                        { chakra: "Throat", stone: "Blue Lace Agate", color: "#87CEEB", location: "Throat area" },
+                        { chakra: "Third Eye", stone: "Amethyst", color: "#9370DB", location: "Between eyebrows" },
+                        { chakra: "Crown", stone: "Clear Quartz", color: "#F8F8FF", location: "Top of head" }
+                      ].map((chakra, index) => (
+                        <div key={index} className="p-4 bg-white/5 rounded-lg border border-emerald-400/20">
+                          <div className="text-center">
+                            <div className="w-8 h-8 rounded-full mx-auto mb-2" style={{backgroundColor: chakra.color}}></div>
+                            <h5 className="font-semibold text-white">{chakra.chakra}</h5>
+                            <p className="text-emerald-300 text-sm">{chakra.stone}</p>
+                            <p className="text-xs text-gray-400">{chakra.location}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </TabsContent>
           </Tabs>
