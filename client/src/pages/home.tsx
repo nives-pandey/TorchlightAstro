@@ -554,8 +554,7 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} 
-                    className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
+                    className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
                   >
                     <div className="text-3xl sm:text-4xl mb-3">
                       {system.icon}
@@ -596,8 +595,7 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} 
-                    className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
+                    className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
                   >
                     <div className="text-4xl mb-4">
                       {system.icon}
@@ -625,8 +623,7 @@ export default function Home() {
           {/* Synthesis Feature */}
           <div className="mt-16">
             <div 
-              style={{background: 'var(--cosmic-gradient-1)', opacity: 0.9}} 
-              className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
+              className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
             >
               <div className="text-5xl mb-6">🌟</div>
               <h3 className="font-semibold text-2xl mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Unique Cross-System Synthesis</h3>
@@ -668,8 +665,7 @@ export default function Home() {
             {dailyAreas.map((area, index) => (
               <div key={index}>
                 <div 
-                  style={{background: 'var(--cosmic-gradient-1)', opacity: 0.8}} 
-                  className="backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:opacity-100 transition-all duration-300 shadow-lg"
+                  className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg"
                 >
                   <area.icon className={`h-12 w-12 mx-auto mb-4 ${area.color}`} />
                   <h3 className="font-medium mb-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
