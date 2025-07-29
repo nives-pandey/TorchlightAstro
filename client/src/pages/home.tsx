@@ -341,49 +341,55 @@ export default function Home() {
             <PlanetarySymbols />
           </div>
 
-          {/* Features Preview - Match Landing Page */}
+          {/* Features Preview - Match Landing Page with Navigation */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white text-lg flex items-center gap-2">
-                  <Sun className="w-5 h-5 text-yellow-400" />
-                  Personal Readings
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-pink-200/80 text-sm">
-                  Complete natal chart analysis across all systems with authentic astronomical calculations
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <Link href="/personal">
+              <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <Sun className="w-5 h-5 text-yellow-400" />
+                    Personal Readings
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-pink-200/80 text-sm">
+                    Complete natal chart analysis across all systems with authentic astronomical calculations
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white text-lg flex items-center gap-2">
-                  <Heart className="w-5 h-5 text-pink-400" />
-                  Compatibility
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-pink-200/80 text-sm">
-                  Relationship insights and compatibility analysis across multiple astrological traditions
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <Link href="/compatibility">
+              <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <Heart className="w-5 h-5 text-pink-400" />
+                    Compatibility
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-pink-200/80 text-sm">
+                    Relationship insights and compatibility analysis across multiple astrological traditions
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white text-lg flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-blue-400" />
-                  Daily Guidance
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-pink-200/80 text-sm">
-                  Personalized daily insights with optimal timing recommendations
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <Link href="/daily">
+              <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-blue-400" />
+                    Daily Guidance
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-pink-200/80 text-sm">
+                    Personalized daily insights with optimal timing recommendations
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
 
           {/* CTA Buttons - Simplified to Match Landing Page */}
@@ -520,8 +526,8 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* Features Overview */}
-      <section className="relative z-10 py-20">
+      {/* Features Overview - Match Landing Page Background */}
+      <section className="relative z-10 py-20" style={{background: 'var(--cosmic-gradient-1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-accent" style={{color: 'var(--cosmic-lavender)'}}>
@@ -646,8 +652,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Daily Guidance Preview */}
-      <section className="relative z-10 py-20">
+      {/* Daily Guidance Preview - Match Landing Page Background */}
+      <section className="relative z-10 py-20" style={{background: 'var(--cosmic-gradient-1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-accent" style={{color: 'var(--cosmic-lavender)'}}>
@@ -693,8 +699,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 py-16 border-t border-pink-300/20">
+      {/* Footer - Match Landing Page Background */}
+      <footer className="relative z-10 py-16 border-t border-pink-300/20" style={{background: 'var(--cosmic-gradient-1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             {/* Brand */}
