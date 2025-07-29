@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ModernBirthForm from "@/components/modern-birth-form";
 import PlanetarySymbols from "@/components/planetary-symbols";
-import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen } from "lucide-react";
+import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
@@ -262,12 +262,31 @@ export default function Home() {
         <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative z-10 pt-20 pb-32 overflow-hidden">
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            {/* Main Headline - Enhanced typography */}
+      {/* Header - Match Landing Page */}
+      <header className="relative z-10 px-4 py-6">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
+              <Stars className="h-4 w-4 text-white" />
+            </div>
+            <h1 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
+              Torchlight
+            </h1>
+          </div>
+          <Button 
+            onClick={() => window.location.href = '/landing'}
+            className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
+          >
+            Landing Page
+          </Button>
+        </div>
+      </header>
+
+      {/* Hero Section - Match Landing Page Structure */}
+      <main className="relative z-10 px-4 pt-8 pb-16">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Main Headline - Match Landing Page */}
+          <div className="mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
               <span 
                 style={{
@@ -309,55 +328,75 @@ export default function Home() {
                 Western, Vedic, Chinese & Human Design
               </span> systems.
             </p>
+          </div>
+
+          {/* Astrology Systems Grid - Match Landing Page */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+              <Sparkles className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
+              Explore Ancient Wisdom
+            </h3>
             
             {/* Planetary Symbols Row */}
             <PlanetarySymbols />
-            
-            {/* Enhanced CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
-              <Button 
-                onClick={() => setShowBirthForm(true)}
-                size="lg"
-                className="font-semibold px-10 py-5 rounded-2xl text-xl shadow-2xl transition-all duration-300 hover:shadow-3xl hover:scale-105 border-0"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 100%)',
-                  color: 'white',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.3)',
-                  boxShadow: '0 8px 32px rgba(138, 43, 226, 0.4)'
-                }}
-              >
-                Create Your Chart
-              </Button>
-              <Button 
-                onClick={() => window.location.href = '/analysis'}
-                className="bg-white/15 hover:bg-white/25 border border-white/30 rounded-2xl px-10 py-5 text-xl backdrop-blur-md transition-all duration-300 hover:border-white/50"
-                style={{
-                  color: 'hsl(240, 100%, 94%)',
-                  textShadow: '0 1px 2px rgba(0,0,0,0.2)'
-                }}
-              >
-                View Demo Chart
-              </Button>
-            </div>
-            
-            {/* Enhanced Trust Indicators */}
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-12 text-lg">
-              <div className="flex items-center space-x-3 group">
-                <Star className="h-6 w-6 transition-transform group-hover:scale-110" style={{color: 'hsl(51, 100%, 65%)'}} />
-                <span style={{color: 'hsl(240, 100%, 94%)', opacity: 0.9}}>Swiss Ephemeris Precision</span>
-              </div>
-              <div className="flex items-center space-x-3 group">
-                <Shield className="h-6 w-6 transition-transform group-hover:scale-110" style={{color: 'hsl(51, 100%, 65%)'}} />
-                <span style={{color: 'hsl(240, 100%, 94%)', opacity: 0.9}}>25,000+ Year Heritage</span>
-              </div>
-              <div className="flex items-center space-x-3 group">
-                <Users className="h-6 w-6 transition-transform group-hover:scale-110" style={{color: 'hsl(51, 100%, 65%)'}} />
-                <span style={{color: 'hsl(240, 100%, 94%)', opacity: 0.9}}>Multi-System Integration</span>
-              </div>
-            </div>
+          </div>
+
+          {/* Features Preview - Match Landing Page */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <Sun className="w-5 h-5 text-yellow-400" />
+                  Personal Readings
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-pink-200/80 text-sm">
+                  Complete natal chart analysis across all systems with authentic astronomical calculations
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <Heart className="w-5 h-5 text-pink-400" />
+                  Compatibility
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-pink-200/80 text-sm">
+                  Relationship insights and compatibility analysis across multiple astrological traditions
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white text-lg flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-blue-400" />
+                  Daily Guidance
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-pink-200/80 text-sm">
+                  Personalized daily insights with optimal timing recommendations
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* CTA Buttons - Simplified to Match Landing Page */}
+          <div className="text-center mb-12">
+            <Button 
+              onClick={() => setShowBirthForm(true)}
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-4 rounded-2xl text-lg shadow-xl transition-all duration-300"
+            >
+              Begin Your Cosmic Journey
+            </Button>
           </div>
         </div>
-      </section>
+      </main>
 
       {/* Birth Data Collection Modal */}
       {showBirthForm && (
