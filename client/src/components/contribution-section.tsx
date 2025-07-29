@@ -60,9 +60,9 @@ export default function ContributionSection({ onContribute }: ContributionSectio
     <Card 
       className="border-purple-400/30 backdrop-blur-sm"
       style={{
-        background: 'linear-gradient(135deg, rgba(30, 15, 50, 0.95) 0%, rgba(55, 25, 95, 0.9) 50%, rgba(45, 20, 85, 0.95) 100%)',
+        background: 'linear-gradient(135deg, rgba(30, 80, 90, 0.95) 0%, rgba(40, 120, 140, 0.9) 30%, rgba(50, 140, 160, 0.85) 70%, rgba(60, 160, 180, 0.95) 100%)',
         backdropFilter: 'blur(16px)',
-        borderColor: 'rgba(147, 51, 234, 0.5)'
+        borderColor: 'rgba(64, 224, 208, 0.5)'
       }}
     >
       <CardHeader className="text-center space-y-4">
