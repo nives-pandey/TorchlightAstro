@@ -466,21 +466,21 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           {/* Elegant View Controls */}
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Flowing Animation</label>
                 <Switch checked={isAnimating} onCheckedChange={setIsAnimating} />
               </div>
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Sacred Connections</label>
                 <Switch checked={showAspects} onCheckedChange={setShowAspects} />
               </div>
             </div>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Celestial Orbits</label>
                 <Switch checked={showOrbits} onCheckedChange={setShowOrbits} />
               </div>
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Planet Names</label>
                 <Switch checked={showLabels} onCheckedChange={setShowLabels} />
               </div>
@@ -490,7 +490,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           {/* Elegant Zoom Control */}
           <div className="space-y-4">
             <label className="text-rose-200 font-medium">Cosmic Zoom</label>
-            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+            <div className="flex items-center gap-4 p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
               <Button 
                 size="sm" 
                 className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 border-0 hover:from-pink-600 hover:to-rose-600" 
@@ -519,7 +519,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           {/* Elegant Aspect Strength Filter */}
           <div className="space-y-4">
             <label className="text-rose-200 font-medium">Connection Sensitivity</label>
-            <div className="p-4 bg-white/5 rounded-2xl border border-pink-300/20">
+            <div className="p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
               <Slider
                 value={aspectStrength}
                 onValueChange={setAspectStrength}
@@ -582,7 +582,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-2xl p-4 h-auto flex flex-col items-center gap-2 transition-all duration-300 ${
                   selectedAspects.includes(aspectType.name)
                     ? 'bg-gradient-to-br from-pink-500/30 to-rose-500/30 border-2 border-pink-400/50 shadow-lg scale-105'
-                    : 'bg-white/5 border border-pink-300/20 hover:bg-white/10 hover:border-pink-400/30'
+                    : 'bg-purple-900/20 border border-pink-300/20 hover:bg-white/10 hover:border-pink-400/30'
                 }`}
                 onClick={() => toggleAspectType(aspectType.name)}
               >
