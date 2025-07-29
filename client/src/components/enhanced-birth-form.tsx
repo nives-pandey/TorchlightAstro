@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Calendar, MapPin, Clock, Settings, User, CheckCircle2, AlertTriangle, ChevronRight, ChevronLeft, Globe } from "lucide-react";
-import { detectTimezoneFromCity, getTimezonesByRegion, validateBirthTimeAccuracy, WORLD_TIMEZONES, type TimezoneInfo } from "@/lib/timezone-handler";
+import { WORLD_TIMEZONES } from "@/lib/timezone-handler";
 
 const enhancedBirthSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -62,7 +62,22 @@ const FORM_STEPS = [
 export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirthFormProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  const [timezoneGroups] = useState(() => getTimezonesByRegion());
+  const [timezoneGroups] = useState(() => {
+    // Create timezone groups from WORLD_TIMEZONES
+    const groups: Record<string, any[]> = {};
+    WORLD_TIMEZONES.forEach(tz => {
+      if (!groups[tz.region]) {
+        groups[tz.region] = [];
+      }
+      groups[tz.region].push({
+        identifier: tz.id,
+        displayName: `${tz.name} (${tz.cities[0]})`,
+        utcOffset: tz.offset,
+        hasDST: tz.dstOffset !== undefined
+      });
+    });
+    return groups;
+  });
   const [timeAccuracyWarnings, setTimeAccuracyWarnings] = useState<string[]>([]);
   const [detectedTimezone, setDetectedTimezone] = useState<string>('');
 
@@ -97,11 +112,29 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
   // Auto-detect timezone when city changes
   const handleCityChange = (city: string) => {
     if (city.length > 2) {
-      const detected = detectTimezoneFromCity(city, watchedValues.birthCountry);
-      if (detected && detected !== watchedValues.timezone) {
-        setDetectedTimezone(detected);
-        setValue('timezone', detected);
-        setValue('timezoneAutoDetected', true);
+      // Simple city matching for major cities
+      const cityTimezoneMap: Record<string, string> = {
+        'manila': 'Asia/Manila',
+        'quezon': 'Asia/Manila',
+        'makati': 'Asia/Manila',
+        'cebu': 'Asia/Manila',
+        'davao': 'Asia/Manila',
+        'new york': 'America/New_York',
+        'london': 'Europe/London',
+        'paris': 'Europe/Paris',
+        'tokyo': 'Asia/Tokyo',
+        'mumbai': 'Asia/Kolkata',
+        'sydney': 'Australia/Sydney'
+      };
+      
+      const normalizedCity = city.toLowerCase();
+      for (const [key, timezone] of Object.entries(cityTimezoneMap)) {
+        if (normalizedCity.includes(key)) {
+          setDetectedTimezone(timezone);
+          setValue('timezone', timezone);
+          setValue('timezoneAutoDetected', true);
+          break;
+        }
       }
     }
   };
@@ -110,13 +143,12 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
   const validateTimeAccuracy = () => {
     const { birthDate, birthTime, timezone } = getValues();
     if (birthDate && birthTime && timezone) {
-      try {
-        const birthDateTime = `${birthDate}T${birthTime}:00`;
-        const validation = validateBirthTimeAccuracy(birthDateTime, timezone);
-        setTimeAccuracyWarnings(validation.warnings);
-      } catch (error) {
-        setTimeAccuracyWarnings(['Unable to validate timezone. Please check your selection.']);
+      // Simple validation for rounded times
+      const warnings = [];
+      if (birthTime && (birthTime.endsWith(':00') || birthTime.endsWith(':30'))) {
+        warnings.push('Rounded times may affect rising sign accuracy. If possible, get the exact birth time from birth certificate.');
       }
+      setTimeAccuracyWarnings(warnings);
     }
   };
 

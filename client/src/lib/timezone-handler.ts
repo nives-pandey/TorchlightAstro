@@ -183,6 +183,46 @@ export const WORLD_TIMEZONES: TimezoneData[] = [
     region: "Asia",
     cities: ["Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Tianjin", "Wuhan", "Chengdu"]
   },
+  {
+    id: "Asia/Manila",
+    name: "Philippines Standard Time",
+    offset: 8,
+    country: "Philippines",
+    region: "Asia",
+    cities: ["Manila", "Quezon City", "Makati", "Pasig", "Taguig", "Cebu City", "Davao", "Zamboanga", "Antipolo", "Pasay", "Caloocan", "Las Piñas", "Marikina", "Muntinlupa", "Parañaque", "Valenzuela", "Bacoor", "General Santos", "Iloilo City", "Cagayan de Oro", "Bacolod", "Baguio", "Butuan", "Cotabato", "Dumaguete", "Iligan", "Legazpi", "Lucena", "Naga", "Olongapo", "San Pablo", "Tacloban", "Tagaytay", "Tuguegarao"]
+  },
+  {
+    id: "Asia/Bangkok",
+    name: "Indochina Time",
+    offset: 7,
+    country: "Thailand",
+    region: "Asia",
+    cities: ["Bangkok", "Chiang Mai", "Phuket", "Pattaya", "Hat Yai"]
+  },
+  {
+    id: "Asia/Singapore",
+    name: "Singapore Standard Time",
+    offset: 8,
+    country: "Singapore",
+    region: "Asia",
+    cities: ["Singapore"]
+  },
+  {
+    id: "Asia/Kuala_Lumpur",
+    name: "Malaysia Time",
+    offset: 8,
+    country: "Malaysia",
+    region: "Asia",
+    cities: ["Kuala Lumpur", "George Town", "Ipoh", "Shah Alam", "Petaling Jaya", "Klang", "Johor Bahru", "Kuching", "Kota Kinabalu"]
+  },
+  {
+    id: "Asia/Jakarta",
+    name: "Western Indonesian Time",
+    offset: 7,
+    country: "Indonesia",
+    region: "Asia",
+    cities: ["Jakarta", "Surabaya", "Bandung", "Bekasi", "Medan", "Tangerang", "Depok", "Semarang", "Palembang", "Makassar"]
+  },
 
   // Oceania
   {
