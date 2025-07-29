@@ -448,68 +448,6 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                       </FormItem>
                     )}
                   />
-                          <FormLabel className="text-white flex items-center">
-                            <MapPin className="mr-2 h-4 w-4" />
-                            Birth City *
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Enter your birth city"
-                              className="cosmic-input"
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="birthCountry"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white">Birth Country *</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Enter your birth country"
-                              className="cosmic-input"
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  <FormField
-                    control={form.control}
-                    name="timezone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-white">Timezone *</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="cosmic-input">
-                              <SelectValue placeholder="Select timezone" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Asia/Kolkata">India Standard Time (IST)</SelectItem>
-                            <SelectItem value="UTC">UTC</SelectItem>
-                            <SelectItem value="America/New_York">Eastern Time (EST)</SelectItem>
-                            <SelectItem value="America/Los_Angeles">Pacific Time (PST)</SelectItem>
-                            <SelectItem value="Europe/London">Greenwich Mean Time (GMT)</SelectItem>
-                            <SelectItem value="Europe/Berlin">Central European Time (CET)</SelectItem>
-                            <SelectItem value="Asia/Tokyo">Japan Standard Time (JST)</SelectItem>
-                            <SelectItem value="Australia/Sydney">Australian Eastern Time</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
                 </div>
               )}
 
