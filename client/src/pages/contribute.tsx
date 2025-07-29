@@ -6,9 +6,10 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Heart } from "lucide-react";
+import { ArrowLeft, Heart, Globe, CreditCard, Smartphone, Bitcoin } from "lucide-react";
 import { Link } from "wouter";
 import ContributionSection from "@/components/contribution-section";
+import UniversalPaymentModal from "@/components/universal-payment-modal";
 
 // Initialize Stripe
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLIC_KEY 
@@ -104,6 +105,7 @@ export default function ContributePage() {
   const [clientSecret, setClientSecret] = useState("");
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showUniversalPayment, setShowUniversalPayment] = useState(false);
   const { toast } = useToast();
 
   const handleContributeAmount = async (amount: number) => {
@@ -218,6 +220,68 @@ export default function ContributePage() {
         {/* Main Content */}
         <ContributionSection onContribute={handleContributeAmount} />
 
+        {/* Global Payment Options */}
+        <div className="mt-12">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <CardHeader>
+              <CardTitle className="text-center text-white mb-2">
+                Global Payment Options Available
+              </CardTitle>
+              <p className="text-center text-white/80 text-sm">
+                We support the most popular payment methods worldwide for your convenience
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <CreditCard className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-white text-sm font-medium">Cards</p>
+                  <p className="text-white/60 text-xs">32% global share</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Smartphone className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-white text-sm font-medium">Digital Wallets</p>
+                  <p className="text-white/60 text-xs">53% global share</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Bitcoin className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-white text-sm font-medium">Crypto</p>
+                  <p className="text-white/60 text-xs">USDT $0.01 fees</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <Globe className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-white text-sm font-medium">Regional</p>
+                  <p className="text-white/60 text-xs">UPI, PIX, SEPA</p>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <Button
+                  onClick={() => setShowUniversalPayment(true)}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0"
+                >
+                  <Globe className="w-4 h-4 mr-2" />
+                  View All Payment Options
+                </Button>
+              </div>
+              
+              <div className="mt-4 text-center">
+                <p className="text-white/60 text-xs">
+                  PayPal • Apple Pay • Google Pay • USDT • Bank Transfer • and more...
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Footer Message */}
         <div className="mt-8 text-center">
           <p className="text-white/80 text-sm">
@@ -226,6 +290,14 @@ export default function ContributePage() {
           </p>
         </div>
       </div>
+
+      {/* Universal Payment Modal */}
+      <UniversalPaymentModal
+        isOpen={showUniversalPayment}
+        onClose={() => setShowUniversalPayment(false)}
+        amount={25}
+        purpose="supporting ancient wisdom accessibility"
+      />
     </div>
   );
 }

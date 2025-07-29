@@ -218,16 +218,10 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
 
   const handleAmountSelect = async (amount: number) => {
     setSelectedAmount(amount);
+    setStep('payment');
     
-    if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
-      toast({
-        title: "Thank You for Your Heart! 💝",
-        description: "Payment system is being configured. For now, please share Torchlight with someone who might benefit from ancient wisdom.",
-        variant: "default",
-      });
-      onClose();
-      return;
-    }
+    // For demo purposes, show the payment selection
+    // In production, this could redirect to universal payment modal
 
     try {
       const response = await apiRequest("POST", "/api/create-payment-intent", {
