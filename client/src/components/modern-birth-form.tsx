@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { X, Calendar, MapPin, Clock, User, ChevronRight, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { WORLD_TIMEZONES } from "@/lib/timezone-handler";
+import { universalCityFinder } from "@/lib/universal-city-finder";
 import AccessibilityToggle from "./accessibility-toggle";
 
 const birthFormSchema = z.object({
@@ -47,31 +48,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   const [currentStep, setCurrentStep] = useState(0);
   const [timeAccuracyWarnings, setTimeAccuracyWarnings] = useState<string[]>([]);
 
-  // Create comprehensive city list with Manila and Philippines cities
-  const globalCities: string[] = [
-    // Philippines - Comprehensive coverage
-    "Manila", "Quezon City", "Makati", "Pasig", "Taguig", "Cebu City", "Davao", "Zamboanga", 
-    "Antipolo", "Pasay", "Caloocan", "Las Piñas", "Marikina", "Muntinlupa", "Parañaque", 
-    "Valenzuela", "Bacoor", "General Santos", "Iloilo City", "Cagayan de Oro", "Bacolod", 
-    "Baguio", "Butuan", "Cotabato", "Dumaguete", "Iligan", "Legazpi", "Lucena", "Naga", 
-    "Olongapo", "San Pablo", "Tacloban", "Tagaytay", "Tuguegarao",
-    
-    // Major world cities
-    "New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio",
-    "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville", "Fort Worth", "Columbus",
-    "London", "Manchester", "Birmingham", "Liverpool", "Edinburgh", "Glasgow", "Cardiff",
-    "Paris", "Lyon", "Marseille", "Toulouse", "Nice", "Strasbourg", "Bordeaux", "Lille",
-    "Berlin", "Munich", "Hamburg", "Cologne", "Frankfurt", "Stuttgart", "Düsseldorf",
-    "Tokyo", "Osaka", "Yokohama", "Nagoya", "Sapporo", "Kyoto", "Kobe", "Fukuoka",
-    "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", "Hyderabad", "Pune", "Ahmedabad",
-    "Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Tianjin", "Wuhan", "Chengdu", "Nanjing",
-    "Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Canberra", "Darwin", "Hobart",
-    "Toronto", "Montreal", "Vancouver", "Calgary", "Edmonton", "Ottawa", "Winnipeg", "Halifax",
-    "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", "Belo Horizonte",
-    "Bangkok", "Chiang Mai", "Phuket", "Pattaya", "Hat Yai", "Krabi", "Hua Hin",
-    "Singapore", "Kuala Lumpur", "George Town", "Ipoh", "Johor Bahru", "Kuching",
-    "Jakarta", "Surabaya", "Bandung", "Bekasi", "Medan", "Tangerang", "Semarang"
-  ].sort();
+  // Get comprehensive city list from Universal City Finder
+  const globalCities: string[] = universalCityFinder.getAllCities();
 
   const form = useForm<BirthFormData>({
     resolver: zodResolver(birthFormSchema),
@@ -98,36 +76,17 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   const { handleSubmit, watch, setValue, getValues } = form;
   const watchedValues = watch();
 
-  // Auto-detect timezone when city changes
+  // Auto-detect timezone when city changes using Universal City Finder
   const handleCityChange = (city: string) => {
-    const cityTimezoneMap: Record<string, string> = {
-      // Philippines cities
-      'manila': 'Asia/Manila', 'quezon': 'Asia/Manila', 'makati': 'Asia/Manila',
-      'cebu': 'Asia/Manila', 'davao': 'Asia/Manila', 'zamboanga': 'Asia/Manila',
-      
-      // Major world cities
-      'new york': 'America/New_York', 'los angeles': 'America/Los_Angeles',
-      'chicago': 'America/Chicago', 'houston': 'America/Chicago',
-      'london': 'Europe/London', 'paris': 'Europe/Paris', 'berlin': 'Europe/Berlin',
-      'tokyo': 'Asia/Tokyo', 'mumbai': 'Asia/Kolkata', 'delhi': 'Asia/Kolkata',
-      'shanghai': 'Asia/Shanghai', 'beijing': 'Asia/Shanghai',
-      'sydney': 'Australia/Sydney', 'melbourne': 'Australia/Sydney',
-      'bangkok': 'Asia/Bangkok', 'singapore': 'Asia/Singapore',
-      'kuala lumpur': 'Asia/Kuala_Lumpur', 'jakarta': 'Asia/Jakarta'
-    };
-    
-    const normalizedCity = city.toLowerCase();
-    for (const [key, timezone] of Object.entries(cityTimezoneMap)) {
-      if (normalizedCity.includes(key)) {
-        setValue('timezone', timezone);
-        break;
-      }
+    const timezone = universalCityFinder.getTimezone(city);
+    if (timezone) {
+      setValue('timezone', timezone);
     }
-
-    // Auto-set country for Philippines cities
-    const philippinesCities = ['manila', 'quezon', 'makati', 'cebu', 'davao', 'zamboanga', 'antipolo', 'pasay', 'caloocan', 'las piñas'];
-    if (philippinesCities.some(phCity => normalizedCity.includes(phCity))) {
-      setValue('birthCountry', 'Philippines');
+    
+    // Auto-set country based on city data
+    const cityData = universalCityFinder.getCityData(city);
+    if (cityData) {
+      setValue('birthCountry', cityData.country);
     }
   };
 
