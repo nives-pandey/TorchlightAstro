@@ -81,7 +81,7 @@ export default function Compatibility() {
           <div className="space-y-6">
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-yellow-500">Add People for Analysis</CardTitle>
+                <CardTitle className="text-purple-500">Add People for Analysis</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Person Cards */}
@@ -89,13 +89,13 @@ export default function Compatibility() {
                   <div 
                     key={person.id}
                     className={`bg-black/30 rounded-lg p-4 border ${
-                      person.isPrimary ? 'border-yellow-500/20' : 'border-purple-500/20'
+                      person.isPrimary ? 'border-purple-500/20' : 'border-purple-500/20'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center text-black font-bold ${
-                          person.isPrimary ? 'bg-yellow-500' : 'bg-purple-500'
+                          person.isPrimary ? 'bg-purple-500' : 'bg-purple-500'
                         }`}>
                           {index + 1}
                         </div>
@@ -108,7 +108,7 @@ export default function Compatibility() {
                       </div>
                       <div className="flex items-center space-x-2">
                         {person.isPrimary && (
-                          <Badge variant="outline" className="text-yellow-500 border-yellow-500/30">
+                          <Badge variant="outline" className="text-purple-500 border-purple-500/30">
                             Primary
                           </Badge>
                         )}
@@ -127,7 +127,7 @@ export default function Compatibility() {
                   <Button
                     onClick={addPerson}
                     variant="outline"
-                    className="w-full border-2 border-dashed border-yellow-500/50 text-yellow-500 hover:border-yellow-500 hover:bg-yellow-500/10"
+                    className="w-full border-2 border-dashed border-purple-500/50 text-purple-500 hover:border-purple-500 hover:bg-purple-500/10"
                   >
                     <Plus className="mr-2 h-4 w-4" />
                     Add Another Person (Max 3)
@@ -139,7 +139,7 @@ export default function Compatibility() {
             {/* Analysis Options */}
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-yellow-500">Analysis Depth</CardTitle>
+                <CardTitle className="text-purple-500">Analysis Depth</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {analysisOptions.map((option) => (
@@ -147,14 +147,14 @@ export default function Compatibility() {
                     key={option.id}
                     className={`p-3 rounded-lg border cursor-pointer transition-all ${
                       option.selected 
-                        ? 'border-yellow-500 bg-yellow-500/10' 
-                        : 'border-gray-600 hover:border-yellow-500/50'
+                        ? 'border-purple-500 bg-purple-500/10' 
+                        : 'border-gray-600 hover:border-purple-500/50'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
                       <div className={`w-4 h-4 rounded-full border-2 ${
                         option.selected 
-                          ? 'border-yellow-500 bg-yellow-500' 
+                          ? 'border-purple-500 bg-purple-500' 
                           : 'border-gray-500'
                       }`}></div>
                       <div>
@@ -177,18 +177,18 @@ export default function Compatibility() {
             {/* Overall Compatibility Score */}
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-yellow-500">Overall Compatibility</CardTitle>
+                <CardTitle className="text-purple-500">Overall Compatibility</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center">
                   <div className="text-4xl font-bold text-white mb-2">{compatibilityResults.overallScore}%</div>
-                  <div className="text-yellow-500 font-medium mb-4">Highly Compatible</div>
+                  <div className="text-purple-500 font-medium mb-4">Highly Compatible</div>
                   <div className="flex justify-center space-x-1 mb-4">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star 
                         key={star}
                         className={`h-5 w-5 ${
-                          star <= 4 ? 'text-yellow-500 fill-current' : 'text-gray-600'
+                          star <= 4 ? 'text-purple-500 fill-current' : 'text-gray-600'
                         }`}
                       />
                     ))}
@@ -203,7 +203,7 @@ export default function Compatibility() {
             {/* System-Specific Scores */}
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-yellow-500">Cross-System Analysis</CardTitle>
+                <CardTitle className="text-purple-500">Cross-System Analysis</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {Object.entries(compatibilityResults.systemScores).map(([system, score]) => (
@@ -213,7 +213,7 @@ export default function Compatibility() {
                     </span>
                     <div className="flex items-center space-x-3">
                       <Progress value={score} className="w-24" />
-                      <span className="text-yellow-500 font-medium w-12 text-right">{score}%</span>
+                      <span className="text-purple-500 font-medium w-12 text-right">{score}%</span>
                     </div>
                   </div>
                 ))}
@@ -224,7 +224,7 @@ export default function Compatibility() {
             <div className="grid gap-4">
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-500 text-lg flex items-center">
+                  <CardTitle className="text-purple-500 text-lg flex items-center">
                     <Check className="mr-2 h-5 w-5" />
                     Relationship Strengths
                   </CardTitle>
@@ -233,7 +233,7 @@ export default function Compatibility() {
                   <ul className="space-y-2 text-sm">
                     {compatibilityResults.strengths.map((strength, index) => (
                       <li key={index} className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
+                        <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
                         <span className="text-white">{strength}</span>
                       </li>
                     ))}
@@ -243,7 +243,7 @@ export default function Compatibility() {
               
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-500 text-lg flex items-center">
+                  <CardTitle className="text-purple-500 text-lg flex items-center">
                     <Lightbulb className="mr-2 h-5 w-5" />
                     Growth Areas
                   </CardTitle>

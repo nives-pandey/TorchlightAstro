@@ -156,14 +156,14 @@ export default function SmartTimezoneSelector({
 
   const getConfidenceColor = (confidence: number): string => {
     if (confidence >= 0.9) return "text-green-400";
-    if (confidence >= 0.8) return "text-yellow-400";
+    if (confidence >= 0.8) return "text-purple-400";
     if (confidence >= 0.7) return "text-orange-400";
     return "text-red-400";
   };
 
   const getConfidenceBadgeColor = (confidence: number): string => {
     if (confidence >= 0.9) return "bg-green-500/20 text-green-400 border-green-500/30";
-    if (confidence >= 0.8) return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
+    if (confidence >= 0.8) return "bg-purple-500/20 text-purple-400 border-purple-500/30";
     if (confidence >= 0.7) return "bg-orange-500/20 text-orange-400 border-orange-500/30";
     return "bg-red-500/20 text-red-400 border-red-500/30";
   };
@@ -319,13 +319,13 @@ export default function SmartTimezoneSelector({
 
             {/* Warnings */}
             {validation.warnings.length > 0 && (
-              <div className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                <div className="flex items-center text-yellow-400 text-sm font-medium mb-1">
+              <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                <div className="flex items-center text-purple-400 text-sm font-medium mb-1">
                   <AlertTriangle className="h-4 w-4 mr-2" />
                   Accuracy Warnings
                 </div>
                 {validation.warnings.map((warning, index) => (
-                  <p key={index} className="text-xs text-yellow-300">• {warning}</p>
+                  <p key={index} className="text-xs text-purple-300">• {warning}</p>
                 ))}
               </div>
             )}

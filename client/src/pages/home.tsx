@@ -349,7 +349,7 @@ export default function Home() {
               <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-white text-lg flex items-center gap-2">
-                    <Sun className="w-5 h-5 text-yellow-400" />
+                    <Sun className="w-5 h-5 text-orange-400" />
                     Personal Readings
                   </CardTitle>
                 </CardHeader>
@@ -543,7 +543,7 @@ export default function Home() {
                   <ul className="space-y-2">
                     {systemDetails[selectedSystem as keyof typeof systemDetails].keyFeatures.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
                         <span className="text-gray-300">{feature}</span>
                       </li>
                     ))}
@@ -571,7 +571,7 @@ export default function Home() {
                     </Button>
                   </Link>
                   <Link href="/astrology-guide">
-                    <Button variant="outline" className="border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black">
+                    <Button variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
                       <BookOpen className="h-4 w-4 mr-2" />
                       Complete Guide
                     </Button>

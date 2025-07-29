@@ -459,13 +459,13 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                         
                         {/* Time Accuracy Warnings */}
                         {timeAccuracyWarnings.length > 0 && (
-                          <div className="mt-2 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                            <div className="flex items-center text-yellow-400 text-sm font-medium mb-1">
+                          <div className="mt-2 p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                            <div className="flex items-center text-purple-400 text-sm font-medium mb-1">
                               <AlertTriangle className="h-4 w-4 mr-2" />
                               Time Accuracy Notices
                             </div>
                             {timeAccuracyWarnings.map((warning, index) => (
-                              <p key={index} className="text-xs text-yellow-300 mb-1">
+                              <p key={index} className="text-xs text-purple-300 mb-1">
                                 • {warning}
                               </p>
                             ))}
@@ -652,13 +652,13 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                   </Card>
 
                   {/* Accuracy Warning */}
-                  <Card className="bg-yellow-900/20 border-yellow-500/30">
+                  <Card className="bg-purple-900/20 border-purple-500/30">
                     <CardContent className="pt-4">
                       <div className="flex items-start space-x-3">
-                        <AlertTriangle className="h-5 w-5 text-yellow-500 flex-shrink-0 mt-0.5" />
+                        <AlertTriangle className="h-5 w-5 text-purple-500 flex-shrink-0 mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-yellow-400 mb-2">Accuracy Notice</h4>
-                          <p className="text-yellow-200 text-sm">
+                          <h4 className="font-medium text-purple-400 mb-2">Accuracy Notice</h4>
+                          <p className="text-purple-200 text-sm">
                             Astrological calculations require precise birth information. Small errors in time or location 
                             can significantly affect your analysis. Please verify all details are correct.
                           </p>

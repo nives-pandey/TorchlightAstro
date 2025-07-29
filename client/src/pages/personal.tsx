@@ -35,7 +35,7 @@ export default function Personal() {
                 <li>• Chinese zodiac integration</li>
                 <li>• Planetary aspects & houses</li>
               </ul>
-              <Badge className="mt-4 bg-yellow-400/20 text-yellow-300 border-yellow-400/30">
+              <Badge className="mt-4 bg-purple-400/20 text-purple-300 border-purple-400/30">
                 Swiss Ephemeris Precision
               </Badge>
             </CardContent>
@@ -116,7 +116,7 @@ export default function Personal() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="p-8 bg-black/30 rounded-xl border border-yellow-400/20">
+          <div className="p-8 bg-black/30 rounded-xl border border-purple-400/20">
             <h3 className="text-2xl font-bold text-white mb-4">Ready to explore your cosmic blueprint?</h3>
             <p className="text-purple-200 mb-6">Get comprehensive personal insights across all major astrological systems</p>
             <button className="clean-button px-8 py-3">

@@ -171,7 +171,7 @@ export default function FeatureStatus() {
       case 'complete':
         return <CheckCircle className="h-5 w-5 text-green-400" />;
       case 'partial':
-        return <Clock className="h-5 w-5 text-yellow-400" />;
+        return <Clock className="h-5 w-5 text-purple-400" />;
       case 'planned':
         return <AlertCircle className="h-5 w-5 text-blue-400" />;
       default:
@@ -184,7 +184,7 @@ export default function FeatureStatus() {
       case 'complete':
         return 'border-green-400 bg-green-400/10';
       case 'partial':
-        return 'border-yellow-400 bg-yellow-400/10';
+        return 'border-purple-400 bg-purple-400/10';
       case 'planned':
         return 'border-blue-400 bg-blue-400/10';
       default:
@@ -207,7 +207,7 @@ export default function FeatureStatus() {
       {/* Overall Progress */}
       <Card className="cosmic-card">
         <CardHeader>
-          <CardTitle className="text-yellow-400 flex items-center space-x-2">
+          <CardTitle className="text-purple-400 flex items-center space-x-2">
             <BarChart3 className="h-6 w-6" />
             <span>MyTorchlight Development Status</span>
           </CardTitle>
@@ -224,7 +224,7 @@ export default function FeatureStatus() {
               <div className="text-sm text-gray-400">Features Complete</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-400 mb-1">
+              <div className="text-3xl font-bold text-purple-400 mb-1">
                 {categorizedFeatures.partial.length}
               </div>
               <div className="text-sm text-gray-400">In Development</div>
@@ -260,7 +260,7 @@ export default function FeatureStatus() {
             <Card key={feature.id} className={`cosmic-card border-2 ${getStatusColor(feature.status)}`}>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <feature.icon className="h-8 w-8 text-yellow-400" />
+                  <feature.icon className="h-8 w-8 text-purple-400" />
                   <Badge className="bg-green-500 text-white">
                     {feature.completion}%
                   </Badge>
@@ -283,7 +283,7 @@ export default function FeatureStatus() {
 
       {/* Partial Features */}
       <div>
-        <h2 className="text-xl font-bold text-yellow-400 mb-4 flex items-center space-x-2">
+        <h2 className="text-xl font-bold text-purple-400 mb-4 flex items-center space-x-2">
           <Clock className="h-6 w-6" />
           <span>In Active Development</span>
         </h2>
@@ -292,8 +292,8 @@ export default function FeatureStatus() {
             <Card key={feature.id} className={`cosmic-card border-2 ${getStatusColor(feature.status)}`}>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <feature.icon className="h-8 w-8 text-yellow-400" />
-                  <Badge className="bg-yellow-500 text-black">
+                  <feature.icon className="h-8 w-8 text-purple-400" />
+                  <Badge className="bg-purple-500 text-black">
                     {feature.completion}%
                   </Badge>
                 </div>
@@ -302,7 +302,7 @@ export default function FeatureStatus() {
               <CardContent>
                 <p className="text-gray-300 text-sm mb-3">{feature.description}</p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-yellow-400 border-yellow-400">
+                  <Badge variant="outline" className="text-purple-400 border-purple-400">
                     Nearly Ready
                   </Badge>
                   {getStatusIcon(feature.status)}
@@ -310,7 +310,7 @@ export default function FeatureStatus() {
                 <div className="mt-3">
                   <div className="bg-gray-700 rounded-full h-2">
                     <div 
-                      className="bg-yellow-400 h-2 rounded-full transition-all duration-500"
+                      className="bg-purple-400 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${feature.completion}%` }}
                     />
                   </div>

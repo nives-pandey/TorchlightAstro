@@ -159,7 +159,7 @@ export default function ComprehensiveAnalysis() {
                 <Star className="h-10 w-10 text-white" />
               </div>
             </div>
-            <CardTitle className="text-3xl text-yellow-500 mb-2">{profileData.name}</CardTitle>
+            <CardTitle className="text-3xl text-purple-500 mb-2">{profileData.name}</CardTitle>
             <CardDescription className="text-gray-300 text-lg">
               Complete Astrological Profile Analysis
             </CardDescription>
@@ -188,23 +188,23 @@ export default function ComprehensiveAnalysis() {
 
         {/* Analysis Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-6 bg-black/40 border border-yellow-500/20">
-            <TabsTrigger value="overview" className="text-white data-[state=active]:bg-yellow-500 data-[state=active]:text-black">
+          <TabsList className="grid w-full grid-cols-6 bg-black/40 border border-purple-500/20">
+            <TabsTrigger value="overview" className="text-white data-[state=active]:bg-purple-500 data-[state=active]:text-white">
               Overview
             </TabsTrigger>
-            <TabsTrigger value="western" className="text-white data-[state=active]:bg-yellow-500 data-[state=active]:text-black">
+            <TabsTrigger value="western" className="text-white data-[state=active]:bg-purple-500 data-[state=active]:text-white">
               Western
             </TabsTrigger>
-            <TabsTrigger value="vedic" className="text-white data-[state=active]:bg-yellow-500 data-[state=active]:text-black">
+            <TabsTrigger value="vedic" className="text-white data-[state=active]:bg-purple-500 data-[state=active]:text-white">
               Vedic
             </TabsTrigger>
-            <TabsTrigger value="chinese" className="text-white data-[state=active]:bg-yellow-500 data-[state=active]:text-black">
+            <TabsTrigger value="chinese" className="text-white data-[state=active]:bg-purple-500 data-[state=active]:text-white">
               Chinese
             </TabsTrigger>
-            <TabsTrigger value="human-design" className="text-white data-[state=active]:bg-yellow-500 data-[state=active]:text-black">
+            <TabsTrigger value="human-design" className="text-white data-[state=active]:bg-purple-500 data-[state=active]:text-white">
               Human Design
             </TabsTrigger>
-            <TabsTrigger value="numerology" className="text-white data-[state=active]:bg-yellow-500 data-[state=active]:text-black">
+            <TabsTrigger value="numerology" className="text-white data-[state=active]:bg-purple-500 data-[state=active]:text-white">
               Numerology
             </TabsTrigger>
           </TabsList>
@@ -216,7 +216,7 @@ export default function ComprehensiveAnalysis() {
               {/* Core Personality */}
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-500 flex items-center gap-2">
+                  <CardTitle className="text-purple-500 flex items-center gap-2">
                     <Target className="h-5 w-5" />
                     Core Personality
                   </CardTitle>
@@ -225,7 +225,7 @@ export default function ComprehensiveAnalysis() {
                   <ul className="space-y-3">
                     {comprehensiveAnalysis.corePersonality.map((trait, index) => (
                       <li key={index} className="flex items-start gap-3 text-gray-300">
-                        <Star className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+                        <Star className="h-4 w-4 text-purple-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm">{trait}</span>
                       </li>
                     ))}
@@ -236,7 +236,7 @@ export default function ComprehensiveAnalysis() {
               {/* Current Life Phase */}
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-500 flex items-center gap-2">
+                  <CardTitle className="text-purple-500 flex items-center gap-2">
                     <Clock className="h-5 w-5" />
                     Current Life Phase
                   </CardTitle>
@@ -310,7 +310,7 @@ export default function ComprehensiveAnalysis() {
               {/* Basic Chart Info */}
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-500 flex items-center gap-2">
+                  <CardTitle className="text-purple-500 flex items-center gap-2">
                     <Sun className="h-5 w-5" />
                     Western Chart Basics
                   </CardTitle>
@@ -318,7 +318,7 @@ export default function ComprehensiveAnalysis() {
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-3 gap-4">
                     <div className="text-center">
-                      <div className="text-yellow-500 font-medium">Sun Sign</div>
+                      <div className="text-purple-500 font-medium">Sun Sign</div>
                       <div className="text-white text-lg">{astrologyData.western.sunSign}</div>
                     </div>
                     <div className="text-center">
@@ -341,7 +341,7 @@ export default function ComprehensiveAnalysis() {
                           <div className="flex items-center gap-2">
                             <div className="w-20 h-2 bg-gray-700 rounded-full overflow-hidden">
                               <div 
-                                className="h-full bg-yellow-500 rounded-full"
+                                className="h-full bg-purple-500 rounded-full"
                                 style={{ width: `${percentage}%` }}
                               />
                             </div>
@@ -357,13 +357,13 @@ export default function ComprehensiveAnalysis() {
               {/* Western Traits */}
               <Card className="cosmic-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-500">Western Astrology Traits</CardTitle>
+                  <CardTitle className="text-purple-500">Western Astrology Traits</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {astrologyData.western.traits.map((trait, index) => (
                       <li key={index} className="flex items-start gap-3 text-gray-300">
-                        <Star className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+                        <Star className="h-4 w-4 text-purple-500 mt-0.5 flex-shrink-0" />
                         <span className="text-sm">{trait}</span>
                       </li>
                     ))}
@@ -619,7 +619,7 @@ export default function ComprehensiveAnalysis() {
             <Heart className="mr-2 h-4 w-4" />
             Generate Compatibility Report
           </Button>
-          <Button variant="outline" className="border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black">
+          <Button variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-black">
             <Calendar className="mr-2 h-4 w-4" />
             View Daily Guidance
           </Button>

@@ -23,11 +23,11 @@ export default function AboutAstrology() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-3 mb-6">
-            <Star className="h-12 w-12 text-yellow-400" />
+            <Star className="h-12 w-12 text-purple-400" />
             <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
               Understanding Astrology
             </h1>
-            <Star className="h-12 w-12 text-yellow-400" />
+            <Star className="h-12 w-12 text-purple-400" />
           </div>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Discover the ancient science that combines mathematics, astronomy, and human psychology 
@@ -39,7 +39,7 @@ export default function AboutAstrology() {
           {/* Scientific Foundation */}
           <Card className="cosmic-card">
             <CardHeader>
-              <CardTitle className="text-yellow-500 flex items-center space-x-2">
+              <CardTitle className="text-purple-500 flex items-center space-x-2">
                 <Calculator className="h-6 w-6" />
                 <span>The Science Behind Astrology</span>
               </CardTitle>
@@ -85,8 +85,8 @@ export default function AboutAstrology() {
             <CardContent className="text-gray-300 space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-yellow-400">Basic Competency:</span>
-                  <Badge variant="outline" className="border-yellow-400 text-yellow-300">2-3 Years</Badge>
+                  <span className="text-purple-400">Basic Competency:</span>
+                  <Badge variant="outline" className="border-purple-400 text-purple-300">2-3 Years</Badge>
                 </div>
                 <p className="text-xs text-gray-400">
                   Understanding zodiac signs, planets, houses, and basic chart reading
@@ -123,7 +123,7 @@ export default function AboutAstrology() {
         {/* Different Types of Astrological Arts */}
         <Card className="cosmic-card mb-12">
           <CardHeader>
-            <CardTitle className="text-yellow-500 text-center text-2xl">
+            <CardTitle className="text-purple-500 text-center text-2xl">
               Branches of Astrological Arts
             </CardTitle>
             <p className="text-gray-400 text-center">
@@ -136,7 +136,7 @@ export default function AboutAstrology() {
               {/* Horoscope Reading */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-2">
-                  <Star className="h-5 w-5 text-yellow-400" />
+                  <Star className="h-5 w-5 text-purple-400" />
                   <h4 className="text-white font-semibold">Horoscope Reading</h4>
                 </div>
                 <p className="text-sm text-gray-300">
@@ -274,7 +274,7 @@ export default function AboutAstrology() {
         {/* What is Torchlight */}
         <Card className="cosmic-card mb-12">
           <CardHeader>
-            <CardTitle className="text-yellow-500 flex items-center justify-center space-x-3 text-2xl">
+            <CardTitle className="text-purple-500 flex items-center justify-center space-x-3 text-2xl">
               <Lightbulb className="h-8 w-8" />
               <span>What is Torchlight?</span>
               <Compass className="h-8 w-8" />
@@ -283,7 +283,7 @@ export default function AboutAstrology() {
           <CardContent className="text-gray-300 space-y-6">
             <div className="text-center mb-8">
               <p className="text-lg leading-relaxed">
-                <strong className="text-yellow-400">Torchlight</strong> serves as your personal cosmic illuminator, 
+                <strong className="text-purple-400">Torchlight</strong> serves as your personal cosmic illuminator, 
                 providing clarity and direction when you seek guidance about life's important decisions.
               </p>
             </div>
@@ -291,7 +291,7 @@ export default function AboutAstrology() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <h4 className="text-white font-semibold text-lg flex items-center space-x-2">
-                  <Lightbulb className="h-5 w-5 text-yellow-400" />
+                  <Lightbulb className="h-5 w-5 text-purple-400" />
                   <span>Illumination, Not Determination</span>
                 </h4>
                 <p className="text-sm">
@@ -318,7 +318,7 @@ export default function AboutAstrology() {
                 </h4>
                 <p className="text-sm">
                   While Torchlight provides valuable insights and recommendations, 
-                  <strong className="text-yellow-400"> all final decisions remain entirely yours</strong>. 
+                  <strong className="text-purple-400"> all final decisions remain entirely yours</strong>. 
                   We believe in empowering you with knowledge while respecting your free will and personal choice.
                 </p>
                 
@@ -336,8 +336,8 @@ export default function AboutAstrology() {
 
             <Separator className="my-6" />
 
-            <div className="text-center p-6 bg-gradient-to-r from-yellow-900/20 to-purple-900/20 rounded-lg border border-yellow-500/20">
-              <Shield className="h-8 w-8 text-yellow-400 mx-auto mb-3" />
+            <div className="text-center p-6 bg-gradient-to-r from-yellow-900/20 to-purple-900/20 rounded-lg border border-purple-500/20">
+              <Shield className="h-8 w-8 text-purple-400 mx-auto mb-3" />
               <h4 className="text-white font-semibold mb-2">Our Commitment</h4>
               <p className="text-sm text-gray-300">
                 Torchlight provides educational insights and guidance based on traditional astrological principles. 
@@ -358,8 +358,8 @@ export default function AboutAstrology() {
           <CardContent className="text-gray-300 space-y-6">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center space-y-3">
-                <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto">
-                  <Calculator className="h-8 w-8 text-yellow-400" />
+                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto">
+                  <Calculator className="h-8 w-8 text-purple-400" />
                 </div>
                 <h4 className="text-white font-semibold">Mathematical Precision</h4>
                 <p className="text-sm">

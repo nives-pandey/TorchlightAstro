@@ -250,7 +250,7 @@ export default function ComprehensiveLifestyle() {
     { id: "career", label: "Career & Work", icon: Briefcase, color: "text-purple-400" },
     { id: "health", label: "Health & Wellness", icon: Activity, color: "text-red-400" },
     { id: "relationships", label: "Relationships", icon: Heart, color: "text-pink-400" },
-    { id: "lifestyle", label: "Lifestyle & Colors", icon: Palette, color: "text-yellow-400" },
+    { id: "lifestyle", label: "Lifestyle & Colors", icon: Palette, color: "text-purple-400" },
     { id: "timing", label: "Timing & Decisions", icon: Clock, color: "text-orange-400" }
   ];
 
@@ -270,7 +270,7 @@ export default function ComprehensiveLifestyle() {
         {/* Profile Summary */}
         <Card className="cosmic-card mb-8">
           <CardHeader>
-            <CardTitle className="text-yellow-400 flex items-center">
+            <CardTitle className="text-purple-400 flex items-center">
               <Star className="mr-2 h-5 w-5" />
               Your Multi-System Profile
             </CardTitle>
@@ -419,7 +419,7 @@ export default function ComprehensiveLifestyle() {
                             Temperature: {lifestyleRecommendations.travel.idealClimate.temperature}
                           </li>
                           <li className="flex items-center">
-                            <Sun className="mr-2 h-4 w-4 text-yellow-400" />
+                            <Sun className="mr-2 h-4 w-4 text-purple-400" />
                             Humidity: {lifestyleRecommendations.travel.idealClimate.humidity}
                           </li>
                         </ul>

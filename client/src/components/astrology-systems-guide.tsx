@@ -386,7 +386,7 @@ export default function AstrologySystemsGuide() {
     switch (accuracy) {
       case 'Very High': return 'bg-green-100 text-green-800 border-green-300';
       case 'High': return 'bg-blue-100 text-blue-800 border-blue-300';
-      case 'Moderate': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      case 'Moderate': return 'bg-purple-100 text-purple-800 border-purple-300';
       default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   };
@@ -698,7 +698,7 @@ export default function AstrologySystemsGuide() {
                 <h4 className="font-medium text-purple-300 mb-2">Ancient Wisdom:</h4>
                 <div className="flex gap-2">
                   {astrologySystem.filter(s => s.category === 'Ancient').map(system => (
-                    <Badge key={system.id} className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
+                    <Badge key={system.id} className="bg-purple-500/20 text-purple-300 border-purple-500/30">
                       {system.name}
                     </Badge>
                   ))}

@@ -159,8 +159,8 @@ export default function BirthFormPage() {
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-yellow-900/20 border border-yellow-500/30 rounded-lg">
-                <p className="text-yellow-200 text-sm">
+              <div className="mt-6 p-4 bg-purple-900/20 border border-purple-500/30 rounded-lg">
+                <p className="text-purple-200 text-sm">
                   <strong>Accuracy Notice:</strong> Even small errors in birth time (±4 minutes) or location 
                   can significantly affect your astrological analysis. Please verify all information with 
                   your birth certificate if possible.

@@ -283,7 +283,7 @@ export default function EnhancedAdminDashboard() {
             {/* Detailed Stats Table */}
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-yellow-400">Detailed Timezone Statistics</CardTitle>
+                <CardTitle className="text-purple-400">Detailed Timezone Statistics</CardTitle>
                 <CardDescription>Comprehensive usage and performance metrics</CardDescription>
               </CardHeader>
               <CardContent>
@@ -402,12 +402,12 @@ export default function EnhancedAdminDashboard() {
                     </div>
                   </div>
                   
-                  <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                    <div className="flex items-center text-yellow-400 text-sm font-medium mb-2">
+                  <div className="mt-6 p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                    <div className="flex items-center text-purple-400 text-sm font-medium mb-2">
                       <AlertTriangle className="h-4 w-4 mr-2" />
                       Quality Insights
                     </div>
-                    <ul className="text-xs text-yellow-300 space-y-1">
+                    <ul className="text-xs text-purple-300 space-y-1">
                       <li>• {((analyticsData.qualityMetrics?.exactTimes || 0) / (analyticsData.qualityMetrics?.totalEntries || 1) * 100).toFixed(1)}% of users provide exact birth times</li>
                       <li>• {((analyticsData.qualityMetrics?.roundedTimes || 0) / (analyticsData.qualityMetrics?.totalEntries || 1) * 100).toFixed(1)}% provide rounded times (potential accuracy issues)</li>
                       <li>• Time precision affects {((89 + 156 + 234) / (analyticsData.qualityMetrics?.totalEntries || 1) * 100).toFixed(1)}% of charts significantly</li>
@@ -432,11 +432,11 @@ export default function EnhancedAdminDashboard() {
                     <p className="text-xs text-green-400 mt-2">Above industry standard of 60%</p>
                   </div>
                   
-                  <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                    <AlertTriangle className="h-8 w-8 text-yellow-400 mb-3" />
+                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                    <AlertTriangle className="h-8 w-8 text-purple-400 mb-3" />
                     <h4 className="font-semibold text-white mb-2">Needs Attention</h4>
                     <p className="text-sm text-gray-300">28% have rounded times</p>
-                    <p className="text-xs text-yellow-400 mt-2">Consider birth certificate helper</p>
+                    <p className="text-xs text-purple-400 mt-2">Consider birth certificate helper</p>
                   </div>
                   
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">

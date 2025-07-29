@@ -38,7 +38,7 @@ export default function Chart() {
       planet: "☉",
       title: "Sun in Capricorn (4th House)",
       description: "Strong foundation-building energy with focus on security and achievement.",
-      color: "text-yellow-500"
+      color: "text-purple-500"
     },
     {
       planet: "☽",
@@ -93,7 +93,7 @@ export default function Chart() {
 
         {/* Chart Navigation Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-6 bg-black/30 border border-yellow-500/20 rounded-lg p-1 mb-8">
+          <TabsList className="grid w-full grid-cols-6 bg-black/30 border border-purple-500/20 rounded-lg p-1 mb-8">
             <TabsTrigger 
               value="overview" 
               className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-300 data-[state=active]:text-black text-gray-400"
@@ -145,7 +145,7 @@ export default function Chart() {
                 {/* Key Insights Card */}
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500 flex items-center">
+                    <CardTitle className="text-purple-500 flex items-center">
                       <Star className="mr-2 h-5 w-5" />
                       Key Cosmic Insights
                     </CardTitle>
@@ -168,7 +168,7 @@ export default function Chart() {
                   {systemAnalysis.map((system, index) => (
                     <Card key={index} className="cosmic-card">
                       <CardHeader>
-                        <CardTitle className="text-yellow-500">{system.system}</CardTitle>
+                        <CardTitle className="text-purple-500">{system.system}</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-3">
                         {system.features.map((feature, idx) => (
@@ -185,7 +185,7 @@ export default function Chart() {
                 {/* Priority Recommendations */}
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500 flex items-center">
+                    <CardTitle className="text-purple-500 flex items-center">
                       <Target className="mr-2 h-5 w-5" />
                       Priority Life Guidance
                     </CardTitle>
@@ -193,17 +193,17 @@ export default function Chart() {
                   <CardContent>
                     <div className="grid md:grid-cols-3 gap-4 text-center">
                       <div>
-                        <div className="text-yellow-500 text-2xl mb-2">🌅</div>
+                        <div className="text-purple-500 text-2xl mb-2">🌅</div>
                         <div className="text-white font-medium">Best Times</div>
                         <div className="text-gray-400 text-sm">Early morning (6-8 AM)</div>
                       </div>
                       <div>
-                        <div className="text-yellow-500 text-2xl mb-2">🧭</div>
+                        <div className="text-purple-500 text-2xl mb-2">🧭</div>
                         <div className="text-white font-medium">Favorable Direction</div>
                         <div className="text-gray-400 text-sm">Northeast (Jupiter)</div>
                       </div>
                       <div>
-                        <div className="text-yellow-500 text-2xl mb-2">💎</div>
+                        <div className="text-purple-500 text-2xl mb-2">💎</div>
                         <div className="text-white font-medium">Beneficial Colors</div>
                         <div className="text-gray-400 text-sm">Deep blue, Gold</div>
                       </div>
@@ -215,7 +215,7 @@ export default function Chart() {
               <TabsContent value="planets" className="space-y-6">
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500">Planetary Positions</CardTitle>
+                    <CardTitle className="text-purple-500">Planetary Positions</CardTitle>
                     <CardDescription className="text-gray-400">
                       Exact degrees and house placements with dignities
                     </CardDescription>
@@ -223,7 +223,7 @@ export default function Chart() {
                   <CardContent>
                     <div className="space-y-4">
                       {Object.entries(chartData.planets).map(([planet, data]) => (
-                        <div key={planet} className="flex items-center justify-between p-3 bg-black/20 rounded-lg border border-yellow-500/10">
+                        <div key={planet} className="flex items-center justify-between p-3 bg-black/20 rounded-lg border border-purple-500/10">
                           <div className="flex items-center space-x-3">
                             <span className="text-2xl">{data.symbol}</span>
                             <div>
@@ -232,8 +232,8 @@ export default function Chart() {
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="text-yellow-500 font-medium">House {data.house}</div>
-                            <Badge variant="outline" className="text-xs border-yellow-500/30 text-yellow-500">
+                            <div className="text-purple-500 font-medium">House {data.house}</div>
+                            <Badge variant="outline" className="text-xs border-purple-500/30 text-purple-500">
                               {data.degree > 20 ? "Strong" : "Moderate"}
                             </Badge>
                           </div>
@@ -247,7 +247,7 @@ export default function Chart() {
               <TabsContent value="houses" className="space-y-6">
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500">House System</CardTitle>
+                    <CardTitle className="text-purple-500">House System</CardTitle>
                     <CardDescription className="text-gray-400">
                       Life areas and their ruling signs
                     </CardDescription>
@@ -268,7 +268,7 @@ export default function Chart() {
                         { house: 11, area: "Friendships & Goals", ruler: "Cancer", icon: "👥" },
                         { house: 12, area: "Spirituality & Subconscious", ruler: "Leo", icon: "🔮" }
                       ].map((house) => (
-                        <div key={house.house} className="flex items-center justify-between p-3 bg-black/20 rounded-lg border border-yellow-500/10">
+                        <div key={house.house} className="flex items-center justify-between p-3 bg-black/20 rounded-lg border border-purple-500/10">
                           <div className="flex items-center space-x-3">
                             <span className="text-xl">{house.icon}</span>
                             <div>
@@ -286,7 +286,7 @@ export default function Chart() {
               <TabsContent value="aspects" className="space-y-6">
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500">Planetary Aspects</CardTitle>
+                    <CardTitle className="text-purple-500">Planetary Aspects</CardTitle>
                     <CardDescription className="text-gray-400">
                       Angular relationships between planets
                     </CardDescription>
@@ -294,14 +294,14 @@ export default function Chart() {
                   <CardContent>
                     <div className="space-y-4">
                       {aspects.map((aspect, index) => (
-                        <div key={index} className="p-4 bg-black/20 rounded-lg border border-yellow-500/10">
+                        <div key={index} className="p-4 bg-black/20 rounded-lg border border-purple-500/10">
                           <div className="flex items-center justify-between mb-2">
                             <div className="text-white font-medium">{aspect.planets}</div>
                             <Badge 
                               variant="outline" 
                               className={`${
                                 aspect.strength === "Strong" ? "border-green-500 text-green-500" :
-                                aspect.strength === "Moderate" ? "border-yellow-500 text-yellow-500" :
+                                aspect.strength === "Moderate" ? "border-purple-500 text-purple-500" :
                                 "border-gray-500 text-gray-500"
                               }`}
                             >
@@ -319,7 +319,7 @@ export default function Chart() {
               <TabsContent value="interpretations" className="space-y-6">
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500">Detailed Interpretations</CardTitle>
+                    <CardTitle className="text-purple-500">Detailed Interpretations</CardTitle>
                     <CardDescription className="text-gray-400">
                       In-depth analysis of your cosmic blueprint
                     </CardDescription>

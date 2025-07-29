@@ -13,7 +13,7 @@ export default function ColorEnhancedLanding() {
           <div className="relative">
             {/* Cosmic Background Animation */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-10 left-1/4 w-2 h-2 bg-yellow-400 rounded-full cosmic-pulse"></div>
+              <div className="absolute top-10 left-1/4 w-2 h-2 bg-purple-400 rounded-full cosmic-pulse"></div>
               <div className="absolute top-20 right-1/3 w-1 h-1 bg-purple-400 rounded-full cosmic-pulse" style={{ animationDelay: '1s' }}></div>
               <div className="absolute bottom-10 left-1/3 w-1.5 h-1.5 bg-pink-400 rounded-full cosmic-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
@@ -114,12 +114,12 @@ export default function ColorEnhancedLanding() {
               title="Daily Cosmic Weather"
               description="Personalized daily guidance"
               preview="Get daily insights based on current planetary transits, moon phases, and your personal chart..."
-              icon={<Compass className="h-5 w-5 text-yellow-400" />}
+              icon={<Compass className="h-5 w-5 text-purple-400" />}
             >
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg border border-yellow-400/20">
-                    <h4 className="font-semibold text-yellow-300 mb-2">Planetary Transits</h4>
+                  <div className="p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg border border-purple-400/20">
+                    <h4 className="font-semibold text-purple-300 mb-2">Planetary Transits</h4>
                     <p className="text-sm text-gray-300">Current cosmic influences on your chart</p>
                   </div>
                   <div className="p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">

@@ -173,7 +173,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                     isCompleted || isPast
                       ? 'bg-green-500 text-white'
                       : isCurrent
-                      ? 'bg-yellow-400 text-black'
+                      ? 'bg-purple-400 text-black'
                       : 'bg-gray-600 text-gray-400'
                   }`}
                 >
@@ -199,9 +199,9 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
         <Card className="cosmic-card mb-6">
           <CardHeader className="text-center pb-4">
             <div className="flex items-center justify-center mb-3">
-              <currentStepData.icon className="w-8 h-8 text-yellow-400" />
+              <currentStepData.icon className="w-8 h-8 text-purple-400" />
             </div>
-            <CardTitle className="text-yellow-400 text-xl">{currentStepData.title}</CardTitle>
+            <CardTitle className="text-purple-400 text-xl">{currentStepData.title}</CardTitle>
             <CardDescription className="text-purple-200">
               {currentStepData.description}
             </CardDescription>
@@ -416,7 +416,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                             id={system.key}
                             checked={!!(watchedValues.systems as any)[system.key]}
                             onChange={(e) => setValue(`systems.${system.key}` as any, e.target.checked)}
-                            className="rounded border-gray-600 text-yellow-400 focus:ring-yellow-400"
+                            className="rounded border-gray-600 text-purple-400 focus:ring-yellow-400"
                           />
                           <div>
                             <div className="flex items-center space-x-2">
@@ -424,7 +424,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                                 {system.name}
                               </label>
                               {system.recommended && (
-                                <Badge className="bg-yellow-500 text-black text-xs">Recommended</Badge>
+                                <Badge className="bg-purple-500 text-black text-xs">Recommended</Badge>
                               )}
                             </div>
                             <p className="text-xs text-gray-400">{system.description}</p>
@@ -437,10 +437,10 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                     ))}
                   </div>
 
-                  <div className="bg-yellow-900/30 p-3 rounded-lg">
+                  <div className="bg-purple-900/30 p-3 rounded-lg">
                     <div className="flex items-start space-x-2">
-                      <Star className="w-4 h-4 text-yellow-400 mt-0.5" />
-                      <div className="text-xs text-yellow-200">
+                      <Star className="w-4 h-4 text-purple-400 mt-0.5" />
+                      <div className="text-xs text-purple-200">
                         <p className="font-medium mb-1">Recommended combination:</p>
                         <p>The first 5 systems provide comprehensive coverage across cultures and methodologies for the most complete analysis.</p>
                       </div>

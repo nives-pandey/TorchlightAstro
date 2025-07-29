@@ -48,7 +48,7 @@ function LegacyAdminDashboard() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <BarChart3 className="h-8 w-8 text-yellow-500" />
+            <BarChart3 className="h-8 w-8 text-purple-500" />
             Torchlight Admin Dashboard
           </h1>
           <p className="text-gray-300">Real-time analytics and user insights</p>
@@ -63,7 +63,7 @@ function LegacyAdminDashboard() {
           <Card className="cosmic-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Total Users</CardTitle>
-              <Users className="h-4 w-4 text-yellow-500" />
+              <Users className="h-4 w-4 text-purple-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-white">{stats?.totalUsers.toLocaleString()}</div>
@@ -119,7 +119,7 @@ function LegacyAdminDashboard() {
           <Card className="cosmic-card">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-yellow-500" />
+                <MapPin className="h-5 w-5 text-purple-500" />
                 Top Cities
               </CardTitle>
               <CardDescription className="text-gray-400">
@@ -139,7 +139,7 @@ function LegacyAdminDashboard() {
                         <div className="text-gray-400 text-sm">{city.country}</div>
                       </div>
                     </div>
-                    <div className="text-yellow-500 font-semibold">{city.count}</div>
+                    <div className="text-purple-500 font-semibold">{city.count}</div>
                   </div>
                 ))}
               </div>
@@ -225,9 +225,9 @@ function LegacyAdminDashboard() {
         </Card>
 
         {/* Access Instructions */}
-        <Card className="cosmic-card border-yellow-500/30">
+        <Card className="cosmic-card border-purple-500/30">
           <CardHeader>
-            <CardTitle className="text-yellow-500 flex items-center gap-2">
+            <CardTitle className="text-purple-500 flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
               How to Access This Dashboard
             </CardTitle>

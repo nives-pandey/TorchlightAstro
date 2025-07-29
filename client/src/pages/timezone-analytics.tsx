@@ -182,7 +182,7 @@ export default function TimezoneAnalytics() {
                       </div>
                       <div>
                         <div className="flex justify-between mb-1">
-                          <span className="text-yellow-300">Rounded to 15min</span>
+                          <span className="text-purple-300">Rounded to 15min</span>
                           <span className="text-white">{timezoneData.quality.roundedTo15Min}%</span>
                         </div>
                         <Progress value={timezoneData.quality.roundedTo15Min} className="h-2" />

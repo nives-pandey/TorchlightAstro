@@ -313,7 +313,7 @@ export default function Landing() {
             <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center gap-2">
-                  <Sun className="w-5 h-5 text-yellow-400" />
+                  <Sun className="w-5 h-5 text-purple-400" />
                   Personal Readings
                 </CardTitle>
               </CardHeader>

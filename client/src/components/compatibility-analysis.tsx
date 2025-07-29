@@ -21,7 +21,7 @@ interface CompatibilityAnalysisProps {
 export default function CompatibilityAnalysis({ results }: CompatibilityAnalysisProps) {
   const getCompatibilityLevel = (score: number) => {
     if (score >= 80) return { label: "Highly Compatible", color: "text-green-400" };
-    if (score >= 60) return { label: "Good Compatibility", color: "text-yellow-400" };
+    if (score >= 60) return { label: "Good Compatibility", color: "text-purple-400" };
     if (score >= 40) return { label: "Moderate Compatibility", color: "text-orange-400" };
     return { label: "Challenging Compatibility", color: "text-red-400" };
   };
@@ -34,7 +34,7 @@ export default function CompatibilityAnalysis({ results }: CompatibilityAnalysis
       {/* Overall Score */}
       <Card className="cosmic-card cosmic-glow">
         <CardHeader>
-          <CardTitle className="text-yellow-500 flex items-center">
+          <CardTitle className="text-purple-500 flex items-center">
             <Heart className="mr-2 h-5 w-5" />
             Overall Compatibility
           </CardTitle>
@@ -48,7 +48,7 @@ export default function CompatibilityAnalysis({ results }: CompatibilityAnalysis
                 <Star 
                   key={star}
                   className={`h-6 w-6 ${
-                    star <= starCount ? 'text-yellow-500 fill-current' : 'text-gray-600'
+                    star <= starCount ? 'text-purple-500 fill-current' : 'text-gray-600'
                   }`}
                 />
               ))}
@@ -66,7 +66,7 @@ export default function CompatibilityAnalysis({ results }: CompatibilityAnalysis
       {/* System Breakdown */}
       <Card className="cosmic-card">
         <CardHeader>
-          <CardTitle className="text-yellow-500">System-by-System Analysis</CardTitle>
+          <CardTitle className="text-purple-500">System-by-System Analysis</CardTitle>
           <CardDescription className="text-gray-400">
             Compatibility scores across different astrological traditions
           </CardDescription>
@@ -84,7 +84,7 @@ export default function CompatibilityAnalysis({ results }: CompatibilityAnalysis
               <div key={system} className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-white font-medium">{systemNames[system as keyof typeof systemNames]}</span>
-                  <span className="text-yellow-500 font-bold">{score}%</span>
+                  <span className="text-purple-500 font-bold">{score}%</span>
                 </div>
                 <Progress value={score} className="h-2" />
                 <div className="text-xs text-gray-400">
@@ -144,7 +144,7 @@ export default function CompatibilityAnalysis({ results }: CompatibilityAnalysis
       {results.recommendations && (
         <Card className="cosmic-card">
           <CardHeader>
-            <CardTitle className="text-yellow-500">Personalized Recommendations</CardTitle>
+            <CardTitle className="text-purple-500">Personalized Recommendations</CardTitle>
             <CardDescription className="text-gray-400">
               Actionable insights to enhance your relationship
             </CardDescription>
@@ -152,7 +152,7 @@ export default function CompatibilityAnalysis({ results }: CompatibilityAnalysis
           <CardContent>
             <div className="space-y-4">
               {results.recommendations.map((rec, index) => (
-                <div key={index} className="p-3 bg-black/20 rounded-lg border border-yellow-500/10">
+                <div key={index} className="p-3 bg-black/20 rounded-lg border border-purple-500/10">
                   <p className="text-white text-sm">{rec}</p>
                 </div>
               ))}

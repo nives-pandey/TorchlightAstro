@@ -482,7 +482,7 @@ export default function ComprehensiveTest() {
                           <div className="text-orange-300 text-sm mb-2">Career Path</div>
                           <div className="space-y-1">
                             {chartData.chart.synthesis.careerPath?.map((path: string, index: number) => (
-                              <div key={index} className="text-sm text-yellow-300">• {path}</div>
+                              <div key={index} className="text-sm text-purple-300">• {path}</div>
                             ))}
                           </div>
                         </div>

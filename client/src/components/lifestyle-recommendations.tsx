@@ -73,9 +73,9 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
         <TabsContent value="lifestyle" className="space-y-6">
           {/* Lucky Elements */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-yellow-200 dark:border-yellow-800">
+            <Card className="border-purple-200 dark:border-purple-800">
               <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
+                <CardTitle className="flex items-center gap-2 text-purple-600 dark:text-purple-400">
                   <Star className="h-5 w-5" />
                   Lucky Numbers
                 </CardTitle>
@@ -83,7 +83,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {recommendations.luckyNumbers.map((number) => (
-                    <Badge key={number} variant="outline" className="text-yellow-600 border-yellow-300">
+                    <Badge key={number} variant="outline" className="text-purple-600 border-purple-300">
                       {number}
                     </Badge>
                   ))}
@@ -401,7 +401,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium text-yellow-600 dark:text-yellow-400 mb-2">Challenges</h4>
+                      <h4 className="font-medium text-purple-600 dark:text-purple-400 mb-2">Challenges</h4>
                       <ul className="space-y-1">
                         {systemComparison.synthesizedGuidance.challenges.map((challenge) => (
                           <li key={challenge} className="text-sm text-muted-foreground">

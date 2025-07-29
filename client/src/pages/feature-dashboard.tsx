@@ -145,7 +145,7 @@ export default function FeatureDashboard() {
             <Card className="mobile-optimized-card premium-glow">
               <CardHeader className="text-center">
                 <CardTitle className="elegant-heading text-2xl mb-2">
-                  <Crown className="inline w-8 h-8 mr-2 text-yellow-400" />
+                  <Crown className="inline w-8 h-8 mr-2 text-purple-400" />
                   Start Your Cosmic Journey
                 </CardTitle>
                 <CardDescription className="elegant-body">
@@ -184,7 +184,7 @@ export default function FeatureDashboard() {
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="mobile-optimized-card">
                 <CardHeader>
-                  <CardTitle className="text-yellow-400 flex items-center">
+                  <CardTitle className="text-purple-400 flex items-center">
                     <Gift className="w-6 h-6 mr-2" />
                     100% Functional Features
                   </CardTitle>
@@ -225,15 +225,15 @@ export default function FeatureDashboard() {
                 <CardContent>
                   <ul className="space-y-2 elegant-body">
                     <li className="flex items-center">
-                      <Download className="w-4 h-4 text-yellow-400 mr-2" />
+                      <Download className="w-4 h-4 text-purple-400 mr-2" />
                       PDF report generation
                     </li>
                     <li className="flex items-center">
-                      <Mail className="w-4 h-4 text-yellow-400 mr-2" />
+                      <Mail className="w-4 h-4 text-purple-400 mr-2" />
                       Email delivery system
                     </li>
                     <li className="flex items-center">
-                      <Users className="w-4 h-4 text-yellow-400 mr-2" />
+                      <Users className="w-4 h-4 text-purple-400 mr-2" />
                       Multi-partner analysis
                     </li>
                   </ul>
@@ -250,7 +250,7 @@ export default function FeatureDashboard() {
                 <Card key={feature.id} className="mobile-optimized-card">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-3">
-                      <feature.icon className="w-8 h-8 text-yellow-400" />
+                      <feature.icon className="w-8 h-8 text-purple-400" />
                       <Badge className="status-complete">Ready</Badge>
                     </div>
                     <CardTitle className="text-white text-lg">{feature.name}</CardTitle>

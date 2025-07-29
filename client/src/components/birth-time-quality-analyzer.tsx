@@ -242,7 +242,7 @@ export default function BirthTimeQualityAnalyzer({
   const getGradeColor = (grade: string): string => {
     switch (grade) {
       case 'A+': case 'A': return "text-green-400";
-      case 'B+': case 'B': return "text-yellow-400";
+      case 'B+': case 'B': return "text-purple-400";
       case 'C+': case 'C': return "text-orange-400";
       case 'D': return "text-red-400";
       default: return "text-gray-400";
@@ -252,7 +252,7 @@ export default function BirthTimeQualityAnalyzer({
   const getGradeBadgeColor = (grade: string): string => {
     switch (grade) {
       case 'A+': case 'A': return "bg-green-500/20 text-green-400 border-green-500/30";
-      case 'B+': case 'B': return "bg-yellow-500/20 text-yellow-400 border-yellow-500/30";
+      case 'B+': case 'B': return "bg-purple-500/20 text-purple-400 border-purple-500/30";
       case 'C+': case 'C': return "bg-orange-500/20 text-orange-400 border-orange-500/30";
       case 'D': return "bg-red-500/20 text-red-400 border-red-500/30";
       default: return "bg-gray-500/20 text-gray-400 border-gray-500/30";
@@ -357,12 +357,12 @@ export default function BirthTimeQualityAnalyzer({
                 {/* Rising Sign Impact */}
                 <div className={`p-4 rounded-lg border ${
                   assessment.impactAreas.risingSign.affected 
-                    ? 'bg-yellow-500/10 border-yellow-500/20' 
+                    ? 'bg-purple-500/10 border-purple-500/20' 
                     : 'bg-green-500/10 border-green-500/20'
                 }`}>
                   <div className="flex items-center mb-2">
                     {assessment.impactAreas.risingSign.affected ? (
-                      <AlertTriangle className="h-5 w-5 text-yellow-400 mr-2" />
+                      <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
                     ) : (
                       <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     )}
@@ -370,7 +370,7 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                   {assessment.impactAreas.risingSign.affected ? (
                     <div>
-                      <p className="text-sm text-yellow-300 mb-2">Potential variation</p>
+                      <p className="text-sm text-purple-300 mb-2">Potential variation</p>
                       <p className="text-xs text-gray-400">
                         Could be: {assessment.impactAreas.risingSign.alternatives.join(" or ")}
                       </p>
@@ -383,12 +383,12 @@ export default function BirthTimeQualityAnalyzer({
                 {/* House System Impact */}
                 <div className={`p-4 rounded-lg border ${
                   assessment.impactAreas.houses.affected 
-                    ? 'bg-yellow-500/10 border-yellow-500/20' 
+                    ? 'bg-purple-500/10 border-purple-500/20' 
                     : 'bg-green-500/10 border-green-500/20'
                 }`}>
                   <div className="flex items-center mb-2">
                     {assessment.impactAreas.houses.affected ? (
-                      <AlertTriangle className="h-5 w-5 text-yellow-400 mr-2" />
+                      <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
                     ) : (
                       <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     )}
@@ -396,7 +396,7 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                   {assessment.impactAreas.houses.affected ? (
                     <div>
-                      <p className="text-sm text-yellow-300 mb-1">May shift ±{assessment.impactAreas.houses.shiftDegrees}°</p>
+                      <p className="text-sm text-purple-300 mb-1">May shift ±{assessment.impactAreas.houses.shiftDegrees}°</p>
                       <p className="text-xs text-gray-400">House cusps could move</p>
                     </div>
                   ) : (
@@ -407,12 +407,12 @@ export default function BirthTimeQualityAnalyzer({
                 {/* Aspect Impact */}
                 <div className={`p-4 rounded-lg border ${
                   assessment.impactAreas.aspects.affected 
-                    ? 'bg-yellow-500/10 border-yellow-500/20' 
+                    ? 'bg-purple-500/10 border-purple-500/20' 
                     : 'bg-green-500/10 border-green-500/20'
                 }`}>
                   <div className="flex items-center mb-2">
                     {assessment.impactAreas.aspects.affected ? (
-                      <AlertTriangle className="h-5 w-5 text-yellow-400 mr-2" />
+                      <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
                     ) : (
                       <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     )}
@@ -420,7 +420,7 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                   {assessment.impactAreas.aspects.affected ? (
                     <div>
-                      <p className="text-sm text-yellow-300 mb-1">{assessment.impactAreas.aspects.changedAspects} aspects affected</p>
+                      <p className="text-sm text-purple-300 mb-1">{assessment.impactAreas.aspects.changedAspects} aspects affected</p>
                       <p className="text-xs text-gray-400">Minor orb changes possible</p>
                     </div>
                   ) : (
@@ -494,7 +494,7 @@ export default function BirthTimeQualityAnalyzer({
           {solarTimeComparison && (
             <Card className="cosmic-card">
               <CardHeader>
-                <CardTitle className="text-yellow-400">Solar Time vs Clock Time</CardTitle>
+                <CardTitle className="text-purple-400">Solar Time vs Clock Time</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -507,7 +507,7 @@ export default function BirthTimeQualityAnalyzer({
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-300">Solar Time:</span>
-                        <span className="text-yellow-400 font-mono">{solarTimeComparison.solarTime}</span>
+                        <span className="text-purple-400 font-mono">{solarTimeComparison.solarTime}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-300">Difference:</span>
@@ -522,7 +522,7 @@ export default function BirthTimeQualityAnalyzer({
                       {solarTimeComparison.traditionalPreference ? (
                         <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                       ) : (
-                        <AlertTriangle className="h-5 w-5 text-yellow-400 mr-2" />
+                        <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
                       )}
                       <span className="text-gray-300">
                         {solarTimeComparison.traditionalPreference 
@@ -534,9 +534,9 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                 </div>
 
-                <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                  <h5 className="font-medium text-yellow-400 mb-2">Solar Time Explanation</h5>
-                  <p className="text-sm text-yellow-300">{solarTimeComparison.explanation}</p>
+                <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                  <h5 className="font-medium text-purple-400 mb-2">Solar Time Explanation</h5>
+                  <p className="text-sm text-purple-300">{solarTimeComparison.explanation}</p>
                 </div>
               </CardContent>
             </Card>

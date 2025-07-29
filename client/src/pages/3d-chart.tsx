@@ -701,7 +701,7 @@ function getAspectSymbol(aspectType: string): string {
 
 function getAspectStrengthColor(strength: number): string {
   if (strength > 0.8) return 'text-green-400 border-green-400';
-  if (strength > 0.6) return 'text-yellow-400 border-yellow-400';
+  if (strength > 0.6) return 'text-purple-400 border-purple-400';
   if (strength > 0.4) return 'text-orange-400 border-orange-400';
   return 'text-red-400 border-red-400';
 }

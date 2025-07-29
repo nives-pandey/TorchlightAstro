@@ -83,7 +83,7 @@ export default function Numerology() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <Calculator className="h-10 w-10 text-yellow-400" />
+            <Calculator className="h-10 w-10 text-purple-400" />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
               Numerology Analysis
             </h1>
@@ -97,7 +97,7 @@ export default function Numerology() {
         {/* Input Form */}
         <Card className="cosmic-card mb-8">
           <CardHeader>
-            <CardTitle className="text-yellow-500 text-center">Enter Your Details</CardTitle>
+            <CardTitle className="text-purple-500 text-center">Enter Your Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
@@ -162,10 +162,10 @@ export default function Numerology() {
                 {/* Life Path Number */}
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500 flex items-center space-x-2">
+                    <CardTitle className="text-purple-500 flex items-center space-x-2">
                       <Star className="h-6 w-6" />
                       <span>Life Path Number</span>
-                      <Badge variant="outline" className="border-yellow-400 text-yellow-300">
+                      <Badge variant="outline" className="border-purple-400 text-purple-300">
                         {numerologyData.lifePath.reducedNumber}
                       </Badge>
                     </CardTitle>
@@ -262,7 +262,7 @@ export default function Numerology() {
                 {/* Compatibility */}
                 <Card className="cosmic-card">
                   <CardHeader>
-                    <CardTitle className="text-yellow-500 flex items-center space-x-2">
+                    <CardTitle className="text-purple-500 flex items-center space-x-2">
                       <Lightbulb className="h-6 w-6" />
                       <span>Number Compatibility</span>
                     </CardTitle>
