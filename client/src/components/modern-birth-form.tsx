@@ -336,7 +336,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
           
           {/* Step Titles for Mobile */}
           <div className="block sm:hidden text-center mb-4">
-            <span className="text-xs font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+            <span className="text-xs font-medium text-purple-200 bg-purple-900/50 px-3 py-1 rounded-full border border-purple-400/30">
               Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
             </span>
           </div>
@@ -350,8 +350,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {currentStep === 0 && (
                 <div className="space-y-4">
                   <div className="text-center mb-4 sm:mb-6">
-                    <h3 className="text-gray-900 font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Personal Information</h3>
-                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Tell us about yourself for personalized analysis</p>
+                    <h3 className="text-white font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Personal Information</h3>
+                    <p className="text-purple-200 text-sm sm:text-base lg:text-lg">Tell us about yourself for personalized analysis</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
@@ -420,8 +420,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {currentStep === 1 && (
                 <div className="space-y-4">
                   <div className="text-center mb-4 sm:mb-6">
-                    <h3 className="text-gray-900 font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Birth Details</h3>
-                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Enter your exact birth date, time, and location for precise calculations</p>
+                    <h3 className="text-white font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Birth Details</h3>
+                    <p className="text-purple-200 text-sm sm:text-base lg:text-lg">Enter your exact birth date, time, and location for precise calculations</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
@@ -568,8 +568,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {currentStep === 2 && (
                 <div className="space-y-4">
                   <div className="text-center mb-6">
-                    <h3 className="text-gray-900 font-medium mb-2">Analysis Systems</h3>
-                    <p className="text-gray-700 text-sm">Choose which astrological systems to include in your comprehensive report</p>
+                    <h3 className="text-white font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Analysis Systems</h3>
+                    <p className="text-purple-200 text-sm sm:text-base lg:text-lg">Choose which astrological systems to include in your comprehensive report</p>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4">
@@ -640,7 +640,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   variant="outline"
                   onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
                   disabled={currentStep === 0}
-                  className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                  className="bg-slate-700/50 border-purple-400/50 text-white hover:bg-slate-600/70 disabled:opacity-50 disabled:cursor-not-allowed font-medium px-6 py-3 rounded-lg transition-all duration-300"
                 >
                   Previous
                 </Button>
@@ -649,16 +649,19 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   <Button
                     type="button"
                     onClick={() => setCurrentStep(currentStep + 1)}
-                    className="cosmic-button text-lg px-8 py-3"
+                    className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-purple-400"
                   >
                     Next <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
                 ) : (
                   <Button
                     type="submit"
-                    className="cosmic-button text-lg px-8 py-3"
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-purple-400 relative overflow-hidden"
                   >
-                    Generate My Cosmic Profile ✨
+                    <span className="relative z-10 flex items-center justify-center">
+                      Generate My Cosmic Profile ✨
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-pink-400/20 to-purple-400/20 opacity-50"></div>
                   </Button>
                 )}
               </div>
