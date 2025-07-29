@@ -750,45 +750,73 @@ startxref
     }
   });
 
+  // Test endpoint to verify body parsing
+  app.post('/api/test-body', (req, res) => {
+    console.log('Test endpoint body:', JSON.stringify(req.body, null, 2));
+    res.json({ 
+      received: req.body,
+      keys: Object.keys(req.body || {}),
+      success: true 
+    });
+  });
+
   // Chart generation endpoint
   app.post('/api/generate-chart', async (req, res) => {
     try {
       const birthData = req.body;
-      console.log('Generating chart for:', birthData);
+      console.log('Full request body received:', JSON.stringify(birthData, null, 2));
+      console.log('Request body type:', typeof birthData);
+      console.log('Request body is empty?:', Object.keys(birthData).length === 0);
       
-      // Validate required fields
-      if (!birthData.firstName || !birthData.lastName || !birthData.birthDate) {
-        return res.status(400).json({ error: 'Missing required birth data: firstName, lastName, birthDate' });
+      // Validate required fields - check for multiple field name variations
+      const firstName = birthData.firstName || birthData.first_name || birthData.name?.split(' ')[0];
+      const lastName = birthData.lastName || birthData.last_name || birthData.name?.split(' ')[1] || '';
+      const birthDate = birthData.birthDate || birthData.birth_date || birthData.date;
+      
+      console.log('Received fields:', Object.keys(birthData));
+      console.log('Extracted values:', { firstName, lastName, birthDate });
+      
+      if (!firstName || !birthDate) {
+        console.log('Missing data error - firstName:', firstName, 'birthDate:', birthDate);
+        return res.status(400).json({ 
+          error: 'Missing required birth data', 
+          received: Object.keys(birthData),
+          extracted: { firstName, lastName, birthDate },
+          required: ['firstName (or name)', 'birthDate (or date)']
+        });
       }
       
       // Enhanced chart data with authentic calculations
       const chartData = {
         ...birthData,
+        firstName,
+        lastName,
+        birthDate,
         generated: new Date().toISOString(),
         systems: {
           western: {
-            sign: calculateWesternSign(birthData.birthDate),
-            element: getElement(calculateWesternSign(birthData.birthDate)),
+            sign: calculateWesternSign(birthDate),
+            element: getElement(calculateWesternSign(birthDate)),
             analysis: "Complete natal chart analysis with planetary aspects and house positions"
           },
           vedic: {
-            rashi: calculateVedicSign(birthData.birthDate),
-            nakshatra: calculateNakshatra(birthData.birthDate),
+            rashi: calculateVedicSign(birthDate),
+            nakshatra: calculateNakshatra(birthDate),
             analysis: "Detailed Jyotish analysis with dasha periods and remedies"
           },
           chinese: {
-            animal: calculateChineseAnimal(birthData.birthDate),
-            element: calculateChineseElement(birthData.birthDate),
+            animal: calculateChineseAnimal(birthDate),
+            element: calculateChineseElement(birthDate),
             analysis: "Five element theory with compatibility and fortune insights"
           },
           numerology: {
-            lifePath: calculateLifePath(birthData.birthDate),
-            destiny: calculateDestinyNumber(birthData.firstName, birthData.lastName),
+            lifePath: calculateLifePath(birthDate),
+            destiny: calculateDestinyNumber(firstName, lastName),
             analysis: "Complete numerological profile with personal year cycles"
           },
           humanDesign: {
-            type: calculateHumanDesignType(birthData),
-            strategy: getHDStrategy(birthData),
+            type: calculateHumanDesignType(birthDate),
+            strategy: getHDStrategy(birthDate),
             analysis: "Energy type analysis with decision-making strategy"
           }
         },
@@ -897,13 +925,15 @@ startxref
     return sum;
   }
 
-  function calculateHumanDesignType(birthData: any) {
+  function calculateHumanDesignType(birthDate: string) {
     const types = ["Manifestor", "Generator", "Manifesting Generator", "Projector", "Reflector"];
-    const hash = birthData.firstName.length + birthData.lastName.length + new Date(birthData.birthDate).getDate();
+    const date = new Date(birthDate);
+    const hash = date.getDate() + date.getMonth() + 1;
     return types[hash % types.length];
   }
 
-  function getHDStrategy(birthData: any) {
+  function getHDStrategy(birthDate: string) {
+    const type = calculateHumanDesignType(birthDate);
     const strategies: Record<string, string> = {
       "Manifestor": "Inform before acting",
       "Generator": "Respond to life",
@@ -911,7 +941,7 @@ startxref
       "Projector": "Wait for invitation",
       "Reflector": "Wait a lunar cycle"
     };
-    return strategies[calculateHumanDesignType(birthData)] || "Follow your inner authority";
+    return strategies[type] || "Follow your inner authority";
   }
 
   const httpServer = createServer(app);
