@@ -15,26 +15,32 @@ export default function PlanetarySymbols() {
   ];
 
   return (
-    <Card className="cosmic-card">
-      <CardHeader>
-        <CardTitle className="text-yellow-500">Planetary Symbols</CardTitle>
-        <CardDescription className="text-gray-400">
+    <div className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6">
+      <div className="text-center mb-6">
+        <h3 className="text-xl font-semibold mb-2" 
+            style={{
+              color: 'hsl(51, 100%, 65%)',
+              textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+            }}>Planetary Symbols</h3>
+        <p className="text-sm" 
+           style={{
+             color: 'hsl(240, 100%, 94%)', 
+             opacity: 0.8
+           }}>
           Understanding the cosmic influences in your chart
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 gap-4">
-          {planets.map((planet) => (
-            <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-black/20">
-              <div className="text-2xl text-yellow-500">{planet.symbol}</div>
-              <div>
-                <div className="text-white font-medium">{planet.name}</div>
-                <div className="text-gray-400 text-sm">{planet.meaning}</div>
-              </div>
+        </p>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        {planets.map((planet) => (
+          <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-white/5">
+            <div className="text-2xl" style={{color: 'hsl(51, 100%, 65%)'}}>{planet.symbol}</div>
+            <div>
+              <div className="font-medium text-sm" style={{color: 'hsl(240, 100%, 94%)'}}>{planet.name}</div>
+              <div className="text-xs" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>{planet.meaning}</div>
             </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

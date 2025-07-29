@@ -530,11 +530,34 @@ export default function Home() {
       <section className="relative z-10 py-20" style={{background: 'var(--cosmic-gradient-1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-accent" style={{color: 'var(--cosmic-lavender)'}}>
-              Comprehensive Astrological Systems
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              <span 
+                style={{
+                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Comprehensive Astrological Systems
+              </span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
-              The only platform integrating authentic calculations across multiple ancient wisdom traditions with modern precision.
+            <p className="text-lg max-w-3xl mx-auto leading-relaxed" 
+               style={{
+                 color: 'hsl(240, 100%, 94%)', 
+                 opacity: 0.95,
+                 textShadow: '0 1px 4px rgba(0,0,0,0.2)'
+               }}>
+              The only platform integrating authentic calculations across multiple ancient wisdom traditions with{" "}
+              <span 
+                className="font-medium"
+                style={{
+                  color: 'hsl(51, 100%, 65%)',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                }}
+              >
+                modern precision
+              </span>.
             </p>
           </div>
           
@@ -543,7 +566,11 @@ export default function Home() {
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center gap-3">
                 <User className="h-6 w-6" style={{color: 'var(--cosmic-gold)'}} />
-                <h3 className="text-2xl font-semibold font-accent" style={{color: 'var(--cosmic-lavender)'}}>Personal Systems</h3>
+                <h3 className="text-2xl font-semibold" 
+                    style={{
+                      color: 'hsl(51, 100%, 65%)',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                    }}>Personal Systems</h3>
               </div>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -559,16 +586,29 @@ export default function Home() {
                     <div className="text-3xl sm:text-4xl mb-3">
                       {system.icon}
                     </div>
-                    <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+                    <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors" 
+                        style={{
+                          color: 'hsl(51, 100%, 65%)',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.3)'
+                        }}>
                       {system.title}
                     </h3>
-                    <p className="text-xs leading-relaxed mb-3" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                    <p className="text-xs leading-relaxed mb-3" 
+                       style={{
+                         color: 'hsl(240, 100%, 94%)', 
+                         opacity: 0.85
+                       }}>
                       {system.description}
                     </p>
                     <ul className="space-y-1 text-xs">
                       {system.features.slice(0, 2).map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2" style={{color: 'var(--cosmic-lavender)', opacity: 0.7}}>
-                          <span className="w-1 h-1 bg-pink-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                        <li key={idx} className="flex items-start gap-2" 
+                            style={{
+                              color: 'hsl(240, 100%, 94%)', 
+                              opacity: 0.75
+                            }}>
+                          <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" 
+                                style={{backgroundColor: 'hsl(51, 100%, 65%)'}}></span>
                           {item}
                         </li>
                       ))}
@@ -584,7 +624,11 @@ export default function Home() {
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center gap-3">
                 <Globe className="h-6 w-6" style={{color: 'var(--cosmic-purple)'}} />
-                <h3 className="text-2xl font-semibold font-accent" style={{color: 'var(--cosmic-lavender)'}}>Space & Environment Systems</h3>
+                <h3 className="text-2xl font-semibold" 
+                    style={{
+                      color: 'hsl(51, 100%, 65%)',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                    }}>Space & Environment Systems</h3>
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -600,16 +644,29 @@ export default function Home() {
                     <div className="text-4xl mb-4">
                       {system.icon}
                     </div>
-                    <h3 className="font-semibold text-lg mb-2 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+                    <h3 className="font-semibold text-lg mb-2 transition-colors" 
+                        style={{
+                          color: 'hsl(51, 100%, 65%)',
+                          textShadow: '0 1px 2px rgba(0,0,0,0.3)'
+                        }}>
                       {system.title}
                     </h3>
-                    <p className="text-sm leading-relaxed mb-4" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                    <p className="text-sm leading-relaxed mb-4" 
+                       style={{
+                         color: 'hsl(240, 100%, 94%)', 
+                         opacity: 0.85
+                       }}>
                       {system.description}
                     </p>
                     <ul className="space-y-2 text-sm">
                       {system.features.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2" style={{color: 'var(--cosmic-lavender)', opacity: 0.7}}>
-                          <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                        <li key={idx} className="flex items-start gap-2" 
+                            style={{
+                              color: 'hsl(240, 100%, 94%)', 
+                              opacity: 0.75
+                            }}>
+                          <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
+                                style={{backgroundColor: 'hsl(51, 100%, 65%)'}}></span>
                           {item}
                         </li>
                       ))}
@@ -626,7 +683,13 @@ export default function Home() {
               className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
             >
               <div className="text-5xl mb-6">🌟</div>
-              <h3 className="font-semibold text-2xl mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Unique Cross-System Synthesis</h3>
+              <h3 className="font-semibold text-2xl mb-4" 
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                    WebkitBackgroundClip: 'text', 
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}>Unique Cross-System Synthesis</h3>
               <p className="text-lg mb-6 max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
                 Our proprietary synthesis engine identifies universal patterns across all systems, providing unified recommendations that resolve conflicts and highlight consistent themes.
               </p>
@@ -653,11 +716,34 @@ export default function Home() {
       <section className="relative z-10 py-20" style={{background: 'var(--cosmic-gradient-1)'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight font-accent" style={{color: 'var(--cosmic-lavender)'}}>
-              Daily Cosmic Guidance
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              <span 
+                style={{
+                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Daily Cosmic Guidance
+              </span>
             </h2>
-            <p className="text-lg max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
-              Personalized insights based on current planetary transits and your unique astrological blueprint.
+            <p className="text-lg max-w-3xl mx-auto leading-relaxed" 
+               style={{
+                 color: 'hsl(240, 100%, 94%)', 
+                 opacity: 0.95,
+                 textShadow: '0 1px 4px rgba(0,0,0,0.2)'
+               }}>
+              Personalized insights based on current planetary transits and your{" "}
+              <span 
+                className="font-medium"
+                style={{
+                  color: 'hsl(51, 100%, 65%)',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                }}
+              >
+                unique astrological blueprint
+              </span>.
             </p>
           </div>
 
