@@ -96,7 +96,6 @@
   body {
     @apply font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--cosmic-navy);
     color: var(--cosmic-lavender);
     min-height: 100vh;
     line-height: 1.6; /* Improved readability for 35-60 age group */
