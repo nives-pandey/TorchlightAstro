@@ -318,9 +318,9 @@
 
   /* Adaptive form input styling with MAXIMUM visibility and responsiveness */
   .cosmic-input {
-    background: white !important;
+    background: rgba(30, 15, 50, 0.8) !important;
     border: 3px solid #6b46c1 !important;
-    color: #1f2937 !important;
+    color: white !important;
     min-height: 56px !important; 
     font-size: clamp(16px, 2.5vw, 20px) !important; 
     padding: clamp(12px, 2vw, 18px) clamp(14px, 2.5vw, 22px) !important; 
@@ -368,9 +368,9 @@
 
   /* Adaptive select components with MAXIMUM visibility and responsiveness */
   .cosmic-select {
-    background: white !important;
+    background: rgba(30, 15, 50, 0.8) !important;
     border: 3px solid #6b46c1 !important;
-    color: #1f2937 !important;
+    color: white !important;
     min-height: 56px !important;
     font-size: clamp(16px, 2.5vw, 20px) !important;
     padding: clamp(12px, 2vw, 18px) clamp(14px, 2.5vw, 22px) !important;
@@ -477,9 +477,9 @@
   /* Print styles for accessibility */
   @media print {
     .cosmic-input, .cosmic-select, .cosmic-label {
-      color: black !important;
-      background: white !important;
-      border: 2px solid black !important;
+      color: white !important;
+      background: rgba(30, 15, 50, 0.9) !important;
+      border: 2px solid #6b46c1 !important;
       font-weight: bold !important;
     }
   }
@@ -538,8 +538,8 @@
   .high-contrast .cosmic-label {
     border-width: 3px !important;
     font-weight: 900 !important;
-    background: white !important;
-    color: #000000 !important;
+    background: rgba(30, 15, 50, 0.9) !important;
+    color: white !important;
     text-shadow: none !important;
   }
   
@@ -566,11 +566,11 @@
 
   /* Brighter card backgrounds */
   .bg-white\/5 {
-    background-color: rgba(255, 255, 255, 0.12) !important;
+    background-color: rgba(100, 50, 150, 0.3) !important;
   }
 
   .bg-white\/10 {
-    background-color: rgba(255, 255, 255, 0.18) !important;
+    background-color: rgba(100, 50, 150, 0.4) !important;
   }
 
   /* Time-based gradient backgrounds */

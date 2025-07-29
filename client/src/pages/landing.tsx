@@ -218,7 +218,7 @@ export default function Landing() {
       >
         {/* Static celestial background elements - no animation */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-white rounded-full opacity-80" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-80" />
         <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
