@@ -11,6 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { X, Calendar, MapPin, Clock, User, ChevronRight, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { WORLD_TIMEZONES } from "@/lib/timezone-handler";
+import AccessibilityToggle from "./accessibility-toggle";
 
 const birthFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -334,56 +335,67 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-3xl max-h-[95vh] overflow-y-auto bg-white/90 border-2 border-purple-400 backdrop-blur-md shadow-2xl">
-        <CardHeader className="relative">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 lg:p-6 z-50">
+      <AccessibilityToggle />
+      <Card className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl max-h-[98vh] sm:max-h-[95vh] overflow-y-auto bg-white/95 sm:bg-white/90 border-2 sm:border-3 lg:border-4 border-purple-400 backdrop-blur-md shadow-2xl rounded-lg sm:rounded-xl lg:rounded-2xl transition-all duration-300">
+        <CardHeader className="relative p-4 sm:p-6 lg:p-8">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-gray-800 hover:bg-gray-200 border border-gray-300"
+            className="absolute right-2 sm:right-4 top-2 sm:top-4 text-gray-800 hover:bg-gray-200 border border-gray-300 h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </Button>
           
-          <CardTitle className="text-gray-900 text-xl text-center mb-4">
+          <CardTitle className="text-gray-900 text-lg sm:text-xl lg:text-2xl xl:text-3xl text-center mb-2 sm:mb-4 font-bold">
             ✨ Create Your Cosmic Profile
           </CardTitle>
+          <p className="text-gray-700 text-sm sm:text-base lg:text-lg text-center mb-4 sm:mb-6">
+            Comprehensive astrological analysis across 10+ ancient systems
+          </p>
 
-          {/* Progress Steps */}
-          <div className="flex justify-center space-x-4 mb-6">
+          {/* Adaptive Progress Steps */}
+          <div className="flex justify-center space-x-2 sm:space-x-4 lg:space-x-6 mb-4 sm:mb-6">
             {steps.map((step, index) => (
               <div key={index} className="flex items-center">
-                <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
+                <div className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full border-2 sm:border-3 transition-all duration-300 ${
                   index <= currentStep 
-                    ? 'bg-purple-600 border-purple-600 text-white' 
+                    ? 'bg-purple-600 border-purple-600 text-white shadow-lg' 
                     : 'border-gray-400 text-gray-500 bg-gray-100'
                 }`}>
-                  <step.icon className="h-4 w-4" />
+                  <step.icon className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
                 </div>
                 {index < steps.length - 1 && (
-                  <div className={`w-8 h-0.5 mx-2 ${
+                  <div className={`w-4 sm:w-8 lg:w-12 h-0.5 sm:h-1 mx-1 sm:mx-2 transition-all duration-300 ${
                     index < currentStep ? 'bg-purple-600' : 'bg-gray-300'
                   }`} />
                 )}
               </div>
             ))}
           </div>
+          
+          {/* Step Titles for Mobile */}
+          <div className="block sm:hidden text-center mb-4">
+            <span className="text-xs font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+              Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
+            </span>
+          </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6 lg:space-y-8 p-4 sm:p-6 lg:p-8">
           <Form {...form}>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               
               {/* Step 0: Personal Information */}
               {currentStep === 0 && (
                 <div className="space-y-4">
-                  <div className="text-center mb-6">
-                    <h3 className="text-gray-900 font-medium mb-2">Personal Information</h3>
-                    <p className="text-gray-700 text-sm">Tell us about yourself for personalized analysis</p>
+                  <div className="text-center mb-4 sm:mb-6">
+                    <h3 className="text-gray-900 font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Personal Information</h3>
+                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Tell us about yourself for personalized analysis</p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                     <FormField
                       control={form.control}
                       name="firstName"
@@ -448,12 +460,12 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {/* Step 1: Birth Details */}
               {currentStep === 1 && (
                 <div className="space-y-4">
-                  <div className="text-center mb-6">
-                    <h3 className="text-gray-900 font-medium mb-2">Birth Details</h3>
-                    <p className="text-gray-700 text-sm">Enter your exact birth date, time, and location for precise calculations</p>
+                  <div className="text-center mb-4 sm:mb-6">
+                    <h3 className="text-gray-900 font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Birth Details</h3>
+                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg">Enter your exact birth date, time, and location for precise calculations</p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                     <FormField
                       control={form.control}
                       name="birthDate"
