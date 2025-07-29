@@ -39,16 +39,28 @@
   --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
 }
 
-/* FORCE all cards to use cosmic background - HIGHEST priority */
-.card, [data-card="true"], .bg-card, .Card {
-  background: rgb(30 15 50 / 0.8) !important;
-  background-color: rgb(30 15 50 / 0.8) !important;
+/* NUCLEAR OPTION: Force ALL backgrounds to cosmic theme */
+* {
+  background-color: transparent !important;
+}
+
+body, html, #root {
+  background: linear-gradient(135deg, hsl(260, 60%, 25%) 0%, hsl(275, 70%, 45%) 50%, hsl(285, 80%, 35%) 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* FORCE all cards and containers to use cosmic background - HIGHEST priority */
+.card, [data-card="true"], .bg-card, .Card, div[class*="Card"], div[class*="card"] {
+  background: linear-gradient(135deg, rgba(30, 15, 50, 0.9) 0%, rgba(55, 25, 95, 0.8) 50%, rgba(45, 20, 85, 0.9) 100%) !important;
+  background-color: rgba(30, 15, 50, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
 }
 
 /* Override any white or light background utilities */
-.bg-white, .bg-white\/5, .bg-white\/10, .bg-white\/20, .bg-slate-50, .bg-gray-50, .bg-purple-50, .bg-indigo-50, .bg-pink-50 {
-  background: rgb(100 50 150 / 0.4) !important;
-  background-color: rgb(100 50 150 / 0.4) !important;
+.bg-white, .bg-white\/5, .bg-white\/10, .bg-white\/20, .bg-slate-50, .bg-gray-50, .bg-purple-50, .bg-indigo-50, .bg-pink-50, 
+.bg-gradient-to-r, .bg-gradient-to-br, .bg-gradient-to-l, .bg-gradient-to-bl {
+  background: linear-gradient(135deg, rgba(100, 50, 150, 0.6) 0%, rgba(120, 60, 170, 0.7) 100%) !important;
+  background-color: rgba(100, 50, 150, 0.6) !important;
 }
 
 /* Targeted cosmic theme fixes - NO global overrides */

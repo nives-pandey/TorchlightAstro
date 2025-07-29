@@ -57,7 +57,14 @@ export default function ContributionSection({ onContribute }: ContributionSectio
   };
 
   return (
-    <Card className="border-purple-400/30 bg-gradient-to-br from-slate-800/40 via-purple-900/30 to-indigo-900/40 backdrop-blur-sm">
+    <Card 
+      className="border-purple-400/30 backdrop-blur-sm"
+      style={{
+        background: 'linear-gradient(135deg, rgba(30, 15, 50, 0.95) 0%, rgba(55, 25, 95, 0.9) 50%, rgba(45, 20, 85, 0.95) 100%)',
+        backdropFilter: 'blur(16px)',
+        borderColor: 'rgba(147, 51, 234, 0.5)'
+      }}
+    >
       <CardHeader className="text-center space-y-4">
         <div className="flex justify-center">
           <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
