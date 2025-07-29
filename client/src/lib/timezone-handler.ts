@@ -1,307 +1,493 @@
-// Comprehensive timezone and DST handling for accurate astrological calculations
-export interface TimezoneInfo {
-  identifier: string;
-  displayName: string;
-  utcOffset: number;
-  hasDST: boolean;
-  region: string;
-}
+// Advanced Timezone Handler with DST History and Smart Detection
+// Comprehensive timezone management system for accurate birth chart calculations
 
-export interface LocationTimezone {
-  city: string;
+export interface TimezoneData {
+  id: string;
+  name: string;
+  offset: number;
+  dstOffset?: number;
   country: string;
-  timezone: string;
-  coordinates: { lat: number; lng: number };
+  region: string;
+  cities: string[];
+  dstRules?: DSTRule[];
 }
 
-// Comprehensive world timezone database
-export const WORLD_TIMEZONES: TimezoneInfo[] = [
-  // Americas
-  { identifier: 'America/New_York', displayName: 'Eastern Time (US)', utcOffset: -5, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Chicago', displayName: 'Central Time (US)', utcOffset: -6, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Denver', displayName: 'Mountain Time (US)', utcOffset: -7, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Los_Angeles', displayName: 'Pacific Time (US)', utcOffset: -8, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Phoenix', displayName: 'Arizona Time (No DST)', utcOffset: -7, hasDST: false, region: 'Americas' },
-  { identifier: 'America/Anchorage', displayName: 'Alaska Time', utcOffset: -9, hasDST: true, region: 'Americas' },
-  { identifier: 'Pacific/Honolulu', displayName: 'Hawaii Time', utcOffset: -10, hasDST: false, region: 'Americas' },
-  { identifier: 'America/Toronto', displayName: 'Eastern Time (Canada)', utcOffset: -5, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Vancouver', displayName: 'Pacific Time (Canada)', utcOffset: -8, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Mexico_City', displayName: 'Central Time (Mexico)', utcOffset: -6, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Sao_Paulo', displayName: 'Brasília Time', utcOffset: -3, hasDST: true, region: 'Americas' },
-  { identifier: 'America/Argentina/Buenos_Aires', displayName: 'Argentina Time', utcOffset: -3, hasDST: false, region: 'Americas' },
-  { identifier: 'America/Lima', displayName: 'Peru Time', utcOffset: -5, hasDST: false, region: 'Americas' },
-  { identifier: 'America/Bogota', displayName: 'Colombia Time', utcOffset: -5, hasDST: false, region: 'Americas' },
+export interface DSTRule {
+  startYear: number;
+  endYear?: number;
+  startRule: {
+    month: number;
+    week: number;
+    dayOfWeek: number;
+    time: string;
+  };
+  endRule: {
+    month: number;
+    week: number;
+    dayOfWeek: number;
+    time: string;
+  };
+  offset: number; // Hours to add during DST
+}
+
+export interface TimezoneSearchResult {
+  timezone: TimezoneData;
+  confidence: number;
+  matchType: 'exact' | 'partial' | 'nearby' | 'fallback';
+  reasoning: string[];
+}
+
+export interface DSTAnalysisResult {
+  isDSTActive: boolean;
+  adjustmentMade: boolean;
+  originalTime: Date;
+  adjustedTime: Date;
+  offsetHours: number;
+  rule?: DSTRule;
+  confidence: number;
+}
+
+// Comprehensive timezone database
+export const WORLD_TIMEZONES: TimezoneData[] = [
+  // North America - United States
+  {
+    id: "America/New_York",
+    name: "Eastern Time",
+    offset: -5,
+    dstOffset: -4,
+    country: "United States",
+    region: "North America",
+    cities: ["New York", "Boston", "Washington", "Atlanta", "Miami", "Detroit", "Philadelphia"],
+    dstRules: [{
+      startYear: 2007,
+      startRule: { month: 3, week: 2, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 11, week: 1, dayOfWeek: 0, time: "02:00" },
+      offset: 1
+    }]
+  },
+  {
+    id: "America/Chicago",
+    name: "Central Time",
+    offset: -6,
+    dstOffset: -5,
+    country: "United States",
+    region: "North America",
+    cities: ["Chicago", "Houston", "Dallas", "San Antonio", "Austin", "Memphis", "New Orleans"],
+    dstRules: [{
+      startYear: 2007,
+      startRule: { month: 3, week: 2, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 11, week: 1, dayOfWeek: 0, time: "02:00" },
+      offset: 1
+    }]
+  },
+  {
+    id: "America/Denver",
+    name: "Mountain Time",
+    offset: -7,
+    dstOffset: -6,
+    country: "United States",
+    region: "North America",
+    cities: ["Denver", "Phoenix", "Salt Lake City", "Albuquerque", "Boulder", "Colorado Springs"],
+    dstRules: [{
+      startYear: 2007,
+      startRule: { month: 3, week: 2, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 11, week: 1, dayOfWeek: 0, time: "02:00" },
+      offset: 1
+    }]
+  },
+  {
+    id: "America/Los_Angeles",
+    name: "Pacific Time",
+    offset: -8,
+    dstOffset: -7,
+    country: "United States",
+    region: "North America",
+    cities: ["Los Angeles", "San Francisco", "San Diego", "Seattle", "Portland", "Las Vegas"],
+    dstRules: [{
+      startYear: 2007,
+      startRule: { month: 3, week: 2, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 11, week: 1, dayOfWeek: 0, time: "02:00" },
+      offset: 1
+    }]
+  },
 
   // Europe
-  { identifier: 'Europe/London', displayName: 'Greenwich Mean Time (UK)', utcOffset: 0, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Paris', displayName: 'Central European Time (France)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Berlin', displayName: 'Central European Time (Germany)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Rome', displayName: 'Central European Time (Italy)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Madrid', displayName: 'Central European Time (Spain)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Amsterdam', displayName: 'Central European Time (Netherlands)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Zurich', displayName: 'Central European Time (Switzerland)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Vienna', displayName: 'Central European Time (Austria)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Stockholm', displayName: 'Central European Time (Sweden)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Oslo', displayName: 'Central European Time (Norway)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Copenhagen', displayName: 'Central European Time (Denmark)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Helsinki', displayName: 'Eastern European Time (Finland)', utcOffset: 2, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Moscow', displayName: 'Moscow Standard Time', utcOffset: 3, hasDST: false, region: 'Europe' },
-  { identifier: 'Europe/Istanbul', displayName: 'Turkey Time', utcOffset: 3, hasDST: false, region: 'Europe' },
-  { identifier: 'Europe/Athens', displayName: 'Eastern European Time (Greece)', utcOffset: 2, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Warsaw', displayName: 'Central European Time (Poland)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Prague', displayName: 'Central European Time (Czech Republic)', utcOffset: 1, hasDST: true, region: 'Europe' },
-  { identifier: 'Europe/Budapest', displayName: 'Central European Time (Hungary)', utcOffset: 1, hasDST: true, region: 'Europe' },
+  {
+    id: "Europe/London",
+    name: "Greenwich Mean Time",
+    offset: 0,
+    dstOffset: 1,
+    country: "United Kingdom",
+    region: "Europe",
+    cities: ["London", "Manchester", "Birmingham", "Liverpool", "Edinburgh", "Glasgow"],
+    dstRules: [{
+      startYear: 1996,
+      startRule: { month: 3, week: -1, dayOfWeek: 0, time: "01:00" },
+      endRule: { month: 10, week: -1, dayOfWeek: 0, time: "02:00" },
+      offset: 1
+    }]
+  },
+  {
+    id: "Europe/Paris",
+    name: "Central European Time",
+    offset: 1,
+    dstOffset: 2,
+    country: "France",
+    region: "Europe",
+    cities: ["Paris", "Lyon", "Marseille", "Toulouse", "Nice", "Strasbourg"],
+    dstRules: [{
+      startYear: 1996,
+      startRule: { month: 3, week: -1, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 10, week: -1, dayOfWeek: 0, time: "03:00" },
+      offset: 1
+    }]
+  },
+  {
+    id: "Europe/Berlin",
+    name: "Central European Time",
+    offset: 1,
+    dstOffset: 2,
+    country: "Germany",
+    region: "Europe",
+    cities: ["Berlin", "Munich", "Hamburg", "Cologne", "Frankfurt", "Stuttgart"],
+    dstRules: [{
+      startYear: 1996,
+      startRule: { month: 3, week: -1, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 10, week: -1, dayOfWeek: 0, time: "03:00" },
+      offset: 1
+    }]
+  },
 
   // Asia
-  { identifier: 'Asia/Tokyo', displayName: 'Japan Standard Time', utcOffset: 9, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Shanghai', displayName: 'China Standard Time', utcOffset: 8, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Hong_Kong', displayName: 'Hong Kong Time', utcOffset: 8, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Singapore', displayName: 'Singapore Standard Time', utcOffset: 8, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Seoul', displayName: 'Korea Standard Time', utcOffset: 9, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Kolkata', displayName: 'India Standard Time', utcOffset: 5.5, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Dubai', displayName: 'Gulf Standard Time (UAE)', utcOffset: 4, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Riyadh', displayName: 'Arabia Standard Time (Saudi Arabia)', utcOffset: 3, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Tehran', displayName: 'Iran Standard Time', utcOffset: 3.5, hasDST: true, region: 'Asia' },
-  { identifier: 'Asia/Karachi', displayName: 'Pakistan Standard Time', utcOffset: 5, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Dhaka', displayName: 'Bangladesh Standard Time', utcOffset: 6, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Bangkok', displayName: 'Indochina Time (Thailand)', utcOffset: 7, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Jakarta', displayName: 'Western Indonesian Time', utcOffset: 7, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Manila', displayName: 'Philippine Standard Time', utcOffset: 8, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Kuala_Lumpur', displayName: 'Malaysia Standard Time', utcOffset: 8, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Almaty', displayName: 'Almaty Time (Kazakhstan)', utcOffset: 6, hasDST: false, region: 'Asia' },
-  { identifier: 'Asia/Tashkent', displayName: 'Uzbekistan Time', utcOffset: 5, hasDST: false, region: 'Asia' },
-
-  // Africa
-  { identifier: 'Africa/Cairo', displayName: 'Eastern European Time (Egypt)', utcOffset: 2, hasDST: false, region: 'Africa' },
-  { identifier: 'Africa/Johannesburg', displayName: 'South Africa Standard Time', utcOffset: 2, hasDST: false, region: 'Africa' },
-  { identifier: 'Africa/Lagos', displayName: 'West Africa Time (Nigeria)', utcOffset: 1, hasDST: false, region: 'Africa' },
-  { identifier: 'Africa/Nairobi', displayName: 'East Africa Time (Kenya)', utcOffset: 3, hasDST: false, region: 'Africa' },
-  { identifier: 'Africa/Casablanca', displayName: 'Western European Time (Morocco)', utcOffset: 1, hasDST: true, region: 'Africa' },
-  { identifier: 'Africa/Algiers', displayName: 'Central European Time (Algeria)', utcOffset: 1, hasDST: false, region: 'Africa' },
-  { identifier: 'Africa/Tunis', displayName: 'Central European Time (Tunisia)', utcOffset: 1, hasDST: false, region: 'Africa' },
+  {
+    id: "Asia/Kolkata",
+    name: "India Standard Time",
+    offset: 5.5,
+    country: "India",
+    region: "Asia",
+    cities: ["Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata", "Hyderabad", "Pune", "Ahmedabad"]
+  },
+  {
+    id: "Asia/Tokyo",
+    name: "Japan Standard Time",
+    offset: 9,
+    country: "Japan",
+    region: "Asia",
+    cities: ["Tokyo", "Osaka", "Yokohama", "Nagoya", "Sapporo", "Kyoto"]
+  },
+  {
+    id: "Asia/Shanghai",
+    name: "China Standard Time",
+    offset: 8,
+    country: "China",
+    region: "Asia",
+    cities: ["Shanghai", "Beijing", "Guangzhou", "Shenzhen", "Tianjin", "Wuhan", "Chengdu"]
+  },
 
   // Oceania
-  { identifier: 'Australia/Sydney', displayName: 'Australian Eastern Time', utcOffset: 10, hasDST: true, region: 'Oceania' },
-  { identifier: 'Australia/Melbourne', displayName: 'Australian Eastern Time (Melbourne)', utcOffset: 10, hasDST: true, region: 'Oceania' },
-  { identifier: 'Australia/Brisbane', displayName: 'Australian Eastern Time (Queensland)', utcOffset: 10, hasDST: false, region: 'Oceania' },
-  { identifier: 'Australia/Perth', displayName: 'Australian Western Time', utcOffset: 8, hasDST: false, region: 'Oceania' },
-  { identifier: 'Australia/Adelaide', displayName: 'Australian Central Time', utcOffset: 9.5, hasDST: true, region: 'Oceania' },
-  { identifier: 'Australia/Darwin', displayName: 'Australian Central Time (Northern Territory)', utcOffset: 9.5, hasDST: false, region: 'Oceania' },
-  { identifier: 'Pacific/Auckland', displayName: 'New Zealand Standard Time', utcOffset: 12, hasDST: true, region: 'Oceania' },
-  { identifier: 'Pacific/Fiji', displayName: 'Fiji Time', utcOffset: 12, hasDST: true, region: 'Oceania' },
+  {
+    id: "Australia/Sydney",
+    name: "Australian Eastern Time",
+    offset: 10,
+    dstOffset: 11,
+    country: "Australia",
+    region: "Oceania",
+    cities: ["Sydney", "Melbourne", "Brisbane", "Canberra"],
+    dstRules: [{
+      startYear: 2008,
+      startRule: { month: 10, week: 1, dayOfWeek: 0, time: "02:00" },
+      endRule: { month: 4, week: 1, dayOfWeek: 0, time: "03:00" },
+      offset: 1
+    }]
+  },
+
+  // South America
+  {
+    id: "America/Sao_Paulo",
+    name: "Brasília Time",
+    offset: -3,
+    country: "Brazil",
+    region: "South America",
+    cities: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza"]
+  },
+
+  // Africa  
+  {
+    id: "Africa/Cairo",
+    name: "Eastern European Time",
+    offset: 2,
+    country: "Egypt",
+    region: "Africa",
+    cities: ["Cairo", "Alexandria", "Giza"]
+  }
 ];
 
-// Popular city-timezone mappings for quick lookup
-export const CITY_TIMEZONE_MAP: LocationTimezone[] = [
-  // Major US Cities
-  { city: 'New York', country: 'United States', timezone: 'America/New_York', coordinates: { lat: 40.7128, lng: -74.0060 } },
-  { city: 'Los Angeles', country: 'United States', timezone: 'America/Los_Angeles', coordinates: { lat: 34.0522, lng: -118.2437 } },
-  { city: 'Chicago', country: 'United States', timezone: 'America/Chicago', coordinates: { lat: 41.8781, lng: -87.6298 } },
-  { city: 'Houston', country: 'United States', timezone: 'America/Chicago', coordinates: { lat: 29.7604, lng: -95.3698 } },
-  { city: 'Phoenix', country: 'United States', timezone: 'America/Phoenix', coordinates: { lat: 33.4484, lng: -112.0740 } },
-  { city: 'Philadelphia', country: 'United States', timezone: 'America/New_York', coordinates: { lat: 39.9526, lng: -75.1652 } },
-  { city: 'San Antonio', country: 'United States', timezone: 'America/Chicago', coordinates: { lat: 29.4241, lng: -98.4936 } },
-  { city: 'San Diego', country: 'United States', timezone: 'America/Los_Angeles', coordinates: { lat: 32.7157, lng: -117.1611 } },
-  { city: 'Dallas', country: 'United States', timezone: 'America/Chicago', coordinates: { lat: 32.7767, lng: -96.7970 } },
-  { city: 'San Jose', country: 'United States', timezone: 'America/Los_Angeles', coordinates: { lat: 37.3382, lng: -121.8863 } },
+export class TimezoneHandler {
+  private static instance: TimezoneHandler;
+  private timezones: Map<string, TimezoneData> = new Map();
+  private cityIndex: Map<string, TimezoneData[]> = new Map();
 
-  // European Cities
-  { city: 'London', country: 'United Kingdom', timezone: 'Europe/London', coordinates: { lat: 51.5074, lng: -0.1278 } },
-  { city: 'Paris', country: 'France', timezone: 'Europe/Paris', coordinates: { lat: 48.8566, lng: 2.3522 } },
-  { city: 'Berlin', country: 'Germany', timezone: 'Europe/Berlin', coordinates: { lat: 52.5200, lng: 13.4050 } },
-  { city: 'Madrid', country: 'Spain', timezone: 'Europe/Madrid', coordinates: { lat: 40.4168, lng: -3.7038 } },
-  { city: 'Rome', country: 'Italy', timezone: 'Europe/Rome', coordinates: { lat: 41.9028, lng: 12.4964 } },
-  { city: 'Amsterdam', country: 'Netherlands', timezone: 'Europe/Amsterdam', coordinates: { lat: 52.3676, lng: 4.9041 } },
-  { city: 'Vienna', country: 'Austria', timezone: 'Europe/Vienna', coordinates: { lat: 48.2082, lng: 16.3738 } },
-  { city: 'Zurich', country: 'Switzerland', timezone: 'Europe/Zurich', coordinates: { lat: 47.3769, lng: 8.5417 } },
-  { city: 'Stockholm', country: 'Sweden', timezone: 'Europe/Stockholm', coordinates: { lat: 59.3293, lng: 18.0686 } },
-  { city: 'Moscow', country: 'Russia', timezone: 'Europe/Moscow', coordinates: { lat: 55.7558, lng: 37.6176 } },
+  constructor() {
+    this.initializeDatabase();
+  }
 
-  // Asian Cities
-  { city: 'Tokyo', country: 'Japan', timezone: 'Asia/Tokyo', coordinates: { lat: 35.6762, lng: 139.6503 } },
-  { city: 'Shanghai', country: 'China', timezone: 'Asia/Shanghai', coordinates: { lat: 31.2304, lng: 121.4737 } },
-  { city: 'Beijing', country: 'China', timezone: 'Asia/Shanghai', coordinates: { lat: 39.9042, lng: 116.4074 } },
-  { city: 'Hong Kong', country: 'Hong Kong', timezone: 'Asia/Hong_Kong', coordinates: { lat: 22.3193, lng: 114.1694 } },
-  { city: 'Singapore', country: 'Singapore', timezone: 'Asia/Singapore', coordinates: { lat: 1.3521, lng: 103.8198 } },
-  { city: 'Seoul', country: 'South Korea', timezone: 'Asia/Seoul', coordinates: { lat: 37.5665, lng: 126.9780 } },
-  { city: 'Mumbai', country: 'India', timezone: 'Asia/Kolkata', coordinates: { lat: 19.0760, lng: 72.8777 } },
-  { city: 'Delhi', country: 'India', timezone: 'Asia/Kolkata', coordinates: { lat: 28.7041, lng: 77.1025 } },
-  { city: 'Bangalore', country: 'India', timezone: 'Asia/Kolkata', coordinates: { lat: 12.9716, lng: 77.5946 } },
-  { city: 'Dubai', country: 'United Arab Emirates', timezone: 'Asia/Dubai', coordinates: { lat: 25.2048, lng: 55.2708 } },
+  static getInstance(): TimezoneHandler {
+    if (!TimezoneHandler.instance) {
+      TimezoneHandler.instance = new TimezoneHandler();
+    }
+    return TimezoneHandler.instance;
+  }
 
-  // Other Major Cities
-  { city: 'Sydney', country: 'Australia', timezone: 'Australia/Sydney', coordinates: { lat: -33.8688, lng: 151.2093 } },
-  { city: 'Melbourne', country: 'Australia', timezone: 'Australia/Melbourne', coordinates: { lat: -37.8136, lng: 144.9631 } },
-  { city: 'Toronto', country: 'Canada', timezone: 'America/Toronto', coordinates: { lat: 43.6532, lng: -79.3832 } },
-  { city: 'Vancouver', country: 'Canada', timezone: 'America/Vancouver', coordinates: { lat: 49.2827, lng: -123.1207 } },
-  { city: 'São Paulo', country: 'Brazil', timezone: 'America/Sao_Paulo', coordinates: { lat: -23.5558, lng: -46.6396 } },
-  { city: 'Buenos Aires', country: 'Argentina', timezone: 'America/Argentina/Buenos_Aires', coordinates: { lat: -34.6118, lng: -58.3960 } },
-  { city: 'Mexico City', country: 'Mexico', timezone: 'America/Mexico_City', coordinates: { lat: 19.4326, lng: -99.1332 } },
-  { city: 'Cairo', country: 'Egypt', timezone: 'Africa/Cairo', coordinates: { lat: 30.0444, lng: 31.2357 } },
-  { city: 'Johannesburg', country: 'South Africa', timezone: 'Africa/Johannesburg', coordinates: { lat: -26.2041, lng: 28.0473 } },
-];
-
-/**
- * Calculate exact UTC time considering DST rules
- */
-export function calculateUTCTime(
-  localDateTime: string, 
-  timezoneIdentifier: string
-): { utcDateTime: string; isDST: boolean; effectiveOffset: number } {
-  try {
-    const localDate = new Date(localDateTime);
-    
-    // Use Intl.DateTimeFormat to determine if DST was active at that specific date
-    const formatter = new Intl.DateTimeFormat('en', {
-      timeZone: timezoneIdentifier,
-      timeZoneName: 'longOffset'
+  private initializeDatabase() {
+    // Index timezones by ID
+    WORLD_TIMEZONES.forEach(tz => {
+      this.timezones.set(tz.id, tz);
     });
-    
-    const parts = formatter.formatToParts(localDate);
-    const timeZoneName = parts.find(part => part.type === 'timeZoneName')?.value || '';
-    
-    // Extract actual UTC offset from the timezone name (e.g., "GMT-05:00" -> -5)
-    const offsetMatch = timeZoneName.match(/GMT([+-])(\d{2}):(\d{2})/);
-    let effectiveOffset = 0;
-    
-    if (offsetMatch) {
-      const sign = offsetMatch[1] === '+' ? 1 : -1;
-      const hours = parseInt(offsetMatch[2]);
-      const minutes = parseInt(offsetMatch[3]);
-      effectiveOffset = sign * (hours + minutes / 60);
+
+    // Create city index for fast lookups
+    WORLD_TIMEZONES.forEach(tz => {
+      tz.cities.forEach(city => {
+        const cityKey = this.normalizeCityName(city);
+        if (!this.cityIndex.has(cityKey)) {
+          this.cityIndex.set(cityKey, []);
+        }
+        this.cityIndex.get(cityKey)!.push(tz);
+      });
+    });
+  }
+
+  // Smart timezone detection based on city and country
+  findTimezone(city: string, country?: string): TimezoneSearchResult[] {
+    const results: TimezoneSearchResult[] = [];
+    const normalizedCity = this.normalizeCityName(city);
+
+    // Exact city match
+    const exactMatches = this.cityIndex.get(normalizedCity) || [];
+    exactMatches.forEach(tz => {
+      const confidence = country && tz.country.toLowerCase().includes(country.toLowerCase()) ? 0.95 : 0.85;
+      results.push({
+        timezone: tz,
+        confidence,
+        matchType: 'exact',
+        reasoning: ['Exact city name match', country ? 'Country confirmed' : 'City verified']
+      });
+    });
+
+    // Partial city matches
+    if (results.length === 0) {
+      this.cityIndex.forEach((timezones, cityKey) => {
+        if (cityKey.includes(normalizedCity) || normalizedCity.includes(cityKey)) {
+          timezones.forEach(tz => {
+            const confidence = country && tz.country.toLowerCase().includes(country.toLowerCase()) ? 0.75 : 0.65;
+            results.push({
+              timezone: tz,
+              confidence,
+              matchType: 'partial',
+              reasoning: ['Partial city name match', 'Similar city name found']
+            });
+          });
+        }
+      });
     }
+
+    // Country-based fallback
+    if (results.length === 0 && country) {
+      WORLD_TIMEZONES.forEach(tz => {
+        if (tz.country.toLowerCase().includes(country.toLowerCase())) {
+          results.push({
+            timezone: tz,
+            confidence: 0.5,
+            matchType: 'fallback',
+            reasoning: ['Country match only', 'Major timezone for region']
+          });
+        }
+      });
+    }
+
+    return results.sort((a, b) => b.confidence - a.confidence);
+  }
+
+  // Historical DST analysis for specific date
+  analyzeDST(date: Date, timezoneId: string): DSTAnalysisResult {
+    const timezone = this.timezones.get(timezoneId);
+    if (!timezone || !timezone.dstRules) {
+      return {
+        isDSTActive: false,
+        adjustmentMade: false,
+        originalTime: date,
+        adjustedTime: date,
+        offsetHours: 0,
+        confidence: 1.0
+      };
+    }
+
+    const year = date.getFullYear();
+    const applicableRule = timezone.dstRules.find(rule => 
+      year >= rule.startYear && (!rule.endYear || year <= rule.endYear)
+    );
+
+    if (!applicableRule) {
+      return {
+        isDSTActive: false,
+        adjustmentMade: false,
+        originalTime: date,
+        adjustedTime: date,
+        offsetHours: 0,
+        confidence: 1.0
+      };
+    }
+
+    const dstStart = this.calculateDSTDate(year, applicableRule.startRule);
+    const dstEnd = this.calculateDSTDate(year, applicableRule.endRule);
     
-    // Determine if DST was active by comparing standard offset
-    const timezone = WORLD_TIMEZONES.find(tz => tz.identifier === timezoneIdentifier);
-    const isDST = timezone ? Math.abs(effectiveOffset - timezone.utcOffset) > 0.5 : false;
+    const isDSTActive = date >= dstStart && date < dstEnd;
     
-    // Calculate UTC time
-    const utcTime = new Date(localDate.getTime() - (effectiveOffset * 60 * 60 * 1000));
-    
+    if (isDSTActive) {
+      const adjustedTime = new Date(date.getTime() - (applicableRule.offset * 60 * 60 * 1000));
+      return {
+        isDSTActive: true,
+        adjustmentMade: true,
+        originalTime: date,
+        adjustedTime,
+        offsetHours: -applicableRule.offset,
+        rule: applicableRule,
+        confidence: 0.95
+      };
+    }
+
     return {
-      utcDateTime: utcTime.toISOString(),
-      isDST,
-      effectiveOffset
+      isDSTActive: false,
+      adjustmentMade: false,
+      originalTime: date,
+      adjustedTime: date,
+      offsetHours: 0,
+      rule: applicableRule,
+      confidence: 0.95
     };
-  } catch (error) {
-    console.error('Error calculating UTC time:', error);
-    throw new Error('Invalid timezone or date format');
+  }
+
+  // Convert local time to UTC accounting for timezone and DST
+  toUTC(localTime: Date, timezoneId: string): Date {
+    const timezone = this.timezones.get(timezoneId);
+    if (!timezone) {
+      throw new Error(`Unknown timezone: ${timezoneId}`);
+    }
+
+    const dstAnalysis = this.analyzeDST(localTime, timezoneId);
+    const effectiveOffset = dstAnalysis.isDSTActive ? 
+      (timezone.dstOffset ?? timezone.offset) : timezone.offset;
+
+    return new Date(localTime.getTime() - (effectiveOffset * 60 * 60 * 1000));
+  }
+
+  // Get current timezone from browser
+  getBrowserTimezone(): string {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+
+  // Validate timezone ID
+  isValidTimezone(timezoneId: string): boolean {
+    return this.timezones.has(timezoneId);
+  }
+
+  // Get all timezones for a region
+  getTimezonesByRegion(region: string): TimezoneData[] {
+    return Array.from(this.timezones.values()).filter(tz => tz.region === region);
+  }
+
+  // Get timezone recommendations based on multiple criteria
+  getSmartRecommendations(city: string, country?: string, userIP?: string): TimezoneSearchResult[] {
+    const cityResults = this.findTimezone(city, country);
+    
+    // Add browser timezone as backup
+    const browserTz = this.getBrowserTimezone();
+    const browserTimezone = this.timezones.get(browserTz);
+    if (browserTimezone && !cityResults.find(r => r.timezone.id === browserTz)) {
+      cityResults.push({
+        timezone: browserTimezone,
+        confidence: 0.4,
+        matchType: 'fallback',
+        reasoning: ['Browser timezone detected', 'User system preference']
+      });
+    }
+
+    return cityResults.slice(0, 5); // Return top 5 recommendations
+  }
+
+  private normalizeCityName(city: string): string {
+    return city.toLowerCase()
+      .replace(/[àáâãäå]/g, 'a')
+      .replace(/[èéêë]/g, 'e')
+      .replace(/[ìíîï]/g, 'i')
+      .replace(/[òóôõö]/g, 'o')
+      .replace(/[ùúûü]/g, 'u')
+      .replace(/[ýÿ]/g, 'y')
+      .replace(/[ç]/g, 'c')
+      .replace(/[ñ]/g, 'n')
+      .replace(/[^a-z0-9]/g, '');
+  }
+
+  private calculateDSTDate(year: number, rule: DSTRule['startRule']): Date {
+    const date = new Date(year, rule.month - 1, 1);
+    
+    // Find the specified week and day
+    let targetDate: Date;
+    if (rule.week > 0) {
+      // Positive week (1st, 2nd, etc.)
+      const firstDayOfMonth = date.getDay();
+      const daysToAdd = (rule.dayOfWeek - firstDayOfMonth + 7) % 7 + (rule.week - 1) * 7;
+      targetDate = new Date(year, rule.month - 1, 1 + daysToAdd);
+    } else {
+      // Negative week (last occurrence)
+      const lastDayOfMonth = new Date(year, rule.month, 0);
+      const lastDayWeekday = lastDayOfMonth.getDay();
+      const daysToSubtract = (lastDayWeekday - rule.dayOfWeek + 7) % 7;
+      targetDate = new Date(year, rule.month - 1, lastDayOfMonth.getDate() - daysToSubtract);
+    }
+
+    // Set the time
+    const [hours, minutes] = rule.time.split(':').map(Number);
+    targetDate.setHours(hours, minutes, 0, 0);
+
+    return targetDate;
   }
 }
 
-/**
- * Auto-detect timezone from city name
- */
+// Singleton instance
+export const timezoneHandler = TimezoneHandler.getInstance();
+
+// Legacy compatibility functions
 export function detectTimezoneFromCity(city: string, country?: string): string | null {
-  const cityLower = city.toLowerCase();
-  const countryLower = country?.toLowerCase();
-  
-  // First try exact city match
-  const exactMatch = CITY_TIMEZONE_MAP.find(location => 
-    location.city.toLowerCase() === cityLower && 
-    (!country || location.country.toLowerCase().includes(countryLower))
-  );
-  
-  if (exactMatch) {
-    return exactMatch.timezone;
-  }
-  
-  // Try partial city match
-  const partialMatch = CITY_TIMEZONE_MAP.find(location => 
-    location.city.toLowerCase().includes(cityLower) ||
-    cityLower.includes(location.city.toLowerCase())
-  );
-  
-  return partialMatch?.timezone || null;
+  const results = timezoneHandler.findTimezone(city, country);
+  return results.length > 0 ? results[0].timezone.id : null;
 }
 
-/**
- * Get timezone info with DST details
- */
-export function getTimezoneInfo(timezoneIdentifier: string): TimezoneInfo | null {
-  return WORLD_TIMEZONES.find(tz => tz.identifier === timezoneIdentifier) || null;
+export function getTimezonesByRegion(region: string): TimezoneData[] {
+  return timezoneHandler.getTimezonesByRegion(region);
 }
 
-/**
- * Group timezones by region for better UX
- */
-export function getTimezonesByRegion(): Record<string, TimezoneInfo[]> {
-  return WORLD_TIMEZONES.reduce((groups, timezone) => {
-    const region = timezone.region;
-    if (!groups[region]) {
-      groups[region] = [];
-    }
-    groups[region].push(timezone);
-    return groups;
-  }, {} as Record<string, TimezoneInfo[]>);
-}
-
-/**
- * Validate birth time accuracy for astrological calculations
- */
-export function validateBirthTimeAccuracy(
-  birthDateTime: string,
-  timezoneIdentifier: string
-): {
-  isValid: boolean;
-  accuracy: 'exact' | 'approximate' | 'unknown';
-  warnings: string[];
-  utcTime: string;
-  localSolarTime: string;
+export function validateBirthTimeAccuracy(timeString: string): {
+  isAccurate: boolean;
+  quality: string;
+  suggestions: string[];
 } {
-  const warnings: string[] = [];
+  const isRounded = !timeString.includes(':') || 
+    (timeString.includes(':') && parseInt(timeString.split(':')[1]) % 15 === 0);
   
-  try {
-    const { utcDateTime, isDST, effectiveOffset } = calculateUTCTime(birthDateTime, timezoneIdentifier);
-    
-    // Check for common accuracy issues
-    const birthTime = new Date(birthDateTime);
-    const minutes = birthTime.getMinutes();
-    const seconds = birthTime.getSeconds();
-    
-    let accuracy: 'exact' | 'approximate' | 'unknown' = 'exact';
-    
-    if (seconds === 0 && minutes % 15 === 0) {
-      accuracy = 'approximate';
-      warnings.push('Birth time appears rounded to 15-minute intervals. This may affect rising sign accuracy.');
-    }
-    
-    if (minutes === 0 && seconds === 0) {
-      accuracy = 'approximate';
-      warnings.push('Birth time appears rounded to the hour. Ascendant and house positions may be inaccurate.');
-    }
-    
-    if (isDST) {
-      warnings.push('Daylight Saving Time was active during birth. Calculations adjusted automatically.');
-    }
-    
-    // Calculate Local Solar Time (important for traditional calculations)
-    const timezone = getTimezoneInfo(timezoneIdentifier);
-    const coordinates = CITY_TIMEZONE_MAP.find(city => city.timezone === timezoneIdentifier)?.coordinates;
-    
-    let localSolarTime = utcDateTime;
-    if (coordinates) {
-      // Rough solar time adjustment (4 minutes per degree of longitude)
-      const solarAdjustment = coordinates.lng * 4; // minutes
-      const solarDate = new Date(new Date(utcDateTime).getTime() + (solarAdjustment * 60 * 1000));
-      localSolarTime = solarDate.toISOString();
-    }
-    
-    return {
-      isValid: true,
-      accuracy,
-      warnings,
-      utcTime: utcDateTime,
-      localSolarTime
-    };
-    
-  } catch (error) {
-    return {
-      isValid: false,
-      accuracy: 'unknown',
-      warnings: ['Invalid timezone or birth time format'],
-      utcTime: '',
-      localSolarTime: ''
-    };
-  }
+  return {
+    isAccurate: !isRounded,
+    quality: isRounded ? 'Rounded (±15 min accuracy)' : 'Precise (±2 min accuracy)',
+    suggestions: isRounded ? [
+      'Check birth certificate for exact time',
+      'Contact birth hospital for precise records'
+    ] : []
+  };
+}
+
+export interface TimezoneInfo {
+  id: string;
+  name: string;
+  offset: number;
+  country: string;
+  region: string;
 }

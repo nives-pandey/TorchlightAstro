@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from "recharts";
 import { Users, MapPin, BarChart3, Calendar, Sparkles, Globe, Clock, TrendingUp } from "lucide-react";
+import EnhancedAdminDashboard from "@/components/enhanced-admin-dashboard";
 
 interface AdminStats {
   totalUsers: number;
@@ -19,6 +20,11 @@ interface AdminStats {
 const COLORS = ['#8B5CF6', '#EC4899', '#10B981', '#F59E0B', '#EF4444', '#6366F1'];
 
 export default function AdminDashboard() {
+  // Use the new enhanced admin dashboard with timezone analytics
+  return <EnhancedAdminDashboard />;
+}
+
+function LegacyAdminDashboard() {
   const { data: stats, isLoading } = useQuery<AdminStats>({
     queryKey: ["/api/admin/analytics"],
     refetchInterval: 30000, // Refresh every 30 seconds
