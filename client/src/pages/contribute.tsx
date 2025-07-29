@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Heart, Globe, CreditCard, Smartphone, Bitcoin } from "lucide-react";
 import { Link } from "wouter";
 import ContributionSection from "@/components/contribution-section";
-import UniversalPaymentModal from "@/components/universal-payment-modal";
+import CosmicPaymentModal from "@/components/cosmic-payment-modal";
 
 // Initialize Stripe
 const stripePromise = import.meta.env.VITE_STRIPE_PUBLIC_KEY 
@@ -291,8 +291,8 @@ export default function ContributePage() {
         </div>
       </div>
 
-      {/* Universal Payment Modal */}
-      <UniversalPaymentModal
+      {/* Cosmic Payment Modal */}
+      <CosmicPaymentModal
         isOpen={showUniversalPayment}
         onClose={() => setShowUniversalPayment(false)}
         amount={25}

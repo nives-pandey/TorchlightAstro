@@ -58,9 +58,14 @@ export function useDonationModal() {
       }
     };
 
-    // Show modal after user spends significant time
+    // Show modal after user spends significant time AND has received value
     const timeoutId = setTimeout(() => {
-      showModal({ type: 'time_spent' });
+      // Only show if user has generated a chart or used features (received value)
+      const hasUsedFeatures = localStorage.getItem('torchlight_charts_generated') || 
+                             localStorage.getItem('torchlight_features_used');
+      if (hasUsedFeatures) {
+        showModal({ type: 'time_spent' });
+      }
     }, timeThreshold);
 
     window.addEventListener('beforeunload', handleBeforeUnload);
