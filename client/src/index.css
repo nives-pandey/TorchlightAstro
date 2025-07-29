@@ -39,28 +39,51 @@
   --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
 }
 
-/* NUCLEAR OPTION: Force ALL backgrounds to cosmic theme */
+/* ULTIMATE WHITE BACKGROUND ELIMINATION */
 * {
   background-color: transparent !important;
 }
 
-body, html, #root {
+/* Force gradient background on root elements */
+body, html, #root, main, .main, [role="main"] {
   background: linear-gradient(135deg, hsl(260, 60%, 25%) 0%, hsl(275, 70%, 45%) 50%, hsl(285, 80%, 35%) 100%) !important;
   background-attachment: fixed !important;
+  min-height: 100vh !important;
 }
 
-/* FORCE all cards and containers to use cosmic background - HIGHEST priority */
-.card, [data-card="true"], .bg-card, .Card, div[class*="Card"], div[class*="card"] {
-  background: linear-gradient(135deg, rgba(30, 15, 50, 0.9) 0%, rgba(55, 25, 95, 0.8) 50%, rgba(45, 20, 85, 0.9) 100%) !important;
-  background-color: rgba(30, 15, 50, 0.9) !important;
+/* TARGET SPECIFIC WHITE CONTAINERS */
+div[style*="background"], div[style*="white"], section, article, .container, .content {
+  background: linear-gradient(135deg, rgba(60, 30, 100, 0.7) 0%, rgba(80, 40, 120, 0.8) 50%, rgba(70, 35, 110, 0.7) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+/* FORCE all cards and containers to use cosmic background */
+.card, [data-card="true"], .bg-card, .Card, div[class*="Card"], div[class*="card"], 
+.rounded, .rounded-lg, .rounded-xl, .rounded-2xl, .border {
+  background: linear-gradient(135deg, rgba(60, 30, 100, 0.85) 0%, rgba(90, 50, 140, 0.8) 50%, rgba(75, 40, 120, 0.85) 100%) !important;
   backdrop-filter: blur(12px) !important;
+  border-color: rgba(147, 51, 234, 0.4) !important;
 }
 
-/* Override any white or light background utilities */
-.bg-white, .bg-white\/5, .bg-white\/10, .bg-white\/20, .bg-slate-50, .bg-gray-50, .bg-purple-50, .bg-indigo-50, .bg-pink-50, 
-.bg-gradient-to-r, .bg-gradient-to-br, .bg-gradient-to-l, .bg-gradient-to-bl {
-  background: linear-gradient(135deg, rgba(100, 50, 150, 0.6) 0%, rgba(120, 60, 170, 0.7) 100%) !important;
-  background-color: rgba(100, 50, 150, 0.6) !important;
+/* Override ALL white and light backgrounds */
+.bg-white, .bg-white\/5, .bg-white\/10, .bg-white\/20, .bg-slate-50, .bg-gray-50, .bg-purple-50, .bg-indigo-50, .bg-pink-50,
+.bg-gradient-to-r, .bg-gradient-to-br, .bg-gradient-to-l, .bg-gradient-to-bl, .bg-gray-100, .bg-slate-100 {
+  background: linear-gradient(135deg, rgba(90, 50, 140, 0.6) 0%, rgba(110, 60, 160, 0.7) 100%) !important;
+}
+
+/* ELIMINATE ANY REMAINING WHITE BACKGROUNDS - MAXIMUM FORCE */
+[style*="background: white"], [style*="background-color: white"], [style*="background:#fff"], [style*="background: #fff"] {
+  background: linear-gradient(135deg, rgba(60, 30, 100, 0.9) 0%, rgba(90, 50, 140, 0.85) 50%, rgba(75, 40, 120, 0.9) 100%) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Force any remaining light/white containers */
+div, section, article, main, aside, nav, header, footer {
+  background-color: transparent !important;
+}
+
+div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
+  background: linear-gradient(135deg, rgba(60, 30, 100, 0.8) 0%, rgba(90, 50, 140, 0.75) 50%, rgba(75, 40, 120, 0.8) 100%) !important;
 }
 
 /* Targeted cosmic theme fixes - NO global overrides */

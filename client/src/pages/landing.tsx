@@ -382,7 +382,13 @@ export default function Landing() {
           </div>
 
           {/* Contribution Section */}
-          <div className="max-w-4xl mx-auto mt-16">
+          <div 
+            className="max-w-4xl mx-auto mt-16"
+            style={{
+              background: 'transparent',
+              backgroundColor: 'transparent'
+            }}
+          >
             <ContributionSection onContribute={(amount) => {
               // Redirect to contribution page with selected amount
               window.location.href = `/contribute?amount=${amount}`;
