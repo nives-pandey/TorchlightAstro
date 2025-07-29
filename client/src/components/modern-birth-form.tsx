@@ -140,9 +140,29 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
     setTimeAccuracyWarnings(warnings);
   };
 
-  const onSubmit = (data: BirthFormData) => {
+  const onSubmit = async (data: BirthFormData) => {
     console.log('Birth form data:', data);
-    onComplete?.(data);
+    
+    // Generate comprehensive astrological analysis
+    try {
+      const response = await fetch('/api/generate-chart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      if (response.ok) {
+        const chartData = await response.json();
+        onComplete?.(chartData);
+      } else {
+        console.error('Failed to generate chart');
+        onComplete?.(data);
+      }
+    } catch (error) {
+      console.error('Error generating chart:', error);
+      onComplete?.(data);
+    }
+    
     onClose();
   };
 
@@ -248,7 +268,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         <FormLabel className="cosmic-label">Gender at Birth *</FormLabel>
                         <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
-                            <SelectTrigger className="cosmic-select">
+                            <SelectTrigger className="cosmic-select text-white">
                               <SelectValue placeholder="Select your gender at birth" />
                             </SelectTrigger>
                           </FormControl>
@@ -325,7 +345,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           handleCityChange(value);
                         }} value={field.value}>
                           <FormControl>
-                            <SelectTrigger className="cosmic-select">
+                            <SelectTrigger className="cosmic-select text-white">
                               <SelectValue placeholder="Select your birth city" />
                             </SelectTrigger>
                           </FormControl>
@@ -371,7 +391,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         <FormLabel className="cosmic-label">Timezone *</FormLabel>
                         <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
-                            <SelectTrigger className="cosmic-select">
+                            <SelectTrigger className="cosmic-select text-white">
                               <SelectValue placeholder="Select your timezone" />
                             </SelectTrigger>
                           </FormControl>
@@ -489,16 +509,16 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   <Button
                     type="button"
                     onClick={() => setCurrentStep(currentStep + 1)}
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                    className="cosmic-button text-lg px-8 py-3"
                   >
                     Next <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
                 ) : (
                   <Button
                     type="submit"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                    className="cosmic-button text-lg px-8 py-3"
                   >
-                    Create Profile
+                    Generate My Cosmic Profile ✨
                   </Button>
                 )}
               </div>

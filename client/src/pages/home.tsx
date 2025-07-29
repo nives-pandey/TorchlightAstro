@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ModernBirthForm from "@/components/modern-birth-form";
+import ChartResults from "@/components/chart-results";
 import PlanetarySymbols from "@/components/planetary-symbols";
 import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar } from "lucide-react";
 import { Link } from "wouter";
@@ -12,6 +13,8 @@ export default function Home() {
   const [showBirthForm, setShowBirthForm] = useState(false);
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [showSystemDialog, setShowSystemDialog] = useState(false);
+  const [chartData, setChartData] = useState<any>(null);
+  const [showResults, setShowResults] = useState(false);
 
   const personalSystems = [
     {
@@ -405,7 +408,24 @@ export default function Home() {
 
       {/* Birth Data Collection Modal */}
       {showBirthForm && (
-        <ModernBirthForm onClose={() => setShowBirthForm(false)} />
+        <ModernBirthForm 
+          onClose={() => setShowBirthForm(false)} 
+          onComplete={(data) => {
+            setChartData(data);
+            setShowResults(true);
+            setShowBirthForm(false);
+          }}
+        />
+      )}
+
+      {showResults && chartData && (
+        <ChartResults 
+          data={chartData} 
+          onClose={() => {
+            setShowResults(false);
+            setChartData(null);
+          }}
+        />
       )}
 
       {/* System Information Dialog */}
