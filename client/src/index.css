@@ -98,20 +98,39 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--cosmic-lavender);
     min-height: 100vh;
-    line-height: 1.6; /* Improved readability for 35-60 age group */
-    letter-spacing: 0.01em; /* Better for women's preference for readable text */
+    line-height: 1.65; /* Optimized for reading comfort */
+    letter-spacing: 0.005em; /* Subtle letter spacing for elegance */
+    font-size: 16px; /* Base font size for accessibility */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 500; /* Slightly lighter for elegance */
-    letter-spacing: -0.01em;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600; /* Stronger hierarchy */
+    letter-spacing: -0.025em; /* Tighter for impact */
     color: var(--cosmic-lavender);
+    line-height: 1.2; /* Tighter line height for headings */
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive scaling */
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 600;
   }
 
   .font-accent {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 400;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.015em;
   }
 
   /* Static effects only - NO animations */

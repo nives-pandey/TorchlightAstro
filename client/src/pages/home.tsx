@@ -267,62 +267,92 @@ export default function Home() {
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* Main Headline - match landing page typography */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight font-accent">
-              <span style={{background: 'var(--cosmic-gradient-2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>
+            {/* Main Headline - Enhanced typography */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+              <span 
+                style={{
+                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  WebkitBackgroundClip: 'text', 
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
                 Illuminating Your
               </span>
               <br />
-              <span style={{color: 'var(--cosmic-lavender)'}}>
+              <span 
+                className="block mt-2"
+                style={{
+                  color: 'hsl(240, 100%, 94%)',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+                }}
+              >
                 Cosmic Blueprint
               </span>
             </h1>
             
-            {/* Subheadline - match landing page style */}
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed mb-8" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+            {/* Enhanced subheadline */}
+            <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-12 font-light" 
+               style={{
+                 color: 'hsl(240, 100%, 94%)', 
+                 opacity: 0.95,
+                 textShadow: '0 1px 4px rgba(0,0,0,0.2)'
+               }}>
               Authentic ancient wisdom meets modern precision. Discover your complete astrological profile across{" "}
-              <span style={{color: 'var(--cosmic-gold)'}}>Western, Vedic, Chinese & Human Design</span> systems.
+              <span 
+                className="font-medium"
+                style={{
+                  color: 'hsl(51, 100%, 65%)',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                }}
+              >
+                Western, Vedic, Chinese & Human Design
+              </span> systems.
             </p>
             
             {/* Planetary Symbols Row */}
             <PlanetarySymbols />
             
-            {/* CTA Buttons - match landing page style */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            {/* Enhanced CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20">
               <Button 
                 onClick={() => setShowBirthForm(true)}
                 size="lg"
-                className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
+                className="font-semibold px-10 py-5 rounded-2xl text-xl shadow-2xl transition-all duration-300 hover:shadow-3xl hover:scale-105 border-0"
                 style={{
-                  background: 'var(--cosmic-gradient-2)',
-                  color: 'var(--cosmic-lavender)',
-                  border: 'none'
+                  background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 100%)',
+                  color: 'white',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.3)',
+                  boxShadow: '0 8px 32px rgba(138, 43, 226, 0.4)'
                 }}
               >
                 Create Your Chart
               </Button>
               <Button 
                 onClick={() => window.location.href = '/analysis'}
-                className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-8 py-4 text-lg backdrop-blur-sm"
-                style={{color: 'var(--cosmic-lavender)'}}
+                className="bg-white/15 hover:bg-white/25 border border-white/30 rounded-2xl px-10 py-5 text-xl backdrop-blur-md transition-all duration-300 hover:border-white/50"
+                style={{
+                  color: 'hsl(240, 100%, 94%)',
+                  textShadow: '0 1px 2px rgba(0,0,0,0.2)'
+                }}
               >
-                View Krishna Raj Demo
+                View Demo Chart
               </Button>
             </div>
             
-            {/* Trust Indicators - match landing page style */}
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
-              <div className="flex items-center space-x-2">
-                <Star className="h-5 w-5" style={{color: 'var(--cosmic-gold)'}} />
-                <span>Swiss Ephemeris Precision</span>
+            {/* Enhanced Trust Indicators */}
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-12 text-lg">
+              <div className="flex items-center space-x-3 group">
+                <Star className="h-6 w-6 transition-transform group-hover:scale-110" style={{color: 'hsl(51, 100%, 65%)'}} />
+                <span style={{color: 'hsl(240, 100%, 94%)', opacity: 0.9}}>Swiss Ephemeris Precision</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Shield className="h-5 w-5" style={{color: 'var(--cosmic-gold)'}} />
-                <span>25,000+ Year Heritage</span>
+              <div className="flex items-center space-x-3 group">
+                <Shield className="h-6 w-6 transition-transform group-hover:scale-110" style={{color: 'hsl(51, 100%, 65%)'}} />
+                <span style={{color: 'hsl(240, 100%, 94%)', opacity: 0.9}}>25,000+ Year Heritage</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Users className="h-5 w-5" style={{color: 'var(--cosmic-gold)'}} />
-                <span>Multi-System Integration</span>
+              <div className="flex items-center space-x-3 group">
+                <Users className="h-6 w-6 transition-transform group-hover:scale-110" style={{color: 'hsl(51, 100%, 65%)'}} />
+                <span style={{color: 'hsl(240, 100%, 94%)', opacity: 0.9}}>Multi-System Integration</span>
               </div>
             </div>
           </div>
