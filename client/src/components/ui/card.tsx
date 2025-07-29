@@ -8,10 +8,15 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
+    data-card="true"
     className={cn(
-      "rounded-lg border border-purple-400/20 bg-gradient-to-br from-slate-800/40 via-purple-900/30 to-indigo-900/40 backdrop-blur-sm text-white shadow-lg",
+      "rounded-lg border border-purple-400/20 text-white shadow-lg",
       className
     )}
+    style={{
+      background: 'linear-gradient(135deg, rgba(30, 15, 50, 0.8) 0%, rgba(55, 25, 95, 0.7) 50%, rgba(45, 20, 85, 0.8) 100%)',
+      backdropFilter: 'blur(12px)'
+    }}
     {...props}
   />
 ))

@@ -159,7 +159,7 @@ function PaymentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/50 dark:to-pink-950/50 p-4 rounded-xl border border-purple-200/50">
+      <div className="bg-purple-800/30 p-4 rounded-xl border border-purple-400/50">
         <div className="text-center mb-4">
           <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
             ${amount}

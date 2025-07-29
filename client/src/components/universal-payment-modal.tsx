@@ -175,7 +175,7 @@ function CryptoPaymentView({
       </div>
 
       {/* Payment Details */}
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 p-6 rounded-xl border border-purple-200/50">
+      <div className="bg-purple-800/30 p-6 rounded-xl border border-purple-400/50">
         <div className="space-y-4">
           {/* Amount */}
           <div className="flex justify-between items-center">

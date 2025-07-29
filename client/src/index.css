@@ -39,6 +39,18 @@
   --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
 }
 
+/* FORCE all cards to use cosmic background - HIGHEST priority */
+.card, [data-card="true"], .bg-card, .Card {
+  background: rgb(30 15 50 / 0.8) !important;
+  background-color: rgb(30 15 50 / 0.8) !important;
+}
+
+/* Override any white or light background utilities */
+.bg-white, .bg-white\/5, .bg-white\/10, .bg-white\/20, .bg-slate-50, .bg-gray-50, .bg-purple-50, .bg-indigo-50, .bg-pink-50 {
+  background: rgb(100 50 150 / 0.4) !important;
+  background-color: rgb(100 50 150 / 0.4) !important;
+}
+
 /* Targeted cosmic theme fixes - NO global overrides */
 
 @layer base {
