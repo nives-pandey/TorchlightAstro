@@ -653,7 +653,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                               <SelectValue placeholder="Select your timezone" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="max-h-60 z-[100] bg-white border-2 border-purple-300 shadow-xl">
+                          <SelectContent className="max-h-60 z-[100] bg-slate-900 border-2 border-purple-300 shadow-xl">
                             {WORLD_TIMEZONES.map((tz) => (
                               <SelectItem key={tz.id} value={tz.id}>
                                 {tz.name} ({tz.cities[0]}) - UTC{tz.offset >= 0 ? '+' : ''}{tz.offset}
@@ -703,7 +703,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         control={form.control}
                         name={`systems.${system.key}` as keyof BirthFormData['systems']}
                         render={({ field }) => (
-                          <Card className="bg-white/90 border-purple-300 p-4 hover:bg-white/95 transition-colors">
+                          <Card className="bg-slate-800/90 border-purple-300 p-4 hover:bg-slate-700/95 transition-colors">
                             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
@@ -729,7 +729,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                     control={form.control}
                     name="confirmed"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 bg-white/90 border border-purple-300 rounded-lg p-4">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 bg-slate-800/90 border border-purple-300 rounded-lg p-4">
                         <FormControl>
                           <Checkbox
                             checked={field.value}

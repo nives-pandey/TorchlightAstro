@@ -137,7 +137,7 @@ export default function LifestyleIntelligence() {
           </div>
 
           {/* System Synthesis Explanation */}
-          <Card className="bg-white/10 border-purple-400/30 backdrop-blur-md mb-8">
+          <Card className="bg-purple-800/40 border-purple-400/30 backdrop-blur-md mb-8">
             <CardHeader>
               <CardTitle className="text-white text-xl">
                 <Star className="inline mr-2" />
@@ -170,7 +170,7 @@ export default function LifestyleIntelligence() {
 
           {/* Lifestyle Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-white/10">
+            <TabsList className="grid w-full grid-cols-3 bg-purple-800/40">
               <TabsTrigger value="travel" className="text-white data-[state=active]:bg-blue-500">
                 <MapPin className="mr-2 h-4 w-4" />
                 Travel Destinations
@@ -188,7 +188,7 @@ export default function LifestyleIntelligence() {
             {/* Travel Intelligence */}
             <TabsContent value="travel" className="mt-6">
               <div className="space-y-6">
-                <Card className="bg-white/10 border-blue-400/30">
+                <Card className="bg-purple-800/40 border-blue-400/30">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center">
                       <Plane className="mr-2 h-5 w-5" />
@@ -197,7 +197,7 @@ export default function LifestyleIntelligence() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {lifestyleData.travel.optimal.map((dest, index) => (
-                      <Card key={index} className="bg-white/5 border-blue-300/20">
+                      <Card key={index} className="bg-purple-900/30 border-blue-300/20">
                         <CardContent className="p-4">
                           <div className="flex justify-between items-start mb-2">
                             <h4 className="text-lg font-semibold text-blue-300">{dest.destination}</h4>
@@ -224,7 +224,7 @@ export default function LifestyleIntelligence() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/10 border-red-400/30">
+                <Card className="bg-purple-800/40 border-red-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Destinations to Avoid</CardTitle>
                   </CardHeader>
@@ -246,7 +246,7 @@ export default function LifestyleIntelligence() {
             {/* Color Intelligence */}
             <TabsContent value="colors" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="bg-white/10 border-purple-400/30">
+                <Card className="bg-purple-800/40 border-purple-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Power Colors</CardTitle>
                   </CardHeader>
@@ -276,7 +276,7 @@ export default function LifestyleIntelligence() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/10 border-purple-400/30">
+                <Card className="bg-purple-800/40 border-purple-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Daily Colors</CardTitle>
                   </CardHeader>
@@ -290,7 +290,7 @@ export default function LifestyleIntelligence() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-white/10 border-purple-400/30">
+                <Card className="bg-purple-800/40 border-purple-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Seasonal Colors</CardTitle>
                   </CardHeader>
@@ -310,7 +310,7 @@ export default function LifestyleIntelligence() {
             <TabsContent value="gemstones" className="mt-6">
               <div className="space-y-6">
                 {/* Primary Recommendations */}
-                <Card className="bg-white/10 border-emerald-400/30">
+                <Card className="bg-purple-800/40 border-emerald-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Personalized Gemstone Recommendations</CardTitle>
                     <p className="text-gray-300 text-sm">Based on your complete astrological profile synthesis</p>
@@ -346,7 +346,7 @@ export default function LifestyleIntelligence() {
                 </Card>
 
                 {/* Planetary Gemstones */}
-                <Card className="bg-white/10 border-emerald-400/30">
+                <Card className="bg-purple-800/40 border-emerald-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Planetary Gemstone System</CardTitle>
                     <p className="text-gray-300 text-sm">Traditional Jyotish recommendations based on your chart</p>
@@ -363,7 +363,7 @@ export default function LifestyleIntelligence() {
                         { planet: "Saturn", stone: "Blue Sapphire", finger: "Middle finger", day: "Saturday", color: "#0F52BA" },
                         { planet: "Rahu", stone: "Hessonite", finger: "Middle finger", day: "Saturday", color: "#B87333" }
                       ].map((gem, index) => (
-                        <div key={index} className="p-3 bg-white/5 rounded-lg border border-emerald-400/20">
+                        <div key={index} className="p-3 bg-purple-900/30 rounded-lg border border-emerald-400/20">
                           <div className="text-center">
                             <div className="w-6 h-6 rounded-full mx-auto mb-2" style={{backgroundColor: gem.color}}></div>
                             <h5 className="font-semibold text-white">{gem.planet}</h5>
@@ -378,7 +378,7 @@ export default function LifestyleIntelligence() {
                 </Card>
 
                 {/* Cleansing & Care Instructions */}
-                <Card className="bg-white/10 border-emerald-400/30">
+                <Card className="bg-purple-800/40 border-emerald-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Gemstone Care & Activation</CardTitle>
                   </CardHeader>
@@ -419,7 +419,7 @@ export default function LifestyleIntelligence() {
                 </Card>
 
                 {/* Chakra Alignment */}
-                <Card className="bg-white/10 border-emerald-400/30">
+                <Card className="bg-purple-800/40 border-emerald-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Chakra Gemstone Alignment</CardTitle>
                     <p className="text-gray-300 text-sm">Balance your energy centers with targeted crystal therapy</p>
@@ -435,7 +435,7 @@ export default function LifestyleIntelligence() {
                         { chakra: "Third Eye", stone: "Amethyst", color: "#9370DB", location: "Between eyebrows" },
                         { chakra: "Crown", stone: "Clear Quartz", color: "#F8F8FF", location: "Top of head" }
                       ].map((chakra, index) => (
-                        <div key={index} className="p-4 bg-white/5 rounded-lg border border-emerald-400/20">
+                        <div key={index} className="p-4 bg-purple-900/30 rounded-lg border border-emerald-400/20">
                           <div className="text-center">
                             <div className="w-8 h-8 rounded-full mx-auto mb-2" style={{backgroundColor: chakra.color}}></div>
                             <h5 className="font-semibold text-white">{chakra.chakra}</h5>

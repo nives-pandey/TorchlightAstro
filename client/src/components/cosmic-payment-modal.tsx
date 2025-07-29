@@ -176,7 +176,7 @@ function CryptoPaymentView({
           <Input
             value={selectedCrypto.address}
             readOnly
-            className="font-mono text-sm bg-white/10 border-purple-400/50 text-white"
+            className="font-mono text-sm bg-purple-800/40 border-purple-400/50 text-white"
           />
           <Button
             variant="outline"
@@ -190,7 +190,7 @@ function CryptoPaymentView({
       </div>
 
       {/* QR Code Placeholder */}
-      <div className="bg-white/10 p-8 rounded-xl border-2 border-dashed border-purple-400/50">
+      <div className="bg-purple-800/40 p-8 rounded-xl border-2 border-dashed border-purple-400/50">
         <div className="text-center space-y-3">
           <QrCode className="w-16 h-16 mx-auto text-purple-300" />
           <p className="text-sm text-purple-200">
@@ -295,7 +295,7 @@ export default function CosmicPaymentModal({
       </div>
 
       <Tabs defaultValue="popular" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 bg-white/10">
+        <TabsList className="grid w-full grid-cols-2 bg-purple-800/40">
           <TabsTrigger value="popular" className="text-white">Most Popular</TabsTrigger>
           <TabsTrigger value="crypto" className="text-white">Cryptocurrency</TabsTrigger>
         </TabsList>
@@ -304,7 +304,7 @@ export default function CosmicPaymentModal({
           {paymentMethods.map((method) => (
             <Card
               key={method.id}
-              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-purple-400/30 hover:border-purple-300 bg-white/10 backdrop-blur-sm"
+              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-purple-400/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
               onClick={() => handleMethodSelect(method.id)}
             >
               <CardContent className="p-4">
@@ -343,7 +343,7 @@ export default function CosmicPaymentModal({
           {cryptoOptions.map((crypto) => (
             <Card
               key={crypto.symbol + crypto.network}
-              className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-white/10 backdrop-blur-sm ${
+              className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-purple-800/40 backdrop-blur-sm ${
                 crypto.recommended 
                   ? 'border-green-400/50 bg-green-500/20' 
                   : 'border-purple-400/30 hover:border-purple-300'

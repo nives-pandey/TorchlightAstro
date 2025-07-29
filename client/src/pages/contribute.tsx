@@ -171,7 +171,7 @@ export default function ContributePage() {
                 setClientSecret("");
                 setSelectedAmount(null);
               }}
-              className="text-white hover:bg-white/10"
+              className="text-white hover:bg-purple-800/40"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Contribution Options
@@ -210,7 +210,7 @@ export default function ContributePage() {
         {/* Header */}
         <div className="mb-8 text-center">
           <Link href="/">
-            <Button variant="ghost" className="text-white hover:bg-white/10 mb-4">
+            <Button variant="ghost" className="text-white hover:bg-purple-800/40 mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Torchlight
             </Button>
@@ -222,7 +222,7 @@ export default function ContributePage() {
 
         {/* Global Payment Options */}
         <div className="mt-12">
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+          <Card className="bg-purple-800/40 backdrop-blur-sm border-white/20">
             <CardHeader>
               <CardTitle className="text-center text-white mb-2">
                 Global Payment Options Available
@@ -234,28 +234,28 @@ export default function ContributePage() {
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <CreditCard className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Cards</p>
                   <p className="text-white/60 text-xs">32% global share</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Smartphone className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Digital Wallets</p>
                   <p className="text-white/60 text-xs">53% global share</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Bitcoin className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Crypto</p>
                   <p className="text-white/60 text-xs">USDT $0.01 fees</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Globe className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Regional</p>

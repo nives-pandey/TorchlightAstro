@@ -415,7 +415,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <Button 
                   onClick={exportAsImage}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
                 >
                   <Image className="w-6 h-6 text-pink-300" />
                   <span className="text-sm text-rose-200">Save as Image</span>
@@ -423,7 +423,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 
                 <Button 
                   onClick={exportToPDF}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
                 >
                   <FileText className="w-6 h-6 text-purple-300" />
                   <span className="text-sm text-rose-200">Export PDF</span>
@@ -431,7 +431,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 
                 <Button 
                   onClick={copyShareLink}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
                 >
                   <Link className="w-6 h-6 text-blue-300" />
                   <span className="text-sm text-rose-200">Copy Link</span>
@@ -439,7 +439,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 
                 <Button 
                   onClick={shareViaEmail}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-white/10 hover:bg-white/20 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
                 >
                   <Mail className="w-6 h-6 text-green-300" />
                   <span className="text-sm text-rose-200">Email Share</span>

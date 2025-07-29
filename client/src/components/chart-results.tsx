@@ -113,7 +113,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="bg-white/10 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-purple-400/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Star className="mr-2 h-4 w-4" />
@@ -125,7 +125,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/10 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-purple-400/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Heart className="mr-2 h-4 w-4" />
@@ -137,7 +137,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/10 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-purple-400/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Briefcase className="mr-2 h-4 w-4" />
@@ -149,7 +149,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-white/10 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-purple-400/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg">Current Transit</CardTitle>
               </CardHeader>
@@ -296,7 +296,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-white hover:bg-white/10"
+            className="absolute right-4 top-4 text-white hover:bg-purple-800/40"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -323,7 +323,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
 
         <CardContent className="space-y-6">
           <Tabs value={activeSystem} onValueChange={setActiveSystem} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-white/10">
+            <TabsList className="grid w-full grid-cols-4 bg-purple-800/40">
               <TabsTrigger value="western" className="text-white data-[state=active]:bg-purple-500">
                 Western
               </TabsTrigger>
@@ -340,7 +340,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
 
             {Object.entries(systemContent).map(([key, system]) => (
               <TabsContent key={key} value={key} className="mt-6">
-                <Card className="bg-white/5 border-white/20">
+                <Card className="bg-purple-900/30 border-white/20">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center text-xl">
                       {system.icon}
@@ -355,7 +355,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
             ))}
           </Tabs>
 
-          <div className="text-center mt-8 p-4 bg-white/5 rounded-lg border border-white/20">
+          <div className="text-center mt-8 p-4 bg-purple-900/30 rounded-lg border border-white/20">
             <p className="text-gray-300 text-sm">
               🌟 This analysis is based on authentic astronomical calculations using Swiss Ephemeris precision.
               <br />

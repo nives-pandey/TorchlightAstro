@@ -84,7 +84,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
       <CardContent className="space-y-6">
         {/* Mission Statement */}
-        <div className="bg-white/50 dark:bg-black/20 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+        <div className="bg-purple-900/300 dark:bg-black/20 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
           <div className="flex items-start space-x-3">
             <Globe className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
             <div>
@@ -222,7 +222,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
         </div>
 
         {/* Gratitude Message */}
-        <div className="text-center p-4 bg-white/50 dark:bg-black/20 rounded-lg border border-purple-200 dark:border-purple-700">
+        <div className="text-center p-4 bg-purple-900/300 dark:bg-black/20 rounded-lg border border-purple-200 dark:border-purple-700">
           <Heart className="h-6 w-6 text-red-500 mx-auto mb-2" />
           <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Thank you for being part of our mission to illuminate ancient wisdom for the modern world. 

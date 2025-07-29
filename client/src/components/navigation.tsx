@@ -84,7 +84,7 @@ export default function Navigation() {
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700" align="end" forceMount>
+              <DropdownMenuContent className="w-56 bg-slate-900 border border-purple-400/50" align="end" forceMount>
                 <DropdownMenuItem className="flex items-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                   <User className="mr-2 h-4 w-4" />
                   <span className="font-medium">{(user as any)?.firstName} {(user as any)?.lastName}</span>
@@ -107,7 +107,7 @@ export default function Navigation() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
+            <SheetContent side="right" className="w-[300px] bg-slate-900 border-purple-400/50">
               <div className="flex flex-col space-y-2 mt-8">
                 {navItems.map((item) => (
                   <Link

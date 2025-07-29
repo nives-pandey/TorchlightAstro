@@ -543,7 +543,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-full px-6 py-3 transition-all duration-300 ${
                   viewMode === '2d' 
                     ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
-                    : 'bg-white/10 text-rose-300 border border-pink-300/30 hover:bg-white/20'
+                    : 'bg-purple-800/40 text-rose-300 border border-pink-300/30 hover:bg-purple-700/50'
                 }`}
                 onClick={() => setViewMode('2d')}
               >
@@ -553,7 +553,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-full px-6 py-3 transition-all duration-300 ${
                   viewMode === '3d' 
                     ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
-                    : 'bg-white/10 text-rose-300 border border-pink-300/30 hover:bg-white/20'
+                    : 'bg-purple-800/40 text-rose-300 border border-pink-300/30 hover:bg-purple-700/50'
                 }`}
                 onClick={() => setViewMode('3d')}
               >
@@ -582,7 +582,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-2xl p-4 h-auto flex flex-col items-center gap-2 transition-all duration-300 ${
                   selectedAspects.includes(aspectType.name)
                     ? 'bg-gradient-to-br from-pink-500/30 to-rose-500/30 border-2 border-pink-400/50 shadow-lg scale-105'
-                    : 'bg-purple-900/20 border border-pink-300/20 hover:bg-white/10 hover:border-pink-400/30'
+                    : 'bg-purple-900/20 border border-pink-300/20 hover:bg-purple-800/40 hover:border-pink-400/30'
                 }`}
                 onClick={() => toggleAspectType(aspectType.name)}
               >

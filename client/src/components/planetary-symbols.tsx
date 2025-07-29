@@ -15,7 +15,7 @@ export default function PlanetarySymbols() {
   ];
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6">
+    <div className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6">
       <div className="text-center mb-6">
         <h3 className="text-xl font-semibold mb-2" 
             style={{
@@ -32,7 +32,7 @@ export default function PlanetarySymbols() {
       </div>
       <div className="grid grid-cols-2 gap-4">
         {planets.map((planet) => (
-          <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-white/5">
+          <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-purple-900/30">
             <div className="text-2xl" style={{color: 'hsl(51, 100%, 65%)'}}>{planet.symbol}</div>
             <div>
               <div className="font-medium text-sm" style={{color: 'hsl(240, 100%, 94%)'}}>{planet.name}</div>

@@ -280,7 +280,7 @@ export default function Home() {
           </div>
           <Button 
             onClick={() => window.location.href = '/landing'}
-            className="bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
+            className="bg-purple-800/40 hover:bg-purple-700/50 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
           >
             Landing Page
           </Button>
@@ -349,7 +349,7 @@ export default function Home() {
           {/* Features Preview - Match Landing Page with Navigation */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <Link href="/personal">
-              <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+              <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-white text-lg flex items-center gap-2">
                     <Sun className="w-5 h-5 text-orange-400" />
@@ -365,7 +365,7 @@ export default function Home() {
             </Link>
 
             <Link href="/compatibility">
-              <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+              <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-white text-lg flex items-center gap-2">
                     <Heart className="w-5 h-5 text-pink-400" />
@@ -381,7 +381,7 @@ export default function Home() {
             </Link>
 
             <Link href="/daily">
-              <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+              <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-white text-lg flex items-center gap-2">
                     <Calendar className="w-5 h-5 text-purple-400" />
@@ -410,7 +410,7 @@ export default function Home() {
               <Link href="/demo-chart">
                 <Button 
                   variant="outline"
-                  className="bg-white/10 hover:bg-white/20 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
+                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
                 >
                   🔮 View Sample Chart Output
                 </Button>
@@ -418,7 +418,7 @@ export default function Home() {
               <Link href="/lifestyle-intelligence">
                 <Button 
                   variant="outline"
-                  className="bg-white/10 hover:bg-white/20 border-2 border-green-400 text-white font-semibold px-6 py-3 rounded-xl"
+                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-green-400 text-white font-semibold px-6 py-3 rounded-xl"
                 >
                   🌟 Lifestyle Intelligence Demo
                 </Button>
@@ -426,7 +426,7 @@ export default function Home() {
               <Link href="/timezone-analytics">
                 <Button 
                   variant="outline"
-                  className="bg-white/10 hover:bg-white/20 border-2 border-blue-400 text-white font-semibold px-4 py-2 rounded-xl text-sm"
+                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-blue-400 text-white font-semibold px-4 py-2 rounded-xl text-sm"
                 >
                   🌍 Timezone Analytics
                 </Button>
@@ -467,7 +467,7 @@ export default function Home() {
 
       {/* System Information Dialog */}
       <Dialog open={showSystemDialog} onOpenChange={setShowSystemDialog}>
-        <DialogContent className="bg-white/5 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="bg-purple-900/30 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[80vh] overflow-y-auto">
           {selectedSystem && systemDetails[selectedSystem as keyof typeof systemDetails] && (
             <>
               <DialogHeader>
@@ -498,21 +498,21 @@ export default function Home() {
 
                 {/* System Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Globe className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Origin</span>
                     </div>
                     <p style={{color: 'hsl(240, 100%, 94%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
                   </div>
-                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Heritage</span>
                     </div>
                     <p style={{color: 'hsl(240, 100%, 94%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
                   </div>
-                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Star className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Accuracy</span>
@@ -521,7 +521,7 @@ export default function Home() {
                       {systemDetails[selectedSystem as keyof typeof systemDetails].accuracy}
                     </Badge>
                   </div>
-                  <div className="p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <User className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Difficulty</span>
@@ -645,7 +645,7 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
+                    className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
                   >
                     <div className="text-3xl sm:text-4xl mb-3">
                       {system.icon}
@@ -703,7 +703,7 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
+                    className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
                   >
                     <div className="text-4xl mb-4">
                       {system.icon}
@@ -744,7 +744,7 @@ export default function Home() {
           {/* Synthesis Feature */}
           <div className="mt-16">
             <div 
-              className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
+              className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
             >
               <div className="text-5xl mb-6">🌟</div>
               <h3 className="font-semibold text-2xl mb-4" 
@@ -815,7 +815,7 @@ export default function Home() {
             {dailyAreas.map((area, index) => (
               <div key={index}>
                 <div 
-                  className="bg-white/5 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg"
+                  className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg"
                 >
                   <area.icon className={`h-12 w-12 mx-auto mb-4 ${area.color}`} />
                   <h3 className="font-medium mb-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
