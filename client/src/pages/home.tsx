@@ -403,16 +403,26 @@ export default function Home() {
               Create Your Real Chart ✨
             </Button>
             <br />
-            <Link href="/demo-chart">
-              <Button 
-                variant="outline"
-                className="bg-white/10 hover:bg-white/20 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
-              >
-                🔮 View Sample Chart Output
-              </Button>
-            </Link>
+            <div className="space-x-4">
+              <Link href="/demo-chart">
+                <Button 
+                  variant="outline"
+                  className="bg-white/10 hover:bg-white/20 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
+                >
+                  🔮 View Sample Chart Output
+                </Button>
+              </Link>
+              <Link href="/lifestyle-intelligence">
+                <Button 
+                  variant="outline"
+                  className="bg-white/10 hover:bg-white/20 border-2 border-green-400 text-white font-semibold px-6 py-3 rounded-xl"
+                >
+                  🌟 Lifestyle Intelligence Demo
+                </Button>
+              </Link>
+            </div>
             <p className="text-gray-400 text-sm mt-2">
-              ↑ Click here to see what chart results look like before creating your own
+              ↑ See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)
             </p>
           </div>
         </div>
