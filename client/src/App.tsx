@@ -37,6 +37,7 @@ import LifestyleIntelligence from "@/pages/lifestyle-intelligence";
 import DemoChart from "@/pages/demo-chart";
 import TimezoneAnalytics from "@/pages/timezone-analytics";
 import AdminDashboard from "@/pages/admin-dashboard";
+import ContributePage from "@/pages/contribute";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -95,6 +96,7 @@ function Router() {
         <Route path="/demo-chart" component={DemoChart} />
         <Route path="/timezone-analytics" component={TimezoneAnalytics} />
         <Route path="/admin" component={AdminDashboard} />
+        <Route path="/contribute" component={ContributePage} />
         <Route component={NotFound} />
             </Switch>
           </motion.div>

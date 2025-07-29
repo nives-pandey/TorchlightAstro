@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import ContributionSection from "@/components/contribution-section";
 import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar } from "lucide-react";
 // No animations needed
 
@@ -378,6 +379,14 @@ export default function Landing() {
             >
               Free forever • No signup required • Start exploring immediately
             </p>
+          </div>
+
+          {/* Contribution Section */}
+          <div className="max-w-4xl mx-auto mt-16">
+            <ContributionSection onContribute={(amount) => {
+              // Redirect to contribution page with selected amount
+              window.location.href = `/contribute?amount=${amount}`;
+            }} />
           </div>
         </div>
       </main>

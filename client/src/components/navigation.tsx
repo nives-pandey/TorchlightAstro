@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Menu, LogOut, User } from "lucide-react";
+import { Menu, LogOut, User, Heart } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
@@ -60,6 +60,19 @@ export default function Navigation() {
           {/* Language Switcher & User Menu */}
           <div className="hidden md:flex items-center space-x-4">
             <LanguageSwitcher />
+            
+            {/* Contribution Button */}
+            <Link href="/contribute">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 font-medium"
+              >
+                <Heart className="h-4 w-4 mr-1" />
+                Support
+              </Button>
+            </Link>
+            
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">

@@ -2,7 +2,16 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
+import Stripe from "stripe";
 import { registerReportRoutes } from "./api-routes";
+
+// Initialize Stripe if keys are available
+let stripe: Stripe | null = null;
+if (process.env.STRIPE_SECRET_KEY) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2023-10-16",
+  });
+}
 import { astrologyEngine } from "./astrology-engine";
 import { kundaliGenerator } from "./kundali-generator";
 import { astrologyAI } from "./astrology-ai";
@@ -20,6 +29,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Register report generation routes
   registerReportRoutes(app);
+
+  // Stripe contribution endpoint
+  app.post("/api/create-payment-intent", async (req, res) => {
+    if (!stripe) {
+      return res.status(500).json({ 
+        error: "Payment processing is not configured. Please contact support." 
+      });
+    }
+
+    try {
+      const { amount, description } = req.body;
+      
+      if (!amount || amount < 1) {
+        return res.status(400).json({ error: "Invalid amount" });
+      }
+
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: Math.round(amount * 100), // Convert to cents
+        currency: "usd",
+        description: description || "Torchlight Contribution",
+        metadata: {
+          project: "torchlight-astrology",
+          type: "contribution"
+        }
+      });
+
+      res.json({ clientSecret: paymentIntent.client_secret });
+    } catch (error: any) {
+      console.error("Stripe payment intent error:", error);
+      res.status(500).json({ 
+        error: "Error creating payment intent: " + error.message 
+      });
+    }
+  });
 
   // Admin analytics route
   app.get("/api/admin/analytics", async (req: any, res) => {
