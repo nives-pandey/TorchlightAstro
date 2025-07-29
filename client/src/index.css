@@ -313,31 +313,54 @@
     transition: background 1s ease-in-out, color 0.5s ease-in-out;
   }
 
-  /* Enhanced form input styling with HIGH contrast */
+  /* Enhanced form input styling with MAXIMUM visibility */
   .cosmic-input {
-    @apply bg-white/25 border-white/50 text-white placeholder-white/80 focus:border-purple-300 focus:ring-purple-300/50;
-    min-height: 48px !important; /* Larger touch target */
-    font-size: 16px !important; /* Prevent zoom on mobile */
-    padding: 12px 16px !important; /* More generous padding */
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    border-width: 2px !important;
+    background: white !important;
+    border: 3px solid #6b46c1 !important;
+    color: #1f2937 !important;
+    min-height: 56px !important; 
+    font-size: 18px !important; 
+    padding: 14px 18px !important; 
+    box-shadow: 0 4px 15px rgba(107, 70, 193, 0.3) !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+  }
+  
+  .cosmic-input:focus {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3) !important;
+    outline: none !important;
+  }
+  
+  .cosmic-input::placeholder {
+    color: #6b7280 !important;
+    font-weight: 400 !important;
   }
 
-  /* Select components with HIGH visibility */
+  /* Select components with MAXIMUM visibility */
   .cosmic-select {
-    @apply bg-white/25 border-white/50 text-white;
-    min-height: 48px !important;
-    backdrop-filter: blur(12px);
-    border-width: 2px !important;
+    background: white !important;
+    border: 3px solid #6b46c1 !important;
+    color: #1f2937 !important;
+    min-height: 56px !important;
+    font-size: 18px !important;
+    padding: 14px 18px !important;
+    box-shadow: 0 4px 15px rgba(107, 70, 193, 0.3) !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
   }
 
-  /* Enhanced form labels with HIGH contrast */
+  /* Enhanced form labels with MAXIMUM visibility */
   .cosmic-label {
-    @apply text-white font-semibold text-lg;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 8px;
-    color: #ffffff !important;
+    color: #1f2937 !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+    text-shadow: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
   }
 
   /* Bright cosmic buttons */

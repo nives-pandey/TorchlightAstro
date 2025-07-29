@@ -335,19 +335,19 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-black/40 border-white/20 backdrop-blur-md">
+      <Card className="w-full max-w-3xl max-h-[95vh] overflow-y-auto bg-white/90 border-2 border-purple-400 backdrop-blur-md shadow-2xl">
         <CardHeader className="relative">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-white hover:bg-white/10"
+            className="absolute right-4 top-4 text-gray-800 hover:bg-gray-200 border border-gray-300"
           >
             <X className="h-4 w-4" />
           </Button>
           
-          <CardTitle className="text-white text-xl text-center mb-4">
-            Create Your Cosmic Profile
+          <CardTitle className="text-gray-900 text-xl text-center mb-4">
+            ✨ Create Your Cosmic Profile
           </CardTitle>
 
           {/* Progress Steps */}
@@ -356,14 +356,14 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               <div key={index} className="flex items-center">
                 <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
                   index <= currentStep 
-                    ? 'bg-purple-500 border-purple-500 text-white' 
-                    : 'border-white/30 text-white/50'
+                    ? 'bg-purple-600 border-purple-600 text-white' 
+                    : 'border-gray-400 text-gray-500 bg-gray-100'
                 }`}>
                   <step.icon className="h-4 w-4" />
                 </div>
                 {index < steps.length - 1 && (
                   <div className={`w-8 h-0.5 mx-2 ${
-                    index < currentStep ? 'bg-purple-500' : 'bg-white/20'
+                    index < currentStep ? 'bg-purple-600' : 'bg-gray-300'
                   }`} />
                 )}
               </div>
@@ -379,8 +379,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {currentStep === 0 && (
                 <div className="space-y-4">
                   <div className="text-center mb-6">
-                    <h3 className="text-white font-medium mb-2">Personal Information</h3>
-                    <p className="text-gray-300 text-sm">Tell us about yourself</p>
+                    <h3 className="text-gray-900 font-medium mb-2">Personal Information</h3>
+                    <p className="text-gray-700 text-sm">Tell us about yourself for personalized analysis</p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -429,7 +429,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         <FormLabel className="cosmic-label">Gender at Birth *</FormLabel>
                         <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
-                            <SelectTrigger className="cosmic-select text-white">
+                            <SelectTrigger className="cosmic-select">
                               <SelectValue placeholder="Select your gender at birth" />
                             </SelectTrigger>
                           </FormControl>
@@ -449,8 +449,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {currentStep === 1 && (
                 <div className="space-y-4">
                   <div className="text-center mb-6">
-                    <h3 className="text-white font-medium mb-2">Birth Details</h3>
-                    <p className="text-gray-300 text-sm">When and where were you born?</p>
+                    <h3 className="text-gray-900 font-medium mb-2">Birth Details</h3>
+                    <p className="text-gray-700 text-sm">Enter your exact birth date, time, and location for precise calculations</p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -477,17 +477,25 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                       name="birthTime"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="cosmic-label">Birth Time *</FormLabel>
+                          <FormLabel className="cosmic-label">
+                            Birth Time * <span className="text-sm font-normal">(24-hour format)</span>
+                          </FormLabel>
                           <FormControl>
-                            <Input 
-                              type="time" 
-                              className="cosmic-input text-lg"
-                              {...field}
-                              onChange={(e) => {
-                                field.onChange(e);
-                                validateTimeAccuracy();
-                              }}
-                            />
+                            <div className="space-y-2">
+                              <Input 
+                                type="time" 
+                                className="cosmic-input text-lg"
+                                {...field}
+                                onChange={(e) => {
+                                  field.onChange(e);
+                                  validateTimeAccuracy();
+                                }}
+                                placeholder="14:30 (2:30 PM)"
+                              />
+                              <p className="text-xs text-gray-600 bg-blue-50 p-2 rounded">
+                                💡 Use 24-hour format: 14:30 = 2:30 PM, 09:15 = 9:15 AM, 00:00 = Midnight
+                              </p>
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -506,7 +514,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           handleCityChange(value);
                         }} value={field.value}>
                           <FormControl>
-                            <SelectTrigger className="cosmic-select text-white">
+                            <SelectTrigger className="cosmic-select">
                               <SelectValue placeholder="Select your birth city" />
                             </SelectTrigger>
                           </FormControl>
@@ -552,7 +560,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         <FormLabel className="cosmic-label">Timezone *</FormLabel>
                         <Select onValueChange={field.onChange} value={field.value}>
                           <FormControl>
-                            <SelectTrigger className="cosmic-select text-white">
+                            <SelectTrigger className="cosmic-select">
                               <SelectValue placeholder="Select your timezone" />
                             </SelectTrigger>
                           </FormControl>
@@ -589,8 +597,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               {currentStep === 2 && (
                 <div className="space-y-4">
                   <div className="text-center mb-6">
-                    <h3 className="text-white font-medium mb-2">Analysis Systems</h3>
-                    <p className="text-gray-300 text-sm">Choose which astrological systems to include</p>
+                    <h3 className="text-gray-900 font-medium mb-2">Analysis Systems</h3>
+                    <p className="text-gray-700 text-sm">Choose which astrological systems to include in your comprehensive report</p>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4">
