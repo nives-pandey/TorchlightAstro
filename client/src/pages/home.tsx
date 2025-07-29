@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import DonationModal from "@/components/donation-modal";
+import { useDonationModal } from "@/hooks/useDonationModal";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -11,6 +13,7 @@ import { Link } from "wouter";
 
 export default function Home() {
   const [showBirthForm, setShowBirthForm] = useState(false);
+  const { isOpen, trigger, showModal, closeModal } = useDonationModal();
   const [selectedSystem, setSelectedSystem] = useState<string | null>(null);
   const [showSystemDialog, setShowSystemDialog] = useState(false);
   const [chartData, setChartData] = useState<any>(null);
@@ -443,6 +446,10 @@ export default function Home() {
           onComplete={(data) => {
             setChartData(data);
             setShowResults(true);
+            // Show donation modal after chart generation with delay
+            setTimeout(() => {
+              showModal({ type: 'chart_generated', delay: 3000 });
+            }, 1000);
             setShowBirthForm(false);
           }}
         />
@@ -905,6 +912,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Donation Modal */}
+      <DonationModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        trigger={trigger}
+      />
     </div>
   );
 }

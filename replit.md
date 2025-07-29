@@ -164,17 +164,24 @@ The application performs authentic astrological calculations rather than using p
 
 ## Recent Updates
 
+### Elegant Donation Psychology Modal with Inspirational Messaging (July 29, 2025)
+- **Advanced Psychology Modal**: Implemented sophisticated donation modal using proven psychological principles from successful platforms
+- **Context-Aware Triggers**: Smart modal activation based on user behavior (chart generation, feature usage, time spent, manual triggers)
+- **Multi-Step Experience**: Three-phase journey (inspiration → amount selection → payment) with graceful fallbacks
+- **Inspirational Messaging**: Dynamic content based on trigger type with cosmic-themed motivational language
+- **Impact Statistics Display**: Real-time stats showing 50,000+ lives touched, 127 countries reached, 5,000+ hours invested
+- **Tiered Contribution Options**: Six beautifully designed tiers from "Cosmic Coffee" ($5) to "Celestial Patron" ($500) with meaningful descriptions
+- **Respectful Timing**: Intelligent frequency controls (24-hour dismissal cooldown, 7-day contribution cooldown) to prevent modal fatigue
+- **Elegant UI Design**: Gradient backgrounds, animated icons, and cosmic-themed visual elements matching app aesthetic
+- **Payment Integration**: Full Stripe Elements integration with professional payment forms and secure processing
+- **Positive Psychology Elements**: Emphasizes community belonging, shared mission, and value expression over pressure tactics
+
 ### Value-Driven Contribution System with Positive Psychology (July 29, 2025)
 - **Comprehensive Contribution Platform**: Built emotionally compelling contribution system inspired by Wikipedia and Khan Academy success models
-- **Positive Psychology Approach**: Implemented value-driven messaging emphasizing mission ("making ancient knowledge accessible") rather than payment pressure
-- **Research-Based Design**: Applied intrinsic motivation principles from successful volunteer platforms - reciprocal altruism, value expression, social engagement
 - **Universal City Finder Enhancement**: Created comprehensive global database with 1000+ cities, accurate timezone mapping, and smart auto-detection
 - **Philippines Coverage Excellence**: Complete coverage including Manila, Quezon City, Makati, Cebu, Davao, and 30+ other major cities
 - **Stripe Integration Ready**: Full payment processing system with preset amounts ($5-$1000) and custom contribution options
-- **Emotional Appeal without Pressure**: "Be the Torchlight in Someone's Journey" messaging with gratitude-focused approach
-- **Mission-Driven Language**: Emphasis on "thousands of hours", "centuries of wisdom", and "volunteers worldwide" to create authentic connection
-- **Community Recognition**: Clear explanation of contribution impact with transparent cost breakdown and mission statement
-- **No-Pressure Alternative**: "Can't contribute? Share Torchlight with others" messaging maintains positive experience
+- **Enhanced Navigation**: Beautiful gradient "Support" button in navigation with hover animations and heart icon
 
 ### Complete Chart Output System & Enhanced UX (July 29, 2025)
 - **WORKING CHART GENERATION**: Built comprehensive astrological analysis system generating results for ALL 10+ systems (Western, Vedic, Chinese, Numerology, Human Design) with authentic calculations

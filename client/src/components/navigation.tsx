@@ -66,7 +66,7 @@ export default function Navigation() {
               <Button 
                 variant="ghost" 
                 size="sm"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 font-medium"
+                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 font-medium transition-all duration-200 hover:scale-105 shadow-md"
               >
                 <Heart className="h-4 w-4 mr-1" />
                 Support
