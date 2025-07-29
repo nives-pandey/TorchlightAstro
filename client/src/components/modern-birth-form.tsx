@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { X, Calendar, MapPin, Clock, User, ChevronRight, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { WORLD_TIMEZONES } from "@/lib/timezone-handler";
 import { universalCityFinder } from "@/lib/universal-city-finder";
+import { geoNamesCityFinder, type GeoNamesCityData } from "@/lib/geonames-city-finder";
 import AccessibilityToggle from "./accessibility-toggle";
 
 const birthFormSchema = z.object({
@@ -76,19 +77,98 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   const { handleSubmit, watch, setValue, getValues } = form;
   const watchedValues = watch();
 
-  // Auto-detect timezone when city changes using Universal City Finder
-  const handleCityChange = (city: string) => {
+  // Enhanced city search with GeoNames API
+  const [citySearchQuery, setCitySearchQuery] = useState("");
+  const [citySearchResults, setCitySearchResults] = useState<GeoNamesCityData[]>([]);
+  const [showCityResults, setShowCityResults] = useState(false);
+  const [isSearchingCities, setIsSearchingCities] = useState(false);
+
+  // Auto-detect timezone when city changes using enhanced finder
+  const handleCityChange = async (city: string) => {
+    // Try GeoNames API first for enhanced accuracy
+    try {
+      const results = await geoNamesCityFinder.smartSearch(city);
+      if (results.length > 0) {
+        const bestMatch = results[0];
+        setValue('timezone', bestMatch.timezone);
+        setValue('birthCountry', bestMatch.country);
+        return;
+      }
+    } catch (error) {
+      console.warn('GeoNames API unavailable, using fallback');
+    }
+
+    // Fallback to static city finder
     const timezone = universalCityFinder.getTimezone(city);
     if (timezone) {
       setValue('timezone', timezone);
     }
     
-    // Auto-set country based on city data
     const cityData = universalCityFinder.getCityData(city);
     if (cityData) {
       setValue('birthCountry', cityData.country);
     }
   };
+
+  // Enhanced city search functionality
+  const searchCities = async (query: string) => {
+    if (query.length < 2) {
+      setCitySearchResults([]);
+      setShowCityResults(false);
+      return;
+    }
+
+    setIsSearchingCities(true);
+    
+    try {
+      // Use GeoNames API for comprehensive global search
+      const results = await geoNamesCityFinder.smartSearch(query);
+      setCitySearchResults(results.slice(0, 8)); // Limit to 8 results for UI
+      setShowCityResults(results.length > 0);
+    } catch (error) {
+      // Fallback to static city finder
+      const fallbackResults = universalCityFinder.searchCities(query, 8);
+      const mappedResults: GeoNamesCityData[] = fallbackResults.map(city => ({
+        city: city.city,
+        country: city.country,
+        region: city.region,
+        timezone: city.timezone,
+        utcOffset: city.utcOffset,
+        latitude: city.latitude,
+        longitude: city.longitude,
+        population: city.population,
+        countryCode: city.country.substring(0, 2).toUpperCase(),
+        geonameId: Math.random() * 1000000 // Temporary ID for fallback
+      }));
+      setCitySearchResults(mappedResults);
+      setShowCityResults(mappedResults.length > 0);
+    }
+
+    setIsSearchingCities(false);
+  };
+
+  // Handle city selection from search results
+  const handleCitySelect = (selectedCity: GeoNamesCityData) => {
+    setValue('birthCity', selectedCity.city);
+    setValue('birthCountry', selectedCity.country);
+    setValue('timezone', selectedCity.timezone);
+    setCitySearchQuery(selectedCity.city);
+    setShowCityResults(false);
+  };
+
+  // Close search results when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (showCityResults) {
+        setShowCityResults(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showCityResults]);
 
   // Enhanced time accuracy validation with quality scoring
   const validateTimeAccuracy = () => {
@@ -480,26 +560,64 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="cosmic-label">Birth City *</FormLabel>
-                        <Select onValueChange={(value) => {
-                          field.onChange(value);
-                          handleCityChange(value);
-                        }} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger className="cosmic-select">
-                              <SelectValue placeholder="Select your birth city" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent className="max-h-60 z-[100] bg-white border-2 border-purple-300 shadow-xl">
-                            {globalCities.map((city) => (
-                              <SelectItem key={city} value={city}>
-                                {city}
-                                {city.includes("Manila") || city.includes("Quezon") || city.includes("Cebu") ? (
-                                  <Badge variant="outline" className="ml-2 text-xs">Philippines</Badge>
-                                ) : null}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <FormControl>
+                          <div className="relative">
+                            <Input 
+                              placeholder="Search for your birth city..."
+                              className="cosmic-input text-lg"
+                              value={citySearchQuery || field.value}
+                              onChange={(e) => {
+                                const query = e.target.value;
+                                setCitySearchQuery(query);
+                                field.onChange(query);
+                                searchCities(query);
+                              }}
+                              onFocus={() => {
+                                if (citySearchResults.length > 0) {
+                                  setShowCityResults(true);
+                                }
+                              }}
+                            />
+                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                              {isSearchingCities ? (
+                                <div className="animate-spin h-5 w-5 border-2 border-purple-400 border-t-transparent rounded-full" />
+                              ) : (
+                                <MapPin className="h-5 w-5 text-purple-400" />
+                              )}
+                            </div>
+                            
+                            {/* Enhanced City Search Results */}
+                            {showCityResults && citySearchResults.length > 0 && (
+                              <div className="absolute z-10 w-full mt-1 bg-slate-800/95 border border-purple-400/50 rounded-lg shadow-xl max-h-60 overflow-y-auto">
+                                {citySearchResults.map((city, index) => (
+                                  <div
+                                    key={`${city.geonameId}-${index}`}
+                                    className="p-3 hover:bg-purple-600/20 cursor-pointer border-b border-purple-400/20 last:border-b-0 transition-colors"
+                                    onClick={() => handleCitySelect(city)}
+                                  >
+                                    <div className="flex justify-between items-start">
+                                      <div className="flex-1">
+                                        <div className="text-white font-medium">{city.city}</div>
+                                        <div className="text-purple-200 text-sm">
+                                          {city.adminName1 && `${city.adminName1}, `}{city.country}
+                                        </div>
+                                        <div className="text-purple-300 text-xs mt-1">
+                                          {city.timezone} • Population: {city.population.toLocaleString()}
+                                        </div>
+                                      </div>
+                                      <div className="text-purple-300 text-xs ml-2">
+                                        {city.region}
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                                <div className="p-2 text-center text-xs text-purple-300 bg-slate-900/50">
+                                  Enhanced by GeoNames • 11M+ cities worldwide
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
