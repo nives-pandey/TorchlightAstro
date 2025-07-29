@@ -64,7 +64,7 @@ export default function Home() {
   const dailyAreas = [
     { icon: Heart, title: "Love & Relationships", color: "text-pink-400" },
     { icon: Briefcase, title: "Career & Finance", color: "text-green-400" },
-    { icon: Dumbbell, title: "Health & Wellness", color: "text-blue-400" },
+    { icon: Dumbbell, title: "Health & Wellness", color: "text-emerald-400" },
     { icon: Lightbulb, title: "Personal Growth", color: "text-purple-400" }
   ];
 
@@ -258,7 +258,7 @@ export default function Home() {
         <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
-        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
+        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-purple-400 rounded-full opacity-40" />
       </div>
 
       {/* Header - Match Landing Page */}
@@ -378,7 +378,7 @@ export default function Home() {
               <Card className="bg-white/10 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
                 <CardHeader className="pb-3">
                   <CardTitle className="text-white text-lg flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-blue-400" />
+                    <Calendar className="w-5 h-5 text-purple-400" />
                     Daily Guidance
                   </CardTitle>
                 </CardHeader>
@@ -469,7 +469,7 @@ export default function Home() {
                       <User className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Difficulty</span>
                     </div>
-                    <Badge variant="outline" className="text-blue-400 border-blue-400">
+                    <Badge variant="outline" className="text-purple-400 border-purple-400">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].difficulty}
                     </Badge>
                   </div>

@@ -960,5 +960,5 @@
 }
 
 .status-planned {
-  @apply bg-blue-500/20 text-blue-300 border border-blue-500/30 px-3 py-1 rounded-full text-sm font-medium;
+  @apply bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm font-medium;
 }
