@@ -294,23 +294,23 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 lg:p-6 z-50">
+    <div className="fixed inset-0 bg-gradient-to-br from-purple-900/60 via-indigo-900/60 to-blue-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 lg:p-6 z-50">
       <AccessibilityToggle />
-      <Card className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl max-h-[98vh] sm:max-h-[95vh] overflow-y-auto bg-white/95 sm:bg-white/90 border-2 sm:border-3 lg:border-4 border-purple-400 backdrop-blur-md shadow-2xl rounded-lg sm:rounded-xl lg:rounded-2xl transition-all duration-300">
+      <Card className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl max-h-[98vh] sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-2 sm:border-3 lg:border-4 border-purple-500/50 shadow-2xl rounded-lg sm:rounded-xl lg:rounded-2xl transition-all duration-300">
         <CardHeader className="relative p-4 sm:p-6 lg:p-8">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-2 sm:right-4 top-2 sm:top-4 text-gray-800 hover:bg-gray-200 border border-gray-300 h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
+            className="absolute right-2 sm:right-4 top-2 sm:top-4 text-purple-300 hover:bg-purple-500/20 border border-purple-400/30 h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
           >
             <X className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </Button>
           
-          <CardTitle className="text-gray-900 text-lg sm:text-xl lg:text-2xl xl:text-3xl text-center mb-2 sm:mb-4 font-bold">
+          <CardTitle className="text-white text-lg sm:text-xl lg:text-2xl xl:text-3xl text-center mb-2 sm:mb-4 font-bold">
             ✨ Create Your Cosmic Profile
           </CardTitle>
-          <p className="text-gray-700 text-sm sm:text-base lg:text-lg text-center mb-4 sm:mb-6">
+          <p className="text-purple-200 text-sm sm:text-base lg:text-lg text-center mb-4 sm:mb-6">
             Comprehensive astrological analysis across 10+ ancient systems
           </p>
 
