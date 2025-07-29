@@ -247,7 +247,11 @@ export default function Home() {
   return (
     <div 
       className="min-h-screen text-white overflow-hidden" 
-      style={{background: 'var(--cosmic-gradient-1)'}}
+      style={{
+        background: 'var(--cosmic-gradient-1)',
+        position: 'relative',
+        zIndex: 1
+      }}
     >
       {/* Floating particles background - match landing page */}
       <div 
