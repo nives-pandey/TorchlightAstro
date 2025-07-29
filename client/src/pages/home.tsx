@@ -248,7 +248,7 @@ export default function Home() {
     <div 
       className="min-h-screen text-white overflow-hidden" 
       style={{
-        background: 'var(--cosmic-gradient-1)',
+        background: 'linear-gradient(135deg, hsl(240, 35%, 20%), hsl(275, 70%, 45%))',
         position: 'relative',
         zIndex: 1
       }}
