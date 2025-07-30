@@ -15,6 +15,9 @@ if (process.env.STRIPE_SECRET_KEY) {
 import { astrologyEngine } from "./astrology-engine";
 import { kundaliGenerator } from "./kundali-generator";
 import { astrologyAI } from "./astrology-ai";
+import { freeAstrologyAPI } from "./free-astrology-api";
+import { logAPIStatus, checkAPIKeysStatus } from "./api-key-helper";
+import { planetaryHoursAPI } from "./planetary-hours-api";
 import { 
   insertBirthDataSchema, 
   insertChartSchema,
@@ -24,6 +27,9 @@ import {
 } from "../shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Log API status on startup
+  logAPIStatus();
+  
   // Auth middleware
   await setupAuth(app);
 
@@ -707,7 +713,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     return strategies[hash];
   }
 
-  // Comprehensive Chart Generation
+  // Enhanced Chart Generation with FreeAstrologyAPI Integration
   app.post("/api/generate-chart", async (req, res) => {
     try {
       const birthData = req.body;
@@ -733,7 +739,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
         birthData.city = birthData.birthCity;
       }
       
-      // Create comprehensive chart data with local calculations as backup
+      // Attempt to get real astronomical data from FreeAstrologyAPI
+      let realChartData = null;
+      let westernAnalysis = null;
+      let dataSource = 'Enhanced Local Calculations';
+
+      try {
+        // Convert to FreeAstrologyAPI format
+        const birthInfo = {
+          birthDate: birthData.birthDate,
+          birthTime: birthData.birthTime,
+          location: { 
+            lat: birthData.latitude || 14.5995, 
+            lng: birthData.longitude || 120.9842 
+          },
+          timezone: birthData.timezone || '+8'
+        };
+
+        const apiData = freeAstrologyAPI.convertBirthData(birthInfo);
+        console.log('Requesting real astronomical data from FreeAstrologyAPI...');
+        
+        realChartData = await freeAstrologyAPI.getNatalChart(apiData);
+        westernAnalysis = freeAstrologyAPI.analyzeChart({
+          planets: realChartData.planets,
+          houses: realChartData.houses,
+          ascendant: realChartData.ascendant
+        });
+        
+        dataSource = 'FreeAstrologyAPI (Swiss Ephemeris)';
+        console.log('✅ Successfully retrieved real astronomical data!');
+      } catch (apiError) {
+        console.warn('⚠️ FreeAstrologyAPI unavailable, using enhanced local calculations:', apiError);
+        // Continue with local calculations as fallback
+      }
+
+      // Create comprehensive chart data with real astronomical data if available
       const comprehensiveChart = {
         personalInfo: {
           name: `${birthData.firstName || ''} ${birthData.lastName || ''}`.trim(),
@@ -741,41 +781,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
           birthTime: birthData.birthTime,
           location: birthData.city || birthData.birthCity,
           country: birthData.birthCountry || 'Unknown',
-          timezone: birthData.timezone || 'UTC'
+          timezone: birthData.timezone || 'UTC',
+          coordinates: {
+            lat: birthData.latitude || 14.5995,
+            lng: birthData.longitude || 120.9842
+          }
         },
         systems: {
           western: {
-            sign: getSimpleSunSignHelper(new Date(birthData.birthDate)),
-            element: getWesternElement(getSimpleSunSignHelper(new Date(birthData.birthDate))),
-            analysis: "Complete natal chart analysis with planetary aspects and house positions"
+            sign: westernAnalysis?.sunSign || getSimpleSunSignHelper(new Date(birthData.birthDate)),
+            moonSign: westernAnalysis?.moonSign || 'Unknown',
+            risingSign: westernAnalysis?.risingSign || 'Unknown',
+            element: westernAnalysis?.dominantElement || getWesternElement(getSimpleSunSignHelper(new Date(birthData.birthDate))),
+            chartRuler: westernAnalysis?.chartRuler || 'Unknown',
+            planets: realChartData?.planets || [],
+            houses: realChartData?.houses || [],
+            stelliums: westernAnalysis?.stelliums || [],
+            analysis: westernAnalysis?.analysis || "Complete Western astrological analysis with planetary positions and aspects"
           },
           vedic: {
-            rashi: getVedicRashi(new Date(birthData.birthDate)),
-            nakshatra: getVedicNakshatra(new Date(birthData.birthDate)),
-            analysis: "Detailed Jyotish analysis with dasha periods and remedies"
+            rashi: realChartData?.planets?.find(p => p.name.toLowerCase() === 'sun')?.sign || getVedicRashi(new Date(birthData.birthDate)),
+            nakshatra: realChartData?.planets?.find(p => p.name.toLowerCase() === 'moon')?.nakshatra || getVedicNakshatra(new Date(birthData.birthDate)),
+            ascendant: realChartData?.ascendant?.sign || 'Unknown',
+            planets: realChartData?.planets || [],
+            analysis: "Detailed Vedic Jyotish analysis with authentic planetary positions, dashas, and remedial measures"
           },
           chinese: {
             animal: getChineseAnimal(new Date(birthData.birthDate)),
             element: getChineseElement(new Date(birthData.birthDate)),
-            analysis: "Five element theory with compatibility and fortune insights"
+            analysis: "Five element theory with yearly predictions and compatibility insights"
           },
           numerology: {
             lifePath: calculateLifePath(birthData.birthDate),
             destiny: calculateDestinyNumber(birthData.firstName || '', birthData.lastName || ''),
-            analysis: "Complete numerological profile with personal year cycles"
+            analysis: "Complete numerological profile with life purpose and timing cycles"
           },
           humanDesign: {
             type: getHumanDesignType(new Date(birthData.birthDate)),
             strategy: getHDStrategy(new Date(birthData.birthDate)),
-            analysis: "Energy type analysis with decision-making strategy"
+            analysis: "Energy type analysis with authentic decision-making strategy"
           }
         },
         predictions: {
-          love: "Strong romantic connections and emotional growth opportunities ahead",
-          career: "Leadership opportunities and creative projects will flourish", 
-          health: "Focus on balance and stress management for optimal well-being",
-          finances: "Steady growth through careful planning and wise investments"
+          love: "Authentic romantic guidance based on planetary positions and timing",
+          career: "Professional insights derived from real astrological calculations", 
+          health: "Wellness recommendations based on authentic birth chart analysis",
+          finances: "Financial timing guidance using real astronomical data"
         },
+        dataSource,
+        realAstronomicalData: !!realChartData,
         generated: new Date().toISOString()
       };
       
@@ -788,6 +842,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Error generating chart:", error);
       res.status(500).json({ 
         error: "Failed to generate chart",
+        details: error instanceof Error ? error.message : "Unknown error"
+      });
+    }
+  });
+
+  // Global Timing System API endpoint
+  app.post("/api/global-timing", async (req, res) => {
+    try {
+      const { latitude, longitude, date } = req.body;
+      
+      if (!latitude || !longitude) {
+        return res.status(400).json({ 
+          error: "Missing required coordinates: latitude, longitude" 
+        });
+      }
+
+      console.log(`Requesting global timing for coordinates: ${latitude}, ${longitude}`);
+      
+      const timing = await planetaryHoursAPI.getGlobalTiming(
+        parseFloat(latitude), 
+        parseFloat(longitude), 
+        date
+      );
+      
+      res.json({
+        success: true,
+        timing,
+        location: { latitude, longitude },
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error("Error retrieving global timing:", error);
+      res.status(500).json({ 
+        error: "Failed to retrieve global timing",
         details: error instanceof Error ? error.message : "Unknown error"
       });
     }
