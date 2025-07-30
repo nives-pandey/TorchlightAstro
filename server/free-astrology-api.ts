@@ -148,35 +148,31 @@ class FreeAstrologyAPI {
   }
 
   // Convert birth data format from our app to FreeAstrologyAPI format
-  convertBirthData(birthInfo: {
-    birthDate: string;
-    birthTime: string;
-    location: { lat: number; lng: number };
-    timezone?: string;
-  }): BirthData {
-    const [year, month, day] = birthInfo.birthDate.split('-').map(Number);
-    const [hour, minute] = birthInfo.birthTime.split(':').map(Number);
-
-    // Calculate timezone offset (default to UTC if not provided)
-    let tzone = 0;
-    if (birthInfo.timezone) {
-      // Simple timezone parsing - could be enhanced
-      if (birthInfo.timezone.includes('+')) {
-        tzone = parseFloat(birthInfo.timezone.replace('UTC+', ''));
-      } else if (birthInfo.timezone.includes('-')) {
-        tzone = -parseFloat(birthInfo.timezone.replace('UTC-', ''));
+  convertBirthData(birthInfo: any): BirthData {
+    const birthDate = new Date(birthInfo.birthDate);
+    const [hours, minutes] = birthInfo.birthTime.split(':').map(Number);
+    
+    // Include birth location details for comprehensive analysis
+    const birthLocation = {
+      city: birthInfo.city || birthInfo.birthCity || 'Unknown',
+      country: birthInfo.country || birthInfo.birthCountry || 'Unknown',
+      coordinates: {
+        lat: parseFloat(birthInfo.latitude) || 0,
+        lon: parseFloat(birthInfo.longitude) || 0
       }
-    }
-
+    };
+    
+    console.log(`🌍 Birth Location Integration: ${birthLocation.city}, ${birthLocation.country} (${birthLocation.coordinates.lat}, ${birthLocation.coordinates.lon})`);
+    
     return {
-      day,
-      month,
-      year,
-      hour,
-      min: minute,
-      lat: birthInfo.location.lat,
-      lon: birthInfo.location.lng,
-      tzone
+      day: birthDate.getDate(),
+      month: birthDate.getMonth() + 1,
+      year: birthDate.getFullYear(),
+      hour: hours,
+      min: minutes,
+      lat: birthLocation.coordinates.lat,
+      lon: birthLocation.coordinates.lon,
+      tzone: parseFloat(birthInfo.timezone) || 0
     };
   }
 

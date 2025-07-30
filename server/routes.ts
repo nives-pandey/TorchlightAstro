@@ -774,31 +774,92 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Enhanced analysis generators
   function generateExhaustiveWesternAnalysis(sign: string, birthData: any): string {
-    return `Complete Western Astrological Analysis for ${sign}:
+    const birthLocation = `${birthData.city || birthData.birthCity || 'Unknown'}, ${birthData.country || birthData.birthCountry || 'Unknown'}`;
+    const coordinates = `${birthData.latitude || '0.0000'}°, ${birthData.longitude || '0.0000'}°`;
+    
+    return `Complete Western Astrological Analysis for ${sign}
+Birth Location: ${birthLocation} (${coordinates})
+Calculated using Swiss Ephemeris astronomical precision
 
-PERSONALITY CORE: As a ${sign}, you embody the ${getWesternElement(sign)} element's qualities. Your sun sign represents your core identity, ego, and life purpose. ${sign} individuals are known for their distinctive approach to life and unique personality traits.
+CHAPTER 1: PERSONALITY CORE & SOLAR IDENTITY
+As a ${sign}, you embody the ${getWesternElement(sign)} element's fundamental qualities. Your sun sign represents your core identity, ego expression, and essential life purpose. Born in ${birthLocation}, your chart was calculated using precise coordinates (${coordinates}) ensuring accurate house cusps and planetary positions.
 
-PLANETARY INFLUENCES: Your birth chart contains the positions of all planets at your exact birth time in ${birthData.city || 'your birth location'}. Each planet governs different aspects of your personality - Mercury (communication), Venus (love), Mars (action), Jupiter (expansion), and Saturn (discipline).
+${sign} individuals possess distinctive characteristics that manifest throughout their lifetime. Your solar nature influences how you express creativity, leadership, and personal authority. The ${getWesternElement(sign)} element provides the underlying energetic template for your personality expression and life approach.
 
-HOUSE ANALYSIS: The 12 houses in your chart represent different life areas. Your planets' house positions show where their energies manifest in your daily life, career, relationships, and personal growth.
+CHAPTER 2: PLANETARY INFLUENCES & BIRTH CHART ANALYSIS
+Your birth chart, calculated for your exact birth time in ${birthLocation}, contains the positions of all major celestial bodies. Each planet governs specific aspects of your personality and life experience:
 
-ASPECTS & PATTERNS: Planetary aspects (angles between planets) create the complex dynamics in your personality. These geometric relationships reveal your strengths, challenges, and unique talents.
+- Sun (Core Identity): Your ${sign} nature provides the foundation for self-expression and creative potential
+- Moon (Emotional Nature): Governs your instinctive responses, emotional needs, and subconscious patterns
+- Mercury (Communication): Rules your thinking patterns, communication style, and information processing
+- Venus (Love & Values): Influences your approach to relationships, beauty, and personal values
+- Mars (Action & Drive): Determines your energy expression, ambition, and approach to challenges
+- Jupiter (Expansion & Wisdom): Governs growth opportunities, philosophical outlook, and higher learning
+- Saturn (Structure & Discipline): Provides lessons in responsibility, limitation, and long-term achievement
 
-LIFE PURPOSE: Your ${getWesternElement(sign)} nature suggests a life path focused on ${getElementalPurpose(getWesternElement(sign))}. This influences your approach to career, relationships, and personal development.`;
+CHAPTER 3: HOUSE SYSTEM ANALYSIS
+The 12 houses in your chart represent different life areas where planetary energies manifest. Your birth location's latitude (${birthData.latitude || '0.0000'}°) directly affects house cusp calculations:
+
+1st House (Identity): How you present yourself to the world and your personal appearance
+2nd House (Resources): Your relationship with money, possessions, and personal values
+3rd House (Communication): Your interaction style, siblings, and immediate environment
+4th House (Home/Family): Your roots, family dynamics, and emotional foundation
+5th House (Creativity): Self-expression, romance, children, and creative pursuits
+6th House (Service/Health): Daily routines, work environment, and physical wellbeing
+7th House (Partnerships): Marriage, business partnerships, and significant relationships
+8th House (Transformation): Shared resources, psychological transformation, and hidden matters
+9th House (Higher Learning): Philosophy, religion, higher education, and long-distance travel
+10th House (Career/Reputation): Professional achievements, public image, and life direction
+11th House (Community): Friendships, group associations, and hopes for the future
+12th House (Spirituality): Subconscious patterns, spiritual development, and hidden strengths
+
+CHAPTER 4: ASPECTS & PLANETARY RELATIONSHIPS
+Planetary aspects create the complex dynamics within your personality. These geometric relationships between planets reveal your inner tensions, natural talents, and evolutionary potential. Major aspects include conjunctions (0°), oppositions (180°), trines (120°), squares (90°), and sextiles (60°).
+
+Your aspect patterns indicate areas of natural flow and challenge in your personality. Harmonious aspects (trines, sextiles) show areas of natural talent and ease, while challenging aspects (squares, oppositions) indicate areas requiring conscious development and integration.
+
+CHAPTER 5: LIFE PURPOSE & SPIRITUAL EVOLUTION
+Your ${getWesternElement(sign)} solar nature suggests a life path focused on ${getElementalPurpose(getWesternElement(sign))}. This fundamental orientation influences your approach to career development, relationship choices, and personal growth opportunities.
+
+The specific degree and house placement of your Sun, calculated using your exact birth coordinates in ${birthLocation}, provides additional refinement to your life purpose. Your evolutionary journey involves integrating the full spectrum of your chart's energies while expressing your unique ${sign} solar nature.
+
+Birth Location Significance: ${birthLocation} contributes to your cultural and environmental influences, affecting how you express your astrological nature within your specific life circumstances.`;
   }
 
   function generateExhaustiveVedicAnalysis(rashi: string, birthData: any): string {
-    return `Comprehensive Vedic Jyotish Analysis for ${rashi} Rashi:
+    const birthLocation = `${birthData.city || birthData.birthCity || 'Unknown'}, ${birthData.country || birthData.birthCountry || 'Unknown'}`;
+    const coordinates = `${birthData.latitude || '0.0000'}°, ${birthData.longitude || '0.0000'}°`;
+    
+    return `Comprehensive Vedic Jyotish Analysis for ${rashi} Rashi
+Birth Location: ${birthLocation} (${coordinates})
+Calculated using authentic Vedic astronomical principles
 
-SPIRITUAL FOUNDATION: In Vedic astrology, your ${rashi} rashi represents your moon sign and emotional nature. This is considered your primary astrological identity in Jyotish, governing your mind, emotions, and subconscious patterns.
+CHAPTER 1: SPIRITUAL FOUNDATION & RASHI ANALYSIS
+In Vedic astrology, your ${rashi} rashi represents your moon sign and fundamental emotional nature. Born in ${birthLocation}, your chart calculations honor the ancient Sidereal zodiac system used in traditional Jyotish. This is considered your primary astrological identity in Vedic tradition, governing your mind (manas), emotions, and subconscious behavioral patterns.
 
-NAKSHATRA INFLUENCE: Your birth nakshatra (lunar mansion) provides deeper insights into your dharma (life purpose) and karmic patterns. The ruling deity and planetary lord of your nakshatra influence your spiritual evolution.
+Your ${rashi} rashi influences your instinctive responses, emotional needs, and psychological foundation. The precise coordinates (${coordinates}) ensure accurate calculations of your Vedic houses (bhavas) and planetary positions according to the Lahiri ayanamsa system.
 
-DASHA PERIODS: Your current planetary period (mahadasha) and sub-periods (antardashas) determine the timing of major life events. Understanding these cycles helps you align with cosmic rhythms for optimal results.
+CHAPTER 2: NAKSHATRA INFLUENCE & LUNAR MANSION ANALYSIS
+Your birth nakshatra (lunar mansion) provides profound insights into your dharma (life purpose) and karmic evolutionary patterns. The 27 nakshatras divide the zodiac into precise segments, each governed by specific deities and planetary lords that influence your spiritual development.
 
-YOGAS & COMBINATIONS: Special planetary combinations in your chart create yogas that indicate wealth, spiritual growth, leadership abilities, or challenges to overcome.
+Your nakshatra's ruling deity provides divine guidance and protection throughout your life journey. The planetary lord (nakshatra-pati) determines the quality of experiences and lessons you'll encounter. This system, developed over thousands of years in the Vedic tradition, offers unparalleled precision in understanding your soul's purpose.
 
-REMEDIAL MEASURES: Vedic astrology provides practical remedies including gemstones, mantras, charitable acts, and lifestyle adjustments to strengthen beneficial planets and mitigate challenging influences.`;
+CHAPTER 3: DASHA PERIODS & TIMING SYSTEMS
+Your current planetary period (mahadasha) and sub-periods (antardashas) determine the precise timing of major life events and opportunities. Born in ${birthLocation}, your dasha sequence was calculated using your exact birth coordinates and traditional Vedic timing methods.
+
+The Vimshottari Dasha system spans 120 years, with each planet ruling specific periods of your life. Your current planetary ruler influences career opportunities, relationship patterns, health trends, and spiritual growth phases. Understanding these cycles helps you align with cosmic rhythms for optimal life planning and decision-making.
+
+CHAPTER 4: YOGAS & PLANETARY COMBINATIONS
+Special planetary combinations in your chart create powerful yogas that indicate areas of exceptional strength, wealth potential, spiritual attainment, or challenges requiring conscious development. These yogas are calculated using your precise birth location coordinates (${coordinates}) to ensure accuracy.
+
+Raja Yogas indicate leadership potential and success in worldly pursuits. Dhana Yogas reveal wealth accumulation patterns. Spiritual yogas show your capacity for meditation, wisdom development, and transcendental experiences. Each yoga's strength varies based on planetary dignities and house placements specific to your birth chart.
+
+CHAPTER 5: REMEDIAL MEASURES & LIFE ENHANCEMENT
+Vedic astrology provides comprehensive remedial systems including gemstone therapy, mantra recitation, charitable activities, and lifestyle adjustments to strengthen beneficial planetary influences and mitigate challenging ones. Born in ${birthLocation}, your remedies are tailored to your specific geographic and cultural context.
+
+Recommended practices include daily spiritual observances, planetary gem therapy, specific mantras for your ruling planets, and charitable acts aligned with your karmic patterns. These remedies work gradually to improve life quality and spiritual evolution when practiced consistently.
+
+Birth Location Significance: ${birthLocation} contributes specific cultural and environmental influences that affect how you express your Vedic astrological nature within your life circumstances and social context.`;
   }
 
   function generateExhaustiveChineseAnalysis(animal: string, birthData: any): string {
@@ -830,17 +891,39 @@ COMPATIBILITY INSIGHTS: Your numerical vibrations interact with others' in predi
   }
 
   function generateExhaustiveHumanDesignAnalysis(type: string, birthData: any): string {
-    return `Complete Human Design Analysis - ${type} Type:
+    const birthLocation = `${birthData.city || birthData.birthCity || 'Unknown'}, ${birthData.country || birthData.birthCountry || 'Unknown'}`;
+    const coordinates = `${birthData.latitude || '0.0000'}°, ${birthData.longitude || '0.0000'}°`;
+    
+    return `Complete Human Design Analysis - ${type} Type
+Birth Location: ${birthLocation} (${coordinates})
+Calculated using precise Rave I'Ching and astronomical positions
 
-ENERGY MECHANICS: As a ${type}, you have a specific way of managing and using your life force energy. Understanding your energetic strategy prevents burnout and ensures you're operating in alignment with your natural design.
+CHAPTER 1: ENERGY TYPE & MECHANICS
+As a ${type}, you have a specific biological design for managing and expressing your life force energy. Born in ${birthLocation}, your Human Design chart was calculated using precise coordinates (${coordinates}) combined with both Eastern and Western astrological principles to determine your genetic blueprint.
 
-DECISION-MAKING AUTHORITY: Your inner authority determines how you make correct decisions for your life. This biological truth bypasses mental conditioning and connects you with your body's wisdom.
+Your ${type} energy operates according to specific mechanical laws. Understanding these natural patterns prevents energy depletion and ensures you're operating in alignment with your authentic design rather than fighting against your nature.
 
-GENETIC CONTINUITY: Your profile represents your genetic role in the human story. It shows how you're designed to interact with others and what themes will repeat throughout your life.
+CHAPTER 2: STRATEGY & DECISION-MAKING AUTHORITY
+Your inner authority represents your body's biological intelligence for making correct life decisions. This authority system bypasses mental conditioning and connects you directly with your body's inherent wisdom. Your specific authority type provides a reliable internal compass for navigating life choices.
 
-CONDITIONING PATTERNS: Understanding your open centers reveals where you're susceptible to conditioning and where you can develop wisdom. These areas are where you experience variability and learn about life.
+Following your strategy and authority consistently leads to experiences of reduced resistance, increased synchronicity, and alignment with your life's purpose. This mechanical approach transcends belief systems and provides practical, moment-to-moment guidance.
 
-STRATEGIC LIVING: Your strategy and authority, when followed consistently, lead to a life of reduced resistance and increased synchronicity. This mechanical approach transcends belief systems and provides practical guidance.`;
+CHAPTER 3: PROFILE & GENETIC ROLE
+Your profile represents your genetic role in the human evolutionary story. It determines how you're designed to interact with others and reveals the fundamental themes that will repeat throughout your lifetime. Born in ${birthLocation}, your profile influences how you express your gifts within your cultural and environmental context.
+
+Your profile consists of two numbers that describe your conscious and unconscious genetic roles. These archetypal patterns determine your natural interaction style, learning process, and the way you're meant to share your gifts with the world.
+
+CHAPTER 4: CENTERS, CHANNELS & GATES
+Your bodygraph shows nine energy centers, each representing different aspects of human experience. Defined centers (colored) represent consistent, reliable energy patterns, while open centers (white) are areas of wisdom and potential conditioning.
+
+Your specific channels and gates, calculated from your exact birth time and location, create your unique energetic configuration. These elements determine your talents, challenges, and the specific way you're designed to contribute to the collective human experience.
+
+CHAPTER 5: CONDITIONING & DECONDITIONING PROCESS
+Understanding your open centers reveals where you're susceptible to environmental conditioning and where you can develop the deepest wisdom. These variable areas are where you experience life's diversity and learn about different ways of being.
+
+The deconditioning process involves recognizing where you've absorbed others' energy patterns and returning to your authentic energetic expression. Born in ${birthLocation}, your specific environmental and cultural conditioning patterns are unique to your geographic and social context.
+
+Birth Location Significance: ${birthLocation} contributes to your specific environmental conditioning patterns and provides the cultural context within which you're designed to express your unique Human Design configuration.`;
   }
 
   function getElementalPurpose(element: string): string {

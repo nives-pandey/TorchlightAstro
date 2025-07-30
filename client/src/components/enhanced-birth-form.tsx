@@ -248,7 +248,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                           <FormControl>
                             <Input 
                               placeholder="Enter your first name"
-                              className="cosmic-input"
+                              className="cosmic-input cosmic-input-navigation"
                               {...field} 
                             />
                           </FormControl>
@@ -319,7 +319,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                           <FormControl>
                             <Input 
                               type="date" 
-                              className="cosmic-input"
+                              className="cosmic-input cosmic-input-navigation"
                               {...field} 
                             />
                           </FormControl>
@@ -371,7 +371,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                           <FormControl>
                             <Input 
                               placeholder="e.g., Paris, New York, Mumbai"
-                              className="cosmic-input"
+                              className="cosmic-input cosmic-input-navigation"
                               {...field}
                               onChange={(e) => {
                                 field.onChange(e);
