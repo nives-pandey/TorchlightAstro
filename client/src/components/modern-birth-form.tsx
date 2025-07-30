@@ -251,11 +251,11 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
         onComplete?.(chartData);
       } else {
         console.error('API failed, using local calculations');
-        onComplete?.(mockChartData);
+        onComplete?.(mockChartData as any);
       }
     } catch (error) {
       console.error('Error generating chart, using local calculations:', error);
-      onComplete?.(mockChartData);
+      onComplete?.(mockChartData as any);
     }
     
     onClose();
@@ -327,7 +327,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
     }
     while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
       const digits = sum.toString().split('');
-      sum = digits.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      sum = digits.reduce((acc, digit) => acc + parseInt(digit), 0);
     }
     return sum;
   };
@@ -345,7 +345,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
     }
     while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
       const digits = sum.toString().split('');
-      sum = digits.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      sum = digits.reduce((acc, digit) => acc + parseInt(digit), 0);
     }
     return sum;
   };
