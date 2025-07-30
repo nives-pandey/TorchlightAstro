@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import SimpleBirthForm from "@/components/simple-birth-form";
 import ChartResults from "@/components/chart-results";
 import PlanetarySymbols from "@/components/planetary-symbols";
+import FeatureHoverCard from "@/components/feature-hover-card";
 import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar } from "lucide-react";
 import { Link } from "wouter";
 
@@ -348,53 +349,94 @@ export default function Home() {
 
           {/* Features Preview - Match Landing Page with Navigation */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Link href="/personal">
-              <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
-                    <Sun className="w-5 h-5 text-orange-400" />
-                    Personal Readings
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-pink-200/80 text-sm">
-                    Complete natal chart analysis across all systems with authentic astronomical calculations
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
+            <FeatureHoverCard
+              title="Personal Readings"
+              status="available"
+              description="Complete natal chart analysis across Western, Vedic, Chinese, Human Design, and Numerology systems with authentic Swiss Ephemeris astronomical calculations."
+              features={[
+                "Multi-system natal chart analysis",
+                "Swiss Ephemeris precision calculations",
+                "Cross-system compatibility comparisons",
+                "Lifestyle intelligence recommendations",
+                "PDF report generation"
+              ]}
+            >
+              <Link href="/personal">
+                <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Sun className="w-5 h-5 text-orange-400" />
+                      Personal Readings
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-pink-200/80 text-sm">
+                      Complete natal chart analysis across all systems with authentic astronomical calculations
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
 
-            <Link href="/compatibility">
-              <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
-                    <Heart className="w-5 h-5 text-pink-400" />
-                    Compatibility
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-pink-200/80 text-sm">
-                    Relationship insights and compatibility analysis across multiple astrological traditions
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
+            <FeatureHoverCard
+              title="Compatibility Analysis"
+              status="coming-soon"
+              description="Deep relationship compatibility analysis combining Western, Vedic, Chinese, and Numerology systems for comprehensive partnership insights."
+              expectedDate="March 2025"
+              features={[
+                "Synastry chart analysis",
+                "Composite relationship charts", 
+                "Cross-system compatibility scoring",
+                "Relationship timing predictions"
+              ]}
+            >
+              <Link href="/compatibility">
+                <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-pink-400" />
+                      Compatibility
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-pink-200/80 text-sm">
+                      Relationship insights and compatibility analysis across multiple astrological traditions
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
 
-            <Link href="/daily">
-              <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-white text-lg flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-purple-400" />
-                    Daily Guidance
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-pink-200/80 text-sm">
-                    Personalized daily insights with optimal timing recommendations
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </Link>
+            <FeatureHoverCard
+              title="Daily Guidance"
+              status="in-development"
+              description="Personalized daily astrological insights with optimal timing recommendations based on current planetary transits and your birth chart."
+              expectedDate="February 2025"
+              completionPercentage={75}
+              features={[
+                "Daily planetary transits",
+                "Optimal timing for decisions",
+                "Lucky numbers and colors",
+                "Health and energy forecasts",
+                "Relationship timing advice"
+              ]}
+            >
+              <Link href="/daily">
+                <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-purple-400" />
+                      Daily Guidance
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-pink-200/80 text-sm">
+                      Personalized daily insights with optimal timing recommendations
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
           </div>
 
           {/* CTA Buttons - Enhanced with Demo */}
@@ -407,22 +449,48 @@ export default function Home() {
             </Button>
             <br />
             <div className="space-x-4">
-              <Link href="/demo-chart">
-                <Button 
-                  variant="outline"
-                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
-                >
-                  🔮 View Sample Chart Output
-                </Button>
-              </Link>
-              <Link href="/lifestyle-intelligence">
-                <Button 
-                  variant="outline"
-                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-green-400 text-white font-semibold px-6 py-3 rounded-xl"
-                >
-                  🌟 Lifestyle Intelligence Demo
-                </Button>
-              </Link>
+              <FeatureHoverCard
+                title="Sample Chart Output"
+                status="available"
+                description="View a comprehensive demonstration of our multi-system astrological analysis with real chart examples and lifestyle intelligence."
+                features={[
+                  "Complete Western & Vedic analysis",
+                  "Chinese zodiac & Five Elements",
+                  "Numerology & Human Design",
+                  "Lifestyle recommendations",
+                  "Cross-system synthesis"
+                ]}
+              >
+                <Link href="/demo-chart">
+                  <Button 
+                    variant="outline"
+                    className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
+                  >
+                    🔮 View Sample Chart Output
+                  </Button>
+                </Link>
+              </FeatureHoverCard>
+              <FeatureHoverCard
+                title="Lifestyle Intelligence"
+                status="available"
+                description="Personalized lifestyle recommendations worth $200+ including optimal travel destinations, color therapy, and gemstone guidance based on cross-system analysis."
+                features={[
+                  "Travel destination recommendations",
+                  "Personalized color therapy",
+                  "Gemstone & crystal guidance",
+                  "Feng Shui & Vaastu principles",
+                  "Health & wellness insights"
+                ]}
+              >
+                <Link href="/lifestyle-intelligence">
+                  <Button 
+                    variant="outline"
+                    className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-green-400 text-white font-semibold px-6 py-3 rounded-xl"
+                  >
+                    🌟 Lifestyle Intelligence Demo
+                  </Button>
+                </Link>
+              </FeatureHoverCard>
               <Link href="/timezone-analytics">
                 <Button 
                   variant="outline"
