@@ -20,7 +20,8 @@ import {
   Crown,
   Gift,
   Play,
-  Gem
+  Gem,
+  Music
 } from "lucide-react";
 
 export default function FeatureDashboard() {
@@ -94,6 +95,14 @@ export default function FeatureDashboard() {
       icon: Gem,
       action: 'Discover Crystals',
       link: '/gemstone-energy-pairing'
+    },
+    {
+      id: 'astral-soundtrack',
+      name: 'Astral Soundtrack Generator',
+      description: 'Personalized cosmic music based on birth chart and planetary transits',
+      icon: Music,
+      action: 'Generate Soundtrack',
+      link: '/astral-soundtrack'
     }
   ];
 

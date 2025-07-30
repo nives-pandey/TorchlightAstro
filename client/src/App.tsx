@@ -41,6 +41,7 @@ import TimezoneAnalytics from "@/pages/timezone-analytics";
 import AdminDashboard from "@/pages/admin-dashboard";
 import ContributePage from "@/pages/contribute";
 import NotFound from "@/pages/not-found";
+import AstralSoundtrack from "@/components/astral-soundtrack";
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -99,6 +100,7 @@ function Router() {
         <Route path="/gemstone-energy-pairing" component={GemstoneEnergyPairingPage} />
         <Route path="/demo-chart" component={DemoChart} />
         <Route path="/timezone-analytics" component={TimezoneAnalytics} />
+        <Route path="/astral-soundtrack" component={AstralSoundtrack} />
         <Route path="/admin" component={AdminDashboard} />
         <Route path="/contribute" component={ContributePage} />
         <Route component={NotFound} />

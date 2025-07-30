@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Menu, LogOut, User, Heart } from "lucide-react";
+import { Menu, LogOut, User, Heart, Music } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
@@ -22,6 +22,7 @@ export default function Navigation() {
     { path: "/spaces", label: t('nav.spaces') },
     { path: "/3d-chart", label: "🌌 3D Cosmos" },
     { path: "/gemstone-energy-pairing", label: "💎 Gemstone Energy" },
+    { path: "/astral-soundtrack", label: "🎵 Astral Soundtrack" },
     { path: "/ai-assistant", label: t('nav.ai') },
     { path: "/features", label: "Features" },
     { path: "/pricing", label: "Pricing" },
