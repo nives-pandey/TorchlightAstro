@@ -5,8 +5,10 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
 import { Slider } from '@/components/ui/slider';
-import { Music, Play, Pause, Volume2, Heart, Download, Share2, Sparkles, Clock, Moon, Sun, Star } from 'lucide-react';
+import { Music, Play, Pause, Volume2, Heart, Download, Share2, Sparkles, Clock, Moon, Sun, Star, Home, ArrowLeft } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'wouter';
+import Navigation from '@/components/navigation';
 
 interface SoundtrackData {
   personalProfile: {
@@ -275,8 +277,19 @@ export default function AstralSoundtrack() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 safe-top safe-bottom">
-      <div className="mobile-container sm:max-w-7xl sm:mx-auto sm:px-6">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900">
+      <Navigation />
+      <div className="pt-20 safe-top safe-bottom">
+        <div className="mobile-container sm:max-w-7xl sm:mx-auto sm:px-6">
+          {/* Back Navigation */}
+          <div className="flex items-center gap-4 mb-6 px-4">
+            <Link href="/">
+              <Button variant="ghost" className="text-purple-300 hover:text-white hover:bg-purple-500/20">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8 px-4">
           <h1 className="mobile-heading text-2xl sm:text-4xl font-bold text-white mb-2 flex items-center justify-center gap-3">
@@ -524,6 +537,7 @@ export default function AstralSoundtrack() {
             );
           })}
         </Tabs>
+        </div>
       </div>
     </div>
   );

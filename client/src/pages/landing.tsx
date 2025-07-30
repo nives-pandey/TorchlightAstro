@@ -1,13 +1,13 @@
 import { useState } from "react";
-// No animations needed
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ContributionSection from "@/components/contribution-section";
 import { TorchlightLogo } from "@/components/torchlight-logo";
-import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar } from "lucide-react";
-// No animations needed
+import Navigation from "@/components/navigation";
+import { Stars, Sparkles, Sun, Moon, Eye, Heart, Calendar, ArrowRight, Play } from "lucide-react";
+import { Link } from "wouter";
 
 // Beautiful System Badge Component
 function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) {
@@ -213,6 +213,7 @@ export default function Landing() {
       className="min-h-screen text-white overflow-hidden" 
       style={{background: 'var(--cosmic-gradient-1)'}}
     >
+      <Navigation />
       {/* Floating particles background */}
       <div 
         className="fixed inset-0 overflow-hidden pointer-events-none"
@@ -226,20 +227,33 @@ export default function Landing() {
         <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
       </div>
 
-      {/* Header */}
-      <header className="relative z-10 px-4 py-6">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <TorchlightLogo size="md" />
+      {/* Clear User Flow Guidance */}
+      <div className="relative z-10 px-4 pt-20">
+        <div className="max-w-4xl mx-auto text-center mb-8">
+          <div className="bg-purple-900/50 backdrop-blur-md border border-purple-300/30 rounded-2xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-2">
+              <Play className="h-6 w-6 text-purple-400" />
+              Ready to Get Started?
+            </h2>
+            <p className="text-purple-200 mb-6">
+              Choose your path to cosmic insight. You can start your journey from any point below:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Link href="/home">
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg">
+                  <ArrowRight className="h-4 w-4 mr-2" />
+                  Generate Your Chart
+                </Button>
+              </Link>
+              <Link href="/features">
+                <Button variant="outline" className="w-full border-purple-300/50 text-purple-200 hover:bg-purple-500/20 py-3 px-6 rounded-xl">
+                  Explore All Features
+                </Button>
+              </Link>
+            </div>
           </div>
-          <Button 
-            onClick={() => window.location.href = '/home'}
-            className="bg-purple-800/40 hover:bg-purple-700/50 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
-          >
-            Enter App
-          </Button>
         </div>
-      </header>
+      </div>
 
       {/* Hero Section */}
       <main className="relative z-10 px-4 pt-8 pb-16">

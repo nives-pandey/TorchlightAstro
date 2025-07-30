@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FeatureStatus from "@/components/feature-status";
 import MobileBirthForm from "@/components/mobile-birth-form";
+import Navigation from "@/components/navigation";
+import { Link } from "wouter";
+import { ArrowLeft, Home } from "lucide-react";
 import { 
   CheckCircle, 
   Star, 

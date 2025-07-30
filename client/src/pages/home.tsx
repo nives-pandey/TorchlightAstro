@@ -9,7 +9,8 @@ import SimpleBirthForm from "@/components/simple-birth-form";
 import ChartResults from "@/components/chart-results";
 import PlanetarySymbols from "@/components/planetary-symbols";
 import FeatureHoverCard from "@/components/feature-hover-card";
-import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar } from "lucide-react";
+import Navigation from "@/components/navigation";
+import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
