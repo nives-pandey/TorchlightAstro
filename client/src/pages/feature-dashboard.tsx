@@ -19,7 +19,8 @@ import {
   Zap,
   Crown,
   Gift,
-  Play
+  Play,
+  Gem
 } from "lucide-react";
 
 export default function FeatureDashboard() {
@@ -85,6 +86,14 @@ export default function FeatureDashboard() {
       icon: BarChart3,
       action: 'Compare Systems',
       link: '/analysis'
+    },
+    {
+      id: 'gemstone-energy',
+      name: 'Gemstone Energy Pairing',
+      description: 'Intuitive crystal matching with cosmic energy alignment',
+      icon: Gem,
+      action: 'Discover Crystals',
+      link: '/gemstone-energy-pairing'
     }
   ];
 

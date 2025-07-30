@@ -35,6 +35,7 @@ import ComprehensivePredictions from "@/pages/comprehensive-predictions";
 import ComprehensiveLifestyle from "@/pages/comprehensive-lifestyle";
 import LifestyleIntelligence from "@/pages/lifestyle-intelligence";
 import GemstoneLifestylePairing from "@/pages/gemstone-lifestyle-pairing";
+import GemstoneEnergyPairingPage from "@/pages/gemstone-energy-pairing-page";
 import DemoChart from "@/pages/demo-chart";
 import TimezoneAnalytics from "@/pages/timezone-analytics";
 import AdminDashboard from "@/pages/admin-dashboard";
@@ -95,6 +96,7 @@ function Router() {
         <Route path="/comprehensive-lifestyle" component={ComprehensiveLifestyle} />
         <Route path="/lifestyle-intelligence" component={LifestyleIntelligence} />
         <Route path="/gemstone-lifestyle-pairing" component={GemstoneLifestylePairing} />
+        <Route path="/gemstone-energy-pairing" component={GemstoneEnergyPairingPage} />
         <Route path="/demo-chart" component={DemoChart} />
         <Route path="/timezone-analytics" component={TimezoneAnalytics} />
         <Route path="/admin" component={AdminDashboard} />

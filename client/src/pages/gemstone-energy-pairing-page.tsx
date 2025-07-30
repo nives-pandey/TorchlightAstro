@@ -1,0 +1,286 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import GemstoneEnergyPairing from "@/components/gemstone-energy-pairing";
+import Navigation from "@/components/navigation";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Gem, Sparkles, Zap, Heart, Shield, Target, Brain, Wand2 } from "lucide-react";
+
+export default function GemstoneEnergyPairingPage() {
+  const [showVisualizer, setShowVisualizer] = useState(false);
+  const [sampleBirthData] = useState({
+    firstName: "Emma",
+    lastName: "Chen",
+    birthDate: "1995-08-15",
+    birthTime: "14:30",
+    systems: {
+      western: { sign: "Leo" },
+      numerology: { lifePath: 7 }
+    }
+  });
+
+  const energyTypes = [
+    {
+      type: "amplifying",
+      icon: Zap,
+      color: "#FFD700",
+      title: "Amplifying Stones",
+      description: "Enhance and magnify your natural energies and intentions",
+      examples: ["Clear Quartz", "Selenite", "Herkimer Diamond"]
+    },
+    {
+      type: "balancing",
+      icon: Target,
+      color: "#32CD32", 
+      title: "Balancing Stones",
+      description: "Harmonize conflicting energies and restore equilibrium",
+      examples: ["Fluorite", "Amazonite", "Prehnite"]
+    },
+    {
+      type: "protective",
+      icon: Shield,
+      color: "#8B4513",
+      title: "Protective Stones", 
+      description: "Shield against negative energies and psychic attacks",
+      examples: ["Black Tourmaline", "Obsidian", "Hematite"]
+    },
+    {
+      type: "manifestation",
+      icon: Wand2,
+      color: "#FF6347",
+      title: "Manifestation Stones",
+      description: "Transform dreams into reality through focused intention",
+      examples: ["Citrine", "Pyrite", "Tiger's Eye"]
+    },
+    {
+      type: "healing",
+      icon: Heart,
+      color: "#FF69B4",
+      title: "Healing Stones",
+      description: "Facilitate emotional, physical, and spiritual healing",
+      examples: ["Rose Quartz", "Green Aventurine", "Malachite"]
+    },
+    {
+      type: "intuitive",
+      icon: Brain,
+      color: "#9370DB",
+      title: "Intuitive Stones",
+      description: "Awaken psychic abilities and spiritual awareness",
+      examples: ["Amethyst", "Labradorite", "Moonstone"]
+    }
+  ];
+
+  return (
+    <div className="min-h-screen">
+      <Navigation />
+      
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 flex items-center justify-center">
+            <Gem className="mr-4 h-12 w-12 text-purple-400" />
+            Intuitive Gemstone Energy Pairing
+            <Sparkles className="ml-4 h-12 w-12 text-yellow-400" />
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Discover your perfect gemstone companions through cosmic energy alignment and astrological harmony. 
+            Experience the ancient wisdom of crystal healing enhanced by modern astrological precision.
+          </p>
+        </motion.div>
+
+        {/* Energy Types Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-12"
+        >
+          <Card className="bg-black/40 border-purple-400/30 mb-8">
+            <CardHeader>
+              <CardTitle className="text-white text-2xl text-center flex items-center justify-center">
+                <Zap className="mr-3 h-6 w-6 text-yellow-400" />
+                Six Sacred Energy Types
+              </CardTitle>
+              <p className="text-gray-300 text-center">
+                Each gemstone carries unique vibrational frequencies that resonate with different aspects of your cosmic blueprint
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {energyTypes.map((energy, index) => {
+                  const Icon = energy.icon;
+                  return (
+                    <motion.div
+                      key={energy.type}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.1 * index }}
+                    >
+                      <Card className="bg-black/30 border-purple-400/20 hover:border-purple-400/50 transition-all duration-300 h-full">
+                        <CardContent className="p-6">
+                          <div className="flex items-center mb-3">
+                            <div 
+                              className="p-2 rounded-full mr-3"
+                              style={{ backgroundColor: `${energy.color}20`, border: `2px solid ${energy.color}` }}
+                            >
+                              <Icon className="w-5 h-5" style={{ color: energy.color }} />
+                            </div>
+                            <h3 className="text-white font-semibold">{energy.title}</h3>
+                          </div>
+                          <p className="text-gray-300 text-sm mb-4">{energy.description}</p>
+                          <div className="space-y-1">
+                            {energy.examples.map((example) => (
+                              <div key={example} className="flex items-center">
+                                <div className="w-2 h-2 rounded-full mr-2" style={{ backgroundColor: energy.color }} />
+                                <span className="text-gray-400 text-xs">{example}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Features Overview */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+        >
+          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-400/30">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center">
+                <Sparkles className="mr-2 h-5 w-5 text-yellow-400" />
+                Personalized Cosmic Matching
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-gray-300 space-y-3">
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <span className="text-sm">Astrological sign compatibility analysis</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <span className="text-sm">Life path number gemstone resonance</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <span className="text-sm">Birth time energy alignment</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <span className="text-sm">Planetary ruler synchronization</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-br from-blue-900/40 to-teal-900/40 border-blue-400/30">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center">
+                <Target className="mr-2 h-5 w-5 text-blue-400" />
+                Advanced Energy Visualization
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-gray-300 space-y-3">
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-blue-400 mr-2" />
+                <span className="text-sm">Five-dimensional energy mapping</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-blue-400 mr-2" />
+                <span className="text-sm">Chakra alignment indicators</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-blue-400 mr-2" />
+                <span className="text-sm">Synergistic pairing recommendations</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 rounded-full bg-blue-400 mr-2" />
+                <span className="text-sm">Optimal timing and placement guidance</span>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Launch Button */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center"
+        >
+          <Button
+            onClick={() => setShowVisualizer(true)}
+            className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 border-2 border-purple-400"
+          >
+            <Gem className="mr-3 h-6 w-6" />
+            Launch Gemstone Energy Pairing Visualizer
+            <Sparkles className="ml-3 h-6 w-6" />
+          </Button>
+          <p className="text-gray-400 mt-4 text-sm">
+            Discover your perfect crystal companions through cosmic energy alignment
+          </p>
+        </motion.div>
+
+        {/* Additional Information */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="mt-16"
+        >
+          <Card className="bg-black/30 border-purple-400/20">
+            <CardHeader>
+              <CardTitle className="text-white text-center">
+                How Gemstone Energy Pairing Works
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center space-y-3">
+                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto">
+                    <span className="text-white font-bold">1</span>
+                  </div>
+                  <h3 className="text-white font-semibold">Cosmic Analysis</h3>
+                  <p className="text-sm">Your birth data creates a unique energetic signature that resonates with specific crystal frequencies</p>
+                </div>
+                <div className="text-center space-y-3">
+                  <div className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center mx-auto">
+                    <span className="text-white font-bold">2</span>
+                  </div>
+                  <h3 className="text-white font-semibold">Energy Matching</h3>
+                  <p className="text-sm">Our system calculates compatibility scores based on astrological, numerological, and vibrational alignments</p>
+                </div>
+                <div className="text-center space-y-3">
+                  <div className="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center mx-auto">
+                    <span className="text-white font-bold">3</span>
+                  </div>
+                  <h3 className="text-white font-semibold">Personal Guidance</h3>
+                  <p className="text-sm">Receive detailed instructions on wearing, charging, and combining stones for maximum energetic benefit</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+
+      {/* Gemstone Energy Pairing Modal */}
+      {showVisualizer && (
+        <GemstoneEnergyPairing
+          birthData={sampleBirthData}
+          onClose={() => setShowVisualizer(false)}
+        />
+      )}
+    </div>
+  );
+}
