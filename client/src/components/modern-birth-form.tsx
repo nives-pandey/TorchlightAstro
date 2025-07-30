@@ -402,23 +402,27 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   ];
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-purple-900/60 via-indigo-900/60 to-blue-900/60 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 lg:p-6 z-50">
-      <AccessibilityToggle />
-      <Card className="w-full max-w-sm sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl max-h-[98vh] sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-2 sm:border-3 lg:border-4 border-purple-500/50 shadow-2xl rounded-lg sm:rounded-xl lg:rounded-2xl transition-all duration-300">
-        <CardHeader className="relative p-4 sm:p-6 lg:p-8">
+    <div className="fixed inset-0 bg-gradient-to-br from-purple-900/60 via-indigo-900/60 to-blue-900/60 backdrop-blur-sm flex items-center justify-center safe-top safe-bottom z-50">
+      {/* Mobile: Full screen on small devices, centered on larger */}
+      <div className="w-full h-full sm:w-auto sm:h-auto sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl flex items-center justify-center p-0 sm:p-4 lg:p-6">
+        <AccessibilityToggle />
+        <Card className="w-full h-full sm:w-auto sm:h-auto sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-purple-500/50 shadow-2xl rounded-none sm:rounded-xl lg:rounded-2xl transition-all duration-300">
+          {/* Mobile: Add safe area padding */}
+          <div className="safe-top safe-bottom sm:safe-top-0 sm:safe-bottom-0">
+        <CardHeader className="relative p-4 sm:p-6 lg:p-8 safe-top">
           <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-2 sm:right-4 top-2 sm:top-4 text-purple-300 hover:bg-purple-500/20 border border-purple-400/30 h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
+            className="absolute right-4 top-4 text-purple-300 hover:bg-purple-500/20 border border-purple-400/30 min-h-[44px] min-w-[44px] h-11 w-11 sm:h-10 sm:w-10 lg:h-12 lg:w-12 z-10"
           >
-            <X className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
+            <X className="h-5 w-5 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </Button>
           
-          <CardTitle className="text-white text-lg sm:text-xl lg:text-2xl xl:text-3xl text-center mb-2 sm:mb-4 font-bold">
+          <CardTitle className="text-white text-xl sm:text-xl lg:text-2xl xl:text-3xl text-center mb-4 font-bold mobile-heading">
             ✨ Create Your Cosmic Profile
           </CardTitle>
-          <p className="text-purple-200 text-sm sm:text-base lg:text-lg text-center mb-4 sm:mb-6">
+          <p className="text-purple-200 text-base sm:text-base lg:text-lg text-center mb-6 mobile-text">
             Comprehensive astrological analysis across 10+ ancient systems
           </p>
 
@@ -472,7 +476,9 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           <FormControl>
                             <Input 
                               placeholder="Enter your first name" 
-                              className="cosmic-input text-lg"
+                              className="mobile-input cosmic-input"
+                              autoComplete="given-name"
+                              inputMode="text"
                               {...field} 
                             />
                           </FormControl>
@@ -490,7 +496,9 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           <FormControl>
                             <Input 
                               placeholder="Enter your last name" 
-                              className="cosmic-input text-lg"
+                              className="mobile-input cosmic-input"
+                              autoComplete="family-name"
+                              inputMode="text"
                               {...field} 
                             />
                           </FormControl>
@@ -542,7 +550,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           <FormControl>
                             <Input 
                               type="date" 
-                              className="cosmic-input text-lg"
+                              className="mobile-input cosmic-input"
+                              inputMode="none"
                               {...field} 
                             />
                           </FormControl>
@@ -563,7 +572,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                             <div className="space-y-2">
                               <Input 
                                 type="time" 
-                                className="cosmic-input text-lg"
+                                className="mobile-input cosmic-input"
+                                inputMode="none"
                                 {...field}
                                 onChange={(e) => {
                                   field.onChange(e);
@@ -592,7 +602,9 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                           <div className="relative">
                             <Input 
                               placeholder="Search for your birth city..."
-                              className="cosmic-input text-lg"
+                              className="mobile-input cosmic-input"
+                              autoComplete="address-level2"
+                              inputMode="text"
                               value={citySearchQuery || field.value}
                               onChange={(e) => {
                                 const query = e.target.value;
@@ -660,7 +672,9 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         <FormControl>
                           <Input 
                             placeholder="Enter your birth country" 
-                            className="cosmic-input text-lg"
+                            className="mobile-input cosmic-input"
+                            autoComplete="country-name"
+                            inputMode="text"
                             {...field} 
                           />
                         </FormControl>

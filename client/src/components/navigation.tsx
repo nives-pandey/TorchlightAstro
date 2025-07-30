@@ -104,21 +104,21 @@ export default function Navigation() {
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
-                <Menu className="h-5 w-5" />
+              <Button variant="ghost" size="sm" className="md:hidden text-white hover:bg-purple-500/20 min-h-[44px] min-w-[44px] touch-manipulation">
+                <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-slate-900 border-purple-400/50">
-              <div className="flex flex-col space-y-2 mt-8">
+            <SheetContent side="right" className="w-[300px] bg-slate-900/95 border-purple-400/50 safe-top safe-bottom">
+              <div className="flex flex-col space-y-2 mt-8 h-full overflow-y-auto swipeable">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
                     href={item.path}
                     onClick={() => setMobileOpen(false)}
-                    className={`px-4 py-3 text-base font-medium rounded-lg transition-all duration-200 ${
+                    className={`mobile-button text-left min-h-[48px] flex items-center transition-all duration-200 ${
                       location === item.path
-                        ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        ? "bg-purple-500/30 text-purple-300 border-purple-400"
+                        : "text-white hover:bg-purple-500/20"
                     }`}
                   >
                     {item.label}
