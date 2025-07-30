@@ -71,7 +71,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
         sum += parseInt(digit);
       }
       while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-        sum = sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+        sum = sum.toString().split('').reduce((a, b) => a + parseInt(b), 0);
       }
       return sum;
     };
