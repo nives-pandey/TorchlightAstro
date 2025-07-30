@@ -12,7 +12,7 @@ export interface GeoNamesCityData {
   utcOffset: number;
   latitude: number;
   longitude: number;
-  population: number;
+  population: number | undefined;
   countryCode: string;
   adminName1?: string; // State/Province
   adminName2?: string; // County/District

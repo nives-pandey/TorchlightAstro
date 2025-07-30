@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -326,7 +326,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
       sum += parseInt(digit);
     }
     while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-      sum = sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      const digits = sum.toString().split('');
+      sum = digits.reduce((a, b) => parseInt(a) + parseInt(b), 0);
     }
     return sum;
   };
@@ -343,7 +344,8 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
       sum += letterValues[char] || 0;
     }
     while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-      sum = sum.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      const digits = sum.toString().split('');
+      sum = digits.reduce((a, b) => parseInt(a) + parseInt(b), 0);
     }
     return sum;
   };
@@ -701,13 +703,13 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                       <FormField
                         key={system.key}
                         control={form.control}
-                        name={`systems.${system.key}` as keyof BirthFormData['systems']}
+                        name={`systems.${system.key}` as any}
                         render={({ field }) => (
                           <Card className="bg-slate-800/90 border-purple-300 p-4 hover:bg-slate-700/95 transition-colors">
                             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
-                                  checked={field.value}
+                                  checked={Boolean(field.value)}
                                   onCheckedChange={field.onChange}
                                   className="mt-1"
                                 />
