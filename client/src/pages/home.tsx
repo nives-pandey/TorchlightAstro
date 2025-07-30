@@ -491,6 +491,14 @@ export default function Home() {
                   </Button>
                 </Link>
               </FeatureHoverCard>
+              <Link href="/gemstone-lifestyle-pairing">
+                <Button 
+                  variant="outline"
+                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-pink-400 text-white font-semibold px-4 py-2 rounded-xl text-sm"
+                >
+                  💎 Gemstone Lifestyle Pairing
+                </Button>
+              </Link>
               <Link href="/timezone-analytics">
                 <Button 
                   variant="outline"
