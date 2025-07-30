@@ -1,488 +1,484 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Progress } from "@/components/ui/progress";
 import { Link } from "wouter";
-import { Home, MapPin, Palette, Gem, Thermometer, Plane, Calendar, Star } from "lucide-react";
+import { 
+  Home, 
+  MapPin, 
+  Palette, 
+  Utensils, 
+  Dumbbell, 
+  Briefcase, 
+  Calendar, 
+  TrendingUp,
+  ThermometerSun,
+  Plane,
+  Users,
+  Heart,
+  Star,
+  Info,
+  Clock,
+  Target
+} from "lucide-react";
+
+interface LifestyleRecommendation {
+  category: string;
+  title: string;
+  description: string;
+  reasoning: string;
+  actionItems: string[];
+  timeframe: string;
+  confidence: number;
+}
 
 export default function LifestyleIntelligence() {
   const [activeTab, setActiveTab] = useState("travel");
+  const [userProfile, setUserProfile] = useState<any>(null);
+  const [recommendations, setRecommendations] = useState<LifestyleRecommendation[]>([]);
 
-  // Sample lifestyle intelligence data
-  const lifestyleData = {
-    travel: {
-      optimal: [
-        {
-          destination: "Bali, Indonesia",
-          season: "April-June, September-October", 
-          avgTemp: "26-29°C",
-          reason: "Venus in Taurus loves earthy luxury. Your fire element thrives in warm, spiritual environments.",
-          activities: ["Yoga retreats", "Temple visits", "Art workshops", "Healing ceremonies"]
-        },
-        {
-          destination: "Tuscany, Italy",
-          season: "May-July, September",
-          avgTemp: "22-28°C", 
-          reason: "Taurus energy resonates with wine country. Earth element finds grounding in countryside.",
-          activities: ["Wine tasting", "Cooking classes", "Art appreciation", "Countryside walks"]
-        },
-        {
-          destination: "Kyoto, Japan",
-          season: "March-May, October-November",
-          avgTemp: "15-25°C",
-          reason: "Your Wood element (Chinese) harmonizes with Japanese aesthetic philosophy.",
-          activities: ["Temple meditation", "Garden walks", "Tea ceremonies", "Traditional crafts"]
-        }
-      ],
-      avoid: [
-        {
-          destination: "Northern Alaska",
-          reason: "Extreme cold conflicts with your fire/earth elemental balance",
-          season: "November-March"
-        },
-        {
-          destination: "Las Vegas, Nevada", 
-          reason: "Overstimulating environment clashes with Taurus need for natural beauty",
-          season: "Year-round"
-        }
-      ]
-    },
-    colors: {
-      power: {
-        primary: "#8B4513", // Saddle Brown
-        secondary: "#228B22", // Forest Green
-        accent: "#FFD700", // Gold
-        reason: "Earth signs (Taurus) benefit from browns and greens. Gold enhances Jupiter influences."
-      },
-      daily: {
-        monday: "#4169E1", // Royal Blue (Mercury day)
-        tuesday: "#DC143C", // Crimson (Mars day)
-        wednesday: "#32CD32", // Lime Green (Mercury day)
-        thursday: "#FFD700", // Gold (Jupiter day)
-        friday: "#FF69B4", // Hot Pink (Venus day)
-        saturday: "#800080", // Purple (Saturn day)
-        sunday: "#FFA500"  // Orange (Sun day)
-      },
-      seasonal: {
-        spring: "#90EE90", // Light Green
-        summer: "#FF6347", // Tomato
-        autumn: "#D2691E", // Chocolate
-        winter: "#4682B4"  // Steel Blue
+  // Get user profile for personalized recommendations
+  useEffect(() => {
+    const storedProfile = localStorage.getItem('userBirthData');
+    if (storedProfile) {
+      const profile = JSON.parse(storedProfile);
+      setUserProfile(profile);
+      generateLifestyleRecommendations(profile);
+    }
+  }, []);
+
+  const generateLifestyleRecommendations = (profile: any) => {
+    const recs: LifestyleRecommendation[] = [];
+
+    // Travel Destinations based on astrological profile
+    if (profile.systems?.western?.sign) {
+      const sign = profile.systems.western.sign;
+      
+      // Fire signs
+      if (['Aries', 'Leo', 'Sagittarius'].includes(sign)) {
+        recs.push({
+          category: "travel",
+          title: "Adventure & Cultural Destinations",
+          description: "Fire signs thrive in energetic, culturally rich destinations with outdoor activities and vibrant nightlife.",
+          reasoning: `As a ${sign}, you're naturally drawn to dynamic environments that match your fiery energy and love for adventure.`,
+          actionItems: [
+            "Plan active vacations: hiking, adventure sports, cultural festivals",
+            "Consider destinations: Bali, Costa Rica, Morocco, New Zealand",
+            "Book trips during your solar return month for maximum energy",
+            "Choose accommodations with outdoor spaces and social areas"
+          ],
+          timeframe: "Best months: Spring and Summer seasons",
+          confidence: 92
+        });
       }
-    },
-    gemstones: {
-      primary: {
-        name: "Emerald",
-        purpose: "Heart chakra activation and Venus enhancement",
-        wearing: "Ring finger or heart chakra pendant",
-        timing: "Venus hours: Friday mornings, Venus days"
-      },
-      secondary: {
-        name: "Rose Quartz", 
-        purpose: "Emotional healing and love attraction",
-        wearing: "Left wrist or bedroom placement",
-        timing: "New moon and full moon ceremonies"
-      },
-      protection: {
-        name: "Black Tourmaline",
-        purpose: "Grounding and electromagnetic protection", 
-        wearing: "Left pocket or workspace",
-        timing: "During stressful periods or technology use"
-      },
-      healing: {
-        name: "Amethyst",
-        purpose: "Spiritual protection and intuition enhancement",
-        wearing: "Third eye chakra or meditation space",
-        timing: "Full moon cleansing and daily meditation"
-      },
-      prosperity: {
-        name: "Citrine",
-        purpose: "Abundance attraction and solar plexus activation",
-        wearing: "Wallet or business area",
-        timing: "New moon manifestation and Jupiter hours"
-      },
-      love: {
-        name: "Rose Quartz",
-        purpose: "Heart chakra opening and self-love cultivation",
-        wearing: "Heart area or bedroom",
-        timing: "Venus days and relationship work"
+
+      // Earth signs  
+      if (['Taurus', 'Virgo', 'Capricorn'].includes(sign)) {
+        recs.push({
+          category: "travel",
+          title: "Luxury & Nature Retreats",
+          description: "Earth signs prefer comfortable, well-planned trips to beautiful natural locations with excellent food and accommodation.",
+          reasoning: `${sign} energy seeks grounding through nature, comfort, and sensory experiences.`,
+          actionItems: [
+            "Book luxury eco-resorts and wellness retreats",
+            "Consider destinations: Switzerland, Japan, Tuscany, Napa Valley",
+            "Plan detailed itineraries with high-quality accommodations",
+            "Include spa treatments and farm-to-table dining experiences"
+          ],
+          timeframe: "Best months: Autumn and late Spring",
+          confidence: 94
+        });
+      }
+
+      // Air signs
+      if (['Gemini', 'Libra', 'Aquarius'].includes(sign)) {
+        recs.push({
+          category: "travel",
+          title: "Cultural & Intellectual Destinations",
+          description: "Air signs enjoy destinations rich in art, culture, learning opportunities, and social connections.",
+          reasoning: `${sign} thrives on mental stimulation, cultural exchange, and meeting new people.`,
+          actionItems: [
+            "Visit museums, art galleries, and cultural centers",
+            "Consider destinations: Paris, London, Tokyo, Amsterdam",
+            "Plan trips around festivals, conferences, or educational tours",
+            "Stay in areas with good public transport and social hubs"
+          ],
+          timeframe: "Year-round, especially during Mercury direct periods",
+          confidence: 89
+        });
+      }
+
+      // Water signs
+      if (['Cancer', 'Scorpio', 'Pisces'].includes(sign)) {
+        recs.push({
+          category: "travel",
+          title: "Coastal & Spiritual Destinations",
+          description: "Water signs are drawn to oceanfront locations, spiritual sites, and emotionally enriching experiences.",
+          reasoning: `${sign} energy is nourished by water elements and spiritual/emotional depth.`,
+          actionItems: [
+            "Choose coastal destinations and water-based activities",
+            "Consider destinations: Santorini, Maldives, Bali, Big Sur",
+            "Include spiritual sites, meditation retreats, or healing centers",
+            "Plan intimate accommodations with ocean or lake views"
+          ],
+          timeframe: "Best during water sign seasons and full moons",
+          confidence: 91
+        });
       }
     }
+
+    // Color Therapy based on birth chart
+    if (profile.systems?.western?.element) {
+      const element = profile.systems.western.element;
+      
+      recs.push({
+        category: "colors",
+        title: `${element} Element Color Palette`,
+        description: `Colors that harmonize with your ${element} elemental energy for optimal well-being and success.`,
+        reasoning: `Your ${element} element responds positively to specific color frequencies that enhance your natural energy.`,
+        actionItems: element === 'Fire' ? [
+          "Power colors: Red, orange, gold, bright yellow",
+          "Accent colors: Purple, magenta for depth",
+          "Avoid: Too much blue or black (dampening)",
+          "Wear fire colors during important meetings or creative work"
+        ] : element === 'Earth' ? [
+          "Power colors: Brown, beige, forest green, terracotta",
+          "Accent colors: Gold, cream for luxury",
+          "Avoid: Too much bright orange or electric blue",
+          "Use earth tones in home decor and professional wardrobe"
+        ] : element === 'Air' ? [
+          "Power colors: Light blue, yellow, silver, white",
+          "Accent colors: Lavender, mint green for clarity",
+          "Avoid: Heavy dark colors that feel restrictive", 
+          "Incorporate air colors in workspace and communication tools"
+        ] : [
+          "Power colors: Deep blue, teal, silver, sea green",
+          "Accent colors: Purple, soft pink for emotional balance",
+          "Avoid: Too much red or orange (overstimulating)",
+          "Use water colors in meditation spaces and bedrooms"
+        ],
+        timeframe: "Daily application for optimal results",
+        confidence: 88
+      });
+    }
+
+    // Career & Professional Life
+    if (profile.systems?.numerology?.lifePath) {
+      const lifePath = profile.systems.numerology.lifePath;
+      
+      let careerGuidance = "";
+      let careerActions: string[] = [];
+      
+      if ([1, 8].includes(lifePath)) {
+        careerGuidance = "Leadership and entrepreneurship are your natural calling paths.";
+        careerActions = [
+          "Seek leadership roles and management positions",
+          "Consider starting your own business or consultancy",
+          "Develop public speaking and executive presence skills",
+          "Network with other successful entrepreneurs and leaders"
+        ];
+      } else if ([2, 6].includes(lifePath)) {
+        careerGuidance = "Service, healing, and collaborative work environments suit you best.";
+        careerActions = [
+          "Explore careers in healthcare, counseling, or social work",
+          "Look for team-based roles and collaborative projects",
+          "Develop your natural counseling and listening skills",
+          "Consider non-profit or mission-driven organizations"
+        ];
+      } else if ([3, 5].includes(lifePath)) {
+        careerGuidance = "Creative expression and communication are key to your professional fulfillment.";
+        careerActions = [
+          "Pursue careers in arts, media, writing, or entertainment",
+          "Develop multiple income streams and creative projects",
+          "Build your personal brand and social media presence",
+          "Network in creative and innovative industries"
+        ];
+      } else {
+        careerGuidance = "Your life path suggests success through sustained effort and systematic approaches.";
+        careerActions = [
+          "Focus on building expertise in specialized fields",
+          "Create systematic approaches to skill development",
+          "Look for stable organizations with growth potential",
+          "Develop both technical and leadership capabilities"
+        ];
+      }
+
+      recs.push({
+        category: "career",
+        title: `Life Path ${lifePath} Career Optimization`,
+        description: careerGuidance,
+        reasoning: `Your numerological life path indicates natural talents and career directions that align with your soul's purpose.`,
+        actionItems: careerActions,
+        timeframe: "Long-term career planning (2-5 years)",
+        confidence: 85
+      });
+    }
+
+    // Health & Wellness based on constitution
+    recs.push({
+      category: "wellness",
+      title: "Personalized Health & Fitness Plan",
+      description: "Exercise and wellness routines that complement your astrological constitution and energy patterns.",
+      reasoning: "Your birth chart indicates specific physical and energetic needs for optimal health.",
+      actionItems: [
+        "Morning routine: 15-minute meditation or breathwork",
+        "Exercise: Combination of cardio and strength training 4x/week",
+        "Nutrition: Emphasize seasonal, local foods that match your element",
+        "Sleep: Maintain consistent sleep schedule aligned with lunar cycles",
+        "Stress management: Regular nature connection and creative outlets"
+      ],
+      timeframe: "Daily implementation with weekly adjustments",
+      confidence: 87
+    });
+
+    // Timing & Planning
+    recs.push({
+      category: "timing",
+      title: "Optimal Timing for Major Decisions",
+      description: "Astrological timing guidance for important life events and decisions.",
+      reasoning: "Planetary cycles and your personal astrological calendar affect success probability of major initiatives.",
+      actionItems: [
+        "Launch new projects during your solar return month",
+        "Make major purchases during Venus favorable periods",
+        "Schedule important meetings during Mercury direct periods",
+        "Plan relationship conversations during harmonious moon phases",
+        "Avoid major commitments during eclipse seasons"
+      ],
+      timeframe: "Monthly planning with seasonal adjustments",
+      confidence: 82
+    });
+
+    setRecommendations(recs);
   };
 
-  return (
-    <div className="min-h-screen cosmic-gradient">
-      {/* Home Button */}
-      <Link href="/">
-        <Button className="home-button">
-          <Home className="mr-2 h-4 w-4" />
-          Home
-        </Button>
-      </Link>
+  const tabConfig = [
+    { id: "travel", name: "Travel", icon: <Plane className="h-4 w-4" />, color: "bg-blue-500" },
+    { id: "colors", name: "Colors", icon: <Palette className="h-4 w-4" />, color: "bg-purple-500" },
+    { id: "career", name: "Career", icon: <Briefcase className="h-4 w-4" />, color: "bg-green-500" },
+    { id: "wellness", name: "Wellness", icon: <Dumbbell className="h-4 w-4" />, color: "bg-red-500" },
+    { id: "timing", name: "Timing", icon: <Calendar className="h-4 w-4" />, color: "bg-yellow-500" }
+  ];
 
-      <main className="relative z-10 px-4 pt-20 pb-16">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
-              🌟 Lifestyle Intelligence
-            </h1>
-            <p className="text-xl text-gray-300 mb-6">
-              Personalized recommendations based on your complete astrological profile
+  const getRecommendationsForTab = (tabId: string) => {
+    return recommendations.filter(rec => rec.category === tabId);
+  };
+
+  if (!userProfile) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center">
+        <Card className="bg-black/40 border-purple-500/30 max-w-md mx-4">
+          <CardContent className="text-center py-12">
+            <MapPin className="h-16 w-16 mx-auto text-purple-400 mb-4" />
+            <h3 className="text-xl font-semibold text-purple-300 mb-2">
+              Create Your Chart First
+            </h3>
+            <p className="text-purple-400 mb-6">
+              Generate your birth chart to receive personalized lifestyle intelligence based on your complete astrological profile.
             </p>
-            <Badge variant="outline" className="text-white border-purple-400 text-lg px-4 py-2">
-              Value: $200+ Professional Consultation
-            </Badge>
+            <Link href="/home">
+              <Button className="bg-purple-600 hover:bg-purple-700">
+                Create Chart
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Header */}
+      <div className="border-b border-purple-500/20 bg-black/20 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="p-2 bg-purple-500/20 rounded-lg">
+                <TrendingUp className="h-8 w-8 text-purple-400" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Lifestyle Intelligence
+                </h1>
+                <p className="text-purple-300">Personalized guidance for optimal living</p>
+              </div>
+            </div>
+            <Link href="/home">
+              <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20">
+                <Home className="h-4 w-4 mr-2" />
+                Home
+              </Button>
+            </Link>
           </div>
-
-          {/* System Synthesis Explanation */}
-          <Card className="bg-purple-800/40 border-purple-400/30 backdrop-blur-md mb-8">
-            <CardHeader>
-              <CardTitle className="text-white text-xl">
-                <Star className="inline mr-2" />
-                AI Cross-System Synthesis
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-gray-200">
-              <p className="mb-4">
-                These recommendations combine insights from all systems in your profile:
-              </p>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
-                <div>
-                  <strong className="text-purple-300">Western:</strong> Taurus Sun, Earth element
-                </div>
-                <div>
-                  <strong className="text-orange-300">Vedic:</strong> Aries Rashi, Rohini Nakshatra
-                </div>
-                <div>
-                  <strong className="text-red-300">Chinese:</strong> Wood Pig, Earth element
-                </div>
-                <div>
-                  <strong className="text-green-300">Numerology:</strong> Life Path 8, Destiny 11
-                </div>
-                <div>
-                  <strong className="text-blue-300">Human Design:</strong> Generator type
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Lifestyle Tabs */}
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-purple-800/40">
-              <TabsTrigger value="travel" className="text-white data-[state=active]:bg-blue-500">
-                <MapPin className="mr-2 h-4 w-4" />
-                Travel Destinations
-              </TabsTrigger>
-              <TabsTrigger value="colors" className="text-white data-[state=active]:bg-purple-500">
-                <Palette className="mr-2 h-4 w-4" />
-                Color Therapy
-              </TabsTrigger>
-              <TabsTrigger value="gemstones" className="text-white data-[state=active]:bg-emerald-500">
-                <Gem className="mr-2 h-4 w-4" />
-                Gemstone Guidance
-              </TabsTrigger>
-            </TabsList>
-
-            {/* Travel Intelligence */}
-            <TabsContent value="travel" className="mt-6">
-              <div className="space-y-6">
-                <Card className="bg-purple-800/40 border-blue-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white flex items-center">
-                      <Plane className="mr-2 h-5 w-5" />
-                      Optimal Travel Destinations
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {lifestyleData.travel.optimal.map((dest, index) => (
-                      <Card key={index} className="bg-purple-900/30 border-blue-300/20">
-                        <CardContent className="p-4">
-                          <div className="flex justify-between items-start mb-2">
-                            <h4 className="text-lg font-semibold text-blue-300">{dest.destination}</h4>
-                            <div className="flex items-center text-sm text-gray-300">
-                              <Thermometer className="mr-1 h-3 w-3" />
-                              {dest.avgTemp}
-                            </div>
-                          </div>
-                          <div className="flex items-center mb-2 text-sm text-gray-300">
-                            <Calendar className="mr-1 h-3 w-3" />
-                            Best time: {dest.season}
-                          </div>
-                          <p className="text-gray-200 mb-3 text-sm">{dest.reason}</p>
-                          <div className="flex flex-wrap gap-2">
-                            {dest.activities.map((activity, i) => (
-                              <Badge key={i} variant="outline" className="text-xs border-blue-400/50 text-blue-200">
-                                {activity}
-                              </Badge>
-                            ))}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-purple-800/40 border-red-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Destinations to Avoid</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {lifestyleData.travel.avoid.map((dest, index) => (
-                      <div key={index} className="p-3 bg-red-500/10 border border-red-400/30 rounded">
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium text-red-300">{dest.destination}</span>
-                          <span className="text-xs text-gray-400">{dest.season}</span>
-                        </div>
-                        <p className="text-sm text-gray-300 mt-1">{dest.reason}</p>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Color Intelligence */}
-            <TabsContent value="colors" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="bg-purple-800/40 border-purple-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Power Colors</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 rounded-full" style={{backgroundColor: lifestyleData.colors.power.primary}}></div>
-                      <div>
-                        <div className="text-white font-medium">Primary</div>
-                        <div className="text-xs text-gray-400">Grounding & Stability</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 rounded-full" style={{backgroundColor: lifestyleData.colors.power.secondary}}></div>
-                      <div>
-                        <div className="text-white font-medium">Secondary</div>
-                        <div className="text-xs text-gray-400">Growth & Prosperity</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 rounded-full" style={{backgroundColor: lifestyleData.colors.power.accent}}></div>
-                      <div>
-                        <div className="text-white font-medium">Accent</div>
-                        <div className="text-xs text-gray-400">Success & Abundance</div>
-                      </div>
-                    </div>
-                    <p className="text-xs text-gray-300 mt-3">{lifestyleData.colors.power.reason}</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-purple-800/40 border-purple-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Daily Colors</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    {Object.entries(lifestyleData.colors.daily).map(([day, color]) => (
-                      <div key={day} className="flex items-center justify-between">
-                        <span className="text-white capitalize text-sm">{day}</span>
-                        <div className="w-6 h-6 rounded-full" style={{backgroundColor: color}}></div>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-purple-800/40 border-purple-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Seasonal Colors</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {Object.entries(lifestyleData.colors.seasonal).map(([season, color]) => (
-                      <div key={season} className="flex items-center space-x-3">
-                        <div className="w-8 h-8 rounded-full" style={{backgroundColor: color}}></div>
-                        <span className="text-white capitalize">{season}</span>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Gemstone Intelligence */}
-            <TabsContent value="gemstones" className="mt-6">
-              <div className="space-y-6">
-                {/* Primary Recommendations */}
-                <Card className="bg-purple-800/40 border-emerald-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Personalized Gemstone Recommendations</CardTitle>
-                    <p className="text-gray-300 text-sm">Based on your complete astrological profile synthesis</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {Object.entries(lifestyleData.gemstones).map(([type, stone]) => (
-                        <Card key={type} className="bg-emerald-500/10 border-emerald-400/20">
-                          <CardContent className="p-4">
-                            <div className="text-center mb-3">
-                              <h4 className="text-lg font-semibold text-emerald-300 capitalize">{type}</h4>
-                              <h5 className="text-xl font-bold text-white">{stone.name}</h5>
-                            </div>
-                            <div className="space-y-3 text-sm">
-                              <div>
-                                <span className="text-emerald-400 font-medium">Purpose:</span>
-                                <p className="text-gray-200">{stone.purpose}</p>
-                              </div>
-                              <div>
-                                <span className="text-emerald-400 font-medium">How to wear:</span>
-                                <p className="text-gray-200">{stone.wearing}</p>
-                              </div>
-                              <div>
-                                <span className="text-emerald-400 font-medium">Best timing:</span>
-                                <p className="text-gray-200">{stone.timing}</p>
-                              </div>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Planetary Gemstones */}
-                <Card className="bg-purple-800/40 border-emerald-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Planetary Gemstone System</CardTitle>
-                    <p className="text-gray-300 text-sm">Traditional Jyotish recommendations based on your chart</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {[
-                        { planet: "Sun", stone: "Ruby", finger: "Ring finger", day: "Sunday", color: "#DC143C" },
-                        { planet: "Moon", stone: "Pearl", finger: "Little finger", day: "Monday", color: "#F8F8FF" },
-                        { planet: "Venus", stone: "Diamond", finger: "Middle finger", day: "Friday", color: "#E6E6FA" },
-                        { planet: "Jupiter", stone: "Yellow Sapphire", finger: "Index finger", day: "Thursday", color: "#FFD700" },
-                        { planet: "Mercury", stone: "Emerald", finger: "Little finger", day: "Wednesday", color: "#50C878" },
-                        { planet: "Mars", stone: "Red Coral", finger: "Ring finger", day: "Tuesday", color: "#FF7F50" },
-                        { planet: "Saturn", stone: "Blue Sapphire", finger: "Middle finger", day: "Saturday", color: "#0F52BA" },
-                        { planet: "Rahu", stone: "Hessonite", finger: "Middle finger", day: "Saturday", color: "#B87333" }
-                      ].map((gem, index) => (
-                        <div key={index} className="p-3 bg-purple-900/30 rounded-lg border border-emerald-400/20">
-                          <div className="text-center">
-                            <div className="w-6 h-6 rounded-full mx-auto mb-2" style={{backgroundColor: gem.color}}></div>
-                            <h5 className="font-semibold text-white">{gem.planet}</h5>
-                            <p className="text-emerald-300 text-sm">{gem.stone}</p>
-                            <p className="text-xs text-gray-400">{gem.finger}</p>
-                            <p className="text-xs text-gray-400">{gem.day}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Cleansing & Care Instructions */}
-                <Card className="bg-purple-800/40 border-emerald-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Gemstone Care & Activation</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div>
-                        <h4 className="text-emerald-300 font-semibold mb-3">Cleansing Methods</h4>
-                        <ul className="space-y-2 text-gray-200 text-sm">
-                          <li>• Running water (except pearls/opals)</li>
-                          <li>• Full moon moonlight (all stones)</li>
-                          <li>• Sea salt water (hard stones only)</li>
-                          <li>• Sage smoke cleansing</li>
-                          <li>• Crystal cluster charging</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="text-emerald-300 font-semibold mb-3">Activation Timing</h4>
-                        <ul className="space-y-2 text-gray-200 text-sm">
-                          <li>• New moon for new intentions</li>
-                          <li>• Planetary hours for planet stones</li>
-                          <li>• Thursday for Jupiter stones</li>
-                          <li>• Friday for Venus stones</li>
-                          <li>• Sunday morning for all stones</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="text-emerald-300 font-semibold mb-3">Wearing Guidelines</h4>
-                        <ul className="space-y-2 text-gray-200 text-sm">
-                          <li>• Right hand for giving energy</li>
-                          <li>• Left hand for receiving energy</li>
-                          <li>• Direct skin contact preferred</li>
-                          <li>• Metal settings: gold/silver per planet</li>
-                          <li>• Remove during sleep initially</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Chakra Alignment */}
-                <Card className="bg-purple-800/40 border-emerald-400/30">
-                  <CardHeader>
-                    <CardTitle className="text-white">Chakra Gemstone Alignment</CardTitle>
-                    <p className="text-gray-300 text-sm">Balance your energy centers with targeted crystal therapy</p>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {[
-                        { chakra: "Root", stone: "Red Jasper", color: "#DC143C", location: "Base of spine" },
-                        { chakra: "Sacral", stone: "Carnelian", color: "#FF8C00", location: "Below navel" },
-                        { chakra: "Solar Plexus", stone: "Citrine", color: "#FFD700", location: "Upper abdomen" },
-                        { chakra: "Heart", stone: "Rose Quartz", color: "#FFB6C1", location: "Center of chest" },
-                        { chakra: "Throat", stone: "Blue Lace Agate", color: "#87CEEB", location: "Throat area" },
-                        { chakra: "Third Eye", stone: "Amethyst", color: "#9370DB", location: "Between eyebrows" },
-                        { chakra: "Crown", stone: "Clear Quartz", color: "#F8F8FF", location: "Top of head" }
-                      ].map((chakra, index) => (
-                        <div key={index} className="p-4 bg-purple-900/30 rounded-lg border border-emerald-400/20">
-                          <div className="text-center">
-                            <div className="w-8 h-8 rounded-full mx-auto mb-2" style={{backgroundColor: chakra.color}}></div>
-                            <h5 className="font-semibold text-white">{chakra.chakra}</h5>
-                            <p className="text-emerald-300 text-sm">{chakra.stone}</p>
-                            <p className="text-xs text-gray-400">{chakra.location}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
-
-          {/* Educational Value Proposition */}
-          <Card className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-purple-400/30 mt-8">
-            <CardContent className="p-6">
-              <h3 className="text-xl font-bold text-white mb-4">
-                💎 Educational Value: $25,000+ in Specialized Knowledge
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-purple-300 font-semibold mb-2">What You Learn:</h4>
-                  <ul className="text-gray-200 text-sm space-y-1">
-                    <li>• Authentic methodology behind each system</li>
-                    <li>• Why systems agree or disagree on recommendations</li>
-                    <li>• Progressive disclosure from beginner to advanced</li>
-                    <li>• Scientific temperature data for travel planning</li>
-                    <li>• Traditional color and gemstone principles</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-pink-300 font-semibold mb-2">vs. Other Platforms:</h4>
-                  <ul className="text-gray-200 text-sm space-y-1">
-                    <li>• Entertainment vs. Education</li>
-                    <li>• Single system vs. Cross-system synthesis</li>
-                    <li>• Generic advice vs. Personalized intelligence</li>
-                    <li>• No methodology vs. Transparent calculations</li>
-                    <li>• Limited depth vs. Progressive learning</li>
-                  </ul>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
-      </main>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        {/* Profile Summary */}
+        <Card className="bg-black/40 border-purple-500/30 mb-8">
+          <CardHeader>
+            <CardTitle className="text-purple-300 flex items-center">
+              <Star className="h-5 w-5 mr-2" />
+              Your Cosmic Profile
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="text-center">
+                <p className="text-sm text-purple-400">Western Sign</p>
+                <p className="text-lg font-semibold text-purple-300">
+                  {userProfile.systems?.western?.sign || 'Unknown'}
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm text-purple-400">Element</p>
+                <p className="text-lg font-semibold text-purple-300">
+                  {userProfile.systems?.western?.element || 'Unknown'}
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm text-purple-400">Chinese Animal</p>
+                <p className="text-lg font-semibold text-purple-300">
+                  {userProfile.systems?.chinese?.animal || 'Unknown'}
+                </p>
+              </div>
+              <div className="text-center">
+                <p className="text-sm text-purple-400">Life Path</p>
+                <p className="text-lg font-semibold text-purple-300">
+                  {userProfile.systems?.numerology?.lifePath || 'Unknown'}
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Navigation Tabs */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-5 bg-black/40 border-purple-500/30">
+            {tabConfig.map((tab) => (
+              <TabsTrigger 
+                key={tab.id} 
+                value={tab.id}
+                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-purple-300"
+              >
+                <div className="flex items-center space-x-2">
+                  {tab.icon}
+                  <span className="hidden sm:inline">{tab.name}</span>
+                </div>
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {/* Tab Content */}
+          {tabConfig.map((tab) => (
+            <TabsContent key={tab.id} value={tab.id} className="mt-6">
+              <div className="space-y-6">
+                {getRecommendationsForTab(tab.id).map((rec, index) => (
+                  <Card key={index} className="bg-black/40 border-purple-500/30">
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-xl text-purple-300 flex items-center">
+                          {tab.icon}
+                          <span className="ml-2">{rec.title}</span>
+                        </CardTitle>
+                        <div className="flex items-center space-x-2">
+                          <Badge className="bg-green-500/20 text-green-300">
+                            {rec.confidence}% confidence
+                          </Badge>
+                        </div>
+                      </div>
+                      <p className="text-purple-400">{rec.description}</p>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {/* Reasoning */}
+                      <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                        <div className="flex items-start space-x-2">
+                          <Info className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <h4 className="text-purple-300 font-semibold mb-1">Why This Works For You</h4>
+                            <p className="text-purple-400 text-sm">{rec.reasoning}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Action Items */}
+                      <div>
+                        <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                          <Target className="h-4 w-4 mr-2" />
+                          Action Steps
+                        </h4>
+                        <div className="space-y-2">
+                          {rec.actionItems.map((action, actionIndex) => (
+                            <div key={actionIndex} className="flex items-start space-x-3">
+                              <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <p className="text-purple-300 text-sm">{action}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Timeframe */}
+                      <div className="flex items-center space-x-2 text-sm">
+                        <Clock className="h-4 w-4 text-purple-400" />
+                        <span className="text-purple-400">Timeframe:</span>
+                        <span className="text-purple-300">{rec.timeframe}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+
+                {getRecommendationsForTab(tab.id).length === 0 && (
+                  <Card className="bg-black/40 border-purple-500/30">
+                    <CardContent className="text-center py-12">
+                      <div className="text-purple-400 mb-4">
+                        {tab.icon}
+                      </div>
+                      <p className="text-purple-300">
+                        Generating personalized {tab.name.toLowerCase()} recommendations...
+                      </p>
+                      <p className="text-purple-400 text-sm mt-2">
+                        More detailed guidance will be available as we enhance your profile.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+
+        {/* Quick Stats */}
+        <Card className="bg-black/40 border-purple-500/30 mt-8">
+          <CardHeader>
+            <CardTitle className="text-purple-300">Recommendation Summary</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {tabConfig.map((tab) => {
+                const count = getRecommendationsForTab(tab.id).length;
+                const avgConfidence = count > 0 
+                  ? Math.round(getRecommendationsForTab(tab.id).reduce((sum, rec) => sum + rec.confidence, 0) / count)
+                  : 0;
+                
+                return (
+                  <div key={tab.id} className="text-center">
+                    <div className="flex items-center justify-center mb-2">
+                      {tab.icon}
+                    </div>
+                    <p className="text-sm text-purple-400">{tab.name}</p>
+                    <p className="text-lg font-semibold text-purple-300">{count} tips</p>
+                    {avgConfidence > 0 && (
+                      <p className="text-xs text-purple-400">{avgConfidence}% avg confidence</p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

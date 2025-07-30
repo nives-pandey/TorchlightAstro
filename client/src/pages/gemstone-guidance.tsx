@@ -1,250 +1,619 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Gem, Shield, Heart, DollarSign, Star, Calendar, Clock } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Link } from "wouter";
+import { 
+  Home, 
+  Gem, 
+  Heart, 
+  Shield, 
+  DollarSign, 
+  Brain, 
+  Star, 
+  Sun, 
+  Moon,
+  Crown,
+  Sparkles,
+  Clock
+} from "lucide-react";
 
 interface GemstoneSuggestion {
   name: string;
-  color: string;
-  purpose: "healing" | "protection" | "prosperity" | "love" | "wisdom";
-  planet: string;
+  purpose: string;
   chakra: string;
+  planet: string;
   benefits: string[];
   wearingInstructions: string;
-  bestDays: string[];
-  timeToWear: string;
-}
-
-interface BirthDetails {
-  date: string;
-  time: string;
-  location: string;
-  zodiacSign: string;
-  moonSign: string;
-  ascendant: string;
-  birthNumber: number;
-  lifePathNumber: number;
+  cleansing: string;
+  color: string;
+  hardness: string;
+  element: string;
 }
 
 export default function GemstoneGuidance() {
-  const [selectedPurpose, setSelectedPurpose] = useState<string>("all");
+  const [activeCategory, setActiveCategory] = useState("protection");
+  const [selectedGemstone, setSelectedGemstone] = useState<GemstoneSuggestion | null>(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
 
-  // Awatef's birth details: October 18, 1980, 10:30 AM, Paris
-  const birthDetails: BirthDetails = {
-    date: "1980-10-18",
-    time: "10:30",
-    location: "Paris, France",
-    zodiacSign: "Libra", // Oct 18 is Libra
-    moonSign: "Aquarius", // Calculated for Oct 18, 1980
-    ascendant: "Sagittarius", // 10:30 AM birth time in Paris
-    birthNumber: 9, // 1+8 = 9
-    lifePathNumber: 1 // 1+8+1+0+1+9+8+0 = 28 = 2+8 = 10 = 1+0 = 1
-  };
-
-  function getPurposeIcon(purpose: string) {
-    switch(purpose) {
-      case "healing": return <Heart className="w-4 h-4" />;
-      case "protection": return <Shield className="w-4 h-4" />;
-      case "prosperity": return <DollarSign className="w-4 h-4" />;
-      case "wisdom": return <Star className="w-4 h-4" />;
-      default: return <Gem className="w-4 h-4" />;
+  // Get user profile for personalized recommendations
+  useEffect(() => {
+    const storedProfile = localStorage.getItem('userBirthData');
+    if (storedProfile) {
+      setUserProfile(JSON.parse(storedProfile));
     }
-  }
+  }, []);
 
-  // Generate recommendations based on birth details
-  const generateGemstoneRecommendations = (): GemstoneSuggestion[] => {
-    const recommendations: GemstoneSuggestion[] = [];
-
-    // Based on zodiac sign (Libra)
-    if (birthDetails.zodiacSign === "Libra") {
-      recommendations.push({
-        name: "Opal",
-        color: "Multicolor",
-        purpose: "love",
-        planet: "Venus", 
-        chakra: "Heart",
-        benefits: [
-          "Enhances love and emotional healing",
-          "Brings harmony in relationships",
-          "Amplifies artistic and creative abilities",
-          "Supports reproductive health"
-        ],
-        wearingInstructions: "Wear as ring on ring finger or necklace",
-        bestDays: ["Monday"],
-        timeToWear: "Monday evening or during waxing moon"
-      });
-
-      recommendations.push({
-        name: "Pearl",
-        color: "White",
-        purpose: "protection",
+  // Comprehensive gemstone database
+  const gemstoneDatabase: Record<string, GemstoneSuggestion[]> = {
+    protection: [
+      {
+        name: "Black Tourmaline",
+        purpose: "Psychic Protection & Grounding",
+        chakra: "Root Chakra",
+        planet: "Saturn",
+        benefits: ["Blocks negative energy", "EMF protection", "Grounding", "Anxiety relief"],
+        wearingInstructions: "Wear on left wrist or carry in pocket. Most effective during stressful situations.",
+        cleansing: "Moonlight cleansing monthly. Sage smoke weekly.",
+        color: "Deep Black",
+        hardness: "7-7.5",
+        element: "Earth"
+      },
+      {
+        name: "Hematite",
+        purpose: "Mental Protection & Focus",
+        chakra: "Root Chakra",
+        planet: "Mars",
+        benefits: ["Mental clarity", "Confidence", "Blood circulation", "Courage"],
+        wearingInstructions: "Ring on dominant hand or bracelet on right wrist.",
+        cleansing: "Running water and sunlight. Avoid salt water.",
+        color: "Metallic Silver-Black",
+        hardness: "5-6",
+        element: "Fire/Earth"
+      },
+      {
+        name: "Obsidian",
+        purpose: "Spiritual Protection & Truth",
+        chakra: "Root Chakra",
+        planet: "Pluto",
+        benefits: ["Reveals truth", "Protective shield", "Emotional healing", "Past life recall"],
+        wearingInstructions: "Pendant near heart or carried during meditation.",
+        cleansing: "Earth burial for 24 hours monthly.",
+        color: "Deep Black",
+        hardness: "5-5.5",
+        element: "Fire/Earth"
+      }
+    ],
+    healing: [
+      {
+        name: "Rose Quartz",
+        purpose: "Heart Healing & Self-Love",
+        chakra: "Heart Chakra",
+        planet: "Venus",
+        benefits: ["Unconditional love", "Emotional healing", "Self-compassion", "Relationship harmony"],
+        wearingInstructions: "Pendant over heart or sleep with under pillow.",
+        cleansing: "Moonlight and rose petals monthly.",
+        color: "Soft Pink",
+        hardness: "7",
+        element: "Water"
+      },
+      {
+        name: "Green Aventurine",
+        purpose: "Physical & Emotional Healing",
+        chakra: "Heart Chakra",
+        planet: "Mercury",
+        benefits: ["Heart health", "Emotional balance", "Luck", "Stress relief"],
+        wearingInstructions: "Bracelet on receiving hand (left) during healing work.",
+        cleansing: "Running water and green plants energy.",
+        color: "Soft Green",
+        hardness: "7",
+        element: "Earth"
+      },
+      {
+        name: "Amethyst",
+        purpose: "Spiritual Healing & Intuition",
+        chakra: "Crown/Third Eye",
+        planet: "Jupiter",
+        benefits: ["Spiritual protection", "Intuition", "Sobriety", "Peace"],
+        wearingInstructions: "Crown of head during meditation or third eye placement.",
+        cleansing: "Full moon energy and clear quartz amplification.",
+        color: "Purple Violet",
+        hardness: "7",
+        element: "Air/Water"
+      }
+    ],
+    prosperity: [
+      {
+        name: "Citrine",
+        purpose: "Abundance & Financial Success",
+        chakra: "Solar Plexus",
+        planet: "Sun",
+        benefits: ["Wealth attraction", "Confidence", "Creativity", "Success"],
+        wearingInstructions: "Left pocket or wallet. Ring on middle finger of dominant hand.",
+        cleansing: "Sunlight charging. Self-cleansing stone.",
+        color: "Golden Yellow",
+        hardness: "7",
+        element: "Fire"
+      },
+      {
+        name: "Pyrite",
+        purpose: "Manifestation & Business Success",
+        chakra: "Solar Plexus",
+        planet: "Mars",
+        benefits: ["Business success", "Manifestation", "Willpower", "Confidence"],
+        wearingInstructions: "Office desk or carry during business meetings.",
+        cleansing: "Dry brushing with soft cloth. Avoid water.",
+        color: "Metallic Gold",
+        hardness: "6-6.5",
+        element: "Fire/Earth"
+      },
+      {
+        name: "Green Jade",
+        purpose: "Prosperity & Good Fortune",
+        chakra: "Heart Chakra",
+        planet: "Venus",
+        benefits: ["Good luck", "Prosperity", "Harmony", "Wisdom"],
+        wearingInstructions: "Bracelet on left wrist or pendant near heart.",
+        cleansing: "Moonlight and incense smoke.",
+        color: "Rich Green",
+        hardness: "6-7",
+        element: "Earth"
+      }
+    ],
+    wisdom: [
+      {
+        name: "Lapis Lazuli",
+        purpose: "Wisdom & Truth Communication",
+        chakra: "Throat/Third Eye",
+        planet: "Jupiter",
+        benefits: ["Truth speaking", "Wisdom", "Psychic abilities", "Communication"],
+        wearingInstructions: "Throat chakra pendant or third eye placement during study.",
+        cleansing: "Star light and sage smoke.",
+        color: "Deep Blue with Gold",
+        hardness: "5-5.5",
+        element: "Air/Water"
+      },
+      {
+        name: "Sodalite",
+        purpose: "Logic & Rational Thinking",
+        chakra: "Throat Chakra",
+        planet: "Mercury",
+        benefits: ["Logical thinking", "Communication", "Truth", "Objectivity"],
+        wearingInstructions: "During study sessions or important communications.",
+        cleansing: "Cool water and moonlight.",
+        color: "Blue with White",
+        hardness: "5.5-6",
+        element: "Air"
+      },
+      {
+        name: "Clear Quartz",
+        purpose: "Amplification & Clarity",
+        chakra: "Crown Chakra",
         planet: "Moon",
-        chakra: "Heart",
-        benefits: [
-          "Provides emotional stability",
-          "Enhances maternal instincts",
-          "Brings peace and tranquility",
-          "Improves mental clarity"
-        ],
-        wearingInstructions: "Wear as ring on little finger or pearl necklace",
-        bestDays: ["Monday"],
-        timeToWear: "Monday morning after sunrise"
-      });
-    }
-
-    return recommendations.slice(0, 8);
+        benefits: ["Energy amplification", "Clarity", "Healing boost", "Meditation"],
+        wearingInstructions: "With other stones to amplify their effects.",
+        cleansing: "All methods work. Sunlight and moonlight preferred.",
+        color: "Clear Transparent",
+        hardness: "7",
+        element: "All Elements"
+      }
+    ]
   };
 
-  const gemstoneRecommendations = generateGemstoneRecommendations();
-  const filteredGemstones = selectedPurpose === "all" 
-    ? gemstoneRecommendations 
-    : gemstoneRecommendations.filter(gem => gem.purpose === selectedPurpose);
+  // Personalized recommendations based on birth data
+  const getPersonalizedRecommendations = () => {
+    if (!userProfile) return [];
+
+    const recommendations = [];
+    
+    // Western astrology based recommendations
+    if (userProfile.systems?.western?.sign) {
+      const sign = userProfile.systems.western.sign;
+      
+      // Fire signs
+      if (['Aries', 'Leo', 'Sagittarius'].includes(sign)) {
+        recommendations.push({
+          name: "Carnelian",
+          purpose: "Fire Sign Energy Enhancement",
+          chakra: "Sacral Chakra",
+          planet: "Mars",
+          benefits: ["Courage boost", "Creative energy", "Motivation", "Leadership"],
+          wearingInstructions: "Ring on right hand or pendant during active work.",
+          cleansing: "Sunlight charging and fire element rituals.",
+          color: "Orange-Red",
+          hardness: "7",
+          element: "Fire",
+          personalNote: `Perfect for ${sign} energy enhancement`
+        });
+      }
+      
+      // Earth signs
+      if (['Taurus', 'Virgo', 'Capricorn'].includes(sign)) {
+        recommendations.push({
+          name: "Moss Agate",
+          purpose: "Earth Sign Grounding",
+          chakra: "Root Chakra", 
+          planet: "Earth",
+          benefits: ["Grounding", "Nature connection", "Stability", "Growth"],
+          wearingInstructions: "Touch to earth regularly. Carry during nature walks.",
+          cleansing: "Earth burial and plant energy.",
+          color: "Green with Moss Patterns",
+          hardness: "7",
+          element: "Earth",
+          personalNote: `Enhances natural ${sign} earth energy`
+        });
+      }
+      
+      // Air signs
+      if (['Gemini', 'Libra', 'Aquarius'].includes(sign)) {
+        recommendations.push({
+          name: "Blue Lace Agate",
+          purpose: "Air Sign Communication",
+          chakra: "Throat Chakra",
+          planet: "Mercury",
+          benefits: ["Clear communication", "Peaceful expression", "Calm mind", "Truth"],
+          wearingInstructions: "Throat area during speaking or writing.",
+          cleansing: "Wind and incense smoke.",
+          color: "Soft Blue with White",
+          hardness: "7",
+          element: "Air",
+          personalNote: `Supports ${sign} communication gifts`
+        });
+      }
+      
+      // Water signs
+      if (['Cancer', 'Scorpio', 'Pisces'].includes(sign)) {
+        recommendations.push({
+          name: "Moonstone",
+          purpose: "Water Sign Intuition",
+          chakra: "Crown/Third Eye",
+          planet: "Moon",
+          benefits: ["Intuition enhancement", "Emotional balance", "Psychic abilities", "Feminine energy"],
+          wearingInstructions: "During full moon and meditation practices.",
+          cleansing: "Moonlight and sea water.",
+          color: "Creamy White with Blue Flash",
+          hardness: "6-6.5",
+          element: "Water",
+          personalNote: `Amplifies natural ${sign} intuitive abilities`
+        });
+      }
+    }
+
+    // Numerology based recommendations
+    if (userProfile.systems?.numerology?.lifePath) {
+      const lifePath = userProfile.systems.numerology.lifePath;
+      
+      if ([1, 8].includes(lifePath)) {
+        recommendations.push({
+          name: "Tiger's Eye",
+          purpose: "Leadership Life Path",
+          chakra: "Solar Plexus",
+          planet: "Sun",
+          benefits: ["Leadership confidence", "Decision making", "Protection", "Prosperity"],
+          wearingInstructions: "Right hand ring or dominant wrist during leadership activities.",
+          cleansing: "Solar energy and gold element rituals.",
+          color: "Golden Brown with Chatoyancy",
+          hardness: "7",
+          element: "Fire/Earth",
+          personalNote: `Perfect for Life Path ${lifePath} leadership energy`
+        });
+      }
+    }
+
+    return recommendations;
+  };
+
+  const personalizedGems = getPersonalizedRecommendations();
+
+  const categories = [
+    { id: "personalized", name: "For You", icon: <Star className="h-4 w-4" />, color: "bg-purple-500" },
+    { id: "protection", name: "Protection", icon: <Shield className="h-4 w-4" />, color: "bg-red-500" },
+    { id: "healing", name: "Healing", icon: <Heart className="h-4 w-4" />, color: "bg-green-500" },
+    { id: "prosperity", name: "Prosperity", icon: <DollarSign className="h-4 w-4" />, color: "bg-yellow-500" },
+    { id: "wisdom", name: "Wisdom", icon: <Brain className="h-4 w-4" />, color: "bg-blue-500" }
+  ];
+
+  const getCurrentGemstones = () => {
+    if (activeCategory === "personalized") return personalizedGems;
+    return gemstoneDatabase[activeCategory] || [];
+  };
 
   return (
-    <div 
-      className="min-h-screen p-6"
-      style={{background: 'var(--cosmic-gradient-1)'}}
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Header - NO ANIMATIONS */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-4" style={{color: 'var(--cosmic-lavender)'}}>
-            <Gem className="w-8 h-8 inline-block mr-3" style={{color: 'var(--cosmic-gold)'}} />
-            Gemstone & Crystal Guidance
-          </h1>
-          <p className="text-lg max-w-3xl mx-auto" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
-            Discover your personalized gemstone recommendations based on your complete astrological profile
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Header */}
+      <div className="border-b border-purple-500/20 bg-black/20 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="p-2 bg-purple-500/20 rounded-lg">
+                <Gem className="h-8 w-8 text-purple-400" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Gemstone Guidance
+                </h1>
+                <p className="text-purple-300">Discover crystals aligned with your cosmic energy</p>
+              </div>
+            </div>
+            <Link href="/home">
+              <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20">
+                <Home className="h-4 w-4 mr-2" />
+                Home
+              </Button>
+            </Link>
+          </div>
         </div>
+      </div>
 
-        {/* Birth Details Summary - NO ANIMATIONS */}
-        <div className="mb-8">
-          <Card className="border-2" style={{borderColor: 'var(--cosmic-purple)', background: 'var(--cosmic-indigo)'}}>
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Category Selection */}
+          <div className="lg:col-span-1">
+            <Card className="bg-black/40 border-purple-500/30">
+              <CardHeader>
+                <CardTitle className="text-purple-300 flex items-center">
+                  <Sparkles className="h-5 w-5 mr-2" />
+                  Categories
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {categories.map((category) => (
+                  <Button
+                    key={category.id}
+                    variant={activeCategory === category.id ? "default" : "ghost"}
+                    className={`w-full justify-start ${
+                      activeCategory === category.id 
+                        ? `${category.color} text-white` 
+                        : "text-purple-300 hover:bg-purple-500/20"
+                    }`}
+                    onClick={() => setActiveCategory(category.id)}
+                  >
+                    {category.icon}
+                    <span className="ml-2">{category.name}</span>
+                    {category.id === "personalized" && personalizedGems.length > 0 && (
+                      <Badge className="ml-auto bg-yellow-500 text-black text-xs">
+                        {personalizedGems.length}
+                      </Badge>
+                    )}
+                  </Button>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Quick Reference */}
+            <Card className="bg-black/40 border-purple-500/30 mt-6">
+              <CardHeader>
+                <CardTitle className="text-purple-300 text-sm">Quick Reference</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm space-y-2">
+                <div className="flex items-center text-purple-300">
+                  <Crown className="h-4 w-4 mr-2" />
+                  Crown Chakra: Spiritual
+                </div>
+                <div className="flex items-center text-blue-300">
+                  <Brain className="h-4 w-4 mr-2" />
+                  Third Eye: Intuition
+                </div>
+                <div className="flex items-center text-cyan-300">
+                  <span className="w-4 h-4 mr-2 rounded-full bg-cyan-500"></span>
+                  Throat: Communication
+                </div>
+                <div className="flex items-center text-green-300">
+                  <Heart className="h-4 w-4 mr-2" />
+                  Heart: Love & Healing
+                </div>
+                <div className="flex items-center text-yellow-300">
+                  <Sun className="h-4 w-4 mr-2" />
+                  Solar Plexus: Power
+                </div>
+                <div className="flex items-center text-orange-300">
+                  <span className="w-4 h-4 mr-2 rounded-full bg-orange-500"></span>
+                  Sacral: Creativity
+                </div>
+                <div className="flex items-center text-red-300">
+                  <span className="w-4 h-4 mr-2 rounded-full bg-red-500"></span>
+                  Root: Grounding
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Gemstone Grid */}
+          <div className="lg:col-span-3">
+            {activeCategory === "personalized" && personalizedGems.length === 0 && (
+              <Card className="bg-black/40 border-purple-500/30">
+                <CardContent className="text-center py-12">
+                  <Gem className="h-16 w-16 mx-auto text-purple-400 mb-4" />
+                  <h3 className="text-xl font-semibold text-purple-300 mb-2">
+                    Create Your Chart First
+                  </h3>
+                  <p className="text-purple-400 mb-6">
+                    Generate your birth chart to receive personalized gemstone recommendations based on your astrological profile.
+                  </p>
+                  <Link href="/home">
+                    <Button className="bg-purple-600 hover:bg-purple-700">
+                      Create Chart
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {getCurrentGemstones().map((gemstone, index) => (
+                <Card 
+                  key={index}
+                  className="bg-black/40 border-purple-500/30 hover:border-purple-400/50 transition-all cursor-pointer transform hover:scale-105"
+                  onClick={() => setSelectedGemstone(gemstone)}
+                >
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg text-purple-300">{gemstone.name}</CardTitle>
+                      <div className={`w-6 h-6 rounded-full border-2 border-white/30 ${
+                        gemstone.color.includes('Black') ? 'bg-black' :
+                        gemstone.color.includes('Pink') ? 'bg-pink-400' :
+                        gemstone.color.includes('Green') ? 'bg-green-400' :
+                        gemstone.color.includes('Purple') ? 'bg-purple-400' :
+                        gemstone.color.includes('Blue') ? 'bg-blue-400' :
+                        gemstone.color.includes('Yellow') || gemstone.color.includes('Gold') ? 'bg-yellow-400' :
+                        gemstone.color.includes('Orange') ? 'bg-orange-400' :
+                        gemstone.color.includes('Red') ? 'bg-red-400' :
+                        gemstone.color.includes('Clear') ? 'bg-white' :
+                        'bg-gray-400'
+                      }`}></div>
+                    </div>
+                    <p className="text-sm text-purple-400">{gemstone.purpose}</p>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-purple-300">Chakra:</span>
+                        <span className="text-purple-400">{gemstone.chakra}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-purple-300">Planet:</span>
+                        <span className="text-purple-400">{gemstone.planet}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-purple-300">Element:</span>
+                        <span className="text-purple-400">{gemstone.element}</span>
+                      </div>
+                      
+                      {/* Benefits */}
+                      <div className="space-y-1">
+                        <p className="text-sm text-purple-300">Benefits:</p>
+                        <div className="flex flex-wrap gap-1">
+                          {gemstone.benefits.slice(0, 3).map((benefit, i) => (
+                            <Badge key={i} variant="secondary" className="text-xs bg-purple-500/20 text-purple-300">
+                              {benefit}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Personal note for personalized recommendations */}
+                      {(gemstone as any).personalNote && (
+                        <div className="p-2 bg-yellow-500/10 border border-yellow-500/30 rounded">
+                          <p className="text-xs text-yellow-300">{(gemstone as any).personalNote}</p>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Detailed Gemstone Modal */}
+      {selectedGemstone && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <Card className="bg-black/90 border-purple-500/50 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <CardHeader>
-              <CardTitle style={{color: 'var(--cosmic-lavender)'}}>Your Astrological Profile</CardTitle>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className={`w-8 h-8 rounded-full border-2 border-white/30 ${
+                    selectedGemstone.color.includes('Black') ? 'bg-black' :
+                    selectedGemstone.color.includes('Pink') ? 'bg-pink-400' :
+                    selectedGemstone.color.includes('Green') ? 'bg-green-400' :
+                    selectedGemstone.color.includes('Purple') ? 'bg-purple-400' :
+                    selectedGemstone.color.includes('Blue') ? 'bg-blue-400' :
+                    selectedGemstone.color.includes('Yellow') || selectedGemstone.color.includes('Gold') ? 'bg-yellow-400' :
+                    selectedGemstone.color.includes('Orange') ? 'bg-orange-400' :
+                    selectedGemstone.color.includes('Red') ? 'bg-red-400' :
+                    selectedGemstone.color.includes('Clear') ? 'bg-white' :
+                    'bg-gray-400'
+                  }`}></div>
+                  <div>
+                    <CardTitle className="text-xl text-purple-300">{selectedGemstone.name}</CardTitle>
+                    <p className="text-purple-400">{selectedGemstone.purpose}</p>
+                  </div>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  onClick={() => setSelectedGemstone(null)}
+                  className="text-purple-300 hover:bg-purple-500/20"
+                >
+                  ✕
+                </Button>
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div>
-                  <p className="text-sm opacity-70" style={{color: 'var(--cosmic-lavender)'}}>Zodiac Sign</p>
-                  <p className="font-semibold" style={{color: 'var(--cosmic-gold)'}}>{birthDetails.zodiacSign}</p>
+            <CardContent className="space-y-6">
+              {/* Properties */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <p className="text-sm text-purple-300">Chakra</p>
+                  <p className="text-purple-400">{selectedGemstone.chakra}</p>
                 </div>
-                <div>
-                  <p className="text-sm opacity-70" style={{color: 'var(--cosmic-lavender)'}}>Moon Sign</p>
-                  <p className="font-semibold" style={{color: 'var(--cosmic-gold)'}}>{birthDetails.moonSign}</p>
+                <div className="space-y-2">
+                  <p className="text-sm text-purple-300">Ruling Planet</p>
+                  <p className="text-purple-400">{selectedGemstone.planet}</p>
                 </div>
-                <div>
-                  <p className="text-sm opacity-70" style={{color: 'var(--cosmic-lavender)'}}>Ascendant</p>
-                  <p className="font-semibold" style={{color: 'var(--cosmic-gold)'}}>{birthDetails.ascendant}</p>
+                <div className="space-y-2">
+                  <p className="text-sm text-purple-300">Element</p>
+                  <p className="text-purple-400">{selectedGemstone.element}</p>
                 </div>
-                <div>
-                  <p className="text-sm opacity-70" style={{color: 'var(--cosmic-lavender)'}}>Life Path</p>
-                  <p className="font-semibold" style={{color: 'var(--cosmic-gold)'}}>{birthDetails.lifePathNumber}</p>
+                <div className="space-y-2">
+                  <p className="text-sm text-purple-300">Hardness</p>
+                  <p className="text-purple-400">{selectedGemstone.hardness}</p>
                 </div>
               </div>
+
+              {/* Benefits */}
+              <div>
+                <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Benefits
+                </h4>
+                <div className="grid grid-cols-2 gap-2">
+                  {selectedGemstone.benefits.map((benefit, index) => (
+                    <div key={index} className="flex items-center text-sm text-purple-400">
+                      <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                      {benefit}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Wearing Instructions */}
+              <div>
+                <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                  <Clock className="h-4 w-4 mr-2" />
+                  How to Wear
+                </h4>
+                <p className="text-purple-400 text-sm leading-relaxed">
+                  {selectedGemstone.wearingInstructions}
+                </p>
+              </div>
+
+              {/* Cleansing */}
+              <div>
+                <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                  <Moon className="h-4 w-4 mr-2" />
+                  Cleansing & Charging
+                </h4>
+                <p className="text-purple-400 text-sm leading-relaxed">
+                  {selectedGemstone.cleansing}
+                </p>
+              </div>
+
+              {/* Personal note for personalized recommendations */}
+              {(selectedGemstone as any).personalNote && (
+                <div className="p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+                  <h4 className="text-yellow-300 font-semibold mb-2 flex items-center">
+                    <Star className="h-4 w-4 mr-2" />
+                    Personal Recommendation
+                  </h4>
+                  <p className="text-yellow-300 text-sm">{(selectedGemstone as any).personalNote}</p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
-
-        {/* Purpose Filter - NO ANIMATIONS */}
-        <div className="mb-8">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {["all", "healing", "protection", "prosperity", "wisdom"].map((purpose) => (
-              <Button
-                key={purpose}
-                variant={selectedPurpose === purpose ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedPurpose(purpose)}
-                className="capitalize"
-                style={{
-                  background: selectedPurpose === purpose ? 'var(--cosmic-gradient-2)' : 'transparent',
-                  borderColor: 'var(--cosmic-purple)',
-                  color: 'var(--cosmic-lavender)'
-                }}
-              >
-                {getPurposeIcon(purpose)}
-                <span className="ml-2">{purpose}</span>
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        {/* Gemstone Cards - NO ANIMATIONS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredGemstones.map((gemstone, index) => (
-            <Card 
-              key={index} 
-              className="border-2 hover:shadow-lg transition-shadow duration-300" 
-              style={{borderColor: 'var(--cosmic-purple)', background: 'var(--cosmic-indigo)'}}
-            >
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center gap-2" style={{color: 'var(--cosmic-lavender)'}}>
-                    <Gem className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
-                    {gemstone.name}
-                  </CardTitle>
-                  <Badge 
-                    className="capitalize"
-                    style={{background: 'var(--cosmic-purple)', color: 'var(--cosmic-lavender)'}}
-                  >
-                    {gemstone.purpose}
-                  </Badge>
-                </div>
-                <CardDescription style={{color: 'var(--cosmic-lavender)', opacity: 0.7}}>
-                  {gemstone.color} • {gemstone.planet} • {gemstone.chakra} Chakra
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Tabs defaultValue="benefits" className="w-full">
-                  <TabsList className="grid w-full grid-cols-3 mb-4" style={{background: 'var(--cosmic-navy)'}}>
-                    <TabsTrigger value="benefits" style={{color: 'var(--cosmic-lavender)'}}>Benefits</TabsTrigger>
-                    <TabsTrigger value="wearing" style={{color: 'var(--cosmic-lavender)'}}>Wearing</TabsTrigger>
-                    <TabsTrigger value="timing" style={{color: 'var(--cosmic-lavender)'}}>Timing</TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="benefits">
-                    <div className="space-y-2">
-                      {gemstone.benefits.slice(0, 3).map((benefit, idx) => (
-                        <div key={idx} className="flex items-start gap-2 p-3 rounded" style={{background: 'var(--cosmic-navy)'}}>
-                          <Star className="w-4 h-4 mt-0.5 flex-shrink-0" style={{color: 'var(--cosmic-gold)'}} />
-                          <span className="text-sm" style={{color: 'var(--cosmic-lavender)'}}>{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </TabsContent>
-                  
-                  <TabsContent value="wearing">
-                    <div className="space-y-3 p-3 rounded" style={{background: 'var(--cosmic-navy)'}}>
-                      <p className="text-sm" style={{color: 'var(--cosmic-lavender)'}}>
-                        <strong>Instructions:</strong> {gemstone.wearingInstructions}
-                      </p>
-                    </div>
-                  </TabsContent>
-                  
-                  <TabsContent value="timing">
-                    <div className="space-y-3 p-3 rounded" style={{background: 'var(--cosmic-navy)'}}>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" style={{color: 'var(--cosmic-gold)'}} />
-                        <span className="text-sm" style={{color: 'var(--cosmic-lavender)'}}>
-                          Best Days: {gemstone.bestDays.join(", ")}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" style={{color: 'var(--cosmic-gold)'}} />
-                        <span className="text-sm" style={{color: 'var(--cosmic-lavender)'}}>
-                          {gemstone.timeToWear}
-                        </span>
-                      </div>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
