@@ -39,6 +39,8 @@ export const users = pgTable("users", {
 export const birthData = pgTable("birth_data", {
   id: serial("id").primaryKey(),
   userId: varchar("user_id").references(() => users.id).notNull(),
+  firstName: text("first_name"),
+  lastName: text("last_name"),
   birthDate: text("birth_date").notNull(),
   birthTime: text("birth_time").notNull(),
   timezone: text("timezone").notNull(),

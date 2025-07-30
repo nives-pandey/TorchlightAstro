@@ -36,6 +36,15 @@ const birthFormSchema = z.object({
   confirmed: z.boolean().refine(val => val === true, {
     message: "Please confirm that all information is accurate"
   })
+}).refine((data) => {
+  // If numerology is selected, require proper names
+  if (data.systems.numerology) {
+    return data.firstName.trim().length >= 2 && data.lastName.trim().length >= 2;
+  }
+  return true;
+}, {
+  message: "Names (minimum 2 characters each) are required when Numerology is selected for accurate calculations",
+  path: ["firstName"] // This will show the error on the firstName field
 });
 
 type BirthFormData = z.infer<typeof birthFormSchema>;

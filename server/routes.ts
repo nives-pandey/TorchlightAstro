@@ -318,7 +318,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
           const { GemstoneAstrology } = await import('./gemstone-astrology');
           
           const birth = new Date(birthData.birthDate);
-          const fullName = `${(req as any).user?.firstName || ''} ${(req as any).user?.lastName || ''}`.trim() || 'User';
+          const fullName = `${birthData.firstName || ''} ${birthData.lastName || ''}`.trim();
+          
+          // Validate that we have a proper name for numerology calculations
+          if (!fullName || fullName.length < 2) {
+            chartData.numerology = {
+              error: "Full name is required for numerology calculations. Please ensure first and last names are provided."
+            };
+            return;
+          }
           
           // Calculate complete numerology profile
           const numerologyProfile = NumerologyCalculator.calculateCompleteProfile(fullName, birth);
