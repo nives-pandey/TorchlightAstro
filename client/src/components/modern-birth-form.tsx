@@ -604,7 +604,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                                           {city.adminName1 && `${city.adminName1}, `}{city.country}
                                         </div>
                                         <div className="text-purple-300 text-xs mt-1">
-                                          {city.timezone} • Population: {city.population.toLocaleString()}
+                                          {city.timezone} • Population: {city.population?.toLocaleString() || 'Unknown'}
                                         </div>
                                       </div>
                                       <div className="text-purple-300 text-xs ml-2">

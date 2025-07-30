@@ -162,6 +162,34 @@ The application performs authentic astrological calculations rather than using p
 - Expected timeline: 10K+ users and $1K+ monthly revenue within 12 months
 - Zero marketing budget approach leveraging unique cross-system educational advantage
 
+## Application Flow & Customer Journey Design (July 30, 2025)
+
+### **Complete Customer Experience Architecture**
+- **Landing Page (`/`)**: Educational entry point with 5 astrological system cards (Western, Vedic, Chinese, Human Design, Numerology)
+- **Home Page (`/home`)**: Main application hub with comprehensive chart creation and feature navigation
+- **Birth Form Modal**: 3-step process (Personal Info → Birth Details → Systems Selection) with smart global city finder
+- **Chart Results**: Full-screen tabbed interface delivering $200+ value across all selected systems
+- **Extended Features**: 25+ specialized routes for compatibility, gemstone guidance, lifestyle intelligence, AI assistant
+
+### **Customer Journey Psychology**
+1. **Discovery Phase**: Learn about authentic astrological systems through interactive educational cards
+2. **Engagement Phase**: One-click access to comprehensive chart creation with no registration barriers
+3. **Value Delivery**: Instant multi-system analysis with Swiss Ephemeris astronomical precision
+4. **Extended Exploration**: Specialized features for deeper engagement and community building
+
+### **Unique Value Propositions**
+- **10-in-1 Platform**: Only application combining Western + Vedic + Chinese + Human Design + Numerology + Tarot + Color Astrology + Gemstone guidance + Vaastu + Feng Shui
+- **Authentic Methodology**: Swiss Ephemeris calculations vs simplified approximations used by competitors
+- **Educational Authority**: Explains methodology and "why" behind recommendations, building trust through transparency
+- **Lifestyle Intelligence**: Practical daily guidance including travel destinations, color therapy, gemstone recommendations worth $200+ in professional consultations
+- **Cross-System Synthesis**: Unique analysis showing where different traditions agree/disagree on recommendations
+
+### **Target Customer Experience Design**
+- **Primary Demographic**: Women aged 20-60 interested in spiritual self-understanding and authentic guidance
+- **Mobile-First Interface**: Cosmic navy/gold/purple theme optimized for phone usage with accessible touch targets
+- **Value-First Psychology**: Deliver complete results before any payment requests to build trust and demonstrate worth
+- **Progressive Engagement**: Multiple entry points and depth levels from basic entertainment to professional-grade analysis
+
 ## Recent Updates
 
 ### Universal Global Payment System with Cosmic Theme Consistency (July 29, 2025)
