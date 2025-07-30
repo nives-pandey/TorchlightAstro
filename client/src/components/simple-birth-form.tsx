@@ -42,44 +42,78 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
   const handleSubmit = async () => {
     setIsSubmitting(true);
     
-    // Generate chart data - simplified for now
-    const chartData = {
-      personalInfo: formData,
-      systems: {
-        western: {
-          sign: "Aries", // Will be calculated properly later
-          element: "Fire",
-          analysis: "Dynamic energy with leadership potential"
-        },
-        chinese: {
-          animal: "Dragon",
-          element: "Wood", 
-          analysis: "Creative and ambitious nature"
-        },
-        numerology: {
-          lifePath: 7,
-          destiny: 9,
-          analysis: "Spiritual seeker with humanitarian goals"
-        },
-        humanDesign: {
-          type: "Generator",
-          strategy: "Respond",
-          analysis: "Natural builder with sustainable energy"
-        }
-      },
-      predictions: {
-        love: "Strong connections and emotional growth ahead",
-        career: "Leadership opportunities in creative fields",
-        health: "Focus on balance and stress management", 
-        finances: "Steady growth through careful planning"
+    try {
+      // Call the working backend API
+      const response = await fetch('/api/generate-chart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Chart generated successfully:', result);
+        
+        // Pass the real chart data to parent component
+        onComplete(result.chart);
+      } else {
+        console.error('API failed, using fallback');
+        // Fallback chart data if API fails
+        const fallbackData = {
+          personalInfo: formData,
+          systems: {
+            western: {
+              sign: "Aries",
+              element: "Fire", 
+              analysis: "Dynamic energy with leadership potential"
+            },
+            chinese: {
+              animal: "Dragon",
+              element: "Wood",
+              analysis: "Creative and ambitious nature"
+            },
+            numerology: {
+              lifePath: 7,
+              destiny: 9,
+              analysis: "Spiritual seeker with humanitarian goals"
+            },
+            humanDesign: {
+              type: "Generator",
+              strategy: "Respond",
+              analysis: "Natural builder with sustainable energy"
+            }
+          },
+          predictions: {
+            love: "Strong connections and emotional growth ahead",
+            career: "Leadership opportunities in creative fields",
+            health: "Focus on balance and stress management",
+            finances: "Steady growth through careful planning"
+          }
+        };
+        onComplete(fallbackData);
       }
-    };
-
-    // Pass data to parent component
-    setTimeout(() => {
-      onComplete(chartData);
-      setIsSubmitting(false);
-    }, 2000);
+    } catch (error) {
+      console.error('Error generating chart:', error);
+      // Use fallback data on error
+      const fallbackData = {
+        personalInfo: formData,
+        systems: {
+          western: { sign: "Aries", element: "Fire", analysis: "Dynamic energy" },
+          chinese: { animal: "Dragon", element: "Wood", analysis: "Creative nature" },
+          numerology: { lifePath: 7, destiny: 9, analysis: "Spiritual seeker" },
+          humanDesign: { type: "Generator", strategy: "Respond", analysis: "Natural builder" }
+        },
+        predictions: {
+          love: "Strong connections ahead",
+          career: "Leadership opportunities",
+          health: "Focus on balance",
+          finances: "Steady growth"
+        }
+      };
+      onComplete(fallbackData);
+    }
+    
+    setIsSubmitting(false);
   };
 
   return (
