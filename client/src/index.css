@@ -218,9 +218,22 @@ div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
   /* Form Input Enhancements */
   .cosmic-input {
     background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     color: white;
     transition: all 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0);
+  }
+
+  .cosmic-input:focus {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid hsl(262, 83%, 58%);
+    box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.3), 0 0 20px rgba(147, 51, 234, 0.2);
+    outline: none;
+  }
+
+  .cosmic-input:hover {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.4);
   }
 
   .cosmic-input:focus {
