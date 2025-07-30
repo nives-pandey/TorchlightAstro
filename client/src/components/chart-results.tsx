@@ -15,22 +15,72 @@ interface ChartResultsProps {
 export default function ChartResults({ data, onClose }: ChartResultsProps) {
   const [activeSystem, setActiveSystem] = useState("western");
 
+  // Display comprehensive server-generated analysis
+  const getSystemAnalysis = (systemName: string) => {
+    if (data?.chart?.systems?.[systemName]?.analysis) {
+      return data.chart.systems[systemName].analysis;
+    }
+    if (data?.systems?.[systemName]?.analysis) {
+      return data.systems[systemName].analysis;
+    }
+    return `Professional ${systemName} analysis will be displayed here once generated.`;
+  };
+
+  const getBirthLocation = () => {
+    if (data?.chart?.personalInfo) {
+      const info = data.chart.personalInfo;
+      return `${info.city || 'Unknown'}, ${info.country || 'Unknown'} (${info.latitude || '0.0000'}°, ${info.longitude || '0.0000'}°)`;
+    }
+    return `${data?.city || 'Unknown'}, ${data?.country || 'Unknown'}`;
+  };
+
   // Generate astrological insights based on birth data
   const generateInsights = () => {
-    // Check if we have server-generated data or need to calculate locally
+    // Check if we have server-generated comprehensive data
+    if (data?.chart?.systems) {
+      return {
+        western: {
+          sign: data.chart.systems.western.sign,
+          element: data.chart.systems.western.element,
+          analysis: data.chart.systems.western.analysis
+        },
+        vedic: {
+          rashi: data.chart.systems.vedic.rashi,
+          analysis: data.chart.systems.vedic.analysis
+        },
+        chinese: {
+          animal: data.chart.systems.chinese.animal,
+          element: data.chart.systems.chinese.element,
+          analysis: data.chart.systems.chinese.analysis
+        },
+        numerology: {
+          lifePath: data.chart.systems.numerology.lifePath,
+          destiny: data.chart.systems.numerology.destiny,
+          analysis: data.chart.systems.numerology.analysis
+        },
+        humanDesign: {
+          type: data.chart.systems.humanDesign.type,
+          analysis: data.chart.systems.humanDesign.analysis
+        }
+      };
+    }
+    // Check legacy format
     if (data.systems) {
       return {
         western: {
           sign: data.systems.western.sign,
-          element: data.systems.western.element
+          element: data.systems.western.element,
+          analysis: data.systems.western.analysis
         },
         chinese: {
           animal: data.systems.chinese.animal,
-          element: data.systems.chinese.element
+          element: data.systems.chinese.element,
+          analysis: data.systems.chinese.analysis
         },
         numerology: {
           lifePath: data.systems.numerology.lifePath,
-          destiny: data.systems.numerology.destiny
+          destiny: data.systems.numerology.destiny,
+          analysis: data.systems.numerology.analysis
         }
       };
     }
@@ -121,7 +171,21 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-gray-200 text-sm">
-                <p>As a {insights.western.sign}, you embody the qualities of the {insights.western.element} element. Your sun sign reveals your core identity and life purpose.</p>
+                {insights.western?.analysis ? (
+                  <div className="space-y-4">
+                    <div className="bg-slate-800/50 p-4 rounded-lg">
+                      <h4 className="text-purple-300 font-semibold mb-2">Birth Location</h4>
+                      <p className="text-xs text-gray-400">{getBirthLocation()}</p>
+                    </div>
+                    <div className="max-h-96 overflow-y-auto prose prose-sm prose-invert">
+                      <pre className="whitespace-pre-wrap text-gray-200 text-sm">
+                        {insights.western.analysis}
+                      </pre>
+                    </div>
+                  </div>
+                ) : (
+                  <p>As a {insights.western.sign}, you embody the qualities of the {insights.western.element} element. Your sun sign reveals your core identity and life purpose.</p>
+                )}
               </CardContent>
             </Card>
 
