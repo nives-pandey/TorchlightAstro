@@ -5,7 +5,7 @@ import { useDonationModal } from "@/hooks/useDonationModal";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import ModernBirthForm from "@/components/modern-birth-form";
+import SimpleBirthForm from "@/components/simple-birth-form";
 import ChartResults from "@/components/chart-results";
 import PlanetarySymbols from "@/components/planetary-symbols";
 import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar } from "lucide-react";
@@ -441,7 +441,7 @@ export default function Home() {
 
       {/* Birth Data Collection Modal */}
       {showBirthForm && (
-        <ModernBirthForm 
+        <SimpleBirthForm 
           onClose={() => setShowBirthForm(false)} 
           onComplete={(data) => {
             setChartData(data);
