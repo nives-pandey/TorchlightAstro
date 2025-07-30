@@ -1099,6 +1099,17 @@ Birth Location Significance: ${birthLocation} contributes to your specific envir
       if (!birthData.birthDate) missingFields.push('birthDate');
       if (!birthData.birthTime) missingFields.push('birthTime');
       if (!birthData.city && !birthData.birthCity) missingFields.push('city/birthCity');
+      if (!birthData.firstName) missingFields.push('firstName');
+      if (!birthData.lastName) missingFields.push('lastName');
+      
+      // Validate birth date format
+      const birthDate = new Date(birthData.birthDate);
+      if (isNaN(birthDate.getTime())) {
+        return res.status(400).json({ 
+          error: "Invalid birth date format", 
+          received: birthData.birthDate 
+        });
+      }
       
       if (missingFields.length > 0) {
         console.log('Missing fields:', missingFields);

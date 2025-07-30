@@ -14,6 +14,7 @@ import { WORLD_TIMEZONES } from "@/lib/timezone-handler";
 import { universalCityFinder } from "@/lib/universal-city-finder";
 import { geoNamesCityFinder, type GeoNamesCityData } from "@/lib/geonames-city-finder";
 import AccessibilityToggle from "./accessibility-toggle";
+import { useToast } from "@/hooks/use-toast";
 
 const birthFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -55,6 +56,7 @@ interface ModernBirthFormProps {
 }
 
 export default function ModernBirthForm({ onClose, onComplete }: ModernBirthFormProps) {
+  const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(0);
   const [timeAccuracyWarnings, setTimeAccuracyWarnings] = useState<string[]>([]);
 
@@ -207,6 +209,17 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
 
   const onSubmit = async (data: BirthFormData) => {
     console.log('Birth form data:', data);
+    
+    // Validate birth date before submission
+    const birthDate = new Date(data.birthDate);
+    if (isNaN(birthDate.getTime())) {
+      toast({
+        title: "Invalid Birth Date",
+        description: "Please enter a valid birth date",
+        variant: "destructive",
+      });
+      return;
+    }
     
     // Generate comprehensive astrological analysis locally first as fallback
     const mockChartData = {

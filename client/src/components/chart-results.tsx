@@ -87,6 +87,17 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
     
     // Fallback to local calculation if server data not available
     const birthDate = new Date(data.birthDate);
+    
+    // Validate date
+    if (isNaN(birthDate.getTime())) {
+      console.error('Invalid birth date:', data.birthDate);
+      return {
+        western: { sign: "Unknown", element: "Unknown" },
+        chinese: { animal: "Unknown", element: "Unknown" },
+        numerology: { lifePath: 0, destiny: 0 }
+      };
+    }
+    
     const birthMonth = birthDate.getMonth() + 1;
     const birthDay = birthDate.getDate();
     
@@ -370,7 +381,10 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               ✨ Your Cosmic Profile ✨
             </CardTitle>
             <p className="text-gray-300">
-              {data.firstName} {data.lastName} • Born {new Date(data.birthDate).toLocaleDateString()}
+              {data.firstName} {data.lastName} • Born {(() => {
+                const birthDate = new Date(data.birthDate);
+                return isNaN(birthDate.getTime()) ? data.birthDate : birthDate.toLocaleDateString();
+              })()}
             </p>
             <div className="flex justify-center gap-2 mt-4">
               <Button variant="outline" className="cosmic-button">
