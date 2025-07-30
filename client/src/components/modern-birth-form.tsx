@@ -121,13 +121,17 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
     }
   };
 
-  // Enhanced city search functionality
+  // Enhanced city search functionality - trigger on 2+ characters
   const searchCities = async (query: string) => {
+    setCitySearchQuery(query);
+    
     if (query.length < 2) {
       setCitySearchResults([]);
       setShowCityResults(false);
       return;
     }
+
+    console.log('Searching cities for query:', query);
 
     setIsSearchingCities(true);
     

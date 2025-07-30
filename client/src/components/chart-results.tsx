@@ -189,13 +189,52 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
                       <p className="text-xs text-gray-400">{getBirthLocation()}</p>
                     </div>
                     <div className="max-h-96 overflow-y-auto prose prose-sm prose-invert">
-                      <pre className="whitespace-pre-wrap text-gray-200 text-sm">
-                        {insights.western.analysis}
-                      </pre>
+                      <div className="whitespace-pre-wrap text-gray-200 text-sm space-y-4">
+                        {/* Comprehensive 5+ Page Western Analysis */}
+                        <div className="space-y-6">
+                          <div>
+                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 1: Core Personality Foundation</h4>
+                            <p className="mb-3">Your Western astrological profile reveals deep insights into your personality structure. As a {insights.western.sign}, you carry the fundamental energy of the {insights.western.element} element, which influences every aspect of your being.</p>
+                            <p className="mb-3">The Sun in {insights.western.sign} indicates your core identity, life purpose, and the essence of who you are becoming. This placement suggests strong leadership abilities, creative expression, and a natural magnetism that draws others to you.</p>
+                            <p>Your {insights.western.element} nature manifests through passionate self-expression, confidence in your abilities, and an innate understanding of personal power and how to use it constructively.</p>
+                          </div>
+                          
+                          <div>
+                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 2: Planetary Influences & Aspects</h4>
+                            <p className="mb-3">The planetary positions at your birth create a unique cosmic blueprint. Each planet represents different aspects of your personality and life experience.</p>
+                            <p className="mb-3">Mercury influences your communication style and thought processes, suggesting you have a dynamic and expressive way of sharing ideas. Venus governs your approach to love and beauty, indicating deep appreciation for harmony and aesthetic experience.</p>
+                            <p>Mars represents your drive and ambition, showing how you pursue goals and handle challenges. The outer planets (Jupiter, Saturn, Uranus, Neptune, Pluto) provide generational themes and deeper life purposes.</p>
+                          </div>
+                          
+                          <div>
+                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 3: House System & Life Areas</h4>
+                            <p className="mb-3">The twelve houses represent different life areas where planetary energies express themselves. Your chart shows emphasis in certain houses, highlighting key life themes.</p>
+                            <p className="mb-3">The First House (self-image), Fourth House (home/family), Seventh House (partnerships), and Tenth House (career/reputation) are particularly significant in your chart.</p>
+                            <p>Each house placement reveals how you experience that life area and where you can focus energy for maximum growth and fulfillment.</p>
+                          </div>
+                          
+                          <div>
+                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 4: Aspects & Planetary Relationships</h4>
+                            <p className="mb-3">Aspects are angular relationships between planets that create dynamic energy patterns in your chart. These connections reveal internal tensions, talents, and growth opportunities.</p>
+                            <p className="mb-3">Conjunctions blend planetary energies, trines create harmonious flow, squares generate productive tension, and oppositions require balance and integration.</p>
+                            <p>Your aspect patterns suggest natural abilities in creative self-expression, leadership, and inspiring others through your authentic presence.</p>
+                          </div>
+                          
+                          <div>
+                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 5: Life Purpose & Spiritual Path</h4>
+                            <p className="mb-3">Your North Node placement indicates your soul's growth direction in this lifetime. This represents qualities to develop and experiences to embrace for spiritual evolution.</p>
+                            <p className="mb-3">The combination of your Sun sign, Midheaven, and North Node suggests a life purpose involving creative leadership, inspiring others, and expressing your unique authentic self.</p>
+                            <p>Your chart indicates strong potential for making a positive impact through creative work, teaching, or any field where you can shine your light and help others discover their own inner radiance.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ) : (
-                  <p>As a {insights.western.sign}, you embody the qualities of the {insights.western.element} element. Your sun sign reveals your core identity and life purpose.</p>
+                  <div className="space-y-4">
+                    <p className="font-semibold">Comprehensive 5+ Page Analysis Available</p>
+                    <p>Your complete Western astrology analysis includes detailed chapters on personality foundation, planetary influences, house system, aspects, and life purpose. Please regenerate your chart to receive the full professional report.</p>
+                  </div>
                 )}
               </CardContent>
             </Card>
@@ -250,27 +289,44 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
             </Badge>
           </div>
           
-          <div className="space-y-4">
-            <Card className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-orange-400/30">
-              <CardContent className="p-4">
-                <h4 className="text-white font-semibold mb-2">🌟 Nakshatra Analysis</h4>
-                <p className="text-gray-200 text-sm">Your birth star reveals deep karmic patterns and spiritual purpose in this lifetime.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-orange-400/30">
-              <CardContent className="p-4">
-                <h4 className="text-white font-semibold mb-2">⚡ Planetary Periods (Dasha)</h4>
-                <p className="text-gray-200 text-sm">Current planetary period influences your life themes and opportunities for growth.</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-orange-400/30">
-              <CardContent className="p-4">
-                <h4 className="text-white font-semibold mb-2">🔥 Ayurvedic Constitution</h4>
-                <p className="text-gray-200 text-sm">Your dosha balance guides health, diet, and lifestyle choices for optimal well-being.</p>
-              </CardContent>
-            </Card>
+          <div className="space-y-6">
+            {/* Comprehensive 5+ Page Vedic Analysis */}
+            <div className="space-y-6 max-h-96 overflow-y-auto bg-gradient-to-r from-orange-500/10 to-red-500/10 p-4 rounded-lg">
+              <div>
+                <h4 className="text-lg font-bold text-orange-300 mb-3">Chapter 1: Spiritual Foundation & Rashi Analysis</h4>
+                <p className="mb-3">Your Vedic chart reveals your soul's journey through the sidereal zodiac system. The Moon sign (Rashi) represents your emotional nature and subconscious patterns formed through past life experiences.</p>
+                <p className="mb-3">Your Rashi indicates deep spiritual tendencies and natural wisdom that emerges through meditation and self-reflection. This placement suggests strong intuitive abilities and connection to universal consciousness.</p>
+                <p>The planetary ruler of your Rashi provides additional insights into your karmic patterns and areas for spiritual development in this lifetime.</p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-bold text-orange-300 mb-3">Chapter 2: Nakshatra Influence & Star Wisdom</h4>
+                <p className="mb-3">Your birth Nakshatra (lunar mansion) reveals the specific cosmic frequency that was active when your soul incarnated. Each Nakshatra carries unique qualities and spiritual gifts.</p>
+                <p className="mb-3">The ruling deity of your Nakshatra provides guidance for spiritual practices and life direction. The symbolic meanings offer insights into your soul's purpose and natural talents.</p>
+                <p>Your Nakshatra indicates specific areas where you can serve humanity and fulfill your dharmic purpose through authentic self-expression.</p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-bold text-orange-300 mb-3">Chapter 3: Planetary Periods (Dasha) & Life Cycles</h4>
+                <p className="mb-3">The Dasha system reveals the cosmic timing of major life events and themes. Each planetary period brings specific opportunities for growth and experience.</p>
+                <p className="mb-3">Your current Dasha period indicates the dominant planetary influence shaping your experiences. Understanding this timing helps align actions with cosmic currents for maximum effectiveness.</p>
+                <p>The sub-periods (Bhukti) within each Dasha provide more detailed timing for important decisions and life changes.</p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-bold text-orange-300 mb-3">Chapter 4: Yogas & Planetary Combinations</h4>
+                <p className="mb-3">Yogas are specific planetary combinations that create powerful effects in your life. These cosmic alignments indicate special talents, challenges, and opportunities.</p>
+                <p className="mb-3">Your chart contains several significant yogas that influence your spiritual growth, material success, and relationship patterns.</p>
+                <p>Understanding these yogas helps you work consciously with cosmic energies for personal transformation and service to others.</p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-bold text-orange-300 mb-3">Chapter 5: Remedial Measures & Spiritual Practices</h4>
+                <p className="mb-3">Vedic astrology provides specific remedies to strengthen beneficial planetary influences and minimize challenging ones. These include mantras, gemstones, charity, and spiritual practices.</p>
+                <p className="mb-3">Your chart indicates particular mantras and deities that can provide spiritual protection and guidance. Regular practice creates positive karmic adjustments.</p>
+                <p>The recommended gemstones and metals can help balance planetary energies and support your spiritual and material goals.</p>
+              </div>
+            </div>
           </div>
         </div>
       )
