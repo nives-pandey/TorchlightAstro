@@ -828,7 +828,9 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
             </form>
           </Form>
         </CardContent>
-      </Card>
+          </div>
+        </Card>
+      </div>
     </div>
   );
 }
