@@ -90,6 +90,66 @@ class FreeAstrologyAPI {
     }
   }
 
+  async getVedicChart(birthData: BirthData): Promise<any> {
+    try {
+      const response = await this.makeRequest('/birth-chart-info', birthData);
+      return response;
+    } catch (error) {
+      console.error('Error fetching Vedic chart:', error);
+      return null;
+    }
+  }
+
+  async getNavamsaChart(birthData: BirthData): Promise<any> {
+    try {
+      const response = await this.makeRequest('/navamsa-chart-info', birthData);
+      return response;
+    } catch (error) {
+      console.error('Error fetching Navamsa chart:', error);
+      return null;
+    }
+  }
+
+  async getPanchang(birthData: BirthData): Promise<any> {
+    try {
+      const response = await this.makeRequest('/panchang', birthData);
+      return response;
+    } catch (error) {
+      console.error('Error fetching Panchang:', error);
+      return null;
+    }
+  }
+
+  async getWesternChart(birthData: BirthData): Promise<any> {
+    try {
+      const response = await this.makeRequest('/western-chart', birthData);
+      return response;
+    } catch (error) {
+      console.error('Error fetching Western chart:', error);
+      return null;
+    }
+  }
+
+  async getHouses(birthData: BirthData): Promise<HousePosition[]> {
+    try {
+      const response = await this.makeRequest('/houses', birthData);
+      return response.houses || [];
+    } catch (error) {
+      console.error('Error fetching houses:', error);
+      return [];
+    }
+  }
+
+  async getAspects(birthData: BirthData): Promise<any> {
+    try {
+      const response = await this.makeRequest('/aspects', birthData);
+      return response.aspects || [];
+    } catch (error) {
+      console.error('Error fetching aspects:', error);
+      return [];
+    }
+  }
+
   async getExtendedPlanetPositions(birthData: BirthData): Promise<AstrologyResponse> {
     try {
       const response = await this.makeRequest('/planets/extended', birthData);

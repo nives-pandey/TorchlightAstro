@@ -16,6 +16,8 @@ import { astrologyEngine } from "./astrology-engine";
 import { kundaliGenerator } from "./kundali-generator";
 import { astrologyAI } from "./astrology-ai";
 import { freeAstrologyAPI } from "./free-astrology-api";
+import { astrologySystemsAPI } from "./astrology-systems-api";
+import { comprehensiveChartGenerator } from "./comprehensive-chart-generator";
 import { logAPIStatus, checkAPIKeysStatus } from "./api-key-helper";
 import { planetaryHoursAPI } from "./planetary-hours-api";
 import { 
@@ -35,6 +37,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Register report generation routes
   registerReportRoutes(app);
+
+  // Comprehensive Chart Generation Endpoint - All 5 Systems with Authentic Data
+  app.post("/api/generate-comprehensive-chart", async (req, res) => {
+    try {
+      console.log('🌟 Generating comprehensive chart across all 5 astrological systems');
+      console.log('Request data:', JSON.stringify(req.body, null, 2));
+
+      // Use comprehensive chart generator for all systems
+      const comprehensiveResults = await comprehensiveChartGenerator.generateAllSystems(req.body);
+      
+      res.json(comprehensiveResults);
+    } catch (error) {
+      console.error('Comprehensive chart generation error:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Failed to generate comprehensive chart',
+        systems: {}
+      });
+    }
+  });
 
   // Stripe contribution endpoint
   app.post("/api/create-payment-intent", async (req, res) => {
