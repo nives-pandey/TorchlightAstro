@@ -6,6 +6,7 @@
 import { ProkeralaAPI } from './prokerala-api';
 import { AstrologyAPIIntegration } from './astrologyapi-integration';
 import { SwissEphemerisDirect } from './swiss-ephemeris-direct';
+import { LocalSwissEphemeris } from './local-swiss-ephemeris';
 
 interface BirthData {
   firstName: string;
@@ -47,11 +48,13 @@ class EnhancedChartGenerator {
   private prokeralaAPI: ProkeralaAPI;
   private astrologyAPI: AstrologyAPIIntegration;
   private swissEphemeris: SwissEphemerisDirect;
+  private localSwissEphemeris: LocalSwissEphemeris;
 
   constructor() {
     this.prokeralaAPI = new ProkeralaAPI();
     this.astrologyAPI = new AstrologyAPIIntegration();
     this.swissEphemeris = new SwissEphemerisDirect();
+    this.localSwissEphemeris = new LocalSwissEphemeris();
   }
 
   async generateEnhancedChart(birthData: BirthData, systems: SystemSelections): Promise<EnhancedChartResponse> {
@@ -120,7 +123,30 @@ class EnhancedChartGenerator {
     
     const { birthDate, birthTime, location } = birthData;
     
-    // Try Swiss Ephemeris Direct first (highest accuracy)
+    // Try Local Swiss Ephemeris first (highest available accuracy)
+    if (this.localSwissEphemeris.isAvailable()) {
+      try {
+        console.log('✨ Using Local Swiss Ephemeris calculations');
+        const birthDateTime = new Date(`${birthDate}T${birthTime}`);
+        const chart = await this.localSwissEphemeris.generateNatalChart(
+          birthDateTime,
+          location.latitude,
+          location.longitude
+        );
+        
+        return {
+          system: 'Western Astrology',
+          dataSource: chart.calculation_method,
+          accuracy: chart.precision_level === 'High (NASA JPL-based)' ? '95%' : '90%',
+          ...chart,
+          interpretation: this.generateWesternInterpretation(chart)
+        };
+      } catch (error) {
+        console.log('⚠️ Local Swiss Ephemeris failed, trying APIs');
+      }
+    }
+
+    // Try Swiss Ephemeris Direct (if available)
     if (this.swissEphemeris.isAvailable()) {
       try {
         console.log('✨ Using Swiss Ephemeris Direct calculations');
