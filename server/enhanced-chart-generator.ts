@@ -7,6 +7,7 @@ import { ProkeralaAPI } from './prokerala-api';
 import { AstrologyAPIIntegration } from './astrologyapi-integration';
 import { SwissEphemerisDirect } from './swiss-ephemeris-direct';
 import { LocalSwissEphemeris } from './local-swiss-ephemeris';
+import { ProkeralaSDKIntegration } from './prokerala-sdk-integration';
 
 interface BirthData {
   firstName: string;
@@ -49,12 +50,14 @@ class EnhancedChartGenerator {
   private astrologyAPI: AstrologyAPIIntegration;
   private swissEphemeris: SwissEphemerisDirect;
   private localSwissEphemeris: LocalSwissEphemeris;
+  private prokeralaSDK: ProkeralaSDKIntegration;
 
   constructor() {
     this.prokeralaAPI = new ProkeralaAPI();
     this.astrologyAPI = new AstrologyAPIIntegration();
     this.swissEphemeris = new SwissEphemerisDirect();
     this.localSwissEphemeris = new LocalSwissEphemeris();
+    this.prokeralaSDK = new ProkeralaSDKIntegration();
   }
 
   async generateEnhancedChart(birthData: BirthData, systems: SystemSelections): Promise<EnhancedChartResponse> {
@@ -123,7 +126,27 @@ class EnhancedChartGenerator {
     
     const { birthDate, birthTime, location } = birthData;
     
-    // Try Local Swiss Ephemeris first (highest available accuracy)
+    // Try Prokerala SDK first (highest accuracy if API key available)
+    if (this.prokeralaSDK.isSDKAvailable() && this.prokeralaSDK.hasAPIKey()) {
+      try {
+        console.log('✨ Using Prokerala SDK (Swiss Ephemeris)');
+        const chart = await this.prokeralaSDK.generateWesternChart(birthData);
+        
+        if (chart) {
+          return {
+            system: 'Western Astrology',
+            dataSource: chart.data_source,
+            accuracy: chart.accuracy,
+            ...chart,
+            interpretation: this.generateWesternInterpretation(chart)
+          };
+        }
+      } catch (error) {
+        console.log('⚠️ Prokerala SDK failed, trying Local Swiss Ephemeris');
+      }
+    }
+
+    // Try Local Swiss Ephemeris (high available accuracy, no API needed)
     if (this.localSwissEphemeris.isAvailable()) {
       try {
         console.log('✨ Using Local Swiss Ephemeris calculations');
