@@ -18,7 +18,7 @@ export function setupQuadAIEndpoints(app: Express) {
       const startTime = Date.now();
 
       // Use the multi-AI manager to get interpretation from specific provider
-      result = await multiAI.generateInterpretation(prompt, provider.toLowerCase());
+      result = await multiAI.generateWesternInterpretation(prompt, provider.toLowerCase());
 
       const endTime = Date.now();
 
@@ -50,7 +50,7 @@ export function setupQuadAIEndpoints(app: Express) {
       const promises = providers.map(async (provider) => {
         try {
           const startTime = Date.now();
-          const interpretation = await multiAI.generateInterpretation(prompt, provider);
+          const interpretation = await multiAI.generateWesternInterpretation(prompt, provider);
           const endTime = Date.now();
           
           return {
@@ -94,7 +94,7 @@ export function setupQuadAIEndpoints(app: Express) {
     for (const provider of providers) {
       try {
         const startTime = Date.now();
-        await multiAI.generateInterpretation("Test health check", provider);
+        await multiAI.generateWesternInterpretation("Test health check", provider);
         const endTime = Date.now();
         
         healthChecks.push({

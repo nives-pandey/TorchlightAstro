@@ -7,8 +7,31 @@ import { geminiAI } from './gemini-integration';
 import { llamaAI } from './llama-integration';
 
 export class MultiAIManager {
-  async generateWesternInterpretation(chartData: any): Promise<any> {
-    // Try OpenAI first
+  async generateWesternInterpretation(chartData: any, preferredProvider?: string): Promise<any> {
+    // If specific provider requested, try that first
+    if (preferredProvider) {
+      let result;
+      switch (preferredProvider.toLowerCase()) {
+        case 'openai':
+          result = await openaiAI.generateWesternInterpretation(chartData);
+          if (result) return { ...result, provider: 'OpenAI' };
+          break;
+        case 'grok':
+          result = await grokAI.generateWesternInterpretation(chartData);
+          if (result) return { ...result, provider: 'Grok' };
+          break;
+        case 'gemini':
+          result = await geminiAI.generateWesternInterpretation(chartData);
+          if (result) return { ...result, provider: 'Gemini' };
+          break;
+        case 'llama':
+          result = await llamaAI.generateWesternInterpretation(chartData);
+          if (result) return { ...result, provider: 'LLaMA 3.1' };
+          break;
+      }
+    }
+
+    // Standard failover: Try OpenAI first
     let result = await openaiAI.generateWesternInterpretation(chartData);
     if (result) return { ...result, provider: 'OpenAI' };
 
