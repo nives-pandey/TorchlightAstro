@@ -8,6 +8,7 @@ import { AstrologyAPIIntegration } from './astrologyapi-integration';
 import { SwissEphemerisDirect } from './swiss-ephemeris-direct';
 import { LocalSwissEphemeris } from './local-swiss-ephemeris';
 import { ProkeralaSDKIntegration } from './prokerala-sdk-integration';
+import OpenAIAstrologyIntegration from './openai-integration';
 
 interface BirthData {
   firstName: string;
@@ -51,6 +52,7 @@ class EnhancedChartGenerator {
   private swissEphemeris: SwissEphemerisDirect;
   private localSwissEphemeris: LocalSwissEphemeris;
   private prokeralaSDK: ProkeralaSDKIntegration;
+  private openaiIntegration: OpenAIAstrologyIntegration;
 
   constructor() {
     this.prokeralaAPI = new ProkeralaAPI();
@@ -58,6 +60,7 @@ class EnhancedChartGenerator {
     this.swissEphemeris = new SwissEphemerisDirect();
     this.localSwissEphemeris = new LocalSwissEphemeris();
     this.prokeralaSDK = new ProkeralaSDKIntegration();
+    this.openaiIntegration = new OpenAIAstrologyIntegration();
   }
 
   async generateEnhancedChart(birthData: BirthData, systems: SystemSelections): Promise<EnhancedChartResponse> {
@@ -87,8 +90,8 @@ class EnhancedChartGenerator {
       }
     });
 
-    // Generate cross-system analysis
-    const crossAnalysis = this.generateCrossSystemAnalysis(results);
+    // Generate AI-enhanced cross-system analysis
+    const crossAnalysis = await this.generateAIEnhancedCrossSystemAnalysis(results);
     
     // Calculate overall data quality
     const dataQuality = this.calculateDataQuality(results);
@@ -133,12 +136,16 @@ class EnhancedChartGenerator {
         const chart = await this.prokeralaSDK.generateWesternChart(birthData);
         
         if (chart) {
+          // Generate AI-enhanced interpretation if available
+          const aiInterpretation = await this.openaiIntegration.generateWesternInterpretation(chart);
+          
           return {
             system: 'Western Astrology',
             dataSource: chart.data_source,
-            accuracy: chart.accuracy,
+
             ...chart,
-            interpretation: this.generateWesternInterpretation(chart)
+            interpretation: aiInterpretation ? this.formatAIInterpretation(aiInterpretation) : this.generateWesternInterpretation(chart),
+            aiEnhanced: !!aiInterpretation
           };
         }
       } catch (error) {
@@ -157,12 +164,16 @@ class EnhancedChartGenerator {
           location.longitude
         );
         
+        // Generate AI-enhanced interpretation if available
+        const aiInterpretation = await this.openaiIntegration.generateWesternInterpretation(chart);
+        
         return {
           system: 'Western Astrology',
           dataSource: chart.calculation_method,
           accuracy: chart.precision_level === 'High (NASA JPL-based)' ? '95%' : '90%',
           ...chart,
-          interpretation: this.generateWesternInterpretation(chart)
+          interpretation: aiInterpretation ? this.formatAIInterpretation(aiInterpretation) : this.generateWesternInterpretation(chart),
+          aiEnhanced: !!aiInterpretation
         };
       } catch (error) {
         console.log('⚠️ Local Swiss Ephemeris failed, trying APIs');
@@ -362,7 +373,7 @@ class EnhancedChartGenerator {
         personality: this.getEnhancedPersonalityMeaning(pythagorean.personality),
         personalYear: this.getPersonalYearMeaning(personalYear)
       },
-      interpretation: this.generateComprehensiveNumerologyInterpretation(pythagorean, chaldean, personalYear)
+      interpretation: await this.enhanceNumerologyWithAI(pythagorean, chaldean, personalYear)
     };
   }
 
@@ -462,6 +473,77 @@ class EnhancedChartGenerator {
         return this.generateEnhancedVedicFallback(birthData);
       }
     }
+  }
+
+  // Format AI interpretation for display
+  private formatAIInterpretation(aiResult: any): string {
+    if (!aiResult) return 'Professional astrological analysis available.';
+    
+    const sections = [];
+    
+    if (aiResult.personalityCore) {
+      sections.push(`**Personality Core**: ${aiResult.personalityCore}`);
+    }
+    
+    if (aiResult.lifeThemes && aiResult.lifeThemes.length > 0) {
+      sections.push(`**Life Themes**: ${aiResult.lifeThemes.join(', ')}`);
+    }
+    
+    if (aiResult.strengths && aiResult.strengths.length > 0) {
+      sections.push(`**Strengths**: ${aiResult.strengths.join(', ')}`);
+    }
+    
+    if (aiResult.challenges && aiResult.challenges.length > 0) {
+      sections.push(`**Areas for Growth**: ${aiResult.challenges.join(', ')}`);
+    }
+    
+    if (aiResult.currentInfluences) {
+      sections.push(`**Current Influences**: ${aiResult.currentInfluences}`);
+    }
+    
+    if (aiResult.guidance) {
+      sections.push(`**Guidance**: ${aiResult.guidance}`);
+    }
+    
+    if (aiResult.synthesis) {
+      sections.push(`**Synthesis**: ${aiResult.synthesis}`);
+    }
+    
+    return sections.length > 0 ? sections.join('\n\n') : 'AI-enhanced professional astrological analysis.';
+  }
+
+  // AI-enhanced numerology interpretation
+  private async enhanceNumerologyWithAI(pythagorean: any, chaldean: any, personalYear: number): Promise<string> {
+    const numerologyData = { pythagorean, chaldean, personalYear };
+    const aiInterpretation = await this.openaiIntegration.enhanceNumerologyInterpretation(numerologyData);
+    
+    if (aiInterpretation) {
+      return aiInterpretation;
+    }
+    
+    // Fallback to traditional interpretation
+    return this.generateComprehensiveNumerologyInterpretation(pythagorean, chaldean, personalYear);
+  }
+
+  // AI-enhanced cross-system analysis
+  private async generateAIEnhancedCrossSystemAnalysis(systems: any[]): Promise<any> {
+    // Generate AI synthesis if available
+    const aiSynthesis = await this.openaiIntegration.generateCrossSystemSynthesis(systems);
+    
+    if (aiSynthesis) {
+      return {
+        commonThemes: aiSynthesis.consensus,
+        conflictingAdvice: aiSynthesis.conflicts,
+        systemConsensus: aiSynthesis.consensus,
+        recommendedFocus: aiSynthesis.recommendations,
+        confidenceLevel: aiSynthesis.confidenceLevel,
+        accuracyWeighting: this.calculateAccuracyWeighting(systems),
+        aiEnhanced: true
+      };
+    }
+    
+    // Fallback to traditional cross-system analysis
+    return this.generateCrossSystemAnalysis(systems);
   }
 
   // Cross-system analysis

@@ -20,6 +20,7 @@ import { astrologySystemsAPI } from "./astrology-systems-api";
 import { comprehensiveChartGenerator } from "./comprehensive-chart-generator";
 import { logAPIStatus, checkAPIKeysStatus } from "./api-key-helper";
 import { planetaryHoursAPI } from "./planetary-hours-api";
+import OpenAIAstrologyIntegration from './openai-integration';
 import { 
   insertBirthDataSchema, 
   insertChartSchema,
@@ -27,6 +28,9 @@ import {
   insertDailyGuidanceSchema,
   insertSystemComparisonSchema
 } from "../shared/schema";
+
+// Initialize OpenAI Astrology Integration
+const openaiIntegration = new OpenAIAstrologyIntegration();
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Log API status on startup
@@ -1653,6 +1657,92 @@ startxref
     };
     return strategies[type] || "Follow your inner authority";
   }
+
+  // AI-Powered Astrology Assistant
+  app.post("/api/astrology-assistant", async (req, res) => {
+    try {
+      const { question, birthData } = req.body;
+      
+      if (!question) {
+        return res.status(400).json({ 
+          error: 'Question is required for astrological guidance' 
+        });
+      }
+
+      // Generate personalized astrological guidance
+      const guidance = await openaiIntegration.generatePersonalizedGuidance(birthData, question);
+      
+      if (!guidance) {
+        return res.json({
+          response: "I can provide traditional astrological guidance. Could you be more specific about what you'd like to know about your chart?",
+          aiEnhanced: false
+        });
+      }
+
+      res.json({
+        response: guidance,
+        aiEnhanced: true,
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (error) {
+      console.error('AI Astrology Assistant error:', error);
+      res.status(500).json({ 
+        error: 'Unable to process astrological guidance request',
+        fallback: "Traditional astrological principles suggest focusing on your core planetary placements for insight."
+      });
+    }
+  });
+
+  // Astrological Education Endpoint
+  app.post("/api/astrology-education", async (req, res) => {
+    try {
+      const { topic } = req.body;
+      
+      if (!topic) {
+        return res.status(400).json({ 
+          error: 'Topic is required for astrological education' 
+        });
+      }
+
+      const explanation = await openaiIntegration.generateAstrologyEducation(topic);
+      
+      if (!explanation) {
+        return res.json({
+          explanation: `${topic} is an important concept in astrology. I recommend consulting traditional astrological texts for detailed information.`,
+          aiEnhanced: false
+        });
+      }
+
+      res.json({
+        explanation,
+        aiEnhanced: true,
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (error) {
+      console.error('Astrology Education error:', error);
+      res.status(500).json({ 
+        error: 'Unable to provide educational content' 
+      });
+    }
+  });
+
+  // AI API Status Endpoint
+  app.get("/api/ai-status", (req, res) => {
+    res.json({
+      openai: {
+        available: openaiIntegration.isAPIAvailable(),
+        status: openaiIntegration.getStatus()
+      },
+      features: {
+        personalizedInterpretations: openaiIntegration.isAPIAvailable(),
+        crossSystemSynthesis: openaiIntegration.isAPIAvailable(),
+        conversationalGuidance: openaiIntegration.isAPIAvailable(),
+        educationalContent: openaiIntegration.isAPIAvailable()
+      }
+    });
+  });
 
   const httpServer = createServer(app);
   return httpServer;
