@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
+import { setupQuadAIEndpoints } from "./quad-ai-endpoints";
 import Stripe from "stripe";
 import { registerReportRoutes } from "./api-routes";
 
@@ -42,6 +43,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Register report generation routes
   registerReportRoutes(app);
+  
+  // Setup Quad-AI endpoints
+  setupQuadAIEndpoints(app);
 
   // Enhanced Chart Generation Endpoint - Multi-tier API integration
   app.post("/api/generate-enhanced-chart", async (req, res) => {

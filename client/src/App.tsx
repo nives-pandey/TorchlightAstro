@@ -40,6 +40,7 @@ import DemoChart from "@/pages/demo-chart";
 import TimezoneAnalytics from "@/pages/timezone-analytics";
 import AdminDashboard from "@/pages/admin-dashboard";
 import ContributePage from "@/pages/contribute";
+import QuadAIDemo from "@/pages/QuadAIDemo";
 import NotFound from "@/pages/not-found";
 import AstralSoundtrack from "@/components/astral-soundtrack";
 
@@ -103,6 +104,7 @@ function Router() {
         <Route path="/astral-soundtrack" component={AstralSoundtrack} />
         <Route path="/admin" component={AdminDashboard} />
         <Route path="/contribute" component={ContributePage} />
+        <Route path="/quad-ai-demo" component={QuadAIDemo} />
         <Route component={NotFound} />
             </Switch>
           </motion.div>
