@@ -1,9 +1,10 @@
 // Multi-AI Manager for Torchlight Astrology Platform
-// Manages OpenAI and Grok AI providers with intelligent fallback
+// Manages OpenAI, Grok, Gemini, and LLaMA AI providers with intelligent fallback
 
 import { openaiAI } from './openai-integration';
 import { grokAI } from './grok-integration';
 import { geminiAI } from './gemini-integration';
+import { llamaAI } from './llama-integration';
 
 export class MultiAIManager {
   async generateWesternInterpretation(chartData: any): Promise<any> {
@@ -15,9 +16,13 @@ export class MultiAIManager {
     result = await grokAI.generateWesternInterpretation(chartData);
     if (result) return { ...result, provider: 'Grok' };
 
-    // Final fallback to Gemini
+    // Third fallback to Gemini
     result = await geminiAI.generateWesternInterpretation(chartData);
     if (result) return { ...result, provider: 'Gemini' };
+
+    // Final AI fallback to LLaMA
+    result = await llamaAI.generateWesternInterpretation(chartData);
+    if (result) return { ...result, provider: 'LLaMA 3.1' };
 
     return null;
   }
@@ -32,6 +37,9 @@ export class MultiAIManager {
     result = await geminiAI.generateCrossSystemSynthesis(systemsData);
     if (result) return { ...result, provider: 'Gemini' };
 
+    result = await llamaAI.generateCrossSystemSynthesis(systemsData);
+    if (result) return { ...result, provider: 'LLaMA 3.1' };
+
     return null;
   }
 
@@ -42,7 +50,10 @@ export class MultiAIManager {
     result = await grokAI.generatePersonalizedGuidance(birthData, question);
     if (result) return result;
 
-    return await geminiAI.generatePersonalizedGuidance(birthData, question);
+    result = await geminiAI.generatePersonalizedGuidance(birthData, question);
+    if (result) return result;
+
+    return await llamaAI.generatePersonalizedGuidance(birthData, question);
   }
 
   async enhanceNumerologyInterpretation(numerologyData: any): Promise<string | null> {
@@ -52,7 +63,10 @@ export class MultiAIManager {
     result = await grokAI.enhanceNumerologyInterpretation(numerologyData);
     if (result) return result;
 
-    return await geminiAI.enhanceNumerologyInterpretation(numerologyData);
+    result = await geminiAI.enhanceNumerologyInterpretation(numerologyData);
+    if (result) return result;
+
+    return await llamaAI.enhanceNumerologyInterpretation(numerologyData);
   }
 
   async generateAstrologyEducation(topic: string): Promise<string | null> {
@@ -62,7 +76,10 @@ export class MultiAIManager {
     result = await grokAI.generateAstrologyEducation(topic);
     if (result) return result;
 
-    return await geminiAI.generateAstrologyEducation(topic);
+    result = await geminiAI.generateAstrologyEducation(topic);
+    if (result) return result;
+
+    return await llamaAI.generateAstrologyEducation(topic);
   }
 
   getStatus() {
@@ -73,16 +90,18 @@ export class MultiAIManager {
     
     const grokStatus = grokAI.getStatus();
     const geminiStatus = geminiAI.getStatus();
+    const llamaStatus = llamaAI.getStatus();
     
     return {
       openai: openaiStatus,
       grok: grokStatus,
       gemini: geminiStatus,
+      llama: llamaStatus,
       features: {
-        personalizedInterpretations: openaiStatus.available || grokStatus.available || geminiStatus.available,
-        crossSystemSynthesis: openaiStatus.available || grokStatus.available || geminiStatus.available,
-        conversationalGuidance: openaiStatus.available || grokStatus.available || geminiStatus.available,
-        educationalContent: openaiStatus.available || grokStatus.available || geminiStatus.available
+        personalizedInterpretations: openaiStatus.available || grokStatus.available || geminiStatus.available || llamaStatus.available,
+        crossSystemSynthesis: openaiStatus.available || grokStatus.available || geminiStatus.available || llamaStatus.available,
+        conversationalGuidance: openaiStatus.available || grokStatus.available || geminiStatus.available || llamaStatus.available,
+        educationalContent: openaiStatus.available || grokStatus.available || geminiStatus.available || llamaStatus.available
       }
     };
   }
