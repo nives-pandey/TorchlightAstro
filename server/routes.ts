@@ -21,6 +21,7 @@ import { comprehensiveChartGenerator } from "./comprehensive-chart-generator";
 import { logAPIStatus, checkAPIKeysStatus } from "./api-key-helper";
 import { planetaryHoursAPI } from "./planetary-hours-api";
 import OpenAIAstrologyIntegration from './openai-integration';
+import { multiAI } from './multi-ai-manager';
 import { 
   insertBirthDataSchema, 
   insertChartSchema,
@@ -1669,8 +1670,8 @@ startxref
         });
       }
 
-      // Generate personalized astrological guidance
-      const guidance = await openaiIntegration.generatePersonalizedGuidance(birthData, question);
+      // Generate personalized astrological guidance using multi-AI system
+      const guidance = await multiAI.generatePersonalizedGuidance(birthData, question);
       
       if (!guidance) {
         return res.json({
@@ -1705,7 +1706,7 @@ startxref
         });
       }
 
-      const explanation = await openaiIntegration.generateAstrologyEducation(topic);
+      const explanation = await multiAI.generateAstrologyEducation(topic);
       
       if (!explanation) {
         return res.json({
@@ -1730,18 +1731,7 @@ startxref
 
   // AI API Status Endpoint
   app.get("/api/ai-status", (req, res) => {
-    res.json({
-      openai: {
-        available: openaiIntegration.isAPIAvailable(),
-        status: openaiIntegration.getStatus()
-      },
-      features: {
-        personalizedInterpretations: openaiIntegration.isAPIAvailable(),
-        crossSystemSynthesis: openaiIntegration.isAPIAvailable(),
-        conversationalGuidance: openaiIntegration.isAPIAvailable(),
-        educationalContent: openaiIntegration.isAPIAvailable()
-      }
-    });
+    res.json(multiAI.getStatus());
   });
 
   const httpServer = createServer(app);

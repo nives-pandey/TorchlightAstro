@@ -1,17 +1,7 @@
-// OpenAI Integration for Torchlight Astrology Platform
-// AI-powered astrological interpretations and cross-system synthesis
+// Grok (xAI) Integration for Torchlight Astrology Platform
+// Backup AI provider for astrological interpretations
 
 import OpenAI from "openai";
-
-/*
-Follow these instructions when using this blueprint:
-1. Note that the newest OpenAI model is "gpt-4o", not "gpt-4". gpt-4o was released after your knowledge cutoff. Always prefer using gpt-4o as it is the latest model. When copying code from this blueprint, ensure you also mention this information verbatim as a comment so that you don't revert it to "gpt-4": `// the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user`
-2. Use the response_format: { type: "json_object" } option
-3. Request output in JSON format in the prompt
-*/
-
-// the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
-const DEFAULT_MODEL = "gpt-4o";
 
 interface AstrologicalInterpretation {
   personalityCore: string;
@@ -30,31 +20,32 @@ interface CrossSystemAnalysis {
   confidenceLevel: number;
 }
 
-class OpenAIAstrologyIntegration {
-  private openai: OpenAI | null = null;
+class GrokAstrologyIntegration {
+  private grok: OpenAI | null = null;
   private isAvailable: boolean = false;
 
   constructor() {
-    if (process.env.OPENAI_API_KEY) {
-      this.openai = new OpenAI({ 
-        apiKey: process.env.OPENAI_API_KEY 
+    if (process.env.XAI_API_KEY) {
+      this.grok = new OpenAI({ 
+        baseURL: "https://api.x.ai/v1",
+        apiKey: process.env.XAI_API_KEY 
       });
       this.isAvailable = true;
-      console.log('✅ OpenAI integration initialized for astrological analysis');
+      console.log('✅ Grok AI integration initialized for astrological analysis');
     } else {
-      console.log('⚠️ OpenAI API key not provided - AI interpretations disabled');
+      console.log('⚠️ Grok API key not provided - backup AI disabled');
     }
   }
 
   async generateWesternInterpretation(chartData: any): Promise<AstrologicalInterpretation | null> {
-    if (!this.isAvailable || !this.openai) return null;
+    if (!this.isAvailable || !this.grok) return null;
 
     try {
       const sunPlanet = chartData.planets?.find((p: any) => p.planet === 'Sun');
       const moonPlanet = chartData.planets?.find((p: any) => p.planet === 'Moon');
       
-      const response = await this.openai.chat.completions.create({
-        model: DEFAULT_MODEL, // gpt-4o
+      const response = await this.grok.chat.completions.create({
+        model: "grok-2-1212",
         messages: [
           {
             role: "system",
@@ -73,14 +64,14 @@ class OpenAIAstrologyIntegration {
           },
           {
             role: "user",
-            content: `Analyze this Western astrology chart:
-            Sun: ${sunPlanet?.sign || 'Unknown'} ${sunPlanet?.degree_in_sign?.toFixed(1) || ''}°
-            Moon: ${moonPlanet?.sign || 'Unknown'} ${moonPlanet?.degree_in_sign?.toFixed(1) || ''}°
-            Rising: ${chartData.ascendant?.sign || 'Unknown'} ${chartData.ascendant?.degree_in_sign?.toFixed(1) || ''}°
-            Calculation method: ${chartData.calculation_method || 'Professional'}
-            Data source: ${chartData.data_source || 'Astronomical calculations'}
+            content: `Analyze this Western astrological chart:
+            Sun: ${sunPlanet?.sign} at ${sunPlanet?.degree}° in house ${sunPlanet?.house}
+            Moon: ${moonPlanet?.sign} at ${moonPlanet?.degree}° in house ${moonPlanet?.house}
+            Rising Sign: ${chartData.houses?.[0]?.sign}
             
-            Provide a comprehensive interpretation focusing on personality, life themes, and practical guidance.`
+            Chart Data: ${JSON.stringify(chartData, null, 2)}
+            
+            Provide a comprehensive Western astrological interpretation focusing on personality, life themes, and practical guidance.`
           }
         ],
         response_format: { type: "json_object" },
@@ -91,27 +82,21 @@ class OpenAIAstrologyIntegration {
       return result as AstrologicalInterpretation;
 
     } catch (error) {
-      console.error('OpenAI Western interpretation failed:', error);
+      console.error('Grok Western interpretation failed:', error);
       return null;
     }
   }
 
-  async generateCrossSystemSynthesis(systems: any[]): Promise<CrossSystemAnalysis | null> {
-    if (!this.isAvailable || !this.openai || !systems.length) return null;
+  async generateCrossSystemSynthesis(systemsData: any): Promise<CrossSystemAnalysis | null> {
+    if (!this.isAvailable || !this.grok) return null;
 
     try {
-      const systemsData = systems.map((s: any) => ({
-        name: s.system,
-        accuracy: s.accuracy,
-        keyInsights: s.interpretation || 'Professional analysis available'
-      }));
-
-      const response = await this.openai.chat.completions.create({
-        model: DEFAULT_MODEL, // gpt-4o
+      const response = await this.grok.chat.completions.create({
+        model: "grok-2-1212",
         messages: [
           {
-            role: "system", 
-            content: `You are an expert in comparative astrology and metaphysical systems.
+            role: "system",
+            content: `You are an expert in multiple astrological traditions including Western, Vedic, Chinese, and Human Design. 
             Analyze multiple astrological traditions to identify consensus, conflicts, and provide synthesis.
             Focus on practical guidance where systems agree and honest acknowledgment of differences.
             Respond with JSON in this exact format: {
@@ -138,17 +123,17 @@ class OpenAIAstrologyIntegration {
       return result as CrossSystemAnalysis;
 
     } catch (error) {
-      console.error('OpenAI cross-system synthesis failed:', error);
+      console.error('Grok cross-system synthesis failed:', error);
       return null;
     }
   }
 
   async generatePersonalizedGuidance(birthData: any, question: string): Promise<string | null> {
-    if (!this.isAvailable || !this.openai) return null;
+    if (!this.isAvailable || !this.grok) return null;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: DEFAULT_MODEL, // gpt-4o
+      const response = await this.grok.chat.completions.create({
+        model: "grok-2-1212",
         messages: [
           {
             role: "system",
@@ -170,17 +155,17 @@ class OpenAIAstrologyIntegration {
       return response.choices[0].message.content;
 
     } catch (error) {
-      console.error('OpenAI personalized guidance failed:', error);
+      console.error('Grok personalized guidance failed:', error);
       return null;
     }
   }
 
   async enhanceNumerologyInterpretation(numerologyData: any): Promise<string | null> {
-    if (!this.isAvailable || !this.openai) return null;
+    if (!this.isAvailable || !this.grok) return null;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: DEFAULT_MODEL, // gpt-4o
+      const response = await this.grok.chat.completions.create({
+        model: "grok-2-1212",
         messages: [
           {
             role: "system",
@@ -205,53 +190,49 @@ class OpenAIAstrologyIntegration {
       return response.choices[0].message.content;
 
     } catch (error) {
-      console.error('OpenAI numerology interpretation failed:', error);
+      console.error('Grok numerology enhancement failed:', error);
       return null;
     }
   }
 
   async generateAstrologyEducation(topic: string): Promise<string | null> {
-    if (!this.isAvailable || !this.openai) return null;
+    if (!this.isAvailable || !this.grok) return null;
 
     try {
-      const response = await this.openai.chat.completions.create({
-        model: DEFAULT_MODEL, // gpt-4o
+      const response = await this.grok.chat.completions.create({
+        model: "grok-2-1212",
         messages: [
           {
             role: "system",
             content: `You are an astrological educator. Explain astrological concepts clearly and accurately,
-            focusing on the historical context, methodology, and practical applications. 
-            Maintain respect for traditional knowledge while being scientifically honest about limitations.`
+            making them accessible to both beginners and advanced students. Focus on authentic traditional principles
+            while being practical and inspiring.`
           },
           {
             role: "user",
-            content: `Explain the astrological concept: ${topic}
+            content: `Explain the astrological concept: "${topic}"
             
-            Provide a clear, educational explanation that covers the traditional meaning, 
-            how it's calculated or determined, and its practical applications in modern astrology.`
+            Provide a comprehensive educational explanation that is both informative and practical.
+            Include historical context, modern applications, and how this concept can be used for personal growth.`
           }
         ],
-        max_tokens: 400
+        max_tokens: 500
       });
 
       return response.choices[0].message.content;
 
     } catch (error) {
-      console.error('OpenAI astrology education failed:', error);
+      console.error('Grok astrology education failed:', error);
       return null;
     }
   }
 
-  isAPIAvailable(): boolean {
-    return this.isAvailable;
-  }
-
-  getStatus(): string {
-    return this.isAvailable 
-      ? 'Active (AI-powered interpretations enabled)'
-      : 'API key needed (AI interpretations disabled)';
+  getStatus() {
+    return {
+      available: this.isAvailable,
+      status: this.isAvailable ? "Active (Grok AI backup enabled)" : "Unavailable"
+    };
   }
 }
 
-export default OpenAIAstrologyIntegration;
-export const openaiAI = new OpenAIAstrologyIntegration();
+export const grokAI = new GrokAstrologyIntegration();
