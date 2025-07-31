@@ -266,7 +266,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
 
               <FormField
                 control={form.control}
-                name="country"
+                name="location.country"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-white">Country</FormLabel>
@@ -274,7 +274,10 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                       <Input 
                         placeholder="Enter your birth country"
                         className="cosmic-input"
-                        {...field} 
+                        value={field.value || ''}
+                        onChange={(e) => field.onChange(e.target.value)}
+                        onBlur={field.onBlur}
+                        name={field.name}
                       />
                     </FormControl>
                     <FormMessage />
@@ -286,11 +289,11 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
             {/* Timezone */}
             <FormField
               control={form.control}
-              name="timezone"
+              name="location.timezone"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-white">Timezone</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <Select onValueChange={field.onChange} value={field.value || ""}>
                     <FormControl>
                       <SelectTrigger className="cosmic-input">
                         <SelectValue placeholder="Select timezone" />
