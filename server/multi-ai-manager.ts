@@ -3,6 +3,7 @@
 
 import { openaiAI } from './openai-integration';
 import { grokAI } from './grok-integration';
+import { geminiAI } from './gemini-integration';
 
 export class MultiAIManager {
   async generateWesternInterpretation(chartData: any): Promise<any> {
@@ -14,6 +15,10 @@ export class MultiAIManager {
     result = await grokAI.generateWesternInterpretation(chartData);
     if (result) return { ...result, provider: 'Grok' };
 
+    // Final fallback to Gemini
+    result = await geminiAI.generateWesternInterpretation(chartData);
+    if (result) return { ...result, provider: 'Gemini' };
+
     return null;
   }
 
@@ -24,6 +29,9 @@ export class MultiAIManager {
     result = await grokAI.generateCrossSystemSynthesis(systemsData);
     if (result) return { ...result, provider: 'Grok' };
 
+    result = await geminiAI.generateCrossSystemSynthesis(systemsData);
+    if (result) return { ...result, provider: 'Gemini' };
+
     return null;
   }
 
@@ -31,21 +39,30 @@ export class MultiAIManager {
     let result = await openaiAI.generatePersonalizedGuidance(birthData, question);
     if (result) return result;
 
-    return await grokAI.generatePersonalizedGuidance(birthData, question);
+    result = await grokAI.generatePersonalizedGuidance(birthData, question);
+    if (result) return result;
+
+    return await geminiAI.generatePersonalizedGuidance(birthData, question);
   }
 
   async enhanceNumerologyInterpretation(numerologyData: any): Promise<string | null> {
     let result = await openaiAI.enhanceNumerologyInterpretation(numerologyData);
     if (result) return result;
 
-    return await grokAI.enhanceNumerologyInterpretation(numerologyData);
+    result = await grokAI.enhanceNumerologyInterpretation(numerologyData);
+    if (result) return result;
+
+    return await geminiAI.enhanceNumerologyInterpretation(numerologyData);
   }
 
   async generateAstrologyEducation(topic: string): Promise<string | null> {
     let result = await openaiAI.generateAstrologyEducation(topic);
     if (result) return result;
 
-    return await grokAI.generateAstrologyEducation(topic);
+    result = await grokAI.generateAstrologyEducation(topic);
+    if (result) return result;
+
+    return await geminiAI.generateAstrologyEducation(topic);
   }
 
   getStatus() {
@@ -55,15 +72,17 @@ export class MultiAIManager {
     };
     
     const grokStatus = grokAI.getStatus();
+    const geminiStatus = geminiAI.getStatus();
     
     return {
       openai: openaiStatus,
       grok: grokStatus,
+      gemini: geminiStatus,
       features: {
-        personalizedInterpretations: openaiStatus.available || grokStatus.available,
-        crossSystemSynthesis: openaiStatus.available || grokStatus.available,
-        conversationalGuidance: openaiStatus.available || grokStatus.available,
-        educationalContent: openaiStatus.available || grokStatus.available
+        personalizedInterpretations: openaiStatus.available || grokStatus.available || geminiStatus.available,
+        crossSystemSynthesis: openaiStatus.available || grokStatus.available || geminiStatus.available,
+        conversationalGuidance: openaiStatus.available || grokStatus.available || geminiStatus.available,
+        educationalContent: openaiStatus.available || grokStatus.available || geminiStatus.available
       }
     };
   }
