@@ -38,6 +38,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register report generation routes
   registerReportRoutes(app);
 
+  // Enhanced Chart Generation Endpoint - Multi-tier API integration
+  app.post("/api/generate-enhanced-chart", async (req, res) => {
+    try {
+      console.log('🌟 Enhanced Chart Generator: Multi-tier API approach');
+      
+      const { EnhancedChartGenerator } = await import('./enhanced-chart-generator');
+      const enhancedGenerator = new EnhancedChartGenerator();
+      
+      const results = await enhancedGenerator.generateEnhancedChart(
+        req.body.birthData,
+        req.body.systems
+      );
+      
+      res.json(results);
+    } catch (error) {
+      console.error('Enhanced chart generation error:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Enhanced chart generation failed',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  });
+
   // Comprehensive Chart Generation Endpoint - All 5 Systems with Authentic Data
   app.post("/api/generate-comprehensive-chart", async (req, res) => {
     try {
