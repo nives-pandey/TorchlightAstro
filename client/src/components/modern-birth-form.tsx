@@ -409,7 +409,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
         <Card className="w-full h-full sm:w-auto sm:h-auto sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-purple-500/50 shadow-2xl rounded-none sm:rounded-xl lg:rounded-2xl transition-all duration-300">
           {/* Mobile: Add safe area padding */}
           <div className="safe-top safe-bottom sm:safe-top-0 sm:safe-bottom-0">
-        <CardHeader className="relative p-4 sm:p-6 lg:p-8 safe-top">
+            <CardHeader className="relative p-4 sm:p-6 lg:p-8 safe-top">
           <Button
             variant="ghost"
             size="icon"
