@@ -79,16 +79,35 @@ export default function ComprehensiveReport() {
   const [selectedSystems, setSelectedSystems] = useState<string[]>(['western', 'vedic', 'chinese', 'numerology', 'tarot']);
   const [reportGenerated, setReportGenerated] = useState(false);
 
-  const { data: comprehensiveReport, isLoading, error } = useQuery({
-    queryKey: ['/api/comprehensive-report', birthData, selectedSystems],
-    enabled: reportGenerated && !!birthData.name && !!birthData.birthDate,
-    staleTime: 5 * 60 * 1000, // 5 minutes
-  });
+  const [report, setReport] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const generateReport = async (data: BirthData) => {
+    try {
+      setLoading(true);
+      setError('');
+      
+      const response = await apiRequest('POST', '/api/comprehensive-report', {
+        birthData: data,
+        systems: selectedSystems
+      });
+      
+      const result = await response.json();
+      setReport(result);
+      setReportGenerated(true);
+    } catch (error) {
+      console.error('Report generation failed:', error);
+      setError('Failed to generate report. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (birthData.name && birthData.birthDate && birthData.birthTime && birthData.birthPlace) {
-      setReportGenerated(true);
+      generateReport(birthData);
     }
   };
 
@@ -187,7 +206,7 @@ export default function ComprehensiveReport() {
                           size="sm"
                           onClick={() => {
                             setBirthData(persona.data);
-                            setTimeout(() => setReportGenerated(true), 100);
+                            generateReport(persona.data);
                           }}
                           className="text-xs bg-slate-800/50 border-purple-500/30 text-purple-200 hover:bg-purple-600/20"
                         >
@@ -204,26 +223,21 @@ export default function ComprehensiveReport() {
               </form>
             </CardContent>
           </Card>
-        ) : (
-          <div className="space-y-6">
-            {isLoading && (
-              <Card className="bg-slate-900/80 border-purple-500/30">
-                <CardContent className="flex items-center justify-center p-8">
-                  <Loader2 className="w-8 h-8 animate-spin text-purple-400 mr-3" />
-                  <span className="text-white">Generating comprehensive report across all systems...</span>
-                </CardContent>
-              </Card>
-            )}
-
-            {error && (
-              <Card className="bg-red-900/30 border-red-500/30">
-                <CardContent className="p-4">
-                  <p className="text-red-200">Error generating report. Please try again.</p>
-                </CardContent>
-              </Card>
-            )}
-
-            {comprehensiveReport && (
+        ) : loading ? (
+          <div className="text-center">
+            <div className="animate-spin w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+            <p className="text-purple-300">Generating your comprehensive report...</p>
+          </div>
+        ) : error ? (
+          <Card className="max-w-2xl mx-auto bg-red-900/20 border-red-500/30">
+            <CardContent className="p-6 text-center">
+              <p className="text-red-300 mb-4">{error}</p>
+              <Button onClick={() => setReportGenerated(false)} variant="outline" className="border-red-500 text-red-300">
+                Try Again
+              </Button>
+            </CardContent>
+          </Card>
+        ) : report && (
               <div className="space-y-6">
                 <Card className="bg-slate-900/80 border-purple-500/30">
                   <CardHeader>
@@ -237,7 +251,7 @@ export default function ComprehensiveReport() {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {comprehensiveReport.systems?.map((system: SystemReport) => (
+                      {report.systems?.map((system: any) => (
                         <Badge key={system.system} variant="secondary" className="bg-purple-600/20 text-purple-200">
                           {systemNames[system.system as keyof typeof systemNames]} ({Math.round(system.confidence)}% confidence)
                         </Badge>
@@ -256,28 +270,26 @@ export default function ComprehensiveReport() {
                   </TabsList>
 
                   <TabsContent value="personality" className="space-y-4">
-                    <ReportPage1 data={comprehensiveReport} />
+                    <ReportPage1 data={report} />
                   </TabsContent>
 
                   <TabsContent value="lifestyle" className="space-y-4">
-                    <ReportPage2 data={comprehensiveReport} />
+                    <ReportPage2 data={report} />
                   </TabsContent>
 
                   <TabsContent value="guidance" className="space-y-4">
-                    <ReportPage3 data={comprehensiveReport} />
+                    <ReportPage3 data={report} />
                   </TabsContent>
 
                   <TabsContent value="wellness" className="space-y-4">
-                    <ReportPage4 data={comprehensiveReport} />
+                    <ReportPage4 data={report} />
                   </TabsContent>
 
                   <TabsContent value="future" className="space-y-4">
-                    <ReportPage5 data={comprehensiveReport} />
+                    <ReportPage5 data={report} />
                   </TabsContent>
                 </Tabs>
               </div>
-            )}
-          </div>
         )}
       </div>
     </div>

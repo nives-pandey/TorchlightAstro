@@ -449,7 +449,7 @@ export default function Home() {
               Create Your Real Chart ✨
             </Button>
             <br />
-            <div className="space-x-4">
+            <div className="flex flex-wrap justify-center gap-4 mb-6">
               <FeatureHoverCard
                 title="Sample Chart Output"
                 status="available"
@@ -465,20 +465,24 @@ export default function Home() {
                 <Link href="/demo-chart">
                   <Button 
                     variant="outline"
-                    className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl mr-4"
+                    className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
                   >
                     🔮 View Sample Chart Output
                   </Button>
                 </Link>
-                <Link href="/comprehensive-report">
-                  <Button 
-                    variant="outline"
-                    className="bg-orange-800/40 hover:bg-orange-700/50 border-2 border-orange-400 text-white font-semibold px-6 py-3 rounded-xl"
-                  >
-                    📊 5-Page Life Report
-                  </Button>
-                </Link>
               </FeatureHoverCard>
+              
+              <Link href="/comprehensive-report">
+                <Button 
+                  variant="outline"
+                  className="bg-orange-800/40 hover:bg-orange-700/50 border-2 border-orange-400 text-white font-semibold px-6 py-3 rounded-xl"
+                >
+                  📊 5-Page Life Report
+                </Button>
+              </Link>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-4">
               <FeatureHoverCard
                 title="Lifestyle Intelligence"
                 status="available"
