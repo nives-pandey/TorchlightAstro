@@ -143,6 +143,34 @@ export type InsertMessage = z.infer<typeof insertMessageSchema>;
 export type Message = typeof messages.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type BirthData = typeof birthData.$inferSelect;
+
+// 3D Chart Visualization Types - Fix for TypeScript compilation errors
+export interface Planet {
+  name: string;
+  longitude: number;
+  latitude: number;
+  distance: number;
+  speed: number;
+  retrograde: boolean;
+  sign: string;
+  house: number;
+  dignity: string;
+  // Computed properties for 3D visualization
+  projectedX?: number;
+  projectedY?: number;
+  x?: number;
+  y?: number;
+  z?: number;
+}
+
+export interface AspectType {
+  type: string;
+  planet1: string;
+  planet2: string;
+  angle: number;
+  strength: number;
+  orb: number;
+}
 export type InsertBirthData = z.infer<typeof insertBirthDataSchema>;
 export type Chart = typeof charts.$inferSelect;
 export type InsertChart = z.infer<typeof insertChartSchema>;

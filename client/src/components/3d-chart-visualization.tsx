@@ -4,31 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Slider } from '@/components/ui/slider';
+import { Planet, AspectType } from '@shared/schema';
 import { RotateCcw, ZoomIn, ZoomOut, Play, Pause, Eye, Orbit } from 'lucide-react';
 
-interface Planet {
-  name: string;
-  longitude: number;
-  latitude: number;
-  distance: number;
-  color: string;
-  size: number;
-  speed: number;
-}
-
-interface Aspect {
-  planet1: string;
-  planet2: string;
-  angle: number;
-  type: string;
-  orb: number;
-  strength: number;
-  color: string;
-}
+// Using AspectType from shared schema instead of local interface
 
 interface Chart3DVisualizationProps {
   planets: Planet[];
-  aspects: Aspect[];
+  aspects: AspectType[];
   chartType: 'natal' | 'transit' | 'synastry';
 }
 

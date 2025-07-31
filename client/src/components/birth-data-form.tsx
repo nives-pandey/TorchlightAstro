@@ -242,7 +242,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
-                      name="city"
+                      name="location.city"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="text-white flex items-center">
@@ -253,7 +253,10 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                       <Input 
                         placeholder="Enter your birth city"
                         className="cosmic-input"
-                        {...field} 
+                        value={field.value || ''}
+                        onChange={(e) => field.onChange(e.target.value)}
+                        onBlur={field.onBlur}
+                        name={field.name}
                       />
                     </FormControl>
                     <FormMessage />
