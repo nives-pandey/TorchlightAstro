@@ -23,6 +23,7 @@ import { logAPIStatus, checkAPIKeysStatus } from "./api-key-helper";
 import { planetaryHoursAPI } from "./planetary-hours-api";
 import OpenAIAstrologyIntegration from './openai-integration';
 import { multiAI } from './multi-ai-manager';
+import { generateStandaloneReport } from './standalone-comprehensive-report';
 import { 
   insertBirthDataSchema, 
   insertChartSchema,
@@ -46,6 +47,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Setup Quad-AI endpoints
   setupQuadAIEndpoints(app);
+
+  // Comprehensive Report Generation Endpoint (No auth required for demo)
+  app.post('/api/comprehensive-report', (req, res, next) => {
+    // Skip auth middleware for this endpoint
+    next();
+  }, async (req, res) => {
+    try {
+      const { birthData, systems = ['western', 'vedic', 'chinese', 'numerology', 'tarot'] } = req.body;
+      
+      console.log('Comprehensive report request:', { birthData, systems });
+      
+      if (!birthData?.name || !birthData?.birthDate || !birthData?.birthPlace) {
+        return res.status(400).json({ error: 'Missing required birth data' });
+      }
+
+      // Generate comprehensive report across all systems
+      const report = await generateStandaloneReport(birthData, systems);
+      
+      console.log('Report generated successfully');
+      res.json(report);
+    } catch (error) {
+      console.error('Comprehensive report error:', error);
+      res.status(500).json({ error: 'Failed to generate comprehensive report', details: error.message });
+    }
+  });
 
   // Enhanced Chart Generation Endpoint - Multi-tier API integration
   app.post("/api/generate-enhanced-chart", async (req, res) => {
