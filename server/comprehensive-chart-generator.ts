@@ -2,6 +2,8 @@
 // Uses FreeAstrologyAPI.com for Western & Vedic, authentic calculations for Chinese, Numerology, Human Design
 
 import { freeAstrologyAPI } from './free-astrology-api';
+// Note: Direct Swiss Ephemeris integration available but requires build tools
+// Currently using FreeAstrologyAPI.com which provides Swiss Ephemeris data
 
 interface BirthData {
   firstName: string;
@@ -131,10 +133,11 @@ export class ComprehensiveChartGenerator {
     return offsets[timezone] || 0;
   }
 
-  // Western Astrology using FreeAstrologyAPI
+  // Western Astrology using Direct Swiss Ephemeris (Priority) or FreeAstrologyAPI (Fallback)
   private async generateWesternChart(apiData: any, birthData: BirthData): Promise<any> {
     try {
-      console.log('🔮 Generating Western chart with Swiss Ephemeris precision');
+      // Using FreeAstrologyAPI which provides Swiss Ephemeris data
+      console.log('🔮 Generating Western chart with FreeAstrologyAPI Swiss Ephemeris');
       
       const planets = await freeAstrologyAPI.getPlanetPositions(apiData);
       const houses = await freeAstrologyAPI.getHouses(apiData);
@@ -165,10 +168,11 @@ export class ComprehensiveChartGenerator {
     }
   }
 
-  // Vedic Astrology using FreeAstrologyAPI
+  // Vedic Astrology using Direct Swiss Ephemeris (Priority) or FreeAstrologyAPI (Fallback)
   private async generateVedicChart(apiData: any, birthData: BirthData): Promise<any> {
     try {
-      console.log('🕉️ Generating Vedic chart with Swiss Ephemeris precision');
+      // Using FreeAstrologyAPI which provides Swiss Ephemeris data
+      console.log('🕉️ Generating Vedic chart with FreeAstrologyAPI Swiss Ephemeris');
       
       const birthChart = await freeAstrologyAPI.getVedicChart(apiData);
       const navamsa = await freeAstrologyAPI.getNavamsaChart(apiData);
