@@ -750,81 +750,191 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Contribution Options with Named Amounts */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <Button 
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
-                >
-                  <Coffee className="w-6 h-6" />
-                  <div>
-                    <div className="text-lg font-bold">$5</div>
-                    <div className="text-sm opacity-90">Buy us a Matcha ☕</div>
-                  </div>
-                </Button>
+              {/* Contribution Options - 3 Rows Layout */}
+              <div className="space-y-4 mb-8">
+                {/* First Row: $5, $10, $25 */}
+                <div className="grid grid-cols-3 gap-3">
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                  >
+                    <Coffee className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$5</div>
+                      <div className="text-xs opacity-90">Cosmic Coffee</div>
+                    </div>
+                  </Button>
 
-                <Button 
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
-                >
-                  <BookOpen className="w-6 h-6" />
-                  <div>
-                    <div className="text-lg font-bold">$15</div>
-                    <div className="text-sm opacity-90">Cosmic Scholar</div>
-                  </div>
-                </Button>
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                  >
+                    <Sparkles className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$10</div>
+                      <div className="text-xs opacity-90">Astro Friend</div>
+                    </div>
+                  </Button>
 
-                <Button 
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
-                >
-                  <Stars className="w-6 h-6" />
-                  <div>
-                    <div className="text-lg font-bold">$50</div>
-                    <div className="text-sm opacity-90">Starlight Supporter</div>
-                  </div>
-                </Button>
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$25</div>
+                      <div className="text-xs opacity-90">Cosmic Scholar</div>
+                    </div>
+                  </Button>
+                </div>
 
-                <Button 
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
-                >
-                  <Sun className="w-6 h-6" />
-                  <div>
-                    <div className="text-lg font-bold">$100</div>
-                    <div className="text-sm opacity-90">Cosmic Guardian</div>
-                  </div>
-                </Button>
+                {/* Second Row: $50, $100, $250 */}
+                <div className="grid grid-cols-3 gap-3">
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                  >
+                    <Stars className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$50</div>
+                      <div className="text-xs opacity-90">Starlight Supporter</div>
+                    </div>
+                  </Button>
+
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                  >
+                    <Sun className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$100</div>
+                      <div className="text-xs opacity-90">Cosmic Guardian</div>
+                    </div>
+                  </Button>
+
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                  >
+                    <Award className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$250</div>
+                      <div className="text-xs opacity-90">Stellar Patron</div>
+                    </div>
+                  </Button>
+                </div>
+
+                {/* Third Row: $500, Custom Amount */}
+                <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-gold-600 to-yellow-600 hover:from-gold-500 hover:to-yellow-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                    style={{
+                      background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 100%)',
+                      color: '#1a1a1a'
+                    }}
+                  >
+                    <Shield className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">$500</div>
+                      <div className="text-xs opacity-90">Galaxy Champion</div>
+                    </div>
+                  </Button>
+
+                  <Button 
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2 border-2 border-purple-400/50"
+                  >
+                    <Users className="w-5 h-5" />
+                    <div>
+                      <div className="text-lg font-bold">Custom</div>
+                      <div className="text-xs opacity-90">Your Choice</div>
+                    </div>
+                  </Button>
+                </div>
               </div>
 
-              {/* Payment Methods & Alternative Support */}
-              <div className="flex flex-wrap justify-center gap-4 mb-6">
-                <Button 
-                  variant="outline"
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
-                >
-                  <Coins className="w-5 h-5 mr-2" />
-                  Crypto Payment
-                </Button>
-                
-                <Button 
-                  variant="outline"
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
-                >
-                  <Heart className="w-5 h-5 mr-2" />
-                  Monthly Support
-                </Button>
+              {/* Payment Methods */}
+              <div className="mb-6">
+                <h4 className="text-amber-200 text-center font-semibold mb-4">Choose Your Payment Method:</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    PayPal
+                  </Button>
+                  
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    Stripe
+                  </Button>
 
-                <Button 
-                  variant="outline"
-                  onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="border-2 border-purple-400/60 text-purple-200 hover:bg-purple-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
-                >
-                  <Users className="w-5 h-5 mr-2" />
-                  Custom Amount
-                </Button>
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    Credit Card
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    Google Pay
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    Apple Pay
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    Samsung Pay
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    RuPay
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-purple-400/60 text-purple-200 hover:bg-purple-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                  >
+                    <Coins className="w-4 h-4 mr-1" />
+                    Crypto
+                  </Button>
+                </div>
+
+                {/* Monthly Support Option */}
+                <div className="mt-4 text-center">
+                  <Button 
+                    variant="outline"
+                    onClick={() => showModal({ type: 'manual', delay: 0 })}
+                    className="border-2 border-emerald-400/60 text-emerald-200 hover:bg-emerald-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
+                  >
+                    <Heart className="w-5 h-5 mr-2" />
+                    Set Up Monthly Support
+                  </Button>
+                </div>
               </div>
 
               {/* Can't Pay? Share the Love */}
