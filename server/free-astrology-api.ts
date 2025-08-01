@@ -349,13 +349,13 @@ class FreeAstrologyAPI {
     return analysis;
   }
 
-  // Vedic astrology calculations
-  async getVedicChart(birthData: BirthData): Promise<any> {
+  // Vedic tropical calculations
+  async getVedicTropicalChart(birthData: BirthData): Promise<any> {
     try {
       const response = await this.makeRequest('/planets/tropical', birthData);
       return response;
     } catch (error) {
-      console.error('Error fetching Vedic chart:', error);
+      console.error('Error fetching Vedic tropical chart:', error);
       return null;
     }
   }
