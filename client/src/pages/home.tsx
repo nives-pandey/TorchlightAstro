@@ -296,7 +296,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline - Match Landing Page */}
           <div className="mb-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight font-heading">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight sm:leading-[1.1] tracking-tight font-heading px-2">
               <span 
                 style={{
                   background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
@@ -309,7 +309,7 @@ export default function Home() {
               </span>
               <br />
               <span 
-                className="block mt-2"
+                className="block mt-1 sm:mt-2"
                 style={{
                   color: 'hsl(240, 100%, 94%)',
                   textShadow: '0 2px 8px rgba(0,0,0,0.3)'
@@ -320,7 +320,7 @@ export default function Home() {
             </h1>
             
             {/* Enhanced subheadline */}
-            <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-12 font-body" 
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-12 font-body px-4" 
                style={{
                  color: 'hsl(240, 100%, 95%)', 
                  opacity: 0.95,
@@ -340,7 +340,7 @@ export default function Home() {
           </div>
 
           {/* Core Features Grid - The 4 main sections */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 px-2">
             <FeatureHoverCard
               title="Personal Astrology"
               status="available"
@@ -355,15 +355,15 @@ export default function Home() {
               ]}
             >
               <Link href="/personal">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <UserCircle className="w-6 h-6 text-blue-400" />
-                      Personal Astrology
+                <Card className="mobile-card hover:scale-105 transition-all duration-300 cursor-pointer min-h-[120px] sm:min-h-[140px]">
+                  <CardHeader className="pb-2 sm:pb-3 p-4 sm:p-6">
+                    <CardTitle className="text-white text-base sm:text-lg flex items-center gap-2 leading-tight">
+                      <UserCircle className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 flex-shrink-0" />
+                      <span className="truncate">Personal Astrology</span>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                  <CardContent className="p-4 sm:p-6 pt-0">
+                    <CardDescription className="text-purple-100/80 text-xs sm:text-sm leading-relaxed">
                       Deep individual insights across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
