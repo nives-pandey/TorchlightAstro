@@ -56,7 +56,7 @@ body {
   --primary-foreground: hsl(240, 100%, 94%);
   --secondary: transparent; /* NO white secondary */
   --secondary-foreground: hsl(240, 100%, 94%);
-  --accent: hsl(51, 100%, 50%); /* Gold accent */
+  --accent: hsl(45, 100%, 58%); /* Proven gold accent */
   --accent-foreground: hsl(240, 45%, 12%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(240, 100%, 94%);
@@ -81,6 +81,16 @@ body {
   
   /* Force override any white backgrounds */
   --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
+}
+
+/* Global Typography Application */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading) !important;
+  color: var(--cosmic-lavender) !important;
+}
+
+p, span, div, button, input, textarea, label {
+  font-family: var(--font-body) !important;
 }
 
 /* ULTIMATE WHITE BACKGROUND ELIMINATION */
@@ -147,12 +157,28 @@ div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
 /* Enhanced Cosmic Button Style with Gemini colors */
 .cosmic-button {
   background: linear-gradient(135deg, var(--cosmic-violet) 0%, var(--cosmic-purple) 50%, var(--cosmic-gold) 100%);
-  border: 2px solid rgba(168, 85, 247, 0.3);
+  border: 2px solid hsl(45, 100%, 58%, 0.4);
   color: var(--cosmic-lavender);
   font-family: var(--font-body);
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  box-shadow: 0 4px 15px hsl(45, 100%, 58%, 0.3);
+}
+
+.cosmic-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px hsl(45, 100%, 58%, 0.4);
+  border-color: hsl(45, 100%, 58%, 0.6);
+}
+
+/* Enhanced gold accents for icons */
+.cosmic-gold-icon {
+  color: var(--cosmic-gold) !important;
+}
+
+/* Enhanced violet accents */
+.cosmic-violet-accent {
+  color: var(--cosmic-violet) !important;
 }
 
 /* Cosmic Card Style */
