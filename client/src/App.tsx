@@ -72,7 +72,7 @@ function Router() {
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
             <Switch>
-        <Route path="/" component={Landing} />
+        <Route path="/" component={Home} />
         <Route path="/home" component={Home} />
         <Route path="/personal" component={Personal} />
         <Route path="/couples" component={Couples} />

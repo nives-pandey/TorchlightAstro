@@ -21,7 +21,7 @@ export default function Home() {
   const [chartData, setChartData] = useState<any>(null);
   const [showResults, setShowResults] = useState(false);
   
-  // Force component update for cache clearing
+  // Force component update for cache clearing - v2024.1.31
   const [, forceUpdate] = useState({});
 
   const personalSystems = [
