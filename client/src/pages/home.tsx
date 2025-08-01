@@ -10,7 +10,7 @@ import ChartResults from "@/components/chart-results";
 
 import FeatureHoverCard from "@/components/feature-hover-card";
 import Navigation from "@/components/navigation";
-import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon, Coffee, Coins, Building2, UserCircle } from "lucide-react";
+import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon, Coffee, Coins, Building2, UserCircle, Award } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
