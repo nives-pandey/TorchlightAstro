@@ -294,7 +294,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline - Match Landing Page */}
           <div className="mb-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight font-heading">
               <span 
                 style={{
                   background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
@@ -318,9 +318,9 @@ export default function Home() {
             </h1>
             
             {/* Enhanced subheadline */}
-            <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-12 font-light" 
+            <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-12 font-body" 
                style={{
-                 color: 'hsl(240, 100%, 94%)', 
+                 color: 'hsl(240, 100%, 95%)', 
                  opacity: 0.95,
                  textShadow: '0 1px 4px rgba(0,0,0,0.2)'
                }}>
@@ -463,7 +463,7 @@ export default function Home() {
 
           {/* Explore Ancient Wisdom Section */}
           <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-heading" style={{color: 'var(--cosmic-lavender)'}}>
               <Sparkles className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
               Explore Ancient Wisdom
             </h3>

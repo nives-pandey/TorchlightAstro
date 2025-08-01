@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,9 +43,9 @@ body {
 :root {
   /* Cosmic theme - all elements use transparent/cosmic backgrounds */
   --background: transparent; /* NEVER white - always transparent */
-  --foreground: hsl(240, 100%, 94%); /* White text for readability */
+  --foreground: hsl(240, 100%, 95%); /* Softer off-white for readability */
   --muted: transparent; /* NO blocking backgrounds */
-  --muted-foreground: hsl(240, 30%, 80%); /* Light purple text */
+  --muted-foreground: hsl(240, 30%, 75%); /* Better contrast light text */
   --popover: rgba(30, 15, 50, 0.95); /* Dark cosmic popup */
   --popover-foreground: hsl(240, 100%, 94%);
   --card: transparent; /* NEVER white cards */
@@ -63,14 +63,21 @@ body {
   --ring: hsl(275, 70%, 45%);
   --radius: 1rem;
 
-  /* Enhanced cosmic theme - NO WHITE ANYWHERE */
+  /* Enhanced cosmic theme - Gemini-proven colors */
   --cosmic-purple: hsl(275, 70%, 45%);
   --cosmic-deep-purple: hsl(285, 60%, 35%);
-  --cosmic-gold: hsl(51, 100%, 65%);
-  --cosmic-lavender: hsl(240, 100%, 94%);
-  --cosmic-gradient-1: linear-gradient(135deg, hsl(260, 60%, 25%) 0%, hsl(275, 70%, 45%) 50%, hsl(285, 80%, 35%) 100%);
+  --cosmic-gold: hsl(45, 100%, 58%); /* Proven gold #D4AF37 */
+  --cosmic-violet: hsl(271, 100%, 51%); /* Luminous violet #8A2BE2 */
+  --cosmic-lavender: hsl(240, 100%, 95%); /* Softer off-white */
+  --cosmic-navy: hsl(235, 65%, 8%); /* Dark navy blue #0B0D2B */
+  --cosmic-text-muted: hsl(240, 30%, 75%); /* Better contrast */
+  --cosmic-gradient-1: linear-gradient(135deg, var(--cosmic-navy) 0%, hsl(275, 70%, 45%) 50%, hsl(285, 80%, 35%) 100%);
   --cosmic-gradient-2: linear-gradient(135deg, hsl(275, 70%, 45%), hsl(285, 60%, 35%));
-  --cosmic-gradient-3: linear-gradient(135deg, hsl(260, 60%, 25%), hsl(275, 70%, 45%));
+  --cosmic-gradient-3: linear-gradient(135deg, var(--cosmic-navy), hsl(275, 70%, 45%));
+  
+  /* Gemini-proven typography classes */
+  --font-heading: 'Playfair Display', serif; /* Elegant, classic serif for headings */
+  --font-body: 'Lato', sans-serif; /* Clean, readable sans-serif for body text */
   
   /* Force override any white backgrounds */
   --white-override: rgba(30, 15, 50, 0.95); /* Use dark cosmic instead of white */
@@ -124,11 +131,25 @@ div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
   background: linear-gradient(135deg, rgba(60, 30, 100, 0.8) 0%, rgba(90, 50, 140, 0.75) 50%, rgba(75, 40, 120, 0.8) 100%) !important;
 }
 
-/* Cosmic Button Style */
+/* Gemini-proven Typography Classes */
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Enhanced Cosmic Button Style with Gemini colors */
 .cosmic-button {
-  background: linear-gradient(135deg, #6d28d9 0%, #a855f7 50%, #c084fc 100%);
+  background: linear-gradient(135deg, var(--cosmic-violet) 0%, var(--cosmic-purple) 50%, var(--cosmic-gold) 100%);
   border: 2px solid rgba(168, 85, 247, 0.3);
-  color: white;
+  color: var(--cosmic-lavender);
+  font-family: var(--font-body);
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
