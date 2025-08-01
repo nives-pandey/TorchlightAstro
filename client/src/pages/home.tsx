@@ -10,7 +10,7 @@ import ChartResults from "@/components/chart-results";
 import PlanetarySymbols from "@/components/planetary-symbols";
 import FeatureHoverCard from "@/components/feature-hover-card";
 import Navigation from "@/components/navigation";
-import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon } from "lucide-react";
+import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon, Coffee, Coins, Building2, UserCircle } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Home() {
@@ -31,13 +31,13 @@ export default function Home() {
     {
       icon: "ॐ",
       title: "Vedic (Jyotish)",
-      description: "Ancient Indian astrology with 27 Nakshatras, Dasha periods, and Ayurvedic connections.",
+      description: "25,000-year-old Indian astrology with 27 Nakshatras, Dasha periods, and Ayurvedic connections.",
       features: ["Nakshatra analysis", "Planetary periods (Dasha)", "Dosha constitution"]
     },
     {
       icon: "☯",
       title: "Chinese Zodiac",
-      description: "12 animal signs with Five Element theory for personality insights and compatibility.",
+      description: "Ancient system from 1000 BCE with 12 animal signs and Five Element theory for personality insights.",
       features: ["Animal sign characteristics", "Five element integration", "Annual predictions"]
     },
     {
@@ -348,31 +348,31 @@ export default function Home() {
             <PlanetarySymbols />
           </div>
 
-          {/* Features Preview - Match Landing Page with Navigation */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {/* Core Features Grid - Enhanced with Proper Icons and Consistent Styling */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <FeatureHoverCard
-              title="Personal Readings"
+              title="Personal Astrology"
               status="available"
-              description="Complete natal chart analysis across Western, Vedic, Chinese, Human Design, and Numerology systems with authentic Swiss Ephemeris astronomical calculations."
+              description="Complete natal chart analysis across Western, Vedic (25,000 years), Chinese (1000 BCE), Human Design, and Numerology systems with Swiss Ephemeris precision."
               features={[
                 "Multi-system natal chart analysis",
-                "Swiss Ephemeris precision calculations",
-                "Cross-system compatibility comparisons",
-                "Lifestyle intelligence recommendations",
+                "Swiss Ephemeris astronomical calculations",
+                "Cross-system personality insights",
+                "Life path and destiny analysis",
                 "PDF report generation"
               ]}
             >
               <Link href="/personal">
-                <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Sun className="w-5 h-5 text-orange-400" />
-                      Personal Readings
+                      <UserCircle className="w-6 h-6 text-yellow-400" />
+                      Personal Astrology
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-pink-200/80 text-sm">
-                      Complete natal chart analysis across all systems with authentic astronomical calculations
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Complete natal chart analysis across all ancient systems with authentic astronomical calculations
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -380,7 +380,7 @@ export default function Home() {
             </FeatureHoverCard>
 
             <FeatureHoverCard
-              title="Compatibility Analysis"
+              title="Relationships"
               status="coming-soon"
               description="Deep relationship compatibility analysis combining Western, Vedic, Chinese, and Numerology systems for comprehensive partnership insights."
               expectedDate="March 2025"
@@ -388,19 +388,20 @@ export default function Home() {
                 "Synastry chart analysis",
                 "Composite relationship charts", 
                 "Cross-system compatibility scoring",
-                "Relationship timing predictions"
+                "Relationship timing predictions",
+                "Soul mate indicators"
               ]}
             >
               <Link href="/compatibility">
-                <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Heart className="w-5 h-5 text-pink-400" />
-                      Compatibility
+                      <Heart className="w-6 h-6 text-pink-400" />
+                      Relationships
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-pink-200/80 text-sm">
+                    <CardDescription className="text-purple-100/80 text-sm">
                       Relationship insights and compatibility analysis across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
@@ -409,30 +410,60 @@ export default function Home() {
             </FeatureHoverCard>
 
             <FeatureHoverCard
-              title="Daily Guidance"
+              title="Homes & Spaces"
               status="in-development"
-              description="Personalized daily astrological insights with optimal timing recommendations based on current planetary transits and your birth chart."
-              expectedDate="February 2025"
-              completionPercentage={75}
+              description="Sacred space optimization using Vaastu Shastra and Feng Shui principles for harmonious living and working environments."
+              expectedDate="April 2025"
+              completionPercentage={60}
               features={[
-                "Daily planetary transits",
-                "Optimal timing for decisions",
-                "Lucky numbers and colors",
-                "Health and energy forecasts",
-                "Relationship timing advice"
+                "Vaastu Shastra analysis",
+                "Feng Shui energy mapping",
+                "Sacred geometry alignment",
+                "Five elements balancing",
+                "Directional energy optimization"
               ]}
             >
-              <Link href="/daily">
-                <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl cursor-pointer hover:bg-white/15 transition-all duration-300">
+              <Link href="/spaces">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-purple-400" />
-                      Daily Guidance
+                      <Building2 className="w-6 h-6 text-green-400" />
+                      Homes & Spaces
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-pink-200/80 text-sm">
-                      Personalized daily insights with optimal timing recommendations
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Sacred space optimization using ancient Vaastu and Feng Shui principles
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
+
+            <FeatureHoverCard
+              title="Business Analysis"
+              status="coming-soon"
+              description="Business astrology combining multiple systems for optimal timing, partnerships, and strategic decision-making in professional ventures."
+              expectedDate="May 2025"
+              features={[
+                "Business launch timing",
+                "Partnership compatibility",
+                "Financial forecast analysis",
+                "Market timing insights",
+                "Strategic decision support"
+              ]}
+            >
+              <Link href="/business">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Briefcase className="w-6 h-6 text-blue-400" />
+                      Business Analysis
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Professional astrology for optimal business timing and strategic decisions
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -440,20 +471,53 @@ export default function Home() {
             </FeatureHoverCard>
           </div>
 
-          {/* CTA Buttons - Enhanced with Demo */}
-          <div className="text-center mb-12 space-y-4">
+          {/* Contribution Call-to-Action */}
+          <div className="text-center mb-8">
+            <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-400/30 rounded-2xl p-6 max-w-2xl mx-auto backdrop-blur-sm">
+              <h3 className="text-xl font-semibold text-amber-200 mb-2">Contribute Now</h3>
+              <p className="text-amber-100/80 mb-4">Help us preserve and share ancient wisdom for everyone</p>
+              <div className="flex justify-center gap-4">
+                <Button 
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="bg-amber-600/80 hover:bg-amber-600 text-white px-6 py-2 rounded-xl"
+                >
+                  <Coffee className="w-4 h-4 mr-2" />
+                  Buy us a Matcha ☕
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="border-amber-400/50 text-amber-200 hover:bg-amber-600/20 px-6 py-2 rounded-xl"
+                >
+                  <Coins className="w-4 h-4 mr-2" />
+                  Crypto Support
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Ancient Wisdom For Everyone */}
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Ancient Wisdom For Everyone</h2>
+            <p className="text-purple-200/80 max-w-3xl mx-auto mb-8">
+              Illuminating the cosmic connections between celestial movements and human experience through authentic calculations and traditional interpretations
+            </p>
+          </div>
+
+          {/* Main CTA - Enhanced */}
+          <div className="text-center mb-12 space-y-6">
             <Button 
               onClick={() => setShowBirthForm(true)}
-              className="cosmic-button text-lg px-8 py-4 mr-4"
+              className="cosmic-button text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
-              Create Your Real Chart ✨
+              Begin Your Cosmic Journey Now ✨
             </Button>
-            <br />
-            <div className="flex flex-wrap justify-center gap-4 mb-6">
+            {/* Demo and Report Buttons - Clean Layout */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
               <FeatureHoverCard
                 title="Sample Chart Output"
                 status="available"
-                description="View a comprehensive demonstration of our multi-system astrological analysis with real chart examples and lifestyle intelligence."
+                description="View comprehensive multi-system astrological analysis with real chart examples and lifestyle intelligence."
                 features={[
                   "Complete Western & Vedic analysis",
                   "Chinese zodiac & Five Elements",
@@ -465,9 +529,9 @@ export default function Home() {
                 <Link href="/demo-chart">
                   <Button 
                     variant="outline"
-                    className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-purple-400 text-white font-semibold px-6 py-3 rounded-xl"
+                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
-                    🔮 View Sample Chart Output
+                    🔮 3D Cosmos
                   </Button>
                 </Link>
               </FeatureHoverCard>
@@ -475,9 +539,40 @@ export default function Home() {
               <Link href="/comprehensive-report">
                 <Button 
                   variant="outline"
-                  className="bg-orange-800/40 hover:bg-orange-700/50 border-2 border-orange-400 text-white font-semibold px-6 py-3 rounded-xl"
+                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
-                  📊 5-Page Life Report
+                  📊 5-Page Report
+                </Button>
+              </Link>
+
+              <FeatureHoverCard
+                title="Lifestyle Intelligence"
+                status="available"
+                description="Personalized lifestyle recommendations including travel destinations, color therapy, and gemstone guidance."
+                features={[
+                  "Travel destination recommendations",
+                  "Personalized color therapy",
+                  "Gemstone & crystal guidance",
+                  "Feng Shui & Vaastu principles",
+                  "Health & wellness insights"
+                ]}
+              >
+                <Link href="/lifestyle-intelligence">
+                  <Button 
+                    variant="outline"
+                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    🌟 Lifestyle
+                  </Button>
+                </Link>
+              </FeatureHoverCard>
+
+              <Link href="/gemstone-lifestyle-pairing">
+                <Button 
+                  variant="outline"
+                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  💎 Gemstone Analysis
                 </Button>
               </Link>
             </div>

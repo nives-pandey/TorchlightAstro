@@ -124,6 +124,24 @@ div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
   background: linear-gradient(135deg, rgba(60, 30, 100, 0.8) 0%, rgba(90, 50, 140, 0.75) 50%, rgba(75, 40, 120, 0.8) 100%) !important;
 }
 
+/* Cosmic Button Style */
+.cosmic-button {
+  background: linear-gradient(135deg, #6d28d9 0%, #a855f7 50%, #c084fc 100%);
+  border: 2px solid rgba(168, 85, 247, 0.3);
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+}
+
+/* Cosmic Card Style */
+.cosmic-card {
+  background: linear-gradient(135deg, rgba(109, 40, 217, 0.6) 0%, rgba(79, 70, 229, 0.6) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
 /* Mobile-Specific Responsive Design Classes */
 @layer utilities {
   /* Safe Area Support for iOS notch */
