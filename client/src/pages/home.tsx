@@ -555,41 +555,115 @@ export default function Home() {
             </FeatureHoverCard>
           </div>
 
-          {/* Contribution Call-to-Action - Enhanced */}
+          {/* Contribution Call-to-Action - Full Original Version */}
           <div className="text-center mb-12">
-            <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-400/30 rounded-2xl p-8 max-w-4xl mx-auto backdrop-blur-sm">
-              <h3 className="text-2xl font-bold text-amber-200 mb-4">Contribute Now</h3>
-              <p className="text-amber-100/90 mb-6 text-lg max-w-2xl mx-auto">
-                Help us preserve and share ancient wisdom for everyone. Your support keeps authentic astrological knowledge accessible to all seekers on their cosmic journey.
-              </p>
-              <div className="flex flex-wrap justify-center gap-6">
+            <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-400/30 rounded-2xl p-8 max-w-5xl mx-auto backdrop-blur-sm">
+              <h3 className="text-3xl font-bold text-amber-200 mb-4">Contribute Now</h3>
+              
+              {/* Noble Mission Statement */}
+              <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl p-6 mb-8 border border-amber-400/20">
+                <p className="text-amber-100 text-lg font-medium mb-4 italic">
+                  "Ancient wisdom belongs to humanity, not corporations. We're committed to keeping authentic astrological knowledge accessible to all seekers, forever."
+                </p>
+                <p className="text-amber-200/90 text-base">
+                  Your support helps us maintain Swiss Ephemeris precision, expand our 10-system analysis, and ensure this sacred knowledge remains free for future generations. Every contribution, no matter the size, makes a difference in preserving thousands of years of cosmic wisdom.
+                </p>
+              </div>
+
+              {/* Contribution Options with Named Amounts */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <Button 
                   onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-3 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
                 >
-                  <Coffee className="w-5 h-5 mr-2" />
-                  Buy us a Matcha ☕
+                  <Coffee className="w-6 h-6" />
+                  <div>
+                    <div className="text-lg font-bold">$5</div>
+                    <div className="text-sm opacity-90">Buy us a Matcha ☕</div>
+                  </div>
                 </Button>
+
+                <Button 
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                >
+                  <BookOpen className="w-6 h-6" />
+                  <div>
+                    <div className="text-lg font-bold">$15</div>
+                    <div className="text-sm opacity-90">Cosmic Scholar</div>
+                  </div>
+                </Button>
+
+                <Button 
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                >
+                  <Stars className="w-6 h-6" />
+                  <div>
+                    <div className="text-lg font-bold">$50</div>
+                    <div className="text-sm opacity-90">Starlight Supporter</div>
+                  </div>
+                </Button>
+
+                <Button 
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-6 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                >
+                  <Sun className="w-6 h-6" />
+                  <div>
+                    <div className="text-lg font-bold">$100</div>
+                    <div className="text-sm opacity-90">Cosmic Guardian</div>
+                  </div>
+                </Button>
+              </div>
+
+              {/* Payment Methods & Alternative Support */}
+              <div className="flex flex-wrap justify-center gap-4 mb-6">
                 <Button 
                   variant="outline"
                   onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-8 py-3 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
                 >
                   <Coins className="w-5 h-5 mr-2" />
-                  Crypto Support
+                  Crypto Payment
                 </Button>
+                
                 <Button 
                   variant="outline"
                   onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-8 py-3 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
                 >
                   <Heart className="w-5 h-5 mr-2" />
                   Monthly Support
                 </Button>
+
+                <Button 
+                  variant="outline"
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="border-2 border-purple-400/60 text-purple-200 hover:bg-purple-600/30 px-6 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  Custom Amount
+                </Button>
               </div>
-              <p className="text-amber-200/70 text-sm mt-4">
-                Every contribution helps us maintain Swiss Ephemeris precision and expand our multi-system analysis
-              </p>
+
+              {/* Share the Love Option */}
+              <div className="border-t border-amber-400/20 pt-6">
+                <p className="text-amber-200/80 text-sm mb-3">
+                  Can't contribute right now? No problem!
+                </p>
+                <Button 
+                  variant="outline"
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="border-2 border-pink-400/60 text-pink-200 hover:bg-pink-600/30 px-8 py-3 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300"
+                >
+                  <Heart className="w-5 h-5 mr-2" />
+                  Share the Love - Spread the Word
+                </Button>
+                <p className="text-amber-200/60 text-xs mt-2">
+                  Share Torchlight with friends who love astrology - it helps us grow our cosmic community
+                </p>
+              </div>
             </div>
           </div>
 
