@@ -340,6 +340,130 @@ export default function Home() {
             </p>
           </div>
 
+          {/* Core Features Grid - The 4 main sections */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <FeatureHoverCard
+              title="Personal Astrology"
+              status="available"
+              description="Comprehensive individual astrological analysis combining Western, Vedic, Chinese, Numerology, and Human Design systems for complete self-understanding."
+              expectedDate="Available Now"
+              features={[
+                "Complete Western natal chart",
+                "Vedic birth chart & dashas",
+                "Chinese zodiac & Five Elements",
+                "Numerology life path analysis",
+                "Human Design bodygraph"
+              ]}
+            >
+              <Link href="/personal">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <UserCircle className="w-6 h-6 text-blue-400" />
+                      Personal Astrology
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Deep individual insights across multiple astrological traditions
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
+
+            <FeatureHoverCard
+              title="Relationships"
+              status="coming-soon"
+              description="Deep relationship compatibility analysis combining Western, Vedic, Chinese, and Numerology systems for comprehensive partnership insights."
+              expectedDate="March 2025"
+              features={[
+                "Synastry chart analysis",
+                "Composite relationship charts", 
+                "Cross-system compatibility scoring",
+                "Relationship timing predictions",
+                "Soul mate indicators"
+              ]}
+            >
+              <Link href="/compatibility">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Heart className="w-6 h-6 text-pink-400" />
+                      Relationships
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Relationship insights and compatibility analysis across multiple astrological traditions
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
+
+            <FeatureHoverCard
+              title="Homes & Spaces"
+              status="in-development"
+              description="Sacred space optimization using Vaastu Shastra and Feng Shui principles for harmonious living and working environments."
+              expectedDate="April 2025"
+              completionPercentage={60}
+              features={[
+                "Vaastu Shastra analysis",
+                "Feng Shui energy mapping",
+                "Sacred geometry alignment",
+                "Five elements balancing",
+                "Directional energy optimization"
+              ]}
+            >
+              <Link href="/spaces">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Building2 className="w-6 h-6 text-green-400" />
+                      Homes & Spaces
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Sacred space optimization using ancient Vaastu and Feng Shui principles
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
+
+            <FeatureHoverCard
+              title="Business Analysis"
+              status="coming-soon"
+              description="Business astrology combining multiple systems for optimal timing, partnerships, and strategic decision-making in professional ventures."
+              expectedDate="May 2025"
+              features={[
+                "Business launch timing",
+                "Partnership compatibility",
+                "Financial forecast analysis",
+                "Market timing insights",
+                "Strategic decision support"
+              ]}
+            >
+              <Link href="/business">
+                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                      <Briefcase className="w-6 h-6 text-blue-400" />
+                      Business Analysis
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-purple-100/80 text-sm">
+                      Professional astrology for optimal business timing and strategic decisions
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
+            </FeatureHoverCard>
+          </div>
+
           {/* Explore Ancient Wisdom Section */}
           <div className="mb-12">
             <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
@@ -430,6 +554,28 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+          </div>
+
+          {/* Ancient Wisdom For Everyone */}
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Ancient Wisdom For Everyone</h2>
+            <p className="text-purple-200/80 max-w-3xl mx-auto mb-8">
+              Illuminating the cosmic connections between celestial movements and human experience through authentic calculations and traditional interpretations
+            </p>
+          </div>
+
+          {/* Main CTA - Enhanced */}
+          <div className="text-center mb-12 space-y-6">
+            <Button 
+              onClick={() => setShowBirthForm(true)}
+              className="cosmic-button text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              Begin Your Cosmic Journey Now ✨
+            </Button>
+            
+            <p className="text-gray-400 text-sm mt-2">
+              See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)
+            </p>
           </div>
 
           {/* Core Features Grid - Enhanced with Proper Icons and Consistent Styling */}
@@ -555,6 +701,28 @@ export default function Home() {
             </FeatureHoverCard>
           </div>
 
+          {/* Ancient Wisdom For Everyone */}
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-white mb-4">Ancient Wisdom For Everyone</h2>
+            <p className="text-purple-200/80 max-w-3xl mx-auto mb-8">
+              Illuminating the cosmic connections between celestial movements and human experience through authentic calculations and traditional interpretations
+            </p>
+          </div>
+
+          {/* Main CTA - Enhanced */}
+          <div className="text-center mb-12 space-y-6">
+            <Button 
+              onClick={() => setShowBirthForm(true)}
+              className="cosmic-button text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+              Begin Your Cosmic Journey Now ✨
+            </Button>
+            
+            <p className="text-gray-400 text-sm mt-2">
+              See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)
+            </p>
+          </div>
+
           {/* Contribution Call-to-Action - Full Original Version */}
           <div className="text-center mb-12">
             <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-400/30 rounded-2xl p-8 max-w-5xl mx-auto backdrop-blur-sm">
@@ -667,27 +835,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Ancient Wisdom For Everyone */}
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-white mb-4">Ancient Wisdom For Everyone</h2>
-            <p className="text-purple-200/80 max-w-3xl mx-auto mb-8">
-              Illuminating the cosmic connections between celestial movements and human experience through authentic calculations and traditional interpretations
-            </p>
-          </div>
-
-          {/* Main CTA - Enhanced */}
-          <div className="text-center mb-12 space-y-6">
-            <Button 
-              onClick={() => setShowBirthForm(true)}
-              className="cosmic-button text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
-            >
-              Begin Your Cosmic Journey Now ✨
-            </Button>
-            
-            <p className="text-gray-400 text-sm mt-2">
-              See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)
-            </p>
-          </div>
         </div>
       </main>
 
