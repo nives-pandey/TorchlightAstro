@@ -20,6 +20,9 @@ export default function Home() {
   const [showSystemDialog, setShowSystemDialog] = useState(false);
   const [chartData, setChartData] = useState<any>(null);
   const [showResults, setShowResults] = useState(false);
+  
+  // Force component update for cache clearing
+  const [, forceUpdate] = useState({});
 
   const personalSystems = [
     {
