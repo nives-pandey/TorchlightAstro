@@ -283,12 +283,9 @@ export default function Home() {
               Torchlight
             </h1>
           </div>
-          <Button 
-            onClick={() => window.location.href = '/landing'}
-            className="bg-purple-800/40 hover:bg-purple-700/50 border border-white/20 rounded-xl px-4 py-2 text-sm backdrop-blur-sm"
-          >
-            Landing Page
-          </Button>
+          <div className="text-sm text-purple-200/70">
+            Welcome to Torchlight ✨
+          </div>
         </div>
       </header>
 
