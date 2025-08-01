@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import SimpleBirthForm from "@/components/simple-birth-form";
 import ChartResults from "@/components/chart-results";
-import PlanetarySymbols from "@/components/planetary-symbols";
+
 import FeatureHoverCard from "@/components/feature-hover-card";
 import Navigation from "@/components/navigation";
 import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon, Coffee, Coins, Building2, UserCircle } from "lucide-react";
@@ -340,18 +340,34 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Astrology Systems Grid - Match Landing Page */}
+          {/* Explore Ancient Wisdom Section */}
           <div className="mb-12">
             <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
               <Sparkles className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
               Explore Ancient Wisdom
             </h3>
             
-            {/* Planetary Symbols Row */}
-            <PlanetarySymbols />
+            {/* 5 Astrological Systems Grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+              {personalSystems.map((system, index) => (
+                <Card key={index} className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-white text-sm text-center flex flex-col items-center gap-2">
+                      <span className="text-2xl">{system.icon}</span>
+                      {system.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <CardDescription className="text-purple-100/80 text-xs text-center">
+                      {system.description.length > 80 ? system.description.substring(0, 80) + "..." : system.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
             {/* Demo and Report Buttons - Moved here from below */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mt-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
               <FeatureHoverCard
                 title="Sample Chart Output"
                 status="available"
@@ -539,28 +555,41 @@ export default function Home() {
             </FeatureHoverCard>
           </div>
 
-          {/* Contribution Call-to-Action */}
-          <div className="text-center mb-8">
-            <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-400/30 rounded-2xl p-6 max-w-2xl mx-auto backdrop-blur-sm">
-              <h3 className="text-xl font-semibold text-amber-200 mb-2">Contribute Now</h3>
-              <p className="text-amber-100/80 mb-4">Help us preserve and share ancient wisdom for everyone</p>
-              <div className="flex justify-center gap-4">
+          {/* Contribution Call-to-Action - Enhanced */}
+          <div className="text-center mb-12">
+            <div className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 border border-amber-400/30 rounded-2xl p-8 max-w-4xl mx-auto backdrop-blur-sm">
+              <h3 className="text-2xl font-bold text-amber-200 mb-4">Contribute Now</h3>
+              <p className="text-amber-100/90 mb-6 text-lg max-w-2xl mx-auto">
+                Help us preserve and share ancient wisdom for everyone. Your support keeps authentic astrological knowledge accessible to all seekers on their cosmic journey.
+              </p>
+              <div className="flex flex-wrap justify-center gap-6">
                 <Button 
                   onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="bg-amber-600/80 hover:bg-amber-600 text-white px-6 py-2 rounded-xl"
+                  className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-3 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-300"
                 >
-                  <Coffee className="w-4 h-4 mr-2" />
+                  <Coffee className="w-5 h-5 mr-2" />
                   Buy us a Matcha ☕
                 </Button>
                 <Button 
                   variant="outline"
                   onClick={() => showModal({ type: 'manual', delay: 0 })}
-                  className="border-amber-400/50 text-amber-200 hover:bg-amber-600/20 px-6 py-2 rounded-xl"
+                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-8 py-3 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-300"
                 >
-                  <Coins className="w-4 h-4 mr-2" />
+                  <Coins className="w-5 h-5 mr-2" />
                   Crypto Support
                 </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => showModal({ type: 'manual', delay: 0 })}
+                  className="border-2 border-amber-400/60 text-amber-200 hover:bg-amber-600/30 px-8 py-3 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-300"
+                >
+                  <Heart className="w-5 h-5 mr-2" />
+                  Monthly Support
+                </Button>
               </div>
+              <p className="text-amber-200/70 text-sm mt-4">
+                Every contribution helps us maintain Swiss Ephemeris precision and expand our multi-system analysis
+              </p>
             </div>
           </div>
 
@@ -581,47 +610,8 @@ export default function Home() {
               Begin Your Cosmic Journey Now ✨
             </Button>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <FeatureHoverCard
-                title="Lifestyle Intelligence"
-                status="available"
-                description="Personalized lifestyle recommendations worth $200+ including optimal travel destinations, color therapy, and gemstone guidance based on cross-system analysis."
-                features={[
-                  "Travel destination recommendations",
-                  "Personalized color therapy",
-                  "Gemstone & crystal guidance",
-                  "Feng Shui & Vaastu principles",
-                  "Health & wellness insights"
-                ]}
-              >
-                <Link href="/lifestyle-intelligence">
-                  <Button 
-                    variant="outline"
-                    className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-green-400 text-white font-semibold px-6 py-3 rounded-xl"
-                  >
-                    🌟 Lifestyle Intelligence Demo
-                  </Button>
-                </Link>
-              </FeatureHoverCard>
-              <Link href="/gemstone-lifestyle-pairing">
-                <Button 
-                  variant="outline"
-                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-pink-400 text-white font-semibold px-4 py-2 rounded-xl text-sm"
-                >
-                  💎 Gemstone Lifestyle Pairing
-                </Button>
-              </Link>
-              <Link href="/timezone-analytics">
-                <Button 
-                  variant="outline"
-                  className="bg-purple-800/40 hover:bg-purple-700/50 border-2 border-blue-400 text-white font-semibold px-4 py-2 rounded-xl text-sm"
-                >
-                  🌍 Timezone Analytics
-                </Button>
-              </Link>
-            </div>
             <p className="text-gray-400 text-sm mt-2">
-              ↑ See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)
+              See comprehensive chart analysis + personalized lifestyle recommendations ($200+ value)
             </p>
           </div>
         </div>
