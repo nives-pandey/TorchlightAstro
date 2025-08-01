@@ -29,35 +29,30 @@ export default function Home() {
     {
       icon: "ॐ",
       title: "Vedic (Jyotish)",
-      age: "~3000 BCE",
-      description: "25,000-year-old Indian astrology with 27 Nakshatras, Dasha periods, and Ayurvedic connections.",
+      description: "Ancient Indian astrology with 27 Nakshatras, Dasha periods, and Ayurvedic connections.",
       features: ["Nakshatra analysis", "Planetary periods (Dasha)", "Dosha constitution"]
     },
     {
       icon: "☯",
       title: "Chinese Zodiac", 
-      age: "~1000 BCE",
-      description: "Ancient system from 1000 BCE with 12 animal signs and Five Element theory for personality insights.",
+      description: "Ancient system with 12 animal signs and Five Element theory for personality insights.",
       features: ["Animal sign characteristics", "Five element integration", "Annual predictions"]
     },
     {
       icon: "∞",
       title: "Numerology",
-      age: "~600 BCE", 
       description: "Ancient Pythagorean number science revealing life patterns, destiny, and personal cycles through birth data.",
       features: ["Life path calculation", "Destiny number analysis", "Personal year cycles"]
     },
     {
       icon: "☉",
       title: "Western Astrology",
-      age: "~300 BCE",
       description: "12 zodiac signs, planetary aspects, house systems with precise Swiss Ephemeris calculations.",
       features: ["Complete natal chart analysis", "Planetary dignities & aspects", "Transit predictions"]
     },
     {
       icon: "◊",
       title: "Human Design",
-      age: "1987 CE",
       description: "Modern synthesis system with energy types, strategy, and authority for decision-making.",
       features: ["Energy type analysis", "Strategy & Authority", "Centers & channels"]
     }
@@ -68,14 +63,12 @@ export default function Home() {
     {
       icon: "⚹",
       title: "Vaastu Shastra",
-      age: "~3000 BCE",
       description: "Sacred Indian architecture aligning living spaces with cosmic energies and directional flow.",
       features: ["Directional energy analysis", "Five element balancing", "Sacred geometry principles"]
     },
     {
       icon: "☰", 
       title: "Feng Shui",
-      age: "~600 BCE",
       description: "Chinese geomancy optimizing Chi energy flow in spaces for harmony and prosperity.",
       features: ["Chi energy optimization", "Bagua map analysis", "Five elements balancing"]
     }
@@ -485,9 +478,6 @@ export default function Home() {
                     <CardTitle className="text-white text-sm text-center flex flex-col items-center gap-2">
                       <span className="text-2xl">{system.icon}</span>
                       {system.title}
-                      <Badge variant="outline" className="text-xs bg-purple-500/20 text-purple-200 border-purple-400/30">
-                        {system.age}
-                      </Badge>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-0">
@@ -592,7 +582,7 @@ export default function Home() {
             <FeatureHoverCard
               title="Personal Astrology"
               status="available"
-              description="Complete natal chart analysis across Western, Vedic (25,000 years), Chinese (1000 BCE), Human Design, and Numerology systems with Swiss Ephemeris precision."
+              description="Complete natal chart analysis across Western, Vedic, Chinese, Human Design, and Numerology systems with Swiss Ephemeris precision."
               features={[
                 "Multi-system natal chart analysis",
                 "Swiss Ephemeris astronomical calculations",

@@ -10,6 +10,7 @@ Preferred communication style: Simple, everyday language.
 Remove references to "urban professionals" and age groups to avoid alienating users.
 Focus on inclusive language that welcomes all seekers of astrological guidance.
 Brand name: "Torchlight" confirmed after SEO and relevance analysis - stronger than "Lamplight" for modern astrology applications.
+Remove mention of years from astrology systems display (user request: Jan 31, 2025) - maintain chronological order but without age badges or year references.
 
 ## System Architecture
 
