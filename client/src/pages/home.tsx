@@ -730,11 +730,24 @@ export default function Home() {
               {/* Noble Mission Statement */}
               <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-xl p-6 mb-8 border border-amber-400/20">
                 <p className="text-amber-100 text-lg font-medium mb-4 italic">
-                  "Ancient wisdom belongs to humanity, not corporations. We're committed to keeping authentic astrological knowledge accessible to all seekers, forever."
+                  "Ancient wisdom belongs to humanity, not corporations. We're committed to keeping authentic astrological knowledge accessible to all seekers, free forever."
                 </p>
-                <p className="text-amber-200/90 text-base">
-                  Your support helps us maintain Swiss Ephemeris precision, expand our 10-system analysis, and ensure this sacred knowledge remains free for future generations. Every contribution, no matter the size, makes a difference in preserving thousands of years of cosmic wisdom.
+                <p className="text-amber-200/90 text-base mb-4">
+                  Your support helps us maintain Swiss Ephemeris precision, expand our 10-system analysis, and ensure this sacred knowledge remains free forever for future generations.
                 </p>
+                
+                {/* Why We Need Support */}
+                <div className="bg-amber-500/5 rounded-lg p-4 border border-amber-400/10">
+                  <h4 className="text-amber-200 font-semibold mb-3">Why We Ask for Your Support:</h4>
+                  <ul className="text-amber-200/80 text-sm space-y-2">
+                    <li>• <strong>Volunteer Team:</strong> Dedicated volunteers working nights and weekends</li>
+                    <li>• <strong>1000s of Hours:</strong> Thousands of development hours invested</li>
+                    <li>• <strong>Centuries of Experience:</strong> Combined expertise across multiple ancient traditions</li>
+                    <li>• <strong>Technology Costs:</strong> Server infrastructure, AI processing, and data hosting</li>
+                    <li>• <strong>Authentic Calculations:</strong> Swiss Ephemeris licensing and precision maintenance</li>
+                    <li>• <strong>Research & Development:</strong> Continuous improvement and new system integration</li>
+                  </ul>
+                </div>
               </div>
 
               {/* Contribution Options with Named Amounts */}
@@ -812,6 +825,16 @@ export default function Home() {
                   <Users className="w-5 h-5 mr-2" />
                   Custom Amount
                 </Button>
+              </div>
+
+              {/* Can't Pay? Share the Love */}
+              <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-400/20 mt-6">
+                <p className="text-purple-200 text-center font-medium mb-2">
+                  Can't Pay? Just Share the Love! 💜
+                </p>
+                <p className="text-purple-200/80 text-sm text-center">
+                  Tell a friend, leave a review, or share on social media. Your support in spreading ancient wisdom is just as valuable as financial contributions.
+                </p>
               </div>
 
               {/* Share the Love Option */}

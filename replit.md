@@ -11,6 +11,7 @@ Remove references to "urban professionals" and age groups to avoid alienating us
 Focus on inclusive language that welcomes all seekers of astrological guidance.
 Brand name: "Torchlight" confirmed after SEO and relevance analysis - stronger than "Lamplight" for modern astrology applications.
 Remove mention of years from astrology systems display (user request: Jan 31, 2025) - maintain chronological order but without age badges or year references.
+Update contribution section: Add "free forever" emphasis, include detailed reasons for requesting contributions (volunteers, 1000s hours, centuries experience, technology costs), and add "Can't pay? Just share the love" section for those unable to contribute financially.
 
 ## System Architecture
 
