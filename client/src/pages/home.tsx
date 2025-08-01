@@ -346,6 +346,71 @@ export default function Home() {
             
             {/* Planetary Symbols Row */}
             <PlanetarySymbols />
+
+            {/* Demo and Report Buttons - Moved here from below */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mt-8">
+              <FeatureHoverCard
+                title="Sample Chart Output"
+                status="available"
+                description="View comprehensive multi-system astrological analysis with real chart examples and lifestyle intelligence."
+                features={[
+                  "Complete Western & Vedic analysis",
+                  "Chinese zodiac & Five Elements",
+                  "Numerology & Human Design",
+                  "Lifestyle recommendations",
+                  "Cross-system synthesis"
+                ]}
+              >
+                <Link href="/demo-chart">
+                  <Button 
+                    variant="outline"
+                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    🔮 3D Cosmos
+                  </Button>
+                </Link>
+              </FeatureHoverCard>
+              
+              <Link href="/comprehensive-report">
+                <Button 
+                  variant="outline"
+                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  📊 5-Page Report
+                </Button>
+              </Link>
+
+              <FeatureHoverCard
+                title="Lifestyle Intelligence"
+                status="available"
+                description="Personalized lifestyle recommendations including travel destinations, color therapy, and gemstone guidance."
+                features={[
+                  "Travel destination recommendations",
+                  "Personalized color therapy",
+                  "Gemstone & crystal guidance",
+                  "Feng Shui & Vaastu principles",
+                  "Health & wellness insights"
+                ]}
+              >
+                <Link href="/lifestyle-intelligence">
+                  <Button 
+                    variant="outline"
+                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    🌟 Lifestyle
+                  </Button>
+                </Link>
+              </FeatureHoverCard>
+
+              <Link href="/gemstone-lifestyle-pairing">
+                <Button 
+                  variant="outline"
+                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                >
+                  💎 Gemstone Analysis
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Core Features Grid - Enhanced with Proper Icons and Consistent Styling */}
@@ -512,70 +577,6 @@ export default function Home() {
             >
               Begin Your Cosmic Journey Now ✨
             </Button>
-            {/* Demo and Report Buttons - Clean Layout */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
-              <FeatureHoverCard
-                title="Sample Chart Output"
-                status="available"
-                description="View comprehensive multi-system astrological analysis with real chart examples and lifestyle intelligence."
-                features={[
-                  "Complete Western & Vedic analysis",
-                  "Chinese zodiac & Five Elements",
-                  "Numerology & Human Design",
-                  "Lifestyle recommendations",
-                  "Cross-system synthesis"
-                ]}
-              >
-                <Link href="/demo-chart">
-                  <Button 
-                    variant="outline"
-                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    🔮 3D Cosmos
-                  </Button>
-                </Link>
-              </FeatureHoverCard>
-              
-              <Link href="/comprehensive-report">
-                <Button 
-                  variant="outline"
-                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
-                >
-                  📊 5-Page Report
-                </Button>
-              </Link>
-
-              <FeatureHoverCard
-                title="Lifestyle Intelligence"
-                status="available"
-                description="Personalized lifestyle recommendations including travel destinations, color therapy, and gemstone guidance."
-                features={[
-                  "Travel destination recommendations",
-                  "Personalized color therapy",
-                  "Gemstone & crystal guidance",
-                  "Feng Shui & Vaastu principles",
-                  "Health & wellness insights"
-                ]}
-              >
-                <Link href="/lifestyle-intelligence">
-                  <Button 
-                    variant="outline"
-                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
-                  >
-                    🌟 Lifestyle
-                  </Button>
-                </Link>
-              </FeatureHoverCard>
-
-              <Link href="/gemstone-lifestyle-pairing">
-                <Button 
-                  variant="outline"
-                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
-                >
-                  💎 Gemstone Analysis
-                </Button>
-              </Link>
-            </div>
             
             <div className="flex flex-wrap justify-center gap-4">
               <FeatureHoverCard
