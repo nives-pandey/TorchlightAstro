@@ -327,6 +327,8 @@ div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
     transform: scale(1.02);
     transition: all 0.2s ease;
   }
+
+  body {
     min-height: 100vh;
     line-height: 1.65;
     letter-spacing: 0.005em;
@@ -1534,3 +1536,5 @@ div[class*="bg-"], section[class*="bg-"], article[class*="bg-"] {
 .status-planned {
   @apply bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-sm font-medium;
 }
+
+} /* Close @layer base */

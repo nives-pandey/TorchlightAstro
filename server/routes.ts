@@ -48,6 +48,57 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Setup Quad-AI endpoints
   setupQuadAIEndpoints(app);
 
+  // Personal Astrology endpoint (working)
+  app.get("/api/personal", isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const charts = await storage.getChartsByUserId(userId);
+      
+      if (charts.length === 0) {
+        return res.json({ 
+          message: "Create your birth chart to unlock personal astrology insights",
+          hasChart: false 
+        });
+      }
+      
+      res.json({ charts, hasChart: true });
+    } catch (error) {
+      console.error("Personal astrology error:", error);
+      res.status(500).json({ error: "Failed to fetch personal astrology data" });
+    }
+  });
+
+  // Business Analysis endpoint (coming soon)
+  app.get("/api/business", isAuthenticated, async (req: any, res) => {
+    res.json({
+      status: "coming-soon",
+      message: "Business astrology analysis is launching in May 2025",
+      features: [
+        "Business launch timing",
+        "Partnership compatibility", 
+        "Financial forecast analysis",
+        "Market timing insights",
+        "Strategic decision support"
+      ]
+    });
+  });
+
+  // Spaces/Homes endpoint (in development)
+  app.get("/api/spaces", isAuthenticated, async (req: any, res) => {
+    res.json({
+      status: "in-development",
+      message: "Sacred space optimization is 60% complete, launching April 2025", 
+      completionPercentage: 60,
+      features: [
+        "Vaastu Shastra analysis",
+        "Feng Shui energy mapping",
+        "Sacred geometry alignment",
+        "Five elements balancing",
+        "Directional energy optimization"
+      ]
+    });
+  });
+
   // Comprehensive Report Generation Endpoint (No auth required for demo)
   app.post('/api/comprehensive-report', (req, res, next) => {
     // Skip auth middleware for this endpoint
