@@ -2,6 +2,13 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { setupAuth, isAuthenticated } from "./replitAuth";
+import { 
+  testGeminiAstrologyAnalysis, 
+  testGeminiUIUXExpertise, 
+  testGeminiBusinessStrategy,
+  testUserProfiles,
+  type AstrologyAnalysisInput
+} from "./test-gemini";
 import { setupQuadAIEndpoints } from "./quad-ai-endpoints";
 import Stripe from "stripe";
 import { registerReportRoutes } from "./api-routes";
@@ -47,6 +54,158 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Setup Quad-AI endpoints
   setupQuadAIEndpoints(app);
+
+  // Gemini AI Testing Routes
+  app.post("/api/test-gemini-analysis", async (req, res) => {
+    try {
+      const input: AstrologyAnalysisInput = req.body;
+      
+      if (!input.birthDate || !input.birthTime || !input.birthLocation) {
+        return res.status(400).json({ 
+          error: "Missing required fields: birthDate, birthTime, birthLocation" 
+        });
+      }
+
+      const analysis = await testGeminiAstrologyAnalysis(input);
+      
+      res.json({
+        success: true,
+        analysis,
+        testData: {
+          input,
+          timestamp: new Date().toISOString(),
+          processingTime: Date.now()
+        }
+      });
+
+    } catch (error) {
+      console.error("Gemini Analysis Test Error:", error);
+      res.status(500).json({ 
+        error: "Failed to process Gemini analysis",
+        details: error.message 
+      });
+    }
+  });
+
+  app.get("/api/test-gemini-ux-expert", async (req, res) => {
+    try {
+      const uxInsights = await testGeminiUIUXExpertise();
+      
+      res.json({
+        success: true,
+        expertInsights: uxInsights,
+        category: "UI/UX Design Analysis",
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (error) {
+      console.error("Gemini UX Expert Test Error:", error);
+      res.status(500).json({ 
+        error: "Failed to get UX expert insights",
+        details: error.message 
+      });
+    }
+  });
+
+  app.get("/api/test-gemini-business-strategy", async (req, res) => {
+    try {
+      const businessStrategy = await testGeminiBusinessStrategy();
+      
+      res.json({
+        success: true,
+        strategyInsights: businessStrategy,
+        category: "Business Strategy Analysis", 
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (error) {
+      console.error("Gemini Business Strategy Test Error:", error);
+      res.status(500).json({ 
+        error: "Failed to get business strategy insights",
+        details: error.message 
+      });
+    }
+  });
+
+  app.get("/api/test-user-profiles", async (req, res) => {
+    try {
+      const results = [];
+      
+      for (const profile of testUserProfiles) {
+        const analysis = await testGeminiAstrologyAnalysis({
+          birthDate: profile.birthDate,
+          birthTime: profile.birthTime,
+          birthLocation: profile.birthLocation,
+          systems: profile.systems,
+          userAge: profile.userAge,
+          userPreferences: profile.userPreferences
+        });
+        
+        results.push({
+          profile: profile.name,
+          analysis,
+          demographic: {
+            age: profile.userAge,
+            preferences: profile.userPreferences
+          }
+        });
+      }
+
+      res.json({
+        success: true,
+        testResults: results,
+        summary: {
+          profilesTested: testUserProfiles.length,
+          timestamp: new Date().toISOString(),
+          demographics: "Women 19-45, diverse preferences"
+        }
+      });
+
+    } catch (error) {
+      console.error("User Profiles Test Error:", error);
+      res.status(500).json({ 
+        error: "Failed to test user profiles",
+        details: error.message 
+      });
+    }
+  });
+
+  // Comprehensive Gemini Testing Dashboard
+  app.get("/api/gemini-test-suite", async (req, res) => {
+    try {
+      const [uxInsights, businessStrategy] = await Promise.all([
+        testGeminiUIUXExpertise(),
+        testGeminiBusinessStrategy()
+      ]);
+
+      res.json({
+        success: true,
+        testSuite: {
+          uxExpertise: uxInsights,
+          businessStrategy: businessStrategy,
+          availableTests: [
+            "POST /api/test-gemini-analysis - Individual birth chart analysis",
+            "GET /api/test-gemini-ux-expert - UI/UX design recommendations", 
+            "GET /api/test-gemini-business-strategy - Market strategy insights",
+            "GET /api/test-user-profiles - Batch demographic testing"
+          ]
+        },
+        instructions: {
+          individualTest: "POST to /api/test-gemini-analysis with birth data",
+          batchTest: "GET /api/test-user-profiles for demographic analysis",
+          expertConsult: "Use /api/test-gemini-ux-expert for design guidance"
+        },
+        timestamp: new Date().toISOString()
+      });
+
+    } catch (error) {
+      console.error("Gemini Test Suite Error:", error);
+      res.status(500).json({ 
+        error: "Failed to initialize test suite",
+        details: error.message 
+      });
+    }
+  });
 
   // Personal Astrology endpoint (working)
   app.get("/api/personal", isAuthenticated, async (req: any, res) => {
