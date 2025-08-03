@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import GemstoneEnergyPairing from "@/components/gemstone-energy-pairing";
+import IntuitiveGemstoneVisualizer from "@/components/intuitive-gemstone-visualizer";
 import Navigation from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Gem, Sparkles, Zap, Heart, Shield, Target, Brain, Wand2 } from "lucide-react";
+import { Gem, Sparkles, Zap, Heart, Shield, Target, Brain, Wand2, Eye, Palette } from "lucide-react";
 
 export default function GemstoneEnergyPairingPage() {
-  const [showVisualizer, setShowVisualizer] = useState(false);
+  const [activeView, setActiveView] = useState<'overview' | 'visualizer' | 'pairing'>('overview');
+  const [selectedGemstones, setSelectedGemstones] = useState<any[]>([]);
+  const [userProfile, setUserProfile] = useState<any>(null);
   const [sampleBirthData] = useState({
     firstName: "Emma",
     lastName: "Chen",
@@ -18,6 +21,16 @@ export default function GemstoneEnergyPairingPage() {
       numerology: { lifePath: 7 }
     }
   });
+
+  // Load user profile from localStorage
+  useEffect(() => {
+    const storedProfile = localStorage.getItem('userBirthData');
+    if (storedProfile) {
+      setUserProfile(JSON.parse(storedProfile));
+    } else {
+      setUserProfile(sampleBirthData);
+    }
+  }, []);
 
   const energyTypes = [
     {
@@ -70,27 +83,120 @@ export default function GemstoneEnergyPairingPage() {
     }
   ];
 
+  const handleGemstoneSelect = (gemstone: any) => {
+    setSelectedGemstones(prev => {
+      const exists = prev.find(g => g.id === gemstone.id);
+      if (exists) {
+        return prev.filter(g => g.id !== gemstone.id);
+      } else {
+        return [...prev, gemstone];
+      }
+    });
+  };
+
+  const handleEnergyChange = (energyMap: any) => {
+    console.log('Energy map updated:', energyMap);
+  };
+
+  if (activeView === 'visualizer') {
+    return (
+      <div className="min-h-screen bg-cosmic-gradient">
+        <Navigation />
+        <div className="container mx-auto px-6 py-20">
+          <div className="mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => setActiveView('overview')}
+              className="mb-4 bg-white/10 border-white/20 text-white hover:bg-white/20"
+            >
+              ← Back to Overview
+            </Button>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Intuitive Gemstone Energy Visualizer
+            </h1>
+            <p className="text-xl text-purple-200 max-w-3xl">
+              Experience your gemstone energies through interactive visualization and real-time energy flow analysis
+            </p>
+          </div>
+          
+          <IntuitiveGemstoneVisualizer
+            userProfile={userProfile}
+            selectedGemstones={selectedGemstones}
+            onGemstoneSelect={handleGemstoneSelect}
+            onEnergyChange={handleEnergyChange}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (activeView === 'pairing') {
+    return (
+      <div className="min-h-screen bg-cosmic-gradient">
+        <Navigation />
+        <div className="container mx-auto px-6 py-20">
+          <div className="mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => setActiveView('overview')}
+              className="mb-4 bg-white/10 border-white/20 text-white hover:bg-white/20"
+            >
+              ← Back to Overview
+            </Button>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Gemstone Energy Pairing
+            </h1>
+          </div>
+          
+          <GemstoneEnergyPairing 
+            onClose={() => setActiveView('overview')}
+            birthData={userProfile}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-cosmic-gradient">
       <Navigation />
       
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 flex items-center justify-center">
-            <Gem className="mr-4 h-12 w-12 text-purple-400" />
-            Intuitive Gemstone Energy Pairing
-            <Sparkles className="ml-4 h-12 w-12 text-yellow-400" />
+      <div className="container mx-auto px-6 py-20">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Gemstone Energy Pairing
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover your perfect gemstone companions through cosmic energy alignment and astrological harmony. 
-            Experience the ancient wisdom of crystal healing enhanced by modern astrological precision.
+          <p className="text-xl text-purple-200 max-w-4xl mx-auto mb-8">
+            Discover the perfect gemstone combinations for your unique energy signature through advanced 
+            astrological analysis and intuitive pairing technology
           </p>
-        </motion.div>
+          
+          {/* Main Action Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <Button
+              onClick={() => setActiveView('visualizer')}
+              className="text-lg px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+              style={{
+                background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 50%, hsl(51, 100%, 65%) 100%)',
+                border: 'none',
+                color: 'white',
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+              }}
+            >
+              <Eye className="w-5 h-5 mr-2" />
+              Interactive Visualizer
+            </Button>
+            
+            <Button
+              onClick={() => setActiveView('pairing')}
+              variant="outline"
+              className="text-lg px-8 py-4 rounded-xl font-semibold bg-white/10 border-white/30 text-white hover:bg-white/20"
+            >
+              <Palette className="w-5 h-5 mr-2" />
+              Energy Pairing Analysis
+            </Button>
+          </div>
+        </div>
 
         {/* Energy Types Overview */}
         <motion.div
@@ -220,7 +326,7 @@ export default function GemstoneEnergyPairingPage() {
           className="text-center"
         >
           <Button
-            onClick={() => setShowVisualizer(true)}
+            onClick={() => setActiveView('visualizer')}
             className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 border-2 border-purple-400"
           >
             <Gem className="mr-3 h-6 w-6" />
@@ -274,13 +380,7 @@ export default function GemstoneEnergyPairingPage() {
         </motion.div>
       </div>
 
-      {/* Gemstone Energy Pairing Modal */}
-      {showVisualizer && (
-        <GemstoneEnergyPairing
-          birthData={sampleBirthData}
-          onClose={() => setShowVisualizer(false)}
-        />
-      )}
+
     </div>
   );
 }

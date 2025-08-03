@@ -28,7 +28,7 @@ export default function Personal() {
   };
 
   if (showResults && chartData) {
-    return <ChartResults data={chartData} onBack={() => setShowResults(false)} />;
+    return <ChartResults data={chartData} onClose={() => setShowResults(false)} />;
   }
 
   if (showBirthForm) {
