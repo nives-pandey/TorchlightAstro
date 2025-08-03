@@ -5,61 +5,61 @@
 
 /* Illuminated Wellness - Optimized for Women 20-60 seeking spiritual guidance */
 :root {
-  /* Refined Wellness Palette - Warm & Cohesive */
-  --warm-charcoal: hsl(220, 10%, 15%); /* Primary Background - Warmer, less clinical */
-  --soft-gold: hsl(45, 75%, 55%); /* Primary Interactive Accent #D4AF37 */
-  --muted-teal: hsl(180, 60%, 35%); /* Secondary Informational Accent */
+  /* Sanctuary Palette - Premium Wellness Experience */
+  --warm-charcoal: hsl(30, 8%, 18%); /* True Warm Background #36312E - Rich brown-charcoal */
+  --brushed-gold: hsl(44, 45%, 65%); /* Sophisticated Interactive #C5A55A - Antique gold */
+  --sage-teal: hsl(180, 25%, 55%); /* Serene Informational #6A9797 - Sea glass calm */
   --warm-off-white: hsl(60, 10%, 96%); /* Primary Text #F5F5DC */
-  --warm-light-gray: hsl(0, 0%, 92%); /* Dividers #EAEAEA */
-  --mid-tone-gray: hsl(0, 0%, 66%); /* Subtle borders #A9A9A9 */
+  --warm-light-gray: hsl(30, 5%, 92%); /* Warm Dividers */
+  --warm-gray: hsl(30, 5%, 66%); /* Greige Borders #B0A9A4 - Warm stone */
   
-  /* Serene gradient backgrounds - Warmer and more organic */
-  --wellness-gradient-1: linear-gradient(135deg, hsl(220, 10%, 15%) 0%, hsl(220, 8%, 18%) 100%);
-  --wellness-gradient-2: linear-gradient(135deg, hsl(45, 75%, 55%) 0%, hsl(180, 60%, 35%) 100%);
+  /* Serene gradient backgrounds - Truly warm and organic */
+  --wellness-gradient-1: linear-gradient(135deg, hsl(30, 8%, 18%) 0%, hsl(30, 6%, 20%) 100%);
+  --wellness-gradient-2: linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 100%);
   
-  /* Component styling - Unified & Warm */
-  --background: hsl(220, 10%, 15%);
+  /* Component styling - Sanctuary Theme */
+  --background: hsl(30, 8%, 18%);
   --foreground: hsl(60, 10%, 96%);
-  --card: hsl(220, 8%, 20%);
+  --card: hsl(30, 6%, 22%);
   --card-foreground: hsl(60, 10%, 96%);
-  --popover: hsl(220, 8%, 20%);
+  --popover: hsl(30, 6%, 22%);
   --popover-foreground: hsl(60, 10%, 96%);
-  --primary: hsl(45, 75%, 55%);
-  --primary-foreground: hsl(220, 10%, 15%);
-  --secondary: hsl(180, 60%, 35%);
-  --secondary-foreground: hsl(60, 10%, 96%);
-  --muted: hsl(220, 8%, 25%);
-  --muted-foreground: hsl(0, 0%, 66%);
-  --accent: hsl(45, 75%, 55%);
-  --accent-foreground: hsl(220, 10%, 15%);
+  --primary: hsl(44, 45%, 65%);
+  --primary-foreground: hsl(30, 8%, 18%);
+  --secondary: hsl(180, 25%, 55%);
+  --secondary-foreground: hsl(30, 8%, 18%);
+  --muted: hsl(30, 6%, 25%);
+  --muted-foreground: hsl(30, 5%, 66%);
+  --accent: hsl(44, 45%, 65%);
+  --accent-foreground: hsl(30, 8%, 18%);
   --destructive: hsl(0, 62%, 45%);
   --destructive-foreground: hsl(60, 10%, 96%);
-  --border: hsl(0, 0%, 66%);
-  --input: hsl(220, 8%, 25%);
-  --ring: hsl(45, 75%, 55%);
+  --border: hsl(30, 5%, 66%);
+  --input: hsl(30, 6%, 25%);
+  --ring: hsl(44, 45%, 65%);
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: hsl(220, 10%, 15%);
+  --background: hsl(30, 8%, 18%);
   --foreground: hsl(60, 10%, 96%);
-  --card: hsl(220, 8%, 20%);
+  --card: hsl(30, 6%, 22%);
   --card-foreground: hsl(60, 10%, 96%);
-  --popover: hsl(220, 8%, 20%);
+  --popover: hsl(30, 6%, 22%);
   --popover-foreground: hsl(60, 10%, 96%);
-  --primary: hsl(45, 75%, 55%);
-  --primary-foreground: hsl(220, 10%, 15%);
-  --secondary: hsl(180, 60%, 35%);
-  --secondary-foreground: hsl(60, 10%, 96%);
-  --muted: hsl(220, 8%, 25%);
-  --muted-foreground: hsl(0, 0%, 66%);
-  --accent: hsl(45, 75%, 55%);
-  --accent-foreground: hsl(220, 10%, 15%);
+  --primary: hsl(44, 45%, 65%);
+  --primary-foreground: hsl(30, 8%, 18%);
+  --secondary: hsl(180, 25%, 55%);
+  --secondary-foreground: hsl(30, 8%, 18%);
+  --muted: hsl(30, 6%, 25%);
+  --muted-foreground: hsl(30, 5%, 66%);
+  --accent: hsl(44, 45%, 65%);
+  --accent-foreground: hsl(30, 8%, 18%);
   --destructive: hsl(0, 62%, 45%);
   --destructive-foreground: hsl(60, 10%, 96%);
-  --border: hsl(0, 0%, 66%);
-  --input: hsl(220, 8%, 25%);
-  --ring: hsl(45, 75%, 55%);
+  --border: hsl(30, 5%, 66%);
+  --input: hsl(30, 6%, 25%);
+  --ring: hsl(44, 45%, 65%);
 }
 
 /* Set up the base styling with mobile-first approach */
