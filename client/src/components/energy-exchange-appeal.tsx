@@ -49,7 +49,7 @@ export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: Energ
   const contributionAmounts = [5, 11, 22, 33];
 
   const handleContribute = (amount?: number) => {
-    onContribute?.(amount || customAmount ? parseInt(customAmount) : undefined);
+    onContribute?.(amount || (customAmount ? parseInt(customAmount) : undefined));
   };
 
   return (
@@ -172,7 +172,7 @@ export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: Energ
           <Button
             size="sm"
             className="flex-1 bg-gradient-to-r from-amber-600 to-amber-500 text-white border-0 hover:from-amber-500 hover:to-amber-400"
-            onClick={() => handleContribute(selectedAmount)}
+            onClick={() => handleContribute(selectedAmount || undefined)}
             disabled={showCustom && !customAmount}
           >
             <Gift className="w-4 h-4 mr-2" />
