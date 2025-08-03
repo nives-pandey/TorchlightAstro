@@ -59,10 +59,10 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         
         {/* Personalized Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
             {getPersonalizedGreeting()} ✨
           </h1>
-          <p className="text-purple-200">
+          <p className="text-white/70 text-sm md:text-base">
             Your personal cosmic dashboard • Updated daily with fresh insights
           </p>
         </div>
@@ -75,29 +75,29 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
                 <Star className="w-5 h-5 text-yellow-400" />
                 Your Cosmic Big Three
               </CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-white/60">
                 The core of your astrological identity
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-yellow-500/10 rounded-lg border border-yellow-400/20">
-                  <Sun className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
-                  <h3 className="font-semibold text-yellow-300">Sun Sign</h3>
-                  <p className="text-2xl font-bold text-white">{bigThree.sun}</p>
-                  <p className="text-xs text-yellow-200">Your core identity</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
+                  <Sun className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
+                  <h3 className="font-medium text-white text-sm">Sun Sign</h3>
+                  <p className="text-lg font-semibold text-white">{bigThree.sun}</p>
+                  <p className="text-xs text-white/60">Core identity</p>
                 </div>
-                <div className="text-center p-4 bg-blue-500/10 rounded-lg border border-blue-400/20">
-                  <Moon className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                  <h3 className="font-semibold text-blue-300">Moon Sign</h3>
-                  <p className="text-2xl font-bold text-white">{bigThree.moon}</p>
-                  <p className="text-xs text-blue-200">Your emotional nature</p>
+                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
+                  <Moon className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                  <h3 className="font-medium text-white text-sm">Moon Sign</h3>
+                  <p className="text-lg font-semibold text-white">{bigThree.moon}</p>
+                  <p className="text-xs text-white/60">Emotional nature</p>
                 </div>
-                <div className="text-center p-4 bg-purple-500/10 rounded-lg border border-purple-400/20">
-                  <ArrowUp className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                  <h3 className="font-semibold text-purple-300">Rising Sign</h3>
-                  <p className="text-2xl font-bold text-white">{bigThree.rising}</p>
-                  <p className="text-xs text-purple-200">How others see you</p>
+                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
+                  <ArrowUp className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                  <h3 className="font-medium text-white text-sm">Rising Sign</h3>
+                  <p className="text-lg font-semibold text-white">{bigThree.rising}</p>
+                  <p className="text-xs text-white/60">How others see you</p>
                 </div>
               </div>
             </CardContent>
@@ -111,36 +111,36 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
               <Calendar className="w-5 h-5 text-teal-400" />
               Today's Cosmic Weather
             </CardTitle>
-            <CardDescription className="text-teal-200">
+            <CardDescription className="text-white/60">
               {dailyGuidance.date} • Personalized for your chart
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-teal-100 leading-relaxed">
+            <p className="text-white leading-relaxed">
               {dailyGuidance.message}
             </p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
-                <p className="text-xs text-teal-300 uppercase tracking-wide">Energy Level</p>
+                <p className="text-xs text-white/60 uppercase tracking-wide">Energy Level</p>
                 <div className="flex items-center gap-2 mt-1">
                   <Progress value={dailyGuidance.energy} className="flex-1" />
                   <span className="text-white font-bold">{dailyGuidance.energy}%</span>
                 </div>
               </div>
               <div className="text-center">
-                <p className="text-xs text-teal-300 uppercase tracking-wide">Focus Area</p>
+                <p className="text-xs text-white/60 uppercase tracking-wide">Focus Area</p>
                 <p className="text-white font-medium">{dailyGuidance.focus}</p>
               </div>
               <div className="text-center">
-                <p className="text-xs text-teal-300 uppercase tracking-wide">Lucky Color</p>
+                <p className="text-xs text-white/60 uppercase tracking-wide">Lucky Color</p>
                 <div className="flex items-center justify-center gap-2">
                   <div className="w-4 h-4 bg-teal-600 rounded-full"></div>
                   <span className="text-white font-medium">{dailyGuidance.luckyColor}</span>
                 </div>
               </div>
               <div className="text-center">
-                <p className="text-xs text-teal-300 uppercase tracking-wide">Crystal</p>
+                <p className="text-xs text-white/60 uppercase tracking-wide">Crystal</p>
                 <p className="text-white font-medium">{dailyGuidance.crystalRecommendation}</p>
               </div>
             </div>
@@ -154,9 +154,9 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Gem className="w-8 h-8 text-emerald-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-white mb-1">Gemstone Guidance</h3>
-                <p className="text-xs text-emerald-200">Discover your perfect crystal matches</p>
-                <Badge variant="outline" className="mt-2 text-emerald-300 border-emerald-400/40">
+                <h3 className="font-medium text-white mb-1 text-sm">Gemstone Guidance</h3>
+                <p className="text-xs text-white/60">Discover your perfect crystal matches</p>
+                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
                   Explore Now
                 </Badge>
               </CardContent>
@@ -167,9 +167,9 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Heart className="w-8 h-8 text-rose-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-white mb-1">Love Compatibility</h3>
-                <p className="text-xs text-rose-200">Explore relationship harmony</p>
-                <Badge variant="outline" className="mt-2 text-rose-300 border-rose-400/40">
+                <h3 className="font-medium text-white mb-1 text-sm">Love Compatibility</h3>
+                <p className="text-xs text-white/60">Explore relationship harmony</p>
+                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
                   Find Love
                 </Badge>
               </CardContent>
@@ -180,9 +180,9 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Briefcase className="w-8 h-8 text-amber-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-white mb-1">Career Insights</h3>
-                <p className="text-xs text-amber-200">Unlock your professional path</p>
-                <Badge variant="outline" className="mt-2 text-amber-300 border-amber-400/40">
+                <h3 className="font-medium text-white mb-1 text-sm">Career Insights</h3>
+                <p className="text-xs text-white/60">Unlock your professional path</p>
+                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
                   Grow Career
                 </Badge>
               </CardContent>
@@ -193,9 +193,9 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Eye className="w-8 h-8 text-indigo-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <h3 className="font-semibold text-white mb-1">Deep Analysis</h3>
-                <p className="text-xs text-indigo-200">Compare all 10 systems</p>
-                <Badge variant="outline" className="mt-2 text-indigo-300 border-indigo-400/40">
+                <h3 className="font-medium text-white mb-1 text-sm">Deep Analysis</h3>
+                <p className="text-xs text-white/60">Compare all 10 systems</p>
+                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
                   Deep Dive
                 </Badge>
               </CardContent>
@@ -205,19 +205,19 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         </div>
 
         {/* Quick Actions */}
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-3 justify-center">
           <Button 
             variant="outline" 
-            className="bg-purple-800/30 border-purple-400/30 text-purple-200 hover:bg-purple-700/40"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm"
           >
-            <TrendingUp className="w-4 h-4 mr-2" />
+            <TrendingUp className="w-4 h-4 mr-2 text-teal-400" />
             View Full Report
           </Button>
           <Button 
             variant="outline" 
-            className="bg-teal-800/30 border-teal-400/30 text-teal-200 hover:bg-teal-700/40"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm"
           >
-            <Users className="w-4 h-4 mr-2" />
+            <Users className="w-4 h-4 mr-2 text-purple-400" />
             Share with Friends
           </Button>
         </div>
@@ -225,11 +225,11 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         {/* Tomorrow's Preview */}
         <Card className="bg-white/5 border-white/10 backdrop-blur-md">
           <CardContent className="p-4 text-center">
-            <h3 className="text-white font-medium mb-2">Tomorrow's Preview</h3>
-            <p className="text-slate-300 text-sm">
+            <h3 className="text-white font-medium mb-2 text-sm">Tomorrow's Preview</h3>
+            <p className="text-white/80 text-sm">
               Venus enters your 5th house of creativity. Expect increased artistic inspiration and romantic opportunities.
             </p>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-white/60 mt-2">
               Come back tomorrow for your fresh cosmic weather report ✨
             </p>
           </CardContent>
