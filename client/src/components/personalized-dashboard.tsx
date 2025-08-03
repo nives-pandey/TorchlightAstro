@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Sun, Moon, ArrowUp, Calendar, Heart, Briefcase, Gem, Users, Star, TrendingUp, Eye } from "lucide-react";
 import { Link } from "wouter";
+import MobileNavigation from "@/components/mobile-navigation";
 
 interface PersonalizedDashboardProps {
   chartData: any;
@@ -51,8 +52,10 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
   const dailyGuidance = getDailyGuidance();
 
   return (
-    <div className="min-h-screen p-4" style={{background: 'var(--wellness-gradient-1)'}}>
-      <div className="max-w-6xl mx-auto space-y-6">
+    <>
+      <MobileNavigation />
+      <div className="min-h-screen p-4 pt-20" style={{background: 'var(--wellness-gradient-1)'}}>
+        <div className="max-w-6xl mx-auto space-y-6">
         
         {/* Personalized Header */}
         <div className="text-center mb-8">
@@ -66,7 +69,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
 
         {/* Big Three Section */}
         {bigThree && (
-          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-400/30 backdrop-blur-md">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-md">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Star className="w-5 h-5 text-yellow-400" />
@@ -102,7 +105,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         )}
 
         {/* Daily Cosmic Weather */}
-        <Card className="bg-gradient-to-br from-teal-900/40 to-cyan-900/40 border-teal-400/30 backdrop-blur-md">
+        <Card className="bg-white/5 border-white/10 backdrop-blur-md">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <Calendar className="w-5 h-5 text-teal-400" />
@@ -148,7 +151,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           
           <Link href="/gemstone-energy-pairing">
-            <Card className="group cursor-pointer bg-gradient-to-br from-emerald-900/40 to-green-900/40 border-emerald-400/30 backdrop-blur-md hover:border-emerald-400/50 transition-all duration-300">
+            <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Gem className="w-8 h-8 text-emerald-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <h3 className="font-semibold text-white mb-1">Gemstone Guidance</h3>
@@ -161,7 +164,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           </Link>
 
           <Link href="/compatibility">
-            <Card className="group cursor-pointer bg-gradient-to-br from-rose-900/40 to-pink-900/40 border-rose-400/30 backdrop-blur-md hover:border-rose-400/50 transition-all duration-300">
+            <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Heart className="w-8 h-8 text-rose-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <h3 className="font-semibold text-white mb-1">Love Compatibility</h3>
@@ -174,7 +177,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           </Link>
 
           <Link href="/business">
-            <Card className="group cursor-pointer bg-gradient-to-br from-amber-900/40 to-yellow-900/40 border-amber-400/30 backdrop-blur-md hover:border-amber-400/50 transition-all duration-300">
+            <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Briefcase className="w-8 h-8 text-amber-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <h3 className="font-semibold text-white mb-1">Career Insights</h3>
@@ -187,7 +190,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           </Link>
 
           <Link href="/system-comparison">
-            <Card className="group cursor-pointer bg-gradient-to-br from-indigo-900/40 to-blue-900/40 border-indigo-400/30 backdrop-blur-md hover:border-indigo-400/50 transition-all duration-300">
+            <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
                 <Eye className="w-8 h-8 text-indigo-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <h3 className="font-semibold text-white mb-1">Deep Analysis</h3>
@@ -220,7 +223,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         </div>
 
         {/* Tomorrow's Preview */}
-        <Card className="bg-gradient-to-br from-slate-900/40 to-gray-900/40 border-slate-400/30 backdrop-blur-md">
+        <Card className="bg-white/5 border-white/10 backdrop-blur-md">
           <CardContent className="p-4 text-center">
             <h3 className="text-white font-medium mb-2">Tomorrow's Preview</h3>
             <p className="text-slate-300 text-sm">
@@ -232,7 +235,8 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           </CardContent>
         </Card>
 
+        </div>
       </div>
-    </div>
+    </>
   );
 }

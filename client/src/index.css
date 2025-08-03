@@ -13,8 +13,8 @@
   --warm-off-white: hsl(60, 10%, 96%); /* Text #F5F5DC */
   --slate-gray: hsl(0, 0%, 35%); /* Support Text #5A5A5A */
   
-  /* Serene gradient backgrounds */
-  --wellness-gradient-1: linear-gradient(135deg, hsl(220, 35%, 15%) 0%, hsl(315, 25%, 20%) 25%, hsl(180, 30%, 25%) 50%, hsl(315, 25%, 20%) 75%, hsl(220, 35%, 15%) 100%);
+  /* Serene gradient backgrounds - Simplified for mobile */
+  --wellness-gradient-1: linear-gradient(135deg, hsl(220, 35%, 15%) 0%, hsl(220, 30%, 18%) 100%);
   --wellness-gradient-2: linear-gradient(135deg, hsl(315, 20%, 65%) 0%, hsl(45, 75%, 55%) 100%);
   
   /* Component styling */

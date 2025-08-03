@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sparkles, Sun, Moon, Calendar, Clock, MapPin } from "lucide-react";
+import MobileNavigation from "@/components/mobile-navigation";
 
 interface InstantOnboardingProps {
   onComplete: (formData: any) => void;
@@ -40,8 +41,10 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
   const isValid = formData.firstName && formData.birthDate && formData.birthTime && formData.birthCity;
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{background: 'var(--wellness-gradient-1)'}}>
-      <div className="w-full max-w-2xl mx-auto">
+    <>
+      <MobileNavigation />
+      <div className="min-h-screen flex items-center justify-center p-4 pt-20" style={{background: 'var(--wellness-gradient-1)'}}>
+        <div className="w-full max-w-2xl mx-auto">
         {/* Hero Section with Immediate Value Proposition */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
@@ -57,24 +60,15 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
             Your complete astrological profile in under 60 seconds.
           </p>
 
-          <div className="flex items-center justify-center gap-6 mb-8">
-            <div className="flex items-center gap-2 text-purple-300">
-              <Sun className="w-5 h-5" />
-              <span className="text-sm">Western Astrology</span>
-            </div>
-            <div className="flex items-center gap-2 text-orange-300">
-              <span className="text-lg">ॐ</span>
-              <span className="text-sm">Vedic Wisdom</span>
-            </div>
-            <div className="flex items-center gap-2 text-red-300">
-              <span className="text-lg">龍</span>
-              <span className="text-sm">Chinese Zodiac</span>
-            </div>
+          <div className="text-center mb-8">
+            <p className="text-lg font-medium text-white">
+              Western, Vedic, Chinese & Human Design
+            </p>
           </div>
         </div>
 
         {/* Instant Form - Value First Approach */}
-        <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-400/30 backdrop-blur-md">
+        <Card className="bg-white/5 border-white/10 backdrop-blur-md">
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-white text-xl flex items-center justify-center gap-2">
               <Calendar className="w-5 h-5" />
@@ -96,7 +90,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
                   placeholder="Enter first name"
                   value={formData.firstName}
                   onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                  className="bg-purple-800/30 border-purple-400/30 text-white placeholder-purple-300"
+                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
                 />
               </div>
               <div>
@@ -107,7 +101,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
                   placeholder="Enter last name"
                   value={formData.lastName}
                   onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                  className="bg-purple-800/30 border-purple-400/30 text-white placeholder-purple-300"
+                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
                 />
               </div>
             </div>
@@ -124,7 +118,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
                   type="date"
                   value={formData.birthDate}
                   onChange={(e) => setFormData({...formData, birthDate: e.target.value})}
-                  className="bg-purple-800/30 border-purple-400/30 text-white"
+                  className="bg-white/10 border-white/20 text-white"
                 />
               </div>
               <div>
@@ -137,7 +131,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
                   type="time"
                   value={formData.birthTime}
                   onChange={(e) => setFormData({...formData, birthTime: e.target.value})}
-                  className="bg-purple-800/30 border-purple-400/30 text-white"
+                  className="bg-white/10 border-white/20 text-white"
                 />
               </div>
             </div>
@@ -155,7 +149,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
                   placeholder="e.g., New York"
                   value={formData.birthCity}
                   onChange={(e) => setFormData({...formData, birthCity: e.target.value})}
-                  className="bg-purple-800/30 border-purple-400/30 text-white placeholder-purple-300"
+                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
                 />
               </div>
               <div>
@@ -166,7 +160,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
                   placeholder="e.g., United States"
                   value={formData.birthCountry}
                   onChange={(e) => setFormData({...formData, birthCountry: e.target.value})}
-                  className="bg-purple-800/30 border-purple-400/30 text-white placeholder-purple-300"
+                  className="bg-white/10 border-white/20 text-white placeholder-white/50"
                 />
               </div>
             </div>
@@ -176,7 +170,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
               <Button
                 onClick={handleSubmit}
                 disabled={!isValid || loading}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
+                className="w-full bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
               >
                 {loading ? (
                   <div className="flex items-center justify-center gap-2">
@@ -195,18 +189,21 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
 
             {/* Trust Indicators */}
             <div className="pt-4 text-center">
-              <p className="text-xs text-purple-300 mb-2">
-                ✨ Free forever • ⚡ Results in 30 seconds • 🔒 Your data stays private
+              <p className="text-xs text-white/70 mb-2">
+                Free forever • Results in 30 seconds • Your data stays private
               </p>
-              <div className="flex items-center justify-center gap-4 text-xs text-purple-400">
-                <span>• Swiss Ephemeris Precision</span>
-                <span>• 10+ Astrological Systems</span>
-                <span>• AI-Enhanced Insights</span>
+              <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-white/60">
+                <span>Swiss Ephemeris Precision</span>
+                <span>•</span>
+                <span>10+ Astrological Systems</span>
+                <span>•</span>
+                <span>AI-Enhanced Insights</span>
               </div>
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
