@@ -8,10 +8,11 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
       <input
         type={type}
         className={cn(
-          "flex h-10 w-full rounded-md border border-purple-400/50 bg-black/20 backdrop-blur-sm px-3 py-2 text-base text-white placeholder:text-purple-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+          "mobile-input flex h-12 w-full rounded-lg border border-purple-400/50 bg-black/20 backdrop-blur-sm px-4 py-3 text-white placeholder:text-purple-300/70 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-purple-400 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200",
           className
         )}
         ref={ref}
+        style={{ fontSize: '16px' }} // Prevent iOS zoom
         {...props}
       />
     )
