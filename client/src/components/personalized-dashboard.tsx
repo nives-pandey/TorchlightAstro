@@ -72,7 +72,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           <Card className="bg-white/5 border-white/10 backdrop-blur-md">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
-                <Star className="w-5 h-5 text-yellow-400" />
+                <Star className="w-5 h-5" style={{color: 'hsl(45, 75%, 55%)'}} />
                 Your Cosmic Big Three
               </CardTitle>
               <CardDescription className="text-white/60">
@@ -81,20 +81,20 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                  <Sun className="w-6 h-6 text-yellow-400 mx-auto mb-2" />
+                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/20">
+                  <Sun className="w-6 h-6 mx-auto mb-2" style={{color: 'hsl(180, 60%, 35%)'}} />
                   <h3 className="font-medium text-white text-sm">Sun Sign</h3>
                   <p className="text-lg font-semibold text-white">{bigThree.sun}</p>
                   <p className="text-xs text-white/60">Core identity</p>
                 </div>
-                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                  <Moon className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/20">
+                  <Moon className="w-6 h-6 mx-auto mb-2" style={{color: 'hsl(180, 60%, 35%)'}} />
                   <h3 className="font-medium text-white text-sm">Moon Sign</h3>
                   <p className="text-lg font-semibold text-white">{bigThree.moon}</p>
                   <p className="text-xs text-white/60">Emotional nature</p>
                 </div>
-                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/10">
-                  <ArrowUp className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                <div className="text-center p-3 bg-white/5 rounded-lg border border-white/20">
+                  <ArrowUp className="w-6 h-6 mx-auto mb-2" style={{color: 'hsl(180, 60%, 35%)'}} />
                   <h3 className="font-medium text-white text-sm">Rising Sign</h3>
                   <p className="text-lg font-semibold text-white">{bigThree.rising}</p>
                   <p className="text-xs text-white/60">How others see you</p>
@@ -108,7 +108,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
         <Card className="bg-white/5 border-white/10 backdrop-blur-md">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-teal-400" />
+              <Calendar className="w-5 h-5" style={{color: 'hsl(45, 75%, 55%)'}} />
               Today's Cosmic Weather
             </CardTitle>
             <CardDescription className="text-white/60">
@@ -135,7 +135,7 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
               <div className="text-center">
                 <p className="text-xs text-white/60 uppercase tracking-wide">Lucky Color</p>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 bg-teal-600 rounded-full"></div>
+                  <div className="w-4 h-4 rounded-full" style={{backgroundColor: 'hsl(180, 60%, 35%)'}}></div>
                   <span className="text-white font-medium">{dailyGuidance.luckyColor}</span>
                 </div>
               </div>
@@ -153,10 +153,10 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           <Link href="/gemstone-energy-pairing">
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
-                <Gem className="w-8 h-8 text-emerald-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                <Gem className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform" style={{color: 'hsl(180, 60%, 35%)'}} />
                 <h3 className="font-medium text-white mb-1 text-sm">Gemstone Guidance</h3>
                 <p className="text-xs text-white/60">Discover your perfect crystal matches</p>
-                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
+                <Badge variant="outline" className="mt-2 border-white/30 text-xs" style={{color: 'hsl(45, 75%, 55%)'}}>
                   Explore Now
                 </Badge>
               </CardContent>
@@ -166,10 +166,10 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           <Link href="/compatibility">
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
-                <Heart className="w-8 h-8 text-rose-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                <Heart className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform" style={{color: 'hsl(180, 60%, 35%)'}} />
                 <h3 className="font-medium text-white mb-1 text-sm">Love Compatibility</h3>
                 <p className="text-xs text-white/60">Explore relationship harmony</p>
-                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
+                <Badge variant="outline" className="mt-2 border-white/30 text-xs" style={{color: 'hsl(45, 75%, 55%)'}}>
                   Find Love
                 </Badge>
               </CardContent>
@@ -179,10 +179,10 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           <Link href="/business">
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
-                <Briefcase className="w-8 h-8 text-amber-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                <Briefcase className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform" style={{color: 'hsl(180, 60%, 35%)'}} />
                 <h3 className="font-medium text-white mb-1 text-sm">Career Insights</h3>
                 <p className="text-xs text-white/60">Unlock your professional path</p>
-                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
+                <Badge variant="outline" className="mt-2 border-white/30 text-xs" style={{color: 'hsl(45, 75%, 55%)'}}>
                   Grow Career
                 </Badge>
               </CardContent>
@@ -192,10 +192,10 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
           <Link href="/system-comparison">
             <Card className="group cursor-pointer bg-white/5 border-white/10 backdrop-blur-md hover:border-teal-400/50 transition-all duration-300">
               <CardContent className="p-4 text-center">
-                <Eye className="w-8 h-8 text-indigo-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                <Eye className="w-8 h-8 mx-auto mb-2 group-hover:scale-110 transition-transform" style={{color: 'hsl(180, 60%, 35%)'}} />
                 <h3 className="font-medium text-white mb-1 text-sm">Deep Analysis</h3>
                 <p className="text-xs text-white/60">Compare all 10 systems</p>
-                <Badge variant="outline" className="mt-2 text-white/70 border-white/30 text-xs">
+                <Badge variant="outline" className="mt-2 border-white/30 text-xs" style={{color: 'hsl(45, 75%, 55%)'}}>
                   Deep Dive
                 </Badge>
               </CardContent>
@@ -210,14 +210,14 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
             variant="outline" 
             className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm"
           >
-            <TrendingUp className="w-4 h-4 mr-2 text-teal-400" />
+            <TrendingUp className="w-4 h-4 mr-2" style={{color: 'hsl(45, 75%, 55%)'}} />
             View Full Report
           </Button>
           <Button 
             variant="outline" 
             className="bg-white/10 border-white/20 text-white hover:bg-white/20 text-sm"
           >
-            <Users className="w-4 h-4 mr-2 text-purple-400" />
+            <Users className="w-4 h-4 mr-2" style={{color: 'hsl(45, 75%, 55%)'}} />
             Share with Friends
           </Button>
         </div>

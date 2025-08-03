@@ -5,61 +5,61 @@
 
 /* Illuminated Wellness - Optimized for Women 20-60 seeking spiritual guidance */
 :root {
-  /* Core Wellness Palette */
-  --twilight-blue: hsl(220, 35%, 15%); /* Primary Background #232A45 */
-  --dusky-lavender: hsl(315, 20%, 65%); /* Primary Accent #A489A2 */
-  --soft-gold: hsl(45, 75%, 55%); /* Secondary Accent #D4AF37 */
-  --muted-teal: hsl(180, 100%, 25%); /* CTA/Highlight #008080 */
-  --warm-off-white: hsl(60, 10%, 96%); /* Text #F5F5DC */
-  --slate-gray: hsl(0, 0%, 35%); /* Support Text #5A5A5A */
+  /* Refined Wellness Palette - Warm & Cohesive */
+  --warm-charcoal: hsl(220, 10%, 15%); /* Primary Background - Warmer, less clinical */
+  --soft-gold: hsl(45, 75%, 55%); /* Primary Interactive Accent #D4AF37 */
+  --muted-teal: hsl(180, 60%, 35%); /* Secondary Informational Accent */
+  --warm-off-white: hsl(60, 10%, 96%); /* Primary Text #F5F5DC */
+  --warm-light-gray: hsl(0, 0%, 92%); /* Dividers #EAEAEA */
+  --mid-tone-gray: hsl(0, 0%, 66%); /* Subtle borders #A9A9A9 */
   
-  /* Serene gradient backgrounds - Simplified for mobile */
-  --wellness-gradient-1: linear-gradient(135deg, hsl(220, 35%, 15%) 0%, hsl(220, 30%, 18%) 100%);
-  --wellness-gradient-2: linear-gradient(135deg, hsl(315, 20%, 65%) 0%, hsl(45, 75%, 55%) 100%);
+  /* Serene gradient backgrounds - Warmer and more organic */
+  --wellness-gradient-1: linear-gradient(135deg, hsl(220, 10%, 15%) 0%, hsl(220, 8%, 18%) 100%);
+  --wellness-gradient-2: linear-gradient(135deg, hsl(45, 75%, 55%) 0%, hsl(180, 60%, 35%) 100%);
   
-  /* Component styling */
-  --background: hsl(220, 35%, 15%);
+  /* Component styling - Unified & Warm */
+  --background: hsl(220, 10%, 15%);
   --foreground: hsl(60, 10%, 96%);
-  --card: hsl(220, 25%, 20%);
+  --card: hsl(220, 8%, 20%);
   --card-foreground: hsl(60, 10%, 96%);
-  --popover: hsl(220, 25%, 20%);
+  --popover: hsl(220, 8%, 20%);
   --popover-foreground: hsl(60, 10%, 96%);
-  --primary: hsl(315, 20%, 65%);
-  --primary-foreground: hsl(60, 10%, 96%);
-  --secondary: hsl(45, 75%, 55%);
-  --secondary-foreground: hsl(220, 35%, 15%);
-  --muted: hsl(220, 25%, 25%);
-  --muted-foreground: hsl(0, 0%, 65%);
-  --accent: hsl(180, 100%, 25%);
-  --accent-foreground: hsl(60, 10%, 96%);
+  --primary: hsl(45, 75%, 55%);
+  --primary-foreground: hsl(220, 10%, 15%);
+  --secondary: hsl(180, 60%, 35%);
+  --secondary-foreground: hsl(60, 10%, 96%);
+  --muted: hsl(220, 8%, 25%);
+  --muted-foreground: hsl(0, 0%, 66%);
+  --accent: hsl(45, 75%, 55%);
+  --accent-foreground: hsl(220, 10%, 15%);
   --destructive: hsl(0, 62%, 45%);
   --destructive-foreground: hsl(60, 10%, 96%);
-  --border: hsl(220, 25%, 30%);
-  --input: hsl(220, 25%, 25%);
-  --ring: hsl(315, 20%, 65%);
+  --border: hsl(0, 0%, 66%);
+  --input: hsl(220, 8%, 25%);
+  --ring: hsl(45, 75%, 55%);
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: hsl(220, 35%, 15%);
+  --background: hsl(220, 10%, 15%);
   --foreground: hsl(60, 10%, 96%);
-  --card: hsl(220, 25%, 20%);
+  --card: hsl(220, 8%, 20%);
   --card-foreground: hsl(60, 10%, 96%);
-  --popover: hsl(220, 25%, 20%);
+  --popover: hsl(220, 8%, 20%);
   --popover-foreground: hsl(60, 10%, 96%);
-  --primary: hsl(315, 20%, 65%);
-  --primary-foreground: hsl(60, 10%, 96%);
-  --secondary: hsl(45, 75%, 55%);
-  --secondary-foreground: hsl(220, 35%, 15%);
-  --muted: hsl(220, 25%, 25%);
-  --muted-foreground: hsl(0, 0%, 65%);
-  --accent: hsl(180, 100%, 25%);
-  --accent-foreground: hsl(60, 10%, 96%);
+  --primary: hsl(45, 75%, 55%);
+  --primary-foreground: hsl(220, 10%, 15%);
+  --secondary: hsl(180, 60%, 35%);
+  --secondary-foreground: hsl(60, 10%, 96%);
+  --muted: hsl(220, 8%, 25%);
+  --muted-foreground: hsl(0, 0%, 66%);
+  --accent: hsl(45, 75%, 55%);
+  --accent-foreground: hsl(220, 10%, 15%);
   --destructive: hsl(0, 62%, 45%);
   --destructive-foreground: hsl(60, 10%, 96%);
-  --border: hsl(220, 25%, 30%);
-  --input: hsl(220, 25%, 25%);
-  --ring: hsl(315, 20%, 65%);
+  --border: hsl(0, 0%, 66%);
+  --input: hsl(220, 8%, 25%);
+  --ring: hsl(45, 75%, 55%);
 }
 
 /* Set up the base styling with mobile-first approach */
