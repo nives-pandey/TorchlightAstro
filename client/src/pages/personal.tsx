@@ -1,18 +1,94 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sun, Calculator, Calendar, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sun, Calculator, Calendar, User, ArrowRight, Stars } from "lucide-react";
+import EnhancedBirthForm from "@/components/enhanced-birth-form";
+import ChartResults from "@/components/chart-results";
+import Navigation from "@/components/navigation";
 
 export default function Personal() {
+  const [showBirthForm, setShowBirthForm] = useState(false);
+  const [chartData, setChartData] = useState<any>(null);
+  const [showResults, setShowResults] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleFormComplete = async (formData: any) => {
+    setLoading(true);
+    try {
+      // Process the birth data and generate chart
+      setChartData(formData);
+      setShowResults(true);
+      setShowBirthForm(false);
+    } catch (error) {
+      console.error('Error processing birth data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (showResults && chartData) {
+    return <ChartResults data={chartData} onBack={() => setShowResults(false)} />;
+  }
+
+  if (showBirthForm) {
+    return (
+      <div className="min-h-screen bg-cosmic-gradient">
+        <Navigation />
+        <div className="container mx-auto px-6 py-20">
+          <div className="text-center mb-8">
+            <Button 
+              variant="outline" 
+              onClick={() => setShowBirthForm(false)}
+              className="mb-4 bg-white/10 border-white/20 text-white hover:bg-white/20"
+            >
+              ← Back to Overview
+            </Button>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              Create Your Astrological Profile
+            </h1>
+            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+              Provide your birth details for accurate cosmic analysis across all systems
+            </p>
+          </div>
+          
+          <EnhancedBirthForm 
+            onComplete={handleFormComplete}
+            loading={loading}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-cosmic-gradient">
+      <Navigation />
       <div className="container mx-auto px-6 py-20">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
             Personal Astrology
           </h1>
-          <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+          <p className="text-xl text-purple-200 max-w-3xl mx-auto mb-8">
             Discover your complete cosmic blueprint with insights from Western, Vedic, Chinese astrology, Human Design, and Numerology
           </p>
+          
+          {/* Primary CTA Button */}
+          <Button 
+            onClick={() => setShowBirthForm(true)}
+            className="text-xl px-12 py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl mb-16"
+            style={{
+              background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 50%, hsl(51, 100%, 65%) 100%)',
+              border: 'none',
+              color: 'white',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              boxShadow: '0 8px 32px rgba(147, 51, 234, 0.3)'
+            }}
+          >
+            <Stars className="w-6 h-6 mr-3" />
+            Create My Astrological Profile
+            <ArrowRight className="w-6 h-6 ml-3" />
+          </Button>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
