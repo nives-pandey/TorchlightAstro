@@ -16,12 +16,45 @@ export default function Personal() {
   const handleFormComplete = async (formData: any) => {
     setLoading(true);
     try {
-      // Process the birth data and generate chart
-      setChartData(formData);
+      console.log('📋 Submitting birth data for comprehensive analysis:', formData);
+      
+      // Call the comprehensive chart generation API
+      const response = await fetch('/api/generate-comprehensive-chart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          genderAtBirth: formData.genderAtBirth,
+          birthDate: formData.birthDate,
+          birthTime: formData.birthTime,
+          birthCity: formData.birthCity,
+          birthCountry: formData.birthCountry,
+          timezone: formData.timezone,
+          systems: formData.systems
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Chart generation failed: ${response.statusText}`);
+      }
+
+      const comprehensiveChart = await response.json();
+      console.log('🌟 Received comprehensive chart:', comprehensiveChart);
+      
+      // Store in localStorage for persistence
+      localStorage.setItem('userBirthData', JSON.stringify(formData));
+      localStorage.setItem('userChart', JSON.stringify(comprehensiveChart));
+      
+      // Set the chart data and show results
+      setChartData(comprehensiveChart);
       setShowResults(true);
       setShowBirthForm(false);
     } catch (error) {
-      console.error('Error processing birth data:', error);
+      console.error('❌ Error generating comprehensive chart:', error);
+      alert('Failed to generate your astrological chart. Please try again.');
     } finally {
       setLoading(false);
     }
