@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sun, Calculator, Calendar, User, ArrowRight, Stars } from "lucide-react";
 import EnhancedBirthForm from "@/components/enhanced-birth-form";
 import ChartResults from "@/components/chart-results";
+import InstantOnboarding from "@/components/instant-onboarding";
+import MagicalLoading from "@/components/magical-loading";
+import PersonalizedDashboard from "@/components/personalized-dashboard";
 import Navigation from "@/components/navigation";
 
 export default function Personal() {
@@ -12,9 +15,29 @@ export default function Personal() {
   const [chartData, setChartData] = useState<any>(null);
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showInstantOnboarding, setShowInstantOnboarding] = useState(true);
+  const [showMagicalLoading, setShowMagicalLoading] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
+  const [userData, setUserData] = useState<any>(null);
+
+  // Check for existing user data on mount
+  useEffect(() => {
+    const savedUserData = localStorage.getItem('userBirthData');
+    const savedChart = localStorage.getItem('userChart');
+    
+    if (savedUserData && savedChart) {
+      setUserData(JSON.parse(savedUserData));
+      setChartData(JSON.parse(savedChart));
+      setShowInstantOnboarding(false);
+      setShowDashboard(true);
+    }
+  }, []);
 
   const handleFormComplete = async (formData: any) => {
     setLoading(true);
+    setShowInstantOnboarding(false);
+    setShowMagicalLoading(true);
+    
     try {
       console.log('📋 Submitting birth data for comprehensive analysis:', formData);
       
@@ -48,25 +71,48 @@ export default function Personal() {
       localStorage.setItem('userBirthData', JSON.stringify(formData));
       localStorage.setItem('userChart', JSON.stringify(comprehensiveChart));
       
-      // Set the chart data and show results
+      // Set the data
+      setUserData(formData);
       setChartData(comprehensiveChart);
-      setShowResults(true);
-      setShowBirthForm(false);
+      
     } catch (error) {
       console.error('❌ Error generating comprehensive chart:', error);
       alert('Failed to generate your astrological chart. Please try again.');
+      setShowMagicalLoading(false);
+      setShowInstantOnboarding(true);
     } finally {
       setLoading(false);
     }
   };
 
+  const handleLoadingComplete = () => {
+    setShowMagicalLoading(false);
+    setShowDashboard(true);
+  };
+
+  // Show magical loading during chart generation
+  if (showMagicalLoading) {
+    return <MagicalLoading isVisible={true} onComplete={handleLoadingComplete} />;
+  }
+
+  // Show personalized dashboard after chart generation
+  if (showDashboard && chartData && userData) {
+    return <PersonalizedDashboard chartData={chartData} userData={userData} />;
+  }
+
+  // Show instant onboarding for new users - Value First approach
+  if (showInstantOnboarding) {
+    return <InstantOnboarding onComplete={handleFormComplete} loading={loading} />;
+  }
+
+  // Legacy flow support
   if (showResults && chartData) {
     return <ChartResults data={chartData} onClose={() => setShowResults(false)} />;
   }
 
   if (showBirthForm) {
     return (
-      <div className="min-h-screen bg-cosmic-gradient">
+      <div className="min-h-screen" style={{background: 'var(--wellness-gradient-1)'}}>
         <Navigation />
         <div className="container mx-auto px-6 py-20">
           <div className="text-center mb-8">
@@ -95,7 +141,7 @@ export default function Personal() {
   }
 
   return (
-    <div className="min-h-screen bg-cosmic-gradient">
+    <div className="min-h-screen" style={{background: 'var(--wellness-gradient-1)'}}>
       <Navigation />
       <div className="container mx-auto px-6 py-20">
         <div className="text-center mb-12">

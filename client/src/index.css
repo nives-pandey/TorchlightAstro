@@ -3,62 +3,68 @@
 @import "tailwindcss/utilities";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Define custom properties for our cosmic theme */
+/* Illuminated Wellness - Optimized for Women 20-60 seeking spiritual guidance */
 :root {
-  --cosmic-dark: hsl(260, 80%, 8%);
-  --cosmic-purple: hsl(275, 70%, 25%);
-  --cosmic-lavender: hsl(240, 100%, 94%);
-  --cosmic-violet: hsl(285, 85%, 65%);
-  --cosmic-gold: hsl(51, 100%, 65%);
-  --cosmic-gradient-1: linear-gradient(135deg, hsl(260, 80%, 8%) 0%, hsl(275, 70%, 15%) 25%, hsl(285, 85%, 20%) 50%, hsl(275, 70%, 15%) 75%, hsl(260, 80%, 8%) 100%);
-  --cosmic-gradient-2: linear-gradient(135deg, hsl(275, 70%, 25%) 0%, hsl(285, 85%, 35%) 100%);
-  --background: hsl(260, 80%, 8%);
-  --foreground: hsl(240, 100%, 94%);
-  --card: hsl(275, 70%, 15%);
-  --card-foreground: hsl(240, 100%, 94%);
-  --popover: hsl(275, 70%, 15%);
-  --popover-foreground: hsl(240, 100%, 94%);
-  --primary: hsl(275, 70%, 45%);
-  --primary-foreground: hsl(240, 100%, 94%);
-  --secondary: hsl(285, 85%, 35%);
-  --secondary-foreground: hsl(240, 100%, 94%);
-  --muted: hsl(275, 70%, 20%);
-  --muted-foreground: hsl(240, 50%, 80%);
-  --accent: hsl(51, 100%, 65%);
-  --accent-foreground: hsl(260, 80%, 15%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(240, 100%, 94%);
-  --border: hsl(275, 40%, 30%);
-  --input: hsl(275, 40%, 30%);
-  --ring: hsl(275, 70%, 45%);
-  --radius: 0.5rem;
+  /* Core Wellness Palette */
+  --twilight-blue: hsl(220, 35%, 15%); /* Primary Background #232A45 */
+  --dusky-lavender: hsl(315, 20%, 65%); /* Primary Accent #A489A2 */
+  --soft-gold: hsl(45, 75%, 55%); /* Secondary Accent #D4AF37 */
+  --muted-teal: hsl(180, 100%, 25%); /* CTA/Highlight #008080 */
+  --warm-off-white: hsl(60, 10%, 96%); /* Text #F5F5DC */
+  --slate-gray: hsl(0, 0%, 35%); /* Support Text #5A5A5A */
+  
+  /* Serene gradient backgrounds */
+  --wellness-gradient-1: linear-gradient(135deg, hsl(220, 35%, 15%) 0%, hsl(315, 25%, 20%) 25%, hsl(180, 30%, 25%) 50%, hsl(315, 25%, 20%) 75%, hsl(220, 35%, 15%) 100%);
+  --wellness-gradient-2: linear-gradient(135deg, hsl(315, 20%, 65%) 0%, hsl(45, 75%, 55%) 100%);
+  
+  /* Component styling */
+  --background: hsl(220, 35%, 15%);
+  --foreground: hsl(60, 10%, 96%);
+  --card: hsl(220, 25%, 20%);
+  --card-foreground: hsl(60, 10%, 96%);
+  --popover: hsl(220, 25%, 20%);
+  --popover-foreground: hsl(60, 10%, 96%);
+  --primary: hsl(315, 20%, 65%);
+  --primary-foreground: hsl(60, 10%, 96%);
+  --secondary: hsl(45, 75%, 55%);
+  --secondary-foreground: hsl(220, 35%, 15%);
+  --muted: hsl(220, 25%, 25%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --accent: hsl(180, 100%, 25%);
+  --accent-foreground: hsl(60, 10%, 96%);
+  --destructive: hsl(0, 62%, 45%);
+  --destructive-foreground: hsl(60, 10%, 96%);
+  --border: hsl(220, 25%, 30%);
+  --input: hsl(220, 25%, 25%);
+  --ring: hsl(315, 20%, 65%);
+  --radius: 0.75rem;
 }
 
 .dark {
-  --background: hsl(260, 80%, 8%);
-  --foreground: hsl(240, 100%, 94%);
-  --card: hsl(275, 70%, 15%);
-  --card-foreground: hsl(240, 100%, 94%);
-  --popover: hsl(275, 70%, 15%);
-  --popover-foreground: hsl(240, 100%, 94%);
-  --primary: hsl(275, 70%, 45%);
-  --primary-foreground: hsl(240, 100%, 94%);
-  --secondary: hsl(285, 85%, 35%);
-  --secondary-foreground: hsl(240, 100%, 94%);
-  --muted: hsl(275, 70%, 20%);
-  --muted-foreground: hsl(240, 50%, 80%);
-  --accent: hsl(51, 100%, 65%);
-  --accent-foreground: hsl(260, 80%, 15%);
-  --destructive: hsl(0, 84%, 60%);
-  --destructive-foreground: hsl(240, 100%, 94%);
-  --border: hsl(275, 40%, 30%);
-  --input: hsl(275, 40%, 30%);
-  --ring: hsl(275, 70%, 45%);
+  --background: hsl(220, 35%, 15%);
+  --foreground: hsl(60, 10%, 96%);
+  --card: hsl(220, 25%, 20%);
+  --card-foreground: hsl(60, 10%, 96%);
+  --popover: hsl(220, 25%, 20%);
+  --popover-foreground: hsl(60, 10%, 96%);
+  --primary: hsl(315, 20%, 65%);
+  --primary-foreground: hsl(60, 10%, 96%);
+  --secondary: hsl(45, 75%, 55%);
+  --secondary-foreground: hsl(220, 35%, 15%);
+  --muted: hsl(220, 25%, 25%);
+  --muted-foreground: hsl(0, 0%, 65%);
+  --accent: hsl(180, 100%, 25%);
+  --accent-foreground: hsl(60, 10%, 96%);
+  --destructive: hsl(0, 62%, 45%);
+  --destructive-foreground: hsl(60, 10%, 96%);
+  --border: hsl(220, 25%, 30%);
+  --input: hsl(220, 25%, 25%);
+  --ring: hsl(315, 20%, 65%);
 }
 
 /* Set up the base styling with mobile-first approach */
 html {
-  background: var(--cosmic-gradient-1);
+  background: var(--wellness-gradient-1);
   background-attachment: fixed;
   min-height: 100vh;
   height: 100%;
@@ -88,8 +94,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  color: var(--cosmic-lavender);
-  background: var(--cosmic-gradient-1);
+  color: var(--warm-off-white);
+  background: var(--wellness-gradient-1);
   background-attachment: scroll;
   min-height: 100vh;
   min-height: -webkit-fill-available;
@@ -103,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: var(--cosmic-lavender);
+  color: var(--warm-off-white);
   line-height: 1.2;
 }
 
