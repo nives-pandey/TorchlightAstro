@@ -320,7 +320,7 @@ export default function Home() {
             </h1>
             
             {/* Enhanced subheadline */}
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-12 font-body px-4" 
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 font-body px-4" 
                style={{
                  color: 'hsl(240, 100%, 95%)', 
                  opacity: 0.95,
@@ -337,6 +337,28 @@ export default function Home() {
                 Western, Vedic, Chinese & Human Design
               </span> systems.
             </p>
+            
+            {/* Begin Your Journey CTA Button */}
+            <div className="text-center mb-8 sm:mb-12">
+              <Link href="/personal">
+                <Button 
+                  className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 50%, hsl(51, 100%, 65%) 100%)',
+                    border: 'none',
+                    color: 'white',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                    boxShadow: '0 8px 32px rgba(147, 51, 234, 0.3)'
+                  }}
+                >
+                  <Stars className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
+                  Begin Your Journey
+                </Button>
+              </Link>
+              <p className="text-purple-200/70 text-sm mt-3">
+                Create your complete astrological profile in minutes
+              </p>
+            </div>
           </div>
 
           {/* Core Features Grid - The 4 main sections */}
