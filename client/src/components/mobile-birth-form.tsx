@@ -104,7 +104,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
       4: () => true // Confirmation step - allow user to review
     };
     
-    return stepValidations[currentStep as keyof typeof stepValidations]?.() || false;
+    return stepValidations[currentStep as keyof typeof stepValidations]?.() ?? false;
   };
 
   const nextStep = () => {
@@ -218,9 +218,11 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                       <Input
                         id="firstName"
                         placeholder="Your first name"
-                        className="cosmic-input mt-1"
-                        value={watchedValues.firstName}
+                        className="mobile-input cosmic-input mt-1"
+                        value={watchedValues.firstName || ""}
                         onChange={(e) => setValue('firstName', e.target.value)}
+                        style={{ fontSize: '16px' }}
+                        autoComplete="given-name"
                       />
                       {errors.firstName && (
                         <p className="text-red-400 text-xs mt-1">{errors.firstName.message}</p>
@@ -231,9 +233,11 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                       <Input
                         id="lastName"
                         placeholder="Your last name"
-                        className="cosmic-input mt-1"
-                        value={watchedValues.lastName}
+                        className="mobile-input cosmic-input mt-1"
+                        value={watchedValues.lastName || ""}
                         onChange={(e) => setValue('lastName', e.target.value)}
+                        style={{ fontSize: '16px' }}
+                        autoComplete="family-name"
                       />
                       {errors.lastName && (
                         <p className="text-red-400 text-xs mt-1">{errors.lastName.message}</p>
@@ -247,9 +251,11 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                       id="email"
                       type="email"
                       placeholder="your@email.com"
-                      className="cosmic-input mt-1"
-                      value={watchedValues.email}
+                      className="mobile-input cosmic-input mt-1"
+                      value={watchedValues.email || ""}
                       onChange={(e) => setValue('email', e.target.value)}
+                      style={{ fontSize: '16px' }}
+                      autoComplete="email"
                     />
                     {errors.email && (
                       <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>

@@ -160,9 +160,11 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                   <Input
                     id="firstName"
                     value={formData.firstName}
-                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                    onChange={(e) => setFormData(prev => ({...prev, firstName: e.target.value}))}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                     placeholder="Enter first name"
+                    style={{ fontSize: '16px' }}
+                    autoComplete="given-name"
                   />
                 </div>
                 <div>
@@ -170,9 +172,11 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                   <Input
                     id="lastName"
                     value={formData.lastName}
-                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                    onChange={(e) => setFormData(prev => ({...prev, lastName: e.target.value}))}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                     placeholder="Enter last name"
+                    style={{ fontSize: '16px' }}
+                    autoComplete="family-name"
                   />
                 </div>
               </div>
@@ -197,8 +201,10 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                     id="birthDate"
                     type="date"
                     value={formData.birthDate}
-                    onChange={(e) => setFormData({...formData, birthDate: e.target.value})}
+                    onChange={(e) => setFormData(prev => ({...prev, birthDate: e.target.value}))}
                     className="bg-white/10 border-white/20 text-white"
+                    style={{ fontSize: '16px' }}
+                    autoComplete="bday"
                   />
                 </div>
                 <div>
@@ -207,8 +213,9 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                     id="birthTime"
                     type="time"
                     value={formData.birthTime}
-                    onChange={(e) => setFormData({...formData, birthTime: e.target.value})}
+                    onChange={(e) => setFormData(prev => ({...prev, birthTime: e.target.value}))}
                     className="bg-white/10 border-white/20 text-white"
+                    style={{ fontSize: '16px' }}
                   />
                 </div>
               </div>
@@ -219,9 +226,11 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                   <Input
                     id="city"
                     value={formData.city}
-                    onChange={(e) => setFormData({...formData, city: e.target.value})}
+                    onChange={(e) => setFormData(prev => ({...prev, city: e.target.value}))}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                     placeholder="e.g. Manila, New York"
+                    style={{ fontSize: '16px' }}
+                    autoComplete="address-level2"
                   />
                 </div>
                 <div>
@@ -229,9 +238,11 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                   <Input
                     id="country"
                     value={formData.country}
-                    onChange={(e) => setFormData({...formData, country: e.target.value})}
+                    onChange={(e) => setFormData(prev => ({...prev, country: e.target.value}))}
                     className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                     placeholder="e.g. Philippines, USA"
+                    style={{ fontSize: '16px' }}
+                    autoComplete="country-name"
                   />
                 </div>
               </div>
