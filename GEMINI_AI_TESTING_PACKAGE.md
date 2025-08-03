@@ -100,11 +100,11 @@ shared/
 ### Database Schema
 
 #### Core Tables
-1. **users** - User profiles and authentication
-2. **birth_data** - Birth information and preferences
-3. **charts** - Generated astrological charts
-4. **compatibility** - Relationship analysis data
-5. **daily_guidance** - Personalized daily insights
+1. **sessions** - Session storage (mandatory for Replit Auth)
+2. **users** - User profiles and authentication
+3. **birth_data** - Birth information and preferences
+4. **charts** - Generated astrological charts
+5. **compatibility** - Relationship analysis data
 
 ## API Integration Status
 
@@ -113,7 +113,7 @@ shared/
 - ✅ **OpenAI GPT-4o**: Primary AI interpretations
 - ✅ **Gemini AI**: Enhanced insights (ready for testing)
 - ✅ **Grok AI**: Alternative AI perspectives
-- ✅ **LLaMA 3.1**: Specialized interpretations
+- ✅ **Triple-AI Fallback**: Quadruple-tier system with failover
 
 ### External Services
 - ✅ **GeoNames.org**: Global city/location data
@@ -151,7 +151,7 @@ shared/
 # Start the application
 npm run dev
 
-# Test chart generation endpoint
+# Test chart generation endpoint (correct endpoint)
 curl -X POST http://localhost:5000/api/generate-comprehensive-chart \
   -H "Content-Type: application/json" \
   -d '{
@@ -162,6 +162,18 @@ curl -X POST http://localhost:5000/api/generate-comprehensive-chart \
     "birthCity": "New York",
     "birthCountry": "United States",
     "timezone": "America/New_York"
+  }'
+
+# Alternative comprehensive report endpoint
+curl -X POST http://localhost:5000/api/comprehensive-report \
+  -H "Content-Type: application/json" \
+  -d '{
+    "birthData": {
+      "name": "Test User",
+      "birthDate": "1990-06-15",
+      "birthPlace": "New York, United States"
+    },
+    "systems": ["western", "vedic", "chinese", "numerology"]
   }'
 ```
 

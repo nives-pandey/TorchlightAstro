@@ -25,6 +25,7 @@ npm run dev
 
 #### Test Chart Generation
 ```bash
+# Primary comprehensive chart endpoint
 curl -X POST http://localhost:5000/api/generate-comprehensive-chart \
   -H "Content-Type: application/json" \
   -d '{
@@ -44,6 +45,18 @@ curl -X POST http://localhost:5000/api/generate-comprehensive-chart \
       "numerology": true
     }
   }'
+
+# Alternative comprehensive report endpoint
+curl -X POST http://localhost:5000/api/comprehensive-report \
+  -H "Content-Type: application/json" \
+  -d '{
+    "birthData": {
+      "name": "Test User",
+      "birthDate": "1990-06-15T14:30:00",
+      "birthPlace": "New York, United States"
+    },
+    "systems": ["western", "vedic", "chinese", "numerology"]
+  }'
 ```
 
 #### Test AI Integration
@@ -56,17 +69,23 @@ curl -X POST http://localhost:5000/api/ai-chat \
   }'
 ```
 
-#### Test Gemstone Pairing
+#### Test Gemstone Pairing (Feature Available via UI)
 ```bash
-curl -X POST http://localhost:5000/api/gemstone-pairing \
+# Gemstone pairing is integrated into comprehensive chart generation
+# Access through the Gemstone Energy Pairing page in the UI
+# Full birth data is used to calculate zodiac sign automatically
+
+curl -X POST http://localhost:5000/api/generate-comprehensive-chart \
   -H "Content-Type: application/json" \
   -d '{
-    "birthData": {
-      "birthDate": "1990-06-15",
-      "birthTime": "14:30",
-      "zodiacSign": "Gemini"
-    },
-    "selectedStones": ["amethyst", "rose_quartz", "citrine"]
+    "firstName": "Test",
+    "lastName": "User", 
+    "birthDate": "1990-06-15",
+    "birthTime": "14:30",
+    "birthCity": "New York",
+    "birthCountry": "United States",
+    "timezone": "America/New_York",
+    "includeGemstoneGuidance": true
   }'
 ```
 
@@ -100,7 +119,7 @@ curl -X POST http://localhost:5000/api/gemstone-pairing \
 ### 1. Architecture Review
 - **Frontend**: React + TypeScript + Tailwind CSS
 - **Backend**: Express.js + PostgreSQL + Drizzle ORM
-- **AI Integration**: OpenAI, Grok, Gemini, LLaMA 3.1
+- **AI Integration**: OpenAI, Grok, Gemini (Triple-AI with fallback)
 - **Assessment Areas**: Code organization, separation of concerns, scalability
 
 ### 2. Business Logic Validation
@@ -133,9 +152,9 @@ time curl -X POST http://localhost:5000/api/generate-comprehensive-chart \
 
 ### 2. Concurrent User Simulation
 ```bash
-# Use artillery.js or similar for load testing
+# Use artillery.js or similar for load testing  
 npm install -g artillery
-artillery quick --count 10 --num 2 http://localhost:5000/api/personal
+artillery quick --count 10 --num 2 http://localhost:5000/api/auth/user
 ```
 
 ### 3. Memory Usage Monitoring
@@ -233,13 +252,15 @@ Landing Page → Education → Birth Form → Chart Generation → Results → F
 - **Test**: Multiple user accounts with different birth data
 - **Validation**: No data leakage between users
 - **Security**: Proper user authentication and authorization
+- **Schema**: Includes mandatory sessions table for Replit Auth
 
 ## Integration Testing
 
 ### 1. External API Dependencies
-- **FreeAstrologyAPI.com**: Swiss Ephemeris calculations
-- **GeoNames.org**: Location data and timezone detection
-- **AI Services**: OpenAI, Grok, Gemini, LLaMA responses
+- **Local Swiss Ephemeris**: High-precision astronomical calculations
+- **Prokerala API**: Optional higher precision integration
+- **GeoNames.org**: Location data and timezone detection  
+- **AI Services**: OpenAI, Grok, Gemini (Triple-AI system)
 
 ### 2. Database Operations
 - **CRUD Operations**: Create, read, update, delete for all entities

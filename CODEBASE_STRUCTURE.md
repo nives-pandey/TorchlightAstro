@@ -344,8 +344,8 @@ export default {
 ### Chart Generation APIs
 ```
 POST /api/generate-comprehensive-chart  # Multi-system chart generation
-POST /api/generate-enhanced-chart       # Legacy chart endpoint
-GET  /api/personal                      # User personal data
+POST /api/comprehensive-report          # Alternative comprehensive report
+POST /api/generate-enhanced-chart       # Enhanced chart endpoint
 ```
 
 ### AI Integration APIs
@@ -357,9 +357,9 @@ POST /api/multi-ai/analyze             # Multi-AI analysis
 
 ### Specialized Feature APIs
 ```
-POST /api/gemstone-pairing             # Gemstone compatibility
+# Gemstone pairing integrated into chart generation
 POST /api/compatibility                # Relationship analysis
-POST /api/daily-guidance               # Personalized guidance
+POST /api/create-payment-intent        # Stripe payments
 ```
 
 ### Authentication APIs
