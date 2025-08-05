@@ -31,7 +31,21 @@ import { timezoneAnalytics } from "@/lib/timezone-analytics";
 export default function EnhancedAdminDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   const [timeRange, setTimeRange] = useState("7d");
-  const [analyticsData, setAnalyticsData] = useState({
+  const [analyticsData, setAnalyticsData] = useState<{
+    usageStats: Array<{
+      timezoneId: string;
+      displayName: string;
+      usageCount: number;
+      successRate: number;
+      avgConfidenceScore: number;
+      dstCorrections: number;
+      region: string;
+    }>;
+    qualityMetrics: any;
+    geographicData: Array<any>;
+    dstAnalytics: any;
+    autoDetectionMetrics: any;
+  }>({
     usageStats: [],
     qualityMetrics: null,
     geographicData: [],
@@ -265,7 +279,7 @@ export default function EnhancedAdminDashboard() {
                           borderRadius: '8px',
                           color: '#F3F4F6'
                         }}
-                        formatter={(value) => [`${(value * 100).toFixed(1)}%`, 'Success Rate']}
+                        formatter={(value: any) => [`${(Number(value) * 100).toFixed(1)}%`, 'Success Rate']}
                       />
                       <Area 
                         type="monotone" 
@@ -343,7 +357,7 @@ export default function EnhancedAdminDashboard() {
                       <Pie
                         data={Object.entries(analyticsData.qualityMetrics?.qualityScores || {}).map(([grade, count]) => ({
                           name: grade,
-                          value: count,
+                          value: Number(count),
                           percentage: ((count / (analyticsData.qualityMetrics?.totalEntries || 1)) * 100).toFixed(1)
                         }))}
                         cx="50%"
