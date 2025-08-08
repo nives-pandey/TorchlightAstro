@@ -240,5 +240,142 @@ export const enhancedLifestyleKnowledgeBase = {
       colors: ["Black", "Blue", "Silver"],
       qualities: "Flow, wisdom, introspection"
     }
+  },
+
+  // Food & Dietary Recommendations
+  astrologicalDiet: {
+    fire: {
+      foods: ["Cooling foods", "Fresh fruits", "Leafy greens", "Cucumber", "Coconut water"],
+      avoid: ["Spicy foods", "Red meat", "Alcohol", "Fried foods"],
+      timing: "Early morning and evening meals",
+      rationale: "Balance excess fire energy with cooling, hydrating foods"
+    },
+    earth: {
+      foods: ["Warm soups", "Root vegetables", "Whole grains", "Dairy", "Nuts"],
+      avoid: ["Raw foods", "Cold beverages", "Processed foods"],
+      timing: "Regular meal times, avoid skipping meals",
+      rationale: "Support grounding earth energy with substantial, nourishing foods"
+    },
+    air: {
+      foods: ["Warm, moist foods", "Stews", "Cooked grains", "Herbal teas", "Ghee"],
+      avoid: ["Dry foods", "Carbonated drinks", "Excessive caffeine"],
+      timing: "Smaller, frequent meals",
+      rationale: "Balance air's dryness and movement with grounding, oily foods"
+    },
+    water: {
+      foods: ["Light, warm foods", "Ginger tea", "Steamed vegetables", "Lean proteins"],
+      avoid: ["Dairy", "Cold foods", "Heavy meals", "Excessive salt"],
+      timing: "Light dinner, substantial breakfast",
+      rationale: "Support water's emotional nature while maintaining lightness"
+    }
+  },
+
+  // Career & Professional Guidance
+  planetaryCareerGuidance: {
+    Sun: {
+      careers: ["Leadership", "Politics", "Entertainment", "Government", "CEO roles"],
+      workStyle: "Autonomous leadership, public recognition, authority positions",
+      bestDays: ["Sunday"],
+      peakHours: "10am-2pm"
+    },
+    Moon: {
+      careers: ["Healthcare", "Hospitality", "Childcare", "Food industry", "Psychology"],
+      workStyle: "Nurturing, supportive roles, emotional intelligence required",
+      bestDays: ["Monday"],
+      peakHours: "6am-10am, 6pm-10pm"
+    },
+    Mars: {
+      careers: ["Military", "Sports", "Surgery", "Engineering", "Emergency services"],
+      workStyle: "High-energy, competitive, action-oriented, crisis management",
+      bestDays: ["Tuesday"],
+      peakHours: "6am-10am"
+    },
+    Mercury: {
+      careers: ["Writing", "Teaching", "Communication", "Technology", "Commerce"],
+      workStyle: "Intellectual, communication-heavy, detail-oriented, networking",
+      bestDays: ["Wednesday"],
+      peakHours: "8am-12pm"
+    },
+    Jupiter: {
+      careers: ["Education", "Law", "Religion", "Philosophy", "Finance"],
+      workStyle: "Advisory, wisdom-sharing, ethical leadership, expansion-focused",
+      bestDays: ["Thursday"],
+      peakHours: "10am-2pm"
+    },
+    Venus: {
+      careers: ["Arts", "Beauty", "Fashion", "Hospitality", "Luxury goods"],
+      workStyle: "Creative, aesthetic, relationship-building, harmony-focused",
+      bestDays: ["Friday"],
+      peakHours: "2pm-6pm"
+    },
+    Saturn: {
+      careers: ["Management", "Construction", "Law enforcement", "Agriculture", "Research"],
+      workStyle: "Disciplined, long-term focused, structure-oriented, patient",
+      bestDays: ["Saturday"],
+      peakHours: "2pm-6pm"
+    }
+  },
+
+  // Activities & Hobbies Based on Astrological Profile
+  personalityActivities: {
+    cardinal: ["Leadership roles", "Starting new projects", "Organizing events", "Pioneering activities"],
+    fixed: ["Deep study", "Artistic creation", "Building collections", "Maintaining traditions"],
+    mutable: ["Learning languages", "Travel", "Teaching", "Adapting to change"],
+    fire: ["Sports", "Adventure", "Performance", "Competitive games"],
+    earth: ["Gardening", "Cooking", "Crafts", "Nature activities"],
+    air: ["Reading", "Socializing", "Intellectual debates", "Technology"],
+    water: ["Meditation", "Swimming", "Emotional healing work", "Spiritual practices"]
+  },
+
+  // Relationship & Partnership Compatibility
+  partnershipGuidance: {
+    Sun: {
+      idealPartner: "Strong, confident, supportive of ambitions",
+      attractedTo: "Leo, Aries, Sagittarius energy",
+      needs: "Admiration, loyalty, shared vision",
+      challenges: "Ego conflicts, need for attention"
+    },
+    Moon: {
+      idealPartner: "Emotionally nurturing, intuitive, family-oriented",
+      attractedTo: "Cancer, Pisces, Taurus energy",
+      needs: "Emotional security, understanding, home stability",
+      challenges: "Mood sensitivity, need for reassurance"
+    },
+    Venus: {
+      idealPartner: "Romantic, artistic, harmonious, beautiful",
+      attractedTo: "Libra, Taurus, Pisces energy",
+      needs: "Beauty, romance, peace, shared aesthetics",
+      challenges: "Avoiding conflict, material desires"
+    },
+    Mars: {
+      idealPartner: "Independent, passionate, physically active",
+      attractedTo: "Aries, Scorpio, Capricorn energy",
+      needs: "Physical attraction, respect, shared goals",
+      challenges: "Competition, anger management"
+    }
+  },
+
+  // Intimate Relationship Guidance (Adult Content - Age Verified Only)
+  intimacyGuidance: {
+    fire: {
+      style: "Passionate, spontaneous, adventurous",
+      needs: "Excitement, variety, physical expression",
+      timing: "Early morning, high energy periods"
+    },
+    earth: {
+      style: "Sensual, slow, physical comfort focused",
+      needs: "Security, consistency, physical touch",
+      timing: "Evening, comfortable familiar settings"
+    },
+    air: {
+      style: "Mental connection first, communication important",
+      needs: "Intellectual stimulation, variety, communication",
+      timing: "When minds are engaged, varied"
+    },
+    water: {
+      style: "Emotional, intuitive, deeply connected",
+      needs: "Emotional safety, deep bonding, spiritual connection",
+      timing: "Natural rhythms, mood-dependent"
+    }
   }
 };

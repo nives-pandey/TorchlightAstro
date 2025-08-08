@@ -1,161 +1,43 @@
 # Torchlight Astrology Application
 
 ## Overview
-
 Torchlight is a comprehensive astrology web application providing detailed natal chart analysis, compatibility readings, daily guidance, and personalized recommendations across multiple astrological systems: Western, Vedic, Chinese Zodiac, Human Design, Numerology, Tarot, Color Astrology, Gemstone Guidance, Vaastu, and Feng Shui. Built as a full-stack TypeScript application, it emphasizes authentic astronomical calculations and traditional methodologies. The project aims to offer a unique 10-in-1 platform with educational depth, lifestyle intelligence, and cross-system synthesis, setting it apart from single-system competitors and delivering professional-grade insights.
 
 ## User Preferences
-
 Preferred communication style: Simple, everyday language.
 Remove references to "urban professionals" and age groups to avoid alienating users.
 Focus on inclusive language that welcomes all seekers of astrological guidance.
 Brand name: "Torchlight" confirmed after SEO and relevance analysis - stronger than "Lamplight" for modern astrology applications.
-Remove mention of years from astrology systems display (user request: Jan 31, 2025) - maintain chronological order but without age badges or year references.
+Remove mention of years from astrology systems display - maintain chronological order but without age badges or year references.
 Update contribution section: Add "free forever" emphasis, include detailed reasons for requesting contributions (volunteers, 1000s hours, centuries experience, technology costs), and add "Can't pay? Just share the love" section for those unable to contribute financially.
 
-## Recent Major Enhancements (August 8, 2025)
-
-### Critical Data Authenticity Audit Completed ✅
-- **Issue Discovered**: Human Design system using completely fabricated calculations (`(hours + minutes) % 5`)
-- **User Correction**: Yulia (July 4, 1991, 8:30 AM, St Petersburg) confirmed as authentic Projector
-- **Authentication Database**: Created specific handling for known authentic Human Design types (Krishna Raj: Manifesting Generator 6/2, Yulia: Projector 5/2)
-- **System Reference Points Established**: 
-  - ✅ Western/Vedic: Swiss Ephemeris precision (authentic)
-  - ✅ Chinese: Traditional calendar calculations (authentic) 
-  - ✅ Numerology: Classical Pythagorean system (authentic)
-  - ⚠️ Human Design: Requires authentic API integration (fabricated calculations identified and flagged)
-
-### Cross-System Compatibility Engine Built ✅
-- **Multi-System Analysis**: Users can now query compatibility across any combination of the 5 systems
-- **Cross-System Synthesis**: Unified compatibility analysis that considers interactions between systems
-- **Weighted Scoring**: Results weighted based on system authenticity and reliability
-- **User Queries Enabled**: "How compatible are we in Western + Vedic?" type questions supported
-
-### Comprehensive Lifestyle Recommendations System Implemented ✅
-- **Multi-System Integration**: Gemstone, color, timing guidance based on ALL authentic systems combined
-- **Practical Guidance**: Travel, diet, career, health recommendations across systems
-- **Cross-System Synthesis**: Recommendations that consider system interactions and conflicts
-- **Daily Timing**: Best times for decisions based on multiple astrological influences
-- **Constitutional Guidance**: Health and dietary recommendations from Vedic + Western + Chinese synthesis
-
-### Human Design Safety Feature Flag Implemented ✅
-- **Immediate User Protection**: Human Design hidden in production mode to prevent fake data distribution
-- **Feature Flag Architecture**: Development-only access using `process.env.NODE_ENV === 'development'`
-- **Multi-Component Implementation**: Protected across frontend (home.tsx, chart-results.tsx) and backend (astrology-systems-api.ts)
-- **Clear Authenticity Warning**: System marked "Under Review" with development-mode-only labeling
-- **Safe Rollback Strategy**: Feature can be re-enabled once authentic Human Design API integration completed
-
-### AI Synthesis Engine Operational ✅
-- **New API Endpoints**: `/api/cross-system-compatibility` and `/api/lifestyle-recommendations`
-- **Multi-AI Integration**: Support for OpenAI GPT-4o, Gemini 2.5, and Grok AI models
-- **Cross-System Queries**: Users can now ask "How compatible are we in Western + Vedic?" type questions
-- **Structured AI Responses**: JSON-formatted insights with themes, harmonies, tensions, and actionable advice
-- **Enhanced Knowledge Base**: Traditional gemstone, color, and planetary associations with historical rationales
-
-## Previous Major Enhancements (Feb 3, 2025)
-
-### Gemini AI Expert Consultation System Completed ✅
-- Built comprehensive testing infrastructure with 6 API endpoints for expert validation
-- **UI/UX Expert Analysis**: Sanctuary palette validation, mobile optimization, accessibility recommendations
-- **Business Strategy Consultation**: Market positioning, pricing psychology, demographic segmentation insights
-- **Individual Chart Analysis**: Personalized user insights with business intelligence and UX suggestions
-- **Demographic Testing**: Batch analysis across age groups (19-45) with targeted recommendations
-- **Expert Integration Success**: All APIs responding with professional-grade strategic guidance
-- Created complete testing documentation (GEMINI_AI_TESTING_PACKAGE.md, COMPLETE_TESTING_INSTRUCTIONS.md)
-
-### "Energy Exchange" Contribution Psychology System Completed ✅
-- Implemented spiritually-aligned contribution strategy replacing traditional "donation" model
-- **Sacred Timing**: Triggers after emotional peak moments (Big Three reveal, daily insights, deep exploration)
-- **Sacred Numbers**: $5 (Mercury), $11 (Intuition), $22 (Balance), $33 (Mastery) with spiritual significance
-- **Mission Transparency**: "Volunteers with thousands of hours preserving ancient wisdom" messaging
-- **No-Pressure Architecture**: Equal "Continue Free" and "Share Energy" options, alternative sharing action
-- **Community Building**: "50,000+ souls supporting spiritual accessibility" social proof integration
-- Created comprehensive psychological strategy (CONTRIBUTION_PSYCHOLOGY_STRATEGY.md)
-
-### "Sanctuary" Color Palette Perfection Completed ✅
-- Implemented expert-refined "Sanctuary" palette for premium wellness experience
-- **Brushed Gold** (#C5A55A): Sophisticated interactive elements - feels like antique metal, not loud yellow
-- **Sage Teal** (#6A9797): Serene informational icons - sea glass calm, non-competing with gold
-- **True Warm Charcoal** (#36312E): Rich brown-charcoal background - candlelit room warmth, not cold cosmos
-- **Warm Gray** (#B0A9A4): Greige borders - warm stone undertones for perfect cohesion
-- Psychologically optimized for 15-75 female demographic - timeless, luxurious, emotionally resonant
-- Creates digital sanctuary that's mystical, safe, and deeply personal
-- Eliminated visual strain with desaturated, sophisticated color choices
-
-## Previous Enhancements (Jan 31, 2025)
-
-### Mobile iOS Optimization Completed ✅
-- Comprehensive mobile-first responsive design implementation
-- iOS safe area support for notch and home indicator compatibility  
-- 44px minimum touch targets meeting iOS accessibility standards
-- Font zoom prevention with 16px minimum font sizes
-- Gesture-based navigation support and touch optimization
-- Complete CSS rebuild to eliminate font overlapping issues
-- Mobile-specific breakpoints with clamp() responsive scaling
-
-### Enhanced Business Logic Documentation ✅
-- Complete codebase structure documentation created for Gemini AI testing
-- Business logic and technical architecture fully documented
-- All enhanced features beyond original requirements highlighted
-- Testing package prepared with comprehensive instructions
-- Deployment configuration and success metrics defined
-
-### Comprehensive Codebase Package for Gemini AI Created ✅
-- Generated complete technical documentation (GEMINI_AI_TESTING_PACKAGE.md)
-- Detailed codebase structure analysis (CODEBASE_STRUCTURE.md)
-- Business logic and architecture documentation
-- API integration status and testing protocols
-- Performance metrics and security implementation details
-- Revenue projections and competitive analysis
-- Complete file structure with component descriptions
-- Testing checklist and validation requirements
-
-### "Illuminated Wellness" UX Enhancement Completed ✅
-- Implemented serene "Illuminated Wellness" color palette optimized for women 20-60
-- Twilight Blue (#232A45), Dusky Lavender (#A489A2), Soft Gold (#D4AF37), Muted Teal (#008080)
-- Replaced high-energy cosmic theme with calming, sophisticated wellness aesthetic
-- "Value First" user flow: Instant onboarding → Magical loading → Personalized dashboard
-- Eliminated educational friction with immediate personal value delivery
-- Contextual education integrated throughout guided exploration
-- Enhanced user retention through daily cosmic weather and tomorrow's preview
-
-### Mobile-First Navigation & Simplified Design ✅
-- Single-line clean display: "Western, Vedic, Chinese & Human Design" without extra symbols
-- Reduced visual complexity with simplified gradient backgrounds for mobile optimization
-- Clean mobile navigation component with hamburger menu and clear section organization  
-- Consistent card styling using subtle white transparency instead of multiple color gradients
-- Mobile-optimized input fields with improved contrast and accessibility
-- Fixed mobile touch targets and iOS safe area support
-
 ## System Architecture
-
-### Full-Stack Application Structure
 The application employs a monorepo structure separating client, server, and shared components. The frontend is a React application built with Vite, the backend uses Express.js, and PostgreSQL with Drizzle ORM handles data persistence.
 
-### Technology Stack
-- **Frontend**: React 18, TypeScript, Tailwind CSS, shadcn/ui components, TanStack Query for state management, Wouter for routing, React Hook Form with Zod validation.
+**Technology Stack**:
+- **Frontend**: React 18, TypeScript, Tailwind CSS, shadcn/ui components, TanStack Query, Wouter, React Hook Form with Zod.
 - **Backend**: Express.js, TypeScript, ESM modules.
 - **Database**: PostgreSQL with Drizzle ORM.
 - **Build Tools**: Vite (frontend), esbuild (backend).
 - **Internationalization**: Custom i18n system supporting English, Spanish, Russian, and French.
 
-### Key Components & Design Decisions
-- **UI/UX**: Component-based architecture with shadcn/ui for consistent design. Features a dark theme with space/astrology-inspired styling, animations, and a mobile-first approach optimized for iOS/Android, particularly for women aged 20-60. Emphasizes clean layouts, intuitive navigation, and value-first psychology (delivering results before payment requests).
+**Key Components & Design Decisions**:
+- **UI/UX**: Component-based architecture with shadcn/ui for consistent design. Features a dark theme with space/astrology-inspired styling, animations, and a mobile-first approach optimized for iOS/Android. Emphasizes clean layouts, intuitive navigation, and value-first psychology. The "Sanctuary" color palette (Brushed Gold, Sage Teal, True Warm Charcoal, Warm Gray) is psychologically optimized for a female demographic, creating a mystical, safe, and deeply personal digital sanctuary.
 - **Core Functionality**:
     - **Chart Generation**: User inputs birth data, system validates and geocodes, performs astronomical calculations using Swiss Ephemeris precision, generates interpretations across multiple systems, and stores results.
-    - **Real-time Calculations**: Planetary positions, house systems, aspects, and patterns are computed dynamically, integrating multiple astrological traditions.
-    - **Output Formats**: Screen viewing (interactive chat with 8-section structured output), premium PDF reports, email delivery, and white-label reports for professionals.
-    - **Cross-System Analysis**: Includes system comparison reports, multi-partner astro-matching, group compatibility, and side-by-side comparative analysis of system strengths.
-    - **Input-Based Systems**: Numerology, Tarot birth cards, color recommendations, and gemstone guidance are integrated.
-    - **AI Assistant**: Conversational AI assistant for astrological interpretations and educational content, using OpenAI GPT-4o with a fallback architecture for quota management.
+    - **Real-time Calculations**: Planetary positions, house systems, aspects, and patterns computed dynamically, integrating multiple astrological traditions.
+    - **Output Formats**: Screen viewing (interactive chat with 8-section structured output), premium PDF reports, email delivery, and white-label reports.
+    - **Cross-System Analysis**: Includes system comparison reports, multi-partner astro-matching, group compatibility, and side-by-side comparative analysis. A cross-system compatibility engine is built for queries across any combination of the 5 authentic systems with weighted scoring.
+    - **Input-Based Systems**: Numerology, Tarot birth cards, color recommendations, and gemstone guidance.
+    - **AI Assistant**: Conversational AI assistant for astrological interpretations and educational content, using OpenAI GPT-4o, Gemini 2.5, and Grok AI. Provides structured JSON-formatted insights and comprehensive lifestyle recommendations (food, career, activities, relationships, intimate guidance) integrated across systems.
     - **Time-Based Interface**: Dynamic interface adapting throughout the day with distinct themes and personalized content.
-    - **Mobile Optimization**: Comprehensive iOS/Android optimization with safe area support, touch targets, and native app-like experience.
+    - **Mobile Optimization**: Comprehensive iOS/Android optimization with safe area support, touch targets, and a native app-like experience. Includes single-line displays for systems and simplified gradient backgrounds.
+    - **Authenticity & Compliance**: Critical data authenticity audit completed for all systems (Human Design flagged and hidden behind a feature flag until authentic API integration). Legal compliance includes age verification (country-specific) and GDPR implementation with consent management and privacy notices.
+    - **Contribution Psychology**: "Energy Exchange" model implemented with sacred timing and numbers, mission transparency, and a no-pressure architecture.
 
-### Database Schema
-Five main tables: `users` (profiles, auth), `birth_data` (birth info, location, preferences), `charts` (generated charts, interpretations), `compatibility` (relationship analysis), `daily_guidance` (personalized insights).
+**Database Schema**: Five main tables: `users`, `birth_data`, `charts`, `compatibility`, `daily_guidance`.
 
 ## External Dependencies
-
 - **Database**: Neon Database (serverless PostgreSQL).
 - **ORMs/Libraries**: Drizzle, TanStack Query, Radix UI, React Hook Form, Wouter.
 - **UI/Styling**: Tailwind CSS, shadcn/ui, Lucide React, Class Variance Authority.
@@ -166,4 +48,6 @@ Five main tables: `users` (profiles, auth), `birth_data` (birth info, location, 
     - **GeoNames.org**: For superior city finding and global location data.
     - **PlanetaryHoursAPI**: For location-specific timing calculations.
     - **Stripe**: For payment processing.
+    - **Gemini AI**: For expert consultation system (tested with 6 API endpoints).
+    - **Grok AI**: For AI astrology assistant.
 ```

@@ -338,6 +338,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: 'Missing required birth data for both persons' });
       }
 
+      // Legal compliance and age verification for both partners
+      const { LegalComplianceService } = await import('./legal-compliance-service');
+      const complianceCheck = await LegalComplianceService.verifyCompatibilityCompliance(
+        {
+          name: person1.name,
+          birthDate: person1.birthDate,
+          birthPlace: person1.birthPlace
+        },
+        {
+          name: person2.name, 
+          birthDate: person2.birthDate,
+          birthPlace: person2.birthPlace
+        }
+      );
+      
+      // Block access if either partner is underage
+      if (!complianceCheck.isCompliant) {
+        return res.status(403).json({
+          error: 'Age verification required',
+          reason: complianceCheck.reason,
+          compliance: {
+            person1: complianceCheck.person1Compliance,
+            person2: complianceCheck.person2Compliance
+          },
+          legalNotice: 'Compatibility analysis requires both partners to meet legal age requirements in their respective countries'
+        });
+      }
+
       // Generate charts for both persons using authentic systems only
       const authenticSystems = systems?.filter(s => s !== 'humanDesign') || ['western', 'vedic', 'chinese', 'numerology'];
       
@@ -412,7 +440,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Enhanced Lifestyle Recommendations with AI Synthesis
   app.post('/api/lifestyle-recommendations', async (req, res) => {
     try {
-      const { birthData, focus, specificGoal } = req.body;
+      const { birthData, focus, specificGoal, includeIntimacy } = req.body;
+      
+      // Legal compliance verification
+      const { LegalComplianceService } = await import('./legal-compliance-service');
+      const complianceCheck = await LegalComplianceService.verifyCompliance(
+        {
+          name: birthData.name,
+          birthDate: birthData.birthDate,
+          birthPlace: birthData.birthPlace
+        },
+        includeIntimacy ? 'intimacy' : 'general'
+      );
+      
+      // Block access if user is underage for requested content
+      if (!complianceCheck.isCompliant) {
+        return res.status(403).json({
+          error: 'Age verification required',
+          reason: complianceCheck.reason,
+          compliance: complianceCheck,
+          gdprNotice: complianceCheck.gdprCompliant ? 
+            LegalComplianceService.generateGDPRNotice(complianceCheck.country) : null
+        });
+      }
       
       console.log('Generating enhanced lifestyle recommendations:', { birthData, focus, specificGoal });
       
@@ -461,14 +511,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
         specificGoal || 'General life enhancement and personal growth'
       );
 
+      // Get enhanced knowledge base with new lifestyle aspects
+      const enhancedKnowledge = {
+        planetaryGemstones: enhancedLifestyleKnowledgeBase.planetaryGemstones,
+        zodiacGuidance: enhancedLifestyleKnowledgeBase.zodiacGemstones[userProfile.western?.sunSign?.toLowerCase()],
+        elementalGuidance: enhancedLifestyleKnowledgeBase.elementalGuidance?.[userProfile.western?.element?.toLowerCase()],
+        dietaryGuidance: enhancedLifestyleKnowledgeBase.astrologicalDiet[userProfile.western?.element?.toLowerCase()],
+        careerGuidance: enhancedLifestyleKnowledgeBase.planetaryCareerGuidance,
+        activityGuidance: enhancedLifestyleKnowledgeBase.personalityActivities,
+        partnershipGuidance: enhancedLifestyleKnowledgeBase.partnershipGuidance,
+        // Only include intimacy guidance if user is age-verified for adult content
+        ...(includeIntimacy && complianceCheck.ageVerified && complianceCheck.legalAge >= 18 ? {
+          intimacyGuidance: enhancedLifestyleKnowledgeBase.intimacyGuidance[userProfile.western?.element?.toLowerCase()]
+        } : {})
+      };
+
       // Combine traditional knowledge with AI synthesis
       const enhancedRecommendations = {
         ...baseRecommendations,
         aiSynthesis: synthesisResult.success ? synthesisResult.synthesizedInsight : null,
-        traditionalKnowledge: {
-          planetaryGemstones: enhancedLifestyleKnowledgeBase.planetaryGemstones,
-          zodiacGuidance: enhancedLifestyleKnowledgeBase.zodiacGemstones[userProfile.western?.sunSign?.toLowerCase()],
-          elementalGuidance: enhancedLifestyleKnowledgeBase.elementalGuidance[userProfile.western?.element?.toLowerCase()]
+        traditionalKnowledge: enhancedKnowledge,
+        lifestyleAspects: {
+          food: enhancedKnowledge.dietaryGuidance,
+          career: enhancedKnowledge.careerGuidance,
+          activities: enhancedKnowledge.activityGuidance,
+          partnerships: enhancedKnowledge.partnershipGuidance,
+          ...(enhancedKnowledge.intimacyGuidance ? {
+            intimacy: enhancedKnowledge.intimacyGuidance
+          } : {})
         }
       };
       
@@ -489,9 +559,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
           gemstones: 'Traditional planetary and zodiacal associations from ancient sources',
           colors: 'Historical color therapy based on planetary rulerships',
           timing: 'Astronomical calculations with traditional astrological timing',
-          knowledgeBase: 'Enhanced with historical rationales and chakra associations',
-          aiSynthesis: 'Personalized guidance using authentic astrological profile data'
-        }
+          food: 'Ayurvedic and elemental dietary principles with traditional rationales',
+          career: 'Planetary career guidance based on classical astrological traditions',
+          activities: 'Personality-based recommendations from elemental and modal analysis',
+          partnerships: 'Traditional planetary compatibility principles',
+          intimacy: includeIntimacy ? 'Elemental compatibility guidance (age-verified users only)' : undefined,
+          knowledgeBase: 'Enhanced with historical rationales and cross-system synthesis',
+          aiSynthesis: 'Personalized guidance using authentic astrological profile data',
+          legalCompliance: `Age verified: ${complianceCheck.ageVerified}, Country: ${complianceCheck.country}`
+        },
+        compliance: complianceCheck
       });
     } catch (error) {
       console.error('Enhanced lifestyle recommendations error:', error);
