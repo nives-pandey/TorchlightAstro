@@ -327,6 +327,85 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Cross-System Compatibility Analysis - All 5 Systems Integration
+  app.post('/api/cross-system-compatibility', async (req, res) => {
+    try {
+      const { person1, person2, systems } = req.body;
+      
+      console.log('Cross-system compatibility analysis:', { person1, person2, systems });
+      
+      if (!person1?.name || !person1?.birthDate || !person2?.name || !person2?.birthDate) {
+        return res.status(400).json({ error: 'Missing required birth data for both persons' });
+      }
+
+      // Generate comprehensive analysis across requested systems
+      const requestedSystems = systems || ['western', 'vedic', 'chinese', 'numerology']; // Exclude Human Design until authentic
+      
+      const compatibility = await generateCrossSystemCompatibility(person1, person2, requestedSystems);
+      
+      res.json({
+        summary: compatibility.overallAnalysis,
+        systemBreakdown: compatibility.systemAnalysis,
+        crossSystemInsights: compatibility.crossSystemSynthesis,
+        lifestyleRecommendations: compatibility.lifestyleGuidance,
+        authenticity: {
+          authentic: ['western', 'vedic', 'chinese', 'numerology'],
+          fabricated: ['humanDesign'], // Until we get authentic API
+          dataSource: 'Swiss Ephemeris precision for Western/Vedic, Traditional calculations for Chinese/Numerology'
+        }
+      });
+    } catch (error) {
+      console.error('Cross-system compatibility error:', error);
+      res.status(500).json({ error: 'Failed to generate cross-system compatibility analysis', details: error.message });
+    }
+  });
+
+  // Comprehensive Lifestyle Recommendations Endpoint  
+  app.post('/api/lifestyle-recommendations', async (req, res) => {
+    try {
+      const { birthData, focus } = req.body;
+      
+      console.log('Generating lifestyle recommendations:', { birthData, focus });
+      
+      if (!birthData?.birthDate || !birthData?.birthTime) {
+        return res.status(400).json({ error: 'Missing required birth data' });
+      }
+
+      const { ComprehensiveLifestyleEngine } = await import('./comprehensive-lifestyle-engine');
+      
+      // Convert birthData to UserProfile format
+      const userProfile = await convertToUserProfile(birthData);
+      
+      // Generate comprehensive recommendations
+      const recommendations = ComprehensiveLifestyleEngine.generateLifestyleRecommendations(userProfile);
+      
+      // Filter by focus if specified
+      const focusedRecommendations = focus 
+        ? filterRecommendationsByFocus(recommendations, focus)
+        : recommendations;
+      
+      res.json({
+        profile: {
+          name: birthData.name,
+          birthDetails: `${birthData.birthDate} at ${birthData.birthTime}`,
+          location: birthData.birthPlace,
+          systemsAnalyzed: ['western', 'vedic', 'chinese', 'numerology']
+        },
+        recommendations: focusedRecommendations,
+        authenticity: {
+          gemstones: 'Traditional astrological sources',
+          colors: 'Multi-system color therapy synthesis',
+          timing: 'Astronomical calculations + traditional timing',
+          travel: 'Geographic astrology + elemental analysis',
+          health: 'Constitutional analysis across systems'
+        }
+      });
+    } catch (error) {
+      console.error('Lifestyle recommendations error:', error);
+      res.status(500).json({ error: 'Failed to generate lifestyle recommendations', details: error.message });
+    }
+  });
+
   // Compatibility Analysis Endpoint (No auth required for demo)
   app.post('/api/compatibility', (req, res, next) => {
     // Skip auth middleware for this endpoint
