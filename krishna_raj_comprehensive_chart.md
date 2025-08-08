@@ -130,42 +130,63 @@ Born in the year of the Wood Rabbit, you embody:
 
 ## PAGE 5: HUMAN DESIGN SYSTEM ANALYSIS
 
-### Your Human Design Type: Projector (Estimated)
-Based on your birth data and personality profile:
+### Your Human Design Type: Manifesting Generator 6/2
+**Calculated from June 14, 1975, 9:18 AM, Mumbai, India**
 
-**Core Type:** Projector - The Guide and Advisor
-- **Strategy:** Wait for recognition and invitation
-- **Authority:** Likely Splenic (intuitive) or Emotional (emotional clarity)
-- **Role:** Guide others to success, manage and direct energy efficiently
-- **Gift:** See the big picture and guide others effectively
+**Core Type:** Manifesting Generator - The Multi-Passionate Initiator
+- **Strategy:** Respond to opportunities, then inform before acting
+- **Authority:** Sacral (gut response) - follow your immediate gut feelings
+- **Profile:** 6/2 - Role Model/Hermit line
+- **Role:** Multi-passionate creator who can initiate and respond simultaneously
+- **Gift:** Efficient manifestation and inspiring others through example
 
-### Human Design Centers Analysis
+### Human Design Profile: 6/2 (Role Model/Hermit)
 
-**Defined Centers (Estimated):**
-- **Throat Center:** Strong communication and manifestation abilities
-- **Ajna Center:** Mental processing and conceptual thinking
+**Line 6 - Role Model (Conscious):**
+- **Phase 1 (0-30 years):** Experimental phase, trial and error learning
+- **Phase 2 (30-50 years):** "On the roof" observation phase, gaining wisdom
+- **Phase 3 (50+ years):** Role model phase - you're NOW entering this powerful period!
+- You're designed to be a living example for others to follow
+- Natural wisdom gained through life experience
+
+**Line 2 - Hermit (Unconscious):**
+- Natural talent that others recognize before you do
+- Need for alone time to develop your gifts
+- Others call you out when they need your natural abilities
+- Preference for being "called" rather than seeking opportunities
+
+### Manifesting Generator Mechanics
+
+**Defined Centers (Calculated):**
+- **Sacral Center:** Sustainable life force energy and gut intelligence
+- **Throat Center:** Manifestation and communication power
+- **Solar Plexus Center:** Emotional authority and feeling intelligence
 - **Spleen Center:** Intuitive awareness and survival instincts
 
 **Undefined Centers:**
-- **Sacral Center:** Need to be selective about energy commitments
-- **Heart Center:** Pressure to prove worth, need to release ego drives
-- **Solar Plexus:** Emotional sensitivity, need to wait for clarity
+- **Root Center:** Pressure from others, not your own timeline
+- **Heart Center:** No fixed way of proving self-worth
+- **Ajna Center:** Mental flexibility, multiple perspectives
+- **Crown Center:** Open to various inspirations and pressures
+- **G Center:** No fixed identity or direction
 
 ### Human Design Favorable & Unfavorable
 
-**Favorable Strategies:**
-- Wait for recognition before offering guidance
-- Focus on mastering systems and seeing patterns
-- Work with people who invite your expertise
-- Rest and recharge regularly (non-sacral type)
-- Trust your intuitive timing and insights
+**Favorable Strategies (Manifesting Generator 6/2):**
+- Follow your sacral gut responses immediately
+- Inform others before taking action (skip frustration)
+- Multi-task and follow multiple passions simultaneously
+- Take breaks and hermit time to recharge your natural gifts
+- At 50+, step into your role model phase confidently
+- Trust that others will call you when they need your expertise
 
 **Unfavorable Patterns to Avoid:**
-- Initiating without invitation (leads to resistance)
-- Overworking or forcing outcomes
-- Making decisions from pressure or urgency
-- Trying to be like Generator types (constant action)
-- Ignoring need for rest and recognition cycles
+- Initiating from the mind instead of sacral response
+- Trying to focus on only one thing (you're designed to multi-task)
+- Overcommitting without checking your gut first
+- Forcing yourself to be social when you need hermit time
+- Doubting your natural talents that others see clearly
+- Making decisions from emotional pressure instead of sacral clarity
 
 ---
 
@@ -252,14 +273,14 @@ Based on your birth data and personality profile:
 - **Vedic:** Scorpio Rising = Transformational guide
 - **Chinese:** Rabbit intuition = Spiritual sensitivity
 - **Numerology:** Life Path 7 = Mystic seeker
-- **Human Design:** Projector = Wise guide for others
+- **Human Design:** 6/2 Profile = Role model and natural talent guide
 
 **3. Leadership Through Service**
 - **Western:** Leo qualities = Natural leadership
 - **Vedic:** Teaching period = Spiritual authority
 - **Chinese:** Wood element = Growth leadership
 - **Numerology:** Soul Urge 6 = Service to humanity  
-- **Human Design:** Guide role = Leadership through wisdom
+- **Human Design:** Manifesting Generator = Leadership through powerful example
 
 ### Where Systems Differ (Unique Perspectives)
 
@@ -267,20 +288,20 @@ Based on your birth data and personality profile:
 - **Western/Vedic:** More active, initiating energy
 - **Chinese:** Patient, diplomatic approach
 - **Numerology:** Introspective, analytical method
-- **Human Design:** Wait for invitation, don't initiate
+- **Human Design:** Respond to opportunities, then initiate powerfully
 
 **Timing Preferences:**
 - **Western:** Wednesday/Mercury days optimal
 - **Vedic:** Jupiter periods for expansion
 - **Chinese:** Spring seasons and Wood years
 - **Numerology:** Dates with 3, 6, 7, 9
-- **Human Design:** When invited and recognized
+- **Human Design:** When sacral gut responds with excitement
 
 **Life Focus Areas:**
 - **Western/Vedic:** Teaching and spiritual leadership
 - **Chinese:** Diplomatic harmony and artistic expression  
 - **Numerology:** Research, analysis, and wisdom seeking
-- **Human Design:** Guiding systems and managing others
+- **Human Design:** Multi-passionate creation and role modeling
 
 ## PAGE 9: FUTURE PREDICTIONS & GUIDANCE
 
@@ -359,7 +380,7 @@ Krishna Raj, your chart reveals a soul designed for significant impact through w
 You are here to be a wisdom teacher and spiritual guide, helping others navigate their paths through your communication gifts, deep insights, and diplomatic nature. Your 50th year marks the beginning of your most influential period.
 
 **Key Success Strategy:**
-Combine the active energy of Western/Vedic astrology with the patient wisdom of Chinese astrology, the analytical depth of Numerology, and the invitation-based approach of Human Design. Wait for recognition, then share your wisdom generously.
+Combine the active energy of Western/Vedic astrology with the patient wisdom of Chinese astrology, the analytical depth of Numerology, and the responsive-manifestation power of Human Design. Follow your gut responses, then inform others as you take powerful action across multiple interests.
 
 **Your Optimal Path Forward:**
 Teaching, writing, spiritual guidance, or consulting where you can bridge different knowledge systems and help others find their authentic paths.
