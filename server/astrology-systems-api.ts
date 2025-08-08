@@ -246,27 +246,44 @@ class AstrologySystemsAPI {
   // Comprehensive analysis across all systems
   async getAllSystems(birthData: any): Promise<any> {
     try {
-      const [western, vedic, chinese, numerology, humanDesign] = await Promise.all([
+      // Only include authentic systems in production
+      const systemPromises = [
         this.getWesternAstrology(birthData),
         this.getVedicAstrology(birthData),
         this.getChineseZodiac(birthData),
-        this.getNumerology(birthData),
-        this.getHumanDesign(birthData)
-      ]);
+        this.getNumerology(birthData)
+      ];
+      
+      // Add Human Design only in development mode
+      if (process.env.NODE_ENV === 'development') {
+        systemPromises.push(this.getHumanDesign(birthData));
+      }
+
+      const results = await Promise.all(systemPromises);
+      
+      const systemsData: any = {
+        western: results[0],
+        vedic: results[1],
+        chinese: results[2],
+        numerology: results[3]
+      };
+      
+      // Add Human Design only in development
+      if (process.env.NODE_ENV === 'development' && results[4]) {
+        systemsData.humanDesign = results[4];
+      }
 
       return {
-        western,
-        vedic,
-        chinese,
-        numerology,
-        humanDesign,
-        crossSystemAnalysis: this.generateCrossSystemAnalysis(western, vedic, chinese, numerology, humanDesign),
+        ...systemsData,
+        crossSystemAnalysis: this.generateCrossSystemAnalysis(systemsData),
         dataAuthenticity: {
           western: 'Swiss Ephemeris via FreeAstrologyAPI',
           vedic: 'Swiss Ephemeris via FreeAstrologyAPI',
           chinese: 'Traditional calculation methods',
           numerology: 'Classical Pythagorean system',
-          humanDesign: 'I-Ching and Kabbalah synthesis'
+          ...(process.env.NODE_ENV === 'development' ? {
+            humanDesign: '⚠️ DEVELOPMENT: Calculations under authenticity review'
+          } : {})
         }
       };
     } catch (error) {

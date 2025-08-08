@@ -58,10 +58,12 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
           destiny: data.chart.systems.numerology.destiny,
           analysis: data.chart.systems.numerology.analysis
         },
-        humanDesign: {
-          type: data.chart.systems.humanDesign.type,
-          analysis: data.chart.systems.humanDesign.analysis
-        }
+        ...(process.env.NODE_ENV === 'development' ? {
+          humanDesign: {
+            type: data.chart.systems.humanDesign?.type,
+            analysis: data.chart.systems.humanDesign?.analysis
+          }
+        } : {})
       };
     }
     // Check legacy format

@@ -154,30 +154,32 @@ export default function Home() {
       ],
       route: "/compatibility"
     },
-    "Human Design": {
-      icon: "◊",
-      origin: "Modern (1987)",
-      timeRange: "37+ years",
-      accuracy: "High",
-      difficulty: "Intermediate",
-      requirements: ["Birth date", "Birth time", "Birth location"],
-      overview: "A modern synthesis system combining astrology, I Ching, Kabbalah, and chakras to reveal your energy type and decision-making strategy.",
-      keyFeatures: [
-        "4 main energy types (Generator, Projector, Manifestor, Reflector)",
-        "Strategy and Authority for decision-making",
-        "Centers and channels analysis",
-        "Profile lines and life themes",
-        "Gates and genetic codes"
-      ],
-      predictions: [
-        "Optimal decision-making strategy",
-        "Energy management and workflow",
-        "Relationship dynamics and compatibility",
-        "Career and life purpose alignment",
-        "Personal growth and deconditioning"
-      ],
-      route: "/personal"
-    },
+    ...(process.env.NODE_ENV === 'development' ? {
+      "Human Design": {
+        icon: "◊",
+        origin: "Modern (1987) - Development Only",
+        timeRange: "37+ years",
+        accuracy: "Under Review",
+        difficulty: "Intermediate",
+        requirements: ["Birth date", "Birth time", "Birth location"],
+        overview: "⚠️ DEVELOPMENT MODE: System calculations under authenticity review. Modern synthesis combining astrology, I Ching, Kabbalah, and chakras.",
+        keyFeatures: [
+          "4 main energy types (Generator, Projector, Manifestor, Reflector)",
+          "Strategy and Authority for decision-making",
+          "Centers and channels analysis",
+          "Profile lines and life themes",
+          "Gates and genetic codes"
+        ],
+        predictions: [
+          "Optimal decision-making strategy",
+          "Energy management and workflow",
+          "Relationship dynamics and compatibility",
+          "Career and life purpose alignment",
+          "Personal growth and deconditioning"
+        ],
+        route: "/personal"
+      }
+    } : {}),
     "Numerology": {
       icon: "∞",
       origin: "Ancient Babylon, Greece",
