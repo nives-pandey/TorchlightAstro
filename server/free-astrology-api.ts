@@ -374,4 +374,5 @@ class FreeAstrologyAPI {
 }
 
 export const freeAstrologyAPI = new FreeAstrologyAPI();
+export { FreeAstrologyAPI };
 export type { BirthData, PlanetPosition, HousePosition, AstrologyResponse };

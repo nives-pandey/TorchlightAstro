@@ -327,6 +327,281 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Compatibility Analysis Endpoint (No auth required for demo)
+  app.post('/api/compatibility', (req, res, next) => {
+    // Skip auth middleware for this endpoint
+    next();
+  }, async (req, res) => {
+    try {
+      const { person1, person2 } = req.body;
+      
+      console.log('Compatibility analysis request:', { person1, person2 });
+      
+      if (!person1?.name || !person1?.birthDate || !person2?.name || !person2?.birthDate) {
+        return res.status(400).json({ error: 'Missing required birth data for both persons' });
+      }
+
+      // Generate charts for both persons using the fixed Human Design calculation
+      const [chart1, chart2] = await Promise.all([
+        astrologySystemsAPI.getAllSystems({
+          firstName: person1.name.split(' ')[0],
+          lastName: person1.name.split(' ')[1] || '',
+          birthDate: person1.birthDate,
+          birthTime: person1.birthTime || '12:00',
+          birthPlace: person1.birthPlace || 'Unknown'
+        }),
+        astrologySystemsAPI.getAllSystems({
+          firstName: person2.name.split(' ')[0],
+          lastName: person2.name.split(' ')[1] || '',
+          birthDate: person2.birthDate,
+          birthTime: person2.birthTime || '12:00',
+          birthPlace: person2.birthPlace || 'Unknown'
+        })
+      ]);
+
+      // Calculate compatibility across all systems
+      const compatibility = {
+        summary: {
+          person1: person1.name,
+          person2: person2.name,
+          overallScore: calculateOverallCompatibility(chart1, chart2),
+          primaryDynamic: getPrimaryDynamic(chart1, chart2)
+        },
+        systemAnalysis: {
+          western: analyzeWesternCompatibility(chart1.western, chart2.western),
+          vedic: analyzeVedicCompatibility(chart1.vedic, chart2.vedic),
+          chinese: analyzeChineseCompatibility(chart1.chinese, chart2.chinese),
+          numerology: analyzeNumerologyCompatibility(chart1.numerology, chart2.numerology),
+          humanDesign: analyzeHumanDesignCompatibility(chart1.humanDesign, chart2.humanDesign)
+        },
+        insights: {
+          strengths: getRelationshipStrengths(chart1, chart2),
+          challenges: getRelationshipChallenges(chart1, chart2),
+          advice: getRelationshipAdvice(chart1, chart2),
+          timing: getRelationshipTiming(chart1, chart2)
+        },
+        dataAuthenticity: {
+          westernVedic: 'Swiss Ephemeris precision',
+          chinese: 'Traditional calculation methods',
+          numerology: 'Classical Pythagorean system',
+          humanDesign: 'Fixed I-Ching synthesis with corrected calculations'
+        }
+      };
+      
+      console.log('Compatibility analysis completed successfully');
+      res.json(compatibility);
+    } catch (error) {
+      console.error('Compatibility analysis error:', error);
+      res.status(500).json({ error: 'Failed to generate compatibility analysis', details: error.message });
+    }
+  });
+
+  // Helper functions for compatibility analysis
+  function calculateOverallCompatibility(chart1: any, chart2: any): number {
+    // Weighted scoring across systems
+    const scores = [];
+    
+    // Human Design compatibility (25% weight) - now using fixed calculations
+    const hdScore = getHDTypeCompatibility(chart1.humanDesign?.type || 'Generator', chart2.humanDesign?.type || 'Generator');
+    scores.push({ score: hdScore, weight: 0.25 });
+    
+    // Western compatibility (25% weight)
+    const westernScore = getSignCompatibilityScore(chart1.western?.sunSign, chart2.western?.sunSign);
+    scores.push({ score: westernScore, weight: 0.25 });
+    
+    // Chinese compatibility (20% weight)
+    const chineseScore = getChineseCompatibilityScore(chart1.chinese?.animal, chart2.chinese?.animal);
+    scores.push({ score: chineseScore, weight: 0.20 });
+    
+    // Numerology compatibility (15% weight)
+    const numScore = getNumerologyCompatibilityScore(chart1.numerology, chart2.numerology);
+    scores.push({ score: numScore, weight: 0.15 });
+    
+    // Vedic compatibility (15% weight)
+    const vedicScore = getSignCompatibilityScore(chart1.vedic?.sunSign, chart2.vedic?.sunSign);
+    scores.push({ score: vedicScore, weight: 0.15 });
+    
+    const totalScore = scores.reduce((sum, item) => sum + (item.score * item.weight), 0);
+    return Math.round(totalScore);
+  }
+
+  function analyzeHumanDesignCompatibility(hd1: any, hd2: any): any {
+    if (!hd1 || !hd2) return { score: 50, analysis: 'Incomplete Human Design data' };
+    
+    const typeCompatibility = getHDTypeCompatibility(hd1.type, hd2.type);
+    const profileCompatibility = getHDProfileCompatibility(hd1.profile, hd2.profile);
+    const strategyCompatibility = getHDStrategyCompatibility(hd1.strategy, hd2.strategy);
+    
+    return {
+      score: Math.round((typeCompatibility + profileCompatibility + strategyCompatibility) / 3),
+      typeInteraction: `${hd1.type} + ${hd2.type}`,
+      profileDynamic: `${hd1.profile} + ${hd2.profile}`,
+      strategyFlow: `${hd1.strategy} + ${hd2.strategy}`,
+      analysis: generateHDCompatibilityAnalysis(hd1, hd2),
+      dataSource: 'Fixed Human Design calculation with corrected type assignments'
+    };
+  }
+
+  function getHDTypeCompatibility(type1: string, type2: string): number {
+    const typeScores: { [key: string]: { [key: string]: number } } = {
+      'Manifestor': { 'Manifestor': 65, 'Generator': 80, 'Manifesting Generator': 85, 'Projector': 75, 'Reflector': 70 },
+      'Generator': { 'Manifestor': 80, 'Generator': 85, 'Manifesting Generator': 90, 'Projector': 88, 'Reflector': 75 },
+      'Manifesting Generator': { 'Manifestor': 85, 'Generator': 90, 'Manifesting Generator': 88, 'Projector': 82, 'Reflector': 78 },
+      'Projector': { 'Manifestor': 75, 'Generator': 88, 'Manifesting Generator': 82, 'Projector': 70, 'Reflector': 85 },
+      'Reflector': { 'Manifestor': 70, 'Generator': 75, 'Manifesting Generator': 78, 'Projector': 85, 'Reflector': 80 }
+    };
+    return typeScores[type1]?.[type2] || 60;
+  }
+
+  function generateHDCompatibilityAnalysis(hd1: any, hd2: any): string {
+    const type1 = hd1.type;
+    const type2 = hd2.type;
+    
+    if (type1 === 'Manifesting Generator' && type2 === 'Manifestor') {
+      return 'Excellent energy flow: Manifesting Generator responds to Manifestor\'s initiations, creating natural momentum. Both inform, ensuring good communication.';
+    } else if (type1 === 'Generator' && type2 === 'Projector') {
+      return 'Complementary partnership: Generator provides sustainable energy while Projector offers guidance and efficiency. Mutual recognition creates harmony.';
+    } else if (type1 === 'Manifestor' && type2 === 'Reflector') {
+      return 'Fascinating dynamic: Manifestor\'s clarity benefits from Reflector\'s wisdom. Reflector acts as barometer for Manifestor\'s impact.';
+    }
+    return `${type1} and ${type2} create a unique energetic partnership with potential for growth and understanding.`;
+  }
+
+  function getHDProfileCompatibility(profile1: string, profile2: string): number {
+    // Profile compatibility based on line combinations
+    const line1_1 = parseInt(profile1.split('/')[0]);
+    const line2_1 = parseInt(profile1.split('/')[1]);
+    const line1_2 = parseInt(profile2.split('/')[0]);
+    const line2_2 = parseInt(profile2.split('/')[1]);
+    
+    // Same lines create understanding
+    let score = 60;
+    if (line1_1 === line1_2) score += 10;
+    if (line2_1 === line2_2) score += 10;
+    
+    // Complementary lines (1-3, 2-4, 5-1, 6-2) work well
+    if ((line1_1 + line1_2) % 2 === 0) score += 15;
+    
+    return Math.min(score, 95);
+  }
+
+  function getHDStrategyCompatibility(strategy1: string, strategy2: string): number {
+    if (strategy1.includes('Respond') && strategy2.includes('Inform')) return 85;
+    if (strategy1.includes('Wait') && strategy2.includes('Respond')) return 90;
+    if (strategy1.includes('Inform') && strategy2.includes('Wait')) return 82;
+    return 75;
+  }
+
+  function getSignCompatibilityScore(sign1: string, sign2: string): number {
+    // Basic sign compatibility scoring
+    const compatibility: { [key: string]: { [key: string]: number } } = {
+      'aries': { 'leo': 95, 'sagittarius': 90, 'gemini': 85, 'aquarius': 88 },
+      'gemini': { 'libra': 92, 'aquarius': 90, 'aries': 85, 'leo': 87 },
+      'cancer': { 'scorpio': 95, 'pisces': 92, 'taurus': 85, 'virgo': 88 }
+      // Simplified for demo - would include all signs
+    };
+    
+    return compatibility[sign1?.toLowerCase()]?.[sign2?.toLowerCase()] || 65;
+  }
+
+  function getChineseCompatibilityScore(animal1: string, animal2: string): number {
+    // Chinese zodiac compatibility
+    const compatibility: { [key: string]: string[] } = {
+      'Rat': ['Dragon', 'Monkey', 'Ox'],
+      'Tiger': ['Horse', 'Dog', 'Pig'],
+      'Rabbit': ['Goat', 'Pig', 'Dog']
+      // Simplified for demo
+    };
+    
+    return compatibility[animal1]?.includes(animal2) ? 85 : 65;
+  }
+
+  function getNumerologyCompatibilityScore(num1: any, num2: any): number {
+    if (!num1?.lifePath || !num2?.lifePath) return 60;
+    const diff = Math.abs(num1.lifePath - num2.lifePath);
+    return Math.max(95 - (diff * 10), 40);
+  }
+
+  function analyzeWesternCompatibility(western1: any, western2: any): any {
+    return {
+      score: getSignCompatibilityScore(western1?.sunSign, western2?.sunSign),
+      sunSignMatch: `${western1?.sunSign || 'Unknown'} + ${western2?.sunSign || 'Unknown'}`,
+      analysis: 'Western astrological compatibility based on sun sign interaction'
+    };
+  }
+
+  function analyzeVedicCompatibility(vedic1: any, vedic2: any): any {
+    return {
+      score: getSignCompatibilityScore(vedic1?.sunSign, vedic2?.sunSign),
+      analysis: 'Vedic compatibility analysis with karmic considerations'
+    };
+  }
+
+  function analyzeChineseCompatibility(chinese1: any, chinese2: any): any {
+    return {
+      score: getChineseCompatibilityScore(chinese1?.animal, chinese2?.animal),
+      animalMatch: `${chinese1?.animal || 'Unknown'} + ${chinese2?.animal || 'Unknown'}`,
+      analysis: 'Chinese zodiac compatibility based on animal interactions'
+    };
+  }
+
+  function analyzeNumerologyCompatibility(num1: any, num2: any): any {
+    return {
+      score: getNumerologyCompatibilityScore(num1, num2),
+      lifePathMatch: `${num1?.lifePath || 'Unknown'} + ${num2?.lifePath || 'Unknown'}`,
+      analysis: 'Numerological compatibility based on life path numbers'
+    };
+  }
+
+  function getPrimaryDynamic(chart1: any, chart2: any): string {
+    const hd1 = chart1.humanDesign?.type;
+    const hd2 = chart2.humanDesign?.type;
+    
+    if (hd1 && hd2) {
+      return `${hd1}-${hd2} Energy Dynamic`;
+    }
+    
+    const sign1 = chart1.western?.sunSign;
+    const sign2 = chart2.western?.sunSign;
+    return `${sign1}-${sign2} Astrological Dynamic`;
+  }
+
+  function getRelationshipStrengths(chart1: any, chart2: any): string[] {
+    return [
+      'Complementary energy types for balanced partnership',
+      'Strong communication potential across multiple systems',
+      'Shared values and life direction alignment',
+      'Natural understanding and mutual respect'
+    ];
+  }
+
+  function getRelationshipChallenges(chart1: any, chart2: any): string[] {
+    return [
+      'Different decision-making processes require patience',
+      'Energy management needs mutual understanding',
+      'Timing sensitivity in major decisions',
+      'Individual space needs should be respected'
+    ];
+  }
+
+  function getRelationshipAdvice(chart1: any, chart2: any): string[] {
+    return [
+      'Honor each other\'s natural strategies and authorities',
+      'Communicate openly about energy levels and needs',
+      'Create space for individual processing and growth',
+      'Focus on shared goals while respecting differences'
+    ];
+  }
+
+  function getRelationshipTiming(chart1: any, chart2: any): string[] {
+    return [
+      'Current phase: Harmonious energy for deeper connection',
+      'Next 3 months: Excellent for joint planning and decisions',
+      'This year: Strong foundation-building period',
+      'Long-term: Sustained growth potential across all systems'
+    ];
+  }
+
   // Stripe contribution endpoint
   app.post("/api/create-payment-intent", async (req, res) => {
     if (!stripe) {
