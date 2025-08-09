@@ -1,127 +1,117 @@
 import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { wheelTiers, getTierByAmount } from '@/lib/contributionTiers';
+import clsx from 'clsx';
+
+const wheelTiers = [3, 5, 7, 9, 11, 22, 33];
 
 interface CosmicWheelProps {
   onSpinComplete: (amount: number) => void;
 }
 
-export const CosmicWheel: React.FC<CosmicWheelProps> = ({ onSpinComplete }) => {
+const CosmicWheel: React.FC<CosmicWheelProps> = ({ onSpinComplete }) => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [spinResult, setSpinResult] = useState<number | null>(null);
 
   const handleSpin = () => {
     if (isSpinning) return;
-    
     setSpinResult(null);
     setIsSpinning(true);
-    
-    // Generate random spin with multiple rotations
-    const randomRotations = 4 + Math.floor(Math.random() * 4);
+
+    // More rotations for a better visual effect
+    const randomRotations = 5 + Math.floor(Math.random() * 5); 
     const finalAngle = Math.floor(Math.random() * 360);
-    const totalRotation = rotation + (randomRotations * 360) + finalAngle;
+    const totalRotation = (randomRotations * 360) + finalAngle;
     
+    // Set the visual rotation immediately
     setRotation(totalRotation);
 
+    // After the animation, calculate the result based on the final angle
     setTimeout(() => {
       const segmentAngle = 360 / wheelTiers.length;
-      const normalizedAngle = 360 - (totalRotation % 360);
-      const selectedIndex = Math.floor(normalizedAngle / segmentAngle);
+      
+      // The pointer is at the top (270 degrees in SVG's coordinate system).
+      // We need to find which segment lands at the pointer.
+      // The angle of the segment that lands at the top is `(360 - (totalRotation % 360)) % 360`.
+      // We add 270 and normalize to align with SVG's 0-degree point at the right.
+      const landingAngle = (270 + (360 - (totalRotation % 360))) % 360;
+
+      const selectedIndex = Math.floor(landingAngle / segmentAngle);
       const selectedAmount = wheelTiers[selectedIndex];
       
       onSpinComplete(selectedAmount);
       setSpinResult(selectedAmount);
       setIsSpinning(false);
-    }, 4000);
+    }, 4000); // This must match the CSS animation duration
+  };
+
+  const polarToCartesian = (centerX: number, centerY: number, radius: number, angleInDegrees: number) => {
+    const angleInRadians = (angleInDegrees) * Math.PI / 180.0;
+    return {
+      x: centerX + (radius * Math.cos(angleInRadians)),
+      y: centerY + (radius * Math.sin(angleInRadians))
+    };
+  };
+
+  const describeArc = (x: number, y: number, radius: number, startAngle: number, endAngle: number) => {
+    const start = polarToCartesian(x, y, radius, endAngle);
+    const end = polarToCartesian(x, y, radius, startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+    const d = [
+        "M", start.x, start.y, 
+        "A", radius, radius, 0, largeArcFlag, 0, end.x, end.y,
+        "L", x, y,
+        "Z"
+    ].join(" ");
+    return d;       
   };
 
   const segmentAngle = 360 / wheelTiers.length;
 
   return (
-    <div className="text-center p-6 border-b border-border">
-      <h3 className="text-lg font-semibold mb-4 text-primary">Let the Universe Guide You</h3>
-      
-      <div className="relative w-56 h-56 mx-auto mb-4">
+    <div className="text-center p-4 border-b border-border/20">
+      <h3 className="text-lg font-semibold mb-4">Let the Universe Guide You</h3>
+      <div className="relative w-[220px] h-[220px] mx-auto mb-4">
         <div 
-          className="w-full h-full transition-transform duration-[4000ms] ease-out"
-          style={{ 
-            transform: `rotate(${rotation}deg)`,
-            transitionTimingFunction: 'cubic-bezier(0.25, 1, 0.5, 1)'
-          }}
+          className="absolute inset-0 transition-transform duration-[4000ms] ease-[cubic-bezier(0.25,1,0.5,1)]" 
+          style={{ transform: `rotate(${rotation}deg)` }}
         >
           <svg viewBox="0 0 220 220" className="w-full h-full">
-            <defs>
-              <path id="circlePath" d="M 110, 110 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" />
-            </defs>
-            
-            {/* Background circle */}
-            <circle cx="110" cy="110" r="110" fill="var(--warm-charcoal)" />
-            
-            {/* Wheel segments */}
             {wheelTiers.map((tier, index) => {
-              const startAngle = index * segmentAngle;
-              const endAngle = (index + 1) * segmentAngle;
-              const largeArcFlag = segmentAngle > 180 ? 1 : 0;
-              
-              const x1 = 110 + 110 * Math.cos(Math.PI * startAngle / 180);
-              const y1 = 110 + 110 * Math.sin(Math.PI * startAngle / 180);
-              const x2 = 110 + 110 * Math.cos(Math.PI * endAngle / 180);
-              const y2 = 110 + 110 * Math.sin(Math.PI * endAngle / 180);
-              
+              const textAngle = (index * segmentAngle) + (segmentAngle / 2);
+              const textPosition = polarToCartesian(110, 110, 80, textAngle);
               return (
                 <g key={tier}>
                   <path 
-                    d={`M110,110 L${x1},${y1} A110,110 0 ${largeArcFlag},1 ${x2},${y2} z`}
-                    fill={index % 2 === 0 ? 'hsl(30, 8%, 28%)' : 'var(--warm-charcoal)'}
-                    stroke="var(--sage-teal)"
-                    strokeWidth="1"
+                    d={describeArc(110, 110, 110, index * segmentAngle, (index + 1) * segmentAngle)} 
+                    className={clsx(index % 2 === 0 ? 'fill-card' : 'fill-background', 'stroke-muted-foreground/50')} 
                   />
-                  <text>
-                    <textPath 
-                      href="#circlePath" 
-                      startOffset={`${(index * segmentAngle + segmentAngle / 2) / 360 * 100}%`}
-                      className="text-sm font-semibold fill-current"
-                      style={{ 
-                        textAnchor: 'middle',
-                        fill: 'var(--off-white)'
-                      }}
-                    >
-                      ${tier}
-                    </textPath>
+                  <text 
+                    x={textPosition.x} 
+                    y={textPosition.y}
+                    transform={`rotate(${textAngle + 90}, ${textPosition.x}, ${textPosition.y})`}
+                    className="fill-foreground font-semibold text-base" 
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    ${tier}
                   </text>
                 </g>
               );
             })}
           </svg>
         </div>
-        
-        {/* Pointer */}
-        <div 
-          className="absolute top-0 left-1/2 transform -translate-x-1/2 text-2xl"
-          style={{ color: 'var(--primary-accent)' }}
-        >
-          ▼
-        </div>
+        <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 text-primary text-2xl">▼</div>
       </div>
-
-      <Button 
-        onClick={handleSpin} 
-        disabled={isSpinning}
-        className="sanctuary-button disabled:opacity-50 disabled:cursor-not-allowed"
-      >
+      <button onClick={handleSpin} disabled={isSpinning} className="bg-primary text-primary-foreground font-semibold py-2 px-6 rounded-xl disabled:opacity-70">
         {isSpinning ? 'Spinning...' : 'Spin the Wheel of Intention'}
-      </Button>
-
+      </button>
       {spinResult && (
-        <p className="text-muted-foreground text-sm mt-4 font-body">
-          The wheel suggests an energy exchange of{' '}
-          <span className="font-semibold" style={{ color: 'var(--primary-accent)' }}>
-            ${spinResult}
-          </span>
-          . This is just a guide—please choose this or any other amount that feels right for your journey.
+        <p className="text-muted-foreground text-sm mt-4 font-serif">
+          The wheel suggests an energy exchange of <strong className="text-primary">${spinResult}</strong>. This is just a guide—please choose any amount that feels right.
         </p>
       )}
     </div>
   );
 };
+
+export default CosmicWheel;

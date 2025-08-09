@@ -11,6 +11,7 @@ import ChartResults from "@/components/chart-results";
 
 import FeatureHoverCard from "@/components/feature-hover-card";
 import Navigation from "@/components/navigation";
+import HeroSection from "@/components/hero-section";
 import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon, Coffee, Coins, Building2, UserCircle, Award } from "lucide-react";
 import { Link } from "wouter";
 import TorchlightLogo from "@/components/torchlight-logo";
@@ -295,75 +296,32 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section - Match Landing Page Structure */}
+      {/* Hero Section - New Corrected Version */}
       <main className="relative z-10 px-4 pt-8 pb-16">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Headline - Match Landing Page */}
-          <div className="mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight sm:leading-[1.1] tracking-tight font-heading px-2">
-              <span 
-                style={{
-                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)', 
-                  WebkitBackgroundClip: 'text', 
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                Illuminating Your
-              </span>
-              <br />
-              <span 
-                className="block mt-1 sm:mt-2"
-                style={{
-                  color: 'hsl(60, 10%, 96%)',
-                  textShadow: '0 2px 8px rgba(0,0,0,0.3)'
-                }}
-              >
-                Cosmic Blueprint
-              </span>
-            </h1>
+        <div className="max-w-4xl mx-auto">
+          <HeroSection />
             
-            {/* Enhanced subheadline */}
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 font-body px-4" 
-               style={{
-                 color: 'hsl(60, 10%, 96%)', 
-                 opacity: 0.95,
-                 textShadow: '0 1px 4px rgba(0,0,0,0.2)'
-               }}>
-              Authentic ancient wisdom meets modern precision. Discover your complete astrological profile across{" "}
-              <span 
-                className="font-medium"
-                style={{
-                  color: 'var(--primary-accent)',
-                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
-                }}
-              >
-                Western, Vedic, Chinese, Human Design, Numerology, Vaastu, Feng Shui, Color & Gemstone
-              </span> systems with personalized gemstone recommendations based on Vedic traditions.
+          {/* Primary CTA - Expert Recommended Modal Approach */}
+          <div className="text-center mb-8 sm:mb-12">
+            <Button 
+              onClick={() => setShowBirthForm(true)}
+              className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl"
+              style={{
+                background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
+                border: 'none',
+                color: 'white',
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                boxShadow: '0 8px 32px rgba(197, 165, 90, 0.3)'
+              }}
+            >
+              <Stars className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
+              Begin Your Cosmic Journey Now ✨
+            </Button>
+            <p className="text-teal-200/70 text-sm mt-3">
+              Create your complete astrological profile in minutes
             </p>
-            
-            {/* Primary CTA - Expert Recommended Modal Approach */}
-            <div className="text-center mb-8 sm:mb-12">
-              <Button 
-                onClick={() => setShowBirthForm(true)}
-                className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
-                  border: 'none',
-                  color: 'white',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  boxShadow: '0 8px 32px rgba(197, 165, 90, 0.3)'
-                }}
-              >
-                <Stars className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
-                Begin Your Cosmic Journey Now ✨
-              </Button>
-              <p className="text-teal-200/70 text-sm mt-3">
-                Create your complete astrological profile in minutes
-              </p>
-            </div>
           </div>
-
+          
           {/* Core Features Grid - The 4 main sections */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 px-2">
             <FeatureHoverCard
