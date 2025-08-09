@@ -83,15 +83,21 @@ const CosmicWheel: React.FC<CosmicWheelProps> = ({ onSpinComplete }) => {
                 <g key={tier}>
                   <path 
                     d={describeArc(110, 110, 110, index * segmentAngle, (index + 1) * segmentAngle)} 
-                    className={clsx(index % 2 === 0 ? 'fill-card' : 'fill-background', 'stroke-muted-foreground/50')} 
+                    fill={index % 2 === 0 ? '#D4B35B' : '#208B8B'}
+                    stroke="#F5F5DC"
+                    strokeWidth="2"
                   />
                   <text 
                     x={textPosition.x} 
                     y={textPosition.y}
                     transform={`rotate(${textAngle + 90}, ${textPosition.x}, ${textPosition.y})`}
-                    className="fill-foreground font-semibold text-base" 
+                    fill="#FFFFFF"
+                    fontSize="16"
+                    fontWeight="700"
                     textAnchor="middle"
                     dominantBaseline="middle"
+                    stroke="#000000"
+                    strokeWidth="0.5"
                   >
                     ${tier}
                   </text>
