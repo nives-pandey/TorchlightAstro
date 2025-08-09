@@ -26,6 +26,7 @@ export default function Navigation() {
     { path: "/ai-assistant", label: t('nav.ai') },
     { path: "/features", label: "Features" },
     { path: "/pricing", label: "Pricing" },
+    { path: "/sacred-energy-exchange", label: "✨ Sacred Exchange" },
     { path: "/about-astrology", label: t('nav.about') },
     { path: "/astrology-guide", label: "Systems Guide" },
   ];

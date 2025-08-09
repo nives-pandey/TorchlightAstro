@@ -40,6 +40,7 @@ import DemoChart from "@/pages/demo-chart";
 import TimezoneAnalytics from "@/pages/timezone-analytics";
 import AdminDashboard from "@/pages/admin-dashboard";
 import ContributePage from "@/pages/contribute";
+import SacredEnergyExchangePage from "@/pages/sacred-energy-exchange";
 import QuadAIDemo from "@/pages/QuadAIDemo";
 import ComprehensiveReport from "@/pages/ComprehensiveReport";
 import NotFound from "@/pages/not-found";
@@ -106,6 +107,7 @@ function Router() {
         <Route path="/astral-soundtrack" component={AstralSoundtrack} />
         <Route path="/admin" component={AdminDashboard} />
         <Route path="/contribute" component={ContributePage} />
+        <Route path="/sacred-energy-exchange" component={SacredEnergyExchangePage} />
         <Route path="/quad-ai-demo" component={QuadAIDemo} />
         <Route path="/comprehensive-report" component={ComprehensiveReport} />
         <Route component={NotFound} />
