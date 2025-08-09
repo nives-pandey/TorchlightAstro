@@ -12,6 +12,13 @@
   --warm-off-white: hsl(60, 10%, 96%); /* Primary Text *Warm Off-White* */
   --warm-light-gray: hsl(30, 5%, 92%); /* Warm Dividers */
   --warm-gray: hsl(30, 5%, 66%); /* Greige Borders #B0A9A4 - Warm stone */
+
+  /* Global Sanctuary Palette for Enhanced Visibility */
+  --background: hsl(30, 8%, 18%);       /* Warm Charcoal */
+  --primary-accent: hsl(44, 45%, 65%);   /* Polished Gold */
+  --secondary-accent: hsl(180, 25%, 55%); /* Vibrant Teal */
+  --text-primary: hsl(60, 10%, 96%);     /* Off-White */
+  --border-muted: hsl(30, 5%, 66%);     /* Warm Gray ("Greige") */
   
   /* Serene gradient backgrounds - Truly warm and organic */
   --wellness-gradient-1: linear-gradient(135deg, hsl(30, 8%, 18%) 0%, hsl(30, 6%, 20%) 100%);
@@ -102,6 +109,12 @@ body {
   line-height: 1.65;
   letter-spacing: 0.005em;
   font-size: 16px;
+  
+  /* Expert-recommended global visibility enhancements */
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Headings with responsive scaling */
@@ -111,6 +124,9 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
   color: var(--warm-off-white);
   line-height: 1.2;
+  
+  /* Expert-recommended heading visibility */
+  color: var(--text-primary);
 }
 
 h1 {
@@ -130,6 +146,22 @@ h3 {
   font-size: clamp(1rem, 3vw, 1.25rem) !important;
   font-weight: 600;
   margin-bottom: 0.375rem !important;
+}
+
+/* Expert-recommended paragraph and link styling */
+p {
+  color: var(--border-muted);
+  line-height: 1.65;
+}
+
+/* Ensure links are visible and use the interactive color */
+a {
+  color: var(--primary-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* Mobile typography overrides */

@@ -1,33 +1,9 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import EnergyExchange from '@/components/contribution/EnergyExchange';
-import GratitudeCookie from '@/components/contribution/GratitudeCookie';
+import EnergyExchange from '@/components/EnergyExchange';
 import { Sparkles, Heart, Star } from 'lucide-react';
 
 const SacredEnergyExchangePage: React.FC = () => {
-  const [showGratitude, setShowGratitude] = useState(false);
-
-  const handleContributionComplete = () => {
-    setShowGratitude(true);
-  };
-
-  if (showGratitude) {
-    return (
-      <div className="min-h-screen bg-warm-charcoal flex items-center justify-center p-4">
-        <div className="max-w-md mx-auto">
-          <GratitudeCookie />
-          <div className="text-center mt-6">
-            <button 
-              onClick={() => setShowGratitude(false)}
-              className="text-sage-teal hover:text-brushed-gold transition-colors"
-            >
-              ← Return to Sacred Exchange
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-warm-charcoal">
@@ -132,16 +108,6 @@ const SacredEnergyExchangePage: React.FC = () => {
           {/* Right Column - Exchange Interface */}
           <div className="lg:sticky lg:top-8">
             <EnergyExchange />
-            
-            {/* Test Gratitude Button for Demo */}
-            <div className="mt-6 text-center">
-              <button 
-                onClick={handleContributionComplete}
-                className="text-sm text-sage-teal hover:text-brushed-gold transition-colors border border-sage-teal/30 px-4 py-2 rounded-lg"
-              >
-                Preview Gratitude Experience
-              </button>
-            </div>
           </div>
         </div>
       </div>
