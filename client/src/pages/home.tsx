@@ -120,7 +120,7 @@ export default function Home() {
         "27 Nakshatras (lunar mansions) analysis", 
         "Dasha periods for precise timing",
         "Ayurvedic constitution connections",
-        "Spiritual evolution and karma",
+        "Personalized gemstone recommendations",
         "Detailed remedial measures"
       ],
       predictions: [
@@ -128,7 +128,7 @@ export default function Home() {
         "Career and financial prospects", 
         "Health and Ayurvedic guidance",
         "Marriage and relationship timing",
-        "Spiritual practices and remedies"
+        "Gemstone therapy and remedies"
       ],
       route: "/chart"
     },
@@ -338,8 +338,8 @@ export default function Home() {
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
-                Western, Vedic, Chinese & Human Design
-              </span> systems.
+                Western, Vedic, Chinese, Human Design, Numerology, Vaastu, Feng Shui, Tarot, Color & Gemstone
+              </span> systems with personalized gemstone recommendations based on Vedic traditions.
             </p>
             
             {/* Primary CTA - Expert Recommended Modal Approach */}
@@ -553,11 +553,11 @@ export default function Home() {
               <FeatureHoverCard
                 title="Lifestyle Intelligence"
                 status="available"
-                description="Personalized lifestyle recommendations including travel destinations, color therapy, and gemstone guidance."
+                description="Personalized lifestyle recommendations including travel destinations, color therapy, and Vedic-based gemstone guidance."
                 features={[
                   "Travel destination recommendations",
                   "Personalized color therapy",
-                  "Gemstone & crystal guidance",
+                  "Vedic gemstone & crystal guidance",
                   "Feng Shui & Vaastu principles",
                   "Health & wellness insights"
                 ]}
