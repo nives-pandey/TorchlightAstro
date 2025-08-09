@@ -1,7 +1,7 @@
 # Torchlight Astrology Application
 
 ## Overview
-Torchlight is a comprehensive astrology web application providing detailed natal chart analysis, compatibility readings, daily guidance, and personalized recommendations across multiple astrological systems: Western, Vedic, Chinese Zodiac, Human Design, Numerology, Tarot, Color Astrology, Gemstone Guidance, Vaastu, and Feng Shui. Built as a full-stack TypeScript application, it emphasizes authentic astronomical calculations and traditional methodologies. The project aims to offer a unique 10-in-1 platform with educational depth, lifestyle intelligence, and cross-system synthesis, setting it apart from single-system competitors and delivering professional-grade insights.
+Torchlight is a comprehensive astrology web application providing detailed natal chart analysis, compatibility readings, daily guidance, and personalized recommendations across multiple astrological systems: Western, Vedic, Chinese Zodiac, Human Design, Numerology, Color Astrology, Gemstone Guidance, Vaastu, and Feng Shui. Built as a full-stack TypeScript application, it emphasizes authentic astronomical calculations and traditional methodologies. The project aims to offer a unique 10-in-1 platform with educational depth, lifestyle intelligence, and cross-system synthesis, setting it apart from single-system competitors and delivering professional-grade insights.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.

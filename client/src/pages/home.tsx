@@ -338,7 +338,7 @@ export default function Home() {
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
-                Western, Vedic, Chinese, Human Design, Numerology, Vaastu, Feng Shui, Tarot, Color & Gemstone
+                Western, Vedic, Chinese, Human Design, Numerology, Vaastu, Feng Shui, Color & Gemstone
               </span> systems with personalized gemstone recommendations based on Vedic traditions.
             </p>
             
