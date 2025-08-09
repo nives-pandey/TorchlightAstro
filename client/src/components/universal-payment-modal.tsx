@@ -170,12 +170,12 @@ function CryptoPaymentView({
           Send {selectedCrypto.symbol} Payment
         </h3>
         <p className="text-gray-600 dark:text-gray-300">
-          Send exactly <span className="font-bold text-purple-600">${amount} USDT</span> to the address below
+          Send exactly <span className="font-bold text-yellow-600">${amount} USDT</span> to the address below
         </p>
       </div>
 
       {/* Payment Details */}
-      <div className="bg-purple-800/30 p-6 rounded-xl border border-purple-400/50">
+      <div className="bg-purple-800/30 p-6 rounded-xl border border-yellow-500/50">
         <div className="space-y-4">
           {/* Amount */}
           <div className="flex justify-between items-center">
@@ -186,7 +186,7 @@ function CryptoPaymentView({
           {/* Network */}
           <div className="flex justify-between items-center">
             <span className="text-gray-600 dark:text-gray-300">Network:</span>
-            <Badge variant="outline" className="text-purple-600">
+            <Badge variant="outline" className="text-yellow-600">
               {selectedCrypto.network}
             </Badge>
           </div>
@@ -222,7 +222,7 @@ function CryptoPaymentView({
       </div>
 
       {/* QR Code Placeholder */}
-      <div className="bg-slate-800/90 p-8 rounded-xl border-2 border-dashed border-purple-400/50">
+      <div className="bg-slate-800/90 p-8 rounded-xl border-2 border-dashed border-yellow-500/50">
         <div className="text-center space-y-3">
           <QrCode className="w-16 h-16 mx-auto text-gray-400" />
           <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -252,7 +252,7 @@ function CryptoPaymentView({
         <Button variant="outline" onClick={onBack} className="flex-1">
           ← Choose Different Method
         </Button>
-        <Button onClick={onComplete} className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600">
+        <Button onClick={onComplete} className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600">
           I've Sent Payment
         </Button>
       </div>
@@ -341,7 +341,7 @@ export default function UniversalPaymentModal({
           ).map((method) => (
             <Card
               key={method.id}
-              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-purple-400/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
+              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-yellow-500/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
               onClick={() => handleMethodSelect(method.id)}
             >
               <CardContent className="p-4">
@@ -383,7 +383,7 @@ export default function UniversalPaymentModal({
               className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-purple-800/40 backdrop-blur-sm ${
                 crypto.recommended 
                   ? 'border-green-400/50 bg-green-500/20' 
-                  : 'border-purple-400/30 hover:border-purple-300'
+                  : 'border-yellow-500/30 hover:border-purple-300'
               }`}
               onClick={() => {
                 setSelectedCrypto(crypto);
@@ -463,7 +463,7 @@ export default function UniversalPaymentModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-900/95 backdrop-blur-xl border border-purple-400/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
+      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-900/95 backdrop-blur-xl border border-yellow-500/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
         <DialogHeader>
           <DialogTitle className="sr-only">Universal Payment Options</DialogTitle>
         </DialogHeader>

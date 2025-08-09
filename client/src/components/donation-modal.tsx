@@ -46,7 +46,7 @@ const getTriggerMessage = (trigger?: string) => {
       return {
         title: "The Universe Is Speaking to You 🌟",
         subtitle: "Thousands of hours of research brought you this insight",
-        icon: <Star className="w-6 h-6 text-purple-400" />
+        icon: <Star className="w-6 h-6 text-yellow-500" />
       };
     case 'time_spent':
       return {
@@ -77,7 +77,7 @@ const donationTiers = [
     label: "Wisdom Keeper",
     description: "Supports volunteer researchers",
     icon: <BookOpen className="w-4 h-4" />,
-    color: "from-purple-400 to-pink-400"
+    color: "from-yellow-500 to-pink-400"
   },
   {
     amount: 50,
@@ -98,7 +98,7 @@ const donationTiers = [
     label: "Universal Guide",
     description: "Supports expert astrological research",
     icon: <Target className="w-4 h-4" />,
-    color: "from-indigo-400 to-purple-400"
+    color: "from-indigo-400 to-yellow-500"
   },
   {
     amount: 500,
@@ -159,12 +159,12 @@ function PaymentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-purple-800/30 p-4 rounded-xl border border-purple-400/50">
+      <div className="bg-purple-800/30 p-4 rounded-xl border border-yellow-500/50">
         <div className="text-center mb-4">
-          <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+          <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-500">
             ${amount}
           </div>
-          <div className="text-sm text-purple-600/80 dark:text-purple-400/80">
+          <div className="text-sm text-yellow-600/80 dark:text-yellow-500/80">
             Your contribution makes ancient wisdom accessible
           </div>
         </div>
@@ -188,7 +188,7 @@ function PaymentForm({
         <Button
           type="submit"
           disabled={!stripe || isLoading}
-          className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
         >
           {isLoading ? "Processing..." : `Contribute $${amount}`}
         </Button>
@@ -269,7 +269,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
           {triggerMessage.icon}
         </div>
         <div>
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-600 to-pink-600 bg-clip-text text-transparent">
             {triggerMessage.title}
           </h2>
           <p className="text-purple-200 mt-2">
@@ -281,8 +281,8 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
       {/* Impact Statistics */}
       <div className="grid grid-cols-2 gap-4">
         {impactStats.map((stat, index) => (
-          <div key={index} className="text-center p-3 bg-gradient-to-br from-purple-800/20 to-pink-800/20 rounded-xl border border-purple-400/30">
-            <div className="flex justify-center text-purple-400 mb-1">
+          <div key={index} className="text-center p-3 bg-gradient-to-br from-purple-800/20 to-pink-800/20 rounded-xl border border-yellow-500/30">
+            <div className="flex justify-center text-yellow-500 mb-1">
               {stat.icon}
             </div>
             <div className="font-bold text-lg text-purple-200">
@@ -296,7 +296,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
       </div>
 
       {/* Mission Statement */}
-      <div className="bg-gradient-to-r from-purple-800/20 to-pink-800/20 p-6 rounded-xl border border-purple-400/30">
+      <div className="bg-gradient-to-r from-purple-800/20 to-pink-800/20 p-6 rounded-xl border border-yellow-500/30">
         <div className="text-center space-y-3">
           <div className="text-purple-200 font-semibold">
             Our Sacred Mission
@@ -320,7 +320,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
         </Button>
         <Button
           onClick={() => setStep('amount')}
-          className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
         >
           Light the Way
         </Button>
@@ -384,7 +384,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
           <Button
             onClick={handleCustomAmount}
             disabled={!customAmount || parseFloat(customAmount) < 1}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+            className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
           >
             Contribute
           </Button>

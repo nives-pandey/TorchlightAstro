@@ -138,7 +138,7 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                 key={i}
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                   i === step 
-                    ? 'bg-purple-500 text-white' 
+                    ? 'bg-yellow-600 text-white' 
                     : i < step 
                     ? 'bg-green-500 text-white' 
                     : 'bg-gray-600 text-gray-300'
@@ -182,7 +182,7 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
               </div>
 
               <div className="flex justify-end">
-                <Button onClick={handleNext} className="cosmic-button">
+                <Button onClick={handleNext} className="sanctuary-button">
                   Next <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -251,7 +251,7 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                 <Button variant="outline" onClick={handlePrev} className="bg-white/10 border-white/20 text-white">
                   <ArrowLeft className="mr-2 h-4 w-4" /> Back
                 </Button>
-                <Button onClick={handleNext} className="cosmic-button">
+                <Button onClick={handleNext} className="sanctuary-button">
                   Next <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -296,7 +296,7 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
                 <Button 
                   onClick={handleSubmit} 
                   disabled={isSubmitting}
-                  className="cosmic-button"
+                  className="sanctuary-button"
                 >
                   {isSubmitting ? (
                     <>

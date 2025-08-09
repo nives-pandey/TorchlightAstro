@@ -64,7 +64,7 @@ export default function BirthFormPage() {
   if (submitted) {
     return (
       <div className="min-h-screen bg-cosmic-gradient flex items-center justify-center p-6">
-        <Card className="cosmic-card max-w-md mx-auto text-center">
+        <Card className="sanctuary-card max-w-md mx-auto text-center">
           <CardContent className="pt-8 pb-8">
             <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="h-8 w-8 text-white" />
@@ -74,9 +74,9 @@ export default function BirthFormPage() {
               All required information has been confirmed and your comprehensive analysis is being prepared.
             </p>
             <div className="flex justify-center space-x-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-              <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
             </div>
             <p className="text-sm text-gray-400 mt-4">Redirecting to your analysis...</p>
           </CardContent>
@@ -88,7 +88,7 @@ export default function BirthFormPage() {
   return (
     <div className="min-h-screen bg-cosmic-gradient">
       {/* Header */}
-      <header className="border-b border-purple-500/20 bg-black/20 backdrop-blur-sm">
+      <header className="border-b border-yellow-600/20 bg-black/20 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Button
@@ -101,7 +101,7 @@ export default function BirthFormPage() {
               Back
             </Button>
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-purple-400 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center">
                 <Stars className="h-4 w-4 text-white" />
               </div>
               <h1 className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
@@ -109,7 +109,7 @@ export default function BirthFormPage() {
               </h1>
             </div>
           </div>
-          <Badge className="bg-purple-600/20 text-purple-300 border-purple-400/30">
+          <Badge className="bg-yellow-600/20 text-purple-300 border-yellow-500/30">
             Birth Data Collection
           </Badge>
         </div>
@@ -129,7 +129,7 @@ export default function BirthFormPage() {
           </div>
 
           {/* Requirements Notice */}
-          <Card className="cosmic-card mb-8">
+          <Card className="sanctuary-card mb-8">
             <CardHeader>
               <CardTitle className="text-orange-400 flex items-center">
                 <CheckCircle className="mr-2 h-5 w-5" />
@@ -159,7 +159,7 @@ export default function BirthFormPage() {
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-purple-900/20 border border-purple-500/30 rounded-lg">
+              <div className="mt-6 p-4 bg-purple-900/20 border border-yellow-600/30 rounded-lg">
                 <p className="text-purple-200 text-sm">
                   <strong>Accuracy Notice:</strong> Even small errors in birth time (±4 minutes) or location 
                   can significantly affect your astrological analysis. Please verify all information with 
@@ -176,7 +176,7 @@ export default function BirthFormPage() {
           />
 
           {/* Security Notice */}
-          <Card className="cosmic-card mt-8">
+          <Card className="sanctuary-card mt-8">
             <CardContent className="pt-6">
               <div className="text-center">
                 <h4 className="font-medium text-green-400 mb-2">Privacy & Security</h4>

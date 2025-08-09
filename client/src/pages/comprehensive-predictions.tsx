@@ -335,7 +335,7 @@ export default function ComprehensivePredictions() {
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return "var(--cosmic-gold)";
+    if (score >= 80) return "var(--brushed-gold)";
     if (score >= 70) return "#4ADE80";
     if (score >= 60) return "#FCD34D";
     return "#F87171";
@@ -353,11 +353,11 @@ export default function ComprehensivePredictions() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-4" style={{color: 'var(--cosmic-lavender)'}}>
-            <Star className="w-8 h-8 inline-block mr-3" style={{color: 'var(--cosmic-gold)'}} />
+          <h1 className="text-3xl font-bold mb-4" style={{color: 'var(--sage-teal)'}}>
+            <Star className="w-8 h-8 inline-block mr-3" style={{color: 'var(--brushed-gold)'}} />
             Comprehensive Predictions & Analysis
           </h1>
-          <p className="text-lg max-w-4xl mx-auto" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+          <p className="text-lg max-w-4xl mx-auto" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
             Past reflections, current guidance, and future insights from all five astrological systems
           </p>
         </div>
@@ -374,8 +374,8 @@ export default function ComprehensivePredictions() {
                 className="capitalize"
                 style={{
                   background: selectedSystem === system ? 'var(--cosmic-gradient-2)' : 'transparent',
-                  borderColor: 'var(--cosmic-purple)',
-                  color: 'var(--cosmic-lavender)'
+                  borderColor: 'var(--sage-teal)',
+                  color: 'var(--sage-teal)'
                 }}
               >
                 {system}
@@ -388,33 +388,33 @@ export default function ComprehensivePredictions() {
         <div className="grid lg:grid-cols-2 gap-6 mb-8">
           {filteredPredictions.map((prediction, index) => (
             <div key={index}>
-              <Card className="h-full border-2" style={{borderColor: 'var(--cosmic-purple)', background: 'var(--cosmic-indigo)'}}>
+              <Card className="h-full border-2" style={{borderColor: 'var(--sage-teal)', background: 'var(--cosmic-indigo)'}}>
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <CardTitle style={{color: 'var(--cosmic-lavender)'}}>{prediction.system} Astrology</CardTitle>
-                    <Badge style={{background: 'var(--cosmic-gold)', color: 'var(--cosmic-navy)'}}>
+                    <CardTitle style={{color: 'var(--sage-teal)'}}>{prediction.system} Astrology</CardTitle>
+                    <Badge style={{background: 'var(--brushed-gold)', color: 'var(--sanctuary-navy)'}}>
                       {prediction.accuracy}% Accuracy
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <Tabs defaultValue="current" className="w-full">
-                    <TabsList className="grid w-full grid-cols-3 mb-4" style={{background: 'var(--cosmic-navy)'}}>
-                      <TabsTrigger value="past" style={{color: 'var(--cosmic-lavender)'}}>Past</TabsTrigger>
-                      <TabsTrigger value="current" style={{color: 'var(--cosmic-lavender)'}}>Current</TabsTrigger>
-                      <TabsTrigger value="future" style={{color: 'var(--cosmic-lavender)'}}>Future</TabsTrigger>
+                    <TabsList className="grid w-full grid-cols-3 mb-4" style={{background: 'var(--sanctuary-navy)'}}>
+                      <TabsTrigger value="past" style={{color: 'var(--sage-teal)'}}>Past</TabsTrigger>
+                      <TabsTrigger value="current" style={{color: 'var(--sage-teal)'}}>Current</TabsTrigger>
+                      <TabsTrigger value="future" style={{color: 'var(--sage-teal)'}}>Future</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="past" className="space-y-4">
                       <div>
-                        <h4 className="font-semibold mb-2" style={{color: 'var(--cosmic-gold)'}}>Past Year Reflection:</h4>
-                        <p className="text-sm mb-3" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+                        <h4 className="font-semibold mb-2" style={{color: 'var(--brushed-gold)'}}>Past Year Reflection:</h4>
+                        <p className="text-sm mb-3" style={{color: 'var(--sage-teal)', opacity: 0.9}}>
                           {prediction.pastReflection.overview}
                         </p>
                         <div className="space-y-2">
                           {prediction.pastReflection.majorEvents.map((event, idx) => (
-                            <div key={idx} className="flex items-start gap-2 text-sm" style={{color: 'var(--cosmic-lavender)'}}>
-                              <CheckCircle className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: 'var(--cosmic-gold)'}} />
+                            <div key={idx} className="flex items-start gap-2 text-sm" style={{color: 'var(--sage-teal)'}}>
+                              <CheckCircle className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: 'var(--brushed-gold)'}} />
                               {event}
                             </div>
                           ))}
@@ -424,18 +424,18 @@ export default function ComprehensivePredictions() {
 
                     <TabsContent value="current" className="space-y-4">
                       <div>
-                        <h4 className="font-semibold mb-2" style={{color: 'var(--cosmic-gold)'}}>Current Guidance:</h4>
-                        <p className="text-sm mb-3" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+                        <h4 className="font-semibold mb-2" style={{color: 'var(--brushed-gold)'}}>Current Guidance:</h4>
+                        <p className="text-sm mb-3" style={{color: 'var(--sage-teal)', opacity: 0.9}}>
                           {prediction.currentGuidance.overview}
                         </p>
                         <div className="grid grid-cols-1 gap-4">
                           <div>
-                            <h5 className="text-sm font-medium mb-2 flex items-center gap-2" style={{color: 'var(--cosmic-gold)'}}>
+                            <h5 className="text-sm font-medium mb-2 flex items-center gap-2" style={{color: 'var(--brushed-gold)'}}>
                               <TrendingUp className="w-3 h-3" />
                               Opportunities:
                             </h5>
                             {prediction.currentGuidance.opportunities.map((opp, idx) => (
-                              <p key={idx} className="text-xs mb-1" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                              <p key={idx} className="text-xs mb-1" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                                 • {opp}
                               </p>
                             ))}
@@ -446,7 +446,7 @@ export default function ComprehensivePredictions() {
                               Challenges:
                             </h5>
                             {prediction.currentGuidance.challenges.map((challenge, idx) => (
-                              <p key={idx} className="text-xs mb-1" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                              <p key={idx} className="text-xs mb-1" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                                 • {challenge}
                               </p>
                             ))}
@@ -457,16 +457,16 @@ export default function ComprehensivePredictions() {
 
                     <TabsContent value="future" className="space-y-4">
                       <div>
-                        <h4 className="font-semibold mb-2" style={{color: 'var(--cosmic-gold)'}}>Future Outlook:</h4>
-                        <p className="text-sm mb-3" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+                        <h4 className="font-semibold mb-2" style={{color: 'var(--brushed-gold)'}}>Future Outlook:</h4>
+                        <p className="text-sm mb-3" style={{color: 'var(--sage-teal)', opacity: 0.9}}>
                           {prediction.futureOutlook.overview}
                         </p>
                         <div className="space-y-3">
                           <div>
-                            <h5 className="text-sm font-medium mb-1" style={{color: 'var(--cosmic-gold)'}}>Key Dates:</h5>
+                            <h5 className="text-sm font-medium mb-1" style={{color: 'var(--brushed-gold)'}}>Key Dates:</h5>
                             <div className="flex flex-wrap gap-1">
                               {prediction.futureOutlook.keyDates.map((date, idx) => (
-                                <Badge key={idx} variant="outline" className="text-xs" style={{borderColor: 'var(--cosmic-gold)', color: 'var(--cosmic-gold)'}}>
+                                <Badge key={idx} variant="outline" className="text-xs" style={{borderColor: 'var(--brushed-gold)', color: 'var(--brushed-gold)'}}>
                                   {date}
                                 </Badge>
                               ))}
@@ -479,20 +479,20 @@ export default function ComprehensivePredictions() {
 
                   {/* Life Areas Scores */}
                   <div className="mt-6 space-y-3">
-                    <h4 className="font-semibold" style={{color: 'var(--cosmic-gold)'}}>Life Areas Assessment:</h4>
+                    <h4 className="font-semibold" style={{color: 'var(--brushed-gold)'}}>Life Areas Assessment:</h4>
                     {Object.entries(prediction.lifeAreas).map(([area, data]) => (
                       <div key={area} className="space-y-1">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
                             {getLifeAreaIcon(area)}
-                            <span className="text-sm capitalize" style={{color: 'var(--cosmic-lavender)'}}>{area}</span>
+                            <span className="text-sm capitalize" style={{color: 'var(--sage-teal)'}}>{area}</span>
                           </div>
                           <span className="text-sm font-medium" style={{color: getScoreColor(data.score)}}>
                             {data.score}%
                           </span>
                         </div>
                         <Progress value={data.score} className="h-2" />
-                        <p className="text-xs" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                        <p className="text-xs" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                           {data.insight}
                         </p>
                       </div>
@@ -507,34 +507,34 @@ export default function ComprehensivePredictions() {
         {/* Comprehensive Report */}
         {selectedSystem === "all" && (
           <div>
-            <Card className="border-2" style={{borderColor: 'var(--cosmic-gold)', background: 'var(--cosmic-indigo)'}}>
+            <Card className="border-2" style={{borderColor: 'var(--brushed-gold)', background: 'var(--cosmic-indigo)'}}>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2" style={{color: 'var(--cosmic-gold)'}}>
+                <CardTitle className="flex items-center gap-2" style={{color: 'var(--brushed-gold)'}}>
                   <Star className="w-6 h-6" />
                   Cross-System Comprehensive Report
                 </CardTitle>
-                <CardDescription style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                <CardDescription style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                   Synthesis of all five astrological traditions
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <h3 className="font-semibold mb-3" style={{color: 'var(--cosmic-gold)'}}>Overall Consensus</h3>
-                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+                  <h3 className="font-semibold mb-3" style={{color: 'var(--brushed-gold)'}}>Overall Consensus</h3>
+                  <p className="text-sm" style={{color: 'var(--sage-teal)', opacity: 0.9}}>
                     {comprehensiveReport.consensus}
                   </p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="font-semibold mb-3 flex items-center gap-2" style={{color: 'var(--cosmic-gold)'}}>
+                    <h3 className="font-semibold mb-3 flex items-center gap-2" style={{color: 'var(--brushed-gold)'}}>
                       <CheckCircle className="w-4 h-4" />
                       Common Themes
                     </h3>
                     <ul className="space-y-2">
                       {comprehensiveReport.commonalities.map((item, idx) => (
-                        <li key={idx} className="text-sm flex items-start gap-2" style={{color: 'var(--cosmic-lavender)'}}>
-                          <Star className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: 'var(--cosmic-gold)'}} />
+                        <li key={idx} className="text-sm flex items-start gap-2" style={{color: 'var(--sage-teal)'}}>
+                          <Star className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: 'var(--brushed-gold)'}} />
                           {item}
                         </li>
                       ))}
@@ -542,13 +542,13 @@ export default function ComprehensivePredictions() {
                   </div>
 
                   <div>
-                    <h3 className="font-semibold mb-3 flex items-center gap-2" style={{color: 'var(--cosmic-gold)'}}>
+                    <h3 className="font-semibold mb-3 flex items-center gap-2" style={{color: 'var(--brushed-gold)'}}>
                       <TrendingDown className="w-4 h-4" />
                       System Differences
                     </h3>
                     <ul className="space-y-2">
                       {comprehensiveReport.differences.map((item, idx) => (
-                        <li key={idx} className="text-sm flex items-start gap-2" style={{color: 'var(--cosmic-lavender)'}}>
+                        <li key={idx} className="text-sm flex items-start gap-2" style={{color: 'var(--sage-teal)'}}>
                           <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: '#F87171'}} />
                           {item}
                         </li>
@@ -558,12 +558,12 @@ export default function ComprehensivePredictions() {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold mb-3" style={{color: 'var(--cosmic-gold)'}}>Key Recommendations</h3>
+                  <h3 className="font-semibold mb-3" style={{color: 'var(--brushed-gold)'}}>Key Recommendations</h3>
                   <div className="grid gap-2">
                     {comprehensiveReport.keyRecommendations.map((rec, idx) => (
-                      <div key={idx} className="flex items-start gap-2 p-3 rounded" style={{background: 'var(--cosmic-navy)'}}>
-                        <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{color: 'var(--cosmic-gold)'}} />
-                        <span className="text-sm" style={{color: 'var(--cosmic-lavender)'}}>{rec}</span>
+                      <div key={idx} className="flex items-start gap-2 p-3 rounded" style={{background: 'var(--sanctuary-navy)'}}>
+                        <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" style={{color: 'var(--brushed-gold)'}} />
+                        <span className="text-sm" style={{color: 'var(--sage-teal)'}}>{rec}</span>
                       </div>
                     ))}
                   </div>

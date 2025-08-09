@@ -255,7 +255,7 @@ export default function LifestyleIntelligence() {
 
   const tabConfig = [
     { id: "travel", name: "Travel", icon: <Plane className="h-4 w-4" />, color: "bg-blue-500" },
-    { id: "colors", name: "Colors", icon: <Palette className="h-4 w-4" />, color: "bg-purple-500" },
+    { id: "colors", name: "Colors", icon: <Palette className="h-4 w-4" />, color: "bg-yellow-600" },
     { id: "career", name: "Career", icon: <Briefcase className="h-4 w-4" />, color: "bg-green-500" },
     { id: "wellness", name: "Wellness", icon: <Dumbbell className="h-4 w-4" />, color: "bg-red-500" },
     { id: "timing", name: "Timing", icon: <Calendar className="h-4 w-4" />, color: "bg-yellow-500" }
@@ -268,17 +268,17 @@ export default function LifestyleIntelligence() {
   if (!userProfile) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center">
-        <Card className="bg-black/40 border-purple-500/30 max-w-md mx-4">
+        <Card className="bg-black/40 border-yellow-600/30 max-w-md mx-4">
           <CardContent className="text-center py-12">
-            <MapPin className="h-16 w-16 mx-auto text-purple-400 mb-4" />
+            <MapPin className="h-16 w-16 mx-auto text-yellow-500 mb-4" />
             <h3 className="text-xl font-semibold text-purple-300 mb-2">
               Create Your Chart First
             </h3>
-            <p className="text-purple-400 mb-6">
+            <p className="text-yellow-500 mb-6">
               Generate your birth chart to receive personalized lifestyle intelligence based on your complete astrological profile.
             </p>
             <Link href="/home">
-              <Button className="bg-purple-600 hover:bg-purple-700">
+              <Button className="bg-yellow-600 hover:bg-purple-700">
                 Create Chart
               </Button>
             </Link>
@@ -291,22 +291,22 @@ export default function LifestyleIntelligence() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       {/* Header */}
-      <div className="border-b border-purple-500/20 bg-black/20 backdrop-blur-sm">
+      <div className="border-b border-yellow-600/20 bg-black/20 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="p-2 bg-purple-500/20 rounded-lg">
-                <TrendingUp className="h-8 w-8 text-purple-400" />
+              <div className="p-2 bg-yellow-600/20 rounded-lg">
+                <TrendingUp className="h-8 w-8 text-yellow-500" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
                   Lifestyle Intelligence
                 </h1>
                 <p className="text-purple-300">Personalized guidance for optimal living</p>
               </div>
             </div>
             <Link href="/home">
-              <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20">
+              <Button variant="outline" className="border-yellow-600/30 text-purple-300 hover:bg-yellow-600/20">
                 <Home className="h-4 w-4 mr-2" />
                 Home
               </Button>
@@ -317,7 +317,7 @@ export default function LifestyleIntelligence() {
 
       <div className="container mx-auto px-4 py-8">
         {/* Profile Summary */}
-        <Card className="bg-black/40 border-purple-500/30 mb-8">
+        <Card className="bg-black/40 border-yellow-600/30 mb-8">
           <CardHeader>
             <CardTitle className="text-purple-300 flex items-center">
               <Star className="h-5 w-5 mr-2" />
@@ -327,25 +327,25 @@ export default function LifestyleIntelligence() {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
-                <p className="text-sm text-purple-400">Western Sign</p>
+                <p className="text-sm text-yellow-500">Western Sign</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.western?.sign || 'Unknown'}
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-purple-400">Element</p>
+                <p className="text-sm text-yellow-500">Element</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.western?.element || 'Unknown'}
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-purple-400">Chinese Animal</p>
+                <p className="text-sm text-yellow-500">Chinese Animal</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.chinese?.animal || 'Unknown'}
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-purple-400">Life Path</p>
+                <p className="text-sm text-yellow-500">Life Path</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.numerology?.lifePath || 'Unknown'}
                 </p>
@@ -356,12 +356,12 @@ export default function LifestyleIntelligence() {
 
         {/* Navigation Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5 bg-black/40 border-purple-500/30">
+          <TabsList className="grid w-full grid-cols-5 bg-black/40 border-yellow-600/30">
             {tabConfig.map((tab) => (
               <TabsTrigger 
                 key={tab.id} 
                 value={tab.id}
-                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-purple-300"
+                className="data-[state=active]:bg-yellow-600 data-[state=active]:text-white text-purple-300"
               >
                 <div className="flex items-center space-x-2">
                   {tab.icon}
@@ -376,7 +376,7 @@ export default function LifestyleIntelligence() {
             <TabsContent key={tab.id} value={tab.id} className="mt-6">
               <div className="space-y-6">
                 {getRecommendationsForTab(tab.id).map((rec, index) => (
-                  <Card key={index} className="bg-black/40 border-purple-500/30">
+                  <Card key={index} className="bg-black/40 border-yellow-600/30">
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-xl text-purple-300 flex items-center">
@@ -389,16 +389,16 @@ export default function LifestyleIntelligence() {
                           </Badge>
                         </div>
                       </div>
-                      <p className="text-purple-400">{rec.description}</p>
+                      <p className="text-yellow-500">{rec.description}</p>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       {/* Reasoning */}
-                      <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                      <div className="p-4 bg-yellow-600/10 border border-yellow-600/30 rounded-lg">
                         <div className="flex items-start space-x-2">
-                          <Info className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                          <Info className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
                           <div>
                             <h4 className="text-purple-300 font-semibold mb-1">Why This Works For You</h4>
-                            <p className="text-purple-400 text-sm">{rec.reasoning}</p>
+                            <p className="text-yellow-500 text-sm">{rec.reasoning}</p>
                           </div>
                         </div>
                       </div>
@@ -412,7 +412,7 @@ export default function LifestyleIntelligence() {
                         <div className="space-y-2">
                           {rec.actionItems.map((action, actionIndex) => (
                             <div key={actionIndex} className="flex items-start space-x-3">
-                              <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
                               <p className="text-purple-300 text-sm">{action}</p>
                             </div>
                           ))}
@@ -421,8 +421,8 @@ export default function LifestyleIntelligence() {
 
                       {/* Timeframe */}
                       <div className="flex items-center space-x-2 text-sm">
-                        <Clock className="h-4 w-4 text-purple-400" />
-                        <span className="text-purple-400">Timeframe:</span>
+                        <Clock className="h-4 w-4 text-yellow-500" />
+                        <span className="text-yellow-500">Timeframe:</span>
                         <span className="text-purple-300">{rec.timeframe}</span>
                       </div>
                     </CardContent>
@@ -430,15 +430,15 @@ export default function LifestyleIntelligence() {
                 ))}
 
                 {getRecommendationsForTab(tab.id).length === 0 && (
-                  <Card className="bg-black/40 border-purple-500/30">
+                  <Card className="bg-black/40 border-yellow-600/30">
                     <CardContent className="text-center py-12">
-                      <div className="text-purple-400 mb-4">
+                      <div className="text-yellow-500 mb-4">
                         {tab.icon}
                       </div>
                       <p className="text-purple-300">
                         Generating personalized {tab.name.toLowerCase()} recommendations...
                       </p>
-                      <p className="text-purple-400 text-sm mt-2">
+                      <p className="text-yellow-500 text-sm mt-2">
                         More detailed guidance will be available as we enhance your profile.
                       </p>
                     </CardContent>
@@ -450,7 +450,7 @@ export default function LifestyleIntelligence() {
         </Tabs>
 
         {/* Quick Stats */}
-        <Card className="bg-black/40 border-purple-500/30 mt-8">
+        <Card className="bg-black/40 border-yellow-600/30 mt-8">
           <CardHeader>
             <CardTitle className="text-purple-300">Recommendation Summary</CardTitle>
           </CardHeader>
@@ -467,10 +467,10 @@ export default function LifestyleIntelligence() {
                     <div className="flex items-center justify-center mb-2">
                       {tab.icon}
                     </div>
-                    <p className="text-sm text-purple-400">{tab.name}</p>
+                    <p className="text-sm text-yellow-500">{tab.name}</p>
                     <p className="text-lg font-semibold text-purple-300">{count} tips</p>
                     {avgConfidence > 0 && (
-                      <p className="text-xs text-purple-400">{avgConfidence}% avg confidence</p>
+                      <p className="text-xs text-yellow-500">{avgConfidence}% avg confidence</p>
                     )}
                   </div>
                 );

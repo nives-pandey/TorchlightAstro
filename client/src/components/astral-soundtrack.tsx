@@ -273,7 +273,7 @@ export default function AstralSoundtrack() {
       'Water-Fire': 'bg-gradient-to-r from-cyan-500/20 to-red-500/20 text-red-300 border-red-500/30',
       'Water-Air': 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-blue-300 border-blue-500/30'
     };
-    return colors[element] || 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+    return colors[element] || 'bg-yellow-600/20 text-purple-300 border-yellow-600/30';
   };
 
   return (
@@ -284,7 +284,7 @@ export default function AstralSoundtrack() {
           {/* Back Navigation */}
           <div className="flex items-center gap-4 mb-6 px-4">
             <Link href="/">
-              <Button variant="ghost" className="text-purple-300 hover:text-white hover:bg-purple-500/20">
+              <Button variant="ghost" className="text-purple-300 hover:text-white hover:bg-yellow-600/20">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
               </Button>
@@ -293,7 +293,7 @@ export default function AstralSoundtrack() {
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8 px-4">
           <h1 className="mobile-heading text-2xl sm:text-4xl font-bold text-white mb-2 flex items-center justify-center gap-3">
-            <Music className="h-8 w-8 sm:h-10 sm:w-10 text-purple-400" />
+            <Music className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-500" />
             ✨ Astral Soundtrack Generator
           </h1>
           <p className="mobile-text text-purple-200 sm:text-lg">
@@ -329,7 +329,7 @@ export default function AstralSoundtrack() {
               <div className="space-y-2">
                 <p className="text-sm text-purple-200">Current Cosmic Weather</p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                  <Badge className="bg-yellow-600/20 text-purple-300 border-yellow-600/30">
                     {mockSoundtrackData.currentTransits.moonPhase}
                   </Badge>
                   <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30">
@@ -370,7 +370,7 @@ export default function AstralSoundtrack() {
               <div className="flex items-center gap-4 mb-4">
                 <Button
                   onClick={togglePlayPause}
-                  className="mobile-button w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                  className="mobile-button w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
                 >
                   {isPlaying ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="h-5 w-5 sm:h-6 sm:w-6" />}
                 </Button>
@@ -442,7 +442,7 @@ export default function AstralSoundtrack() {
                 <TabsTrigger 
                   key={key} 
                   value={key}
-                  className="mobile-button text-xs sm:text-sm flex items-center gap-2 data-[state=active]:bg-purple-600 data-[state=active]:text-white"
+                  className="mobile-button text-xs sm:text-sm flex items-center gap-2 data-[state=active]:bg-yellow-600 data-[state=active]:text-white"
                 >
                   <Icon className="h-4 w-4" />
                   <span className="hidden sm:inline">{data.title}</span>
@@ -458,7 +458,7 @@ export default function AstralSoundtrack() {
               <TabsContent key={key} value={key}>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 px-4">
-                    <Icon className="h-6 w-6 text-purple-400" />
+                    <Icon className="h-6 w-6 text-yellow-500" />
                     <div>
                       <h2 className="text-white text-lg sm:text-xl font-semibold">{data.title}</h2>
                       <p className="text-purple-200 text-sm">{data.subtitle}</p>
@@ -470,14 +470,14 @@ export default function AstralSoundtrack() {
                       <Card 
                         key={track.id} 
                         className={`mobile-card cursor-pointer transition-all duration-200 ${
-                          currentTrack?.id === track.id ? 'ring-2 ring-purple-500' : 'hover:bg-purple-500/10'
+                          currentTrack?.id === track.id ? 'ring-2 ring-yellow-600' : 'hover:bg-yellow-600/10'
                         }`}
                         onClick={() => playTrack(track)}
                       >
                         <CardContent className="p-4">
                           <div className="flex items-center gap-4">
                             <div className="flex-shrink-0">
-                              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                              <div className="w-12 h-12 bg-gradient-to-br from-yellow-600 to-pink-600 rounded-lg flex items-center justify-center">
                                 <Music className="h-6 w-6 text-white" />
                               </div>
                             </div>
@@ -508,7 +508,7 @@ export default function AstralSoundtrack() {
                                     <div
                                       key={i}
                                       className={`w-1 h-3 rounded-full ${
-                                        i < track.energyLevel / 2 ? 'bg-purple-400' : 'bg-slate-600'
+                                        i < track.energyLevel / 2 ? 'bg-yellow-500' : 'bg-slate-600'
                                       }`}
                                     />
                                   ))}

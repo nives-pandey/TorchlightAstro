@@ -242,7 +242,7 @@ export default function BirthTimeQualityAnalyzer({
   const getGradeColor = (grade: string): string => {
     switch (grade) {
       case 'A+': case 'A': return "text-green-400";
-      case 'B+': case 'B': return "text-purple-400";
+      case 'B+': case 'B': return "text-yellow-500";
       case 'C+': case 'C': return "text-orange-400";
       case 'D': return "text-red-400";
       default: return "text-gray-400";
@@ -252,7 +252,7 @@ export default function BirthTimeQualityAnalyzer({
   const getGradeBadgeColor = (grade: string): string => {
     switch (grade) {
       case 'A+': case 'A': return "bg-green-500/20 text-green-400 border-green-500/30";
-      case 'B+': case 'B': return "bg-purple-500/20 text-purple-400 border-purple-500/30";
+      case 'B+': case 'B': return "bg-yellow-600/20 text-yellow-500 border-yellow-600/30";
       case 'C+': case 'C': return "bg-orange-500/20 text-orange-400 border-orange-500/30";
       case 'D': return "bg-red-500/20 text-red-400 border-red-500/30";
       default: return "bg-gray-500/20 text-gray-400 border-gray-500/30";
@@ -261,9 +261,9 @@ export default function BirthTimeQualityAnalyzer({
 
   if (isAnalyzing) {
     return (
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardContent className="p-8 text-center">
-          <div className="animate-spin w-8 h-8 border-4 border-purple-400 border-t-transparent rounded-full mx-auto mb-4" />
+          <div className="animate-spin w-8 h-8 border-4 border-yellow-500 border-t-transparent rounded-full mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-white mb-2">Analyzing Birth Time Quality</h3>
           <p className="text-gray-400">Calculating precision, DST adjustments, and impact analysis...</p>
         </CardContent>
@@ -276,7 +276,7 @@ export default function BirthTimeQualityAnalyzer({
   return (
     <div className="space-y-6">
       {/* Quality Overview */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
           <CardTitle className="text-blue-400 flex items-center">
             <Target className="mr-2 h-5 w-5" />
@@ -328,19 +328,19 @@ export default function BirthTimeQualityAnalyzer({
       {/* Detailed Analysis Tabs */}
       <Tabs defaultValue="impact" className="space-y-4">
         <TabsList className="grid w-full grid-cols-4 bg-slate-800/50">
-          <TabsTrigger value="impact" className="data-[state=active]:bg-purple-600">
+          <TabsTrigger value="impact" className="data-[state=active]:bg-yellow-600">
             <Star className="h-4 w-4 mr-2" />
             Impact
           </TabsTrigger>
-          <TabsTrigger value="dst" className="data-[state=active]:bg-purple-600">
+          <TabsTrigger value="dst" className="data-[state=active]:bg-yellow-600">
             <Clock className="h-4 w-4 mr-2" />
             DST Analysis
           </TabsTrigger>
-          <TabsTrigger value="solar" className="data-[state=active]:bg-purple-600">
+          <TabsTrigger value="solar" className="data-[state=active]:bg-yellow-600">
             <Sun className="h-4 w-4 mr-2" />
             Solar Time
           </TabsTrigger>
-          <TabsTrigger value="alternatives" className="data-[state=active]:bg-purple-600">
+          <TabsTrigger value="alternatives" className="data-[state=active]:bg-yellow-600">
             <Calendar className="h-4 w-4 mr-2" />
             Scenarios
           </TabsTrigger>
@@ -348,21 +348,21 @@ export default function BirthTimeQualityAnalyzer({
 
         {/* Impact Analysis */}
         <TabsContent value="impact">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
-              <CardTitle className="text-purple-400">Astrological Impact Analysis</CardTitle>
+              <CardTitle className="text-yellow-500">Astrological Impact Analysis</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid md:grid-cols-3 gap-4">
                 {/* Rising Sign Impact */}
                 <div className={`p-4 rounded-lg border ${
                   assessment.impactAreas.risingSign.affected 
-                    ? 'bg-purple-500/10 border-purple-500/20' 
+                    ? 'bg-yellow-600/10 border-yellow-600/20' 
                     : 'bg-green-500/10 border-green-500/20'
                 }`}>
                   <div className="flex items-center mb-2">
                     {assessment.impactAreas.risingSign.affected ? (
-                      <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
+                      <AlertTriangle className="h-5 w-5 text-yellow-500 mr-2" />
                     ) : (
                       <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     )}
@@ -383,12 +383,12 @@ export default function BirthTimeQualityAnalyzer({
                 {/* House System Impact */}
                 <div className={`p-4 rounded-lg border ${
                   assessment.impactAreas.houses.affected 
-                    ? 'bg-purple-500/10 border-purple-500/20' 
+                    ? 'bg-yellow-600/10 border-yellow-600/20' 
                     : 'bg-green-500/10 border-green-500/20'
                 }`}>
                   <div className="flex items-center mb-2">
                     {assessment.impactAreas.houses.affected ? (
-                      <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
+                      <AlertTriangle className="h-5 w-5 text-yellow-500 mr-2" />
                     ) : (
                       <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     )}
@@ -407,12 +407,12 @@ export default function BirthTimeQualityAnalyzer({
                 {/* Aspect Impact */}
                 <div className={`p-4 rounded-lg border ${
                   assessment.impactAreas.aspects.affected 
-                    ? 'bg-purple-500/10 border-purple-500/20' 
+                    ? 'bg-yellow-600/10 border-yellow-600/20' 
                     : 'bg-green-500/10 border-green-500/20'
                 }`}>
                   <div className="flex items-center mb-2">
                     {assessment.impactAreas.aspects.affected ? (
-                      <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
+                      <AlertTriangle className="h-5 w-5 text-yellow-500 mr-2" />
                     ) : (
                       <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     )}
@@ -435,7 +435,7 @@ export default function BirthTimeQualityAnalyzer({
         {/* DST Analysis */}
         <TabsContent value="dst">
           {dstAnalysis && (
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
                 <CardTitle className="text-orange-400">Daylight Saving Time Analysis</CardTitle>
               </CardHeader>
@@ -492,9 +492,9 @@ export default function BirthTimeQualityAnalyzer({
         {/* Solar Time Comparison */}
         <TabsContent value="solar">
           {solarTimeComparison && (
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-400">Solar Time vs Clock Time</CardTitle>
+                <CardTitle className="text-yellow-500">Solar Time vs Clock Time</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
@@ -507,7 +507,7 @@ export default function BirthTimeQualityAnalyzer({
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-300">Solar Time:</span>
-                        <span className="text-purple-400 font-mono">{solarTimeComparison.solarTime}</span>
+                        <span className="text-yellow-500 font-mono">{solarTimeComparison.solarTime}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-300">Difference:</span>
@@ -522,7 +522,7 @@ export default function BirthTimeQualityAnalyzer({
                       {solarTimeComparison.traditionalPreference ? (
                         <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                       ) : (
-                        <AlertTriangle className="h-5 w-5 text-purple-400 mr-2" />
+                        <AlertTriangle className="h-5 w-5 text-yellow-500 mr-2" />
                       )}
                       <span className="text-gray-300">
                         {solarTimeComparison.traditionalPreference 
@@ -534,8 +534,8 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                 </div>
 
-                <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                  <h5 className="font-medium text-purple-400 mb-2">Solar Time Explanation</h5>
+                <div className="p-4 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
+                  <h5 className="font-medium text-yellow-500 mb-2">Solar Time Explanation</h5>
                   <p className="text-sm text-purple-300">{solarTimeComparison.explanation}</p>
                 </div>
               </CardContent>
@@ -545,7 +545,7 @@ export default function BirthTimeQualityAnalyzer({
 
         {/* Alternative Scenarios */}
         <TabsContent value="alternatives">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-green-400">Alternative Time Scenarios</CardTitle>
               <p className="text-sm text-gray-400">

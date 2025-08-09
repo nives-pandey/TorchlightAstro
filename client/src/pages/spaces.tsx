@@ -92,7 +92,7 @@ export default function Spaces() {
           {/* Space Remedies */}
           <Card className="clean-card p-6 hover:shadow-2xl transition-all duration-300">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-pink-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Space Remedies</CardTitle>
@@ -107,7 +107,7 @@ export default function Spaces() {
                 <li>• Plant & mirror positioning</li>
                 <li>• Sound & light healing</li>
               </ul>
-              <Badge className="mt-4 bg-purple-400/20 text-purple-300 border-purple-400/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
                 Holistic Healing
               </Badge>
             </CardContent>

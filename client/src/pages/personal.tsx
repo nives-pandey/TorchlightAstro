@@ -157,11 +157,11 @@ export default function Personal() {
             onClick={() => setShowBirthForm(true)}
             className="text-xl px-12 py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl mb-16"
             style={{
-              background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 50%, hsl(51, 100%, 65%) 100%)',
+              background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
               border: 'none',
               color: 'white',
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-              boxShadow: '0 8px 32px rgba(147, 51, 234, 0.3)'
+              boxShadow: '0 8px 32px rgba(197, 165, 90, 0.3)'
             }}
           >
             <Stars className="w-6 h-6 mr-3" />
@@ -190,7 +190,7 @@ export default function Personal() {
                 <li>• Chinese zodiac integration</li>
                 <li>• Planetary aspects & houses</li>
               </ul>
-              <Badge className="mt-4 bg-purple-400/20 text-purple-300 border-purple-400/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
                 Swiss Ephemeris Precision
               </Badge>
             </CardContent>
@@ -199,7 +199,7 @@ export default function Personal() {
           {/* Complete Numerology */}
           <Card className="clean-card p-6 hover:shadow-2xl transition-all duration-300">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-indigo-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Calculator className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Complete Numerology</CardTitle>
@@ -214,7 +214,7 @@ export default function Personal() {
                 <li>• Soul urge revelations</li>
                 <li>• Personality number traits</li>
               </ul>
-              <Badge className="mt-4 bg-purple-400/20 text-purple-300 border-purple-400/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
                 Traditional Methods
               </Badge>
             </CardContent>
@@ -271,7 +271,7 @@ export default function Personal() {
         </div>
 
         <div className="mt-16 text-center">
-          <div className="p-8 bg-black/30 rounded-xl border border-purple-400/20">
+          <div className="p-8 bg-black/30 rounded-xl border border-yellow-500/20">
             <h3 className="text-2xl font-bold text-white mb-4">Ready to explore your cosmic blueprint?</h3>
             <p className="text-purple-200 mb-6">Get comprehensive personal insights across all major astrological systems</p>
             <button className="clean-button px-8 py-3">

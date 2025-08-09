@@ -165,12 +165,12 @@ How can I illuminate your path today?`,
   };
 
   return (
-    <Card className="cosmic-card h-[600px] flex flex-col">
+    <Card className="sanctuary-card h-[600px] flex flex-col">
       <CardHeader className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-t-lg">
         <CardTitle className="text-white flex items-center space-x-2">
-          <Bot className="h-6 w-6 text-purple-500" />
+          <Bot className="h-6 w-6 text-yellow-600" />
           <span>Cosmic AI Assistant</span>
-          <Sparkles className="h-5 w-5 text-purple-400 animate-pulse" />
+          <Sparkles className="h-5 w-5 text-yellow-500 animate-pulse" />
         </CardTitle>
       </CardHeader>
 
@@ -180,10 +180,10 @@ How can I illuminate your path today?`,
           <div className="space-y-4">
             {messages.map((message) => (
               <div key={message.id} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[80%] ${message.role === "user" ? "bg-purple-600" : "bg-gray-800"} rounded-lg p-3`}>
+                <div className={`max-w-[80%] ${message.role === "user" ? "bg-yellow-600" : "bg-gray-800"} rounded-lg p-3`}>
                   <div className="flex items-start space-x-2">
                     {message.role === "assistant" ? (
-                      <Bot className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <Bot className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
                     ) : (
                       <User className="h-5 w-5 text-white mt-0.5 flex-shrink-0" />
                     )}
@@ -196,11 +196,11 @@ How can I illuminate your path today?`,
                       {message.insights && message.insights.length > 0 && (
                         <div className="mt-3 space-y-2">
                           <div className="flex items-center space-x-1">
-                            <Sparkles className="h-4 w-4 text-purple-400" />
-                            <span className="text-purple-400 text-xs font-medium">Key Insights</span>
+                            <Sparkles className="h-4 w-4 text-yellow-500" />
+                            <span className="text-yellow-500 text-xs font-medium">Key Insights</span>
                           </div>
                           {message.insights.map((insight, index) => (
-                            <Badge key={index} variant="outline" className="border-purple-400/50 text-purple-300 text-xs">
+                            <Badge key={index} variant="outline" className="border-yellow-500/50 text-purple-300 text-xs">
                               {insight}
                             </Badge>
                           ))}
@@ -211,8 +211,8 @@ How can I illuminate your path today?`,
                       {message.recommendations && message.recommendations.length > 0 && (
                         <div className="mt-3 space-y-2">
                           <div className="flex items-center space-x-1">
-                            <Target className="h-4 w-4 text-purple-400" />
-                            <span className="text-purple-400 text-xs font-medium">Recommendations</span>
+                            <Target className="h-4 w-4 text-yellow-500" />
+                            <span className="text-yellow-500 text-xs font-medium">Recommendations</span>
                           </div>
                           <div className="space-y-1">
                             {message.recommendations.map((rec, index) => (
@@ -319,17 +319,17 @@ How can I illuminate your path today?`,
               <div className="flex justify-start">
                 <div className="max-w-[80%] bg-gray-800 rounded-lg p-3">
                   <div className="flex items-center space-x-2">
-                    <Bot className="h-5 w-5 text-purple-400 animate-pulse" />
+                    <Bot className="h-5 w-5 text-yellow-500 animate-pulse" />
                     <div className="flex-1">
                       <div className="flex items-center space-x-2">
                         <div className="cosmic-spinner"></div>
-                        <p className="text-purple-400 text-sm">{processingState.message}</p>
+                        <p className="text-yellow-500 text-sm">{processingState.message}</p>
                       </div>
                       <div className="flex space-x-1 mt-2">
                         {[...Array(8)].map((_, i) => (
                           <div 
                             key={i}
-                            className="w-1 h-1 bg-purple-400 rounded-full animate-pulse"
+                            className="w-1 h-1 bg-yellow-500 rounded-full animate-pulse"
                             style={{ animationDelay: `${i * 0.1}s` }}
                           />
                         ))}
@@ -360,7 +360,7 @@ How can I illuminate your path today?`,
             <Button
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || aiMutation.isPending}
-              className="cosmic-button"
+              className="sanctuary-button"
             >
               <Send className="h-4 w-4" />
             </Button>
@@ -379,7 +379,7 @@ How can I illuminate your path today?`,
                 variant="outline"
                 size="sm"
                 onClick={() => setInputValue(question)}
-                className="text-xs border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
+                className="text-xs border-yellow-600/30 text-yellow-500 hover:bg-yellow-600/10"
                 disabled={aiMutation.isPending}
               >
                 {question}

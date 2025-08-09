@@ -51,10 +51,10 @@ export default function FeatureHoverCard({
         };
       case "planned":
         return {
-          color: "bg-purple-500",
+          color: "bg-yellow-600",
           text: "Planned",
           icon: AlertCircle,
-          textColor: "text-purple-400"
+          textColor: "text-yellow-500"
         };
       default:
         return {
@@ -130,7 +130,7 @@ export default function FeatureHoverCard({
               {/* Expected date */}
               {expectedDate && (
                 <div className="flex items-center gap-2 text-sm">
-                  <Calendar className="w-4 h-4 text-purple-400" />
+                  <Calendar className="w-4 h-4 text-yellow-500" />
                   <span className="text-gray-300">Expected: {expectedDate}</span>
                 </div>
               )}
@@ -142,7 +142,7 @@ export default function FeatureHoverCard({
                   <ul className="space-y-1">
                     {features.map((feature, index) => (
                       <li key={index} className="flex items-center gap-2 text-sm text-gray-300">
-                        <div className="w-1.5 h-1.5 bg-purple-400 rounded-full" />
+                        <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full" />
                         {feature}
                       </li>
                     ))}

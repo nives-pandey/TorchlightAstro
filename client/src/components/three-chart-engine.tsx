@@ -544,14 +544,14 @@ export default function ThreeChartEngine({
   return (
     <div className="w-full bg-gradient-to-br from-slate-900 to-purple-900 rounded-lg overflow-hidden">
       {/* Controls */}
-      <div className="p-4 bg-black/50 border-b border-purple-500/30">
+      <div className="p-4 bg-black/50 border-b border-yellow-600/30">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
               size="sm"
               onClick={isAnimating ? stopAnimation : startAnimation}
-              className="border-purple-400"
+              className="border-yellow-500"
             >
               {isAnimating ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               {isAnimating ? 'Pause' : 'Animate'}
@@ -561,7 +561,7 @@ export default function ThreeChartEngine({
               variant="outline"
               size="sm"
               onClick={resetCamera}
-              className="border-purple-400"
+              className="border-yellow-500"
             >
               <RotateCcw className="w-4 h-4" />
               Reset View
@@ -571,7 +571,7 @@ export default function ThreeChartEngine({
               variant="outline"
               size="sm"
               onClick={() => setShowOrbits(!showOrbits)}
-              className={`border-purple-400 ${showOrbits ? 'bg-purple-600' : ''}`}
+              className={`border-yellow-500 ${showOrbits ? 'bg-yellow-600' : ''}`}
             >
               <Eye className="w-4 h-4" />
               Orbits
@@ -581,7 +581,7 @@ export default function ThreeChartEngine({
               variant="outline"
               size="sm"
               onClick={() => setShowAspects(!showAspects)}
-              className={`border-purple-400 ${showAspects ? 'bg-purple-600' : ''}`}
+              className={`border-yellow-500 ${showAspects ? 'bg-yellow-600' : ''}`}
             >
               <Zap className="w-4 h-4" />
               Aspects
@@ -625,7 +625,7 @@ export default function ThreeChartEngine({
       <div ref={mountRef} style={{ width, height }} />
       
       {/* Status */}
-      <div className="p-2 bg-black/50 border-t border-purple-500/30 text-white text-sm flex justify-between">
+      <div className="p-2 bg-black/50 border-t border-yellow-600/30 text-white text-sm flex justify-between">
         <span>Advanced 3D Cosmic Visualization</span>
         <span>Planets: {planets.length} | Aspects: {aspects.length}</span>
       </div>

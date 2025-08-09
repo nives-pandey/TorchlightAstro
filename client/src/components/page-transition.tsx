@@ -29,7 +29,7 @@ function CelestialParticles() {
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            background: 'var(--cosmic-gold)'
+            background: 'var(--brushed-gold)'
           }}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ 
@@ -62,7 +62,7 @@ function ConstellationOverlay() {
         <svg className="absolute inset-0 w-full h-full" style={{opacity: 0.1}}>
           <motion.path
             d="M100,100 L200,150 L300,120 L400,200 L500,180"
-            stroke="var(--cosmic-lavender)"
+            stroke="var(--sage-teal)"
             strokeWidth="1"
             fill="none"
             initial={{ pathLength: 0 }}
@@ -71,7 +71,7 @@ function ConstellationOverlay() {
           />
           <motion.path
             d="M150,300 L250,280 L350,320 L450,300"
-            stroke="var(--cosmic-lavender)"
+            stroke="var(--sage-teal)"
             strokeWidth="1"
             fill="none"
             initial={{ pathLength: 0 }}
@@ -83,15 +83,15 @@ function ConstellationOverlay() {
         {/* Floating stars */}
         {/* Static celestial elements - no floating animation */}
         <div className="absolute top-20 left-20">
-          <Stars className="w-4 h-4 opacity-80" style={{color: 'var(--cosmic-gold)'}} />
+          <Stars className="w-4 h-4 opacity-80" style={{color: 'var(--brushed-gold)'}} />
         </div>
         
         <div className="absolute top-40 right-32">
-          <Sparkles className="w-3 h-3 opacity-70" style={{color: 'var(--cosmic-lavender)'}} />
+          <Sparkles className="w-3 h-3 opacity-70" style={{color: 'var(--sage-teal)'}} />
         </div>
         
         <div className="absolute bottom-32 left-1/3">
-          <Stars className="w-3 h-3 opacity-60" style={{color: 'var(--cosmic-purple)'}} />
+          <Stars className="w-3 h-3 opacity-60" style={{color: 'var(--sage-teal)'}} />
         </div>
       </div>
     </motion.div>

@@ -22,10 +22,10 @@ function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) 
             <div className="text-3xl sm:text-4xl mb-3">
               {system.icon}
             </div>
-            <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+            <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors font-accent" style={{color: 'var(--sage-teal)'}}>
               {system.title}
             </h3>
-            <p className="text-xs leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+            <p className="text-xs leading-relaxed" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
               {system.shortDesc}
             </p>
           </div>
@@ -80,7 +80,7 @@ function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) 
             <ul className="space-y-1">
               {system.predictions.slice(0, 3).map((prediction: string, index: number) => (
                 <li key={index} className="flex items-start gap-2 text-rose-100 text-sm">
-                  <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></span>
+                  <span className="w-1.5 h-1.5 bg-yellow-500 rounded-full mt-1.5 flex-shrink-0"></span>
                   {prediction}
                 </li>
               ))}
@@ -221,7 +221,7 @@ export default function Landing() {
         {/* Static celestial background elements - no animation */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
         <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-80" />
-        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
+        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-yellow-500 rounded-full opacity-50" />
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
         <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
@@ -232,7 +232,7 @@ export default function Landing() {
         <div className="max-w-4xl mx-auto text-center mb-8">
           <div className="bg-purple-900/50 backdrop-blur-md border border-purple-300/30 rounded-2xl p-6 mb-8">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-2">
-              <Play className="h-6 w-6 text-purple-400" />
+              <Play className="h-6 w-6 text-yellow-500" />
               Ready to Get Started?
             </h2>
             <p className="text-purple-200 mb-6">
@@ -240,13 +240,13 @@ export default function Landing() {
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <Link href="/home">
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg">
+                <Button className="w-full bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg">
                   <ArrowRight className="h-4 w-4 mr-2" />
                   Generate Your Chart
                 </Button>
               </Link>
               <Link href="/features">
-                <Button variant="outline" className="w-full border-purple-300/50 text-purple-200 hover:bg-purple-500/20 py-3 px-6 rounded-xl">
+                <Button variant="outline" className="w-full border-purple-300/50 text-purple-200 hover:bg-yellow-600/20 py-3 px-6 rounded-xl">
                   Explore All Features
                 </Button>
               </Link>
@@ -263,7 +263,7 @@ export default function Landing() {
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight">
               <span 
                 style={{
-                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)', 
                   WebkitBackgroundClip: 'text', 
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
@@ -275,7 +275,7 @@ export default function Landing() {
               <span 
                 className="block mt-2"
                 style={{
-                  color: 'hsl(240, 100%, 94%)',
+                  color: 'hsl(60, 10%, 96%)',
                   textShadow: '0 2px 8px rgba(0,0,0,0.3)'
                 }}
               >
@@ -284,7 +284,7 @@ export default function Landing() {
             </h2>
             <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-12 font-light" 
                style={{
-                 color: 'hsl(240, 100%, 94%)', 
+                 color: 'hsl(60, 10%, 96%)', 
                  opacity: 0.95,
                  textShadow: '0 1px 4px rgba(0,0,0,0.2)'
                }}>
@@ -303,8 +303,8 @@ export default function Landing() {
 
           {/* Astrology Systems Grid */}
           <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
-              <Sparkles className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
+            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-accent" style={{color: 'var(--sage-teal)'}}>
+              <Sparkles className="w-5 h-5" style={{color: 'var(--brushed-gold)'}} />
               Explore Ancient Wisdom
             </h3>
             
@@ -324,7 +324,7 @@ export default function Landing() {
             <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center gap-2">
-                  <Sun className="w-5 h-5 text-purple-400" />
+                  <Sun className="w-5 h-5 text-yellow-500" />
                   Personal Readings
                 </CardTitle>
               </CardHeader>
@@ -352,7 +352,7 @@ export default function Landing() {
             <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl sm:col-span-2 lg:col-span-1">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center gap-2">
-                  <Moon className="w-5 h-5 text-purple-400" />
+                  <Moon className="w-5 h-5 text-yellow-500" />
                   Daily Guidance
                 </CardTitle>
               </CardHeader>
@@ -373,19 +373,19 @@ export default function Landing() {
                 className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
                 style={{
                   background: 'var(--cosmic-gradient-2)',
-                  color: 'var(--cosmic-lavender)',
+                  color: 'var(--sage-teal)',
                   border: 'none'
                 }}
               >
                 Begin Your Cosmic Journey
                 <div className="inline-block ml-2">
-                  <Stars className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
+                  <Stars className="w-5 h-5" style={{color: 'var(--brushed-gold)'}} />
                 </div>
               </Button>
             </div>
             <p 
               className="text-sm mt-4"
-              style={{color: 'var(--cosmic-lavender)', opacity: 0.6}}
+              style={{color: 'var(--sage-teal)', opacity: 0.6}}
             >
               Free forever • No signup required • Start exploring immediately
             </p>

@@ -182,7 +182,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
           <div className="p-4 space-y-4">
             {messages.length === 0 && (
               <div className="text-center text-purple-200 py-8">
-                <Bot className="h-12 w-12 mx-auto mb-4 text-purple-400" />
+                <Bot className="h-12 w-12 mx-auto mb-4 text-yellow-500" />
                 <p className="text-lg font-medium mb-2">Welcome to your AI Astrology Assistant!</p>
                 <p className="text-sm opacity-75">
                   Ask me anything about your astrological chart, planetary influences, or cosmic guidance.
@@ -195,7 +195,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                 <div className={`flex gap-3 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
                     message.type === 'user' 
-                      ? 'bg-purple-500 text-white' 
+                      ? 'bg-yellow-600 text-white' 
                       : 'bg-yellow-500 text-black'
                   }`}>
                     {message.type === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
@@ -203,7 +203,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                   
                   <div className={`rounded-lg p-3 ${
                     message.type === 'user'
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-yellow-600 text-white'
                       : 'bg-white/10 text-white border border-purple-300/20'
                   }`}>
                     <div className="whitespace-pre-wrap text-sm leading-relaxed">
@@ -236,9 +236,9 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                   <div className="bg-white/10 text-white border border-purple-300/20 rounded-lg p-3">
                     <div className="flex items-center gap-2">
                       <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-100"></div>
-                        <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse delay-200"></div>
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse delay-100"></div>
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse delay-200"></div>
                       </div>
                       <span className="text-sm">Consulting the cosmic wisdom...</span>
                     </div>
@@ -312,7 +312,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
           <Button
             onClick={sendMessage}
             disabled={!input.trim() || isLoading}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white"
+            className="bg-gradient-to-r from-yellow-600 to-pink-500 hover:from-yellow-600 hover:to-pink-600 text-white"
           >
             <Send className="h-4 w-4" />
           </Button>

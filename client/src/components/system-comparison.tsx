@@ -97,12 +97,12 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
   return (
     <div className="space-y-6">
       {/* Header with Branding */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="cosmic-logo">🔆</div>
+            <div className="sanctuary-logo">🔆</div>
             <div>
-              <CardTitle className="text-2xl text-purple-400">MyTorchlight</CardTitle>
+              <CardTitle className="text-2xl text-yellow-500">MyTorchlight</CardTitle>
               <CardDescription className="text-gray-400">
                 Comprehensive Astrological Analysis Report
               </CardDescription>
@@ -112,10 +112,10 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
           {partnerChart && overallCompatibility && (
             <div className="flex items-center justify-center space-x-4 mt-4">
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400">{overallCompatibility}%</div>
+                <div className="text-3xl font-bold text-yellow-500">{overallCompatibility}%</div>
                 <div className="text-sm text-gray-400">Overall Compatibility</div>
               </div>
-              <Users className="h-8 w-8 text-purple-400" />
+              <Users className="h-8 w-8 text-yellow-500" />
             </div>
           )}
         </CardHeader>
@@ -133,13 +133,13 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4">
             {systemAnalyses.map((analysis, index) => (
-              <Card key={analysis.system} className="cosmic-card">
+              <Card key={analysis.system} className="sanctuary-card">
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
                       <span className="text-2xl">{analysis.icon}</span>
                       <div>
-                        <CardTitle className="text-lg text-purple-400">{analysis.system}</CardTitle>
+                        <CardTitle className="text-lg text-yellow-500">{analysis.system}</CardTitle>
                         <div className="flex items-center space-x-2 mt-1">
                           <Progress value={analysis.accuracy} className="w-24 h-2" />
                           <span className="text-sm text-gray-400">{analysis.accuracy}% accuracy</span>
@@ -147,7 +147,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
                       </div>
                     </div>
                     {analysis.compatibility && (
-                      <Badge variant="outline" className="border-purple-400 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-500 text-purple-300">
                         {analysis.compatibility}% compatible
                       </Badge>
                     )}
@@ -187,9 +187,9 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
         </TabsContent>
 
         <TabsContent value="career" className="space-y-4">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
-              <CardTitle className="text-purple-400 flex items-center space-x-2">
+              <CardTitle className="text-yellow-500 flex items-center space-x-2">
                 <BarChart3 className="h-5 w-5" />
                 <span>Career Guidance Across All Systems</span>
               </CardTitle>
@@ -230,9 +230,9 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
 
         <TabsContent value="relationships" className="space-y-4">
           {partnerChart ? (
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-400 flex items-center space-x-2">
+                <CardTitle className="text-yellow-500 flex items-center space-x-2">
                   <Users className="h-5 w-5" />
                   <span>Compatibility Analysis</span>
                 </CardTitle>
@@ -247,7 +247,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
                           <h3 className="text-lg font-medium text-white">{analysis.system}</h3>
                         </div>
                         <div className="text-right">
-                          <div className="text-2xl font-bold text-purple-400">{analysis.compatibility}%</div>
+                          <div className="text-2xl font-bold text-yellow-500">{analysis.compatibility}%</div>
                           <Progress value={analysis.compatibility} className="w-24 h-2 mt-1" />
                         </div>
                       </div>
@@ -264,21 +264,21 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
               </CardContent>
             </Card>
           ) : (
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardContent className="text-center py-12">
                 <Users className="h-16 w-16 text-gray-600 mx-auto mb-4" />
                 <h3 className="text-xl font-medium text-gray-400 mb-2">Partner Analysis Available</h3>
                 <p className="text-gray-500">Add a partner's birth data to see detailed compatibility analysis across all systems</p>
-                <Button className="cosmic-button mt-4">Add Partner</Button>
+                <Button className="sanctuary-button mt-4">Add Partner</Button>
               </CardContent>
             </Card>
           )}
         </TabsContent>
 
         <TabsContent value="detailed" className="space-y-4">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
-              <CardTitle className="text-purple-400">Detailed System Analysis</CardTitle>
+              <CardTitle className="text-yellow-500">Detailed System Analysis</CardTitle>
               <CardDescription>
                 In-depth breakdown of each astrological system's insights and recommendations
               </CardDescription>
@@ -286,10 +286,10 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
             <CardContent>
               <div className="space-y-8">
                 {systemAnalyses.map((analysis) => (
-                  <div key={analysis.system} className="border-l-2 border-purple-400/30 pl-6">
+                  <div key={analysis.system} className="border-l-2 border-yellow-500/30 pl-6">
                     <div className="flex items-center space-x-3 mb-4">
                       <span className="text-2xl">{analysis.icon}</span>
-                      <h3 className="text-xl font-bold text-purple-400">{analysis.system}</h3>
+                      <h3 className="text-xl font-bold text-yellow-500">{analysis.system}</h3>
                       <Badge variant="outline" className="border-green-400 text-green-300">
                         {analysis.accuracy}% Accurate
                       </Badge>
@@ -346,9 +346,9 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
 
       {/* Download & Sharing Options */}
       {showDownloadOptions && (
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
-            <CardTitle className="text-purple-400 flex items-center space-x-2">
+            <CardTitle className="text-yellow-500 flex items-center space-x-2">
               <Download className="h-5 w-5" />
               <span>Export & Share Options</span>
             </CardTitle>
@@ -357,7 +357,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
             <div className="grid md:grid-cols-3 gap-4">
               <Button 
                 variant="outline" 
-                className="cosmic-button-outline"
+                className="sanctuary-button-outline"
                 onClick={() => handleDownload('pdf')}
               >
                 <Download className="h-4 w-4 mr-2" />
@@ -366,7 +366,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
               
               <Button 
                 variant="outline" 
-                className="cosmic-button-outline"
+                className="sanctuary-button-outline"
                 onClick={() => handleDownload('email')}
               >
                 <Share2 className="h-4 w-4 mr-2" />
@@ -375,7 +375,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
               
               <Button 
                 variant="outline" 
-                className="cosmic-button-outline"
+                className="sanctuary-button-outline"
                 onClick={() => handleDownload('share')}
               >
                 <Printer className="h-4 w-4 mr-2" />
@@ -385,7 +385,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
             
             <div className="mt-4 p-4 bg-gray-800/50 rounded-lg">
               <p className="text-sm text-gray-400 mb-2">
-                <Star className="h-4 w-4 inline mr-1 text-purple-400" />
+                <Star className="h-4 w-4 inline mr-1 text-yellow-500" />
                 Professional reports include MyTorchlight branding and detailed analysis
               </p>
               <p className="text-xs text-gray-500">

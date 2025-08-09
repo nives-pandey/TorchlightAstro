@@ -47,16 +47,16 @@ export default function CitySearch({ value, onSelect, birthDate, placeholder = "
           className={cn("w-full justify-between", className)}
           style={{
             background: 'var(--cosmic-indigo)',
-            borderColor: 'var(--cosmic-purple)',
-            color: 'var(--cosmic-lavender)'
+            borderColor: 'var(--sage-teal)',
+            color: 'var(--sage-teal)'
           }}
         >
           {value ? (
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" style={{color: 'var(--cosmic-gold)'}} />
+              <MapPin className="w-4 h-4" style={{color: 'var(--brushed-gold)'}} />
               <span>{value.city}, {value.country}</span>
               {birthDate && (
-                <span className="text-xs opacity-70 ml-auto" style={{color: 'var(--cosmic-gold)'}}>
+                <span className="text-xs opacity-70 ml-auto" style={{color: 'var(--brushed-gold)'}}>
                   {formatTimezone(value)}
                 </span>
               )}
@@ -67,16 +67,16 @@ export default function CitySearch({ value, onSelect, birthDate, placeholder = "
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0" style={{background: 'var(--cosmic-indigo)', borderColor: 'var(--cosmic-purple)'}}>
+      <PopoverContent className="w-full p-0" style={{background: 'var(--cosmic-indigo)', borderColor: 'var(--sage-teal)'}}>
         <Command>
           <CommandInput 
             placeholder="Search cities..." 
             value={searchQuery}
             onValueChange={setSearchQuery}
-            style={{color: 'var(--cosmic-lavender)'}}
+            style={{color: 'var(--sage-teal)'}}
           />
           <CommandList>
-            <CommandEmpty style={{color: 'var(--cosmic-lavender)', opacity: 0.7}}>
+            <CommandEmpty style={{color: 'var(--sage-teal)', opacity: 0.7}}>
               {searchQuery.length < 2 ? "Type at least 2 characters..." : "No cities found."}
             </CommandEmpty>
             <CommandGroup>
@@ -90,7 +90,7 @@ export default function CitySearch({ value, onSelect, birthDate, placeholder = "
                     setSearchQuery("");
                   }}
                   className="cursor-pointer hover:bg-purple-900/30"
-                  style={{color: 'var(--cosmic-lavender)'}}
+                  style={{color: 'var(--sage-teal)'}}
                 >
                   <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-2">
@@ -101,15 +101,15 @@ export default function CitySearch({ value, onSelect, birthDate, placeholder = "
                             ? "opacity-100"
                             : "opacity-0"
                         )}
-                        style={{color: 'var(--cosmic-gold)'}}
+                        style={{color: 'var(--brushed-gold)'}}
                       />
-                      <MapPin className="w-4 h-4" style={{color: 'var(--cosmic-gold)'}} />
+                      <MapPin className="w-4 h-4" style={{color: 'var(--brushed-gold)'}} />
                       <div>
                         <div className="font-medium">{city.city}</div>
                         <div className="text-xs opacity-70">{city.country}</div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 text-xs" style={{color: 'var(--cosmic-gold)'}}>
+                    <div className="flex items-center gap-2 text-xs" style={{color: 'var(--brushed-gold)'}}>
                       <Clock className="w-3 h-3" />
                       {formatTimezone(city)}
                     </div>

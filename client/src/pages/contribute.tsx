@@ -83,7 +83,7 @@ const ContributeForm = ({ amount }: { amount: number }) => {
       <Button 
         type="submit" 
         disabled={!stripe || isProcessing}
-        className="w-full h-12 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold"
+        className="w-full h-12 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold"
       >
         {isProcessing ? (
           <div className="flex items-center space-x-2">
@@ -152,7 +152,7 @@ export default function ContributePage() {
       <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
           <CardContent className="flex flex-col items-center space-y-4 p-8">
-            <div className="animate-spin w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full" />
+            <div className="animate-spin w-8 h-8 border-4 border-yellow-600 border-t-transparent rounded-full" />
             <p className="text-gray-600">Setting up your contribution...</p>
           </CardContent>
         </Card>
@@ -190,7 +190,7 @@ export default function ContributePage() {
                   appearance: {
                     theme: 'stripe',
                     variables: {
-                      colorPrimary: '#7c3aed',
+                      colorPrimary: '#C5A55A',
                     }
                   }
                 }}
@@ -266,7 +266,7 @@ export default function ContributePage() {
               <div className="text-center">
                 <Button
                   onClick={() => setShowUniversalPayment(true)}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0"
+                  className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0"
                 >
                   <Globe className="w-4 h-4 mr-2" />
                   View All Payment Options

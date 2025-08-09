@@ -12,11 +12,11 @@ export default function AIAssistant() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <Bot className="h-12 w-12 text-purple-400" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
+            <Bot className="h-12 w-12 text-yellow-500" />
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               AI Astrological Assistant
             </h1>
-            <Sparkles className="h-8 w-8 text-purple-400 animate-pulse" />
+            <Sparkles className="h-8 w-8 text-yellow-500 animate-pulse" />
           </div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Interactive cosmic guidance with personalized insights, daily cosmic weather, actionable steps, and intelligent conversation flow
@@ -32,9 +32,9 @@ export default function AIAssistant() {
           {/* Information Sidebar */}
           <div className="space-y-6">
             {/* About AI Assistant */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500 flex items-center space-x-2">
+                <CardTitle className="text-yellow-600 flex items-center space-x-2">
                   <Brain className="h-5 w-5" />
                   <span>How It Works</span>
                 </CardTitle>
@@ -56,9 +56,9 @@ export default function AIAssistant() {
             </Card>
 
             {/* Sample Questions */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-400 flex items-center space-x-2">
+                <CardTitle className="text-yellow-500 flex items-center space-x-2">
                   <Star className="h-5 w-5" />
                   <span>Ask About</span>
                 </CardTitle>
@@ -66,7 +66,7 @@ export default function AIAssistant() {
               <CardContent className="text-gray-300">
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-purple-400 font-medium mb-2">Personality & Life Purpose</h4>
+                    <h4 className="text-yellow-500 font-medium mb-2">Personality & Life Purpose</h4>
                     <ul className="text-sm space-y-1 text-gray-400">
                       <li>• "What are my core strengths?"</li>
                       <li>• "What's my life purpose?"</li>
@@ -75,7 +75,7 @@ export default function AIAssistant() {
                   </div>
                   
                   <div>
-                    <h4 className="text-purple-400 font-medium mb-2">Career & Work</h4>
+                    <h4 className="text-yellow-500 font-medium mb-2">Career & Work</h4>
                     <ul className="text-sm space-y-1 text-gray-400">
                       <li>• "What career suits me best?"</li>
                       <li>• "When should I make job changes?"</li>
@@ -105,7 +105,7 @@ export default function AIAssistant() {
             </Card>
 
             {/* Interactive Features */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
                 <CardTitle className="text-green-400 text-sm flex items-center space-x-2">
                   <Sparkles className="h-4 w-4" />

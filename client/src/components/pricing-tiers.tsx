@@ -166,7 +166,7 @@ export default function PricingTiers() {
     <div className="space-y-8">
       {/* Pricing Toggle */}
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-purple-400 mb-4">Choose Your Cosmic Journey</h2>
+        <h2 className="text-3xl font-bold text-yellow-500 mb-4">Choose Your Cosmic Journey</h2>
         <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
           Unlock the wisdom of 7+ ancient astrological systems with modern AI precision. 
           From free exploration to professional practice tools.
@@ -181,7 +181,7 @@ export default function PricingTiers() {
             className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
           >
             <span
-              className={`inline-block h-4 w-4 transform rounded-full bg-purple-400 transition-transform ${
+              className={`inline-block h-4 w-4 transform rounded-full bg-yellow-500 transition-transform ${
                 selectedPeriod === 'yearly' ? 'translate-x-6' : 'translate-x-1'
               }`}
             />
@@ -198,10 +198,10 @@ export default function PricingTiers() {
       {/* Pricing Cards */}
       <div className="grid lg:grid-cols-3 gap-6">
         {tiers.map((tier, index) => (
-          <Card key={tier.name} className={`cosmic-card relative ${tier.popular ? 'ring-2 ring-yellow-400' : ''}`}>
+          <Card key={tier.name} className={`sanctuary-card relative ${tier.popular ? 'ring-2 ring-yellow-400' : ''}`}>
             {tier.badge && (
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-purple-500 text-black font-medium px-3 py-1">
+                <Badge className="bg-yellow-600 text-black font-medium px-3 py-1">
                   {tier.badge}
                 </Badge>
               </div>
@@ -209,9 +209,9 @@ export default function PricingTiers() {
             
             <CardHeader className="text-center pb-4">
               <div className="flex items-center justify-center mb-3">
-                <tier.icon className="h-8 w-8 text-purple-400" />
+                <tier.icon className="h-8 w-8 text-yellow-500" />
               </div>
-              <CardTitle className="text-xl text-purple-400">{tier.name}</CardTitle>
+              <CardTitle className="text-xl text-yellow-500">{tier.name}</CardTitle>
               <div className="mt-4">
                 <span className="text-3xl font-bold text-white">{tier.price}</span>
                 <span className="text-gray-400 ml-1">{tier.period}</span>
@@ -223,7 +223,7 @@ export default function PricingTiers() {
 
             <CardContent className="space-y-4">
               <Button 
-                className={`w-full cosmic-button ${tier.buttonVariant === 'outline' ? 'cosmic-button-outline' : ''}`}
+                className={`w-full sanctuary-button ${tier.buttonVariant === 'outline' ? 'sanctuary-button-outline' : ''}`}
                 variant={tier.buttonVariant}
               >
                 {tier.buttonText}
@@ -261,9 +261,9 @@ export default function PricingTiers() {
       </div>
 
       {/* Feature Comparison Table */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-400 text-center">Complete Feature Comparison</CardTitle>
+          <CardTitle className="text-yellow-500 text-center">Complete Feature Comparison</CardTitle>
           <CardDescription className="text-center">
             Detailed breakdown of features across all pricing tiers
           </CardDescription>
@@ -275,8 +275,8 @@ export default function PricingTiers() {
                 <tr className="border-b border-gray-700">
                   <th className="text-left py-3 px-4 text-gray-300">Features</th>
                   <th className="text-center py-3 px-4 text-gray-300">Cosmic Explorer</th>
-                  <th className="text-center py-3 px-4 text-purple-400">Cosmic Navigator</th>
-                  <th className="text-center py-3 px-4 text-purple-400">Cosmic Professional</th>
+                  <th className="text-center py-3 px-4 text-yellow-500">Cosmic Navigator</th>
+                  <th className="text-center py-3 px-4 text-yellow-500">Cosmic Professional</th>
                 </tr>
               </thead>
               <tbody>
@@ -305,7 +305,7 @@ export default function PricingTiers() {
 
       {/* Use Cases */}
       <div className="grid md:grid-cols-3 gap-6">
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
             <CardTitle className="text-green-400 flex items-center space-x-2">
               <Heart className="h-5 w-5" />
@@ -323,9 +323,9 @@ export default function PricingTiers() {
           </CardContent>
         </Card>
 
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
-            <CardTitle className="text-purple-400 flex items-center space-x-2">
+            <CardTitle className="text-yellow-500 flex items-center space-x-2">
               <Users className="h-5 w-5" />
               <span>Relationships & Couples</span>
             </CardTitle>
@@ -341,9 +341,9 @@ export default function PricingTiers() {
           </CardContent>
         </Card>
 
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
-            <CardTitle className="text-purple-400 flex items-center space-x-2">
+            <CardTitle className="text-yellow-500 flex items-center space-x-2">
               <BarChart3 className="h-5 w-5" />
               <span>Professional Practice</span>
             </CardTitle>

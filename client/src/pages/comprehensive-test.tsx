@@ -103,7 +103,7 @@ export default function ComprehensiveTest() {
         )}
 
         {/* Birth Data Summary */}
-        <Card className="cosmic-card mb-6">
+        <Card className="sanctuary-card mb-6">
           <CardHeader>
             <CardTitle className="text-orange-400 flex items-center gap-2">
               <Globe className="w-5 h-5" />
@@ -147,7 +147,7 @@ export default function ComprehensiveTest() {
             {/* Overview Tab */}
             <TabsContent value="overview" className="mt-6">
               <div className="grid lg:grid-cols-2 gap-6">
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-orange-400">Corrected Calculations</CardTitle>
                   </CardHeader>
@@ -173,7 +173,7 @@ export default function ComprehensiveTest() {
                   </CardContent>
                 </Card>
 
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-orange-400">Analysis Depth</CardTitle>
                   </CardHeader>
@@ -215,7 +215,7 @@ export default function ComprehensiveTest() {
             <TabsContent value="western" className="mt-6">
               {chartData?.chart?.westernChart && (
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Planetary Positions</CardTitle>
                     </CardHeader>
@@ -234,7 +234,7 @@ export default function ComprehensiveTest() {
                     </CardContent>
                   </Card>
 
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Chart Patterns</CardTitle>
                     </CardHeader>
@@ -265,7 +265,7 @@ export default function ComprehensiveTest() {
             <TabsContent value="vedic" className="mt-6">
               {chartData?.chart?.vedicChart && (
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Vedic Basics</CardTitle>
                     </CardHeader>
@@ -293,7 +293,7 @@ export default function ComprehensiveTest() {
                     </CardContent>
                   </Card>
 
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Dasha System</CardTitle>
                     </CardHeader>
@@ -324,7 +324,7 @@ export default function ComprehensiveTest() {
             <TabsContent value="kundali" className="mt-6">
               {kundaliData?.kundali && (
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Traditional Kundali</CardTitle>
                     </CardHeader>
@@ -358,7 +358,7 @@ export default function ComprehensiveTest() {
                     </CardContent>
                   </Card>
 
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Vedic Yogas</CardTitle>
                     </CardHeader>
@@ -393,7 +393,7 @@ export default function ComprehensiveTest() {
             <TabsContent value="predictions" className="mt-6">
               {chartData?.chart?.predictions && (
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Current Life Phase</CardTitle>
                     </CardHeader>
@@ -419,14 +419,14 @@ export default function ComprehensiveTest() {
                     </CardContent>
                   </Card>
 
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Upcoming Transits</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
                         {chartData.chart.predictions.upcomingTransits?.slice(0, 4).map((transit: any, index: number) => (
-                          <div key={index} className="border border-purple-500/30 rounded-lg p-3">
+                          <div key={index} className="border border-yellow-600/30 rounded-lg p-3">
                             <div className="flex justify-between items-start mb-1">
                               <span className="font-medium">{transit.planet}</span>
                               <span className="text-sm text-gray-400">{transit.date}</span>
@@ -446,7 +446,7 @@ export default function ComprehensiveTest() {
             <TabsContent value="synthesis" className="mt-6">
               {chartData?.chart?.synthesis && (
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Core Traits & Talents</CardTitle>
                     </CardHeader>
@@ -472,7 +472,7 @@ export default function ComprehensiveTest() {
                     </CardContent>
                   </Card>
 
-                  <Card className="cosmic-card">
+                  <Card className="sanctuary-card">
                     <CardHeader>
                       <CardTitle className="text-orange-400">Life Path & Guidance</CardTitle>
                     </CardHeader>

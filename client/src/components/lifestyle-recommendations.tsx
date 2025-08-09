@@ -56,7 +56,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent mb-2">
+        <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent mb-2">
           Comprehensive Lifestyle Guidance
         </h2>
         <p className="text-muted-foreground">
@@ -75,7 +75,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="border-purple-200 dark:border-purple-800">
               <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-purple-600 dark:text-purple-400">
+                <CardTitle className="flex items-center gap-2 text-yellow-600 dark:text-yellow-500">
                   <Star className="h-5 w-5" />
                   Lucky Numbers
                 </CardTitle>
@@ -83,7 +83,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {recommendations.luckyNumbers.map((number) => (
-                    <Badge key={number} variant="outline" className="text-purple-600 border-purple-300">
+                    <Badge key={number} variant="outline" className="text-yellow-600 border-purple-300">
                       {number}
                     </Badge>
                   ))}
@@ -93,7 +93,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
 
             <Card className="border-purple-200 dark:border-purple-800">
               <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2 text-purple-600 dark:text-purple-400">
+                <CardTitle className="flex items-center gap-2 text-yellow-600 dark:text-yellow-500">
                   <Palette className="h-5 w-5" />
                   Lucky Colors
                 </CardTitle>
@@ -101,7 +101,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {recommendations.luckyColors.map((color) => (
-                    <Badge key={color} variant="outline" className="text-purple-600 border-purple-300">
+                    <Badge key={color} variant="outline" className="text-yellow-600 border-purple-300">
                       {color}
                     </Badge>
                   ))}
@@ -342,7 +342,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     {systemComparison.commonPatterns.map((pattern) => (
-                      <Badge key={pattern} className="bg-gradient-to-r from-purple-500 to-pink-500">
+                      <Badge key={pattern} className="bg-gradient-to-r from-yellow-600 to-pink-500">
                         {pattern}
                       </Badge>
                     ))}
@@ -401,7 +401,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
                       </ul>
                     </div>
                     <div>
-                      <h4 className="font-medium text-purple-600 dark:text-purple-400 mb-2">Challenges</h4>
+                      <h4 className="font-medium text-yellow-600 dark:text-yellow-500 mb-2">Challenges</h4>
                       <ul className="space-y-1">
                         {systemComparison.synthesizedGuidance.challenges.map((challenge) => (
                           <li key={challenge} className="text-sm text-muted-foreground">

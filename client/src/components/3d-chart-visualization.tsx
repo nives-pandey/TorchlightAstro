@@ -52,7 +52,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
     trine: { color: '#00FF00', lineStyle: 'solid', strength: 0.8 },
     square: { color: '#FF1493', lineStyle: 'dashed', strength: 0.7 },
     sextile: { color: '#00CED1', lineStyle: 'dotted', strength: 0.6 },
-    quincunx: { color: '#9370DB', lineStyle: 'dotted', strength: 0.4 },
+    quincunx: { color: '#6A9797', lineStyle: 'dotted', strength: 0.4 },
     semisextile: { color: '#DDA0DD', lineStyle: 'dotted', strength: 0.3 }
   };
 
@@ -170,7 +170,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
       const radius = Math.random() * 150 + 50;
       
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-      const colors = ['rgba(138, 43, 226, 0.3)', 'rgba(75, 0, 130, 0.2)', 'rgba(255, 20, 147, 0.2)'];
+      const colors = ['rgba(197, 165, 90, 0.3)', 'rgba(106, 151, 151, 0.2)', 'rgba(255, 20, 147, 0.2)'];
       const color = colors[Math.floor(Math.random() * colors.length)];
       
       gradient.addColorStop(0, color);
@@ -560,20 +560,20 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
   return (
     <div className="w-full h-full bg-gradient-to-br from-slate-900 to-purple-900 rounded-lg overflow-hidden">
       {/* Controls */}
-      <div className="p-4 bg-black/50 border-b border-purple-500/30">
+      <div className="p-4 bg-black/50 border-b border-yellow-600/30">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
               size="sm"
               onClick={isAnimating ? stopAnimation : startAnimation}
-              className="border-purple-400"
+              className="border-yellow-500"
             >
               {isAnimating ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               {isAnimating ? 'Pause' : 'Animate'}
             </Button>
             
-            <Button variant="outline" size="sm" onClick={resetView} className="border-purple-400">
+            <Button variant="outline" size="sm" onClick={resetView} className="border-yellow-500">
               <RotateCcw className="w-4 h-4" />
               Reset
             </Button>
@@ -583,7 +583,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
                 variant="outline"
                 size="sm"
                 onClick={() => setZoom(prev => Math.max(0.5, prev - 0.1))}
-                className="border-purple-400"
+                className="border-yellow-500"
               >
                 <ZoomOut className="w-4 h-4" />
               </Button>
@@ -592,7 +592,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
                 variant="outline"
                 size="sm"
                 onClick={() => setZoom(prev => Math.min(3, prev + 0.1))}
-                className="border-purple-400"
+                className="border-yellow-500"
               >
                 <ZoomIn className="w-4 h-4" />
               </Button>
@@ -658,7 +658,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
       />
       
       {/* Status Bar */}
-      <div className="p-2 bg-black/50 border-t border-purple-500/30 text-white text-sm flex justify-between">
+      <div className="p-2 bg-black/50 border-t border-yellow-600/30 text-white text-sm flex justify-between">
         <span>Chart Type: {chartType.toUpperCase()}</span>
         <span>Planets: {planets.length} | Aspects: {aspects.length}</span>
         {selectedPlanet && <span>Selected: {selectedPlanet}</span>}

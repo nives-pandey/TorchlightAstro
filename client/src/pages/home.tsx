@@ -78,7 +78,7 @@ export default function Home() {
     { icon: Heart, title: "Love & Relationships", color: "text-pink-400" },
     { icon: Briefcase, title: "Career & Finance", color: "text-green-400" },
     { icon: Dumbbell, title: "Health & Wellness", color: "text-emerald-400" },
-    { icon: Lightbulb, title: "Personal Growth", color: "text-purple-400" }
+    { icon: Lightbulb, title: "Personal Growth", color: "text-yellow-500" }
   ];
 
   const systemDetails = {
@@ -270,17 +270,17 @@ export default function Home() {
         {/* Static celestial background elements - same as landing page */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
         <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-80" />
-        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50" />
+        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-yellow-500 rounded-full opacity-50" />
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
-        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-purple-400 rounded-full opacity-40" />
+        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-yellow-500 rounded-full opacity-40" />
       </div>
 
       {/* Header - Match Landing Page */}
       <header className="relative z-10 px-4 py-6">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-yellow-600 rounded-full flex items-center justify-center">
               <Stars className="h-4 w-4 text-white" />
             </div>
             <h1 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">
@@ -313,7 +313,7 @@ export default function Home() {
               <span 
                 className="block mt-1 sm:mt-2"
                 style={{
-                  color: 'hsl(240, 100%, 94%)',
+                  color: 'hsl(60, 10%, 96%)',
                   textShadow: '0 2px 8px rgba(0,0,0,0.3)'
                 }}
               >
@@ -350,7 +350,7 @@ export default function Home() {
                     border: 'none',
                     color: 'white',
                     textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                    boxShadow: '0 8px 32px rgba(147, 51, 234, 0.3)'
+                    boxShadow: '0 8px 32px rgba(197, 165, 90, 0.3)'
                   }}
                 >
                   <Stars className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
@@ -409,7 +409,7 @@ export default function Home() {
               ]}
             >
               <Link href="/compatibility">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Heart className="w-6 h-6 text-pink-400" />
@@ -440,7 +440,7 @@ export default function Home() {
               ]}
             >
               <Link href="/spaces">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Building2 className="w-6 h-6 text-green-400" />
@@ -470,7 +470,7 @@ export default function Home() {
               ]}
             >
               <Link href="/business">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
@@ -489,15 +489,15 @@ export default function Home() {
 
           {/* Explore Ancient Wisdom Section */}
           <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-heading" style={{color: 'var(--cosmic-lavender)'}}>
-              <Sparkles className="w-5 h-5" style={{color: 'var(--cosmic-gold)'}} />
+            <h3 className="text-xl font-semibold mb-6 flex items-center justify-center gap-2 font-heading" style={{color: 'var(--sage-teal)'}}>
+              <Sparkles className="w-5 h-5" style={{color: 'var(--brushed-gold)'}} />
               Explore Ancient Wisdom
             </h3>
             
             {/* 5 Astrological Systems Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
               {personalSystems.map((system, index) => (
-                <Card key={index} className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card key={index} className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-white text-sm text-center flex flex-col items-center gap-2">
                       <span className="text-2xl">{system.icon}</span>
@@ -530,7 +530,7 @@ export default function Home() {
                 <Link href="/demo-chart">
                   <Button 
                     variant="outline"
-                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                    className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
                     🔮 3D Cosmos
                   </Button>
@@ -540,7 +540,7 @@ export default function Home() {
               <Link href="/comprehensive-report">
                 <Button 
                   variant="outline"
-                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
                   📊 5-Page Report
                 </Button>
@@ -561,7 +561,7 @@ export default function Home() {
                 <Link href="/lifestyle-intelligence">
                   <Button 
                     variant="outline"
-                    className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                    className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
                     🌟 Lifestyle
                   </Button>
@@ -571,7 +571,7 @@ export default function Home() {
               <Link href="/gemstone-lifestyle-pairing">
                 <Button 
                   variant="outline"
-                  className="cosmic-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
                   💎 Gemstone Analysis
                 </Button>
@@ -591,7 +591,7 @@ export default function Home() {
           <div className="text-center mb-12 space-y-6">
             <Button 
               onClick={() => setShowBirthForm(true)}
-              className="cosmic-button text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              className="sanctuary-button text-xl px-12 py-6 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-yellow-600 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Begin Your Cosmic Journey Now ✨
             </Button>
@@ -616,7 +616,7 @@ export default function Home() {
               ]}
             >
               <Link href="/personal">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <UserCircle className="w-6 h-6 text-yellow-400" />
@@ -646,7 +646,7 @@ export default function Home() {
               ]}
             >
               <Link href="/compatibility">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Heart className="w-6 h-6 text-pink-400" />
@@ -677,7 +677,7 @@ export default function Home() {
               ]}
             >
               <Link href="/spaces">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Building2 className="w-6 h-6 text-green-400" />
@@ -707,7 +707,7 @@ export default function Home() {
               ]}
             >
               <Link href="/business">
-                <Card className="cosmic-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-purple-400/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
@@ -736,7 +736,7 @@ export default function Home() {
           <div className="text-center mb-12 space-y-6">
             <Button 
               onClick={() => setShowBirthForm(true)}
-              className="cosmic-button text-xl px-12 py-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              className="sanctuary-button text-xl px-12 py-6 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-yellow-600 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Begin Your Cosmic Journey Now ✨
             </Button>
@@ -816,7 +816,7 @@ export default function Home() {
                 <div className="grid grid-cols-3 gap-3">
                   <Button 
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                    className="bg-gradient-to-r from-yellow-600 to-violet-600 hover:from-yellow-600 hover:to-violet-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
                   >
                     <Stars className="w-5 h-5" />
                     <div>
@@ -867,7 +867,7 @@ export default function Home() {
 
                   <Button 
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2 border-2 border-purple-400/50"
+                    className="bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-yellow-600 hover:to-indigo-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2 border-2 border-yellow-500/50"
                   >
                     <Users className="w-5 h-5" />
                     <div>
@@ -941,7 +941,7 @@ export default function Home() {
                   <Button 
                     variant="outline"
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="border-2 border-purple-400/60 text-purple-200 hover:bg-purple-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                    className="border-2 border-yellow-500/60 text-purple-200 hover:bg-yellow-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
                   >
                     <Coins className="w-4 h-4 mr-1" />
                     Crypto
@@ -962,7 +962,7 @@ export default function Home() {
               </div>
 
               {/* Can't Pay? Share the Love */}
-              <div className="bg-purple-500/10 rounded-lg p-4 border border-purple-400/20 mt-6">
+              <div className="bg-yellow-600/10 rounded-lg p-4 border border-yellow-500/20 mt-6">
                 <p className="text-purple-200 text-center font-medium mb-2">
                   Can't Pay? Just Share the Love! 💜
                 </p>
@@ -1044,7 +1044,7 @@ export default function Home() {
                       }}>Overview</h4>
                   <p className="leading-relaxed" 
                      style={{
-                       color: 'hsl(240, 100%, 94%)', 
+                       color: 'hsl(60, 10%, 96%)', 
                        opacity: 0.9
                      }}>
                     {systemDetails[selectedSystem as keyof typeof systemDetails].overview}
@@ -1056,21 +1056,21 @@ export default function Home() {
                   <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Globe className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
-                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Origin</span>
+                      <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Origin</span>
                     </div>
-                    <p style={{color: 'hsl(240, 100%, 94%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
+                    <p style={{color: 'hsl(60, 10%, 96%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
                   </div>
                   <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
-                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Heritage</span>
+                      <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Heritage</span>
                     </div>
-                    <p style={{color: 'hsl(240, 100%, 94%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
+                    <p style={{color: 'hsl(60, 10%, 96%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
                   </div>
                   <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Star className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
-                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Accuracy</span>
+                      <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Accuracy</span>
                     </div>
                     <Badge variant="outline" className="text-green-400 border-green-400">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].accuracy}
@@ -1079,9 +1079,9 @@ export default function Home() {
                   <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
                       <User className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
-                      <span className="text-sm font-medium" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>Difficulty</span>
+                      <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Difficulty</span>
                     </div>
-                    <Badge variant="outline" className="text-purple-400 border-purple-400">
+                    <Badge variant="outline" className="text-yellow-500 border-yellow-500">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].difficulty}
                     </Badge>
                   </div>
@@ -1092,7 +1092,7 @@ export default function Home() {
                   <h4 className="text-lg font-semibold text-white mb-3">Requirements</h4>
                   <div className="flex flex-wrap gap-2">
                     {systemDetails[selectedSystem as keyof typeof systemDetails].requirements.map((req, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-purple-500/20 text-purple-300">
+                      <Badge key={idx} variant="secondary" className="bg-yellow-600/20 text-purple-300">
                         {req}
                       </Badge>
                     ))}
@@ -1105,7 +1105,7 @@ export default function Home() {
                   <ul className="space-y-2">
                     {systemDetails[selectedSystem as keyof typeof systemDetails].keyFeatures.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full mt-2 flex-shrink-0"></div>
                         <span className="text-gray-300">{feature}</span>
                       </li>
                     ))}
@@ -1118,7 +1118,7 @@ export default function Home() {
                   <ul className="space-y-2">
                     {systemDetails[selectedSystem as keyof typeof systemDetails].predictions.map((prediction, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-yellow-600 rounded-full mt-2 flex-shrink-0"></div>
                         <span className="text-gray-300">{prediction}</span>
                       </li>
                     ))}
@@ -1128,12 +1128,12 @@ export default function Home() {
                 {/* Action Buttons */}
                 <div className="flex gap-4 pt-4 border-t border-gray-700">
                   <Link href={systemDetails[selectedSystem as keyof typeof systemDetails].route}>
-                    <Button className="cosmic-button flex-1">
+                    <Button className="sanctuary-button flex-1">
                       Explore {selectedSystem}
                     </Button>
                   </Link>
                   <Link href="/astrology-guide">
-                    <Button variant="outline" className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white">
+                    <Button variant="outline" className="border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white">
                       <BookOpen className="h-4 w-4 mr-2" />
                       Complete Guide
                     </Button>
@@ -1163,7 +1163,7 @@ export default function Home() {
             </h2>
             <p className="text-lg max-w-3xl mx-auto leading-relaxed" 
                style={{
-                 color: 'hsl(240, 100%, 94%)', 
+                 color: 'hsl(60, 10%, 96%)', 
                  opacity: 0.95,
                  textShadow: '0 1px 4px rgba(0,0,0,0.2)'
                }}>
@@ -1184,7 +1184,7 @@ export default function Home() {
           <div className="mb-16">
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center gap-3">
-                <User className="h-6 w-6" style={{color: 'var(--cosmic-gold)'}} />
+                <User className="h-6 w-6" style={{color: 'var(--brushed-gold)'}} />
                 <h3 className="text-2xl font-semibold" 
                     style={{
                       color: 'hsl(51, 100%, 65%)',
@@ -1214,7 +1214,7 @@ export default function Home() {
                     </h3>
                     <p className="text-xs leading-relaxed mb-3" 
                        style={{
-                         color: 'hsl(240, 100%, 94%)', 
+                         color: 'hsl(60, 10%, 96%)', 
                          opacity: 0.85
                        }}>
                       {system.description}
@@ -1223,7 +1223,7 @@ export default function Home() {
                       {system.features.slice(0, 2).map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2" 
                             style={{
-                              color: 'hsl(240, 100%, 94%)', 
+                              color: 'hsl(60, 10%, 96%)', 
                               opacity: 0.75
                             }}>
                           <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" 
@@ -1242,7 +1242,7 @@ export default function Home() {
           <div>
             <div className="flex items-center justify-center mb-8">
               <div className="flex items-center gap-3">
-                <Globe className="h-6 w-6" style={{color: 'var(--cosmic-purple)'}} />
+                <Globe className="h-6 w-6" style={{color: 'var(--sage-teal)'}} />
                 <h3 className="text-2xl font-semibold" 
                     style={{
                       color: 'hsl(51, 100%, 65%)',
@@ -1258,7 +1258,7 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg hover:shadow-purple-500/20"
+                    className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg hover:shadow-yellow-600/20"
                   >
                     <div className="text-4xl mb-4">
                       {system.icon}
@@ -1272,7 +1272,7 @@ export default function Home() {
                     </h3>
                     <p className="text-sm leading-relaxed mb-4" 
                        style={{
-                         color: 'hsl(240, 100%, 94%)', 
+                         color: 'hsl(60, 10%, 96%)', 
                          opacity: 0.85
                        }}>
                       {system.description}
@@ -1281,7 +1281,7 @@ export default function Home() {
                       {system.features.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2" 
                             style={{
-                              color: 'hsl(240, 100%, 94%)', 
+                              color: 'hsl(60, 10%, 96%)', 
                               opacity: 0.75
                             }}>
                           <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
@@ -1309,21 +1309,21 @@ export default function Home() {
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text'
                   }}>Unique Cross-System Synthesis</h3>
-              <p className="text-lg mb-6 max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--cosmic-lavender)', opacity: 0.9}}>
+              <p className="text-lg mb-6 max-w-3xl mx-auto leading-relaxed" style={{color: 'var(--sage-teal)', opacity: 0.9}}>
                 Our proprietary synthesis engine identifies universal patterns across all systems, providing unified recommendations that resolve conflicts and highlight consistent themes.
               </p>
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-lg font-medium mb-2" style={{color: 'var(--cosmic-gold)'}}>Pattern Detection</div>
-                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>Identifies consistent themes across all systems</p>
+                  <div className="text-lg font-medium mb-2" style={{color: 'var(--brushed-gold)'}}>Pattern Detection</div>
+                  <p className="text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>Identifies consistent themes across all systems</p>
                 </div>
                 <div>
-                  <div className="text-lg font-medium mb-2" style={{color: 'var(--cosmic-gold)'}}>Conflict Resolution</div>
-                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>Harmonizes contradictory recommendations</p>
+                  <div className="text-lg font-medium mb-2" style={{color: 'var(--brushed-gold)'}}>Conflict Resolution</div>
+                  <p className="text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>Harmonizes contradictory recommendations</p>
                 </div>
                 <div>
-                  <div className="text-lg font-medium mb-2" style={{color: 'var(--cosmic-gold)'}}>Priority Ranking</div>
-                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>Orders guidance by importance and timing</p>
+                  <div className="text-lg font-medium mb-2" style={{color: 'var(--brushed-gold)'}}>Priority Ranking</div>
+                  <p className="text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>Orders guidance by importance and timing</p>
                 </div>
               </div>
             </div>
@@ -1349,7 +1349,7 @@ export default function Home() {
             </h2>
             <p className="text-lg max-w-3xl mx-auto leading-relaxed" 
                style={{
-                 color: 'hsl(240, 100%, 94%)', 
+                 color: 'hsl(60, 10%, 96%)', 
                  opacity: 0.95,
                  textShadow: '0 1px 4px rgba(0,0,0,0.2)'
                }}>
@@ -1373,10 +1373,10 @@ export default function Home() {
                   className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg"
                 >
                   <area.icon className={`h-12 w-12 mx-auto mb-4 ${area.color}`} />
-                  <h3 className="font-medium mb-2 font-accent" style={{color: 'var(--cosmic-lavender)'}}>
+                  <h3 className="font-medium mb-2 font-accent" style={{color: 'var(--sage-teal)'}}>
                     {area.title}
                   </h3>
-                  <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+                  <p className="text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                     Personalized guidance for your {area.title.toLowerCase()}
                   </p>
                 </div>
@@ -1389,7 +1389,7 @@ export default function Home() {
               className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
               style={{
                 background: 'var(--cosmic-gradient-2)',
-                color: 'var(--cosmic-lavender)',
+                color: 'var(--sage-teal)',
                 border: 'none'
               }}
             >
@@ -1407,20 +1407,20 @@ export default function Home() {
             {/* Brand */}
             <div className="md:col-span-1">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                  <span className="text-xl font-bold" style={{color: 'var(--cosmic-gold)'}}>☉</span>
+                <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-yellow-600 rounded-full flex items-center justify-center">
+                  <span className="text-xl font-bold" style={{color: 'var(--brushed-gold)'}}>☉</span>
                 </div>
-                <span className="text-xl font-semibold font-accent" style={{color: 'var(--cosmic-gold)'}}>Torchlight</span>
+                <span className="text-xl font-semibold font-accent" style={{color: 'var(--brushed-gold)'}}>Torchlight</span>
               </div>
-              <p className="text-sm leading-relaxed mb-4" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+              <p className="text-sm leading-relaxed mb-4" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                 Illuminating your cosmic blueprint through authentic ancient wisdom for practical modern living.
               </p>
             </div>
             
             {/* Features */}
             <div>
-              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Features</h4>
-              <ul className="space-y-2 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--brushed-gold)'}}>Features</h4>
+              <ul className="space-y-2 text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                 <li>Natal Charts</li>
                 <li>Compatibility Analysis</li>
                 <li>Daily Horoscopes</li>
@@ -1431,8 +1431,8 @@ export default function Home() {
             
             {/* Systems */}
             <div>
-              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Astrological Systems</h4>
-              <ul className="space-y-2 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--brushed-gold)'}}>Astrological Systems</h4>
+              <ul className="space-y-2 text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                 <li>Western Astrology</li>
                 <li>Vedic (Jyotish)</li>
                 <li>Chinese Zodiac</li>
@@ -1443,8 +1443,8 @@ export default function Home() {
             
             {/* Support */}
             <div>
-              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--cosmic-gold)'}}>Support</h4>
-              <ul className="space-y-2 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+              <h4 className="font-semibold mb-4 font-accent" style={{color: 'var(--brushed-gold)'}}>Support</h4>
+              <ul className="space-y-2 text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                 <li>Help Center</li>
                 <li>Privacy Policy</li>
                 <li>Terms of Service</li>
@@ -1456,10 +1456,10 @@ export default function Home() {
           
           {/* Bottom Bar */}
           <div className="border-t border-pink-300/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+            <p className="text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
               © 2024 Torchlight. Illuminating cosmic wisdom for 25,000+ years of human observation.
             </p>
-            <div className="mt-4 md:mt-0 flex items-center space-x-4 text-sm" style={{color: 'var(--cosmic-lavender)', opacity: 0.8}}>
+            <div className="mt-4 md:mt-0 flex items-center space-x-4 text-sm" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
               <span>Powered by Swiss Ephemeris</span>
               <span>•</span>
               <span>Authentic Ancient Sources</span>

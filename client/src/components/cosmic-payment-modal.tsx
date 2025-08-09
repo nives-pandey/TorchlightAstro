@@ -146,7 +146,7 @@ function CryptoPaymentView({
       </div>
 
       {/* Payment Details */}
-      <div className="bg-gradient-to-r from-purple-800/30 to-pink-800/30 p-6 rounded-xl border border-purple-400/50">
+      <div className="bg-gradient-to-r from-purple-800/30 to-pink-800/30 p-6 rounded-xl border border-yellow-500/50">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <span className="text-purple-200">Amount:</span>
@@ -155,7 +155,7 @@ function CryptoPaymentView({
           
           <div className="flex justify-between items-center">
             <span className="text-purple-200">Network:</span>
-            <Badge variant="outline" className="text-purple-300 border-purple-400">
+            <Badge variant="outline" className="text-purple-300 border-yellow-500">
               {selectedCrypto.network}
             </Badge>
           </div>
@@ -176,13 +176,13 @@ function CryptoPaymentView({
           <Input
             value={selectedCrypto.address}
             readOnly
-            className="font-mono text-sm bg-purple-800/40 border-purple-400/50 text-white"
+            className="font-mono text-sm bg-purple-800/40 border-yellow-500/50 text-white"
           />
           <Button
             variant="outline"
             size="sm"
             onClick={copyAddress}
-            className="flex-shrink-0 border-purple-400/50 text-white hover:bg-purple-600"
+            className="flex-shrink-0 border-yellow-500/50 text-white hover:bg-yellow-600"
           >
             {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
           </Button>
@@ -190,7 +190,7 @@ function CryptoPaymentView({
       </div>
 
       {/* QR Code Placeholder */}
-      <div className="bg-purple-800/40 p-8 rounded-xl border-2 border-dashed border-purple-400/50">
+      <div className="bg-purple-800/40 p-8 rounded-xl border-2 border-dashed border-yellow-500/50">
         <div className="text-center space-y-3">
           <QrCode className="w-16 h-16 mx-auto text-purple-300" />
           <p className="text-sm text-purple-200">
@@ -220,13 +220,13 @@ function CryptoPaymentView({
         <Button 
           variant="outline" 
           onClick={onBack} 
-          className="flex-1 border-purple-400/50 text-white hover:bg-purple-600"
+          className="flex-1 border-yellow-500/50 text-white hover:bg-yellow-600"
         >
           ← Choose Different Method
         </Button>
         <Button 
           onClick={onComplete} 
-          className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
         >
           I've Sent Payment
         </Button>
@@ -304,12 +304,12 @@ export default function CosmicPaymentModal({
           {paymentMethods.map((method) => (
             <Card
               key={method.id}
-              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-purple-400/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
+              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-yellow-500/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
               onClick={() => handleMethodSelect(method.id)}
             >
               <CardContent className="p-4">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-purple-600/50 to-pink-600/50 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-yellow-600/50 to-pink-600/50 rounded-full flex items-center justify-center">
                     {method.icon}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -317,7 +317,7 @@ export default function CosmicPaymentModal({
                       <h3 className="font-semibold text-white">
                         {method.name}
                       </h3>
-                      <Badge variant="secondary" className="text-xs bg-purple-600/50 text-purple-200">
+                      <Badge variant="secondary" className="text-xs bg-yellow-600/50 text-purple-200">
                         {method.popularity}
                       </Badge>
                     </div>
@@ -346,7 +346,7 @@ export default function CosmicPaymentModal({
               className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-purple-800/40 backdrop-blur-sm ${
                 crypto.recommended 
                   ? 'border-green-400/50 bg-green-500/20' 
-                  : 'border-purple-400/30 hover:border-purple-300'
+                  : 'border-yellow-500/30 hover:border-purple-300'
               }`}
               onClick={() => handleCryptoSelect(crypto)}
             >
@@ -382,7 +382,7 @@ export default function CosmicPaymentModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-900/95 backdrop-blur-xl border border-purple-400/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
+      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-900/95 backdrop-blur-xl border border-yellow-500/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
         <DialogHeader>
           <DialogTitle className="sr-only">Cosmic Payment Options</DialogTitle>
         </DialogHeader>

@@ -56,14 +56,14 @@ export default function Daily() {
     return (
       <div className="min-h-screen pt-20 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="cosmic-card border-red-500/20">
+          <Card className="sanctuary-card border-red-500/20">
             <CardContent className="p-8 text-center">
               <div className="text-red-400 text-6xl mb-4">⚠️</div>
               <h2 className="text-2xl font-bold text-white mb-4">Unable to Load Daily Guidance</h2>
               <p className="text-gray-400 mb-6">
                 We couldn't retrieve your cosmic guidance for today. Please ensure your birth data is complete.
               </p>
-              <Button className="cosmic-button">
+              <Button className="sanctuary-button">
                 Update Birth Data
               </Button>
             </CardContent>
@@ -77,14 +77,14 @@ export default function Daily() {
     return (
       <div className="min-h-screen pt-20 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardContent className="p-8 text-center">
-              <div className="text-purple-500 text-6xl mb-4">🌟</div>
+              <div className="text-yellow-600 text-6xl mb-4">🌟</div>
               <h2 className="text-2xl font-bold text-white mb-4">Create Your Birth Chart First</h2>
               <p className="text-gray-400 mb-6">
                 To receive personalized daily guidance, we need your birth information to calculate your cosmic profile.
               </p>
-              <Button className="cosmic-button">
+              <Button className="sanctuary-button">
                 Create Birth Chart
               </Button>
             </CardContent>
@@ -124,7 +124,7 @@ export default function Daily() {
       icon: Lightbulb,
       title: "Personal Growth",
       content: dailyGuidance.horoscope.growth,
-      color: "text-purple-400"
+      color: "text-yellow-500"
     }
   ];
 
@@ -138,16 +138,16 @@ export default function Daily() {
           <p className="text-gray-400 text-lg max-w-3xl mx-auto mb-4">
             Personalized insights based on current planetary transits and your unique astrological blueprint.
           </p>
-          <div className="text-purple-500 font-medium">{currentDate}</div>
+          <div className="text-yellow-600 font-medium">{currentDate}</div>
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Today's Overview */}
           <div className="lg:col-span-2 space-y-6">
             {/* Current Transits */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500 flex items-center">
+                <CardTitle className="text-yellow-600 flex items-center">
                   <Satellite className="mr-2 h-5 w-5" />
                   Current Planetary Transits
                 </CardTitle>
@@ -155,13 +155,13 @@ export default function Daily() {
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-4">
                   {dailyGuidance.transits.map((transit: any, index: number) => (
-                    <div key={index} className="bg-black/30 rounded-lg p-4 border border-purple-500/20">
+                    <div key={index} className="bg-black/30 rounded-lg p-4 border border-yellow-600/20">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-white font-medium">{transit.planet} {transit.sign}</span>
                         <Badge 
                           variant="outline" 
                           className={`text-xs ${
-                            transit.timing === 'peak today' ? 'border-purple-500 text-purple-500' :
+                            transit.timing === 'peak today' ? 'border-yellow-600 text-yellow-600' :
                             transit.timing === 'continuing' ? 'border-blue-400 text-blue-400' :
                             'border-gray-500 text-gray-500'
                           }`}
@@ -177,9 +177,9 @@ export default function Daily() {
             </Card>
             
             {/* Daily Horoscope */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500 flex items-center">
+                <CardTitle className="text-yellow-600 flex items-center">
                   <Scroll className="mr-2 h-5 w-5" />
                   Your Daily Horoscope
                 </CardTitle>
@@ -197,7 +197,7 @@ export default function Daily() {
                 <div className="grid md:grid-cols-2 gap-6">
                   {lifeAreas.map((area, index) => (
                     <div key={index}>
-                      <h4 className="text-purple-500 font-medium mb-3 flex items-center">
+                      <h4 className="text-yellow-600 font-medium mb-3 flex items-center">
                         <area.icon className={`mr-2 h-4 w-4 ${area.color}`} />
                         {area.title}
                       </h4>
@@ -214,9 +214,9 @@ export default function Daily() {
           {/* Today's Sidebar */}
           <div className="space-y-6">
             {/* Optimal Timing */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500 flex items-center">
+                <CardTitle className="text-yellow-600 flex items-center">
                   <Clock className="mr-2 h-5 w-5" />
                   Optimal Timing Today
                 </CardTitle>
@@ -228,7 +228,7 @@ export default function Daily() {
                       <div className="text-white font-medium">Best Time</div>
                       <div className="text-gray-400 text-sm">Important decisions</div>
                     </div>
-                    <div className="text-purple-500 font-bold">{dailyGuidance.optimalTiming.best}</div>
+                    <div className="text-yellow-600 font-bold">{dailyGuidance.optimalTiming.best}</div>
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
@@ -249,9 +249,9 @@ export default function Daily() {
             </Card>
             
             {/* Lucky Elements */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500 flex items-center">
+                <CardTitle className="text-yellow-600 flex items-center">
                   <Star className="mr-2 h-5 w-5" />
                   Today's Lucky Elements
                 </CardTitle>
@@ -264,12 +264,12 @@ export default function Daily() {
                       {dailyGuidance.luckyElements.colors.map((color: string, index: number) => (
                         <div 
                           key={index}
-                          className={`w-6 h-6 rounded-full border border-purple-500/30 ${
+                          className={`w-6 h-6 rounded-full border border-yellow-600/30 ${
                             color === 'blue' ? 'bg-blue-600' :
-                            color === 'gold' ? 'bg-purple-500' :
+                            color === 'gold' ? 'bg-yellow-600' :
                             color === 'green' ? 'bg-green-600' :
                             color === 'red' ? 'bg-red-600' :
-                            color === 'purple' ? 'bg-purple-600' :
+                            color === 'purple' ? 'bg-yellow-600' :
                             'bg-gray-600'
                           }`}
                           title={color}
@@ -279,24 +279,24 @@ export default function Daily() {
                   </div>
                   <div>
                     <div className="text-white font-medium mb-1">Numbers</div>
-                    <div className="text-purple-500">{dailyGuidance.luckyElements.numbers.join(', ')}</div>
+                    <div className="text-yellow-600">{dailyGuidance.luckyElements.numbers.join(', ')}</div>
                   </div>
                   <div>
                     <div className="text-white font-medium mb-1">Direction</div>
-                    <div className="text-purple-500">{dailyGuidance.luckyElements.direction}</div>
+                    <div className="text-yellow-600">{dailyGuidance.luckyElements.direction}</div>
                   </div>
                   <div>
                     <div className="text-white font-medium mb-1">Element Focus</div>
-                    <div className="text-purple-500">{dailyGuidance.luckyElements.element}</div>
+                    <div className="text-yellow-600">{dailyGuidance.luckyElements.element}</div>
                   </div>
                 </div>
               </CardContent>
             </Card>
             
             {/* Moon Phase */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500 flex items-center">
+                <CardTitle className="text-yellow-600 flex items-center">
                   <Moon className="mr-2 h-5 w-5" />
                   Current Moon Phase
                 </CardTitle>
@@ -315,15 +315,15 @@ export default function Daily() {
             </Card>
             
             {/* Quick Actions */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-500">Quick Actions</CardTitle>
+                <CardTitle className="text-yellow-600">Quick Actions</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start border-purple-500/20 hover:border-purple-500 hover:bg-purple-500/10"
+                    className="w-full justify-start border-yellow-600/20 hover:border-yellow-600 hover:bg-yellow-600/10"
                   >
                     <Eye className="mr-2 h-4 w-4" />
                     <div className="text-left">
@@ -333,7 +333,7 @@ export default function Daily() {
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start border-purple-500/20 hover:border-purple-500 hover:bg-purple-500/10"
+                    className="w-full justify-start border-yellow-600/20 hover:border-yellow-600 hover:bg-yellow-600/10"
                   >
                     <Calendar className="mr-2 h-4 w-4" />
                     <div className="text-left">
@@ -343,7 +343,7 @@ export default function Daily() {
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start border-purple-500/20 hover:border-purple-500 hover:bg-purple-500/10"
+                    className="w-full justify-start border-yellow-600/20 hover:border-yellow-600 hover:bg-yellow-600/10"
                   >
                     <Bell className="mr-2 h-4 w-4" />
                     <div className="text-left">

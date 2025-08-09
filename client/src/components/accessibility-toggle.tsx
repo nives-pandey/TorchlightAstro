@@ -31,7 +31,7 @@ export default function AccessibilityToggle() {
       variant="outline"
       size="sm"
       onClick={toggleHighContrast}
-      className="fixed top-4 right-4 z-50 bg-slate-800/90 hover:bg-slate-700 text-white border-2 border-purple-400 shadow-lg"
+      className="fixed top-4 right-4 z-50 bg-slate-800/90 hover:bg-slate-700 text-white border-2 border-yellow-500 shadow-lg"
       title={highContrast ? "Disable High Contrast" : "Enable High Contrast"}
     >
       {highContrast ? (

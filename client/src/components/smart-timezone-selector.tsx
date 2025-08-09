@@ -156,14 +156,14 @@ export default function SmartTimezoneSelector({
 
   const getConfidenceColor = (confidence: number): string => {
     if (confidence >= 0.9) return "text-green-400";
-    if (confidence >= 0.8) return "text-purple-400";
+    if (confidence >= 0.8) return "text-yellow-500";
     if (confidence >= 0.7) return "text-orange-400";
     return "text-red-400";
   };
 
   const getConfidenceBadgeColor = (confidence: number): string => {
     if (confidence >= 0.9) return "bg-green-500/20 text-green-400 border-green-500/30";
-    if (confidence >= 0.8) return "bg-purple-500/20 text-purple-400 border-purple-500/30";
+    if (confidence >= 0.8) return "bg-yellow-600/20 text-yellow-500 border-yellow-600/30";
     if (confidence >= 0.7) return "bg-orange-500/20 text-orange-400 border-orange-500/30";
     return "bg-red-500/20 text-red-400 border-red-500/30";
   };
@@ -204,7 +204,7 @@ export default function SmartTimezoneSelector({
 
       {/* Smart Recommendations */}
       {recommendations.length > 0 && (
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
             <CardTitle className="text-blue-400 flex items-center">
               <Zap className="mr-2 h-5 w-5" />
@@ -217,7 +217,7 @@ export default function SmartTimezoneSelector({
                 key={index}
                 className={`p-4 rounded-lg border cursor-pointer transition-all ${
                   selectedTimezone === rec.timezoneId
-                    ? 'bg-purple-500/20 border-purple-500/50'
+                    ? 'bg-yellow-600/20 border-yellow-600/50'
                     : 'bg-slate-800/30 border-slate-700/50 hover:border-slate-600/50'
                 }`}
                 onClick={() => {
@@ -275,7 +275,7 @@ export default function SmartTimezoneSelector({
 
       {/* Validation Results */}
       {validation && (
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
             <CardTitle className="text-green-400 flex items-center">
               <CheckCircle className="mr-2 h-5 w-5" />
@@ -319,8 +319,8 @@ export default function SmartTimezoneSelector({
 
             {/* Warnings */}
             {validation.warnings.length > 0 && (
-              <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                <div className="flex items-center text-purple-400 text-sm font-medium mb-1">
+              <div className="p-3 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
+                <div className="flex items-center text-yellow-500 text-sm font-medium mb-1">
                   <AlertTriangle className="h-4 w-4 mr-2" />
                   Accuracy Warnings
                 </div>
@@ -347,9 +347,9 @@ export default function SmartTimezoneSelector({
       )}
 
       {/* Manual Override Option */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-400 flex items-center">
+          <CardTitle className="text-yellow-500 flex items-center">
             <Map className="mr-2 h-5 w-5" />
             Manual Timezone Selection
           </CardTitle>

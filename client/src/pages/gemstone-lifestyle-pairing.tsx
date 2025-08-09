@@ -386,7 +386,7 @@ export default function GemstoneLifestylePairing() {
     { id: "career", name: "Career", icon: <Briefcase className="h-4 w-4" />, color: "bg-green-500" },
     { id: "love", name: "Love", icon: <Heart className="h-4 w-4" />, color: "bg-pink-500" },
     { id: "wellness", name: "Wellness", icon: <Dumbbell className="h-4 w-4" />, color: "bg-blue-500" },
-    { id: "travel", name: "Travel", icon: <Plane className="h-4 w-4" />, color: "bg-purple-500" }
+    { id: "travel", name: "Travel", icon: <Plane className="h-4 w-4" />, color: "bg-yellow-600" }
   ];
 
   const getCurrentPairings = () => {
@@ -396,17 +396,17 @@ export default function GemstoneLifestylePairing() {
   if (!userProfile) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center">
-        <Card className="bg-black/40 border-purple-500/30 max-w-md mx-4">
+        <Card className="bg-black/40 border-yellow-600/30 max-w-md mx-4">
           <CardContent className="text-center py-12">
-            <Gem className="h-16 w-16 mx-auto text-purple-400 mb-4" />
+            <Gem className="h-16 w-16 mx-auto text-yellow-500 mb-4" />
             <h3 className="text-xl font-semibold text-purple-300 mb-2">
               Create Your Chart First
             </h3>
-            <p className="text-purple-400 mb-6">
+            <p className="text-yellow-500 mb-6">
               Generate your birth chart to receive personalized gemstone-lifestyle pairings based on your complete astrological profile.
             </p>
             <Link href="/home">
-              <Button className="bg-purple-600 hover:bg-purple-700">
+              <Button className="bg-yellow-600 hover:bg-purple-700">
                 Create Chart
               </Button>
             </Link>
@@ -419,15 +419,15 @@ export default function GemstoneLifestylePairing() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       {/* Header */}
-      <div className="border-b border-purple-500/20 bg-black/20 backdrop-blur-sm">
+      <div className="border-b border-yellow-600/20 bg-black/20 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="p-2 bg-purple-500/20 rounded-lg">
-                <TrendingUp className="h-8 w-8 text-purple-400" />
+              <div className="p-2 bg-yellow-600/20 rounded-lg">
+                <TrendingUp className="h-8 w-8 text-yellow-500" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
                   Gemstone Lifestyle Pairing
                 </h1>
                 <p className="text-purple-300">Integrated crystal therapy & lifestyle optimization</p>
@@ -435,19 +435,19 @@ export default function GemstoneLifestylePairing() {
             </div>
             <div className="flex space-x-2">
               <Link href="/gemstone-guidance">
-                <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20 text-sm">
+                <Button variant="outline" className="border-yellow-600/30 text-purple-300 hover:bg-yellow-600/20 text-sm">
                   <Gem className="h-4 w-4 mr-1" />
                   Gems
                 </Button>
               </Link>
               <Link href="/lifestyle-intelligence">
-                <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20 text-sm">
+                <Button variant="outline" className="border-yellow-600/30 text-purple-300 hover:bg-yellow-600/20 text-sm">
                   <MapPin className="h-4 w-4 mr-1" />
                   Lifestyle
                 </Button>
               </Link>
               <Link href="/home">
-                <Button variant="outline" className="border-purple-500/30 text-purple-300 hover:bg-purple-500/20">
+                <Button variant="outline" className="border-yellow-600/30 text-purple-300 hover:bg-yellow-600/20">
                   <Home className="h-4 w-4 mr-2" />
                   Home
                 </Button>
@@ -459,7 +459,7 @@ export default function GemstoneLifestylePairing() {
 
       <div className="container mx-auto px-4 py-8">
         {/* Profile Summary */}
-        <Card className="bg-black/40 border-purple-500/30 mb-8">
+        <Card className="bg-black/40 border-yellow-600/30 mb-8">
           <CardHeader>
             <CardTitle className="text-purple-300 flex items-center">
               <Star className="h-5 w-5 mr-2" />
@@ -469,25 +469,25 @@ export default function GemstoneLifestylePairing() {
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
-                <p className="text-sm text-purple-400">Western Sign</p>
+                <p className="text-sm text-yellow-500">Western Sign</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.western?.sign || 'Unknown'}
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-purple-400">Element</p>
+                <p className="text-sm text-yellow-500">Element</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.western?.element || 'Unknown'}
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-purple-400">Life Path</p>
+                <p className="text-sm text-yellow-500">Life Path</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {userProfile.systems?.numerology?.lifePath || 'Unknown'}
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-sm text-purple-400">Pairings</p>
+                <p className="text-sm text-yellow-500">Pairings</p>
                 <p className="text-lg font-semibold text-purple-300">
                   {pairings.length} Sets
                 </p>
@@ -498,12 +498,12 @@ export default function GemstoneLifestylePairing() {
 
         {/* Category Navigation */}
         <Tabs value={activePairing} onValueChange={setActivePairing} className="w-full">
-          <TabsList className="grid w-full grid-cols-4 bg-black/40 border-purple-500/30">
+          <TabsList className="grid w-full grid-cols-4 bg-black/40 border-yellow-600/30">
             {pairingCategories.map((category) => (
               <TabsTrigger 
                 key={category.id} 
                 value={category.id}
-                className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-purple-300"
+                className="data-[state=active]:bg-yellow-600 data-[state=active]:text-white text-purple-300"
               >
                 <div className="flex items-center space-x-2">
                   {category.icon}
@@ -518,7 +518,7 @@ export default function GemstoneLifestylePairing() {
             <TabsContent key={category.id} value={category.id} className="mt-6">
               <div className="space-y-6">
                 {getCurrentPairings().map((pairing, index) => (
-                  <Card key={index} className="bg-black/40 border-purple-500/30">
+                  <Card key={index} className="bg-black/40 border-yellow-600/30">
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-xl text-purple-300 flex items-center">
@@ -527,7 +527,7 @@ export default function GemstoneLifestylePairing() {
                         </CardTitle>
                         <Button 
                           onClick={() => setSelectedPairing(pairing)}
-                          className="bg-purple-600 hover:bg-purple-700 text-sm"
+                          className="bg-yellow-600 hover:bg-purple-700 text-sm"
                         >
                           View Details
                         </Button>
@@ -541,7 +541,7 @@ export default function GemstoneLifestylePairing() {
                     <CardContent className="space-y-6">
                       {/* Primary Gemstone */}
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                        <div className="p-4 bg-yellow-600/10 border border-yellow-600/30 rounded-lg">
                           <div className="flex items-center space-x-3 mb-3">
                             <div className={`w-6 h-6 rounded-full border-2 border-white/30 ${
                               pairing.primaryGemstone.color.includes('Red') ? 'bg-red-400' :
@@ -549,26 +549,26 @@ export default function GemstoneLifestylePairing() {
                               pairing.primaryGemstone.color.includes('Blue') ? 'bg-blue-400' :
                               pairing.primaryGemstone.color.includes('Yellow') || pairing.primaryGemstone.color.includes('Golden') ? 'bg-yellow-400' :
                               pairing.primaryGemstone.color.includes('Pink') ? 'bg-pink-400' :
-                              pairing.primaryGemstone.color.includes('Purple') ? 'bg-purple-400' :
+                              pairing.primaryGemstone.color.includes('Purple') ? 'bg-yellow-500' :
                               pairing.primaryGemstone.color.includes('Orange') ? 'bg-orange-400' :
                               pairing.primaryGemstone.color.includes('White') || pairing.primaryGemstone.color.includes('Creamy') ? 'bg-white' :
                               'bg-gray-400'
                             }`}></div>
                             <div>
                               <h4 className="text-purple-300 font-semibold">{pairing.primaryGemstone.name}</h4>
-                              <p className="text-purple-400 text-sm">{pairing.primaryGemstone.purpose}</p>
+                              <p className="text-yellow-500 text-sm">{pairing.primaryGemstone.purpose}</p>
                             </div>
                           </div>
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
-                              <span className="text-purple-400">Chakra:</span>
+                              <span className="text-yellow-500">Chakra:</span>
                               <span className="text-purple-300">{pairing.primaryGemstone.chakra}</span>
                             </div>
                             <div className="space-y-1">
-                              <p className="text-purple-400">Benefits:</p>
+                              <p className="text-yellow-500">Benefits:</p>
                               <div className="flex flex-wrap gap-1">
                                 {pairing.primaryGemstone.benefits.slice(0, 3).map((benefit, i) => (
-                                  <Badge key={i} variant="secondary" className="text-xs bg-purple-500/20 text-purple-300">
+                                  <Badge key={i} variant="secondary" className="text-xs bg-yellow-600/20 text-purple-300">
                                     {benefit}
                                   </Badge>
                                 ))}
@@ -584,9 +584,9 @@ export default function GemstoneLifestylePairing() {
                             <div key={i} className="flex items-center justify-between p-2 bg-black/20 rounded">
                               <div>
                                 <p className="text-purple-300 font-medium text-sm">{stone.name}</p>
-                                <p className="text-purple-400 text-xs">{stone.purpose}</p>
+                                <p className="text-yellow-500 text-xs">{stone.purpose}</p>
                               </div>
-                              <p className="text-purple-400 text-xs">{stone.timing}</p>
+                              <p className="text-yellow-500 text-xs">{stone.timing}</p>
                             </div>
                           ))}
                         </div>
@@ -600,15 +600,15 @@ export default function GemstoneLifestylePairing() {
                         </h4>
                         <div className="grid gap-3">
                           {pairing.lifestyleGuidance.map((guidance, i) => (
-                            <div key={i} className="p-3 bg-black/20 rounded border-l-4 border-purple-500">
+                            <div key={i} className="p-3 bg-black/20 rounded border-l-4 border-yellow-600">
                               <div className="flex items-center justify-between mb-2">
                                 <h5 className="text-purple-300 font-medium">{guidance.area}</h5>
                                 <Badge className="bg-green-500/20 text-green-300 text-xs">
                                   {guidance.confidence}% confidence
                                 </Badge>
                               </div>
-                              <p className="text-purple-400 text-sm">{guidance.recommendations[0]}</p>
-                              <p className="text-purple-400 text-xs mt-1">+{guidance.recommendations.length - 1} more recommendations</p>
+                              <p className="text-yellow-500 text-sm">{guidance.recommendations[0]}</p>
+                              <p className="text-yellow-500 text-xs mt-1">+{guidance.recommendations.length - 1} more recommendations</p>
                             </div>
                           ))}
                         </div>
@@ -631,15 +631,15 @@ export default function GemstoneLifestylePairing() {
                 ))}
 
                 {getCurrentPairings().length === 0 && (
-                  <Card className="bg-black/40 border-purple-500/30">
+                  <Card className="bg-black/40 border-yellow-600/30">
                     <CardContent className="text-center py-12">
-                      <div className="text-purple-400 mb-4">
+                      <div className="text-yellow-500 mb-4">
                         {category.icon}
                       </div>
                       <p className="text-purple-300">
                         Generating personalized {category.name.toLowerCase()} pairings...
                       </p>
-                      <p className="text-purple-400 text-sm mt-2">
+                      <p className="text-yellow-500 text-sm mt-2">
                         Complete profile analysis in progress.
                       </p>
                     </CardContent>
@@ -654,14 +654,14 @@ export default function GemstoneLifestylePairing() {
       {/* Detailed Pairing Modal */}
       {selectedPairing && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <Card className="bg-black/90 border-purple-500/50 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <Card className="bg-black/90 border-yellow-600/50 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="text-2xl text-purple-300">{selectedPairing.title}</CardTitle>
                 <Button 
                   variant="ghost" 
                   onClick={() => setSelectedPairing(null)}
-                  className="text-purple-300 hover:bg-purple-500/20"
+                  className="text-purple-300 hover:bg-yellow-600/20"
                 >
                   ✕
                 </Button>
@@ -671,7 +671,7 @@ export default function GemstoneLifestylePairing() {
               {/* Complete Gemstone Information */}
               <div>
                 <h3 className="text-purple-300 font-semibold text-lg mb-4">Primary Gemstone</h3>
-                <div className="p-6 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                <div className="p-6 bg-yellow-600/10 border border-yellow-600/30 rounded-lg">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className={`w-12 h-12 rounded-full border-2 border-white/30 ${
                       selectedPairing.primaryGemstone.color.includes('Red') ? 'bg-red-400' :
@@ -679,39 +679,39 @@ export default function GemstoneLifestylePairing() {
                       selectedPairing.primaryGemstone.color.includes('Blue') ? 'bg-blue-400' :
                       selectedPairing.primaryGemstone.color.includes('Yellow') || selectedPairing.primaryGemstone.color.includes('Golden') ? 'bg-yellow-400' :
                       selectedPairing.primaryGemstone.color.includes('Pink') ? 'bg-pink-400' :
-                      selectedPairing.primaryGemstone.color.includes('Purple') ? 'bg-purple-400' :
+                      selectedPairing.primaryGemstone.color.includes('Purple') ? 'bg-yellow-500' :
                       selectedPairing.primaryGemstone.color.includes('Orange') ? 'bg-orange-400' :
                       selectedPairing.primaryGemstone.color.includes('White') || selectedPairing.primaryGemstone.color.includes('Creamy') ? 'bg-white' :
                       'bg-gray-400'
                     }`}></div>
                     <div>
                       <h4 className="text-xl text-purple-300">{selectedPairing.primaryGemstone.name}</h4>
-                      <p className="text-purple-400">{selectedPairing.primaryGemstone.purpose}</p>
+                      <p className="text-yellow-500">{selectedPairing.primaryGemstone.purpose}</p>
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <p className="text-purple-400 text-sm">Chakra Association</p>
+                      <p className="text-yellow-500 text-sm">Chakra Association</p>
                       <p className="text-purple-300">{selectedPairing.primaryGemstone.chakra}</p>
                     </div>
                     <div>
-                      <p className="text-purple-400 text-sm">Color Energy</p>
+                      <p className="text-yellow-500 text-sm">Color Energy</p>
                       <p className="text-purple-300">{selectedPairing.primaryGemstone.color}</p>
                     </div>
                   </div>
                   <div className="mb-4">
-                    <p className="text-purple-400 text-sm mb-2">Benefits</p>
+                    <p className="text-yellow-500 text-sm mb-2">Benefits</p>
                     <div className="grid grid-cols-2 gap-2">
                       {selectedPairing.primaryGemstone.benefits.map((benefit, i) => (
                         <div key={i} className="flex items-center text-sm text-purple-300">
-                          <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                          <span className="w-2 h-2 bg-yellow-500 rounded-full mr-2"></span>
                           {benefit}
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <p className="text-purple-400 text-sm mb-2">Wearing Instructions</p>
+                    <p className="text-yellow-500 text-sm mb-2">Wearing Instructions</p>
                     <p className="text-purple-300 text-sm">{selectedPairing.primaryGemstone.wearingInstructions}</p>
                   </div>
                 </div>
@@ -722,7 +722,7 @@ export default function GemstoneLifestylePairing() {
                 <h3 className="text-purple-300 font-semibold text-lg mb-4">Integrated Lifestyle Guidance</h3>
                 <div className="space-y-4">
                   {selectedPairing.lifestyleGuidance.map((guidance, i) => (
-                    <div key={i} className="p-4 bg-black/20 border border-purple-500/30 rounded-lg">
+                    <div key={i} className="p-4 bg-black/20 border border-yellow-600/30 rounded-lg">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="text-purple-300 font-semibold">{guidance.area}</h4>
                         <Badge className="bg-green-500/20 text-green-300">
@@ -732,14 +732,14 @@ export default function GemstoneLifestylePairing() {
                       <div className="space-y-2">
                         {guidance.recommendations.map((rec, recIndex) => (
                           <div key={recIndex} className="flex items-start space-x-3">
-                            <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                            <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
                             <p className="text-purple-300 text-sm">{rec}</p>
                           </div>
                         ))}
                       </div>
                       <div className="flex items-center space-x-2 mt-3 text-xs">
-                        <Clock className="h-3 w-3 text-purple-400" />
-                        <span className="text-purple-400">{guidance.timing}</span>
+                        <Clock className="h-3 w-3 text-yellow-500" />
+                        <span className="text-yellow-500">{guidance.timing}</span>
                       </div>
                     </div>
                   ))}

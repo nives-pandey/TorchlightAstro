@@ -20,7 +20,7 @@ export default function Pricing() {
       icon: Star,
       title: "Zero-Budget Excellence",
       description: "LLM-powered analysis rivals $25,000+ in specialized API subscriptions",
-      color: "text-purple-400"
+      color: "text-yellow-500"
     },
     {
       icon: Globe,
@@ -32,7 +32,7 @@ export default function Pricing() {
       icon: Zap,
       title: "Swiss Ephemeris Precision",
       description: "Professional astronomical calculations without expensive software costs",
-      color: "text-purple-400"
+      color: "text-yellow-500"
     },
     {
       icon: Shield,
@@ -128,8 +128,8 @@ export default function Pricing() {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <div className="cosmic-logo text-4xl">🔆</div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
+            <div className="sanctuary-logo text-4xl">🔆</div>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               MyTorchlight Pricing
             </h1>
           </div>
@@ -155,9 +155,9 @@ export default function Pricing() {
         </div>
 
         {/* Competitive Advantages */}
-        <Card className="cosmic-card mb-12">
+        <Card className="sanctuary-card mb-12">
           <CardHeader>
-            <CardTitle className="text-purple-400 text-center">Why MyTorchlight Beats Expensive Alternatives</CardTitle>
+            <CardTitle className="text-yellow-500 text-center">Why MyTorchlight Beats Expensive Alternatives</CardTitle>
             <CardDescription className="text-center">
               Our zero-budget LLM approach provides superior value compared to traditional astrology services
             </CardDescription>
@@ -174,7 +174,7 @@ export default function Pricing() {
             </div>
             
             <div className="mt-8 p-6 bg-gray-800/50 rounded-lg text-center">
-              <h4 className="text-lg font-medium text-purple-400 mb-2">Value Comparison</h4>
+              <h4 className="text-lg font-medium text-yellow-500 mb-2">Value Comparison</h4>
               <p className="text-gray-300 text-sm mb-4">
                 Traditional astrology software and API subscriptions cost $25,000-$50,000 annually. 
                 Our LLM approach provides <span className="text-green-400 font-medium">superior cross-system analysis</span> with unlimited usage.
@@ -204,9 +204,9 @@ export default function Pricing() {
         </Card>
 
         {/* Output Formats */}
-        <Card className="cosmic-card mb-12">
+        <Card className="sanctuary-card mb-12">
           <CardHeader>
-            <CardTitle className="text-purple-400">Output Formats & Delivery Options</CardTitle>
+            <CardTitle className="text-yellow-500">Output Formats & Delivery Options</CardTitle>
             <CardDescription>
               Choose how you want to receive your comprehensive astrological analysis
             </CardDescription>
@@ -220,13 +220,13 @@ export default function Pricing() {
                     <div className="flex space-x-2">
                       {output.free && <Badge variant="outline" className="text-green-400 border-green-400">Free</Badge>}
                       {output.premium && typeof output.premium === 'boolean' && (
-                        <Badge variant="outline" className="text-purple-400 border-purple-400">Premium</Badge>
+                        <Badge variant="outline" className="text-yellow-500 border-yellow-500">Premium</Badge>
                       )}
                       {output.premium && typeof output.premium === 'string' && (
-                        <Badge variant="outline" className="text-purple-400 border-purple-400">{output.premium}</Badge>
+                        <Badge variant="outline" className="text-yellow-500 border-yellow-500">{output.premium}</Badge>
                       )}
                       {output.professional && (
-                        <Badge variant="outline" className="text-purple-400 border-purple-400">Pro</Badge>
+                        <Badge variant="outline" className="text-yellow-500 border-yellow-500">Pro</Badge>
                       )}
                     </div>
                   </div>
@@ -246,9 +246,9 @@ export default function Pricing() {
         </Card>
 
         {/* System Comparison Features */}
-        <Card className="cosmic-card mb-12">
+        <Card className="sanctuary-card mb-12">
           <CardHeader>
-            <CardTitle className="text-purple-400">Cross-System Analysis & Compatibility</CardTitle>
+            <CardTitle className="text-yellow-500">Cross-System Analysis & Compatibility</CardTitle>
             <CardDescription>
               Unique multi-system comparisons and astro-matching capabilities
             </CardDescription>
@@ -261,7 +261,7 @@ export default function Pricing() {
                   <ul className="space-y-2">
                     {category.items.map((item, i) => (
                       <li key={i} className="flex items-center space-x-2 text-sm text-gray-300">
-                        <ArrowRight className="h-4 w-4 text-purple-400" />
+                        <ArrowRight className="h-4 w-4 text-yellow-500" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -276,9 +276,9 @@ export default function Pricing() {
         <PricingTiers />
 
         {/* FAQ / Additional Info */}
-        <Card className="cosmic-card mt-12">
+        <Card className="sanctuary-card mt-12">
           <CardHeader>
-            <CardTitle className="text-purple-400">Frequently Asked Questions</CardTitle>
+            <CardTitle className="text-yellow-500">Frequently Asked Questions</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid lg:grid-cols-2 gap-6">

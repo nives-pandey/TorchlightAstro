@@ -63,10 +63,10 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       energyLevel: 'high'
     },
     afternoon: {
-      background: 'linear-gradient(135deg, hsl(200, 100%, 70%) 0%, hsl(220, 80%, 60%) 50%, hsl(240, 70%, 50%) 100%)',
-      primary: 'hsl(220, 80%, 65%)',
-      secondary: 'hsl(200, 90%, 70%)',
-      accent: 'hsl(240, 70%, 60%)',
+      background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
+      primary: 'hsl(44, 45%, 65%)',
+      secondary: 'hsl(180, 25%, 55%)',
+      accent: 'hsl(30, 8%, 18%)',
       text: 'hsl(0, 0%, 95%)',
       card: 'rgba(0, 123, 255, 0.15)',
       greeting: 'Afternoon Clarity',
@@ -74,10 +74,10 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       energyLevel: 'high'
     },
     evening: {
-      background: 'linear-gradient(135deg, hsl(280, 70%, 30%) 0%, hsl(320, 80%, 40%) 50%, hsl(350, 90%, 50%) 100%)',
-      primary: 'hsl(320, 80%, 50%)',
-      secondary: 'hsl(280, 70%, 40%)',
-      accent: 'hsl(350, 90%, 60%)',
+      background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
+      primary: 'hsl(44, 45%, 65%)',
+      secondary: 'hsl(180, 25%, 55%)',
+      accent: 'hsl(30, 8%, 18%)',
       text: 'hsl(320, 20%, 90%)',
       card: 'rgba(255, 20, 147, 0.15)',
       greeting: 'Evening Reflection',
@@ -85,10 +85,10 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       energyLevel: 'medium'
     },
     night: {
-      background: 'linear-gradient(135deg, hsl(240, 60%, 8%) 0%, hsl(260, 80%, 15%) 50%, hsl(280, 70%, 25%) 100%)',
-      primary: 'hsl(260, 80%, 60%)',
-      secondary: 'hsl(240, 60%, 40%)',
-      accent: 'hsl(280, 70%, 50%)',
+      background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
+      primary: 'hsl(44, 45%, 65%)',
+      secondary: 'hsl(180, 25%, 55%)',
+      accent: 'hsl(30, 8%, 18%)',
       text: 'hsl(260, 30%, 90%)',
       card: 'rgba(138, 43, 226, 0.2)',
       greeting: 'Mystical Night',
@@ -96,10 +96,10 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       energyLevel: 'low'
     },
     midnight: {
-      background: 'linear-gradient(135deg, hsl(240, 100%, 5%) 0%, hsl(270, 80%, 10%) 50%, hsl(300, 90%, 8%) 100%)',
-      primary: 'hsl(270, 80%, 40%)',
-      secondary: 'hsl(240, 60%, 20%)',
-      accent: 'hsl(300, 90%, 30%)',
+      background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
+      primary: 'hsl(44, 45%, 65%)',
+      secondary: 'hsl(180, 25%, 55%)',
+      accent: 'hsl(30, 8%, 18%)',
       text: 'hsl(270, 40%, 85%)',
       card: 'rgba(75, 0, 130, 0.3)',
       greeting: 'Deep Midnight Wisdom',

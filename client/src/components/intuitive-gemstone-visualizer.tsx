@@ -69,8 +69,8 @@ const energyTypeConfig = {
   balancing: { icon: Target, color: "#32CD32", pulse: false },
   protective: { icon: Shield, color: "#8B4513", pulse: false },
   manifestation: { icon: Wand2, color: "#FF6347", pulse: true },
-  healing: { icon: Heart, color: "#FF69B4", pulse: true },
-  intuitive: { icon: Brain, color: "#9370DB", pulse: true }
+  healing: { icon: Heart, color: "#C5A55A", pulse: true },
+  intuitive: { icon: Brain, color: "#6A9797", pulse: true }
 };
 
 const gemstoneDatabase: GemstoneEnergy[] = [
@@ -292,7 +292,7 @@ export default function IntuitiveGemstoneVisualizer({
         else if (stone1.energyType !== stone2.energyType) {
           strength = 40;
           type = 'transformation';
-          color = '#9370DB';
+          color = '#6A9797';
         }
         
         if (strength > 30) {
@@ -341,7 +341,7 @@ export default function IntuitiveGemstoneVisualizer({
       canvas.width / 2, canvas.height / 2, 0,
       canvas.width / 2, canvas.height / 2, canvas.width / 2
     );
-    gradient.addColorStop(0, 'rgba(147, 51, 234, 0.1)');
+    gradient.addColorStop(0, 'rgba(197, 165, 90, 0.1)');
     gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -409,9 +409,9 @@ export default function IntuitiveGemstoneVisualizer({
   return (
     <div className="w-full max-w-6xl mx-auto space-y-6">
       {/* Controls Panel */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-400 flex items-center gap-2">
+          <CardTitle className="text-yellow-500 flex items-center gap-2">
             <Eye className="w-5 h-5" />
             Energy Visualization Controls
           </CardTitle>
@@ -446,11 +446,11 @@ export default function IntuitiveGemstoneVisualizer({
             </Button>
             
             <div className="flex items-center gap-2">
-              <Settings className="w-4 h-4 text-purple-400" />
+              <Settings className="w-4 h-4 text-yellow-500" />
               <select 
                 value={visualMode}
                 onChange={(e) => setVisualMode(e.target.value as any)}
-                className="bg-purple-900/30 border border-purple-400/30 rounded px-2 py-1 text-white text-sm"
+                className="bg-purple-900/30 border border-yellow-500/30 rounded px-2 py-1 text-white text-sm"
               >
                 <option value="energy">Energy Type</option>
                 <option value="chakra">Chakra Focus</option>
@@ -477,7 +477,7 @@ export default function IntuitiveGemstoneVisualizer({
       </Card>
 
       {/* Main Visualization Canvas */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardContent className="p-0 relative">
           <canvas
             ref={canvasRef}
@@ -536,9 +536,9 @@ export default function IntuitiveGemstoneVisualizer({
       </Card>
 
       {/* Gemstone Selection Panel */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-400 flex items-center gap-2">
+          <CardTitle className="text-yellow-500 flex items-center gap-2">
             <Gem className="w-5 h-5" />
             Available Gemstones ({selectedStones.length}/6 selected)
           </CardTitle>
@@ -555,8 +555,8 @@ export default function IntuitiveGemstoneVisualizer({
                   key={stone.id}
                   className={`p-3 rounded-lg border cursor-pointer transition-all ${
                     isSelected 
-                      ? 'border-purple-400 bg-purple-400/20' 
-                      : 'border-purple-600/30 bg-purple-900/20 hover:bg-purple-800/30'
+                      ? 'border-yellow-500 bg-yellow-500/20' 
+                      : 'border-yellow-600/30 bg-purple-900/20 hover:bg-purple-800/30'
                   }`}
                   onClick={() => isSelected ? removeGemstone(stone.id) : addGemstone(stone)}
                   whileHover={{ scale: 1.05 }}
@@ -576,7 +576,7 @@ export default function IntuitiveGemstoneVisualizer({
                   <div className="flex items-center justify-between">
                     <Badge 
                       variant="outline" 
-                      className="text-xs border-purple-400/30 text-purple-300"
+                      className="text-xs border-yellow-500/30 text-purple-300"
                     >
                       {resonance}% match
                     </Badge>
@@ -597,9 +597,9 @@ export default function IntuitiveGemstoneVisualizer({
 
       {/* Energy Analysis Panel */}
       {selectedStones.length > 0 && (
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
-            <CardTitle className="text-purple-400 flex items-center gap-2">
+            <CardTitle className="text-yellow-500 flex items-center gap-2">
               <Target className="w-5 h-5" />
               Energy Analysis & Recommendations
             </CardTitle>
@@ -658,7 +658,7 @@ export default function IntuitiveGemstoneVisualizer({
             
             {/* Personalized Recommendations */}
             {userProfile && (
-              <div className="mt-6 p-4 bg-purple-900/20 rounded-lg border border-purple-400/30">
+              <div className="mt-6 p-4 bg-purple-900/20 rounded-lg border border-yellow-500/30">
                 <h4 className="font-medium text-white mb-2 flex items-center gap-2">
                   <Star className="w-4 h-4 text-yellow-400" />
                   Personalized Insights

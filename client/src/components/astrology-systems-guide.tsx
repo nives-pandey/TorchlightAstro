@@ -418,7 +418,7 @@ export default function AstrologySystemsGuide() {
               <div className="text-sm text-gray-400">Complete Systems</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-400">5,000+</div>
+              <div className="text-2xl font-bold text-yellow-500">5,000+</div>
               <div className="text-sm text-gray-400">Years Heritage</div>
             </div>
             <div className="text-center">
@@ -446,7 +446,7 @@ export default function AstrologySystemsGuide() {
             <HoverCard key={system.id}>
               <HoverCardTrigger asChild>
                 <Card 
-                  className={`cosmic-card cursor-pointer transition-all duration-300 hover:scale-105 ${
+                  className={`sanctuary-card cursor-pointer transition-all duration-300 hover:scale-105 ${
                     selectedSystem === system.id ? 'ring-2 ring-orange-400' : ''
                   }`}
                   onClick={() => setSelectedSystem(selectedSystem === system.id ? null : system.id)}
@@ -475,7 +475,7 @@ export default function AstrologySystemsGuide() {
                       <Badge className={`text-xs ${getDifficultyColor(system.difficulty)}`}>
                         {system.difficulty}
                       </Badge>
-                      <Badge variant="outline" className="text-xs text-purple-300 border-purple-400">
+                      <Badge variant="outline" className="text-xs text-purple-300 border-yellow-500">
                         {system.timeRange}
                       </Badge>
                     </div>
@@ -561,7 +561,7 @@ export default function AstrologySystemsGuide() {
 
         {/* Detailed System View */}
         {selectedSystem && (
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-orange-400 text-2xl flex items-center gap-3">
                 {filteredSystems.find(s => s.id === selectedSystem)?.icon}
@@ -636,7 +636,7 @@ export default function AstrologySystemsGuide() {
                         <h4 className="font-semibold text-purple-300 mb-3">Special Features & Techniques</h4>
                         <div className="flex flex-wrap gap-2">
                           {system.specialFeatures.map((feature, index) => (
-                            <Badge key={index} variant="outline" className="text-purple-300 border-purple-400">
+                            <Badge key={index} variant="outline" className="text-purple-300 border-yellow-500">
                               {feature}
                             </Badge>
                           ))}
@@ -649,7 +649,7 @@ export default function AstrologySystemsGuide() {
                           <div className="text-sm text-gray-400">Accuracy</div>
                         </div>
                         <div className="text-center p-3 bg-slate-700/50 rounded-lg">
-                          <div className="text-lg font-bold text-purple-400">{system.difficulty}</div>
+                          <div className="text-lg font-bold text-yellow-500">{system.difficulty}</div>
                           <div className="text-sm text-gray-400">Difficulty</div>
                         </div>
                         <div className="text-center p-3 bg-slate-700/50 rounded-lg">
@@ -666,7 +666,7 @@ export default function AstrologySystemsGuide() {
         )}
 
         {/* Quick Comparison */}
-        <Card className="cosmic-card mt-8">
+        <Card className="sanctuary-card mt-8">
           <CardHeader>
             <CardTitle className="text-orange-400">Quick Comparison Guide</CardTitle>
           </CardHeader>
@@ -698,7 +698,7 @@ export default function AstrologySystemsGuide() {
                 <h4 className="font-medium text-purple-300 mb-2">Ancient Wisdom:</h4>
                 <div className="flex gap-2">
                   {astrologySystem.filter(s => s.category === 'Ancient').map(system => (
-                    <Badge key={system.id} className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                    <Badge key={system.id} className="bg-yellow-600/20 text-purple-300 border-yellow-600/30">
                       {system.name}
                     </Badge>
                   ))}

@@ -1,6 +1,6 @@
 // Cookie management for personalized experiences
 export interface UserPreferences {
-  theme: 'auto' | 'light' | 'dark' | 'cosmic';
+  theme: 'auto' | 'light' | 'dark' | 'sanctuary';
   language: 'en' | 'es' | 'ru' | 'fr';
   preferredSystems: string[];
   visitCount: number;

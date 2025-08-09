@@ -30,9 +30,9 @@ export default function ChartWheel({ chartData }: ChartWheelProps) {
   };
 
   return (
-    <Card className="cosmic-card">
+    <Card className="sanctuary-card">
       <CardHeader>
-        <CardTitle className="text-purple-500">Birth Chart Wheel</CardTitle>
+        <CardTitle className="text-yellow-600">Birth Chart Wheel</CardTitle>
         <CardDescription className="text-gray-400">
           Your cosmic blueprint at the moment of birth
         </CardDescription>
@@ -40,7 +40,7 @@ export default function ChartWheel({ chartData }: ChartWheelProps) {
       <CardContent className="flex justify-center">
         <div className="relative w-80 h-80">
           {/* Outer circle - Zodiac signs */}
-          <div className="absolute inset-0 rounded-full border-2 border-purple-500/30 bg-gradient-to-r from-purple-900/20 to-blue-900/20">
+          <div className="absolute inset-0 rounded-full border-2 border-yellow-600/30 bg-gradient-to-r from-purple-900/20 to-blue-900/20">
             {/* Zodiac wheel segments */}
             <svg className="w-full h-full" viewBox="0 0 200 200">
               {zodiacSigns.map((sign, index) => {
@@ -78,7 +78,7 @@ export default function ChartWheel({ chartData }: ChartWheelProps) {
           </div>
 
           {/* Inner circle - Houses */}
-          <div className="absolute inset-4 rounded-full border border-purple-500/50 bg-black/30">
+          <div className="absolute inset-4 rounded-full border border-yellow-600/50 bg-black/30">
             <svg className="w-full h-full" viewBox="0 0 200 200">
               {Array.from({ length: 12 }, (_, index) => {
                 const houseNumber = index + 1;
@@ -115,11 +115,11 @@ export default function ChartWheel({ chartData }: ChartWheelProps) {
           </div>
 
           {/* Center circle - Key planets */}
-          <div className="absolute inset-16 rounded-full border border-purple-500 bg-gradient-to-r from-yellow-500/10 to-purple-500/10 flex flex-col items-center justify-center">
+          <div className="absolute inset-16 rounded-full border border-yellow-600 bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 flex flex-col items-center justify-center">
             <div className="text-center space-y-2">
-              <div className="text-purple-500 text-2xl">☉</div>
+              <div className="text-yellow-600 text-2xl">☉</div>
               <div className="text-white text-xs">{chartData.sun}</div>
-              <div className="text-purple-400 text-xl">☽</div>
+              <div className="text-yellow-500 text-xl">☽</div>
               <div className="text-white text-xs">{chartData.moon}</div>
               <div className="text-blue-400 text-lg">↗</div>
               <div className="text-white text-xs">{chartData.rising}</div>
@@ -144,7 +144,7 @@ export default function ChartWheel({ chartData }: ChartWheelProps) {
             return (
               <div
                 key={planet}
-                className="absolute w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-black text-sm font-bold shadow-lg"
+                className="absolute w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center text-black text-sm font-bold shadow-lg"
                 style={{
                   left: `${x}px`,
                   top: `${y}px`,

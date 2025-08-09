@@ -96,9 +96,9 @@ export default function TimezoneAnalytics() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-purple-400/30 backdrop-blur-md">
+            <Card className="bg-purple-800/40 border-yellow-500/30 backdrop-blur-md">
               <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-purple-400 mx-auto mb-2" />
+                <Clock className="h-8 w-8 text-yellow-500 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">{timezoneData.usage.dstCorrections.toLocaleString()}</div>
                 <div className="text-sm text-gray-300">DST Corrections</div>
               </CardContent>
@@ -124,7 +124,7 @@ export default function TimezoneAnalytics() {
                 <BarChart3 className="mr-2 h-4 w-4" />
                 Data Quality
               </TabsTrigger>
-              <TabsTrigger value="geographic" className="text-white data-[state=active]:bg-purple-500">
+              <TabsTrigger value="geographic" className="text-white data-[state=active]:bg-yellow-600">
                 <MapPin className="mr-2 h-4 w-4" />
                 Geographic Distribution
               </TabsTrigger>
@@ -225,8 +225,8 @@ export default function TimezoneAnalytics() {
                           <div className="text-xs text-gray-400">Supporting 150+ timezones worldwide</div>
                         </div>
                       </div>
-                      <div className="flex items-center p-3 bg-purple-500/20 rounded-lg">
-                        <Clock className="h-5 w-5 text-purple-400 mr-3" />
+                      <div className="flex items-center p-3 bg-yellow-600/20 rounded-lg">
+                        <Clock className="h-5 w-5 text-yellow-500 mr-3" />
                         <div>
                           <div className="text-purple-300 font-medium">DST Accuracy</div>
                           <div className="text-xs text-gray-400">Historical DST rules correctly applied</div>
@@ -240,7 +240,7 @@ export default function TimezoneAnalytics() {
 
             {/* Geographic Distribution */}
             <TabsContent value="geographic" className="mt-6">
-              <Card className="bg-purple-800/40 border-purple-400/30">
+              <Card className="bg-purple-800/40 border-yellow-500/30">
                 <CardHeader>
                   <CardTitle className="text-white">Users by Region</CardTitle>
                 </CardHeader>

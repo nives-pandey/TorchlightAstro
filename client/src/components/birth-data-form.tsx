@@ -93,9 +93,9 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
   };
 
   return (
-    <Card className="cosmic-card cosmic-glow max-w-2xl mx-auto">
+    <Card className="sanctuary-card cosmic-glow max-w-2xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-purple-500 text-2xl text-center">
+        <CardTitle className="text-yellow-600 text-2xl text-center">
           Enter Your Birth Information
         </CardTitle>
         <CardDescription className="text-gray-400 text-center">
@@ -318,7 +318,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
             {/* Astrological Systems */}
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <Settings className="h-5 w-5 text-purple-500" />
+                <Settings className="h-5 w-5 text-yellow-600" />
                 <h3 className="text-white font-medium">Select Astrological Systems</h3>
               </div>
               
@@ -421,7 +421,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
 
             <Button 
               type="submit" 
-              className="w-full cosmic-button"
+              className="w-full sanctuary-button"
               disabled={isLoading}
             >
               {isLoading ? "Calculating Your Chart..." : "Generate My Chart"}

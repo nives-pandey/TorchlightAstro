@@ -136,7 +136,7 @@ export default function Chart3D() {
       trine: '#00FF00',
       square: '#FF1493',
       sextile: '#00CED1',
-      quincunx: '#9370DB',
+      quincunx: '#6A9797',
       semisextile: '#DDA0DD'
     };
 
@@ -450,7 +450,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
         </div>
 
         {/* Chart Type Controls */}
-        <Card className="cosmic-card mb-6">
+        <Card className="sanctuary-card mb-6">
           <CardHeader>
             <CardTitle className="text-orange-400 flex items-center gap-2">
               <Orbit className="w-5 h-5" />
@@ -471,7 +471,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 <Button
                   onClick={generateTransitChart}
                   variant={selectedChart === 'transit' ? 'default' : 'outline'}
-                  className={selectedChart === 'transit' ? 'bg-purple-500' : 'border-purple-400'}
+                  className={selectedChart === 'transit' ? 'bg-yellow-600' : 'border-yellow-500'}
                   disabled={loading}
                 >
                   {loading ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Zap className="w-4 h-4 mr-2" />}
@@ -492,7 +492,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 <Badge variant="outline" className="text-orange-400 border-orange-400">
                   Planets: {planets.length}
                 </Badge>
-                <Badge variant="outline" className="text-purple-400 border-purple-400">
+                <Badge variant="outline" className="text-yellow-500 border-yellow-500">
                   Aspects: {aspects.length}
                 </Badge>
                 <Badge variant="outline" className="text-pink-400 border-pink-400">
@@ -522,7 +522,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
           </TabsContent>
 
           <TabsContent value="advanced" className="mt-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
                 <CardTitle className="text-orange-400 flex items-center gap-2">
                   <Zap className="w-5 h-5" />
@@ -541,7 +541,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
           </TabsContent>
 
           <TabsContent value="canvas" className="mt-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
                 <CardTitle className="text-orange-400 flex items-center gap-2">
                   <Orbit className="w-5 h-5" />
@@ -559,7 +559,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
           </TabsContent>
           
           <TabsContent value="threejs" className="mt-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
                 <CardTitle className="text-orange-400 flex items-center gap-2">
                   <Zap className="w-5 h-5" />
@@ -580,7 +580,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
 
         {/* Chart Analysis */}
         <div className="grid lg:grid-cols-2 gap-6">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-orange-400">Planetary Energies</CardTitle>
             </CardHeader>
@@ -607,7 +607,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-orange-400">Active Aspects</CardTitle>
             </CardHeader>
@@ -640,7 +640,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
         </div>
 
         {/* Usage Instructions */}
-        <Card className="cosmic-card mt-6">
+        <Card className="sanctuary-card mt-6">
           <CardHeader>
             <CardTitle className="text-orange-400">3D Navigation Guide</CardTitle>
           </CardHeader>
@@ -701,7 +701,7 @@ function getAspectSymbol(aspectType: string): string {
 
 function getAspectStrengthColor(strength: number): string {
   if (strength > 0.8) return 'text-green-400 border-green-400';
-  if (strength > 0.6) return 'text-purple-400 border-purple-400';
+  if (strength > 0.6) return 'text-yellow-500 border-yellow-500';
   if (strength > 0.4) return 'text-orange-400 border-orange-400';
   return 'text-red-400 border-red-400';
 }

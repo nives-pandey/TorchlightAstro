@@ -83,8 +83,8 @@ export default function Numerology() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-3 mb-4">
-            <Calculator className="h-10 w-10 text-purple-400" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
+            <Calculator className="h-10 w-10 text-yellow-500" />
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
               Numerology Analysis
             </h1>
           </div>
@@ -95,9 +95,9 @@ export default function Numerology() {
         </div>
 
         {/* Input Form */}
-        <Card className="cosmic-card mb-8">
+        <Card className="sanctuary-card mb-8">
           <CardHeader>
-            <CardTitle className="text-purple-500 text-center">Enter Your Details</CardTitle>
+            <CardTitle className="text-yellow-600 text-center">Enter Your Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
@@ -109,7 +109,7 @@ export default function Numerology() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="John Michael Smith"
-                  className="bg-purple-800/30 border-purple-600 text-white placeholder-purple-300"
+                  className="bg-purple-800/30 border-yellow-600 text-white placeholder-purple-300"
                 />
               </div>
               <div className="space-y-2">
@@ -119,7 +119,7 @@ export default function Numerology() {
                   type="date"
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
-                  className="bg-purple-800/30 border-purple-600 text-white"
+                  className="bg-purple-800/30 border-yellow-600 text-white"
                 />
               </div>
             </div>
@@ -149,23 +149,23 @@ export default function Numerology() {
         {numerologyData && (
           <Tabs defaultValue="core" className="space-y-6">
             <TabsList className="grid w-full grid-cols-5 bg-purple-800/30">
-              <TabsTrigger value="core" className="data-[state=active]:bg-purple-600">Core Numbers</TabsTrigger>
-              <TabsTrigger value="insights" className="data-[state=active]:bg-purple-600">Insights</TabsTrigger>
-              <TabsTrigger value="tarot" className="data-[state=active]:bg-purple-600">Tarot Cards</TabsTrigger>
-              <TabsTrigger value="colors" className="data-[state=active]:bg-purple-600">Colors</TabsTrigger>
-              <TabsTrigger value="gemstones" className="data-[state=active]:bg-purple-600">Gemstones</TabsTrigger>
+              <TabsTrigger value="core" className="data-[state=active]:bg-yellow-600">Core Numbers</TabsTrigger>
+              <TabsTrigger value="insights" className="data-[state=active]:bg-yellow-600">Insights</TabsTrigger>
+              <TabsTrigger value="tarot" className="data-[state=active]:bg-yellow-600">Tarot Cards</TabsTrigger>
+              <TabsTrigger value="colors" className="data-[state=active]:bg-yellow-600">Colors</TabsTrigger>
+              <TabsTrigger value="gemstones" className="data-[state=active]:bg-yellow-600">Gemstones</TabsTrigger>
             </TabsList>
 
             {/* Core Numbers Tab */}
             <TabsContent value="core">
               <div className="grid lg:grid-cols-2 gap-6">
                 {/* Life Path Number */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
-                    <CardTitle className="text-purple-500 flex items-center space-x-2">
+                    <CardTitle className="text-yellow-600 flex items-center space-x-2">
                       <Star className="h-6 w-6" />
                       <span>Life Path Number</span>
-                      <Badge variant="outline" className="border-purple-400 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-500 text-purple-300">
                         {numerologyData.lifePath.reducedNumber}
                       </Badge>
                     </CardTitle>
@@ -179,12 +179,12 @@ export default function Numerology() {
                 </Card>
 
                 {/* Destiny Number */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
-                    <CardTitle className="text-purple-400 flex items-center space-x-2">
+                    <CardTitle className="text-yellow-500 flex items-center space-x-2">
                       <TrendingUp className="h-6 w-6" />
                       <span>Destiny Number</span>
-                      <Badge variant="outline" className="border-purple-400 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-500 text-purple-300">
                         {numerologyData.destiny.reducedNumber}
                       </Badge>
                     </CardTitle>
@@ -198,7 +198,7 @@ export default function Numerology() {
                 </Card>
 
                 {/* Soul Urge Number */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-pink-400 flex items-center space-x-2">
                       <Heart className="h-6 w-6" />
@@ -217,7 +217,7 @@ export default function Numerology() {
                 </Card>
 
                 {/* Personality Number */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-blue-400 flex items-center space-x-2">
                       <Eye className="h-6 w-6" />
@@ -237,7 +237,7 @@ export default function Numerology() {
               </div>
 
               {/* Personal Year */}
-              <Card className="cosmic-card mt-6">
+              <Card className="sanctuary-card mt-6">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center space-x-2">
                     <Calendar className="h-6 w-6" />
@@ -260,9 +260,9 @@ export default function Numerology() {
             <TabsContent value="insights">
               <div className="grid lg:grid-cols-2 gap-6">
                 {/* Compatibility */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
-                    <CardTitle className="text-purple-500 flex items-center space-x-2">
+                    <CardTitle className="text-yellow-600 flex items-center space-x-2">
                       <Lightbulb className="h-6 w-6" />
                       <span>Number Compatibility</span>
                     </CardTitle>
@@ -273,7 +273,7 @@ export default function Numerology() {
                 </Card>
 
                 {/* Lucky Numbers */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-green-400 flex items-center space-x-2">
                       <Star className="h-6 w-6" />
@@ -292,7 +292,7 @@ export default function Numerology() {
                 </Card>
 
                 {/* Strengths */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-blue-400 flex items-center space-x-2">
                       <TrendingUp className="h-6 w-6" />
@@ -312,7 +312,7 @@ export default function Numerology() {
                 </Card>
 
                 {/* Challenges */}
-                <Card className="cosmic-card">
+                <Card className="sanctuary-card">
                   <CardHeader>
                     <CardTitle className="text-orange-400 flex items-center space-x-2">
                       <Shield className="h-6 w-6" />
@@ -335,9 +335,9 @@ export default function Numerology() {
 
             {/* Placeholder tabs for future expansion */}
             <TabsContent value="tarot">
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
-                  <CardTitle className="text-purple-400 flex items-center space-x-2">
+                  <CardTitle className="text-yellow-500 flex items-center space-x-2">
                     <Star className="h-6 w-6" />
                     <span>Tarot Birth Cards</span>
                   </CardTitle>
@@ -352,7 +352,7 @@ export default function Numerology() {
             </TabsContent>
 
             <TabsContent value="colors">
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
                   <CardTitle className="text-pink-400 flex items-center space-x-2">
                     <Palette className="h-6 w-6" />
@@ -369,7 +369,7 @@ export default function Numerology() {
             </TabsContent>
 
             <TabsContent value="gemstones">
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
                   <CardTitle className="text-green-400 flex items-center space-x-2">
                     <Gem className="h-6 w-6" />

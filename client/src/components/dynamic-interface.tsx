@@ -153,7 +153,7 @@ export default function DynamicInterface() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
           {/* Today's Cosmic Weather - Flowing Organic Shape */}
           <Card 
-            className="cosmic-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
+            className="sanctuary-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
             style={{ 
               backgroundColor: theme.card, 
               borderLeft: `6px solid ${theme.primary}`,
@@ -195,7 +195,7 @@ export default function DynamicInterface() {
 
           {/* Energy & Recommendations - Curved Flowing Design */}
           <Card 
-            className="cosmic-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
+            className="sanctuary-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
             style={{ 
               backgroundColor: theme.card,
               borderLeft: `6px solid ${theme.secondary}`,
@@ -235,7 +235,7 @@ export default function DynamicInterface() {
 
           {/* Lucky Elements - Organic Morphing Shape */}
           <Card 
-            className="cosmic-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
+            className="sanctuary-card time-card card-flow transition-all duration-500 cursor-pointer border-0 shadow-2xl rounded-organic"
             style={{ 
               backgroundColor: theme.card,
               borderLeft: `6px solid ${theme.accent}`,

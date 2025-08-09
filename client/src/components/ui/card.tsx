@@ -10,7 +10,7 @@ const Card = React.forwardRef<
     ref={ref}
     data-card="true"
     className={cn(
-      "rounded-lg border border-purple-400/20 text-white shadow-lg",
+      "rounded-lg border border-yellow-500/20 text-white shadow-lg",
       className
     )}
     style={{

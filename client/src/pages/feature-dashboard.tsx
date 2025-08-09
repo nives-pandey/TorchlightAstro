@@ -149,13 +149,13 @@ export default function FeatureDashboard() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-3 bg-gray-800/50 rounded-2xl p-1">
-            <TabsTrigger value="overview" className="rounded-xl data-[state=active]:bg-purple-500">
+            <TabsTrigger value="overview" className="rounded-xl data-[state=active]:bg-yellow-600">
               Overview
             </TabsTrigger>
-            <TabsTrigger value="ready" className="rounded-xl data-[state=active]:bg-purple-500">
+            <TabsTrigger value="ready" className="rounded-xl data-[state=active]:bg-yellow-600">
               Ready to Use
             </TabsTrigger>
-            <TabsTrigger value="all" className="rounded-xl data-[state=active]:bg-purple-500">
+            <TabsTrigger value="all" className="rounded-xl data-[state=active]:bg-yellow-600">
               All Features
             </TabsTrigger>
           </TabsList>
@@ -166,7 +166,7 @@ export default function FeatureDashboard() {
             <Card className="mobile-optimized-card premium-glow">
               <CardHeader className="text-center">
                 <CardTitle className="elegant-heading text-2xl mb-2">
-                  <Crown className="inline w-8 h-8 mr-2 text-purple-400" />
+                  <Crown className="inline w-8 h-8 mr-2 text-yellow-500" />
                   Start Your Cosmic Journey
                 </CardTitle>
                 <CardDescription className="elegant-body">
@@ -180,7 +180,7 @@ export default function FeatureDashboard() {
                     <div className="text-sm text-gray-400">Systems</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-400">96%</div>
+                    <div className="text-2xl font-bold text-yellow-500">96%</div>
                     <div className="text-sm text-gray-400">Accuracy</div>
                   </div>
                   <div className="text-center">
@@ -205,7 +205,7 @@ export default function FeatureDashboard() {
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="mobile-optimized-card">
                 <CardHeader>
-                  <CardTitle className="text-purple-400 flex items-center">
+                  <CardTitle className="text-yellow-500 flex items-center">
                     <Gift className="w-6 h-6 mr-2" />
                     100% Functional Features
                   </CardTitle>
@@ -238,7 +238,7 @@ export default function FeatureDashboard() {
 
               <Card className="mobile-optimized-card">
                 <CardHeader>
-                  <CardTitle className="text-purple-400 flex items-center">
+                  <CardTitle className="text-yellow-500 flex items-center">
                     <Zap className="w-6 h-6 mr-2" />
                     Premium Features (95% Ready)
                   </CardTitle>
@@ -246,15 +246,15 @@ export default function FeatureDashboard() {
                 <CardContent>
                   <ul className="space-y-2 elegant-body">
                     <li className="flex items-center">
-                      <Download className="w-4 h-4 text-purple-400 mr-2" />
+                      <Download className="w-4 h-4 text-yellow-500 mr-2" />
                       PDF report generation
                     </li>
                     <li className="flex items-center">
-                      <Mail className="w-4 h-4 text-purple-400 mr-2" />
+                      <Mail className="w-4 h-4 text-yellow-500 mr-2" />
                       Email delivery system
                     </li>
                     <li className="flex items-center">
-                      <Users className="w-4 h-4 text-purple-400 mr-2" />
+                      <Users className="w-4 h-4 text-yellow-500 mr-2" />
                       Multi-partner analysis
                     </li>
                   </ul>
@@ -271,7 +271,7 @@ export default function FeatureDashboard() {
                 <Card key={feature.id} className="mobile-optimized-card">
                   <CardHeader>
                     <div className="flex items-center justify-between mb-3">
-                      <feature.icon className="w-8 h-8 text-purple-400" />
+                      <feature.icon className="w-8 h-8 text-yellow-500" />
                       <Badge className="status-complete">Ready</Badge>
                     </div>
                     <CardTitle className="text-white text-lg">{feature.name}</CardTitle>
@@ -297,9 +297,9 @@ export default function FeatureDashboard() {
         </Tabs>
 
         {/* Mobile-optimized CTA Footer */}
-        <Card className="mobile-optimized-card mt-8 border-2 border-purple-400/50">
+        <Card className="mobile-optimized-card mt-8 border-2 border-yellow-500/50">
           <CardContent className="text-center py-8">
-            <h3 className="text-2xl font-bold text-purple-400 mb-4">
+            <h3 className="text-2xl font-bold text-yellow-500 mb-4">
               Experience Complete Astrological Analysis
             </h3>
             <p className="elegant-body mb-6 max-w-2xl mx-auto">

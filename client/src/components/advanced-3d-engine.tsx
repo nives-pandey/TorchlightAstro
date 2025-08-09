@@ -566,7 +566,7 @@ export default function Advanced3DEngine({
   return (
     <div className="w-full">
       {/* Controls Panel */}
-      <Card className="cosmic-card mb-4">
+      <Card className="sanctuary-card mb-4">
         <CardHeader>
           <CardTitle className="text-orange-400 flex items-center gap-2">
             <Sparkles className="w-5 h-5" />
@@ -592,7 +592,7 @@ export default function Advanced3DEngine({
                   onClick={resetCamera}
                   variant="outline"
                   size="sm"
-                  className="border-purple-400"
+                  className="border-yellow-500"
                 >
                   <RotateCcw className="w-4 h-4" />
                 </Button>
@@ -687,7 +687,7 @@ export default function Advanced3DEngine({
             <Badge variant="outline" className="text-orange-400 border-orange-400">
               Planets: {planets.length}
             </Badge>
-            <Badge variant="outline" className="text-purple-400 border-purple-400">
+            <Badge variant="outline" className="text-yellow-500 border-yellow-500">
               Aspects: {aspects.length}
             </Badge>
             <Badge variant="outline" className="text-pink-400 border-pink-400">
@@ -703,7 +703,7 @@ export default function Advanced3DEngine({
       </Card>
 
       {/* 3D Visualization */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardContent className="p-0">
           <div 
             ref={mountRef} 
@@ -715,7 +715,7 @@ export default function Advanced3DEngine({
 
       {/* Selected Planet Info */}
       {selectedPlanet && (
-        <Card className="cosmic-card mt-4">
+        <Card className="sanctuary-card mt-4">
           <CardHeader>
             <CardTitle className="text-orange-400 flex items-center gap-2">
               <Star className="w-5 h-5" />

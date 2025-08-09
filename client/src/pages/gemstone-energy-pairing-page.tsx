@@ -76,7 +76,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "intuitive",
       icon: Brain,
-      color: "#9370DB",
+      color: "#6A9797",
       title: "Intuitive Stones",
       description: "Awaken psychic abilities and spiritual awareness",
       examples: ["Amethyst", "Labradorite", "Moonstone"]
@@ -111,7 +111,7 @@ export default function GemstoneEnergyPairingPage() {
             >
               ← Back to Overview
             </Button>
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
               Intuitive Gemstone Energy Visualizer
             </h1>
             <p className="text-xl text-purple-200 max-w-3xl">
@@ -143,7 +143,7 @@ export default function GemstoneEnergyPairingPage() {
             >
               ← Back to Overview
             </Button>
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
               Gemstone Energy Pairing
             </h1>
           </div>
@@ -163,7 +163,7 @@ export default function GemstoneEnergyPairingPage() {
       
       <div className="container mx-auto px-6 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
             Gemstone Energy Pairing
           </h1>
           <p className="text-xl text-purple-200 max-w-4xl mx-auto mb-8">
@@ -205,7 +205,7 @@ export default function GemstoneEnergyPairingPage() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-12"
         >
-          <Card className="bg-black/40 border-purple-400/30 mb-8">
+          <Card className="bg-black/40 border-yellow-500/30 mb-8">
             <CardHeader>
               <CardTitle className="text-white text-2xl text-center flex items-center justify-center">
                 <Zap className="mr-3 h-6 w-6 text-yellow-400" />
@@ -226,7 +226,7 @@ export default function GemstoneEnergyPairingPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.1 * index }}
                     >
-                      <Card className="bg-black/30 border-purple-400/20 hover:border-purple-400/50 transition-all duration-300 h-full">
+                      <Card className="bg-black/30 border-yellow-500/20 hover:border-yellow-500/50 transition-all duration-300 h-full">
                         <CardContent className="p-6">
                           <div className="flex items-center mb-3">
                             <div 
@@ -263,7 +263,7 @@ export default function GemstoneEnergyPairingPage() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
         >
-          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-400/30">
+          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-yellow-500/30">
             <CardHeader>
               <CardTitle className="text-white flex items-center">
                 <Sparkles className="mr-2 h-5 w-5 text-yellow-400" />
@@ -272,19 +272,19 @@ export default function GemstoneEnergyPairingPage() {
             </CardHeader>
             <CardContent className="text-gray-300 space-y-3">
               <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <div className="w-2 h-2 rounded-full bg-yellow-500 mr-2" />
                 <span className="text-sm">Astrological sign compatibility analysis</span>
               </div>
               <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <div className="w-2 h-2 rounded-full bg-yellow-500 mr-2" />
                 <span className="text-sm">Life path number gemstone resonance</span>
               </div>
               <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <div className="w-2 h-2 rounded-full bg-yellow-500 mr-2" />
                 <span className="text-sm">Birth time energy alignment</span>
               </div>
               <div className="flex items-center">
-                <div className="w-2 h-2 rounded-full bg-purple-400 mr-2" />
+                <div className="w-2 h-2 rounded-full bg-yellow-500 mr-2" />
                 <span className="text-sm">Planetary ruler synchronization</span>
               </div>
             </CardContent>
@@ -327,7 +327,7 @@ export default function GemstoneEnergyPairingPage() {
         >
           <Button
             onClick={() => setActiveView('visualizer')}
-            className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-300 border-2 border-purple-400"
+            className="bg-gradient-to-r from-yellow-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl hover:shadow-yellow-600/25 transform hover:scale-105 transition-all duration-300 border-2 border-yellow-500"
           >
             <Gem className="mr-3 h-6 w-6" />
             Launch Gemstone Energy Pairing Visualizer
@@ -345,7 +345,7 @@ export default function GemstoneEnergyPairingPage() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-16"
         >
-          <Card className="bg-black/30 border-purple-400/20">
+          <Card className="bg-black/30 border-yellow-500/20">
             <CardHeader>
               <CardTitle className="text-white text-center">
                 How Gemstone Energy Pairing Works
@@ -354,7 +354,7 @@ export default function GemstoneEnergyPairingPage() {
             <CardContent className="text-gray-300">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center space-y-3">
-                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center mx-auto">
                     <span className="text-white font-bold">1</span>
                   </div>
                   <h3 className="text-white font-semibold">Cosmic Analysis</h3>

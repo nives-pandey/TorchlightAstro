@@ -31,7 +31,7 @@ export default function InteractiveExpandableCard({
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             {icon && (
-              <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/30">
+              <div className="p-2 rounded-lg bg-gradient-to-r from-yellow-600/20 to-pink-500/20 border border-yellow-500/30">
                 {icon}
               </div>
             )}
@@ -49,7 +49,7 @@ export default function InteractiveExpandableCard({
           <Button
             variant="ghost"
             size="sm"
-            className="text-purple-300 hover:text-white hover:bg-purple-500/20 transition-colors"
+            className="text-purple-300 hover:text-white hover:bg-yellow-600/20 transition-colors"
           >
             {isExpanded ? (
               <ChevronUp className="h-5 w-5" />
@@ -68,7 +68,7 @@ export default function InteractiveExpandableCard({
       
       {isExpanded && (
         <CardContent className="pt-0 space-y-4 animate-in slide-in-from-top-2 duration-300">
-          <div className="border-t border-purple-400/20 pt-4">
+          <div className="border-t border-yellow-500/20 pt-4">
             {children}
           </div>
           
@@ -77,7 +77,7 @@ export default function InteractiveExpandableCard({
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(false)}
-              className="text-purple-300 hover:text-white hover:bg-purple-500/20"
+              className="text-purple-300 hover:text-white hover:bg-yellow-600/20"
             >
               Show Less
               <ChevronUp className="ml-2 h-4 w-4" />

@@ -167,7 +167,7 @@ export default function QuadAIDemo() {
         </div>
 
         {/* Features Status */}
-        <Card className="bg-slate-800/50 border-purple-500">
+        <Card className="bg-slate-800/50 border-yellow-600">
           <CardHeader>
             <CardTitle className="text-white">Quad-AI Features Status</CardTitle>
           </CardHeader>
@@ -205,7 +205,7 @@ export default function QuadAIDemo() {
             <Button 
               onClick={testQuadAI}
               disabled={testing}
-              className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              className="w-full bg-gradient-to-r from-yellow-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
             >
               {testing ? (
                 <>
@@ -227,7 +227,7 @@ export default function QuadAIDemo() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {responses.map((response, index) => (
-                <Card key={index} className="bg-slate-800/50 border-purple-500">
+                <Card key={index} className="bg-slate-800/50 border-yellow-600">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-white">
                       {getProviderIcon(response.provider)}

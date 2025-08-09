@@ -170,13 +170,13 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
             <h3 className="text-2xl font-bold text-purple-300 mb-2">
               ☉ {insights.western.sign}
             </h3>
-            <Badge variant="outline" className="text-white border-purple-400">
+            <Badge variant="outline" className="text-white border-yellow-500">
               {insights.western.element} Sign
             </Badge>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="bg-purple-800/40 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Star className="mr-2 h-4 w-4" />
@@ -241,7 +241,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Heart className="mr-2 h-4 w-4" />
@@ -253,7 +253,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Briefcase className="mr-2 h-4 w-4" />
@@ -265,7 +265,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-purple-400/30">
+            <Card className="bg-purple-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg">Current Transit</CardTitle>
               </CardHeader>
@@ -445,11 +445,11 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               })()}
             </p>
             <div className="flex justify-center gap-2 mt-4">
-              <Button variant="outline" className="cosmic-button">
+              <Button variant="outline" className="sanctuary-button">
                 <Download className="mr-2 h-4 w-4" />
                 Download PDF
               </Button>
-              <Button variant="outline" className="cosmic-button">
+              <Button variant="outline" className="sanctuary-button">
                 <Mail className="mr-2 h-4 w-4" />
                 Email Report
               </Button>
@@ -460,7 +460,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
         <CardContent className="space-y-6">
           <Tabs value={activeSystem} onValueChange={setActiveSystem} className="w-full">
             <TabsList className="grid w-full grid-cols-4 bg-purple-800/40">
-              <TabsTrigger value="western" className="text-white data-[state=active]:bg-purple-500">
+              <TabsTrigger value="western" className="text-white data-[state=active]:bg-yellow-600">
                 Western
               </TabsTrigger>
               <TabsTrigger value="vedic" className="text-white data-[state=active]:bg-orange-500">

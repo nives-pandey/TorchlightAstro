@@ -44,7 +44,7 @@ export default function Couples() {
           {/* Composite Charts */}
           <Card className="clean-card p-6 hover:shadow-2xl transition-all duration-300">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-indigo-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Users className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Composite Charts</CardTitle>
@@ -59,7 +59,7 @@ export default function Couples() {
                 <li>• Shared challenges</li>
                 <li>• Growth opportunities</li>
               </ul>
-              <Badge className="mt-4 bg-purple-400/20 text-purple-300 border-purple-400/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
                 Partnership Blueprint
               </Badge>
             </CardContent>

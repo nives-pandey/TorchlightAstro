@@ -187,11 +187,11 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
   return (
     <div className="max-w-2xl mx-auto">
       {/* Progress Header */}
-      <Card className="cosmic-card mb-6">
+      <Card className="sanctuary-card mb-6">
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-orange-400">Birth Information</CardTitle>
-            <Badge variant="outline" className="text-purple-300 border-purple-400">
+            <Badge variant="outline" className="text-purple-300 border-yellow-500">
               Step {currentStep + 1} of {FORM_STEPS.length}
             </Badge>
           </div>
@@ -218,7 +218,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
       </Card>
 
       {/* Form Content */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
           <CardTitle className="text-purple-300 flex items-center">
             {(() => {
@@ -459,8 +459,8 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                         
                         {/* Time Accuracy Warnings */}
                         {timeAccuracyWarnings.length > 0 && (
-                          <div className="mt-2 p-3 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                            <div className="flex items-center text-purple-400 text-sm font-medium mb-1">
+                          <div className="mt-2 p-3 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
+                            <div className="flex items-center text-yellow-500 text-sm font-medium mb-1">
                               <AlertTriangle className="h-4 w-4 mr-2" />
                               Time Accuracy Notices
                             </div>
@@ -496,7 +496,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                       control={form.control}
                       name="systems.western"
                       render={({ field }) => (
-                        <Card className="bg-slate-800/50 border-purple-400/30 p-4">
+                        <Card className="bg-slate-800/50 border-yellow-500/30 p-4">
                           <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                             <FormControl>
                               <Checkbox
@@ -609,7 +609,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                   </div>
 
                   {/* Information Summary */}
-                  <Card className="bg-slate-800/50 border-purple-400/30">
+                  <Card className="bg-slate-800/50 border-yellow-500/30">
                     <CardContent className="pt-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div>
@@ -641,7 +641,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                       <div className="mt-4">
                         <span className="text-gray-400">Selected Systems:</span>
                         <div className="flex flex-wrap gap-2 mt-2">
-                          {watchedValues.systems.western && <Badge className="bg-purple-600">Western</Badge>}
+                          {watchedValues.systems.western && <Badge className="bg-yellow-600">Western</Badge>}
                           {watchedValues.systems.vedic && <Badge className="bg-orange-600">Vedic</Badge>}
                           {watchedValues.systems.chinese && <Badge className="bg-red-600">Chinese</Badge>}
                           {watchedValues.systems.humanDesign && <Badge className="bg-blue-600">Human Design</Badge>}
@@ -652,12 +652,12 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                   </Card>
 
                   {/* Accuracy Warning */}
-                  <Card className="bg-purple-900/20 border-purple-500/30">
+                  <Card className="bg-purple-900/20 border-yellow-600/30">
                     <CardContent className="pt-4">
                       <div className="flex items-start space-x-3">
-                        <AlertTriangle className="h-5 w-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                        <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <h4 className="font-medium text-purple-400 mb-2">Accuracy Notice</h4>
+                          <h4 className="font-medium text-yellow-500 mb-2">Accuracy Notice</h4>
                           <p className="text-purple-200 text-sm">
                             Astrological calculations require precise birth information. Small errors in time or location 
                             can significantly affect your analysis. Please verify all details are correct.
@@ -730,7 +730,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                   <Button 
                     type="button" 
                     onClick={nextStep}
-                    className="cosmic-button flex-1 flex items-center justify-center"
+                    className="sanctuary-button flex-1 flex items-center justify-center"
                     disabled={!validateCurrentStep()}
                   >
                     Next Step
@@ -739,7 +739,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                 ) : (
                   <Button 
                     type="submit" 
-                    className="cosmic-button flex-1"
+                    className="sanctuary-button flex-1"
                     disabled={loading || !validateCurrentStep()}
                   >
                     {loading ? "Generating Analysis..." : "Generate Astrological Analysis"}

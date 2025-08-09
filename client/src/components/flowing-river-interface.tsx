@@ -55,15 +55,15 @@ const FlowingRiverInterface: React.FC = () => {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <Card className="bg-purple-900/30 border-purple-500/30 backdrop-blur-md">
+            <Card className="bg-purple-900/30 border-yellow-600/30 backdrop-blur-md">
               <CardContent className="p-4 text-center">
-                <Star className="h-6 w-6 mx-auto mb-2 text-purple-400" />
+                <Star className="h-6 w-6 mx-auto mb-2 text-yellow-500" />
                 <p className="text-sm text-purple-200">Ancient Wisdom</p>
               </CardContent>
             </Card>
-            <Card className="bg-purple-900/30 border-purple-500/30 backdrop-blur-md">
+            <Card className="bg-purple-900/30 border-yellow-600/30 backdrop-blur-md">
               <CardContent className="p-4 text-center">
-                <Sparkles className="h-6 w-6 mx-auto mb-2 text-purple-400" />
+                <Sparkles className="h-6 w-6 mx-auto mb-2 text-yellow-500" />
                 <p className="text-sm text-purple-200">Cosmic Energy</p>
               </CardContent>
             </Card>
@@ -148,11 +148,11 @@ const FlowingRiverInterface: React.FC = () => {
       icon: <Heart className="h-8 w-8" />,
       theme: {
         background: 'linear-gradient(180deg, hsl(320, 50%, 15%) 0%, hsl(340, 60%, 8%) 100%)',
-        primary: '#EC4899',
+        primary: '#6A9797',
         secondary: '#F472B6',
         accent: '#FBCFE8',
         text: '#FDF2F8',
-        particle: '#EC4899'
+        particle: '#6A9797'
       },
       history: 'Lovers carved eternal vows into rose quartz walls, creating a sanctuary of devoted hearts.',
       beauty: 'Pink crystals pulse with the rhythm of heartbeats, while love letters fossilized in stone tell timeless tales.',
@@ -239,7 +239,7 @@ const FlowingRiverInterface: React.FC = () => {
           </div>
           <div className="text-center">
             <div className="relative w-32 h-32 mx-auto">
-              <div className="absolute inset-0 bg-gradient-conic from-purple-500 via-pink-500 via-blue-500 via-emerald-500 to-amber-500 rounded-full animate-spin opacity-30" style={{ animationDuration: '20s' }}></div>
+              <div className="absolute inset-0 bg-gradient-conic from-yellow-600 via-pink-500 via-blue-500 via-emerald-500 to-amber-500 rounded-full animate-spin opacity-30" style={{ animationDuration: '20s' }}></div>
               <div className="absolute inset-4 bg-purple-900 rounded-full flex items-center justify-center">
                 <Sparkles className="h-8 w-8 text-purple-300" />
               </div>

@@ -36,7 +36,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 hover:opacity-75 transition-opacity">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-yellow-600 rounded-full flex items-center justify-center">
               <span className="text-white text-sm font-bold">☉</span>
             </div>
             <span className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Torchlight</span>
@@ -50,8 +50,8 @@ export default function Navigation() {
                 href={item.path}
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   location === item.path
-                    ? "bg-purple-500/20 text-purple-400"
-                    : "text-white hover:text-purple-400"
+                    ? "bg-yellow-600/20 text-yellow-500"
+                    : "text-white hover:text-yellow-500"
                 }`}
               >
                 {item.label}
@@ -68,7 +68,7 @@ export default function Navigation() {
               <Button 
                 variant="ghost" 
                 size="sm"
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 font-medium transition-all duration-200 hover:scale-105 shadow-md"
+                className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 font-medium transition-all duration-200 hover:scale-105 shadow-md"
               >
                 <Heart className="h-4 w-4 mr-1" />
                 Support
@@ -80,13 +80,13 @@ export default function Navigation() {
                 <Button variant="ghost" className="relative h-9 w-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
                   <Avatar className="h-7 w-7">
                     <AvatarImage src={(user as any)?.profileImageUrl || ""} alt={(user as any)?.firstName || ""} />
-                    <AvatarFallback className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm">
+                    <AvatarFallback className="bg-gradient-to-r from-blue-500 to-yellow-600 text-white text-sm">
                       {(user as any)?.firstName?.[0] || "U"}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 bg-slate-900 border border-purple-400/50" align="end" forceMount>
+              <DropdownMenuContent className="w-56 bg-slate-900 border border-yellow-500/50" align="end" forceMount>
                 <DropdownMenuItem className="flex items-center text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                   <User className="mr-2 h-4 w-4" />
                   <span className="font-medium">{(user as any)?.firstName} {(user as any)?.lastName}</span>
@@ -105,11 +105,11 @@ export default function Navigation() {
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden text-white hover:bg-purple-500/20 min-h-[44px] min-w-[44px] touch-manipulation">
+              <Button variant="ghost" size="sm" className="md:hidden text-white hover:bg-yellow-600/20 min-h-[44px] min-w-[44px] touch-manipulation">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-slate-900/95 border-purple-400/50 safe-top safe-bottom">
+            <SheetContent side="right" className="w-[300px] bg-slate-900/95 border-yellow-500/50 safe-top safe-bottom">
               <div className="flex flex-col space-y-2 mt-8 h-full overflow-y-auto swipeable">
                 {navItems.map((item) => (
                   <Link
@@ -118,8 +118,8 @@ export default function Navigation() {
                     onClick={() => setMobileOpen(false)}
                     className={`mobile-button text-left min-h-[48px] flex items-center transition-all duration-200 ${
                       location === item.path
-                        ? "bg-purple-500/30 text-purple-300 border-purple-400"
-                        : "text-white hover:bg-purple-500/20"
+                        ? "bg-yellow-600/30 text-purple-300 border-yellow-500"
+                        : "text-white hover:bg-yellow-600/20"
                     }`}
                   >
                     {item.label}

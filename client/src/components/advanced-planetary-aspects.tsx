@@ -72,7 +72,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
     { name: 'trine', color: '#00FF00', angle: 120, symbol: '△' },
     { name: 'square', color: '#FF1493', angle: 90, symbol: '□' },
     { name: 'sextile', color: '#00CED1', angle: 60, symbol: '⚹' },
-    { name: 'quincunx', color: '#9370DB', angle: 150, symbol: '⚺' },
+    { name: 'quincunx', color: '#6A9797', angle: 150, symbol: '⚺' },
     { name: 'semisextile', color: '#DDA0DD', angle: 30, symbol: '⚻' }
   ];
 
@@ -417,8 +417,8 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
   const drawCosmicEffects = (ctx: CanvasRenderingContext2D, centerX: number, centerY: number, maxRadius: number) => {
     // Draw energy field
     const energyGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, maxRadius * 1.2);
-    energyGradient.addColorStop(0, 'rgba(138, 43, 226, 0.1)');
-    energyGradient.addColorStop(0.5, 'rgba(75, 0, 130, 0.05)');
+    energyGradient.addColorStop(0, 'rgba(197, 165, 90, 0.1)');
+    energyGradient.addColorStop(0.5, 'rgba(106, 151, 151, 0.05)');
     energyGradient.addColorStop(1, 'rgba(25, 25, 112, 0.02)');
     
     ctx.fillStyle = energyGradient;
@@ -568,7 +568,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       <Card className="bg-gradient-to-br from-rose-900/40 via-purple-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
         <CardHeader className="pb-4">
           <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-pink-500 rounded-full flex items-center justify-center">
               <Circle className="w-4 h-4 text-white" />
             </div>
             Sacred Geometric Connections
@@ -605,7 +605,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       <Card className="bg-gradient-to-br from-indigo-900/40 via-purple-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl overflow-hidden">
         <CardHeader className="pb-4">
           <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-indigo-400 to-yellow-600 rounded-full flex items-center justify-center">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
             Your Celestial Mandala
@@ -653,7 +653,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
         </Card>
         <Card className="bg-gradient-to-br from-purple-900/30 to-violet-900/30 border-0 rounded-2xl backdrop-blur-sm">
           <CardContent className="p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-violet-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-violet-500 rounded-full flex items-center justify-center mx-auto mb-3">
               <Eye className="w-6 h-6 text-white" />
             </div>
             <div className="text-2xl font-light text-purple-300 mb-1">{Math.round(zoom * 100)}%</div>

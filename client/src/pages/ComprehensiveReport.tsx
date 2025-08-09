@@ -128,7 +128,7 @@ export default function ComprehensiveReport() {
         </div>
 
         {!reportGenerated ? (
-          <Card className="max-w-2xl mx-auto bg-slate-900/80 border-purple-500/30">
+          <Card className="max-w-2xl mx-auto bg-slate-900/80 border-yellow-600/30">
             <CardHeader>
               <CardTitle className="text-white">Birth Information</CardTitle>
             </CardHeader>
@@ -141,7 +141,7 @@ export default function ComprehensiveReport() {
                     value={birthData.name}
                     onChange={(e) => setBirthData(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="Enter your full name"
-                    className="bg-slate-800 border-purple-500/30 text-white"
+                    className="bg-slate-800 border-yellow-600/30 text-white"
                   />
                 </div>
                 
@@ -153,7 +153,7 @@ export default function ComprehensiveReport() {
                       type="date"
                       value={birthData.birthDate}
                       onChange={(e) => setBirthData(prev => ({ ...prev, birthDate: e.target.value }))}
-                      className="bg-slate-800 border-purple-500/30 text-white"
+                      className="bg-slate-800 border-yellow-600/30 text-white"
                     />
                   </div>
                   <div>
@@ -163,7 +163,7 @@ export default function ComprehensiveReport() {
                       type="time"
                       value={birthData.birthTime}
                       onChange={(e) => setBirthData(prev => ({ ...prev, birthTime: e.target.value }))}
-                      className="bg-slate-800 border-purple-500/30 text-white"
+                      className="bg-slate-800 border-yellow-600/30 text-white"
                     />
                   </div>
                 </div>
@@ -175,14 +175,14 @@ export default function ComprehensiveReport() {
                     value={birthData.birthPlace}
                     onChange={(e) => setBirthData(prev => ({ ...prev, birthPlace: e.target.value }))}
                     placeholder="City, State/Country"
-                    className="bg-slate-800 border-purple-500/30 text-white"
+                    className="bg-slate-800 border-yellow-600/30 text-white"
                   />
                 </div>
 
                 <div>
                   <Label htmlFor="gender" className="text-purple-200">Gender (Optional)</Label>
                   <Select value={birthData.gender} onValueChange={(value) => setBirthData(prev => ({ ...prev, gender: value }))}>
-                    <SelectTrigger className="bg-slate-800 border-purple-500/30 text-white">
+                    <SelectTrigger className="bg-slate-800 border-yellow-600/30 text-white">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -208,7 +208,7 @@ export default function ComprehensiveReport() {
                             setBirthData(persona.data);
                             generateReport(persona.data);
                           }}
-                          className="text-xs bg-slate-800/50 border-purple-500/30 text-purple-200 hover:bg-purple-600/20"
+                          className="text-xs bg-slate-800/50 border-yellow-600/30 text-purple-200 hover:bg-yellow-600/20"
                         >
                           {persona.name}
                         </Button>
@@ -216,7 +216,7 @@ export default function ComprehensiveReport() {
                     </div>
                   </div>
                   
-                  <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700">
+                  <Button type="submit" className="w-full bg-yellow-600 hover:bg-purple-700">
                     Generate Custom Report
                   </Button>
                 </div>
@@ -225,7 +225,7 @@ export default function ComprehensiveReport() {
           </Card>
         ) : loading ? (
           <div className="text-center">
-            <div className="animate-spin w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+            <div className="animate-spin w-8 h-8 border-4 border-yellow-600 border-t-transparent rounded-full mx-auto mb-4"></div>
             <p className="text-purple-300">Generating your comprehensive report...</p>
           </div>
         ) : error ? (
@@ -239,7 +239,7 @@ export default function ComprehensiveReport() {
           </Card>
         ) : report && (
               <div className="space-y-6">
-                <Card className="bg-slate-900/80 border-purple-500/30">
+                <Card className="bg-slate-900/80 border-yellow-600/30">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center">
                       <Star className="w-6 h-6 text-yellow-400 mr-2" />
@@ -252,7 +252,7 @@ export default function ComprehensiveReport() {
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {report.systems?.map((system: any) => (
-                        <Badge key={system.system} variant="secondary" className="bg-purple-600/20 text-purple-200">
+                        <Badge key={system.system} variant="secondary" className="bg-yellow-600/20 text-purple-200">
                           {systemNames[system.system as keyof typeof systemNames]} ({Math.round(system.confidence)}% confidence)
                         </Badge>
                       ))}
@@ -262,11 +262,11 @@ export default function ComprehensiveReport() {
 
                 <Tabs defaultValue="personality" className="space-y-4">
                   <TabsList className="grid w-full grid-cols-5 bg-slate-800/50">
-                    <TabsTrigger value="personality" className="text-white data-[state=active]:bg-purple-600">Page 1: Core</TabsTrigger>
-                    <TabsTrigger value="lifestyle" className="text-white data-[state=active]:bg-purple-600">Page 2: Lifestyle</TabsTrigger>
-                    <TabsTrigger value="guidance" className="text-white data-[state=active]:bg-purple-600">Page 3: Guidance</TabsTrigger>
-                    <TabsTrigger value="wellness" className="text-white data-[state=active]:bg-purple-600">Page 4: Wellness</TabsTrigger>
-                    <TabsTrigger value="future" className="text-white data-[state=active]:bg-purple-600">Page 5: Future</TabsTrigger>
+                    <TabsTrigger value="personality" className="text-white data-[state=active]:bg-yellow-600">Page 1: Core</TabsTrigger>
+                    <TabsTrigger value="lifestyle" className="text-white data-[state=active]:bg-yellow-600">Page 2: Lifestyle</TabsTrigger>
+                    <TabsTrigger value="guidance" className="text-white data-[state=active]:bg-yellow-600">Page 3: Guidance</TabsTrigger>
+                    <TabsTrigger value="wellness" className="text-white data-[state=active]:bg-yellow-600">Page 4: Wellness</TabsTrigger>
+                    <TabsTrigger value="future" className="text-white data-[state=active]:bg-yellow-600">Page 5: Future</TabsTrigger>
                   </TabsList>
 
                   <TabsContent value="personality" className="space-y-4">
@@ -299,7 +299,7 @@ export default function ComprehensiveReport() {
 function ReportPage1({ data }: { data: any }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
             <Heart className="w-5 h-5 text-pink-400 mr-2" />
@@ -313,7 +313,7 @@ function ReportPage1({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
             <TrendingUp className="w-5 h-5 text-green-400 mr-2" />
@@ -334,7 +334,7 @@ function ReportPage1({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
             <AlertTriangle className="w-5 h-5 text-orange-400 mr-2" />
@@ -355,7 +355,7 @@ function ReportPage1({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white">Life Themes</CardTitle>
         </CardHeader>
@@ -364,7 +364,7 @@ function ReportPage1({ data }: { data: any }) {
             <ul className="space-y-2">
               {data.synthesis?.lifeThemes?.map((theme: string, index: number) => (
                 <li key={index} className="text-purple-100 flex items-start">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 mt-2 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2 flex-shrink-0" />
                   {theme}
                 </li>
               ))}
@@ -379,7 +379,7 @@ function ReportPage1({ data }: { data: any }) {
 function ReportPage2({ data }: { data: any }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
             <Gem className="w-5 h-5 text-emerald-400 mr-2" />
@@ -395,7 +395,7 @@ function ReportPage2({ data }: { data: any }) {
             <h4 className="text-purple-200 font-semibold mb-2">Supporting Stones</h4>
             <div className="flex flex-wrap gap-2">
               {data.recommendations?.gemstones?.secondary?.map((gem: string, index: number) => (
-                <Badge key={index} variant="outline" className="border-purple-400 text-purple-200">{gem}</Badge>
+                <Badge key={index} variant="outline" className="border-yellow-500 text-purple-200">{gem}</Badge>
               ))}
             </div>
           </div>
@@ -410,7 +410,7 @@ function ReportPage2({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white">Color Therapy</CardTitle>
         </CardHeader>
@@ -440,7 +440,7 @@ function ReportPage2({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30 lg:col-span-2">
+      <Card className="bg-slate-900/80 border-yellow-600/30 lg:col-span-2">
         <CardHeader>
           <CardTitle className="text-white">Daily Lifestyle Recommendations</CardTitle>
         </CardHeader>
@@ -489,7 +489,7 @@ function ReportPage2({ data }: { data: any }) {
 function ReportPage3({ data }: { data: any }) {
   return (
     <div className="space-y-6">
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white">Current Life Guidance</CardTitle>
         </CardHeader>
@@ -501,7 +501,7 @@ function ReportPage3({ data }: { data: any }) {
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-slate-900/80 border-purple-500/30">
+        <Card className="bg-slate-900/80 border-yellow-600/30">
           <CardHeader>
             <CardTitle className="text-white">Career & Purpose</CardTitle>
           </CardHeader>
@@ -512,7 +512,7 @@ function ReportPage3({ data }: { data: any }) {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/80 border-purple-500/30">
+        <Card className="bg-slate-900/80 border-yellow-600/30">
           <CardHeader>
             <CardTitle className="text-white">Relationships & Love</CardTitle>
           </CardHeader>
@@ -524,7 +524,7 @@ function ReportPage3({ data }: { data: any }) {
         </Card>
       </div>
 
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white">Current Planetary Influences</CardTitle>
         </CardHeader>
@@ -541,7 +541,7 @@ function ReportPage3({ data }: { data: any }) {
 function ReportPage4({ data }: { data: any }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white">Health & Vitality</CardTitle>
         </CardHeader>
@@ -552,7 +552,7 @@ function ReportPage4({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30">
+      <Card className="bg-slate-900/80 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white">Spiritual Growth</CardTitle>
         </CardHeader>
@@ -563,7 +563,7 @@ function ReportPage4({ data }: { data: any }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-slate-900/80 border-purple-500/30 lg:col-span-2">
+      <Card className="bg-slate-900/80 border-yellow-600/30 lg:col-span-2">
         <CardHeader>
           <CardTitle className="text-white">Optimal Environment & Living</CardTitle>
         </CardHeader>
@@ -579,7 +579,7 @@ function ReportPage5({ data }: { data: any }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="bg-slate-900/80 border-purple-500/30">
+        <Card className="bg-slate-900/80 border-yellow-600/30">
           <CardHeader>
             <CardTitle className="text-white text-lg">Next Month</CardTitle>
           </CardHeader>
@@ -590,7 +590,7 @@ function ReportPage5({ data }: { data: any }) {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/80 border-purple-500/30">
+        <Card className="bg-slate-900/80 border-yellow-600/30">
           <CardHeader>
             <CardTitle className="text-white text-lg">Next Year</CardTitle>
           </CardHeader>
@@ -601,7 +601,7 @@ function ReportPage5({ data }: { data: any }) {
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-900/80 border-purple-500/30">
+        <Card className="bg-slate-900/80 border-yellow-600/30">
           <CardHeader>
             <CardTitle className="text-white text-lg">Life Direction</CardTitle>
           </CardHeader>
@@ -613,7 +613,7 @@ function ReportPage5({ data }: { data: any }) {
         </Card>
       </div>
 
-      <Card className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 border-purple-500/30">
+      <Card className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white text-xl text-center">Your Astrological Summary</CardTitle>
         </CardHeader>

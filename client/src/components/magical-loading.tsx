@@ -52,13 +52,13 @@ export default function MagicalLoading({ isVisible, onComplete }: MagicalLoading
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-      <Card className="bg-gradient-to-br from-purple-900/90 to-pink-900/90 border-purple-400/30 backdrop-blur-md max-w-md mx-4">
+      <Card className="bg-gradient-to-br from-purple-900/90 to-pink-900/90 border-yellow-500/30 backdrop-blur-md max-w-md mx-4">
         <CardContent className="p-8 text-center">
           {/* Animated Astrological Wheel */}
           <div className="relative w-32 h-32 mx-auto mb-6">
             {/* Outer circle with constellations */}
             <div className="absolute inset-0 border-2 border-yellow-400/30 rounded-full animate-spin" style={{animationDuration: '8s'}} />
-            <div className="absolute inset-2 border border-purple-400/40 rounded-full animate-spin" style={{animationDuration: '6s', animationDirection: 'reverse'}} />
+            <div className="absolute inset-2 border border-yellow-500/40 rounded-full animate-spin" style={{animationDuration: '6s', animationDirection: 'reverse'}} />
             
             {/* Zodiac symbols */}
             <div className="absolute inset-4 flex items-center justify-center">
@@ -92,7 +92,7 @@ export default function MagicalLoading({ isVisible, onComplete }: MagicalLoading
           {/* Progress Bar */}
           <div className="w-full bg-purple-800/30 rounded-full h-2 mb-4 overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-yellow-600 to-pink-500 rounded-full transition-all duration-300 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>

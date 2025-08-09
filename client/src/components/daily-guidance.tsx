@@ -70,15 +70,15 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
       icon: Lightbulb,
       title: "Personal Growth",
       content: guidance.horoscope.growth,
-      color: "text-purple-400"
+      color: "text-yellow-500"
     }
   ];
 
   if (compact) {
     return (
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-500 text-lg">Today's Cosmic Energy</CardTitle>
+          <CardTitle className="text-yellow-600 text-lg">Today's Cosmic Energy</CardTitle>
           <CardDescription className="text-gray-400">
             {new Date(guidance.date).toLocaleDateString('en-US', { 
               weekday: 'long', 
@@ -104,11 +104,11 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
           <div className="flex justify-between text-xs">
             <div>
               <span className="text-gray-400">Best Time:</span>
-              <span className="text-purple-500 ml-1">{guidance.optimalTiming.best}</span>
+              <span className="text-yellow-600 ml-1">{guidance.optimalTiming.best}</span>
             </div>
             <div>
               <span className="text-gray-400">Lucky:</span>
-              <span className="text-purple-500 ml-1">{guidance.luckyElements.numbers[0]}</span>
+              <span className="text-yellow-600 ml-1">{guidance.luckyElements.numbers[0]}</span>
             </div>
           </div>
         </CardContent>
@@ -119,9 +119,9 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
   return (
     <div className="space-y-6">
       {/* Current Transits */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-500 flex items-center">
+          <CardTitle className="text-yellow-600 flex items-center">
             <Satellite className="mr-2 h-5 w-5" />
             Active Planetary Transits
           </CardTitle>
@@ -129,7 +129,7 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
         <CardContent>
           <div className="grid gap-4">
             {guidance.transits.map((transit, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-black/20 rounded-lg border border-purple-500/10">
+              <div key={index} className="flex items-center justify-between p-3 bg-black/20 rounded-lg border border-yellow-600/10">
                 <div className="flex-1">
                   <div className="text-white font-medium">
                     {transit.planet} {transit.sign} {transit.aspect}
@@ -139,7 +139,7 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
                 <Badge 
                   variant="outline" 
                   className={`ml-3 ${
-                    transit.timing.includes('peak') ? 'border-purple-500 text-purple-500' :
+                    transit.timing.includes('peak') ? 'border-yellow-600 text-yellow-600' :
                     transit.timing.includes('continuing') ? 'border-blue-400 text-blue-400' :
                     transit.timing.includes('waning') ? 'border-gray-500 text-gray-500' :
                     'border-green-400 text-green-400'
@@ -154,9 +154,9 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
       </Card>
 
       {/* Life Areas Horoscope */}
-      <Card className="cosmic-card">
+      <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-500">Daily Life Areas</CardTitle>
+          <CardTitle className="text-yellow-600">Daily Life Areas</CardTitle>
           <CardDescription className="text-gray-400">
             Cosmic guidance for different aspects of your day
           </CardDescription>
@@ -181,9 +181,9 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
       {/* Timing and Lucky Elements Grid */}
       <div className="grid md:grid-cols-2 gap-6">
         {/* Optimal Timing */}
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
-            <CardTitle className="text-purple-500 flex items-center">
+            <CardTitle className="text-yellow-600 flex items-center">
               <Clock className="mr-2 h-5 w-5" />
               Optimal Timing
             </CardTitle>
@@ -214,9 +214,9 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
         </Card>
 
         {/* Lucky Elements */}
-        <Card className="cosmic-card">
+        <Card className="sanctuary-card">
           <CardHeader>
-            <CardTitle className="text-purple-500 flex items-center">
+            <CardTitle className="text-yellow-600 flex items-center">
               <Star className="mr-2 h-5 w-5" />
               Lucky Elements
             </CardTitle>
@@ -228,13 +228,13 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
                 {guidance.luckyElements.colors.map((color, index) => (
                   <div 
                     key={index}
-                    className={`w-6 h-6 rounded-full border border-purple-500/30 ${
+                    className={`w-6 h-6 rounded-full border border-yellow-600/30 ${
                       color === 'blue' ? 'bg-blue-600' :
-                      color === 'gold' || color === 'yellow' ? 'bg-purple-500' :
+                      color === 'gold' || color === 'yellow' ? 'bg-yellow-600' :
                       color === 'green' ? 'bg-green-600' :
                       color === 'red' ? 'bg-red-600' :
-                      color === 'purple' ? 'bg-purple-600' :
-                      color === 'white' ? 'bg-purple-100/20 border-purple-400/30' :
+                      color === 'purple' ? 'bg-yellow-600' :
+                      color === 'white' ? 'bg-purple-100/20 border-yellow-500/30' :
                       'bg-gray-600'
                     }`}
                     title={color}
@@ -245,16 +245,16 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <div className="text-white font-medium">Numbers</div>
-                <div className="text-purple-500">{guidance.luckyElements.numbers.join(', ')}</div>
+                <div className="text-yellow-600">{guidance.luckyElements.numbers.join(', ')}</div>
               </div>
               <div>
                 <div className="text-white font-medium">Direction</div>
-                <div className="text-purple-500">{guidance.luckyElements.direction}</div>
+                <div className="text-yellow-600">{guidance.luckyElements.direction}</div>
               </div>
             </div>
             <div>
               <div className="text-white font-medium">Element Focus</div>
-              <div className="text-purple-500">{guidance.luckyElements.element}</div>
+              <div className="text-yellow-600">{guidance.luckyElements.element}</div>
             </div>
           </CardContent>
         </Card>

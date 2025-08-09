@@ -24,7 +24,7 @@ export default function PlanetarySymbols() {
             }}>Planetary Symbols</h3>
         <p className="text-sm" 
            style={{
-             color: 'hsl(240, 100%, 94%)', 
+             color: 'hsl(60, 10%, 96%)', 
              opacity: 0.8
            }}>
           Understanding the cosmic influences in your chart
@@ -35,8 +35,8 @@ export default function PlanetarySymbols() {
           <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-purple-900/30">
             <div className="text-2xl" style={{color: 'hsl(51, 100%, 65%)'}}>{planet.symbol}</div>
             <div>
-              <div className="font-medium text-sm" style={{color: 'hsl(240, 100%, 94%)'}}>{planet.name}</div>
-              <div className="text-xs" style={{color: 'hsl(240, 100%, 94%)', opacity: 0.7}}>{planet.meaning}</div>
+              <div className="font-medium text-sm" style={{color: 'hsl(60, 10%, 96%)'}}>{planet.name}</div>
+              <div className="text-xs" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>{planet.meaning}</div>
             </div>
           </div>
         ))}

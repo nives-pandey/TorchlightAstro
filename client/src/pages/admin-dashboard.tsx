@@ -17,7 +17,7 @@ interface AdminStats {
   peakUsageTimes: Array<{ hour: number; activity: number }>;
 }
 
-const COLORS = ['#8B5CF6', '#EC4899', '#10B981', '#F59E0B', '#EF4444', '#6366F1'];
+const COLORS = ['#C5A55A', '#6A9797', '#B0A9A4', '#F5F5DC', '#36312E', '#C5A55A'];
 
 export default function AdminDashboard() {
   // Use the new enhanced admin dashboard with timezone analytics
@@ -48,7 +48,7 @@ function LegacyAdminDashboard() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-            <BarChart3 className="h-8 w-8 text-purple-500" />
+            <BarChart3 className="h-8 w-8 text-yellow-600" />
             Torchlight Admin Dashboard
           </h1>
           <p className="text-gray-300">Real-time analytics and user insights</p>
@@ -60,10 +60,10 @@ function LegacyAdminDashboard() {
 
         {/* Key Metrics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Total Users</CardTitle>
-              <Users className="h-4 w-4 text-purple-500" />
+              <Users className="h-4 w-4 text-yellow-600" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-white">{stats?.totalUsers.toLocaleString()}</div>
@@ -74,10 +74,10 @@ function LegacyAdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Charts Generated</CardTitle>
-              <Sparkles className="h-4 w-4 text-purple-500" />
+              <Sparkles className="h-4 w-4 text-yellow-600" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-white">{stats?.totalCharts.toLocaleString()}</div>
@@ -88,7 +88,7 @@ function LegacyAdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">New Users (Month)</CardTitle>
               <Calendar className="h-4 w-4 text-blue-500" />
@@ -99,7 +99,7 @@ function LegacyAdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Active Countries</CardTitle>
               <Globe className="h-4 w-4 text-green-500" />
@@ -116,10 +116,10 @@ function LegacyAdminDashboard() {
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Top Cities */}
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-purple-500" />
+                <MapPin className="h-5 w-5 text-yellow-600" />
                 Top Cities
               </CardTitle>
               <CardDescription className="text-gray-400">
@@ -139,7 +139,7 @@ function LegacyAdminDashboard() {
                         <div className="text-gray-400 text-sm">{city.country}</div>
                       </div>
                     </div>
-                    <div className="text-purple-500 font-semibold">{city.count}</div>
+                    <div className="text-yellow-600 font-semibold">{city.count}</div>
                   </div>
                 ))}
               </div>
@@ -147,10 +147,10 @@ function LegacyAdminDashboard() {
           </Card>
 
           {/* System Popularity */}
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
-                <BarChart3 className="h-5 w-5 text-purple-500" />
+                <BarChart3 className="h-5 w-5 text-yellow-600" />
                 System Popularity
               </CardTitle>
               <CardDescription className="text-gray-400">
@@ -182,7 +182,7 @@ function LegacyAdminDashboard() {
         </div>
 
         {/* Growth Chart */}
-        <Card className="cosmic-card mb-8">
+        <Card className="sanctuary-card mb-8">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-green-500" />
@@ -208,14 +208,14 @@ function LegacyAdminDashboard() {
                 <Line 
                   type="monotone" 
                   dataKey="users" 
-                  stroke="#8B5CF6" 
+                  stroke="#C5A55A" 
                   strokeWidth={2}
                   name="New Users"
                 />
                 <Line 
                   type="monotone" 
                   dataKey="charts" 
-                  stroke="#EC4899" 
+                  stroke="#6A9797" 
                   strokeWidth={2}
                   name="Charts Created"
                 />
@@ -225,9 +225,9 @@ function LegacyAdminDashboard() {
         </Card>
 
         {/* Access Instructions */}
-        <Card className="cosmic-card border-purple-500/30">
+        <Card className="sanctuary-card border-yellow-600/30">
           <CardHeader>
-            <CardTitle className="text-purple-500 flex items-center gap-2">
+            <CardTitle className="text-yellow-600 flex items-center gap-2">
               <BarChart3 className="h-5 w-5" />
               How to Access This Dashboard
             </CardTitle>

@@ -130,7 +130,7 @@ export default function EnhancedAdminDashboard() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
             Advanced Timezone Analytics
           </h1>
           <div className="flex items-center justify-between">
@@ -144,7 +144,7 @@ export default function EnhancedAdminDashboard() {
                   variant={timeRange === range ? "default" : "outline"}
                   size="sm"
                   onClick={() => setTimeRange(range)}
-                  className={timeRange === range ? "cosmic-button" : ""}
+                  className={timeRange === range ? "sanctuary-button" : ""}
                 >
                   {range}
                 </Button>
@@ -155,7 +155,7 @@ export default function EnhancedAdminDashboard() {
 
         {/* Key Metrics Overview */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Total Timezone Entries</CardTitle>
               <Globe className="h-4 w-4 text-blue-400" />
@@ -166,7 +166,7 @@ export default function EnhancedAdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Auto-Detection Success</CardTitle>
               <Target className="h-4 w-4 text-green-400" />
@@ -177,7 +177,7 @@ export default function EnhancedAdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">DST Corrections</CardTitle>
               <Clock className="h-4 w-4 text-orange-400" />
@@ -188,10 +188,10 @@ export default function EnhancedAdminDashboard() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-300">Quality Score A+/A</CardTitle>
-              <CheckCircle className="h-4 w-4 text-purple-400" />
+              <CheckCircle className="h-4 w-4 text-yellow-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-white">68%</div>
@@ -203,23 +203,23 @@ export default function EnhancedAdminDashboard() {
         {/* Main Analytics Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-5 bg-slate-800/50">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-purple-600">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-yellow-600">
               <BarChart3 className="h-4 w-4 mr-2" />
               Overview
             </TabsTrigger>
-            <TabsTrigger value="quality" className="data-[state=active]:bg-purple-600">
+            <TabsTrigger value="quality" className="data-[state=active]:bg-yellow-600">
               <Activity className="h-4 w-4 mr-2" />
               Data Quality
             </TabsTrigger>
-            <TabsTrigger value="geographic" className="data-[state=active]:bg-purple-600">
+            <TabsTrigger value="geographic" className="data-[state=active]:bg-yellow-600">
               <Globe2 className="h-4 w-4 mr-2" />
               Geographic
             </TabsTrigger>
-            <TabsTrigger value="dst" className="data-[state=active]:bg-purple-600">
+            <TabsTrigger value="dst" className="data-[state=active]:bg-yellow-600">
               <Clock4 className="h-4 w-4 mr-2" />
               DST Analysis
             </TabsTrigger>
-            <TabsTrigger value="detection" className="data-[state=active]:bg-purple-600">
+            <TabsTrigger value="detection" className="data-[state=active]:bg-yellow-600">
               <Settings className="h-4 w-4 mr-2" />
               Auto-Detection
             </TabsTrigger>
@@ -229,9 +229,9 @@ export default function EnhancedAdminDashboard() {
           <TabsContent value="overview" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Timezone Usage Chart */}
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
-                  <CardTitle className="text-purple-400">Top Timezone Usage</CardTitle>
+                  <CardTitle className="text-yellow-500">Top Timezone Usage</CardTitle>
                   <CardDescription>Most frequently selected timezones</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -254,14 +254,14 @@ export default function EnhancedAdminDashboard() {
                           color: '#F3F4F6'
                         }}
                       />
-                      <Bar dataKey="usageCount" fill="#8B5CF6" />
+                      <Bar dataKey="usageCount" fill="#C5A55A" />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>
               </Card>
 
               {/* Success Rate by Region */}
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
                   <CardTitle className="text-green-400">Success Rates by Region</CardTitle>
                   <CardDescription>Auto-detection accuracy by geographic region</CardDescription>
@@ -295,9 +295,9 @@ export default function EnhancedAdminDashboard() {
             </div>
 
             {/* Detailed Stats Table */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-400">Detailed Timezone Statistics</CardTitle>
+                <CardTitle className="text-yellow-500">Detailed Timezone Statistics</CardTitle>
                 <CardDescription>Comprehensive usage and performance metrics</CardDescription>
               </CardHeader>
               <CardContent>
@@ -346,7 +346,7 @@ export default function EnhancedAdminDashboard() {
           <TabsContent value="quality" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Quality Score Distribution */}
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
                   <CardTitle className="text-blue-400">Birth Time Quality Distribution</CardTitle>
                   <CardDescription>Classification of birth time accuracy</CardDescription>
@@ -386,7 +386,7 @@ export default function EnhancedAdminDashboard() {
               </Card>
 
               {/* Time Precision Analysis */}
-              <Card className="cosmic-card">
+              <Card className="sanctuary-card">
                 <CardHeader>
                   <CardTitle className="text-orange-400">Time Precision Impact</CardTitle>
                   <CardDescription>How time accuracy affects astrological calculations</CardDescription>
@@ -416,8 +416,8 @@ export default function EnhancedAdminDashboard() {
                     </div>
                   </div>
                   
-                  <div className="mt-6 p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                    <div className="flex items-center text-purple-400 text-sm font-medium mb-2">
+                  <div className="mt-6 p-4 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
+                    <div className="flex items-center text-yellow-500 text-sm font-medium mb-2">
                       <AlertTriangle className="h-4 w-4 mr-2" />
                       Quality Insights
                     </div>
@@ -432,9 +432,9 @@ export default function EnhancedAdminDashboard() {
             </div>
 
             {/* Quality Recommendations */}
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
-                <CardTitle className="text-purple-400">Data Quality Recommendations</CardTitle>
+                <CardTitle className="text-yellow-500">Data Quality Recommendations</CardTitle>
                 <CardDescription>Actions to improve birth time accuracy</CardDescription>
               </CardHeader>
               <CardContent>
@@ -446,11 +446,11 @@ export default function EnhancedAdminDashboard() {
                     <p className="text-xs text-green-400 mt-2">Above industry standard of 60%</p>
                   </div>
                   
-                  <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
-                    <AlertTriangle className="h-8 w-8 text-purple-400 mb-3" />
+                  <div className="p-4 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
+                    <AlertTriangle className="h-8 w-8 text-yellow-500 mb-3" />
                     <h4 className="font-semibold text-white mb-2">Needs Attention</h4>
                     <p className="text-sm text-gray-300">28% have rounded times</p>
-                    <p className="text-xs text-purple-400 mt-2">Consider birth certificate helper</p>
+                    <p className="text-xs text-yellow-500 mt-2">Consider birth certificate helper</p>
                   </div>
                   
                   <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
@@ -466,7 +466,7 @@ export default function EnhancedAdminDashboard() {
 
           {/* Additional tabs would be implemented similarly */}
           <TabsContent value="geographic" className="space-y-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardContent className="p-8 text-center">
                 <Globe2 className="h-12 w-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Geographic Distribution Analysis</h3>
@@ -476,7 +476,7 @@ export default function EnhancedAdminDashboard() {
           </TabsContent>
 
           <TabsContent value="dst" className="space-y-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardContent className="p-8 text-center">
                 <Clock4 className="h-12 w-12 text-orange-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">DST Correction Analysis</h3>
@@ -486,9 +486,9 @@ export default function EnhancedAdminDashboard() {
           </TabsContent>
 
           <TabsContent value="detection" className="space-y-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardContent className="p-8 text-center">
-                <Settings className="h-12 w-12 text-purple-400 mx-auto mb-4" />
+                <Settings className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">Auto-Detection Performance</h3>
                 <p className="text-gray-400">Machine learning model performance and confidence scoring</p>
               </CardContent>

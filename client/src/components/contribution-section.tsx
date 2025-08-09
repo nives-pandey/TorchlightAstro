@@ -58,7 +58,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
   return (
     <Card 
-      className="border-purple-400/30 backdrop-blur-sm"
+      className="border-yellow-500/30 backdrop-blur-sm"
       style={{
         background: 'linear-gradient(135deg, rgba(30, 80, 90, 0.95) 0%, rgba(40, 120, 140, 0.9) 30%, rgba(50, 140, 160, 0.85) 70%, rgba(60, 160, 180, 0.95) 100%)',
         backdropFilter: 'blur(16px)',
@@ -67,7 +67,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
     >
       <CardHeader className="text-center space-y-4">
         <div className="flex justify-center">
-          <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+          <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-indigo-500 rounded-full flex items-center justify-center">
             <Heart className="h-8 w-8 text-white" />
           </div>
         </div>
@@ -91,9 +91,9 @@ export default function ContributionSection({ onContribute }: ContributionSectio
 
       <CardContent className="space-y-6">
         {/* Mission Statement */}
-        <div className="bg-purple-800/30 rounded-lg p-4 border border-purple-400/50">
+        <div className="bg-purple-800/30 rounded-lg p-4 border border-yellow-500/50">
           <div className="flex items-start space-x-3">
-            <Globe className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+            <Globe className="h-5 w-5 text-yellow-600 mt-0.5 flex-shrink-0" />
             <div>
               <h4 className="font-semibold text-purple-200 mb-2">Our Commitment</h4>
               <p className="text-sm text-purple-100">
@@ -148,8 +148,8 @@ export default function ContributionSection({ onContribute }: ContributionSectio
                 onClick={() => handleAmountSelect(amount)}
                 className={`h-auto p-3 flex flex-col items-center space-y-2 ${
                   selectedAmount === amount 
-                    ? "bg-purple-600 hover:bg-purple-700 text-white" 
-                    : "border-purple-400/50 hover:border-purple-300 hover:bg-purple-800/30 text-white"
+                    ? "bg-yellow-600 hover:bg-purple-700 text-white" 
+                    : "border-yellow-500/50 hover:border-purple-300 hover:bg-purple-800/30 text-white"
                 }`}
               >
                 <Icon className="h-5 w-5" />
@@ -174,7 +174,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
                   placeholder="25.00"
                   value={customAmount}
                   onChange={(e) => handleCustomAmountChange(e.target.value)}
-                  className="pl-8 border-purple-400/50 focus:border-purple-300 bg-purple-800/20 text-white"
+                  className="pl-8 border-yellow-500/50 focus:border-purple-300 bg-purple-800/20 text-white"
                   min="1"
                   step="0.01"
                 />
@@ -188,7 +188,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
           <Button
             onClick={handleContribute}
             disabled={getContributionAmount() <= 0}
-            className="w-full h-12 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg"
+            className="w-full h-12 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg"
           >
             <Gift className="h-5 w-5 mr-2" />
             Contribute ${getContributionAmount().toFixed(2)} with Love
@@ -203,14 +203,14 @@ export default function ContributionSection({ onContribute }: ContributionSectio
         </div>
 
         {/* What Your Contribution Supports */}
-        <div className="bg-purple-800/30 rounded-lg p-4 space-y-3 border border-purple-400/30">
+        <div className="bg-purple-800/30 rounded-lg p-4 space-y-3 border border-yellow-500/30">
           <h4 className="font-semibold text-purple-200 flex items-center">
             <Sparkles className="h-4 w-4 mr-2" />
             Your Contribution Supports:
           </h4>
           <div className="grid md:grid-cols-2 gap-2 text-sm text-purple-100">
             <div className="flex items-center space-x-2">
-              <BookOpen className="h-4 w-4 text-purple-500" />
+              <BookOpen className="h-4 w-4 text-yellow-600" />
               <span>Ancient text research & translations</span>
             </div>
             <div className="flex items-center space-x-2">
@@ -218,7 +218,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
               <span>Expert astrologer consultations</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Globe className="h-4 w-4 text-purple-500" />
+              <Globe className="h-4 w-4 text-yellow-600" />
               <span>Free global accessibility</span>
             </div>
             <div className="flex items-center space-x-2">
@@ -229,7 +229,7 @@ export default function ContributionSection({ onContribute }: ContributionSectio
         </div>
 
         {/* Gratitude Message */}
-        <div className="text-center p-4 bg-purple-800/40 rounded-lg border border-purple-400/50">
+        <div className="text-center p-4 bg-purple-800/40 rounded-lg border border-yellow-500/50">
           <Heart className="h-6 w-6 text-red-500 mx-auto mb-2" />
           <p className="text-sm font-medium text-purple-100">
             Thank you for being part of our mission to illuminate ancient wisdom for the modern world. 

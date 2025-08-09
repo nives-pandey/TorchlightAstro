@@ -31,7 +31,7 @@ export default function Chart3DDemo() {
     { planet1: 'Mars', planet2: 'Saturn', angle: 67, type: 'sextile', orb: 7, strength: 0.8, color: '#00CED1' },
     { planet1: 'Jupiter', planet2: 'Uranus', angle: 82, type: 'square', orb: 8, strength: 0.7, color: '#FF1493' },
     { planet1: 'Saturn', planet2: 'Neptune', angle: 55, type: 'sextile', orb: 5, strength: 0.9, color: '#00CED1' },
-    { planet1: 'Uranus', planet2: 'Pluto', angle: 144, type: 'quincunx', orb: 6, strength: 0.5, color: '#9370DB' }
+    { planet1: 'Uranus', planet2: 'Pluto', angle: 144, type: 'quincunx', orb: 6, strength: 0.5, color: '#6A9797' }
   ];
 
   const generateTransitData = () => {
@@ -90,7 +90,7 @@ export default function Chart3DDemo() {
         </div>
 
         {/* Test Profile Card */}
-        <Card className="cosmic-card mb-6">
+        <Card className="sanctuary-card mb-6">
           <CardHeader>
             <CardTitle className="text-orange-400 flex items-center gap-2">
               <Star className="w-5 h-5" />
@@ -120,7 +120,7 @@ export default function Chart3DDemo() {
         </Card>
 
         {/* Chart Type Controls */}
-        <Card className="cosmic-card mb-6">
+        <Card className="sanctuary-card mb-6">
           <CardHeader>
             <CardTitle className="text-orange-400 flex items-center gap-2">
               <Orbit className="w-5 h-5" />
@@ -141,7 +141,7 @@ export default function Chart3DDemo() {
                 <Button
                   onClick={() => setSelectedView('transit')}
                   variant={selectedView === 'transit' ? 'default' : 'outline'}
-                  className={selectedView === 'transit' ? 'bg-purple-500' : 'border-purple-400'}
+                  className={selectedView === 'transit' ? 'bg-yellow-600' : 'border-yellow-500'}
                 >
                   <Zap className="w-4 h-4 mr-2" />
                   Current Transits
@@ -160,7 +160,7 @@ export default function Chart3DDemo() {
                 <Badge variant="outline" className="text-orange-400 border-orange-400">
                   Planets: {getCurrentPlanets().length}
                 </Badge>
-                <Badge variant="outline" className="text-purple-400 border-purple-400">
+                <Badge variant="outline" className="text-yellow-500 border-yellow-500">
                   Aspects: {aspects.length}
                 </Badge>
                 <Badge variant="outline" className="text-pink-400 border-pink-400">
@@ -172,7 +172,7 @@ export default function Chart3DDemo() {
         </Card>
 
         {/* 3D Canvas Visualization */}
-        <Card className="cosmic-card mb-6">
+        <Card className="sanctuary-card mb-6">
           <CardHeader>
             <CardTitle className="text-orange-400 flex items-center gap-2">
               <Zap className="w-5 h-5" />
@@ -190,7 +190,7 @@ export default function Chart3DDemo() {
 
         {/* Chart Analysis */}
         <div className="grid lg:grid-cols-2 gap-6">
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-orange-400">Planetary Positions</CardTitle>
             </CardHeader>
@@ -217,7 +217,7 @@ export default function Chart3DDemo() {
             </CardContent>
           </Card>
 
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardHeader>
               <CardTitle className="text-orange-400">Major Aspects</CardTitle>
             </CardHeader>
@@ -250,7 +250,7 @@ export default function Chart3DDemo() {
         </div>
 
         {/* Features Showcase */}
-        <Card className="cosmic-card mt-6">
+        <Card className="sanctuary-card mt-6">
           <CardHeader>
             <CardTitle className="text-orange-400">Advanced 3D Features</CardTitle>
           </CardHeader>
@@ -314,7 +314,7 @@ function getAspectSymbol(aspectType: string): string {
 
 function getAspectStrengthColor(strength: number): string {
   if (strength > 0.8) return 'text-green-400 border-green-400';
-  if (strength > 0.6) return 'text-purple-400 border-purple-400';
+  if (strength > 0.6) return 'text-yellow-500 border-yellow-500';
   if (strength > 0.4) return 'text-orange-400 border-orange-400';
   return 'text-red-400 border-red-400';
 }

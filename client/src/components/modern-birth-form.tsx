@@ -406,7 +406,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
       {/* Mobile: Full screen on small devices, centered on larger */}
       <div className="w-full h-full sm:w-auto sm:h-auto sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl flex items-center justify-center p-0 sm:p-4 lg:p-6">
         <AccessibilityToggle />
-        <Card className="w-full h-full sm:w-auto sm:h-auto sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-purple-500/50 shadow-2xl rounded-none sm:rounded-xl lg:rounded-2xl transition-all duration-300">
+        <Card className="w-full h-full sm:w-auto sm:h-auto sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-yellow-600/50 shadow-2xl rounded-none sm:rounded-xl lg:rounded-2xl transition-all duration-300">
           {/* Mobile: Add safe area padding */}
           <div className="safe-top safe-bottom sm:safe-top-0 sm:safe-bottom-0">
             <CardHeader className="relative p-4 sm:p-6 lg:p-8 safe-top">
@@ -414,7 +414,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-purple-300 hover:bg-purple-500/20 border border-purple-400/30 min-h-[44px] min-w-[44px] h-11 w-11 sm:h-10 sm:w-10 lg:h-12 lg:w-12 z-10"
+            className="absolute right-4 top-4 text-purple-300 hover:bg-yellow-600/20 border border-yellow-500/30 min-h-[44px] min-w-[44px] h-11 w-11 sm:h-10 sm:w-10 lg:h-12 lg:w-12 z-10"
           >
             <X className="h-5 w-5 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </Button>
@@ -432,14 +432,14 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
               <div key={index} className="flex items-center">
                 <div className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full border-2 sm:border-3 transition-all duration-300 ${
                   index <= currentStep 
-                    ? 'bg-purple-600 border-purple-600 text-white shadow-lg' 
+                    ? 'bg-yellow-600 border-yellow-600 text-white shadow-lg' 
                     : 'border-gray-400 text-gray-500 bg-gray-100'
                 }`}>
                   <step.icon className="h-3 w-3 sm:h-4 sm:w-4 lg:h-5 lg:w-5" />
                 </div>
                 {index < steps.length - 1 && (
                   <div className={`w-4 sm:w-8 lg:w-12 h-0.5 sm:h-1 mx-1 sm:mx-2 transition-all duration-300 ${
-                    index < currentStep ? 'bg-purple-600' : 'bg-gray-300'
+                    index < currentStep ? 'bg-yellow-600' : 'bg-gray-300'
                   }`} />
                 )}
               </div>
@@ -448,7 +448,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
           
           {/* Step Titles for Mobile */}
           <div className="block sm:hidden text-center mb-4">
-            <span className="text-xs font-medium text-purple-200 bg-purple-900/50 px-3 py-1 rounded-full border border-purple-400/30">
+            <span className="text-xs font-medium text-purple-200 bg-purple-900/50 px-3 py-1 rounded-full border border-yellow-500/30">
               Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
             </span>
           </div>
@@ -581,7 +581,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                                 }}
                                 placeholder="14:30 (2:30 PM)"
                               />
-                              <p className="text-xs text-purple-200 bg-purple-900/30 border border-purple-400/30 p-2 rounded">
+                              <p className="text-xs text-purple-200 bg-purple-900/30 border border-yellow-500/30 p-2 rounded">
                                 💡 Use 24-hour format: 14:30 = 2:30 PM, 09:15 = 9:15 AM, 00:00 = Midnight
                               </p>
                             </div>
@@ -620,19 +620,19 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                             />
                             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
                               {isSearchingCities ? (
-                                <div className="animate-spin h-5 w-5 border-2 border-purple-400 border-t-transparent rounded-full" />
+                                <div className="animate-spin h-5 w-5 border-2 border-yellow-500 border-t-transparent rounded-full" />
                               ) : (
-                                <MapPin className="h-5 w-5 text-purple-400" />
+                                <MapPin className="h-5 w-5 text-yellow-500" />
                               )}
                             </div>
                             
                             {/* Enhanced City Search Results */}
                             {showCityResults && citySearchResults.length > 0 && (
-                              <div className="absolute z-10 w-full mt-1 bg-slate-800/95 border border-purple-400/50 rounded-lg shadow-xl max-h-60 overflow-y-auto">
+                              <div className="absolute z-10 w-full mt-1 bg-slate-800/95 border border-yellow-500/50 rounded-lg shadow-xl max-h-60 overflow-y-auto">
                                 {citySearchResults.map((city, index) => (
                                   <div
                                     key={`${city.geonameId}-${index}`}
-                                    className="p-3 hover:bg-purple-600/20 cursor-pointer border-b border-purple-400/20 last:border-b-0 transition-colors"
+                                    className="p-3 hover:bg-yellow-600/20 cursor-pointer border-b border-yellow-500/20 last:border-b-0 transition-colors"
                                     onClick={() => handleCitySelect(city)}
                                   >
                                     <div className="flex justify-between items-start">
@@ -800,7 +800,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   variant="outline"
                   onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
                   disabled={currentStep === 0}
-                  className="bg-slate-700/50 border-purple-400/50 text-white hover:bg-slate-600/70 disabled:opacity-50 disabled:cursor-not-allowed font-medium px-6 py-3 rounded-lg transition-all duration-300"
+                  className="bg-slate-700/50 border-yellow-500/50 text-white hover:bg-slate-600/70 disabled:opacity-50 disabled:cursor-not-allowed font-medium px-6 py-3 rounded-lg transition-all duration-300"
                 >
                   Previous
                 </Button>
@@ -809,19 +809,19 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   <Button
                     type="button"
                     onClick={() => setCurrentStep(currentStep + 1)}
-                    className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-purple-400"
+                    className="bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-yellow-500"
                   >
                     Next <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
                 ) : (
                   <Button
                     type="submit"
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-purple-400 relative overflow-hidden"
+                    className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-yellow-500 relative overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Generate My Cosmic Profile ✨
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-pink-400/20 to-purple-400/20 opacity-50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-pink-400/20 to-yellow-500/20 opacity-50"></div>
                   </Button>
                 )}
               </div>

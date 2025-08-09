@@ -13,13 +13,13 @@ export default function ColorEnhancedLanding() {
           <div className="relative">
             {/* Cosmic Background Animation */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <div className="absolute top-10 left-1/4 w-2 h-2 bg-purple-400 rounded-full cosmic-pulse"></div>
-              <div className="absolute top-20 right-1/3 w-1 h-1 bg-purple-400 rounded-full cosmic-pulse" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-10 left-1/4 w-2 h-2 bg-yellow-500 rounded-full cosmic-pulse"></div>
+              <div className="absolute top-20 right-1/3 w-1 h-1 bg-yellow-500 rounded-full cosmic-pulse" style={{ animationDelay: '1s' }}></div>
               <div className="absolute bottom-10 left-1/3 w-1.5 h-1.5 bg-pink-400 rounded-full cosmic-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6 cosmic-glow">
-              <span className="bg-gradient-to-r from-yellow-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-pink-400 bg-clip-text text-transparent">
                 Cosmic Insights
               </span>
             </h1>
@@ -35,7 +35,7 @@ export default function ColorEnhancedLanding() {
               { name: "Western", color: "from-yellow-400 to-orange-400", icon: "🌟" },
               { name: "Vedic", color: "from-orange-400 to-red-400", icon: "🕉️" },
               { name: "Chinese", color: "from-red-400 to-pink-400", icon: "🐉" },
-              { name: "Human Design", color: "from-blue-400 to-purple-400", icon: "⚡" },
+              { name: "Human Design", color: "from-blue-400 to-yellow-500", icon: "⚡" },
               { name: "Numerology", color: "from-green-400 to-blue-400", icon: "🔢" }
             ].map((system, index) => (
               <Badge 
@@ -49,7 +49,7 @@ export default function ColorEnhancedLanding() {
             ))}
           </div>
           
-          <Button className="cosmic-button px-10 py-4 text-lg font-semibold cosmic-pulse">
+          <Button className="sanctuary-button px-10 py-4 text-lg font-semibold cosmic-pulse">
             Begin Your Journey
             <Sparkles className="ml-2 h-5 w-5" />
           </Button>
@@ -60,7 +60,7 @@ export default function ColorEnhancedLanding() {
       <section className="py-20 px-6">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl font-bold text-center mb-12 cosmic-glow">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
               Discover What's Hidden Below
             </span>
           </h2>
@@ -70,15 +70,15 @@ export default function ColorEnhancedLanding() {
               title="Personal Cosmic Analysis"
               description="Your complete astrological profile"
               preview="Discover your natal chart, personality insights, life path, and cosmic influences..."
-              icon={<Eye className="h-5 w-5 text-purple-400" />}
+              icon={<Eye className="h-5 w-5 text-yellow-500" />}
             >
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-400/20">
+                  <div className="p-4 bg-gradient-to-r from-yellow-600/10 to-pink-500/10 rounded-lg border border-yellow-500/20">
                     <h4 className="font-semibold text-purple-300 mb-2">Natal Chart</h4>
                     <p className="text-sm text-gray-300">Planetary positions at your birth moment</p>
                   </div>
-                  <div className="p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">
+                  <div className="p-4 bg-gradient-to-r from-blue-500/10 to-yellow-600/10 rounded-lg border border-blue-400/20">
                     <h4 className="font-semibold text-blue-300 mb-2">Life Path</h4>
                     <p className="text-sm text-gray-300">Your numerological destiny number</p>
                   </div>
@@ -114,15 +114,15 @@ export default function ColorEnhancedLanding() {
               title="Daily Cosmic Weather"
               description="Personalized daily guidance"
               preview="Get daily insights based on current planetary transits, moon phases, and your personal chart..."
-              icon={<Compass className="h-5 w-5 text-purple-400" />}
+              icon={<Compass className="h-5 w-5 text-yellow-500" />}
             >
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg border border-purple-400/20">
+                  <div className="p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg border border-yellow-500/20">
                     <h4 className="font-semibold text-purple-300 mb-2">Planetary Transits</h4>
                     <p className="text-sm text-gray-300">Current cosmic influences on your chart</p>
                   </div>
-                  <div className="p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20">
+                  <div className="p-4 bg-gradient-to-r from-blue-500/10 to-yellow-600/10 rounded-lg border border-blue-400/20">
                     <h4 className="font-semibold text-blue-300 mb-2">Moon Phases</h4>
                     <p className="text-sm text-gray-300">Lunar energy and optimal timing</p>
                   </div>
@@ -141,7 +141,7 @@ export default function ColorEnhancedLanding() {
                   <h4 className="font-semibold text-cyan-300 mb-2">3D Chart Wheel</h4>
                   <p className="text-sm text-gray-300">Interactive planetary positions in cosmic space</p>
                 </div>
-                <div className="p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-400/20">
+                <div className="p-4 bg-gradient-to-r from-yellow-600/10 to-pink-500/10 rounded-lg border border-yellow-500/20">
                   <h4 className="font-semibold text-purple-300 mb-2">Aspect Patterns</h4>
                   <p className="text-sm text-gray-300">Visual representation of planetary relationships</p>
                 </div>
@@ -162,7 +162,7 @@ export default function ColorEnhancedLanding() {
           
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
             {[
-              { name: "Cosmic Purple", color: "bg-gradient-to-br from-purple-500 to-purple-600", description: "Mystical insights" },
+              { name: "Cosmic Purple", color: "bg-gradient-to-br from-yellow-600 to-yellow-600", description: "Mystical insights" },
               { name: "Celestial Pink", color: "bg-gradient-to-br from-pink-500 to-pink-600", description: "Love & relationships" },
               { name: "Solar Gold", color: "bg-gradient-to-br from-yellow-400 to-yellow-500", description: "Personal power" },
               { name: "Lunar Blue", color: "bg-gradient-to-br from-blue-500 to-blue-600", description: "Intuitive wisdom" },

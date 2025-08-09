@@ -247,10 +247,10 @@ export default function ComprehensiveLifestyle() {
   const categories = [
     { id: "travel", label: "Travel & Climate", icon: MapPin, color: "text-blue-400" },
     { id: "food", label: "Food & Nutrition", icon: Utensils, color: "text-green-400" },
-    { id: "career", label: "Career & Work", icon: Briefcase, color: "text-purple-400" },
+    { id: "career", label: "Career & Work", icon: Briefcase, color: "text-yellow-500" },
     { id: "health", label: "Health & Wellness", icon: Activity, color: "text-red-400" },
     { id: "relationships", label: "Relationships", icon: Heart, color: "text-pink-400" },
-    { id: "lifestyle", label: "Lifestyle & Colors", icon: Palette, color: "text-purple-400" },
+    { id: "lifestyle", label: "Lifestyle & Colors", icon: Palette, color: "text-yellow-500" },
     { id: "timing", label: "Timing & Decisions", icon: Clock, color: "text-orange-400" }
   ];
 
@@ -259,7 +259,7 @@ export default function ComprehensiveLifestyle() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
             Comprehensive Lifestyle Guidance
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -268,9 +268,9 @@ export default function ComprehensiveLifestyle() {
         </div>
 
         {/* Profile Summary */}
-        <Card className="cosmic-card mb-8">
+        <Card className="sanctuary-card mb-8">
           <CardHeader>
-            <CardTitle className="text-purple-400 flex items-center">
+            <CardTitle className="text-yellow-500 flex items-center">
               <Star className="mr-2 h-5 w-5" />
               Your Multi-System Profile
             </CardTitle>
@@ -333,8 +333,8 @@ export default function ComprehensiveLifestyle() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`h-auto p-4 flex flex-col items-center space-y-2 ${
                   selectedCategory === category.id 
-                    ? 'cosmic-button' 
-                    : 'border-purple-400/30 hover:border-purple-400/60'
+                    ? 'sanctuary-button' 
+                    : 'border-yellow-500/30 hover:border-yellow-500/60'
                 }`}
               >
                 <IconComponent className={`h-6 w-6 ${category.color}`} />
@@ -347,7 +347,7 @@ export default function ComprehensiveLifestyle() {
         {/* Content Sections */}
         {selectedCategory === "travel" && (
           <div className="space-y-6">
-            <Card className="cosmic-card">
+            <Card className="sanctuary-card">
               <CardHeader>
                 <CardTitle className="text-blue-400 flex items-center">
                   <Globe className="mr-2 h-5 w-5" />
@@ -419,7 +419,7 @@ export default function ComprehensiveLifestyle() {
                             Temperature: {lifestyleRecommendations.travel.idealClimate.temperature}
                           </li>
                           <li className="flex items-center">
-                            <Sun className="mr-2 h-4 w-4 text-purple-400" />
+                            <Sun className="mr-2 h-4 w-4 text-yellow-500" />
                             Humidity: {lifestyleRecommendations.travel.idealClimate.humidity}
                           </li>
                         </ul>
@@ -467,9 +467,9 @@ export default function ComprehensiveLifestyle() {
 
         {/* Additional category content would be implemented similarly */}
         {selectedCategory !== "travel" && (
-          <Card className="cosmic-card">
+          <Card className="sanctuary-card">
             <CardContent className="p-8 text-center">
-              <div className="text-purple-400 text-6xl mb-4">🚧</div>
+              <div className="text-yellow-500 text-6xl mb-4">🚧</div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 {categories.find(c => c.id === selectedCategory)?.label} Recommendations
               </h3>

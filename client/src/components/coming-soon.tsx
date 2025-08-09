@@ -15,7 +15,7 @@ export default function ComingSoon({ feature, description, expectedDate }: Comin
       <Card className="bg-purple-900/40 border-white/20 backdrop-blur-sm rounded-2xl max-w-md w-full">
         <CardHeader className="text-center pb-3">
           <div className="mx-auto mb-4">
-            <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 bg-yellow-600/20 rounded-full flex items-center justify-center">
               <Star className="w-8 h-8 text-yellow-400" />
             </div>
           </div>
@@ -43,7 +43,7 @@ export default function ComingSoon({ feature, description, expectedDate }: Comin
           
           <div className="pt-4">
             <Link href="/home">
-              <Button className="cosmic-button">
+              <Button className="sanctuary-button">
                 <Home className="w-4 h-4 mr-2" />
                 Back to Home
               </Button>
