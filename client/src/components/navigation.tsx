@@ -38,7 +38,23 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="hover:opacity-75 transition-opacity flex items-center">
-            <TorchlightLogo size="sm" className="bg-black/30 p-2 rounded-lg border border-yellow-600/20" />
+            <div className="flex items-center space-x-3">
+              <div className="flex flex-col items-center justify-center">
+                {/* Candle Icon */}
+                <div className="relative">
+                  {/* Star/Flame */}
+                  <svg width="16" height="16" viewBox="0 0 16 16" className="text-yellow-400 mb-1">
+                    <path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z" fill="currentColor" />
+                  </svg>
+                  {/* Candle Body */}
+                  <div className="w-3 h-8 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-sm mx-auto"></div>
+                </div>
+              </div>
+              {/* Text */}
+              <span className="text-white font-montserrat font-semibold text-lg tracking-tight">
+                Torchlight
+              </span>
+            </div>
           </Link>
           
           {/* Desktop Navigation */}

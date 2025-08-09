@@ -22,10 +22,23 @@ export default function MobileNavigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
       <div className="flex items-center justify-between px-4 py-3">
         {/* Logo */}
-        <Link href="/">
-          <div className="flex items-center gap-2">
-            <TorchlightLogo className="w-8 h-8" />
-            <span className="text-white font-semibold text-lg">Torchlight</span>
+        <Link href="/" className="hover:opacity-75 transition-opacity">
+          <div className="flex items-center space-x-2">
+            <div className="flex flex-col items-center justify-center">
+              {/* Candle Icon */}
+              <div className="relative">
+                {/* Star/Flame */}
+                <svg width="12" height="12" viewBox="0 0 16 16" className="text-yellow-400 mb-0.5">
+                  <path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z" fill="currentColor" />
+                </svg>
+                {/* Candle Body */}
+                <div className="w-2 h-6 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-sm mx-auto"></div>
+              </div>
+            </div>
+            {/* Text */}
+            <span className="text-white font-montserrat font-semibold text-lg tracking-tight">
+              Torchlight
+            </span>
           </div>
         </Link>
 
@@ -43,7 +56,17 @@ export default function MobileNavigation() {
             <div className="pt-6">
               {/* Header */}
               <div className="text-center mb-8">
-                <TorchlightLogo className="w-12 h-12 mx-auto mb-3" />
+                <div className="flex flex-col items-center justify-center mb-3">
+                  {/* Candle Icon */}
+                  <div className="relative">
+                    {/* Star/Flame */}
+                    <svg width="20" height="20" viewBox="0 0 16 16" className="text-yellow-400 mb-1">
+                      <path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z" fill="currentColor" />
+                    </svg>
+                    {/* Candle Body */}
+                    <div className="w-4 h-10 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-sm mx-auto"></div>
+                  </div>
+                </div>
                 <h2 className="text-white text-xl font-semibold">Torchlight</h2>
                 <p className="text-white/60 text-sm">Your cosmic guidance</p>
               </div>
