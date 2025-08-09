@@ -246,8 +246,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/spaces", isAuthenticated, async (req: any, res) => {
     res.json({
       status: "in-development",
-      message: "Sacred space optimization is 60% complete, launching April 2025", 
-      completionPercentage: 60,
+      message: "Sacred space optimization coming soon",
       features: [
         "Vaastu Shastra analysis",
         "Feng Shui energy mapping",

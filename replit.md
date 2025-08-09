@@ -11,6 +11,7 @@ Brand name: "Torchlight" confirmed after SEO and relevance analysis - stronger t
 Remove mention of years from astrology systems display - maintain chronological order but without age badges or year references.
 Update contribution section: Add "free forever" emphasis, include detailed reasons for requesting contributions (volunteers, 1000s hours, centuries experience, technology costs), and add "Can't pay? Just share the love" section for those unable to contribute financially.
 **Critical Design Consistency**: External advisor review completed - all purple/cosmic elements removed from CSS, logo harmonized with sanctuary palette for authentic brand cohesion.
+**Timeline Corrections**: Replace all specific development dates (April/May 2025 claims when current date is August 2025) with simplified "Coming Soon" messaging to avoid misleading users about development progress.
 
 ## System Architecture
 The application employs a monorepo structure separating client, server, and shared components. The frontend is a React application built with Vite, the backend uses Express.js, and PostgreSQL with Drizzle ORM handles data persistence.

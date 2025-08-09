@@ -400,7 +400,7 @@ export default function Home() {
               title="Relationships"
               status="coming-soon"
               description="Deep relationship compatibility analysis combining Western, Vedic, Chinese, and Numerology systems for comprehensive partnership insights."
-              expectedDate="March 2025"
+              expectedDate="Coming Soon"
               features={[
                 "Synastry chart analysis",
                 "Composite relationship charts", 
@@ -430,8 +430,8 @@ export default function Home() {
               title="Homes & Spaces"
               status="in-development"
               description="Sacred space optimization using Vaastu Shastra and Feng Shui principles for harmonious living and working environments."
-              expectedDate="April 2025"
-              completionPercentage={60}
+              expectedDate="Coming Soon"
+              
               features={[
                 "Vaastu Shastra analysis",
                 "Feng Shui energy mapping",
@@ -461,7 +461,7 @@ export default function Home() {
               title="Business Analysis"
               status="coming-soon"
               description="Business astrology combining multiple systems for optimal timing, partnerships, and strategic decision-making in professional ventures."
-              expectedDate="May 2025"
+              expectedDate="Coming Soon"
               features={[
                 "Business launch timing",
                 "Partnership compatibility",
@@ -637,7 +637,7 @@ export default function Home() {
               title="Relationships"
               status="coming-soon"
               description="Deep relationship compatibility analysis combining Western, Vedic, Chinese, and Numerology systems for comprehensive partnership insights."
-              expectedDate="March 2025"
+              expectedDate="Coming Soon"
               features={[
                 "Synastry chart analysis",
                 "Composite relationship charts", 
@@ -667,8 +667,8 @@ export default function Home() {
               title="Homes & Spaces"
               status="in-development"
               description="Sacred space optimization using Vaastu Shastra and Feng Shui principles for harmonious living and working environments."
-              expectedDate="April 2025"
-              completionPercentage={60}
+              expectedDate="Coming Soon"
+              
               features={[
                 "Vaastu Shastra analysis",
                 "Feng Shui energy mapping",
@@ -698,7 +698,7 @@ export default function Home() {
               title="Business Analysis"
               status="coming-soon"
               description="Business astrology combining multiple systems for optimal timing, partnerships, and strategic decision-making in professional ventures."
-              expectedDate="May 2025"
+              expectedDate="Coming Soon"
               features={[
                 "Business launch timing",
                 "Partnership compatibility",
