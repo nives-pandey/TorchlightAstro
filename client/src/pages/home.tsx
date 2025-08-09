@@ -617,15 +617,16 @@ export default function Home() {
               ]}
             >
               <Link href="/personal">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-emerald-900/70 to-teal-800/70 border-emerald-400/40 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-emerald-800/80 hover:to-teal-700/80 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-emerald-500/20">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <UserCircle className="w-6 h-6 text-yellow-400" />
+                      <UserCircle className="w-6 h-6 text-emerald-400" />
                       Personal Astrology
+                      <span className="ml-auto text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded-full">ACTIVE</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-emerald-100/90 text-sm">
                       Complete natal chart analysis across all ancient systems with authentic astronomical calculations
                     </CardDescription>
                   </CardContent>
