@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { TorchlightLogo } from "@/components/torchlight-logo";
+import TorchlightLogo from "@/components/torchlight-logo";
 import { Menu, Home, User, Heart, Gem, Star, Calendar } from "lucide-react";
 import { Link, useLocation } from "wouter";
 

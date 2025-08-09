@@ -8,7 +8,7 @@ import { Menu, LogOut, User, Heart, Music } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
-import { TorchlightLogo } from "@/components/torchlight-logo";
+import TorchlightLogo from "@/components/torchlight-logo";
 
 export default function Navigation() {
   const [location] = useLocation();
