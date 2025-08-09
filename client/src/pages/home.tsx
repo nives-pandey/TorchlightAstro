@@ -802,7 +802,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold mb-2" 
                       style={{
-                        color: 'hsl(30, 8%, 18%)',
+                        color: 'hsl(60, 10%, 96%)',
                         textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                       }}>Overview</h4>
                   <p className="leading-relaxed" 
@@ -950,7 +950,7 @@ export default function Home() {
                 <User className="h-6 w-6" style={{color: 'var(--brushed-gold)'}} />
                 <h3 className="text-2xl font-semibold" 
                     style={{
-                      color: 'hsl(30, 8%, 18%)',
+                      color: 'hsl(60, 10%, 96%)',
                       textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                     }}>Personal Systems</h3>
               </div>
@@ -970,7 +970,7 @@ export default function Home() {
                     </div>
                     <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors" 
                         style={{
-                          color: 'hsl(30, 8%, 18%)',
+                          color: 'hsl(60, 10%, 96%)',
                           textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                         }}>
                       {system.title}
@@ -990,7 +990,7 @@ export default function Home() {
                               opacity: 0.75
                             }}>
                           <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" 
-                                style={{backgroundColor: 'hsl(30, 8%, 18%)'}}></span>
+                                style={{backgroundColor: 'hsl(44, 45%, 65%)'}}></span>
                           {item}
                         </li>
                       ))}
@@ -1008,7 +1008,7 @@ export default function Home() {
                 <Globe className="h-6 w-6" style={{color: 'var(--sage-teal)'}} />
                 <h3 className="text-2xl font-semibold" 
                     style={{
-                      color: 'hsl(30, 8%, 18%)',
+                      color: 'hsl(60, 10%, 96%)',
                       textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                     }}>Space & Environment Systems</h3>
               </div>
@@ -1028,7 +1028,7 @@ export default function Home() {
                     </div>
                     <h3 className="font-semibold text-lg mb-2 transition-colors" 
                         style={{
-                          color: 'hsl(30, 8%, 18%)',
+                          color: 'hsl(60, 10%, 96%)',
                           textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                         }}>
                       {system.title}
@@ -1048,7 +1048,7 @@ export default function Home() {
                               opacity: 0.75
                             }}>
                           <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
-                                style={{backgroundColor: 'hsl(30, 8%, 18%)'}}></span>
+                                style={{backgroundColor: 'hsl(44, 45%, 65%)'}}></span>
                           {item}
                         </li>
                       ))}
@@ -1120,7 +1120,7 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(30, 8%, 18%)',
+                  color: 'hsl(44, 45%, 65%)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
