@@ -3,6 +3,9 @@ import { Heart, Sparkles, Users, Gift } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { CosmicWheel } from '@/components/cosmic-wheel';
+import { GratitudeCookie } from '@/components/gratitude-cookie';
+import { sacredTiers, getTiersByCategory } from '@/lib/contributionTiers';
 
 interface EnergyExchangeAppealProps {
   trigger: 'initial-reveal' | 'daily-insight' | 'deep-dive' | 'chart-generated';
@@ -11,9 +14,11 @@ interface EnergyExchangeAppealProps {
 }
 
 export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: EnergyExchangeAppealProps) {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(11);
   const [showCustom, setShowCustom] = useState(false);
   const [customAmount, setCustomAmount] = useState('');
+  const [showWheel, setShowWheel] = useState(false);
+  const [contributionComplete, setContributionComplete] = useState(false);
 
   const getTriggerMessage = () => {
     switch (trigger) {
@@ -47,10 +52,22 @@ export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: Energ
   const { title, message, subtitle } = getTriggerMessage();
 
   const contributionAmounts = [5, 11, 22, 33];
+  const categorizedTiers = getTiersByCategory();
 
   const handleContribute = (amount?: number) => {
-    onContribute?.(amount || (customAmount ? parseInt(customAmount) : undefined));
+    setContributionComplete(true);
+    onContribute?.(amount || selectedAmount || (customAmount ? parseInt(customAmount) : undefined));
   };
+
+  const handleSpinComplete = (amount: number) => {
+    setSelectedAmount(amount);
+    setShowCustom(false);
+    setCustomAmount('');
+  };
+
+  if (contributionComplete) {
+    return <GratitudeCookie />;
+  }
 
   return (
     <Card className="bg-white/10 border-white/20 backdrop-blur-md mx-4 mb-4">
@@ -66,6 +83,13 @@ export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: Energ
           <p className="text-white/80 text-sm">{message}</p>
           <p className="text-white/60 text-xs mt-1">{subtitle}</p>
         </div>
+
+        {/* Cosmic Wheel Section */}
+        {showWheel && (
+          <div className="mb-6">
+            <CosmicWheel onSpinComplete={handleSpinComplete} />
+          </div>
+        )}
 
         {/* Mission Statement */}
         <div className="bg-white/5 rounded-lg p-4 mb-6 border border-white/10">
@@ -90,6 +114,18 @@ export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: Energ
             that energy to help us illuminate the path for others seeking their cosmic truth.
           </p>
           
+          {/* Cosmic Wheel Trigger */}
+          <div className="mb-4">
+            <Button
+              variant="outline"
+              size="sm"
+              className="bg-white/5 border-white/20 text-white hover:bg-white/10 mb-3"
+              onClick={() => setShowWheel(!showWheel)}
+            >
+              {showWheel ? 'Hide Cosmic Wheel' : '🎰 Let the Universe Decide'}
+            </Button>
+          </div>
+
           {/* Sacred Number Amounts */}
           <div className="grid grid-cols-4 gap-2 mb-4">
             {contributionAmounts.map((amount) => (
@@ -102,7 +138,10 @@ export function EnergyExchangeAppeal({ trigger, onDismiss, onContribute }: Energ
                     ? 'bg-amber-600/80 border-amber-500/50 text-white' 
                     : 'bg-white/5 border-white/20 text-white hover:bg-white/10'
                 }`}
-                onClick={() => setSelectedAmount(amount)}
+                onClick={() => {
+                  setSelectedAmount(amount);
+                  setShowWheel(false);
+                }}
               >
                 ${amount}
               </Button>

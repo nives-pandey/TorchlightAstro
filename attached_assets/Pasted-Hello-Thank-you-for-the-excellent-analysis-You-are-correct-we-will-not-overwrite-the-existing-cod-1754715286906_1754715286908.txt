@@ -1,13 +1,19 @@
-// client/src/lib/contributionTiers.ts
-export interface SacredTier {
-  category: string;
-  amount: number;
-  name: string;
-  significance: string;
-  popular?: boolean;
-}
+Hello! Thank you for the excellent analysis. You are correct; we will not overwrite the existing codebase. Instead, please proceed with your recommendation to extract the valuable concepts and integrate them surgically.
 
-export const sacredTiers: SacredTier[] = [
+Here are the three specific tasks:
+
+1. Implement the Audit Script for Design Consistency
+
+Please create the audit-design-system.mjs file as planned and add the audit script to our package.json. This will be our "Code Cop" to ensure brand consistency moving forward.
+
+2. Enhance the Existing Contribution System with Sacred Numbers
+
+In our client/src/lib/contributionTiers.ts file, please replace the existing sacredTiers array with this new, expanded version which includes all 14 tiers.
+
+JavaScript
+
+// client/src/lib/contributionTiers.ts
+export const sacredTiers = [
   { category: 'Micro Contributions', amount: 1, name: 'The Spark', significance: 'Represents unity, new beginnings, and the singular source of all creation.' },
   { category: 'Micro Contributions', amount: 3, name: 'The Catalyst', significance: 'The number of creativity, communication, and growth.' },
   { category: 'Micro Contributions', amount: 5, name: 'The Adventurer', significance: 'Represents freedom, curiosity, and dynamic change.' },
@@ -23,30 +29,8 @@ export const sacredTiers: SacredTier[] = [
   { category: 'Patron Tiers', amount: 786, name: 'The Cosmic Blessing', significance: 'A number of profound significance in Islamic numerology.' },
   { category: 'Patron Tiers', amount: 1008, name: 'The Abundant Universe', significance: 'Signifying immense abundance and spiritual completion.' },
 ];
+3. Add the Gamification Elements
 
-// Wheel tier subset for cosmic wheel gamification
-export const wheelTiers = [3, 5, 7, 9, 11, 22, 33];
+Please create the two new, self-contained components for the CosmicWheel and GratitudeCookie. Then, integrate them into our existing EnergyExchange.tsx component as enhancements. Ensure you use our existing Tailwind CSS and shadcn/ui patterns for styling, not inline styles.
 
-// Group tiers by category for better organization
-export const getTiersByCategory = () => {
-  const categories: Record<string, SacredTier[]> = {};
-  
-  sacredTiers.forEach(tier => {
-    if (!categories[tier.category]) {
-      categories[tier.category] = [];
-    }
-    categories[tier.category].push(tier);
-  });
-  
-  return categories;
-};
-
-// Get tier by amount
-export const getTierByAmount = (amount: number): SacredTier | undefined => {
-  return sacredTiers.find(tier => tier.amount === amount);
-};
-
-// Get popular tiers
-export const getPopularTiers = (): SacredTier[] => {
-  return sacredTiers.filter(tier => tier.popular);
-};
+This approach will preserve our working codebase while adding the powerful new features we've designed. Thank you!
