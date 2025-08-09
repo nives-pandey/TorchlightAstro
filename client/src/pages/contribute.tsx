@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Heart, Globe, CreditCard, Smartphone, Bitcoin } from "lucide-react";
 import { Link } from "wouter";
-import ContributionSection from "@/components/contribution-section";
+import EnergyExchange from "@/components/EnergyExchange";
 import CosmicPaymentModal from "@/components/cosmic-payment-modal";
 
 // Initialize Stripe
@@ -205,8 +205,8 @@ export default function ContributePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-teal-900 to-pink-900 p-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen" style={{ background: 'var(--wellness-gradient-1)' }}>
+      <div className="max-w-4xl mx-auto p-4">
         {/* Header */}
         <div className="mb-8 text-center">
           <Link href="/">
@@ -217,8 +217,10 @@ export default function ContributePage() {
           </Link>
         </div>
 
-        {/* Main Content */}
-        <ContributionSection onContribute={handleContributeAmount} />
+        {/* Main Content - Sacred Energy Exchange */}
+        <div className="mb-8">
+          <EnergyExchange />
+        </div>
 
         {/* Global Payment Options */}
         <div className="mt-12">

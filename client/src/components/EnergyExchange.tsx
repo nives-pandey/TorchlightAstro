@@ -208,11 +208,11 @@ const EnergyExchange: React.FC = () => {
             style={{
               width: '100%',
               backgroundColor: 'transparent',
-              borderBottom: '1px solid rgba(176, 169, 164, 0.5)',
               marginTop: '8px',
               padding: '4px 0',
               color: 'var(--text-primary)',
               outline: 'none',
+              border: 'none',
               borderBottom: selectedTier === 0 ? '1px solid var(--primary-accent)' : '1px solid rgba(176, 169, 164, 0.5)'
             }}
           />
