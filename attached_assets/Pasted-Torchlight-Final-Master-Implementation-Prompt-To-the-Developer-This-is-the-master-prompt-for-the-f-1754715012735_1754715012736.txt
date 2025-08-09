@@ -1,0 +1,424 @@
+Torchlight: Final Master Implementation Prompt
+To the Developer: This is the master prompt for the final implementation and correction of the Torchlight application. The goal is to fix all visibility issues, create a reusable logo component, build the complete gamified contribution section with all correct design elements, and set up a test rig to ensure ongoing compliance. Please follow these five steps exactly.
+
+Step 1: Create the Official Logo Component
+First, we will create a new, self-contained, and reusable component for the official Torchlight logo.
+
+Action: Create a new file at client/src/components/TorchlightLogo.tsx and paste the entire code block below into it.
+
+// client/src/components/TorchlightLogo.tsx
+import React from 'react';
+
+interface TorchlightLogoProps {
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export const TorchlightLogo: React.FC<TorchlightLogoProps> = ({ size = 'md' }) => {
+  const sizes = {
+    sm: { width: 150, height: 108, fontSize: 28 },
+    md: { width: 250, height: 180, fontSize: 48 },
+    lg: { width: 350, height: 252, fontSize: 68 },
+  };
+  const selectedSize = sizes[size];
+
+  return (
+    <svg 
+      width={selectedSize.width} 
+      height={selectedSize.height} 
+      viewBox="0 0 250 180" 
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Torchlight Logo"
+    >
+      <defs>
+        <style>
+          {`
+            .polished-gold { fill: #D4B35B; }
+            .off-white { fill: #F5F5DC; }
+            .wordmark {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                text-anchor: middle;
+            }
+          `}
+        </style>
+      </defs>
+
+      {/* The Guiding Flame Icon */}
+      <g transform="translate(75, 0)">
+        <rect className="polished-gold" x="45" y="40" width="10" height="45" rx="2" />
+        <path className="polished-gold" d="M50 35 C 40 35, 35 25, 50 15 C 65 25, 60 35, 50 35 Z" />
+        <path className="polished-gold" d="M50 0 L53 7 L60 10 L53 13 L50 20 L47 13 L40 10 L47 7 Z" />
+      </g>
+
+      {/* The Wordmark */}
+      <text x="50%" y="150" className="wordmark off-white" style={{ fontSize: `${selectedSize.fontSize}px` }}>
+        Torchlight
+      </text>
+    </svg>
+  );
+};
+
+export default TorchlightLogo;
+
+Step 2: Fix Global Visibility Issues with a CSS Update
+Next, enforce the "Sanctuary" theme across the entire application to fix all readability problems.
+
+Action: Go to the main global CSS file (e.g., client/src/index.css) and replace its contents with the following code.
+
+/* In your global CSS file, e.g., client/src/index.css */
+:root {
+  --background: #36312E;
+  --primary-accent: #D4B35B;
+  --secondary-accent: #208B8B;
+  --text-primary: #F5F5DC;
+  --border-muted: #B0A9A4;
+}
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Lora', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+}
+p {
+  color: var(--text-primary);
+  opacity: 0.9;
+  line-height: 1.65;
+}
+.text-muted {
+  color: var(--border-muted);
+}
+a {
+  color: var(--primary-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+Step 3: Create the Self-Contained Contribution Component
+Now, build the entire contribution flow as a single, isolated component.
+
+Action: Create a new file at client/src/components/EnergyExchange.tsx and paste the entire code block below into it.
+
+// client/src/components/EnergyExchange.tsx
+import React, { useState } from 'react';
+
+// --- Data Store ---
+const sacredTiers = [
+  { amount: 1, name: 'The Spark', significance: 'Represents unity, new beginnings, and the singular source of all creation.' },
+  { amount: 3, name: 'The Catalyst', significance: 'The number of creativity, communication, and growth.' },
+  { amount: 5, name: 'The Adventurer', significance: 'Represents freedom, curiosity, and dynamic change.' },
+  { amount: 7, name: 'The Seeker', significance: 'The number of spiritual seeking, introspection, and inner wisdom.' },
+  { amount: 9, name: 'The Humanitarian', significance: 'Represents universal love, compassion, and completion.' },
+  { amount: 11, name: 'The Intuitive', significance: 'A Master Number of spiritual insight and enlightenment.', popular: true },
+  { amount: 22, name: 'The Master Builder', significance: 'A Master Number with the power to turn spiritual dreams into tangible reality.' },
+  { amount: 33, name: 'The Master Teacher', significance: 'A Master Number representing spiritual guidance and healing.' },
+  { amount: 108, name: 'The Sacred Mala', significance: 'A highly sacred number representing the wholeness of existence.' },
+  { amount: 1008, name: 'The Abundant Universe', significance: 'Signifying immense abundance and spiritual completion.' },
+];
+const wheelTiers = [3, 5, 7, 9, 11, 22, 33];
+
+// --- Sub-Components ---
+const PaymentGatewayIcons = ({ methods }) => (
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '16px 0' }}>
+    <p className="text-muted" style={{ fontSize: '0.875rem', marginRight: '8px', fontFamily: 'Lora, serif' }}>We accept:</p>
+    {methods.map((method) => ( <div key={method}>{/* SVG Icons would go here */}</div> ))}
+  </div>
+);
+
+const CosmicWheel = ({ onSpinComplete }) => {
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [rotation, setRotation] = useState(0);
+  const [spinResult, setSpinResult] = useState<number | null>(null);
+
+  const handleSpin = () => {
+    if (isSpinning) return;
+    setSpinResult(null);
+    setIsSpinning(true);
+    const randomRotations = 4 + Math.floor(Math.random() * 4);
+    const finalAngle = Math.floor(Math.random() * 360);
+    const totalRotation = rotation + (randomRotations * 360) + finalAngle;
+    setRotation(totalRotation);
+
+    setTimeout(() => {
+      const segmentAngle = 360 / wheelTiers.length;
+      const normalizedAngle = 360 - (totalRotation % 360);
+      const selectedIndex = Math.floor(normalizedAngle / segmentAngle);
+      const selectedAmount = wheelTiers[selectedIndex];
+      onSpinComplete(selectedAmount);
+      setSpinResult(selectedAmount);
+      setIsSpinning(false);
+    }, 4000);
+  };
+
+  const segmentAngle = 360 / wheelTiers.length;
+
+  return (
+    <div style={{ textAlign: 'center', padding: '16px', borderBottom: '1px solid rgba(176, 169, 164, 0.2)' }}>
+      <h3 style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '16px' }}>Let the Universe Guide You</h3>
+      <div style={{ position: 'relative', width: '220px', height: '220px', margin: '0 auto 16px' }}>
+        <div 
+          style={{
+            width: '100%', height: '100%',
+            transition: 'transform 4s cubic-bezier(0.25, 1, 0.5, 1)', transform: `rotate(${rotation}deg)`,
+          }}
+        >
+          <svg viewBox="0 0 220 220">
+            <defs>
+              <path id="circlePath" d="M 110, 110 m -90, 0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0" />
+            </defs>
+            <circle cx="110" cy="110" r="110" fill="var(--background)" />
+            {wheelTiers.map((tier, index) => {
+              const startAngle = index * segmentAngle;
+              const endAngle = (index + 1) * segmentAngle;
+              const largeArcFlag = segmentAngle > 180 ? 1 : 0;
+              const x1 = 110 + 110 * Math.cos(Math.PI * startAngle / 180);
+              const y1 = 110 + 110 * Math.sin(Math.PI * startAngle / 180);
+              const x2 = 110 + 110 * Math.cos(Math.PI * endAngle / 180);
+              const y2 = 110 + 110 * Math.sin(Math.PI * endAngle / 180);
+              return (
+                <g key={tier}>
+                  <path d={`M110,110 L${x1},${y1} A110,110 0 ${largeArcFlag},1 ${x2},${y2} z`} fill={index % 2 === 0 ? '#4a4542' : 'var(--background)'} stroke="var(--border-muted)" strokeWidth="1"/>
+                  <text>
+                    <textPath href="#circlePath" startOffset={`${(index * segmentAngle + segmentAngle / 2) / 360 * 100}%`} style={{textAnchor: 'middle', fill: 'var(--text-primary)', fontSize: '16px', fontWeight: '600'}}>
+                      ${tier}
+                    </textPath>
+                  </text>
+                </g>
+              )
+            })}
+          </svg>
+        </div>
+        <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', color: 'var(--primary-accent)', fontSize: '24px' }}>▼</div>
+      </div>
+      <button onClick={handleSpin} disabled={isSpinning} style={{ backgroundColor: 'var(--primary-accent)', color: 'var(--background)', fontWeight: 600, padding: '8px 24px', borderRadius: '12px', border: 'none', cursor: isSpinning ? 'not-allowed' : 'pointer', opacity: isSpinning ? 0.7 : 1 }}>
+        {isSpinning ? 'Spinning...' : 'Spin the Wheel of Intention'}
+      </button>
+      {spinResult && (
+        <p className="text-muted" style={{ fontSize: '0.875rem', marginTop: '16px', fontFamily: 'Lora, serif' }}>
+          The wheel suggests an energy exchange of <strong style={{color: 'var(--primary-accent)'}}>${spinResult}</strong>. This is just a guide—please choose this or any other amount that feels right for your journey.
+        </p>
+      )}
+    </div>
+  );
+};
+
+const GratitudeCookie = () => {
+  const [revealed, setRevealed] = useState(false);
+  const messages = [ "Your generosity creates ripples of light in the universe...", "An open hand is the first step to receiving...", "The energy you give is the energy you receive..." ];
+  const [message] = useState(messages[Math.floor(Math.random() * messages.length)]);
+  return (
+    <div style={{ textAlign: 'center', padding: '32px', backgroundColor: 'var(--background)', borderRadius: '12px' }}>
+      <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '16px' }}>A Message of Gratitude</h2>
+      <div style={{ cursor: 'pointer' }} onClick={() => setRevealed(true)}>
+        <div style={{ fontSize: '4rem', color: 'var(--primary-accent)' }}>{revealed ? '🥠' : '🍪'}</div>
+        <p className="text-muted" style={{ marginTop: '8px', fontFamily: 'Lora, serif' }}>{revealed ? 'Your message:' : 'Tap to reveal your message'}</p>
+      </div>
+      {revealed && ( <p style={{ marginTop: '16px', fontStyle: 'italic', fontFamily: 'Lora, serif' }}>"{message}"</p> )}
+    </div>
+  );
+};
+
+// --- Main Component ---
+const EnergyExchange = ({ onContribute }) => {
+  const [selectedTier, setSelectedTier] = useState(11);
+  const [customAmount, setCustomAmount] = useState('');
+
+  const handleSpinComplete = (amount) => { setSelectedTier(amount); setCustomAmount(''); };
+  const handleTierSelect = (amount) => { setSelectedTier(amount); setCustomAmount(''); };
+  const handleCustomSelect = () => { setSelectedTier(null); };
+
+  return (
+    <div style={{ padding: '16px', maxWidth: '448px', margin: 'auto', borderRadius: '12px' }}>
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <h3 style={{ fontWeight: 600 }}>Why Your Support Matters</h3>
+        <div className="text-muted" style={{ fontSize: '0.875rem', marginTop: '8px', fontFamily: 'Lora, serif' }}>
+          <p style={{marginBottom: '1em'}}>
+            From ancient times, wisdom was shared freely. Those who found value would contribute based on their ability, creating a sacred exchange. We are bringing this philosophy forward. **Torchlight will always be free.**
+          </p>
+          <p>
+            If you find value in our work, your contribution honors the thousands of hours our small team of volunteers invests in research, development, and technology. It allows us to keep this sanctuary independent and ad-free, ensuring this ancient knowledge remains accessible for generations to come.
+          </p>
+        </div>
+      </div>
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary-accent)' }}>Join the Energy Exchange</h2>
+      </div>
+      <CosmicWheel onSpinComplete={handleSpinComplete} />
+      <div style={{ marginTop: '24px' }}>
+        {sacredTiers.map((tier) => (
+          <div
+            key={tier.amount}
+            style={{ padding: '16px', border: '1px solid', borderRadius: '12px', marginBottom: '8px', cursor: 'pointer', transition: 'all 0.3s', borderColor: selectedTier === tier.amount ? 'var(--primary-accent)' : 'rgba(176, 169, 164, 0.3)', boxShadow: selectedTier === tier.amount ? `0 0 15px var(--primary-accent)33` : 'none', backgroundColor: selectedTier === tier.amount ? 'rgba(212, 179, 91, 0.1)' : 'transparent' }}
+            onClick={() => handleTierSelect(tier.amount)}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontWeight: 700 }}>{tier.name}</span>
+              <span style={{ fontWeight: 700, color: 'var(--primary-accent)' }}>${tier.amount}</span>
+            </div>
+            <p className="text-muted" style={{ fontSize: '0.875rem', marginTop: '4px', fontFamily: 'Lora, serif' }}>{tier.significance}</p>
+          </div>
+        ))}
+        <div 
+          style={{ padding: '16px', border: '1px solid', borderRadius: '12px', marginBottom: '16px', cursor: 'pointer', transition: 'all 0.3s', borderColor: selectedTier === null ? 'var(--primary-accent)' : 'rgba(176, 169, 164, 0.3)', boxShadow: selectedTier === null ? `0 0 15px var(--primary-accent)33` : 'none', backgroundColor: selectedTier === null ? 'rgba(212, 179, 91, 0.1)' : 'transparent' }}
+          onClick={handleCustomSelect}
+        >
+          <p style={{ fontWeight: 700 }}>Custom Amount</p>
+          <input
+            type="number"
+            placeholder="Contribute your lucky number"
+            value={customAmount}
+            onChange={(e) => setCustomAmount(e.target.value)}
+            onClick={handleCustomSelect}
+            style={{ width: '100%', background: 'transparent', border: 'none', borderBottom: '1px solid rgba(176, 169, 164, 0.5)', marginTop: '8px', padding: '4px 0', color: 'var(--text-primary)', outline: 'none' }}
+          />
+        </div>
+      </div>
+      <div style={{ marginTop: '24px' }}>
+        <button onClick={onContribute} style={{ width: '100%', backgroundColor: 'var(--primary-accent)', color: 'var(--background)', fontWeight: 700, padding: '12px 24px', borderRadius: '12px', fontSize: '1.125rem', border: 'none', cursor: 'pointer' }}>
+          Contribute Now
+        </button>
+      </div>
+      <PaymentGatewayIcons methods={['applePay', 'googlePay', 'payPal', 'card']} />
+      <div style={{ textAlign: 'center', marginTop: '32px', paddingTop: '16px', borderTop: '1px solid rgba(176, 169, 164, 0.2)' }}>
+        <h3 style={{ fontWeight: 600 }}>Can't contribute right now? No problem!</h3>
+        <p className="text-muted" style={{ fontSize: '0.875rem', marginTop: '8px', fontFamily: 'Lora, serif' }}>
+          Just Share the Love! 💜 Your support in spreading ancient wisdom is just as valuable.
+        </p>
+        <button style={{ marginTop: '16px', backgroundColor: 'var(--secondary-accent)', color: 'var(--text-primary)', fontWeight: 600, padding: '8px 24px', borderRadius: '12px', border: 'none', cursor: 'pointer' }}>
+          Share the Love
+        </button>
+      </div>
+    </div>
+  );
+};
+
+Step 4: Integrate the New Components
+Now, use the new components in your main application page.
+
+Action: In your main page file (e.g., client/src/pages/Home.tsx), import and use the new components.
+
+// Example usage in client/src/pages/Home.tsx
+import React, { useState } from 'react';
+import TorchlightLogo from '../components/TorchlightLogo'; // Import the new logo
+import EnergyExchange from '../components/EnergyExchange'; // Import the new contribution component
+
+export default function Home() {
+    const [paymentSuccess, setPaymentSuccess] = useState(false);
+
+    const handleContribute = () => {
+        // This is where you would call your payment gateway logic.
+        // For this demo, we'll just simulate a successful payment.
+        console.log("Payment processing...");
+        setTimeout(() => {
+            console.log("Payment successful!");
+            setPaymentSuccess(true);
+        }, 1000);
+    };
+
+    return (
+        <div style={{ padding: '20px' }}>
+            <header style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <TorchlightLogo size="md" />
+            </header>
+            
+            <main>
+                {/* Your other page content goes here */}
+
+                {paymentSuccess ? (
+                    <GratitudeCookie /> // This component is defined inside EnergyExchange.tsx
+                ) : (
+                    <EnergyExchange onContribute={handleContribute} />
+                )}
+            </main>
+        </div>
+    );
+}
+
+Step 5: Set Up the Conformance Test Rig
+This final step provides the tools to ensure the design rules are never broken again.
+
+A. The Automated Audit Script (The "Code Cop")
+Action:
+
+Create a new file in your project's root directory named audit-design-system.mjs.
+
+Copy and paste the code below into that file.
+
+Add a new script to your package.json file: "audit": "node audit-design-system.mjs".
+
+Run npm run audit in the shell at any time to check for design violations.
+
+// audit-design-system.mjs
+import fs from 'fs';
+import path from 'path';
+
+const FORBIDDEN_PATTERNS = [
+    /#[a-fA-F0-9]{0,2}(5a|6a|7a|8a|9a|aa|ab|ac|ad|ae|af|b|c|d|e|f)[0-9a-fA-F]{0,2}[a-fA-F0-9]{2}/i,
+    /hsl\(\s*(2[4-9][0-9]|3[0-5][0-9])\s*,/i,
+    /hsl\(\s*(1[8-9][0-9]|2[0-3][0-9])\s*,/i,
+    /'(Cinzel|Philosopher|Celtic|Gothic)'/i,
+];
+const ALLOWED_FILES = ['.tsx', '.ts', '.css'];
+const DIRECTORY_TO_SCAN = './client/src';
+let errorCount = 0;
+
+function auditFile(filePath) {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const lines = content.split('\n');
+    lines.forEach((line, index) => {
+        FORBIDDEN_PATTERNS.forEach(pattern => {
+            if (pattern.test(line)) {
+                console.error(`❌ Design System Violation Found!
+   - File: ${filePath}
+   - Line: ${index + 1}
+   - Issue: Forbidden color or font detected.
+   - Code: "${line.trim()}"\n`);
+                errorCount++;
+            }
+        });
+    });
+}
+
+function scanDirectory(dir) {
+    if (!fs.existsSync(dir)) {
+        console.warn(`Warning: Directory not found: ${dir}. Skipping audit for this path.`);
+        return;
+    }
+    const files = fs.readdirSync(dir);
+    files.forEach(file => {
+        const fullPath = path.join(dir, file);
+        const stat = fs.statSync(fullPath);
+        if (stat.isDirectory()) {
+            scanDirectory(fullPath);
+        } else if (ALLOWED_FILES.includes(path.extname(fullPath))) {
+            auditFile(fullPath);
+        }
+    });
+}
+
+console.log('--- Starting Torchlight Design System Audit ---');
+scanDirectory(DIRECTORY_TO_SCAN);
+console.log('--- Audit Complete ---');
+
+if (errorCount > 0) {
+    console.error(`\n🚨 Audit Failed: Found ${errorCount} design system violation(s).`);
+    process.exit(1);
+} else {
+    console.log('\n✅ Audit Passed: No design system violations found.`);
+}
+
+B. The Manual Review Checklist (The "Brand Guardian")
+Action: Add this checklist to your team's pull request (PR) template.
+
+### Design System Conformance Checklist
+-   [ ] **Color Palette Adherence:** All colors used are from the Global Color Palette. No hardcoded or "rogue" colors exist.
+-   [ ] **Interactive Color Rule:** All interactive elements exclusively use `Polished Gold`.
+-   [ ] **Typography Adherence:** All fonts, sizes, and weights conform to the Global Typography System.
+-   [ ] **"Sanctuary" Feel:** Does this component feel calm, premium, and serene?
+-   [ ] **Contribution Psychology:** If this is the contribution section, does it include the "Share the Love" feature for non-financial support?
