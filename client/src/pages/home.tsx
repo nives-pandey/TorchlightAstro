@@ -333,7 +333,7 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(30, 8%, 18%)',
+                  color: 'var(--primary-accent)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
@@ -934,7 +934,7 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(30, 8%, 18%)',
+                  color: 'var(--primary-accent)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
