@@ -13,6 +13,7 @@ import FeatureHoverCard from "@/components/feature-hover-card";
 import Navigation from "@/components/navigation";
 import { Star, Shield, Users, Clock, Heart, Briefcase, Dumbbell, Lightbulb, Globe, User, BookOpen, Stars, Sparkles, Sun, Calendar, ArrowLeft, Home as HomeIcon, Coffee, Coins, Building2, UserCircle, Award } from "lucide-react";
 import { Link } from "wouter";
+import { TorchlightLogo } from "@/components/torchlight-logo";
 
 export default function Home() {
   const [showBirthForm, setShowBirthForm] = useState(false);
@@ -1177,10 +1178,7 @@ export default function Home() {
             {/* Brand */}
             <div className="md:col-span-1">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-yellow-600 rounded-full flex items-center justify-center">
-                  <span className="text-xl font-bold" style={{color: 'var(--brushed-gold)'}}>☉</span>
-                </div>
-                <span className="text-xl font-semibold font-accent" style={{color: 'var(--brushed-gold)'}}>Torchlight</span>
+                <TorchlightLogo size="sm" />
               </div>
               <p className="text-sm leading-relaxed mb-4" style={{color: 'var(--sage-teal)', opacity: 0.8}}>
                 Illuminating your cosmic blueprint through authentic ancient wisdom for practical modern living.

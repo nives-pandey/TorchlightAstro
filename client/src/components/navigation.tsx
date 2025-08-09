@@ -8,6 +8,7 @@ import { Menu, LogOut, User, Heart, Music } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
+import { TorchlightLogo } from "@/components/torchlight-logo";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -36,11 +37,8 @@ export default function Navigation() {
       <nav className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 hover:opacity-75 transition-opacity">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-yellow-600 rounded-full flex items-center justify-center">
-              <span className="text-white text-sm font-bold">☉</span>
-            </div>
-            <span className="text-xl font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Torchlight</span>
+          <Link href="/" className="hover:opacity-75 transition-opacity">
+            <TorchlightLogo size="sm" />
           </Link>
           
           {/* Desktop Navigation */}
