@@ -224,6 +224,93 @@ a:hover {
   padding-top: env(safe-area-inset-top);
 }
 
+/* Mobile Power Saving Mode & High Contrast Detection */
+@media (prefers-contrast: high), 
+       (prefers-reduced-motion: reduce), 
+       (max-width: 768px) and (color-gamut: srgb) {
+  
+  /* Force higher contrast backgrounds on mobile */
+  body, html, #root {
+    background-color: #1a1814 !important; /* Darker, more solid background */
+    color: #ffffff !important; /* Pure white text */
+    min-height: 100vh !important;
+  }
+  
+  /* Enhanced text visibility for power saving mode */
+  h1, h2, h3, h4, h5, h6, p, span, div, a {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  /* Force solid backgrounds for cards to ensure visibility */
+  .card, .sanctuary-card, [role="dialog"], [role="modal"] {
+    background: #2d2620 !important; /* Solid dark background */
+    border: 2px solid #D4B35B !important; /* Gold border for definition */
+    backdrop-filter: none !important;
+  }
+  
+  /* Button visibility enhancement */
+  button, .btn {
+    background: linear-gradient(135deg, #D4B35B, #208B8B) !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+    min-height: 48px !important; /* Larger touch targets */
+    font-weight: 700 !important;
+  }
+  
+  /* Input field visibility */
+  input, textarea, select {
+    background-color: #3d3530 !important;
+    color: #ffffff !important;
+    border: 2px solid #D4B35B !important;
+    min-height: 48px !important;
+  }
+  
+  /* Navigation visibility */
+  .mobile-nav, .clean-nav {
+    background: #1a1814 !important;
+    border-top: 3px solid #D4B35B !important;
+    border-bottom: 3px solid #D4B35B !important;
+  }
+}
+
+/* Specific mobile dark mode detection */
+@media (max-width: 768px) {
+  
+  /* Force minimum contrast ratios */
+  .text-muted, .text-gray-400, .text-gray-500, .text-gray-600 {
+    color: #e5e5e5 !important; /* Light gray instead of dark gray */
+  }
+  
+  /* Ensure gradient backgrounds have solid fallbacks */
+  .bg-gradient-to-br, .bg-gradient-to-r, .bg-gradient-to-l {
+    background-color: #1a1814 !important; /* Fallback solid color */
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav {
+    background: linear-gradient(180deg, 
+      rgba(26, 24, 20, 0.98), 
+      rgba(45, 38, 32, 0.99)) !important;
+    backdrop-filter: blur(10px) !important;
+    border-top: 1px solid #D4B35B !important;
+  }
+  
+  /* Enhanced mobile button styling */
+  .mobile-nav button {
+    color: #ffffff !important;
+    min-height: 44px !important;
+    background: transparent !important;
+  }
+  
+  .mobile-nav button:hover,
+  .mobile-nav button:focus,
+  .mobile-nav button[data-active="true"] {
+    background: rgba(212, 179, 91, 0.2) !important;
+    color: #D4B35B !important;
+  }
+}
+
 .safe-bottom {
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -386,5 +473,95 @@ input:focus, textarea:focus, select:focus, button:focus {
 @layer base {
   * {
     border-color: hsl(var(--border));
+  }
+}
+
+/* Critical Mobile Visibility Fixes for Power Saving Mode */
+@media (max-width: 768px) {
+  
+  /* Ensure all page backgrounds have sufficient contrast */
+  .min-h-screen {
+    background-color: #1a1814 !important; /* Solid fallback */
+    background-image: linear-gradient(135deg, 
+      #1a1814 0%, 
+      #2d2620 50%, 
+      #1a1814 100%) !important;
+  }
+  
+  /* Fix Hero section visibility */
+  .hero-section, .hero-content {
+    background: rgba(26, 24, 20, 0.95) !important;
+    color: #ffffff !important;
+  }
+  
+  /* Ensure all text remains visible */
+  .card-title, .card-description, .card-content {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Badge visibility improvements */
+  .badge {
+    background-color: #D4B35B !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    border: 1px solid #ffffff !important;
+  }
+  
+  /* Modal and dialog visibility */
+  .modal-content, .dialog-content {
+    background: #2d2620 !important;
+    border: 2px solid #D4B35B !important;
+    color: #ffffff !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Icon visibility enhancement */
+  .lucide, svg {
+    color: #ffffff !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+  }
+  
+  /* System card improvements */
+  .system-card {
+    background: rgba(45, 38, 32, 0.95) !important;
+    border: 2px solid rgba(212, 179, 91, 0.3) !important;
+    transition: all 0.2s ease !important;
+  }
+  
+  .system-card:hover {
+    border-color: #D4B35B !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(212, 179, 91, 0.3) !important;
+  }
+}
+
+/* Very Low Light / Battery Saver Detection */
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  
+  /* Ultra high contrast mode for extreme power saving */
+  body {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+  
+  .card, .sanctuary-card {
+    background-color: #1a1a1a !important;
+    border: 3px solid #ffffff !important;
+  }
+  
+  /* Emergency visibility for critical elements */
+  button:not(.ghost), .btn:not(.ghost) {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 3px solid #ffffff !important;
+    font-weight: 700 !important;
+  }
+  
+  input, textarea, select {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border: 3px solid #ffffff !important;
   }
 }
