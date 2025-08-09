@@ -3,7 +3,12 @@ import React from 'react';
 // =============================================================================
 // The Official Logo Component
 // =============================================================================
-const TorchlightLogo = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
+interface TorchlightLogoProps {
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const TorchlightLogo = ({ size = 'md', className }: TorchlightLogoProps) => {
   const sizes = {
     sm: { width: 150, height: 108, fontSize: 28 },
     md: { width: 250, height: 180, fontSize: 48 },
@@ -18,6 +23,7 @@ const TorchlightLogo = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
       viewBox="0 0 250 180" 
       xmlns="http://www.w3.org/2000/svg"
       aria-label="Torchlight Logo"
+      className={className}
     >
       <defs>
         <style>
