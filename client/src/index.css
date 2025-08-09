@@ -372,6 +372,16 @@ input:focus, textarea:focus, select:focus, button:focus {
   transition: all 0.2s ease;
 }
 
+/* Navigation header styles */
+.clean-nav {
+  background: linear-gradient(135deg, 
+    hsla(30, 8%, 18%, 0.95) 0%, 
+    hsla(30, 6%, 22%, 0.98) 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--warm-gray);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
 /* Base layer styles */
 @layer base {
   * {
