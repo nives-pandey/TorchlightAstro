@@ -1,50 +1,43 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
-/* Illuminated Wellness - Optimized for Women 20-60 seeking spiritual guidance */
+/* 1. DEFINE THE GLOBAL SANCTUARY PALETTE */
 :root {
-  /* Sanctuary Palette - Premium Wellness Experience */
-  --warm-charcoal: hsl(30, 8%, 18%); /* True Warm Background #36312E - Rich brown-charcoal */
-  --brushed-gold: hsl(44, 45%, 65%); /* Sophisticated Interactive #C5A55A - Antique gold */
-  --sage-teal: hsl(180, 25%, 55%); /* Serene Informational #6A9797 - Sea glass calm */
-  --warm-off-white: hsl(60, 10%, 96%); /* Primary Text *Warm Off-White* */
-  --warm-light-gray: hsl(30, 5%, 92%); /* Warm Dividers */
-  --warm-gray: hsl(30, 5%, 66%); /* Greige Borders #B0A9A4 - Warm stone */
+  --background: #36312E;       /* Warm Charcoal */
+  --primary-accent: #D4B35B;   /* Polished Gold */
+  --secondary-accent: #208B8B; /* Vibrant Teal */
+  --text-primary: #F5F5DC;     /* Off-White */
+  --border-muted: #B0A9A4;     /* Warm Gray ("Greige") */
+}
 
-  /* Global Sanctuary Palette for Enhanced Visibility */
-  --background: hsl(30, 8%, 18%);       /* Warm Charcoal */
-  --primary-accent: hsl(44, 45%, 65%);   /* Polished Gold */
-  --secondary-accent: hsl(180, 25%, 55%); /* Vibrant Teal */
-  --text-primary: hsl(60, 10%, 96%);     /* Off-White */
-  --border-muted: hsl(30, 5%, 66%);     /* Warm Gray ("Greige") */
-  
-  /* Serene gradient backgrounds - Truly warm and organic */
-  --wellness-gradient-1: linear-gradient(135deg, hsl(30, 8%, 18%) 0%, hsl(30, 6%, 20%) 100%);
-  --wellness-gradient-2: linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 100%);
-  
-  /* Component styling - Sanctuary Theme */
-  --background: hsl(30, 8%, 18%);
-  --foreground: hsl(60, 10%, 96%);
-  --card: hsl(30, 6%, 22%);
-  --card-foreground: hsl(60, 10%, 96%);
-  --popover: hsl(30, 6%, 22%);
-  --popover-foreground: hsl(60, 10%, 96%);
-  --primary: hsl(44, 45%, 65%);
-  --primary-foreground: hsl(30, 8%, 18%);
-  --secondary: hsl(180, 25%, 55%);
-  --secondary-foreground: hsl(30, 8%, 18%);
-  --muted: hsl(30, 6%, 25%);
-  --muted-foreground: hsl(30, 5%, 66%);
-  --accent: hsl(44, 45%, 65%);
-  --accent-foreground: hsl(30, 8%, 18%);
-  --destructive: hsl(0, 62%, 45%);
-  --destructive-foreground: hsl(60, 10%, 96%);
-  --border: hsl(30, 5%, 66%);
-  --input: hsl(30, 6%, 25%);
-  --ring: hsl(44, 45%, 65%);
-  --radius: 0.75rem;
+/* 2. ENFORCE THE PALETTE ON BASE HTML ELEMENTS */
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'Lora', serif; /* Default to the readable body font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif; /* Use the heading font */
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--border-muted); /* Use the muted color for paragraphs by default */
+  line-height: 1.65;
+}
+
+/* Ensure links are visible and use the interactive color */
+a {
+  color: var(--primary-accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .dark {

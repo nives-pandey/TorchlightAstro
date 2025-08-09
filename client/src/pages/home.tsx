@@ -750,7 +750,7 @@ export default function Home() {
           {/* Sacred Energy Exchange - Expert Implementation */}
           <div className="text-center mb-12">
             <div className="max-w-4xl mx-auto">
-              <EnergyExchange />
+              <EnergyExchange onContribute={() => console.log('Payment initiated')} />
             </div>
           </div>
 

@@ -1,269 +1,83 @@
-// AI Synthesizer Service - Cross-System Compatibility Analysis
-// Combines authentic astrological analyses into unified insights
+// In server/ai-synthesizer-service.ts
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-interface SystemAnalysis {
-  system: string;
-  analysis: any;
-  confidence: number;
-  authenticity: 'authentic' | 'fabricated';
+// Initialize with your API key from Replit Secrets
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+
+export async function getSynthesizedCompatibility(person1Data: any, person2Data: any) {
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
+
+  const prompt = `
+    **Role:** You are a master astrologer with deep expertise in Western, Vedic, Chinese, Numerology, and Human Design systems. You specialize in synthesizing multi-system compatibility analysis.
+    
+    **[Persona 1: Chart Data]**
+    ${JSON.stringify(person1Data)}
+    
+    **[Persona 2: Chart Data]**
+    ${JSON.stringify(person2Data)}
+    
+    **Your Task:** Synthesize these charts across all astrological systems to provide a comprehensive compatibility reading. Focus on:
+    
+    1. **Western Astrology Compatibility**: Sun, Moon, Rising sign compatibility, Venus-Mars dynamics, composite aspects
+    2. **Vedic Analysis**: Nakshatra compatibility, dosha balance, planetary periods alignment
+    3. **Chinese Zodiac**: Animal sign harmony, element compatibility, annual cycle synchronization
+    4. **Numerology Synthesis**: Life path numbers, destiny numbers, relationship cycles
+    5. **Human Design**: Energy type compatibility, authority alignment, center connections
+    
+    **Output Format**: Provide a warm, insightful, and actionable compatibility reading that:
+    - Highlights natural harmonies and growth opportunities
+    - Addresses potential challenges with constructive guidance
+    - Offers practical relationship advice
+    - Maintains the sanctuary tone consistent with Torchlight's premium experience
+    
+    **Length**: Comprehensive 800-1200 words with clear sections for each system.
+  `;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    
+    // Return this synthesized text to the user in the app
+    return text;
+  } catch (error) {
+    console.error('AI Synthesizer Error:', error);
+    throw new Error('Failed to generate compatibility analysis');
+  }
 }
 
-interface SynthesisResult {
-  success: boolean;
-  synthesizedInsight?: string;
-  coreThemes?: string[];
-  harmonies?: string[];
-  tensions?: string[];
-  actionableAdvice?: string;
-  error?: string;
-}
+export async function getSynthesizedPersonalReading(personalData: any) {
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
-export class AISynthesizerService {
-  
-  /**
-   * Synthesize compatibility analysis across multiple astrological systems
-   */
-  static async synthesizeCompatibility(
-    person1Analyses: SystemAnalysis[],
-    person2Analyses: SystemAnalysis[],
-    userQuestion: string,
-    aiService: 'openai' | 'gemini' | 'grok' = 'gemini'
-  ): Promise<SynthesisResult> {
+  const prompt = `
+    **Role:** You are a master astrologer providing comprehensive personal guidance across multiple ancient wisdom systems.
     
-    // Filter out fabricated systems for authentic synthesis
-    const authenticPerson1 = person1Analyses.filter(a => a.authenticity === 'authentic');
-    const authenticPerson2 = person2Analyses.filter(a => a.authenticity === 'authentic');
+    **[Personal Chart Data]**
+    ${JSON.stringify(personalData)}
     
-    if (authenticPerson1.length === 0 || authenticPerson2.length === 0) {
-      return {
-        success: false,
-        error: 'Insufficient authentic astrological data for synthesis'
-      };
-    }
+    **Your Task:** Create a synthesized personal reading that integrates insights from all available astrological systems. Include:
     
-    const masterPrompt = this.buildSynthesisPrompt(
-      authenticPerson1,
-      authenticPerson2,
-      userQuestion
-    );
+    1. **Core Identity**: Sun, Moon, Rising synthesis with Vedic perspectives
+    2. **Life Purpose**: Numerology life path integration with Human Design strategy
+    3. **Timing Guidance**: Current planetary transits, Chinese year influences, numerology cycles
+    4. **Lifestyle Recommendations**: 
+       - Career and financial guidance
+       - Relationship patterns and compatibility
+       - Health and wellness aligned with constitution
+       - Spiritual growth opportunities
     
-    try {
-      const synthesizedInsight = await this.callAIService(masterPrompt, aiService);
-      const structuredResult = this.parseAIResponse(synthesizedInsight);
-      
-      return {
-        success: true,
-        synthesizedInsight: structuredResult.narrative,
-        coreThemes: structuredResult.themes,
-        harmonies: structuredResult.harmonies,
-        tensions: structuredResult.tensions,
-        actionableAdvice: structuredResult.advice
-      };
-    } catch (error) {
-      console.error('AI Synthesis failed:', error);
-      return {
-        success: false,
-        error: 'Failed to synthesize compatibility analysis'
-      };
-    }
-  }
-  
-  /**
-   * Build comprehensive synthesis prompt
-   */
-  private static buildSynthesisPrompt(
-    person1Analyses: SystemAnalysis[],
-    person2Analyses: SystemAnalysis[],
-    userQuestion: string
-  ): string {
-    return `**Role:** You are a master astrologer with expertise in synthesizing multiple astrological systems into unified insights.
+    **Tone**: Warm, empowering, actionable guidance that feels like personal consultation with a trusted advisor.
+    **Length**: 1000-1500 words with clear practical applications.
+  `;
 
-**Context:** Analyzing compatibility between two individuals using authentic astrological calculations from multiple systems.
-
-**Person 1 Authentic Analyses:**
-${person1Analyses.map(a => `// ${a.system} (Confidence: ${a.confidence}%):\n${JSON.stringify(a.analysis, null, 2)}`).join('\n\n')}
-
-**Person 2 Authentic Analyses:**
-${person2Analyses.map(a => `// ${a.system} (Confidence: ${a.confidence}%):\n${JSON.stringify(a.analysis, null, 2)}`).join('\n\n')}
-
-**User Question:** "${userQuestion}"
-
-**Your Task:**
-1. **Identify Core Themes:** Find major harmony and tension patterns across systems
-2. **Cross-System Synthesis:** Weave findings into coherent narrative (don't list systems separately)
-3. **Answer Directly:** Address the specific user question
-4. **Provide Action:** Include practical relationship advice
-
-**Output Format (JSON):**
-{
-  "narrative": "Warm, insightful paragraph-based response",
-  "themes": ["core theme 1", "core theme 2"],
-  "harmonies": ["harmony point 1", "harmony point 2"],
-  "tensions": ["challenge area 1", "challenge area 2"], 
-  "advice": "Single actionable recommendation"
-}`;
-  }
-  
-  /**
-   * Call appropriate AI service
-   */
-  private static async callAIService(prompt: string, service: 'openai' | 'gemini' | 'grok'): Promise<string> {
-    switch (service) {
-      case 'openai':
-        return this.callOpenAI(prompt);
-      case 'gemini':
-        return this.callGemini(prompt);
-      case 'grok':
-        return this.callGrok(prompt);
-      default:
-        throw new Error(`Unsupported AI service: ${service}`);
-    }
-  }
-  
-  /**
-   * OpenAI integration
-   */
-  private static async callOpenAI(prompt: string): Promise<string> {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OpenAI API key not configured');
-    }
+  try {
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
     
-    const OpenAI = (await import('openai')).default;
-    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-    
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' },
-      temperature: 0.7
-    });
-    
-    return response.choices[0].message.content || '';
-  }
-  
-  /**
-   * Gemini integration
-   */
-  private static async callGemini(prompt: string): Promise<string> {
-    if (!process.env.GEMINI_API_KEY) {
-      throw new Error('Gemini API key not configured');
-    }
-    
-    const { GoogleGenAI } = await import('@google/genai');
-    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      config: {
-        responseMimeType: 'application/json',
-        temperature: 0.7
-      },
-      contents: prompt
-    });
-    
-    return response.text || '';
-  }
-  
-  /**
-   * Grok integration  
-   */
-  private static async callGrok(prompt: string): Promise<string> {
-    if (!process.env.XAI_API_KEY) {
-      throw new Error('Grok API key not configured');
-    }
-    
-    const OpenAI = (await import('openai')).default;
-    const grok = new OpenAI({ 
-      baseURL: 'https://api.x.ai/v1',
-      apiKey: process.env.XAI_API_KEY 
-    });
-    
-    const response = await grok.chat.completions.create({
-      model: 'grok-2-1212',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' },
-      temperature: 0.7
-    });
-    
-    return response.choices[0].message.content || '';
-  }
-  
-  /**
-   * Parse AI response into structured format
-   */
-  private static parseAIResponse(response: string): any {
-    try {
-      return JSON.parse(response);
-    } catch (error) {
-      console.error('Failed to parse AI response as JSON:', error);
-      
-      // Fallback: extract insights from text response
-      return {
-        narrative: response,
-        themes: [],
-        harmonies: [],
-        tensions: [],
-        advice: 'Consider the insights provided for relationship guidance.'
-      };
-    }
-  }
-  
-  /**
-   * Generate lifestyle synthesis across systems
-   */
-  static async synthesizeLifestyleRecommendations(
-    userProfile: any,
-    requestedCategory: 'gemstones' | 'colors' | 'timing' | 'travel' | 'all',
-    specificGoal: string,
-    aiService: 'openai' | 'gemini' | 'grok' = 'gemini'
-  ): Promise<SynthesisResult> {
-    
-    const lifestylePrompt = this.buildLifestylePrompt(userProfile, requestedCategory, specificGoal);
-    
-    try {
-      const synthesizedGuidance = await this.callAIService(lifestylePrompt, aiService);
-      const structuredResult = this.parseAIResponse(synthesizedGuidance);
-      
-      return {
-        success: true,
-        synthesizedInsight: structuredResult.guidance,
-        coreThemes: structuredResult.principles,
-        actionableAdvice: structuredResult.recommendations
-      };
-    } catch (error) {
-      console.error('Lifestyle synthesis failed:', error);
-      return {
-        success: false,
-        error: 'Failed to synthesize lifestyle recommendations'
-      };
-    }
-  }
-  
-  /**
-   * Build lifestyle recommendation prompt
-   */
-  private static buildLifestylePrompt(
-    userProfile: any,
-    category: string,
-    goal: string
-  ): string {
-    return `**Role:** Master lifestyle astrologer specializing in practical guidance.
-
-**User Astrological Profile:**
-${JSON.stringify(userProfile, null, 2)}
-
-**Category Focus:** ${category}
-**User Goal:** "${goal}"
-
-**Your Task:**
-Provide authentic astrological lifestyle guidance based on the user's multi-system profile.
-Focus on practical recommendations that synthesize insights across systems.
-
-**Output Format (JSON):**
-{
-  "guidance": "Comprehensive lifestyle guidance paragraph",
-  "principles": ["core principle 1", "core principle 2"],
-  "recommendations": "Specific actionable steps"
-}`;
+    return text;
+  } catch (error) {
+    console.error('AI Synthesizer Error:', error);
+    throw new Error('Failed to generate personal reading');
   }
 }
