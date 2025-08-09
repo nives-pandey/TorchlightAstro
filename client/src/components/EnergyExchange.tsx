@@ -1,5 +1,9 @@
 // client/src/components/EnergyExchange.tsx
 import React, { useState } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Copy, Facebook, Twitter, Mail, MessageCircle, Share2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 // --- Data Store (Self-contained for this component) ---
 const sacredTiers = [
@@ -133,6 +137,156 @@ const GratitudeCookie: React.FC = () => {
   );
 };
 
+// --- Sub-Component 4: ShareModal ---
+interface ShareModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
+  const { toast } = useToast();
+  const websiteUrl = window.location.origin;
+  const shareText = "Discover your cosmic blueprint with Torchlight - authentic astrology across 10+ ancient systems! ✨";
+  const shareTitle = "Torchlight - Ancient Wisdom for Modern Lives";
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(websiteUrl);
+      toast({
+        title: "Link copied!",
+        description: "Share link has been copied to your clipboard",
+      });
+    } catch (err) {
+      toast({
+        title: "Copy failed",
+        description: "Please copy the link manually",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleShare = (platform: string) => {
+    const encodedText = encodeURIComponent(shareText);
+    const encodedUrl = encodeURIComponent(websiteUrl);
+    const encodedTitle = encodeURIComponent(shareTitle);
+
+    let shareUrl = '';
+    
+    switch (platform) {
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
+        break;
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`;
+        break;
+      case 'whatsapp':
+        shareUrl = `https://wa.me/?text=${encodedText}%20${encodedUrl}`;
+        break;
+      case 'email':
+        shareUrl = `mailto:?subject=${encodedTitle}&body=${encodedText}%0A%0A${encodedUrl}`;
+        break;
+      case 'native':
+        if (navigator.share) {
+          navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: websiteUrl,
+          }).catch(console.error);
+          return;
+        }
+        break;
+    }
+
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+  };
+
+  const shareOptions = [
+    { 
+      id: 'facebook', 
+      name: 'Facebook', 
+      icon: Facebook, 
+      color: 'bg-blue-600 hover:bg-blue-700',
+      onClick: () => handleShare('facebook')
+    },
+    { 
+      id: 'twitter', 
+      name: 'Twitter', 
+      icon: Twitter, 
+      color: 'bg-sky-500 hover:bg-sky-600',
+      onClick: () => handleShare('twitter')
+    },
+    { 
+      id: 'whatsapp', 
+      name: 'WhatsApp', 
+      icon: MessageCircle, 
+      color: 'bg-green-600 hover:bg-green-700',
+      onClick: () => handleShare('whatsapp')
+    },
+    { 
+      id: 'email', 
+      name: 'Email', 
+      icon: Mail, 
+      color: 'bg-gray-600 hover:bg-gray-700',
+      onClick: () => handleShare('email')
+    },
+    { 
+      id: 'copy', 
+      name: 'Copy Link', 
+      icon: Copy, 
+      color: 'bg-teal-600 hover:bg-teal-700',
+      onClick: handleCopyLink
+    }
+  ];
+
+  // Add native share if available
+  if (navigator.share) {
+    shareOptions.unshift({
+      id: 'native',
+      name: 'Share',
+      icon: Share2,
+      color: 'bg-purple-600 hover:bg-purple-700',
+      onClick: () => handleShare('native')
+    });
+  }
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="max-w-md mx-auto bg-gray-900 border-gray-700">
+        <DialogHeader>
+          <DialogTitle className="text-white text-center">Share the Love 💜</DialogTitle>
+        </DialogHeader>
+        
+        <div className="space-y-4">
+          <p className="text-gray-300 text-sm text-center">
+            Help others discover authentic ancient wisdom! Choose how you'd like to share Torchlight:
+          </p>
+          
+          <div className="grid grid-cols-2 gap-3">
+            {shareOptions.map((option) => (
+              <Button
+                key={option.id}
+                onClick={option.onClick}
+                className={`${option.color} text-white flex items-center gap-2 justify-center py-3 transition-colors`}
+              >
+                <option.icon className="w-4 h-4" />
+                {option.name}
+              </Button>
+            ))}
+          </div>
+          
+          <div className="mt-6 p-4 bg-gray-800 rounded-lg">
+            <p className="text-gray-400 text-xs mb-2">Preview:</p>
+            <p className="text-white text-sm">{shareText}</p>
+            <p className="text-teal-400 text-sm mt-1">{websiteUrl}</p>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 // --- Main Component: EnergyExchange.tsx ---
 interface EnergyExchangeProps {
   onContribute?: () => void;
@@ -141,6 +295,7 @@ interface EnergyExchangeProps {
 const EnergyExchange: React.FC<EnergyExchangeProps> = ({ onContribute }) => {
   const [selectedTier, setSelectedTier] = useState<number | null>(11);
   const [customAmount, setCustomAmount] = useState('');
+  const [showShareModal, setShowShareModal] = useState(false);
 
   const handleSpinComplete = (amount: number) => { 
     setSelectedTier(amount); 
@@ -258,20 +413,34 @@ const EnergyExchange: React.FC<EnergyExchangeProps> = ({ onContribute }) => {
         <p style={{ fontSize: '0.875rem', color: 'var(--border-muted)', marginTop: '8px', fontFamily: 'Lora, serif' }}>
           Just Share the Love! 💜 Your support in spreading ancient wisdom is just as valuable.
         </p>
-        <button style={{ 
-          marginTop: '16px', 
-          backgroundColor: 'var(--secondary-accent)', 
-          color: 'var(--text-primary)', 
-          fontWeight: 600, 
-          padding: '8px 24px', 
-          borderRadius: '12px', 
-          border: 'none', 
-          cursor: 'pointer', 
-          fontFamily: 'Montserrat, sans-serif' 
-        }}>
-          Share the Love
+        <button 
+          onClick={() => setShowShareModal(true)}
+          style={{ 
+            marginTop: '16px', 
+            backgroundColor: 'var(--secondary-accent)', 
+            color: 'var(--text-primary)', 
+            fontWeight: 600, 
+            padding: '12px 24px', 
+            borderRadius: '12px', 
+            border: 'none', 
+            cursor: 'pointer', 
+            fontFamily: 'Montserrat, sans-serif',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--primary-accent)';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--secondary-accent)';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          Share the Love 💜
         </button>
       </div>
+      
+      <ShareModal isOpen={showShareModal} onClose={() => setShowShareModal(false)} />
     </div>
   );
 };
