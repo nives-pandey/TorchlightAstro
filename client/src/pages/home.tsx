@@ -76,8 +76,8 @@ export default function Home() {
   ];
 
   const dailyAreas = [
-    { icon: Heart, title: "Love & Relationships", color: "text-pink-400" },
-    { icon: Briefcase, title: "Career & Finance", color: "text-green-400" },
+    { icon: Heart, title: "Love & Relationships", color: "text-gray-400" },
+    { icon: Briefcase, title: "Career & Finance", color: "text-gray-400" },
     { icon: Dumbbell, title: "Health & Wellness", color: "text-emerald-400" },
     { icon: Lightbulb, title: "Personal Growth", color: "text-yellow-500" }
   ];
@@ -410,15 +410,16 @@ export default function Home() {
               ]}
             >
               <Link href="/compatibility">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-2xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Heart className="w-6 h-6 text-pink-400" />
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
+                      <Heart className="w-6 h-6 text-gray-400" />
                       Relationships
+                      <span className="ml-auto text-xs bg-gray-600/30 text-gray-400 px-2 py-1 rounded-full">COMING SOON</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-gray-400/80 text-sm">
                       Relationship insights and compatibility analysis across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
@@ -441,15 +442,16 @@ export default function Home() {
               ]}
             >
               <Link href="/spaces">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-2xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Building2 className="w-6 h-6 text-green-400" />
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
+                      <Building2 className="w-6 h-6 text-gray-400" />
                       Homes & Spaces
+                      <span className="ml-auto text-xs bg-gray-600/30 text-gray-400 px-2 py-1 rounded-full">COMING SOON</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-gray-400/80 text-sm">
                       Sacred space optimization using ancient Vaastu and Feng Shui principles
                     </CardDescription>
                   </CardContent>
@@ -471,15 +473,15 @@ export default function Home() {
               ]}
             >
               <Link href="/business">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-2xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
                       Business Analysis
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-gray-400/80 text-sm">
                       Professional astrology for optimal business timing and strategic decisions
                     </CardDescription>
                   </CardContent>
@@ -498,7 +500,7 @@ export default function Home() {
             {/* 5 Astrological Systems Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
               {personalSystems.map((system, index) => (
-                <Card key={index} className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card key={index} className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-white text-sm text-center flex flex-col items-center gap-2">
                       <span className="text-2xl">{system.icon}</span>
@@ -531,7 +533,7 @@ export default function Home() {
                 <Link href="/demo-chart">
                   <Button 
                     variant="outline"
-                    className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                    className="sanctuary-card w-full bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
                     🔮 3D Cosmos
                   </Button>
@@ -541,7 +543,7 @@ export default function Home() {
               <Link href="/comprehensive-report">
                 <Button 
                   variant="outline"
-                  className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  className="sanctuary-card w-full bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
                   📊 5-Page Report
                 </Button>
@@ -562,7 +564,7 @@ export default function Home() {
                 <Link href="/lifestyle-intelligence">
                   <Button 
                     variant="outline"
-                    className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                    className="sanctuary-card w-full bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
                     🌟 Lifestyle
                   </Button>
@@ -572,7 +574,7 @@ export default function Home() {
               <Link href="/gemstone-lifestyle-pairing">
                 <Button 
                   variant="outline"
-                  className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  className="sanctuary-card w-full bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
                   💎 Gemstone Analysis
                 </Button>
@@ -619,7 +621,7 @@ export default function Home() {
               <Link href="/personal">
                 <Card className="sanctuary-card bg-gradient-to-br from-emerald-900/70 to-teal-800/70 border-emerald-400/40 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-emerald-800/80 hover:to-teal-700/80 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-emerald-500/20">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
                       <UserCircle className="w-6 h-6 text-emerald-400" />
                       Personal Astrology
                       <span className="ml-auto text-xs bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded-full">ACTIVE</span>
@@ -648,15 +650,16 @@ export default function Home() {
               ]}
             >
               <Link href="/compatibility">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-2xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Heart className="w-6 h-6 text-pink-400" />
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
+                      <Heart className="w-6 h-6 text-gray-400" />
                       Relationships
+                      <span className="ml-auto text-xs bg-gray-600/30 text-gray-400 px-2 py-1 rounded-full">COMING SOON</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-gray-400/80 text-sm">
                       Relationship insights and compatibility analysis across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
@@ -679,15 +682,16 @@ export default function Home() {
               ]}
             >
               <Link href="/spaces">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-2xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
-                      <Building2 className="w-6 h-6 text-green-400" />
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
+                      <Building2 className="w-6 h-6 text-gray-400" />
                       Homes & Spaces
+                      <span className="ml-auto text-xs bg-gray-600/30 text-gray-400 px-2 py-1 rounded-full">COMING SOON</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-gray-400/80 text-sm">
                       Sacred space optimization using ancient Vaastu and Feng Shui principles
                     </CardDescription>
                   </CardContent>
@@ -709,15 +713,15 @@ export default function Home() {
               ]}
             >
               <Link href="/business">
-                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-gray-800/50 to-gray-900/70 border-gray-500/30 backdrop-blur-sm rounded-2xl cursor-pointer transition-all duration-300 opacity-75">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-white text-lg flex items-center gap-2">
+                    <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
                       Business Analysis
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-teal-100/80 text-sm">
+                    <CardDescription className="text-gray-400/80 text-sm">
                       Professional astrology for optimal business timing and strategic decisions
                     </CardDescription>
                   </CardContent>
@@ -836,7 +840,7 @@ export default function Home() {
                       <Star className="h-4 w-4" style={{color: 'hsl(30, 8%, 18%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Accuracy</span>
                     </div>
-                    <Badge variant="outline" className="text-green-400 border-green-400">
+                    <Badge variant="outline" className="text-gray-400 border-green-400">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].accuracy}
                     </Badge>
                   </div>
