@@ -1120,8 +1120,9 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(44, 45%, 65%)',
-                  textShadow: '0 1px 3px rgba(0,0,0,0.3)'
+                  color: 'var(--primary-accent)',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+                  fontWeight: '600'
                 }}
               >
                 unique astrological blueprint
