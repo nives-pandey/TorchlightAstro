@@ -172,37 +172,39 @@ h3 {
   letter-spacing: -0.015em;
 }
 
-/* Cosmic button styling */
-.cosmic-button {
-  background: linear-gradient(135deg, var(--cosmic-purple), var(--cosmic-violet));
-  border: 1px solid hsl(275, 70%, 45%);
-  color: var(--cosmic-lavender);
+/* Sanctuary button styling - aligned with warm charcoal/gold palette */
+.sanctuary-button {
+  background: linear-gradient(135deg, var(--brushed-gold), var(--sage-teal));
+  border: 1px solid var(--warm-gray);
+  color: var(--warm-charcoal);
   padding: 12px 24px;
   border-radius: 12px;
   font-weight: 600;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 15px hsl(45, 100%, 58%, 0.3);
+  box-shadow: 0 4px 15px rgba(197, 165, 90, 0.3);
 }
 
-.cosmic-button:hover {
+.sanctuary-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px hsl(45, 100%, 58%, 0.4);
-  border-color: hsl(45, 100%, 58%, 0.6);
+  box-shadow: 0 6px 20px rgba(197, 165, 90, 0.4);
+  border-color: var(--brushed-gold);
 }
 
-/* Enhanced gold accents */
-.cosmic-gold-icon {
-  color: var(--cosmic-gold) !important;
+/* Enhanced sanctuary accents */
+.sanctuary-gold-icon {
+  color: var(--brushed-gold) !important;
 }
 
-.cosmic-violet-accent {
-  color: var(--cosmic-violet) !important;
+.sanctuary-teal-accent {
+  color: var(--sage-teal) !important;
 }
 
-/* Cosmic Card Style */
-.cosmic-card {
-  background: linear-gradient(135deg, rgba(109, 40, 217, 0.6) 0%, rgba(79, 70, 229, 0.6) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.3);
+/* Sanctuary Card Style - warm charcoal base with subtle transparency */
+.sanctuary-card {
+  background: linear-gradient(135deg, 
+    hsla(30, 8%, 18%, 0.85) 0%, 
+    hsla(30, 6%, 22%, 0.9) 100%);
+  border: 1px solid var(--warm-gray);
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
 }
@@ -234,8 +236,10 @@ h3 {
   border-radius: 1rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(16px);
-  background: linear-gradient(135deg, rgba(60, 30, 100, 0.85), rgba(90, 50, 140, 0.8)) !important;
-  border: 1px solid rgba(147, 51, 234, 0.4) !important;
+  background: linear-gradient(135deg, 
+    hsla(30, 8%, 18%, 0.85), 
+    hsla(30, 6%, 22%, 0.9)) !important;
+  border: 1px solid var(--warm-gray) !important;
   padding: clamp(1rem, 3vw, 1.5rem) !important;
   min-height: 120px !important;
 }
@@ -247,14 +251,17 @@ h3 {
   font-size: 1rem;
   min-height: 48px;
   touch-action: manipulation;
-  background: linear-gradient(135deg, hsl(275, 70%, 45%), hsl(285, 60%, 35%));
-  border: 1px solid rgba(147, 51, 234, 0.6);
+  background: linear-gradient(135deg, var(--brushed-gold), var(--sage-teal));
+  border: 1px solid var(--warm-gray);
+  color: var(--warm-charcoal);
   transition: all 0.2s ease;
 }
 
 .mobile-button:active {
   transform: scale(0.98);
-  background: linear-gradient(135deg, hsl(275, 70%, 40%), hsl(285, 60%, 30%));
+  background: linear-gradient(135deg, 
+    hsl(44, 45%, 60%), 
+    hsl(180, 25%, 50%));
 }
 
 .mobile-input {
@@ -264,17 +271,17 @@ h3 {
   font-size: 1rem;
   min-height: 48px;
   touch-action: manipulation;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(147, 51, 234, 0.4);
-  color: white;
+  background: hsla(30, 6%, 25%, 0.8);
+  border: 1px solid var(--warm-gray);
+  color: var(--warm-off-white);
   font-size: 16px; /* Prevent iOS zoom */
 }
 
 .mobile-input:focus {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(147, 51, 234, 0.8);
+  background: hsla(30, 6%, 25%, 0.95);
+  border-color: var(--brushed-gold);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+  box-shadow: 0 0 0 3px hsla(44, 45%, 65%, 0.2);
 }
 
 /* Swipe gesture support */
@@ -291,9 +298,11 @@ h3 {
   right: 0;
   z-index: 50;
   padding-bottom: env(safe-area-inset-bottom);
-  background: linear-gradient(180deg, rgba(60, 30, 100, 0.95), rgba(90, 50, 140, 0.98));
+  background: linear-gradient(180deg, 
+    hsla(30, 8%, 18%, 0.95), 
+    hsla(30, 6%, 20%, 0.98));
   backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(147, 51, 234, 0.3);
+  border-top: 1px solid var(--warm-gray);
 }
 
 /* Better mobile text readability */
@@ -347,7 +356,7 @@ input, textarea, select {
 
 /* Mobile-optimized focus states */
 input:focus, textarea:focus, select:focus, button:focus {
-  outline: 2px solid var(--cosmic-purple);
+  outline: 2px solid var(--brushed-gold);
   outline-offset: 2px;
   transform: scale(1.02);
   transition: all 0.2s ease;

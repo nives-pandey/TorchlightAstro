@@ -667,7 +667,7 @@ h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
 
 #### Card Component Structure
 ```typescript
-<Card className="mobile-card cosmic-card">
+<Card className="mobile-card sanctuary-card">
   <CardHeader>
     <CardTitle className="font-accent text-warm-off-white">
       {title}
@@ -685,8 +685,8 @@ h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
 #### Button Styling Hierarchy
 ```css
 /* Primary button - main actions */
-.btn-primary {
-  background: var(--brushed-gold);
+.sanctuary-button {
+  background: linear-gradient(135deg, var(--brushed-gold), var(--sage-teal));
   color: var(--warm-charcoal);
   font-weight: 600;
 }
