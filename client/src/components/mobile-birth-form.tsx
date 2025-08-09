@@ -137,7 +137,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
   const currentStepData = FORM_STEPS[currentStep];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-teal-900 via-blue-900 to-gray-900 p-4">
       <div className="max-w-md mx-auto">
         {/* Header */}
         <div className="text-center mb-6">
@@ -147,16 +147,16 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
             </div>
             <h1 className="text-2xl font-bold text-white">MyTorchlight</h1>
           </div>
-          <p className="text-purple-200 text-sm">Discover your cosmic blueprint</p>
+          <p className="text-teal-200 text-sm">Discover your cosmic blueprint</p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-purple-200">Step {currentStep + 1} of {FORM_STEPS.length}</span>
-            <span className="text-sm text-purple-200">{Math.round(progress)}%</span>
+            <span className="text-sm text-teal-200">Step {currentStep + 1} of {FORM_STEPS.length}</span>
+            <span className="text-sm text-teal-200">{Math.round(progress)}%</span>
           </div>
-          <Progress value={progress} className="h-2 bg-purple-800" />
+          <Progress value={progress} className="h-2 bg-teal-800" />
         </div>
 
         {/* Step Indicators */}
@@ -202,7 +202,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
               <currentStepData.icon className="w-8 h-8 text-yellow-500" />
             </div>
             <CardTitle className="text-yellow-500 text-xl">{currentStepData.title}</CardTitle>
-            <CardDescription className="text-purple-200">
+            <CardDescription className="text-teal-200">
               {currentStepData.description}
             </CardDescription>
           </CardHeader>
@@ -265,7 +265,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                   <div>
                     <Label htmlFor="genderAtBirth" className="text-white text-sm">
                       Gender at Birth
-                      <Info className="w-3 h-3 inline ml-1 text-purple-300" />
+                      <Info className="w-3 h-3 inline ml-1 text-teal-300" />
                     </Label>
                     <Select onValueChange={(value) => setValue('genderAtBirth', value as "Male" | "Female")}>
                       <SelectTrigger className="cosmic-input mt-1">
@@ -279,7 +279,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                     {errors.genderAtBirth && (
                       <p className="text-red-400 text-xs mt-1">{errors.genderAtBirth.message}</p>
                     )}
-                    <p className="text-xs text-purple-300 mt-1">
+                    <p className="text-xs text-teal-300 mt-1">
                       Used for traditional astrological calculations
                     </p>
                   </div>
@@ -321,7 +321,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                     {errors.birthTime && (
                       <p className="text-red-400 text-xs mt-1">{errors.birthTime.message}</p>
                     )}
-                    <p className="text-xs text-purple-300 mt-1">
+                    <p className="text-xs text-teal-300 mt-1">
                       Exact time improves accuracy significantly
                     </p>
                   </div>
@@ -402,7 +402,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                 <div className="space-y-4">
                   <div className="text-center mb-4">
                     <h3 className="text-lg font-medium text-white mb-2">Choose Your Analysis Systems</h3>
-                    <p className="text-sm text-purple-200">Select which astrological traditions to include</p>
+                    <p className="text-sm text-teal-200">Select which astrological traditions to include</p>
                   </div>
 
                   <div className="space-y-3">
@@ -443,10 +443,10 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
                     ))}
                   </div>
 
-                  <div className="bg-purple-900/30 p-3 rounded-lg">
+                  <div className="bg-teal-900/30 p-3 rounded-lg">
                     <div className="flex items-start space-x-2">
                       <Star className="w-4 h-4 text-yellow-500 mt-0.5" />
-                      <div className="text-xs text-purple-200">
+                      <div className="text-xs text-teal-200">
                         <p className="font-medium mb-1">Recommended combination:</p>
                         <p>The first 5 systems provide comprehensive coverage across cultures and methodologies for the most complete analysis.</p>
                       </div>
@@ -502,7 +502,7 @@ export default function MobileBirthForm({ onComplete, loading }: MobileBirthForm
 
         {/* Trust Indicators */}
         <div className="mt-6 text-center">
-          <div className="flex items-center justify-center space-x-4 text-xs text-purple-300">
+          <div className="flex items-center justify-center space-x-4 text-xs text-teal-300">
             <div className="flex items-center space-x-1">
               <CheckCircle className="w-3 h-3" />
               <span>Swiss Ephemeris Precision</span>

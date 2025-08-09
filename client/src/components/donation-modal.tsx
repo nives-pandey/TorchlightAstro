@@ -98,7 +98,7 @@ const donationTiers = [
     label: "Universal Guide",
     description: "Supports expert astrological research",
     icon: <Target className="w-4 h-4" />,
-    color: "from-indigo-400 to-yellow-500"
+    color: "from-gray-400 to-yellow-500"
   },
   {
     amount: 500,
@@ -159,7 +159,7 @@ function PaymentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-purple-800/30 p-4 rounded-xl border border-yellow-500/50">
+      <div className="bg-teal-800/30 p-4 rounded-xl border border-yellow-500/50">
         <div className="text-center mb-4">
           <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-500">
             ${amount}
@@ -188,7 +188,7 @@ function PaymentForm({
         <Button
           type="submit"
           disabled={!stripe || isLoading}
-          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700"
         >
           {isLoading ? "Processing..." : `Contribute $${amount}`}
         </Button>
@@ -272,7 +272,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
           <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-600 to-pink-600 bg-clip-text text-transparent">
             {triggerMessage.title}
           </h2>
-          <p className="text-purple-200 mt-2">
+          <p className="text-teal-200 mt-2">
             {triggerMessage.subtitle}
           </p>
         </div>
@@ -281,14 +281,14 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
       {/* Impact Statistics */}
       <div className="grid grid-cols-2 gap-4">
         {impactStats.map((stat, index) => (
-          <div key={index} className="text-center p-3 bg-gradient-to-br from-purple-800/20 to-pink-800/20 rounded-xl border border-yellow-500/30">
+          <div key={index} className="text-center p-3 bg-gradient-to-br from-teal-800/20 to-pink-800/20 rounded-xl border border-yellow-500/30">
             <div className="flex justify-center text-yellow-500 mb-1">
               {stat.icon}
             </div>
-            <div className="font-bold text-lg text-purple-200">
+            <div className="font-bold text-lg text-teal-200">
               {stat.stat}
             </div>
-            <div className="text-xs text-purple-300">
+            <div className="text-xs text-teal-300">
               {stat.label}
             </div>
           </div>
@@ -296,12 +296,12 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
       </div>
 
       {/* Mission Statement */}
-      <div className="bg-gradient-to-r from-purple-800/20 to-pink-800/20 p-6 rounded-xl border border-yellow-500/30">
+      <div className="bg-gradient-to-r from-teal-800/20 to-pink-800/20 p-6 rounded-xl border border-yellow-500/30">
         <div className="text-center space-y-3">
-          <div className="text-purple-200 font-semibold">
+          <div className="text-teal-200 font-semibold">
             Our Sacred Mission
           </div>
-          <p className="text-sm text-purple-100 leading-relaxed">
+          <p className="text-sm text-teal-100 leading-relaxed">
             For thousands of years, ancient wisdom was locked away in temples and libraries. 
             Today, we're making it freely accessible to anyone with curiosity and an internet connection. 
             Your contribution ensures this knowledge remains free for seekers worldwide.
@@ -320,7 +320,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
         </Button>
         <Button
           onClick={() => setStep('amount')}
-          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700"
         >
           Light the Way
         </Button>
@@ -334,7 +334,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
         <h2 className="text-xl font-bold text-white mb-2">
           Choose Your Contribution
         </h2>
-        <p className="text-purple-200 text-sm">
+        <p className="text-teal-200 text-sm">
           Every amount helps keep ancient wisdom accessible to all
         </p>
       </div>
@@ -344,7 +344,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
         {donationTiers.map((tier) => (
           <Card
             key={tier.amount}
-            className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 hover:border-purple-300"
+            className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-105 border-2 hover:border-teal-300"
             onClick={() => handleAmountSelect(tier.amount)}
           >
             <CardContent className="p-4 text-center">
@@ -352,10 +352,10 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
                 {tier.icon}
               </div>
               <div className="font-bold text-lg">${tier.amount}</div>
-              <div className="text-xs font-medium text-purple-200 mb-1">
+              <div className="text-xs font-medium text-teal-200 mb-1">
                 {tier.label}
               </div>
-              <div className="text-xs text-purple-300">
+              <div className="text-xs text-teal-300">
                 {tier.description}
               </div>
             </CardContent>
@@ -365,12 +365,12 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
 
       {/* Custom Amount */}
       <div className="space-y-3">
-        <div className="text-center text-sm text-purple-200">
+        <div className="text-center text-sm text-teal-200">
           Or choose your own amount
         </div>
         <div className="flex gap-2">
           <div className="flex-1 relative">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-300">$</span>
+            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-teal-300">$</span>
             <Input
               type="number"
               placeholder="Enter amount"
@@ -384,7 +384,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
           <Button
             onClick={handleCustomAmount}
             disabled={!customAmount || parseFloat(customAmount) < 1}
-            className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+            className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700"
           >
             Contribute
           </Button>
@@ -406,7 +406,7 @@ export default function DonationModal({ isOpen, onClose, trigger }: DonationModa
     if (!clientSecret || !stripePromise) {
       return (
         <div className="text-center py-8">
-          <div className="text-purple-200">
+          <div className="text-teal-200">
             Setting up secure payment...
           </div>
         </div>

@@ -49,13 +49,13 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
             <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-300 to-yellow-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-teal-300 to-yellow-300 bg-clip-text text-transparent">
               Discover Your Cosmic Blueprint
             </h1>
             <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
           </div>
           
-          <p className="text-lg text-purple-200 mb-6 max-w-xl mx-auto">
+          <p className="text-lg text-teal-200 mb-6 max-w-xl mx-auto">
             Unlock personalized insights from 10+ ancient wisdom traditions. 
             Your complete astrological profile in under 60 seconds.
           </p>
@@ -74,7 +74,7 @@ export default function InstantOnboarding({ onComplete, loading }: InstantOnboar
               <Calendar className="w-5 h-5" />
               Enter Your Birth Details
             </CardTitle>
-            <CardDescription className="text-purple-200">
+            <CardDescription className="text-teal-200">
               We'll create your personalized cosmic analysis instantly
             </CardDescription>
           </CardHeader>

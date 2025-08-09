@@ -234,7 +234,7 @@ export default function DailyGuidance({ guidance, compact = false }: DailyGuidan
                       color === 'green' ? 'bg-green-600' :
                       color === 'red' ? 'bg-red-600' :
                       color === 'purple' ? 'bg-yellow-600' :
-                      color === 'white' ? 'bg-purple-100/20 border-yellow-500/30' :
+                      color === 'white' ? 'bg-teal-100/20 border-yellow-500/30' :
                       'bg-gray-600'
                     }`}
                     title={color}

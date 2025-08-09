@@ -18,7 +18,7 @@ import {
 
 export default function AboutAstrology() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-teal-900 via-blue-900 to-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -86,7 +86,7 @@ export default function AboutAstrology() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-yellow-500">Basic Competency:</span>
-                  <Badge variant="outline" className="border-yellow-500 text-purple-300">2-3 Years</Badge>
+                  <Badge variant="outline" className="border-yellow-500 text-teal-300">2-3 Years</Badge>
                 </div>
                 <p className="text-xs text-gray-400">
                   Understanding zodiac signs, planets, houses, and basic chart reading
@@ -94,7 +94,7 @@ export default function AboutAstrology() {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-yellow-500">Professional Level:</span>
-                  <Badge variant="outline" className="border-yellow-500 text-purple-300">5-7 Years</Badge>
+                  <Badge variant="outline" className="border-yellow-500 text-teal-300">5-7 Years</Badge>
                 </div>
                 <p className="text-xs text-gray-400">
                   Advanced techniques, predictive methods, client consultation skills
@@ -336,7 +336,7 @@ export default function AboutAstrology() {
 
             <Separator className="my-6" />
 
-            <div className="text-center p-6 bg-gradient-to-r from-yellow-900/20 to-purple-900/20 rounded-lg border border-yellow-600/20">
+            <div className="text-center p-6 bg-gradient-to-r from-yellow-900/20 to-teal-900/20 rounded-lg border border-yellow-600/20">
               <Shield className="h-8 w-8 text-yellow-500 mx-auto mb-3" />
               <h4 className="text-white font-semibold mb-2">Our Commitment</h4>
               <p className="text-sm text-gray-300">

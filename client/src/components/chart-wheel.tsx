@@ -40,7 +40,7 @@ export default function ChartWheel({ chartData }: ChartWheelProps) {
       <CardContent className="flex justify-center">
         <div className="relative w-80 h-80">
           {/* Outer circle - Zodiac signs */}
-          <div className="absolute inset-0 rounded-full border-2 border-yellow-600/30 bg-gradient-to-r from-purple-900/20 to-blue-900/20">
+          <div className="absolute inset-0 rounded-full border-2 border-yellow-600/30 bg-gradient-to-r from-teal-900/20 to-blue-900/20">
             {/* Zodiac wheel segments */}
             <svg className="w-full h-full" viewBox="0 0 200 200">
               {zodiacSigns.map((sign, index) => {

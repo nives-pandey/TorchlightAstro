@@ -325,7 +325,7 @@ export default function SmartTimezoneSelector({
                   Accuracy Warnings
                 </div>
                 {validation.warnings.map((warning, index) => (
-                  <p key={index} className="text-xs text-purple-300">• {warning}</p>
+                  <p key={index} className="text-xs text-teal-300">• {warning}</p>
                 ))}
               </div>
             )}

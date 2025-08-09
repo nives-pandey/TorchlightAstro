@@ -36,35 +36,35 @@ const FlowingRiverInterface: React.FC = () => {
       subtitle: 'Where Your Journey Begins',
       icon: <Compass className="h-8 w-8" />,
       theme: {
-        background: 'linear-gradient(180deg, hsl(240, 30%, 15%) 0%, hsl(260, 40%, 8%) 100%)',
-        primary: '#8B7CF6',
-        secondary: '#A78BFA',
-        accent: '#C4B5FD',
-        text: '#F3F4F6',
-        particle: '#8B7CF6'
+        background: 'linear-gradient(180deg, hsl(30, 8%, 18%) 0%, hsl(30, 8%, 18%) 100%)',
+        primary: 'hsl(180, 25%, 55%)',
+        secondary: 'hsl(180, 25%, 55%)',
+        accent: 'hsl(60, 10%, 96%)',
+        text: 'hsl(60, 10%, 96%)',
+        particle: 'hsl(180, 25%, 55%)'
       },
       history: 'Ancient seekers carved these walls over millennia, each leaving their cosmic wisdom for future travelers.',
       beauty: 'Starlight filters through crystal formations, creating dancing patterns of purple and silver.',
       content: (
         <div className="space-y-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 text-purple-200">Welcome, Cosmic Traveler</h3>
-            <p className="text-purple-300 leading-relaxed">
+            <h3 className="text-2xl font-bold mb-4 text-teal-200">Welcome, Cosmic Traveler</h3>
+            <p className="text-teal-300 leading-relaxed">
               You stand at the threshold of an ancient cave system where time flows like water and wisdom 
               crystallizes in the walls. Each chamber ahead holds different energies and revelations.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <Card className="bg-purple-900/30 border-yellow-600/30 backdrop-blur-md">
+            <Card className="bg-teal-900/30 border-yellow-600/30 backdrop-blur-md">
               <CardContent className="p-4 text-center">
                 <Star className="h-6 w-6 mx-auto mb-2 text-yellow-500" />
-                <p className="text-sm text-purple-200">Ancient Wisdom</p>
+                <p className="text-sm text-teal-200">Ancient Wisdom</p>
               </CardContent>
             </Card>
-            <Card className="bg-purple-900/30 border-yellow-600/30 backdrop-blur-md">
+            <Card className="bg-teal-900/30 border-yellow-600/30 backdrop-blur-md">
               <CardContent className="p-4 text-center">
                 <Sparkles className="h-6 w-6 mx-auto mb-2 text-yellow-500" />
-                <p className="text-sm text-purple-200">Cosmic Energy</p>
+                <p className="text-sm text-teal-200">Cosmic Energy</p>
               </CardContent>
             </Card>
           </div>
@@ -78,11 +78,11 @@ const FlowingRiverInterface: React.FC = () => {
       icon: <Moon className="h-8 w-8" />,
       theme: {
         background: 'linear-gradient(180deg, hsl(200, 50%, 10%) 0%, hsl(220, 60%, 5%) 100%)',
-        primary: '#60A5FA',
-        secondary: '#93C5FD',
-        accent: '#DBEAFE',
-        text: '#F8FAFC',
-        particle: '#60A5FA'
+        primary: 'hsl(180, 25%, 55%)',
+        secondary: 'hsl(180, 25%, 55%)',
+        accent: 'hsl(60, 10%, 96%)',
+        text: 'hsl(60, 10%, 96%)',
+        particle: 'hsl(180, 25%, 55%)'
       },
       history: 'Moon priestesses once gathered here during eclipses, channeling lunar energy into sacred pools.',
       beauty: 'Bioluminescent algae creates a gentle blue glow, while silver streams cascade from hidden springs.',
@@ -115,11 +115,11 @@ const FlowingRiverInterface: React.FC = () => {
       icon: <Sun className="h-8 w-8" />,
       theme: {
         background: 'linear-gradient(180deg, hsl(30, 80%, 15%) 0%, hsl(20, 90%, 8%) 100%)',
-        primary: '#F59E0B',
-        secondary: '#FCD34D',
-        accent: '#FEF3C7',
-        text: '#FFFBEB',
-        particle: '#F59E0B'
+        primary: 'hsl(44, 45%, 65%)',
+        secondary: 'hsl(44, 45%, 65%)',
+        accent: 'hsl(60, 10%, 96%)',
+        text: 'hsl(60, 10%, 96%)',
+        particle: 'hsl(44, 45%, 65%)'
       },
       history: 'Solar worshippers built golden altars here, harnessing the power of underground thermal vents.',
       beauty: 'Amber crystals glow with inner fire, while warm thermal springs create a nurturing embrace.',
@@ -147,12 +147,12 @@ const FlowingRiverInterface: React.FC = () => {
       subtitle: 'Hearts Connected Across Time',
       icon: <Heart className="h-8 w-8" />,
       theme: {
-        background: 'linear-gradient(180deg, hsl(320, 50%, 15%) 0%, hsl(340, 60%, 8%) 100%)',
-        primary: '#6A9797',
-        secondary: '#F472B6',
-        accent: '#FBCFE8',
-        text: '#FDF2F8',
-        particle: '#6A9797'
+        background: 'linear-gradient(180deg, hsl(30, 8%, 18%) 0%, hsl(30, 8%, 18%) 100%)',
+        primary: 'hsl(180, 25%, 55%)',
+        secondary: 'hsl(44, 45%, 65%)',
+        accent: 'hsl(60, 10%, 96%)',
+        text: 'hsl(60, 10%, 96%)',
+        particle: 'hsl(180, 25%, 55%)'
       },
       history: 'Lovers carved eternal vows into rose quartz walls, creating a sanctuary of devoted hearts.',
       beauty: 'Pink crystals pulse with the rhythm of heartbeats, while love letters fossilized in stone tell timeless tales.',
@@ -185,11 +185,11 @@ const FlowingRiverInterface: React.FC = () => {
       icon: <Clock className="h-8 w-8" />,
       theme: {
         background: 'linear-gradient(180deg, hsl(160, 40%, 10%) 0%, hsl(180, 50%, 5%) 100%)',
-        primary: '#10B981',
-        secondary: '#34D399',
-        accent: '#A7F3D0',
-        text: '#ECFDF5',
-        particle: '#10B981'
+        primary: 'hsl(180, 25%, 55%)',
+        secondary: 'hsl(180, 25%, 55%)',
+        accent: 'hsl(60, 10%, 96%)',
+        text: 'hsl(60, 10%, 96%)',
+        particle: 'hsl(180, 25%, 55%)'
       },
       history: 'Time keepers built chronometers here, where temporal currents flow strongest in the cave system.',
       beauty: 'Hourglasses filled with stardust mark cosmic rhythms, while time crystals show glimpses of all moments.',
@@ -219,20 +219,20 @@ const FlowingRiverInterface: React.FC = () => {
       subtitle: 'Sacred Space of Transformation',
       icon: <Home className="h-8 w-8" />,
       theme: {
-        background: 'linear-gradient(180deg, hsl(280, 40%, 12%) 0%, hsl(260, 50%, 6%) 100%)',
-        primary: '#A855F7',
-        secondary: '#C084FC',
-        accent: '#E9D5FF',
-        text: '#FAF5FF',
-        particle: '#A855F7'
+        background: 'linear-gradient(180deg, hsl(30, 8%, 18%) 0%, hsl(30, 8%, 18%) 100%)',
+        primary: 'hsl(180, 25%, 55%)',
+        secondary: 'hsl(180, 25%, 55%)',
+        accent: 'hsl(60, 10%, 96%)',
+        text: 'hsl(60, 10%, 96%)',
+        particle: 'hsl(180, 25%, 55%)'
       },
       history: 'The deepest chamber where all energies converge, used for the most sacred transformational ceremonies.',
       beauty: 'All the colors of the previous chambers blend here in perfect harmony, creating aurora-like displays.',
       content: (
         <div className="space-y-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 text-purple-200">Sacred Convergence</h3>
-            <p className="text-purple-300 leading-relaxed">
+            <h3 className="text-2xl font-bold mb-4 text-teal-200">Sacred Convergence</h3>
+            <p className="text-teal-300 leading-relaxed">
               You have journeyed through all the chambers and now rest in the heart of the cave. 
               Here, all energies unite in perfect balance - moon and sun, love and time, past and future.
             </p>
@@ -240,8 +240,8 @@ const FlowingRiverInterface: React.FC = () => {
           <div className="text-center">
             <div className="relative w-32 h-32 mx-auto">
               <div className="absolute inset-0 bg-gradient-conic from-yellow-600 via-pink-500 via-blue-500 via-emerald-500 to-amber-500 rounded-full animate-spin opacity-30" style={{ animationDuration: '20s' }}></div>
-              <div className="absolute inset-4 bg-purple-900 rounded-full flex items-center justify-center">
-                <Sparkles className="h-8 w-8 text-purple-300" />
+              <div className="absolute inset-4 bg-teal-900 rounded-full flex items-center justify-center">
+                <Sparkles className="h-8 w-8 text-teal-300" />
               </div>
             </div>
           </div>

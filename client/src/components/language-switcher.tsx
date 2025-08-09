@@ -21,7 +21,7 @@ export function LanguageSwitcher() {
         <Button 
           variant="ghost" 
           size="sm" 
-          className="text-white hover:text-yellow-500 hover:bg-purple-800/40"
+          className="text-white hover:text-yellow-500 hover:bg-teal-800/40"
         >
           <Globe className="h-4 w-4 mr-2" />
           {languages[language]}
@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
           <DropdownMenuItem
             key={code}
             onClick={() => handleLanguageChange(code as Language)}
-            className={`text-purple-100 hover:bg-yellow-500/20 hover:text-yellow-500 cursor-pointer ${
+            className={`text-teal-100 hover:bg-yellow-500/20 hover:text-yellow-500 cursor-pointer ${
               language === code ? 'bg-yellow-500/10 text-yellow-500' : ''
             }`}
           >

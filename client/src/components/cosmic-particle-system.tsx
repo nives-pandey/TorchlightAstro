@@ -66,13 +66,13 @@ export default function CosmicParticleSystem({
 
   const getCosmicColor = (): string => {
     const colors = [
-      '#ffffff', // White stars
-      '#ffffcc', // Warm white
-      '#ffddaa', // Yellow
-      '#ffaa77', // Orange
-      '#aaccff', // Blue-white
-      '#ccaaff', // Purple
-      '#ffcccc'  // Red
+      'hsl(60, 10%, 96%)', // White stars
+      'hsl(60, 10%, 96%)', // Warm white
+      'hsl(44, 45%, 65%)', // Yellow
+      'hsl(44, 45%, 65%)', // Orange
+      'hsl(180, 25%, 55%)', // Blue-white
+      'hsl(180, 25%, 55%)', // Purple
+      'hsl(60, 10%, 96%)'  // Red
     ];
     return colors[Math.floor(Math.random() * colors.length)];
   };

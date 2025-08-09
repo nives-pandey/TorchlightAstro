@@ -89,7 +89,7 @@ export default function CitySearch({ value, onSelect, birthDate, placeholder = "
                     setOpen(false);
                     setSearchQuery("");
                   }}
-                  className="cursor-pointer hover:bg-purple-900/30"
+                  className="cursor-pointer hover:bg-teal-900/30"
                   style={{color: 'var(--sage-teal)'}}
                 >
                   <div className="flex items-center justify-between w-full">

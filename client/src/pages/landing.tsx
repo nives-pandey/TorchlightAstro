@@ -31,7 +31,7 @@ function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) 
           </div>
         </div>
       </DialogTrigger>
-      <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-lg mx-4">
+      <DialogContent className="bg-gradient-to-br from-teal-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md max-w-lg mx-4">
         <DialogHeader>
           <DialogTitle className="text-rose-300 flex items-center gap-3 text-xl">
             <span className="text-2xl">{system.icon}</span>
@@ -45,11 +45,11 @@ function SystemBadge({ system, onClick }: { system: any; onClick: () => void }) 
         <div className="space-y-4 mt-4">
           {/* System Details */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-purple-800/40 rounded-xl p-3 border border-pink-300/20">
+            <div className="bg-teal-800/40 rounded-xl p-3 border border-pink-300/20">
               <div className="text-xs text-rose-300 uppercase tracking-wide">Origin</div>
               <div className="text-white text-sm font-medium">{system.origin}</div>
             </div>
-            <div className="bg-purple-800/40 rounded-xl p-3 border border-pink-300/20">
+            <div className="bg-teal-800/40 rounded-xl p-3 border border-pink-300/20">
               <div className="text-xs text-rose-300 uppercase tracking-wide">Heritage</div>
               <div className="text-white text-sm font-medium">{system.timeRange}</div>
             </div>
@@ -220,33 +220,33 @@ export default function Landing() {
       >
         {/* Static celestial background elements - no animation */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-80" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-teal-300 rounded-full opacity-80" />
         <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-yellow-500 rounded-full opacity-50" />
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
-        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-indigo-400 rounded-full opacity-40" />
+        <div className="absolute bottom-20 right-1/4 w-2 h-2 bg-gray-400 rounded-full opacity-40" />
       </div>
 
       {/* Clear User Flow Guidance */}
       <div className="relative z-10 px-4 pt-20">
         <div className="max-w-4xl mx-auto text-center mb-8">
-          <div className="bg-purple-900/50 backdrop-blur-md border border-purple-300/30 rounded-2xl p-6 mb-8">
+          <div className="bg-teal-900/50 backdrop-blur-md border border-teal-300/30 rounded-2xl p-6 mb-8">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-2">
               <Play className="h-6 w-6 text-yellow-500" />
               Ready to Get Started?
             </h2>
-            <p className="text-purple-200 mb-6">
+            <p className="text-teal-200 mb-6">
               Choose your path to cosmic insight. You can start your journey from any point below:
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <Link href="/home">
-                <Button className="w-full bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg">
+                <Button className="w-full bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg">
                   <ArrowRight className="h-4 w-4 mr-2" />
                   Generate Your Chart
                 </Button>
               </Link>
               <Link href="/features">
-                <Button variant="outline" className="w-full border-purple-300/50 text-purple-200 hover:bg-yellow-600/20 py-3 px-6 rounded-xl">
+                <Button variant="outline" className="w-full border-teal-300/50 text-teal-200 hover:bg-yellow-600/20 py-3 px-6 rounded-xl">
                   Explore All Features
                 </Button>
               </Link>
@@ -292,7 +292,7 @@ export default function Landing() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(51, 100%, 65%)',
+                  color: 'hsl(30, 8%, 18%)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
@@ -321,7 +321,7 @@ export default function Landing() {
 
           {/* Features Preview */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl">
+            <Card className="bg-teal-800/40 border-white/20 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center gap-2">
                   <Sun className="w-5 h-5 text-yellow-500" />
@@ -335,7 +335,7 @@ export default function Landing() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl">
+            <Card className="bg-teal-800/40 border-white/20 backdrop-blur-sm rounded-2xl">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center gap-2">
                   <Heart className="w-5 h-5 text-pink-400" />
@@ -349,7 +349,7 @@ export default function Landing() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-white/20 backdrop-blur-sm rounded-2xl sm:col-span-2 lg:col-span-1">
+            <Card className="bg-teal-800/40 border-white/20 backdrop-blur-sm rounded-2xl sm:col-span-2 lg:col-span-1">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center gap-2">
                   <Moon className="w-5 h-5 text-yellow-500" />

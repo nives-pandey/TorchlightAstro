@@ -69,8 +69,8 @@ const ContributeForm = ({ amount }: { amount: number }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="p-4 bg-purple-50 dark:bg-purple-950 rounded-lg border border-purple-200 dark:border-purple-800">
-        <h3 className="font-semibold text-purple-700 dark:text-purple-300 mb-2">
+      <div className="p-4 bg-teal-50 dark:bg-teal-950 rounded-lg border border-teal-200 dark:border-teal-800">
+        <h3 className="font-semibold text-teal-700 dark:text-teal-300 mb-2">
           Contributing ${amount.toFixed(2)}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -83,7 +83,7 @@ const ContributeForm = ({ amount }: { amount: number }) => {
       <Button 
         type="submit" 
         disabled={!stripe || isProcessing}
-        className="w-full h-12 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold"
+        className="w-full h-12 bg-gradient-to-r from-yellow-600 to-gray-600 hover:from-teal-700 hover:to-gray-700 text-white font-semibold"
       >
         {isProcessing ? (
           <div className="flex items-center space-x-2">
@@ -149,7 +149,7 @@ export default function ContributePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-teal-900 to-pink-900 flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
           <CardContent className="flex flex-col items-center space-y-4 p-8">
             <div className="animate-spin w-8 h-8 border-4 border-yellow-600 border-t-transparent rounded-full" />
@@ -162,7 +162,7 @@ export default function ContributePage() {
 
   if (clientSecret && selectedAmount && stripePromise) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-teal-900 to-pink-900 p-4">
         <div className="max-w-2xl mx-auto">
           <div className="mb-6">
             <Button 
@@ -171,7 +171,7 @@ export default function ContributePage() {
                 setClientSecret("");
                 setSelectedAmount(null);
               }}
-              className="text-white hover:bg-purple-800/40"
+              className="text-white hover:bg-teal-800/40"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Contribution Options
@@ -190,7 +190,7 @@ export default function ContributePage() {
                   appearance: {
                     theme: 'stripe',
                     variables: {
-                      colorPrimary: '#C5A55A',
+                      colorPrimary: 'hsl(44, 45%, 65%)',
                     }
                   }
                 }}
@@ -205,12 +205,12 @@ export default function ContributePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-teal-900 to-pink-900 p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8 text-center">
           <Link href="/">
-            <Button variant="ghost" className="text-white hover:bg-purple-800/40 mb-4">
+            <Button variant="ghost" className="text-white hover:bg-teal-800/40 mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Torchlight
             </Button>
@@ -222,7 +222,7 @@ export default function ContributePage() {
 
         {/* Global Payment Options */}
         <div className="mt-12">
-          <Card className="bg-purple-800/40 backdrop-blur-sm border-white/20">
+          <Card className="bg-teal-800/40 backdrop-blur-sm border-white/20">
             <CardHeader>
               <CardTitle className="text-center text-white mb-2">
                 Global Payment Options Available
@@ -234,28 +234,28 @@ export default function ContributePage() {
             <CardContent>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-teal-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <CreditCard className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Cards</p>
                   <p className="text-white/60 text-xs">32% global share</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-teal-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Smartphone className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Digital Wallets</p>
                   <p className="text-white/60 text-xs">53% global share</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-teal-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Bitcoin className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Crypto</p>
                   <p className="text-white/60 text-xs">USDT $0.01 fees</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <div className="w-12 h-12 bg-teal-700/50 rounded-full flex items-center justify-center mx-auto mb-2">
                     <Globe className="w-6 h-6 text-white" />
                   </div>
                   <p className="text-white text-sm font-medium">Regional</p>
@@ -266,7 +266,7 @@ export default function ContributePage() {
               <div className="text-center">
                 <Button
                   onClick={() => setShowUniversalPayment(true)}
-                  className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0"
+                  className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700 text-white border-0"
                 >
                   <Globe className="w-4 h-4 mr-2" />
                   View All Payment Options

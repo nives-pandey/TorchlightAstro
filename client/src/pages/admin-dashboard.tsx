@@ -17,7 +17,7 @@ interface AdminStats {
   peakUsageTimes: Array<{ hour: number; activity: number }>;
 }
 
-const COLORS = ['#C5A55A', '#6A9797', '#B0A9A4', '#F5F5DC', '#36312E', '#C5A55A'];
+const COLORS = ['hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(30, 5%, 66%)', 'hsl(60, 10%, 96%)', 'hsl(30, 8%, 18%)', 'hsl(44, 45%, 65%)'];
 
 export default function AdminDashboard() {
   // Use the new enhanced admin dashboard with timezone analytics
@@ -167,7 +167,7 @@ function LegacyAdminDashboard() {
                     labelLine={false}
                     label={({ system, percentage }) => `${system} ${percentage}%`}
                     outerRadius={80}
-                    fill="#8884d8"
+                    fill="hsl(44, 45%, 65%)"
                     dataKey="count"
                   >
                     {stats?.systemPopularity.map((entry, index) => (
@@ -195,27 +195,27 @@ function LegacyAdminDashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={stats?.dailyGrowth}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="date" stroke="#9CA3AF" />
-                <YAxis stroke="#9CA3AF" />
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(30, 8%, 18%)" />
+                <XAxis dataKey="date" stroke="hsl(30, 5%, 66%)" />
+                <YAxis stroke="hsl(30, 5%, 66%)" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: '#1F2937', 
-                    border: '1px solid #374151',
+                    backgroundColor: 'hsl(30, 8%, 18%)', 
+                    border: '1px solid hsl(30, 5%, 66%)',
                     borderRadius: '8px'
                   }}
                 />
                 <Line 
                   type="monotone" 
                   dataKey="users" 
-                  stroke="#C5A55A" 
+                  stroke="hsl(44, 45%, 65%)" 
                   strokeWidth={2}
                   name="New Users"
                 />
                 <Line 
                   type="monotone" 
                   dataKey="charts" 
-                  stroke="#6A9797" 
+                  stroke="hsl(180, 25%, 55%)" 
                   strokeWidth={2}
                   name="Charts Created"
                 />

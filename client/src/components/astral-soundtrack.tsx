@@ -273,18 +273,18 @@ export default function AstralSoundtrack() {
       'Water-Fire': 'bg-gradient-to-r from-cyan-500/20 to-red-500/20 text-red-300 border-red-500/30',
       'Water-Air': 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-blue-300 border-blue-500/30'
     };
-    return colors[element] || 'bg-yellow-600/20 text-purple-300 border-yellow-600/30';
+    return colors[element] || 'bg-yellow-600/20 text-teal-300 border-yellow-600/30';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-teal-900 to-blue-900">
       <Navigation />
       <div className="pt-20 safe-top safe-bottom">
         <div className="mobile-container sm:max-w-7xl sm:mx-auto sm:px-6">
           {/* Back Navigation */}
           <div className="flex items-center gap-4 mb-6 px-4">
             <Link href="/">
-              <Button variant="ghost" className="text-purple-300 hover:text-white hover:bg-yellow-600/20">
+              <Button variant="ghost" className="text-teal-300 hover:text-white hover:bg-yellow-600/20">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Home
               </Button>
@@ -296,7 +296,7 @@ export default function AstralSoundtrack() {
             <Music className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-500" />
             ✨ Astral Soundtrack Generator
           </h1>
-          <p className="mobile-text text-purple-200 sm:text-lg">
+          <p className="mobile-text text-teal-200 sm:text-lg">
             Personalized cosmic music aligned with your birth chart and current planetary transits
           </p>
         </div>
@@ -312,7 +312,7 @@ export default function AstralSoundtrack() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <p className="text-sm text-purple-200">Astrological Foundation</p>
+                <p className="text-sm text-teal-200">Astrological Foundation</p>
                 <div className="flex flex-wrap gap-2">
                   <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
                     ☉ {mockSoundtrackData.personalProfile.sunSign}
@@ -327,9 +327,9 @@ export default function AstralSoundtrack() {
               </div>
               
               <div className="space-y-2">
-                <p className="text-sm text-purple-200">Current Cosmic Weather</p>
+                <p className="text-sm text-teal-200">Current Cosmic Weather</p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-yellow-600/20 text-purple-300 border-yellow-600/30">
+                  <Badge className="bg-yellow-600/20 text-teal-300 border-yellow-600/30">
                     {mockSoundtrackData.currentTransits.moonPhase}
                   </Badge>
                   <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30">
@@ -339,7 +339,7 @@ export default function AstralSoundtrack() {
               </div>
 
               <div className="space-y-2">
-                <p className="text-sm text-purple-200">Musical Elements</p>
+                <p className="text-sm text-teal-200">Musical Elements</p>
                 <div className="flex flex-wrap gap-2">
                   {mockSoundtrackData.musicProfile.genres.slice(0, 2).map(genre => (
                     <Badge key={genre} className="bg-green-500/20 text-green-300 border-green-500/30">
@@ -352,7 +352,7 @@ export default function AstralSoundtrack() {
 
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-purple-200">Current Energy Level</span>
+                <span className="text-teal-200">Current Energy Level</span>
                 <span className="text-white">{mockSoundtrackData.musicProfile.energyLevel}/10</span>
               </div>
               <Progress 
@@ -370,14 +370,14 @@ export default function AstralSoundtrack() {
               <div className="flex items-center gap-4 mb-4">
                 <Button
                   onClick={togglePlayPause}
-                  className="mobile-button w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                  className="mobile-button w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700 text-white"
                 >
                   {isPlaying ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="h-5 w-5 sm:h-6 sm:w-6" />}
                 </Button>
                 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-white font-medium truncate text-sm sm:text-base">{currentTrack.title}</h3>
-                  <p className="text-purple-200 text-xs sm:text-sm truncate">{currentTrack.artist}</p>
+                  <p className="text-teal-200 text-xs sm:text-sm truncate">{currentTrack.artist}</p>
                   <div className="flex items-center gap-2 mt-1">
                     <Badge className={`text-xs ${getElementColor(currentTrack.elementalEnergy)}`}>
                       {currentTrack.elementalEnergy}
@@ -389,7 +389,7 @@ export default function AstralSoundtrack() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Volume2 className="h-4 w-4 text-purple-300" />
+                  <Volume2 className="h-4 w-4 text-teal-300" />
                   <Slider
                     value={volume}
                     onValueChange={setVolume}
@@ -401,7 +401,7 @@ export default function AstralSoundtrack() {
               </div>
 
               <div className="space-y-2">
-                <div className="flex justify-between text-xs sm:text-sm text-purple-200">
+                <div className="flex justify-between text-xs sm:text-sm text-teal-200">
                   <span>{formatTime(currentTime)}</span>
                   <span>{formatTime(duration)}</span>
                 </div>
@@ -411,20 +411,20 @@ export default function AstralSoundtrack() {
               <div className="flex items-center justify-between mt-4">
                 <div className="flex items-center gap-2">
                   {currentTrack.planetaryAlignment.map(planet => (
-                    <Badge key={planet} className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30 text-xs">
+                    <Badge key={planet} className="bg-gray-500/20 text-gray-300 border-gray-500/30 text-xs">
                       {planet}
                     </Badge>
                   ))}
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="sm" className="text-purple-300 hover:text-white">
+                  <Button variant="ghost" size="sm" className="text-teal-300 hover:text-white">
                     <Heart className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="sm" className="text-purple-300 hover:text-white">
+                  <Button variant="ghost" size="sm" className="text-teal-300 hover:text-white">
                     <Share2 className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="sm" className="text-purple-300 hover:text-white">
+                  <Button variant="ghost" size="sm" className="text-teal-300 hover:text-white">
                     <Download className="h-4 w-4" />
                   </Button>
                 </div>
@@ -461,7 +461,7 @@ export default function AstralSoundtrack() {
                     <Icon className="h-6 w-6 text-yellow-500" />
                     <div>
                       <h2 className="text-white text-lg sm:text-xl font-semibold">{data.title}</h2>
-                      <p className="text-purple-200 text-sm">{data.subtitle}</p>
+                      <p className="text-teal-200 text-sm">{data.subtitle}</p>
                     </div>
                   </div>
 
@@ -490,16 +490,16 @@ export default function AstralSoundtrack() {
                                 </Badge>
                               </div>
                               
-                              <p className="text-purple-200 text-xs sm:text-sm mb-2">{track.artist} • {track.duration}</p>
+                              <p className="text-teal-200 text-xs sm:text-sm mb-2">{track.artist} • {track.duration}</p>
                               
-                              <p className="text-purple-300 text-xs mb-2 line-clamp-2">{track.description}</p>
+                              <p className="text-teal-300 text-xs mb-2 line-clamp-2">{track.description}</p>
                               
                               <div className="flex flex-wrap items-center gap-2">
                                 <Badge className={`text-xs ${getElementColor(track.elementalEnergy)}`}>
                                   {track.elementalEnergy}
                                 </Badge>
                                 {track.planetaryAlignment.slice(0, 2).map(planet => (
-                                  <Badge key={planet} className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30 text-xs">
+                                  <Badge key={planet} className="bg-gray-500/20 text-gray-300 border-gray-500/30 text-xs">
                                     {planet}
                                   </Badge>
                                 ))}
@@ -519,7 +519,7 @@ export default function AstralSoundtrack() {
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="text-purple-300 hover:text-white flex-shrink-0"
+                              className="text-teal-300 hover:text-white flex-shrink-0"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 playTrack(track);

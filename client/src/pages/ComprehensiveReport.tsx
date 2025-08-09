@@ -120,11 +120,11 @@ export default function ComprehensiveReport() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-teal-950 to-slate-950 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-2">Comprehensive Life Report</h1>
-          <p className="text-purple-300">Complete 5-page analysis across all astrological systems</p>
+          <p className="text-teal-300">Complete 5-page analysis across all astrological systems</p>
         </div>
 
         {!reportGenerated ? (
@@ -135,7 +135,7 @@ export default function ComprehensiveReport() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="name" className="text-purple-200">Full Name</Label>
+                  <Label htmlFor="name" className="text-teal-200">Full Name</Label>
                   <Input
                     id="name"
                     value={birthData.name}
@@ -147,7 +147,7 @@ export default function ComprehensiveReport() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="birthDate" className="text-purple-200">Birth Date</Label>
+                    <Label htmlFor="birthDate" className="text-teal-200">Birth Date</Label>
                     <Input
                       id="birthDate"
                       type="date"
@@ -157,7 +157,7 @@ export default function ComprehensiveReport() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="birthTime" className="text-purple-200">Birth Time</Label>
+                    <Label htmlFor="birthTime" className="text-teal-200">Birth Time</Label>
                     <Input
                       id="birthTime"
                       type="time"
@@ -169,7 +169,7 @@ export default function ComprehensiveReport() {
                 </div>
 
                 <div>
-                  <Label htmlFor="birthPlace" className="text-purple-200">Birth Place</Label>
+                  <Label htmlFor="birthPlace" className="text-teal-200">Birth Place</Label>
                   <Input
                     id="birthPlace"
                     value={birthData.birthPlace}
@@ -180,7 +180,7 @@ export default function ComprehensiveReport() {
                 </div>
 
                 <div>
-                  <Label htmlFor="gender" className="text-purple-200">Gender (Optional)</Label>
+                  <Label htmlFor="gender" className="text-teal-200">Gender (Optional)</Label>
                   <Select value={birthData.gender} onValueChange={(value) => setBirthData(prev => ({ ...prev, gender: value }))}>
                     <SelectTrigger className="bg-slate-800 border-yellow-600/30 text-white">
                       <SelectValue />
@@ -196,7 +196,7 @@ export default function ComprehensiveReport() {
 
                 <div className="space-y-3">
                   <div>
-                    <Label className="text-purple-200 text-sm">Quick Test with Sample Personas</Label>
+                    <Label className="text-teal-200 text-sm">Quick Test with Sample Personas</Label>
                     <div className="grid grid-cols-1 gap-2 mt-2">
                       {testPersonas.map((persona, index) => (
                         <Button
@@ -208,7 +208,7 @@ export default function ComprehensiveReport() {
                             setBirthData(persona.data);
                             generateReport(persona.data);
                           }}
-                          className="text-xs bg-slate-800/50 border-yellow-600/30 text-purple-200 hover:bg-yellow-600/20"
+                          className="text-xs bg-slate-800/50 border-yellow-600/30 text-teal-200 hover:bg-yellow-600/20"
                         >
                           {persona.name}
                         </Button>
@@ -216,7 +216,7 @@ export default function ComprehensiveReport() {
                     </div>
                   </div>
                   
-                  <Button type="submit" className="w-full bg-yellow-600 hover:bg-purple-700">
+                  <Button type="submit" className="w-full bg-yellow-600 hover:bg-teal-700">
                     Generate Custom Report
                   </Button>
                 </div>
@@ -226,7 +226,7 @@ export default function ComprehensiveReport() {
         ) : loading ? (
           <div className="text-center">
             <div className="animate-spin w-8 h-8 border-4 border-yellow-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-            <p className="text-purple-300">Generating your comprehensive report...</p>
+            <p className="text-teal-300">Generating your comprehensive report...</p>
           </div>
         ) : error ? (
           <Card className="max-w-2xl mx-auto bg-red-900/20 border-red-500/30">
@@ -245,14 +245,14 @@ export default function ComprehensiveReport() {
                       <Star className="w-6 h-6 text-yellow-400 mr-2" />
                       Comprehensive Life Report for {birthData.name}
                     </CardTitle>
-                    <p className="text-purple-300">
+                    <p className="text-teal-300">
                       Born {new Date(birthData.birthDate).toLocaleDateString()} at {birthData.birthTime} in {birthData.birthPlace}
                     </p>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {report.systems?.map((system: any) => (
-                        <Badge key={system.system} variant="secondary" className="bg-yellow-600/20 text-purple-200">
+                        <Badge key={system.system} variant="secondary" className="bg-yellow-600/20 text-teal-200">
                           {systemNames[system.system as keyof typeof systemNames]} ({Math.round(system.confidence)}% confidence)
                         </Badge>
                       ))}
@@ -308,7 +308,7 @@ function ReportPage1({ data }: { data: any }) {
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-64">
-            <p className="text-purple-100 leading-relaxed">{data.synthesis?.personalityCore}</p>
+            <p className="text-teal-100 leading-relaxed">{data.synthesis?.personalityCore}</p>
           </ScrollArea>
         </CardContent>
       </Card>
@@ -324,7 +324,7 @@ function ReportPage1({ data }: { data: any }) {
           <ScrollArea className="h-64">
             <ul className="space-y-2">
               {data.synthesis?.strengths?.map((strength: string, index: number) => (
-                <li key={index} className="text-purple-100 flex items-start">
+                <li key={index} className="text-teal-100 flex items-start">
                   <Star className="w-4 h-4 text-yellow-400 mr-2 mt-0.5 flex-shrink-0" />
                   {strength}
                 </li>
@@ -345,7 +345,7 @@ function ReportPage1({ data }: { data: any }) {
           <ScrollArea className="h-64">
             <ul className="space-y-2">
               {data.synthesis?.challenges?.map((challenge: string, index: number) => (
-                <li key={index} className="text-purple-100 flex items-start">
+                <li key={index} className="text-teal-100 flex items-start">
                   <AlertTriangle className="w-4 h-4 text-orange-400 mr-2 mt-0.5 flex-shrink-0" />
                   {challenge}
                 </li>
@@ -363,7 +363,7 @@ function ReportPage1({ data }: { data: any }) {
           <ScrollArea className="h-64">
             <ul className="space-y-2">
               {data.synthesis?.lifeThemes?.map((theme: string, index: number) => (
-                <li key={index} className="text-purple-100 flex items-start">
+                <li key={index} className="text-teal-100 flex items-start">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3 mt-2 flex-shrink-0" />
                   {theme}
                 </li>
@@ -388,14 +388,14 @@ function ReportPage2({ data }: { data: any }) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h4 className="text-purple-200 font-semibold mb-2">Primary Gemstone</h4>
+            <h4 className="text-teal-200 font-semibold mb-2">Primary Gemstone</h4>
             <Badge className="bg-emerald-600/20 text-emerald-200">{data.recommendations?.gemstones?.primary}</Badge>
           </div>
           <div>
-            <h4 className="text-purple-200 font-semibold mb-2">Supporting Stones</h4>
+            <h4 className="text-teal-200 font-semibold mb-2">Supporting Stones</h4>
             <div className="flex flex-wrap gap-2">
               {data.recommendations?.gemstones?.secondary?.map((gem: string, index: number) => (
-                <Badge key={index} variant="outline" className="border-yellow-500 text-purple-200">{gem}</Badge>
+                <Badge key={index} variant="outline" className="border-yellow-500 text-teal-200">{gem}</Badge>
               ))}
             </div>
           </div>
@@ -416,12 +416,12 @@ function ReportPage2({ data }: { data: any }) {
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h4 className="text-purple-200 font-semibold mb-2">Favorable Colors</h4>
+            <h4 className="text-teal-200 font-semibold mb-2">Favorable Colors</h4>
             <div className="grid grid-cols-4 gap-2">
               {data.recommendations?.colors?.favorable?.map((color: string, index: number) => (
                 <div key={index} className="text-center">
                   <div className={`w-8 h-8 rounded-full mx-auto mb-1`} style={{ backgroundColor: color.toLowerCase() }} />
-                  <span className="text-xs text-purple-200">{color}</span>
+                  <span className="text-xs text-teal-200">{color}</span>
                 </div>
               ))}
             </div>
@@ -450,7 +450,7 @@ function ReportPage2({ data }: { data: any }) {
               <h4 className="text-green-200 font-semibold mb-3">Best Times for Important Activities</h4>
               <ul className="space-y-2">
                 {data.recommendations?.lifestyle?.bestTimes?.map((time: string, index: number) => (
-                  <li key={index} className="text-purple-100 flex items-start">
+                  <li key={index} className="text-teal-100 flex items-start">
                     <Calendar className="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     {time}
                   </li>
@@ -461,7 +461,7 @@ function ReportPage2({ data }: { data: any }) {
               <h4 className="text-orange-200 font-semibold mb-3">Times to Avoid Major Decisions</h4>
               <ul className="space-y-2">
                 {data.recommendations?.lifestyle?.avoid?.map((time: string, index: number) => (
-                  <li key={index} className="text-purple-100 flex items-start">
+                  <li key={index} className="text-teal-100 flex items-start">
                     <AlertTriangle className="w-4 h-4 text-orange-400 mr-2 mt-0.5 flex-shrink-0" />
                     {time}
                   </li>
@@ -472,7 +472,7 @@ function ReportPage2({ data }: { data: any }) {
               <h4 className="text-blue-200 font-semibold mb-3">Recommended Daily Routines</h4>
               <ul className="space-y-2">
                 {data.recommendations?.lifestyle?.dailyRoutines?.map((routine: string, index: number) => (
-                  <li key={index} className="text-purple-100 flex items-start">
+                  <li key={index} className="text-teal-100 flex items-start">
                     <div className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-2 flex-shrink-0" />
                     {routine}
                   </li>
@@ -495,7 +495,7 @@ function ReportPage3({ data }: { data: any }) {
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-48">
-            <p className="text-purple-100 leading-relaxed">{data.synthesis?.guidance}</p>
+            <p className="text-teal-100 leading-relaxed">{data.synthesis?.guidance}</p>
           </ScrollArea>
         </CardContent>
       </Card>
@@ -507,7 +507,7 @@ function ReportPage3({ data }: { data: any }) {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-64">
-              <p className="text-purple-100 leading-relaxed">{data.analysis?.careerPath}</p>
+              <p className="text-teal-100 leading-relaxed">{data.analysis?.careerPath}</p>
             </ScrollArea>
           </CardContent>
         </Card>
@@ -518,7 +518,7 @@ function ReportPage3({ data }: { data: any }) {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-64">
-              <p className="text-purple-100 leading-relaxed">{data.analysis?.relationships}</p>
+              <p className="text-teal-100 leading-relaxed">{data.analysis?.relationships}</p>
             </ScrollArea>
           </CardContent>
         </Card>
@@ -530,7 +530,7 @@ function ReportPage3({ data }: { data: any }) {
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-32">
-            <p className="text-purple-100 leading-relaxed">{data.synthesis?.currentInfluences}</p>
+            <p className="text-teal-100 leading-relaxed">{data.synthesis?.currentInfluences}</p>
           </ScrollArea>
         </CardContent>
       </Card>
@@ -547,7 +547,7 @@ function ReportPage4({ data }: { data: any }) {
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-64">
-            <p className="text-purple-100 leading-relaxed">{data.analysis?.health}</p>
+            <p className="text-teal-100 leading-relaxed">{data.analysis?.health}</p>
           </ScrollArea>
         </CardContent>
       </Card>
@@ -558,7 +558,7 @@ function ReportPage4({ data }: { data: any }) {
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-64">
-            <p className="text-purple-100 leading-relaxed">{data.analysis?.spirituality}</p>
+            <p className="text-teal-100 leading-relaxed">{data.analysis?.spirituality}</p>
           </ScrollArea>
         </CardContent>
       </Card>
@@ -568,7 +568,7 @@ function ReportPage4({ data }: { data: any }) {
           <CardTitle className="text-white">Optimal Environment & Living</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-purple-100 leading-relaxed">{data.recommendations?.lifestyle?.environment}</p>
+          <p className="text-teal-100 leading-relaxed">{data.recommendations?.lifestyle?.environment}</p>
         </CardContent>
       </Card>
     </div>
@@ -585,7 +585,7 @@ function ReportPage5({ data }: { data: any }) {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-48">
-              <p className="text-purple-100 leading-relaxed">{data.futureOutlook?.nextMonth}</p>
+              <p className="text-teal-100 leading-relaxed">{data.futureOutlook?.nextMonth}</p>
             </ScrollArea>
           </CardContent>
         </Card>
@@ -596,7 +596,7 @@ function ReportPage5({ data }: { data: any }) {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-48">
-              <p className="text-purple-100 leading-relaxed">{data.futureOutlook?.nextYear}</p>
+              <p className="text-teal-100 leading-relaxed">{data.futureOutlook?.nextYear}</p>
             </ScrollArea>
           </CardContent>
         </Card>
@@ -607,23 +607,23 @@ function ReportPage5({ data }: { data: any }) {
           </CardHeader>
           <CardContent>
             <ScrollArea className="h-48">
-              <p className="text-purple-100 leading-relaxed">{data.futureOutlook?.lifeDirection}</p>
+              <p className="text-teal-100 leading-relaxed">{data.futureOutlook?.lifeDirection}</p>
             </ScrollArea>
           </CardContent>
         </Card>
       </div>
 
-      <Card className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 border-yellow-600/30">
+      <Card className="bg-gradient-to-r from-teal-900/30 to-blue-900/30 border-yellow-600/30">
         <CardHeader>
           <CardTitle className="text-white text-xl text-center">Your Astrological Summary</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center space-y-4">
-            <p className="text-purple-100 text-lg leading-relaxed">
+            <p className="text-teal-100 text-lg leading-relaxed">
               This comprehensive analysis combines insights from multiple astrological traditions to provide 
               you with a complete picture of your cosmic blueprint and life path.
             </p>
-            <div className="flex justify-center space-x-4 text-sm text-purple-300">
+            <div className="flex justify-center space-x-4 text-sm text-teal-300">
               <span>Generated with authentic astronomical calculations</span>
               <span>•</span>
               <span>AI-enhanced interpretations</span>

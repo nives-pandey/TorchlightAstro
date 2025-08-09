@@ -73,7 +73,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
         <TabsContent value="lifestyle" className="space-y-6">
           {/* Lucky Elements */}
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-purple-200 dark:border-purple-800">
+            <Card className="border-teal-200 dark:border-teal-800">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-yellow-600 dark:text-yellow-500">
                   <Star className="h-5 w-5" />
@@ -83,7 +83,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {recommendations.luckyNumbers.map((number) => (
-                    <Badge key={number} variant="outline" className="text-yellow-600 border-purple-300">
+                    <Badge key={number} variant="outline" className="text-yellow-600 border-teal-300">
                       {number}
                     </Badge>
                   ))}
@@ -91,7 +91,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
               </CardContent>
             </Card>
 
-            <Card className="border-purple-200 dark:border-purple-800">
+            <Card className="border-teal-200 dark:border-teal-800">
               <CardHeader className="pb-3">
                 <CardTitle className="flex items-center gap-2 text-yellow-600 dark:text-yellow-500">
                   <Palette className="h-5 w-5" />
@@ -101,7 +101,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {recommendations.luckyColors.map((color) => (
-                    <Badge key={color} variant="outline" className="text-yellow-600 border-purple-300">
+                    <Badge key={color} variant="outline" className="text-yellow-600 border-teal-300">
                       {color}
                     </Badge>
                   ))}
@@ -279,9 +279,9 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
                   </CardContent>
                 </Card>
 
-                <Card className="border-indigo-200 dark:border-indigo-800">
+                <Card className="border-gray-200 dark:border-gray-800">
                   <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-sm">
+                    <CardTitle className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
                       <Sparkles className="h-4 w-4" />
                       Vedic Traits
                     </CardTitle>
@@ -365,7 +365,7 @@ export function LifestyleRecommendations({ recommendations, systemComparison }: 
                       <p className="text-sm text-muted-foreground">{systemComparison.uniqueInsights.western}</p>
                     </div>
                     <div className="space-y-2">
-                      <h4 className="font-medium text-indigo-600 dark:text-indigo-400">Vedic Astrology</h4>
+                      <h4 className="font-medium text-gray-600 dark:text-gray-400">Vedic Astrology</h4>
                       <p className="text-sm text-muted-foreground">{systemComparison.uniqueInsights.vedic}</p>
                     </div>
                     <div className="space-y-2">

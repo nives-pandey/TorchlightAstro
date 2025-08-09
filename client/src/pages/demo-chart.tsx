@@ -75,7 +75,7 @@ export default function DemoChart() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <Card className="bg-purple-800/40 border-yellow-500/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-yellow-500/30 backdrop-blur-md">
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <User className="mr-2 h-5 w-5" />
@@ -89,7 +89,7 @@ export default function DemoChart() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-yellow-500/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-yellow-500/30 backdrop-blur-md">
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Calendar className="mr-2 h-5 w-5" />
@@ -105,7 +105,7 @@ export default function DemoChart() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-yellow-500/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-yellow-500/30 backdrop-blur-md">
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Stars className="mr-2 h-5 w-5" />

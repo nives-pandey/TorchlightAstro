@@ -402,11 +402,11 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
   ];
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-purple-900/60 via-indigo-900/60 to-blue-900/60 backdrop-blur-sm flex items-center justify-center safe-top safe-bottom z-50">
+    <div className="fixed inset-0 bg-gradient-to-br from-teal-900/60 via-gray-900/60 to-blue-900/60 backdrop-blur-sm flex items-center justify-center safe-top safe-bottom z-50">
       {/* Mobile: Full screen on small devices, centered on larger */}
       <div className="w-full h-full sm:w-auto sm:h-auto sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl flex items-center justify-center p-0 sm:p-4 lg:p-6">
         <AccessibilityToggle />
-        <Card className="w-full h-full sm:w-auto sm:h-auto sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-purple-900/95 to-indigo-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-yellow-600/50 shadow-2xl rounded-none sm:rounded-xl lg:rounded-2xl transition-all duration-300">
+        <Card className="w-full h-full sm:w-auto sm:h-auto sm:max-h-[95vh] overflow-y-auto bg-gradient-to-br from-slate-900/95 via-teal-900/95 to-gray-900/95 backdrop-blur-md border-0 sm:border-2 sm:border-yellow-600/50 shadow-2xl rounded-none sm:rounded-xl lg:rounded-2xl transition-all duration-300">
           {/* Mobile: Add safe area padding */}
           <div className="safe-top safe-bottom sm:safe-top-0 sm:safe-bottom-0">
             <CardHeader className="relative p-4 sm:p-6 lg:p-8 safe-top">
@@ -414,7 +414,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-purple-300 hover:bg-yellow-600/20 border border-yellow-500/30 min-h-[44px] min-w-[44px] h-11 w-11 sm:h-10 sm:w-10 lg:h-12 lg:w-12 z-10"
+            className="absolute right-4 top-4 text-teal-300 hover:bg-yellow-600/20 border border-yellow-500/30 min-h-[44px] min-w-[44px] h-11 w-11 sm:h-10 sm:w-10 lg:h-12 lg:w-12 z-10"
           >
             <X className="h-5 w-5 sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
           </Button>
@@ -422,7 +422,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
           <CardTitle className="text-white text-xl sm:text-xl lg:text-2xl xl:text-3xl text-center mb-4 font-bold mobile-heading">
             ✨ Create Your Cosmic Profile
           </CardTitle>
-          <p className="text-purple-200 text-base sm:text-base lg:text-lg text-center mb-6 mobile-text">
+          <p className="text-teal-200 text-base sm:text-base lg:text-lg text-center mb-6 mobile-text">
             Comprehensive astrological analysis across 10+ ancient systems
           </p>
 
@@ -448,7 +448,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
           
           {/* Step Titles for Mobile */}
           <div className="block sm:hidden text-center mb-4">
-            <span className="text-xs font-medium text-purple-200 bg-purple-900/50 px-3 py-1 rounded-full border border-yellow-500/30">
+            <span className="text-xs font-medium text-teal-200 bg-teal-900/50 px-3 py-1 rounded-full border border-yellow-500/30">
               Step {currentStep + 1} of {steps.length}: {steps[currentStep].title}
             </span>
           </div>
@@ -463,7 +463,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                 <div className="space-y-4">
                   <div className="text-center mb-4 sm:mb-6">
                     <h3 className="text-white font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Personal Information</h3>
-                    <p className="text-purple-200 text-sm sm:text-base lg:text-lg">Tell us about yourself for personalized analysis</p>
+                    <p className="text-teal-200 text-sm sm:text-base lg:text-lg">Tell us about yourself for personalized analysis</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
@@ -537,7 +537,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                 <div className="space-y-4">
                   <div className="text-center mb-4 sm:mb-6">
                     <h3 className="text-white font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Birth Details</h3>
-                    <p className="text-purple-200 text-sm sm:text-base lg:text-lg">Enter your exact birth date, time, and location for precise calculations</p>
+                    <p className="text-teal-200 text-sm sm:text-base lg:text-lg">Enter your exact birth date, time, and location for precise calculations</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
@@ -581,7 +581,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                                 }}
                                 placeholder="14:30 (2:30 PM)"
                               />
-                              <p className="text-xs text-purple-200 bg-purple-900/30 border border-yellow-500/30 p-2 rounded">
+                              <p className="text-xs text-teal-200 bg-teal-900/30 border border-yellow-500/30 p-2 rounded">
                                 💡 Use 24-hour format: 14:30 = 2:30 PM, 09:15 = 9:15 AM, 00:00 = Midnight
                               </p>
                             </div>
@@ -638,20 +638,20 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                                     <div className="flex justify-between items-start">
                                       <div className="flex-1">
                                         <div className="text-white font-medium">{city.city}</div>
-                                        <div className="text-purple-200 text-sm">
+                                        <div className="text-teal-200 text-sm">
                                           {city.adminName1 && `${city.adminName1}, `}{city.country}
                                         </div>
-                                        <div className="text-purple-300 text-xs mt-1">
+                                        <div className="text-teal-300 text-xs mt-1">
                                           {city.timezone} • Population: {city.population?.toLocaleString() || 'Unknown'}
                                         </div>
                                       </div>
-                                      <div className="text-purple-300 text-xs ml-2">
+                                      <div className="text-teal-300 text-xs ml-2">
                                         {city.region}
                                       </div>
                                     </div>
                                   </div>
                                 ))}
-                                <div className="p-2 text-center text-xs text-purple-300 bg-slate-900/50">
+                                <div className="p-2 text-center text-xs text-teal-300 bg-slate-900/50">
                                   Enhanced by GeoNames • 11M+ cities worldwide
                                 </div>
                               </div>
@@ -695,7 +695,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                               <SelectValue placeholder="Select your timezone" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="max-h-60 z-[100] bg-slate-900 border-2 border-purple-300 shadow-xl">
+                          <SelectContent className="max-h-60 z-[100] bg-slate-900 border-2 border-teal-300 shadow-xl">
                             {WORLD_TIMEZONES.map((tz) => (
                               <SelectItem key={tz.id} value={tz.id}>
                                 {tz.name} ({tz.cities[0]}) - UTC{tz.offset >= 0 ? '+' : ''}{tz.offset}
@@ -729,7 +729,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                 <div className="space-y-4">
                   <div className="text-center mb-6">
                     <h3 className="text-white font-semibold text-lg sm:text-xl lg:text-2xl mb-2">Analysis Systems</h3>
-                    <p className="text-purple-200 text-sm sm:text-base lg:text-lg">Choose which astrological systems to include in your comprehensive report</p>
+                    <p className="text-teal-200 text-sm sm:text-base lg:text-lg">Choose which astrological systems to include in your comprehensive report</p>
                   </div>
 
                   <div className="grid grid-cols-1 gap-4">
@@ -745,7 +745,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                         control={form.control}
                         name={`systems.${system.key}` as any}
                         render={({ field }) => (
-                          <Card className="bg-slate-800/90 border-purple-300 p-4 hover:bg-slate-700/95 transition-colors">
+                          <Card className="bg-slate-800/90 border-teal-300 p-4 hover:bg-slate-700/95 transition-colors">
                             <FormItem className="flex flex-row items-start space-x-3 space-y-0">
                               <FormControl>
                                 <Checkbox
@@ -771,7 +771,7 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                     control={form.control}
                     name="confirmed"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 bg-slate-800/90 border border-purple-300 rounded-lg p-4">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 bg-slate-800/90 border border-teal-300 rounded-lg p-4">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
@@ -809,14 +809,14 @@ export default function ModernBirthForm({ onClose, onComplete }: ModernBirthForm
                   <Button
                     type="button"
                     onClick={() => setCurrentStep(currentStep + 1)}
-                    className="bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-yellow-500"
+                    className="bg-gradient-to-r from-yellow-600 to-gray-600 hover:from-teal-700 hover:to-gray-700 text-white font-semibold text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-yellow-500"
                   >
                     Next <ChevronRight className="ml-1 h-4 w-4" />
                   </Button>
                 ) : (
                   <Button
                     type="submit"
-                    className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-yellow-500 relative overflow-hidden"
+                    className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-yellow-500 relative overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Generate My Cosmic Profile ✨

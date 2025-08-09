@@ -65,19 +65,19 @@ interface VisualizerProps {
 }
 
 const energyTypeConfig = {
-  amplifying: { icon: Zap, color: "#FFD700", pulse: true },
-  balancing: { icon: Target, color: "#32CD32", pulse: false },
-  protective: { icon: Shield, color: "#8B4513", pulse: false },
-  manifestation: { icon: Wand2, color: "#FF6347", pulse: true },
-  healing: { icon: Heart, color: "#C5A55A", pulse: true },
-  intuitive: { icon: Brain, color: "#6A9797", pulse: true }
+  amplifying: { icon: Zap, color: "hsl(44, 45%, 65%)", pulse: true },
+  balancing: { icon: Target, color: "hsl(180, 25%, 55%)", pulse: false },
+  protective: { icon: Shield, color: "hsl(30, 8%, 18%)", pulse: false },
+  manifestation: { icon: Wand2, color: "hsl(44, 45%, 65%)", pulse: true },
+  healing: { icon: Heart, color: "hsl(44, 45%, 65%)", pulse: true },
+  intuitive: { icon: Brain, color: "hsl(180, 25%, 55%)", pulse: true }
 };
 
 const gemstoneDatabase: GemstoneEnergy[] = [
   {
     id: "amethyst",
     name: "Amethyst",
-    color: "#9B59B6",
+    color: "hsl(180, 25%, 55%)",
     energyType: "intuitive",
     chakra: "Crown & Third Eye",
     element: "Air",
@@ -93,7 +93,7 @@ const gemstoneDatabase: GemstoneEnergy[] = [
   {
     id: "rose-quartz",
     name: "Rose Quartz",
-    color: "#F8BBD0",
+    color: "hsl(44, 45%, 65%)",
     energyType: "healing",
     chakra: "Heart",
     element: "Water",
@@ -109,7 +109,7 @@ const gemstoneDatabase: GemstoneEnergy[] = [
   {
     id: "clear-quartz",
     name: "Clear Quartz",
-    color: "#E8E8E8",
+    color: "hsl(60, 10%, 96%)",
     energyType: "amplifying",
     chakra: "All Chakras",
     element: "Fire",
@@ -125,7 +125,7 @@ const gemstoneDatabase: GemstoneEnergy[] = [
   {
     id: "black-tourmaline",
     name: "Black Tourmaline",
-    color: "#2C2C2C",
+    color: "hsl(30, 8%, 18%)",
     energyType: "protective",
     chakra: "Root",
     element: "Earth",
@@ -141,7 +141,7 @@ const gemstoneDatabase: GemstoneEnergy[] = [
   {
     id: "citrine",
     name: "Citrine",
-    color: "#FFE135",
+    color: "hsl(44, 45%, 65%)",
     energyType: "manifestation",
     chakra: "Solar Plexus",
     element: "Fire",
@@ -157,7 +157,7 @@ const gemstoneDatabase: GemstoneEnergy[] = [
   {
     id: "green-aventurine",
     name: "Green Aventurine",
-    color: "#4CAF50",
+    color: "hsl(180, 25%, 55%)",
     energyType: "balancing",
     chakra: "Heart",
     element: "Earth",
@@ -265,13 +265,13 @@ export default function IntuitiveGemstoneVisualizer({
         // Calculate connection strength based on energy compatibility
         let strength = 0;
         let type: EnergyConnection['type'] = 'synergy';
-        let color = '#888888';
+        let color = 'hsl(30, 5%, 66%)';
         
         // Same chakra = strong synergy
         if (stone1.chakra === stone2.chakra) {
           strength = 80;
           type = 'synergy';
-          color = '#FFD700';
+          color = 'hsl(44, 45%, 65%)';
         }
         // Complementary elements
         else if (
@@ -280,19 +280,19 @@ export default function IntuitiveGemstoneVisualizer({
         ) {
           strength = 70;
           type = 'balance';
-          color = '#32CD32';
+          color = 'hsl(180, 25%, 55%)';
         }
         // Amplifying stones boost others
         else if (stone1.energyType === 'amplifying' || stone2.energyType === 'amplifying') {
           strength = 60;
           type = 'amplification';
-          color = '#FF6347';
+          color = 'hsl(44, 45%, 65%)';
         }
         // Different energy types can create transformation
         else if (stone1.energyType !== stone2.energyType) {
           strength = 40;
           type = 'transformation';
-          color = '#6A9797';
+          color = 'hsl(180, 25%, 55%)';
         }
         
         if (strength > 30) {
@@ -450,7 +450,7 @@ export default function IntuitiveGemstoneVisualizer({
               <select 
                 value={visualMode}
                 onChange={(e) => setVisualMode(e.target.value as any)}
-                className="bg-purple-900/30 border border-yellow-500/30 rounded px-2 py-1 text-white text-sm"
+                className="bg-teal-900/30 border border-yellow-500/30 rounded px-2 py-1 text-white text-sm"
               >
                 <option value="energy">Energy Type</option>
                 <option value="chakra">Chakra Focus</option>
@@ -461,7 +461,7 @@ export default function IntuitiveGemstoneVisualizer({
           
           <div className="space-y-3">
             <div>
-              <label className="text-purple-200 text-sm mb-2 block">Energy Intensity: {energyIntensity}%</label>
+              <label className="text-teal-200 text-sm mb-2 block">Energy Intensity: {energyIntensity}%</label>
               <input
                 type="range"
                 min="0"
@@ -469,7 +469,7 @@ export default function IntuitiveGemstoneVisualizer({
                 step="5"
                 value={energyIntensity}
                 onChange={(e) => setEnergyIntensity(Number(e.target.value))}
-                className="w-full h-2 bg-purple-700 rounded-lg appearance-none cursor-pointer"
+                className="w-full h-2 bg-teal-700 rounded-lg appearance-none cursor-pointer"
               />
             </div>
           </div>
@@ -483,7 +483,7 @@ export default function IntuitiveGemstoneVisualizer({
             ref={canvasRef}
             width={600}
             height={400}
-            className="w-full h-auto bg-gradient-to-br from-purple-900/20 to-indigo-900/20 rounded-lg"
+            className="w-full h-auto bg-gradient-to-br from-teal-900/20 to-gray-900/20 rounded-lg"
           />
           
           {/* Gemstone nodes overlay */}
@@ -556,7 +556,7 @@ export default function IntuitiveGemstoneVisualizer({
                   className={`p-3 rounded-lg border cursor-pointer transition-all ${
                     isSelected 
                       ? 'border-yellow-500 bg-yellow-500/20' 
-                      : 'border-yellow-600/30 bg-purple-900/20 hover:bg-purple-800/30'
+                      : 'border-yellow-600/30 bg-teal-900/20 hover:bg-teal-800/30'
                   }`}
                   onClick={() => isSelected ? removeGemstone(stone.id) : addGemstone(stone)}
                   whileHover={{ scale: 1.05 }}
@@ -567,16 +567,16 @@ export default function IntuitiveGemstoneVisualizer({
                       className="w-4 h-4 rounded-full border border-white/30"
                       style={{ backgroundColor: stone.color }}
                     />
-                    <config.icon className="w-4 h-4 text-purple-300" />
+                    <config.icon className="w-4 h-4 text-teal-300" />
                   </div>
                   
                   <h4 className="font-medium text-white text-sm mb-1">{stone.name}</h4>
-                  <p className="text-purple-200 text-xs mb-2">{stone.chakra}</p>
+                  <p className="text-teal-200 text-xs mb-2">{stone.chakra}</p>
                   
                   <div className="flex items-center justify-between">
                     <Badge 
                       variant="outline" 
-                      className="text-xs border-yellow-500/30 text-purple-300"
+                      className="text-xs border-yellow-500/30 text-teal-300"
                     >
                       {resonance}% match
                     </Badge>
@@ -617,7 +617,7 @@ export default function IntuitiveGemstoneVisualizer({
                     return (
                       <div key={type} className="flex items-center gap-3">
                         <config.icon className="w-4 h-4" style={{ color: config.color }} />
-                        <span className="text-purple-200 text-sm capitalize flex-1">{type}</span>
+                        <span className="text-teal-200 text-sm capitalize flex-1">{type}</span>
                         <div className="w-20">
                           <Progress value={percentage} className="h-2" />
                         </div>
@@ -642,7 +642,7 @@ export default function IntuitiveGemstoneVisualizer({
                           className="w-3 h-3 rounded-full"
                           style={{ backgroundColor: connection.color }}
                         />
-                        <span className="text-purple-200">
+                        <span className="text-teal-200">
                           {stone1?.name} ↔ {stone2?.name}
                         </span>
                         <div className="flex-1">
@@ -658,27 +658,27 @@ export default function IntuitiveGemstoneVisualizer({
             
             {/* Personalized Recommendations */}
             {userProfile && (
-              <div className="mt-6 p-4 bg-purple-900/20 rounded-lg border border-yellow-500/30">
+              <div className="mt-6 p-4 bg-teal-900/20 rounded-lg border border-yellow-500/30">
                 <h4 className="font-medium text-white mb-2 flex items-center gap-2">
                   <Star className="w-4 h-4 text-yellow-400" />
                   Personalized Insights
                 </h4>
                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-purple-300">Optimal Timing:</span>
-                    <p className="text-purple-100">Best used during evening meditation or before sleep</p>
+                    <span className="text-teal-300">Optimal Timing:</span>
+                    <p className="text-teal-100">Best used during evening meditation or before sleep</p>
                   </div>
                   <div>
-                    <span className="text-purple-300">Placement Suggestion:</span>
-                    <p className="text-purple-100">Carry in left pocket or wear as pendant near heart</p>
+                    <span className="text-teal-300">Placement Suggestion:</span>
+                    <p className="text-teal-100">Carry in left pocket or wear as pendant near heart</p>
                   </div>
                   <div>
-                    <span className="text-purple-300">Intention Focus:</span>
-                    <p className="text-purple-100">Spiritual growth and emotional balance enhancement</p>
+                    <span className="text-teal-300">Intention Focus:</span>
+                    <p className="text-teal-100">Spiritual growth and emotional balance enhancement</p>
                   </div>
                   <div>
-                    <span className="text-purple-300">Cleansing Method:</span>
-                    <p className="text-purple-100">Moonlight charging with selenite cleansing monthly</p>
+                    <span className="text-teal-300">Cleansing Method:</span>
+                    <p className="text-teal-100">Moonlight charging with selenite cleansing monthly</p>
                   </div>
                 </div>
               </div>

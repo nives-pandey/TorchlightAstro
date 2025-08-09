@@ -166,7 +166,7 @@ How can I illuminate your path today?`,
 
   return (
     <Card className="sanctuary-card h-[600px] flex flex-col">
-      <CardHeader className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-t-lg">
+      <CardHeader className="bg-gradient-to-r from-teal-900/50 to-blue-900/50 rounded-t-lg">
         <CardTitle className="text-white flex items-center space-x-2">
           <Bot className="h-6 w-6 text-yellow-600" />
           <span>Cosmic AI Assistant</span>
@@ -200,7 +200,7 @@ How can I illuminate your path today?`,
                             <span className="text-yellow-500 text-xs font-medium">Key Insights</span>
                           </div>
                           {message.insights.map((insight, index) => (
-                            <Badge key={index} variant="outline" className="border-yellow-500/50 text-purple-300 text-xs">
+                            <Badge key={index} variant="outline" className="border-yellow-500/50 text-teal-300 text-xs">
                               {insight}
                             </Badge>
                           ))}
@@ -216,7 +216,7 @@ How can I illuminate your path today?`,
                           </div>
                           <div className="space-y-1">
                             {message.recommendations.map((rec, index) => (
-                              <p key={index} className="text-purple-300 text-xs">• {rec}</p>
+                              <p key={index} className="text-teal-300 text-xs">• {rec}</p>
                             ))}
                           </div>
                         </div>

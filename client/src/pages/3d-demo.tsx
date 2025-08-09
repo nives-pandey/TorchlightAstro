@@ -11,27 +11,27 @@ export default function Chart3DDemo() {
 
   // Krishna Raj's demo data for 3D visualization
   const krishnaRajPlanets = [
-    { name: 'Sun', longitude: 83.45, latitude: 0, distance: 1, color: '#FFA500', size: 20, speed: 0.9856 },
-    { name: 'Moon', longitude: 113.24, latitude: 0, distance: 0.38, color: '#C0C0C0', size: 12, speed: 13.1764 },
-    { name: 'Mercury', longitude: 75.12, latitude: 0, distance: 0.39, color: '#8C7853', size: 8, speed: 1.6071 },
-    { name: 'Venus', longitude: 91.33, latitude: 0, distance: 0.72, color: '#FFC649', size: 10, speed: 1.1767 },
-    { name: 'Mars', longitude: 156.78, latitude: 0, distance: 1.52, color: '#CD5C5C', size: 9, speed: 0.5240 },
-    { name: 'Jupiter', longitude: 67.89, latitude: 0, distance: 5.20, color: '#D2691E', size: 18, speed: 0.0831 },
-    { name: 'Saturn', longitude: 223.45, latitude: 0, distance: 9.54, color: '#FAD5A5', size: 16, speed: 0.0334 },
-    { name: 'Uranus', longitude: 345.67, latitude: 0, distance: 19.19, color: '#4FD0E7', size: 14, speed: 0.0117 },
-    { name: 'Neptune', longitude: 278.90, latitude: 0, distance: 30.07, color: '#4169E1', size: 14, speed: 0.0060 },
-    { name: 'Pluto', longitude: 201.23, latitude: 0, distance: 39.48, color: '#8B4513', size: 6, speed: 0.0040 }
+    { name: 'Sun', longitude: 83.45, latitude: 0, distance: 1, color: 'hsl(44, 45%, 65%)', size: 20, speed: 0.9856 },
+    { name: 'Moon', longitude: 113.24, latitude: 0, distance: 0.38, color: 'hsl(60, 10%, 96%)', size: 12, speed: 13.1764 },
+    { name: 'Mercury', longitude: 75.12, latitude: 0, distance: 0.39, color: 'hsl(30, 8%, 18%)', size: 8, speed: 1.6071 },
+    { name: 'Venus', longitude: 91.33, latitude: 0, distance: 0.72, color: 'hsl(44, 45%, 65%)', size: 10, speed: 1.1767 },
+    { name: 'Mars', longitude: 156.78, latitude: 0, distance: 1.52, color: 'hsl(30, 5%, 66%)', size: 9, speed: 0.5240 },
+    { name: 'Jupiter', longitude: 67.89, latitude: 0, distance: 5.20, color: 'hsl(30, 8%, 18%)', size: 18, speed: 0.0831 },
+    { name: 'Saturn', longitude: 223.45, latitude: 0, distance: 9.54, color: 'hsl(60, 10%, 96%)', size: 16, speed: 0.0334 },
+    { name: 'Uranus', longitude: 345.67, latitude: 0, distance: 19.19, color: 'hsl(180, 25%, 55%)', size: 14, speed: 0.0117 },
+    { name: 'Neptune', longitude: 278.90, latitude: 0, distance: 30.07, color: 'hsl(180, 25%, 55%)', size: 14, speed: 0.0060 },
+    { name: 'Pluto', longitude: 201.23, latitude: 0, distance: 39.48, color: 'hsl(30, 8%, 18%)', size: 6, speed: 0.0040 }
   ];
 
   const aspects = [
-    { planet1: 'Sun', planet2: 'Moon', angle: 30, type: 'semisextile', orb: 2.5, strength: 0.7, color: '#DDA0DD' },
-    { planet1: 'Sun', planet2: 'Mercury', angle: 8, type: 'conjunction', orb: 8, strength: 0.9, color: '#FF0000' },
-    { planet1: 'Moon', planet2: 'Mars', angle: 43, type: 'semisextile', orb: 13, strength: 0.4, color: '#DDA0DD' },
-    { planet1: 'Venus', planet2: 'Jupiter', angle: 23, type: 'semisextile', orb: 7, strength: 0.6, color: '#DDA0DD' },
-    { planet1: 'Mars', planet2: 'Saturn', angle: 67, type: 'sextile', orb: 7, strength: 0.8, color: '#00CED1' },
-    { planet1: 'Jupiter', planet2: 'Uranus', angle: 82, type: 'square', orb: 8, strength: 0.7, color: '#FF1493' },
-    { planet1: 'Saturn', planet2: 'Neptune', angle: 55, type: 'sextile', orb: 5, strength: 0.9, color: '#00CED1' },
-    { planet1: 'Uranus', planet2: 'Pluto', angle: 144, type: 'quincunx', orb: 6, strength: 0.5, color: '#6A9797' }
+    { planet1: 'Sun', planet2: 'Moon', angle: 30, type: 'semisextile', orb: 2.5, strength: 0.7, color: 'hsl(180, 25%, 55%)' },
+    { planet1: 'Sun', planet2: 'Mercury', angle: 8, type: 'conjunction', orb: 8, strength: 0.9, color: 'hsl(44, 45%, 65%)' },
+    { planet1: 'Moon', planet2: 'Mars', angle: 43, type: 'semisextile', orb: 13, strength: 0.4, color: 'hsl(180, 25%, 55%)' },
+    { planet1: 'Venus', planet2: 'Jupiter', angle: 23, type: 'semisextile', orb: 7, strength: 0.6, color: 'hsl(180, 25%, 55%)' },
+    { planet1: 'Mars', planet2: 'Saturn', angle: 67, type: 'sextile', orb: 7, strength: 0.8, color: 'hsl(180, 25%, 55%)' },
+    { planet1: 'Jupiter', planet2: 'Uranus', angle: 82, type: 'square', orb: 8, strength: 0.7, color: 'hsl(44, 45%, 65%)' },
+    { planet1: 'Saturn', planet2: 'Neptune', angle: 55, type: 'sextile', orb: 5, strength: 0.9, color: 'hsl(180, 25%, 55%)' },
+    { planet1: 'Uranus', planet2: 'Pluto', angle: 144, type: 'quincunx', orb: 6, strength: 0.5, color: 'hsl(180, 25%, 55%)' }
   ];
 
   const generateTransitData = () => {
@@ -77,7 +77,7 @@ export default function Chart3DDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -257,7 +257,7 @@ export default function Chart3DDemo() {
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Canvas 2D Mode</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Canvas 2D Mode</h4>
                 <ul className="text-sm text-gray-300 space-y-1">
                   <li>• Interactive planetary positions</li>
                   <li>• Real-time aspect visualization</li>
@@ -266,7 +266,7 @@ export default function Chart3DDemo() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Chart Types</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Chart Types</h4>
                 <ul className="text-sm text-gray-300 space-y-1">
                   <li>• <strong>Natal:</strong> Birth chart positions</li>
                   <li>• <strong>Transit:</strong> Current sky overlay</li>
@@ -275,7 +275,7 @@ export default function Chart3DDemo() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Interactive Controls</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Interactive Controls</h4>
                 <ul className="text-sm text-gray-300 space-y-1">
                   <li>• 3D rotation and zoom controls</li>
                   <li>• Planet selection and details</li>

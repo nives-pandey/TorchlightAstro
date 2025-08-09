@@ -90,7 +90,7 @@ export default function FeatureHoverCard({
       {/* Hover card */}
       {isHovered && (
         <div className="absolute z-50 top-full left-1/2 transform -translate-x-1/2 mt-2 w-80">
-          <Card className="bg-purple-900/95 backdrop-blur-lg border border-pink-300/30 shadow-2xl">
+          <Card className="bg-teal-900/95 backdrop-blur-lg border border-pink-300/30 shadow-2xl">
             <CardContent className="p-4 space-y-3">
               {/* Header */}
               <div className="flex items-center justify-between">

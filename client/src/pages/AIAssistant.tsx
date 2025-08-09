@@ -77,12 +77,12 @@ export function AIAssistant() {
         <div className="text-center space-y-4">
           <div className="flex items-center justify-center gap-3">
             <Sparkles className="h-8 w-8 text-yellow-400" />
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-white via-teal-200 to-pink-200 bg-clip-text text-transparent">
               AI Astrology Assistant
             </h1>
           </div>
           
-          <p className="text-purple-200 text-lg max-w-2xl mx-auto">
+          <p className="text-teal-200 text-lg max-w-2xl mx-auto">
             Get personalized astrological insights, learn cosmic concepts, and receive guidance powered by advanced AI understanding of traditional astrology.
           </p>
 
@@ -103,7 +103,7 @@ export function AIAssistant() {
         </div>
 
         <Tabs defaultValue="chat" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 bg-white/10 border border-purple-300/20">
+          <TabsList className="grid w-full grid-cols-2 bg-white/10 border border-teal-300/20">
             <TabsTrigger value="chat" className="data-[state=active]:bg-white/20">
               Chat Assistant
             </TabsTrigger>
@@ -145,7 +145,7 @@ export function AIAssistant() {
           <TabsContent value="features" className="mt-6">
             <div className="grid md:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <Card key={index} className="border-purple-300/20 bg-white/5">
+                <Card key={index} className="border-teal-300/20 bg-white/5">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3 text-white">
                       <div className={`p-2 rounded-lg ${
@@ -172,7 +172,7 @@ export function AIAssistant() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-purple-200 text-sm leading-relaxed">
+                    <p className="text-teal-200 text-sm leading-relaxed">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -182,7 +182,7 @@ export function AIAssistant() {
 
             {/* API Status Details */}
             {aiStatus && (
-              <Card className="mt-6 border-purple-300/20 bg-white/5">
+              <Card className="mt-6 border-teal-300/20 bg-white/5">
                 <CardHeader>
                   <CardTitle className="text-white">System Status</CardTitle>
                 </CardHeader>
@@ -190,7 +190,7 @@ export function AIAssistant() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-purple-200">OpenAI Integration</span>
+                        <span className="text-teal-200">OpenAI Integration</span>
                         <Badge className={
                           aiStatus.openai?.available 
                             ? 'bg-green-500/20 text-green-400 border-green-500/30'
@@ -199,19 +199,19 @@ export function AIAssistant() {
                           {aiStatus.openai?.available ? 'Connected' : 'Unavailable'}
                         </Badge>
                       </div>
-                      <p className="text-sm text-purple-300">
+                      <p className="text-sm text-teal-300">
                         {aiStatus.openai?.status || 'API key needed for AI features'}
                       </p>
                     </div>
                     
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-purple-200">Traditional Astrology</span>
+                        <span className="text-teal-200">Traditional Astrology</span>
                         <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
                           Always Available
                         </Badge>
                       </div>
-                      <p className="text-sm text-purple-300">
+                      <p className="text-sm text-teal-300">
                         Core astrological guidance available without AI integration
                       </p>
                     </div>

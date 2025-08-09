@@ -80,7 +80,7 @@ export default function TimezoneAnalytics() {
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <Card className="bg-purple-800/40 border-blue-400/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-blue-400/30 backdrop-blur-md">
               <CardContent className="p-6 text-center">
                 <Users className="h-8 w-8 text-blue-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">{timezoneData.usage.totalUsers.toLocaleString()}</div>
@@ -88,7 +88,7 @@ export default function TimezoneAnalytics() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-green-400/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-green-400/30 backdrop-blur-md">
               <CardContent className="p-6 text-center">
                 <CheckCircle className="h-8 w-8 text-green-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">{timezoneData.usage.autoDetectionSuccess}%</div>
@@ -96,7 +96,7 @@ export default function TimezoneAnalytics() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-yellow-500/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-yellow-500/30 backdrop-blur-md">
               <CardContent className="p-6 text-center">
                 <Clock className="h-8 w-8 text-yellow-500 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">{timezoneData.usage.dstCorrections.toLocaleString()}</div>
@@ -104,7 +104,7 @@ export default function TimezoneAnalytics() {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-orange-400/30 backdrop-blur-md">
+            <Card className="bg-teal-800/40 border-orange-400/30 backdrop-blur-md">
               <CardContent className="p-6 text-center">
                 <TrendingUp className="h-8 w-8 text-orange-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-white">{timezoneData.dstImpact.accuracyImprovement}%</div>
@@ -115,7 +115,7 @@ export default function TimezoneAnalytics() {
 
           {/* Analytics Tabs */}
           <Tabs defaultValue="usage" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-purple-800/40">
+            <TabsList className="grid w-full grid-cols-4 bg-teal-800/40">
               <TabsTrigger value="usage" className="text-white data-[state=active]:bg-blue-500">
                 <Globe className="mr-2 h-4 w-4" />
                 Usage Analytics
@@ -136,13 +136,13 @@ export default function TimezoneAnalytics() {
 
             {/* Usage Analytics */}
             <TabsContent value="usage" className="mt-6">
-              <Card className="bg-purple-800/40 border-blue-400/30">
+              <Card className="bg-teal-800/40 border-blue-400/30">
                 <CardHeader>
                   <CardTitle className="text-white">Popular Timezones</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {timezoneData.popular.map((tz: any, index: number) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-purple-900/30 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-4 bg-teal-900/30 rounded-lg">
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-white font-medium">{tz.timezone}</span>
@@ -167,7 +167,7 @@ export default function TimezoneAnalytics() {
             {/* Data Quality */}
             <TabsContent value="quality" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Card className="bg-purple-800/40 border-green-400/30">
+                <Card className="bg-teal-800/40 border-green-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Birth Time Precision</CardTitle>
                   </CardHeader>
@@ -182,7 +182,7 @@ export default function TimezoneAnalytics() {
                       </div>
                       <div>
                         <div className="flex justify-between mb-1">
-                          <span className="text-purple-300">Rounded to 15min</span>
+                          <span className="text-teal-300">Rounded to 15min</span>
                           <span className="text-white">{timezoneData.quality.roundedTo15Min}%</span>
                         </div>
                         <Progress value={timezoneData.quality.roundedTo15Min} className="h-2" />
@@ -205,7 +205,7 @@ export default function TimezoneAnalytics() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-purple-800/40 border-green-400/30">
+                <Card className="bg-teal-800/40 border-green-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Quality Indicators</CardTitle>
                   </CardHeader>
@@ -228,7 +228,7 @@ export default function TimezoneAnalytics() {
                       <div className="flex items-center p-3 bg-yellow-600/20 rounded-lg">
                         <Clock className="h-5 w-5 text-yellow-500 mr-3" />
                         <div>
-                          <div className="text-purple-300 font-medium">DST Accuracy</div>
+                          <div className="text-teal-300 font-medium">DST Accuracy</div>
                           <div className="text-xs text-gray-400">Historical DST rules correctly applied</div>
                         </div>
                       </div>
@@ -240,17 +240,17 @@ export default function TimezoneAnalytics() {
 
             {/* Geographic Distribution */}
             <TabsContent value="geographic" className="mt-6">
-              <Card className="bg-purple-800/40 border-yellow-500/30">
+              <Card className="bg-teal-800/40 border-yellow-500/30">
                 <CardHeader>
                   <CardTitle className="text-white">Users by Region</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {Object.entries(timezoneData.geographic).map(([region, percentage]: [string, any]) => (
-                    <div key={region} className="flex items-center justify-between p-4 bg-purple-900/30 rounded-lg">
+                    <div key={region} className="flex items-center justify-between p-4 bg-teal-900/30 rounded-lg">
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-white font-medium capitalize">{region.replace(/([A-Z])/g, ' $1')}</span>
-                          <span className="text-purple-300">{percentage}%</span>
+                          <span className="text-teal-300">{percentage}%</span>
                         </div>
                         <Progress value={percentage} className="h-2" />
                       </div>
@@ -263,7 +263,7 @@ export default function TimezoneAnalytics() {
             {/* DST Impact */}
             <TabsContent value="dst" className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="bg-purple-800/40 border-orange-400/30">
+                <Card className="bg-teal-800/40 border-orange-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Charts Affected</CardTitle>
                   </CardHeader>
@@ -275,7 +275,7 @@ export default function TimezoneAnalytics() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-purple-800/40 border-orange-400/30">
+                <Card className="bg-teal-800/40 border-orange-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">Rising Sign Changes</CardTitle>
                   </CardHeader>
@@ -287,7 +287,7 @@ export default function TimezoneAnalytics() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-purple-800/40 border-orange-400/30">
+                <Card className="bg-teal-800/40 border-orange-400/30">
                   <CardHeader>
                     <CardTitle className="text-white">House System Shifts</CardTitle>
                   </CardHeader>
@@ -300,7 +300,7 @@ export default function TimezoneAnalytics() {
                 </Card>
               </div>
 
-              <Card className="bg-purple-800/40 border-orange-400/30 mt-6">
+              <Card className="bg-teal-800/40 border-orange-400/30 mt-6">
                 <CardHeader>
                   <CardTitle className="text-white">DST Benefits</CardTitle>
                 </CardHeader>

@@ -56,7 +56,7 @@ const gemstoneDatabase: GemstonePairing[] = [
   {
     id: "amethyst",
     name: "Amethyst",
-    color: "#9B59B6",
+    color: "hsl(180, 25%, 55%)",
     energyType: "intuitive",
     chakra: "Crown & Third Eye",
     element: "Air",
@@ -82,7 +82,7 @@ const gemstoneDatabase: GemstonePairing[] = [
   {
     id: "rose-quartz",
     name: "Rose Quartz",
-    color: "#F8BBD0",
+    color: "hsl(60, 10%, 96%)",
     energyType: "healing",
     chakra: "Heart",
     element: "Water",
@@ -108,7 +108,7 @@ const gemstoneDatabase: GemstonePairing[] = [
   {
     id: "citrine",
     name: "Citrine",
-    color: "#FFC107",
+    color: "hsl(44, 45%, 65%)",
     energyType: "manifestation",
     chakra: "Solar Plexus",
     element: "Fire",
@@ -134,7 +134,7 @@ const gemstoneDatabase: GemstonePairing[] = [
   {
     id: "black-tourmaline",
     name: "Black Tourmaline",
-    color: "#2C3E50",
+    color: "hsl(30, 8%, 18%)",
     energyType: "protective",
     chakra: "Root",
     element: "Earth",
@@ -160,7 +160,7 @@ const gemstoneDatabase: GemstonePairing[] = [
   {
     id: "clear-quartz",
     name: "Clear Quartz",
-    color: "#F8F9FA",
+    color: "hsl(60, 10%, 96%)",
     energyType: "amplifying",
     chakra: "All Chakras",
     element: "All Elements",
@@ -186,7 +186,7 @@ const gemstoneDatabase: GemstonePairing[] = [
   {
     id: "labradorite",
     name: "Labradorite",
-    color: "#4ECDC4",
+    color: "hsl(180, 25%, 55%)",
     energyType: "intuitive",
     chakra: "Third Eye & Throat",
     element: "Air & Water",
@@ -212,12 +212,12 @@ const gemstoneDatabase: GemstonePairing[] = [
 ];
 
 const energyTypeColors = {
-  amplifying: "#FFD700",
-  balancing: "#32CD32",
-  protective: "#8B4513",
-  manifestation: "#FF6347",
-  healing: "#FF69B4",
-  intuitive: "#6A9797"
+  amplifying: "hsl(44, 45%, 65%)",
+  balancing: "hsl(180, 25%, 55%)",
+  protective: "hsl(30, 8%, 18%)",
+  manifestation: "hsl(44, 45%, 65%)",
+  healing: "hsl(44, 45%, 65%)",
+  intuitive: "hsl(180, 25%, 55%)"
 };
 
 const energyTypeIcons = {
@@ -296,11 +296,11 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
 
   const getEnergyVisualization = (stone: GemstonePairing) => {
     const energies = [
-      { name: "Emotional", value: stone.emotionalResonance, color: "#FF6B9D" },
-      { name: "Spiritual", value: stone.spiritualAlignment, color: "#9B59B6" },
-      { name: "Physical", value: stone.physicalVitality, color: "#E74C3C" },
-      { name: "Mental", value: stone.mentalClarity, color: "#3498DB" },
-      { name: "Energy Flow", value: stone.energyFlow, color: "#F1C40F" }
+      { name: "Emotional", value: stone.emotionalResonance, color: "hsl(44, 45%, 65%)" },
+      { name: "Spiritual", value: stone.spiritualAlignment, color: "hsl(180, 25%, 55%)" },
+      { name: "Physical", value: stone.physicalVitality, color: "hsl(30, 5%, 66%)" },
+      { name: "Mental", value: stone.mentalClarity, color: "hsl(180, 25%, 55%)" },
+      { name: "Energy Flow", value: stone.energyFlow, color: "hsl(44, 45%, 65%)" }
     ];
 
     return energies;
@@ -322,7 +322,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-white hover:bg-purple-800/40"
+            className="absolute right-4 top-4 text-white hover:bg-teal-800/40"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -342,7 +342,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
         <CardContent className="space-y-6">
           {/* Personalized Recommendations */}
           {personalizedStones.length > 0 && (
-            <Card className="bg-gradient-to-r from-purple-900/40 to-pink-900/40 border-yellow-500/30">
+            <Card className="bg-gradient-to-r from-teal-900/40 to-pink-900/40 border-yellow-500/30">
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Star className="mr-2 h-5 w-5 text-yellow-400" />
@@ -384,7 +384,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
 
           {/* Energy Filter Tabs */}
           <Tabs value={energyFilter} onValueChange={setEnergyFilter} className="w-full">
-            <TabsList className="grid w-full grid-cols-7 bg-purple-900/30">
+            <TabsList className="grid w-full grid-cols-7 bg-teal-900/30">
               <TabsTrigger value="all" className="text-white data-[state=active]:bg-yellow-600">
                 All
               </TabsTrigger>
@@ -425,7 +425,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
                           </CardTitle>
                           <Badge 
                             variant="outline" 
-                            className="border-yellow-500/50 text-purple-300"
+                            className="border-yellow-500/50 text-teal-300"
                             style={{ color: energyTypeColors[stone.energyType] }}
                           >
                             <Icon className="w-3 h-3 mr-1" />
@@ -457,7 +457,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
 
                         <div className="mt-4 flex flex-wrap gap-1">
                           {stone.benefits.slice(0, 2).map((benefit) => (
-                            <Badge key={benefit} variant="secondary" className="text-xs bg-purple-800/30 text-purple-200">
+                            <Badge key={benefit} variant="secondary" className="text-xs bg-teal-800/30 text-teal-200">
                               {benefit}
                             </Badge>
                           ))}
@@ -481,7 +481,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
                 variant="ghost"
                 size="icon"
                 onClick={() => setSelectedStone(null)}
-                className="absolute right-4 top-4 text-white hover:bg-purple-800/40"
+                className="absolute right-4 top-4 text-white hover:bg-teal-800/40"
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -501,7 +501,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Energy Analysis */}
-                <Card className="bg-purple-900/20 border-yellow-500/30">
+                <Card className="bg-teal-900/20 border-yellow-500/30">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center">
                       <Zap className="mr-2 h-5 w-5" />
@@ -619,7 +619,7 @@ export default function GemstoneEnergyPairing({ onClose, birthData }: EnergyVisu
               </div>
 
               {/* Stone Combinations */}
-              <Card className="bg-purple-900/20 border-yellow-500/30">
+              <Card className="bg-teal-900/20 border-yellow-500/30">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center">
                     <Sparkles className="mr-2 h-5 w-5" />

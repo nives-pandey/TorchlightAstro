@@ -78,7 +78,7 @@ export default function Numerology() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-teal-900 via-blue-900 to-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
@@ -109,7 +109,7 @@ export default function Numerology() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="John Michael Smith"
-                  className="bg-purple-800/30 border-yellow-600 text-white placeholder-purple-300"
+                  className="bg-teal-800/30 border-yellow-600 text-white placeholder-teal-300"
                 />
               </div>
               <div className="space-y-2">
@@ -119,7 +119,7 @@ export default function Numerology() {
                   type="date"
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
-                  className="bg-purple-800/30 border-yellow-600 text-white"
+                  className="bg-teal-800/30 border-yellow-600 text-white"
                 />
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function Numerology() {
         {/* Results */}
         {numerologyData && (
           <Tabs defaultValue="core" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-5 bg-purple-800/30">
+            <TabsList className="grid w-full grid-cols-5 bg-teal-800/30">
               <TabsTrigger value="core" className="data-[state=active]:bg-yellow-600">Core Numbers</TabsTrigger>
               <TabsTrigger value="insights" className="data-[state=active]:bg-yellow-600">Insights</TabsTrigger>
               <TabsTrigger value="tarot" className="data-[state=active]:bg-yellow-600">Tarot Cards</TabsTrigger>
@@ -165,7 +165,7 @@ export default function Numerology() {
                     <CardTitle className="text-yellow-600 flex items-center space-x-2">
                       <Star className="h-6 w-6" />
                       <span>Life Path Number</span>
-                      <Badge variant="outline" className="border-yellow-500 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-500 text-teal-300">
                         {numerologyData.lifePath.reducedNumber}
                       </Badge>
                     </CardTitle>
@@ -184,7 +184,7 @@ export default function Numerology() {
                     <CardTitle className="text-yellow-500 flex items-center space-x-2">
                       <TrendingUp className="h-6 w-6" />
                       <span>Destiny Number</span>
-                      <Badge variant="outline" className="border-yellow-500 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-500 text-teal-300">
                         {numerologyData.destiny.reducedNumber}
                       </Badge>
                     </CardTitle>

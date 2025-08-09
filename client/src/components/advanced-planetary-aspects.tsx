@@ -67,13 +67,13 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
   const [aspectStrength, setAspectStrength] = useState([0.3]);
 
   const aspectTypes = [
-    { name: 'conjunction', color: '#FF0000', angle: 0, symbol: '☌' },
-    { name: 'opposition', color: '#FF4500', angle: 180, symbol: '☍' },
-    { name: 'trine', color: '#00FF00', angle: 120, symbol: '△' },
-    { name: 'square', color: '#FF1493', angle: 90, symbol: '□' },
-    { name: 'sextile', color: '#00CED1', angle: 60, symbol: '⚹' },
-    { name: 'quincunx', color: '#6A9797', angle: 150, symbol: '⚺' },
-    { name: 'semisextile', color: '#DDA0DD', angle: 30, symbol: '⚻' }
+    { name: 'conjunction', color: 'hsl(44, 45%, 65%)', angle: 0, symbol: '☌' },
+    { name: 'opposition', color: 'hsl(44, 45%, 65%)', angle: 180, symbol: '☍' },
+    { name: 'trine', color: 'hsl(180, 25%, 55%)', angle: 120, symbol: '△' },
+    { name: 'square', color: 'hsl(44, 45%, 65%)', angle: 90, symbol: '□' },
+    { name: 'sextile', color: 'hsl(180, 25%, 55%)', angle: 60, symbol: '⚹' },
+    { name: 'quincunx', color: 'hsl(180, 25%, 55%)', angle: 150, symbol: '⚺' },
+    { name: 'semisextile', color: 'hsl(180, 25%, 55%)', angle: 30, symbol: '⚻' }
   ];
 
   useEffect(() => {
@@ -118,11 +118,11 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
 
     // Clear canvas with feminine cosmic background
     const gradient = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, Math.max(width, height)/2);
-    gradient.addColorStop(0, '#1a0b2e');
-    gradient.addColorStop(0.3, '#2d1b4e');
-    gradient.addColorStop(0.6, '#44267a');
-    gradient.addColorStop(0.8, '#5b2c87');
-    gradient.addColorStop(1, '#6b2c91');
+    gradient.addColorStop(0, 'hsl(30, 8%, 18%)');
+    gradient.addColorStop(0.3, 'hsl(30, 8%, 18%)');
+    gradient.addColorStop(0.6, 'hsl(30, 8%, 18%)');
+    gradient.addColorStop(0.8, 'hsl(30, 8%, 18%)');
+    gradient.addColorStop(1, 'hsl(30, 8%, 18%)');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
@@ -184,7 +184,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
 
   const drawStarfield = (ctx: CanvasRenderingContext2D) => {
     // Feminine starfield with soft, twinkling stars
-    const starColors = ['#ffd1dc', '#ffb6c1', '#dda0dd', '#e6e6fa', '#f0e68c', '#ffffff'];
+    const starColors = ['hsl(60, 10%, 96%)', 'hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(60, 10%, 96%)', 'hsl(44, 45%, 65%)', 'hsl(60, 10%, 96%)'];
     
     for (let i = 0; i < 150; i++) {
       const x = Math.random() * width;
@@ -211,8 +211,8 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
   const drawZodiacWheel = (ctx: CanvasRenderingContext2D, centerX: number, centerY: number, maxRadius: number) => {
     const zodiacSigns = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
     const zodiacColors = [
-      '#ff7eb3', '#ff65a3', '#ff9a8b', '#ffa726', '#ffb74d', '#aed581',
-      '#81c784', '#4dd0e1', '#42a5f5', '#ab47bc', '#7e57c2', '#5c6bc0'
+      'hsl(44, 45%, 65%)', 'hsl(44, 45%, 65%)', 'hsl(44, 45%, 65%)', 'hsl(44, 45%, 65%)', 'hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)',
+      'hsl(180, 25%, 55%)', 'hsl(180, 25%, 55%)', 'hsl(180, 25%, 55%)', 'hsl(180, 25%, 55%)', 'hsl(180, 25%, 55%)', 'hsl(180, 25%, 55%)'
     ];
 
     // Draw elegant zodiac sectors with flowing gradients
@@ -408,7 +408,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       ctx.fillText(planet.name, labelX, labelY);
 
       // Draw degree
-      ctx.fillStyle = '#FFFFFF';
+      ctx.fillStyle = 'hsl(60, 10%, 96%)';
       ctx.font = '10px Arial';
       ctx.fillText(`${Math.round(planet.longitude)}°`, labelX, labelY + 12);
     });
@@ -453,7 +453,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
   return (
     <div className="space-y-8">
       {/* Elegant Controls Panel */}
-      <Card className="bg-gradient-to-br from-purple-900/40 via-pink-900/30 to-rose-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
+      <Card className="bg-gradient-to-br from-teal-900/40 via-pink-900/30 to-rose-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
         <CardHeader className="pb-4">
           <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
             <div className="w-8 h-8 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center">
@@ -466,21 +466,21 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           {/* Elegant View Controls */}
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-teal-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Flowing Animation</label>
                 <Switch checked={isAnimating} onCheckedChange={setIsAnimating} />
               </div>
-              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-teal-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Sacred Connections</label>
                 <Switch checked={showAspects} onCheckedChange={setShowAspects} />
               </div>
             </div>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-teal-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Celestial Orbits</label>
                 <Switch checked={showOrbits} onCheckedChange={setShowOrbits} />
               </div>
-              <div className="flex items-center justify-between p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
+              <div className="flex items-center justify-between p-4 bg-teal-900/20 rounded-2xl border border-pink-300/20">
                 <label className="text-rose-200 font-medium">Planet Names</label>
                 <Switch checked={showLabels} onCheckedChange={setShowLabels} />
               </div>
@@ -490,7 +490,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           {/* Elegant Zoom Control */}
           <div className="space-y-4">
             <label className="text-rose-200 font-medium">Cosmic Zoom</label>
-            <div className="flex items-center gap-4 p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
+            <div className="flex items-center gap-4 p-4 bg-teal-900/20 rounded-2xl border border-pink-300/20">
               <Button 
                 size="sm" 
                 className="rounded-full bg-gradient-to-r from-pink-500 to-rose-500 border-0 hover:from-pink-600 hover:to-rose-600" 
@@ -519,7 +519,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           {/* Elegant Aspect Strength Filter */}
           <div className="space-y-4">
             <label className="text-rose-200 font-medium">Connection Sensitivity</label>
-            <div className="p-4 bg-purple-900/20 rounded-2xl border border-pink-300/20">
+            <div className="p-4 bg-teal-900/20 rounded-2xl border border-pink-300/20">
               <Slider
                 value={aspectStrength}
                 onValueChange={setAspectStrength}
@@ -543,7 +543,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-full px-6 py-3 transition-all duration-300 ${
                   viewMode === '2d' 
                     ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
-                    : 'bg-purple-800/40 text-rose-300 border border-pink-300/30 hover:bg-purple-700/50'
+                    : 'bg-teal-800/40 text-rose-300 border border-pink-300/30 hover:bg-teal-700/50'
                 }`}
                 onClick={() => setViewMode('2d')}
               >
@@ -553,7 +553,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-full px-6 py-3 transition-all duration-300 ${
                   viewMode === '3d' 
                     ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg' 
-                    : 'bg-purple-800/40 text-rose-300 border border-pink-300/30 hover:bg-purple-700/50'
+                    : 'bg-teal-800/40 text-rose-300 border border-pink-300/30 hover:bg-teal-700/50'
                 }`}
                 onClick={() => setViewMode('3d')}
               >
@@ -565,7 +565,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       </Card>
 
       {/* Sacred Aspect Connections */}
-      <Card className="bg-gradient-to-br from-rose-900/40 via-purple-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
+      <Card className="bg-gradient-to-br from-rose-900/40 via-teal-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl">
         <CardHeader className="pb-4">
           <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
             <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-pink-500 rounded-full flex items-center justify-center">
@@ -582,7 +582,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
                 className={`rounded-2xl p-4 h-auto flex flex-col items-center gap-2 transition-all duration-300 ${
                   selectedAspects.includes(aspectType.name)
                     ? 'bg-gradient-to-br from-pink-500/30 to-rose-500/30 border-2 border-pink-400/50 shadow-lg scale-105'
-                    : 'bg-purple-900/20 border border-pink-300/20 hover:bg-purple-800/40 hover:border-pink-400/30'
+                    : 'bg-teal-900/20 border border-pink-300/20 hover:bg-teal-800/40 hover:border-pink-400/30'
                 }`}
                 onClick={() => toggleAspectType(aspectType.name)}
               >
@@ -602,10 +602,10 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
       </Card>
 
       {/* Celestial Mandala Visualization */}
-      <Card className="bg-gradient-to-br from-indigo-900/40 via-purple-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl overflow-hidden">
+      <Card className="bg-gradient-to-br from-gray-900/40 via-teal-900/30 to-pink-900/40 border-0 rounded-3xl backdrop-blur-md shadow-2xl overflow-hidden">
         <CardHeader className="pb-4">
           <CardTitle className="text-rose-300 flex items-center gap-3 text-xl font-light">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-400 to-yellow-600 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-gray-400 to-yellow-600 rounded-full flex items-center justify-center">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
             Your Celestial Mandala
@@ -615,7 +615,7 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
           </p>
         </CardHeader>
         <CardContent className="p-6">
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-950/50 to-purple-950/50 border border-pink-300/20">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-gray-950/50 to-teal-950/50 border border-pink-300/20">
             <canvas
               ref={canvasRef}
               width={width}
@@ -624,16 +624,16 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
               style={{ background: 'transparent' }}
             />
             {/* Flowing overlay effects */}
-            <div className="absolute inset-0 bg-gradient-to-t from-pink-900/20 via-transparent to-purple-900/20 pointer-events-none rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-pink-900/20 via-transparent to-teal-900/20 pointer-events-none rounded-3xl"></div>
           </div>
         </CardContent>
       </Card>
 
       {/* Elegant Cosmic Insights */}
       <div className="grid md:grid-cols-3 gap-6">
-        <Card className="bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-0 rounded-2xl backdrop-blur-sm">
+        <Card className="bg-gradient-to-br from-blue-900/30 to-gray-900/30 border-0 rounded-2xl backdrop-blur-sm">
           <CardContent className="p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-gray-500 rounded-full flex items-center justify-center mx-auto mb-3">
               <Circle className="w-6 h-6 text-white" />
             </div>
             <div className="text-2xl font-light text-blue-300 mb-1">{planets.length}</div>
@@ -651,13 +651,13 @@ const AdvancedPlanetaryAspects: React.FC<AdvancedPlanetaryAspectsProps> = ({
             <div className="text-sm text-rose-200">Sacred Connections</div>
           </CardContent>
         </Card>
-        <Card className="bg-gradient-to-br from-purple-900/30 to-violet-900/30 border-0 rounded-2xl backdrop-blur-sm">
+        <Card className="bg-gradient-to-br from-teal-900/30 to-neutral-900/30 border-0 rounded-2xl backdrop-blur-sm">
           <CardContent className="p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-violet-500 rounded-full flex items-center justify-center mx-auto mb-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-neutral-500 rounded-full flex items-center justify-center mx-auto mb-3">
               <Eye className="w-6 h-6 text-white" />
             </div>
-            <div className="text-2xl font-light text-purple-300 mb-1">{Math.round(zoom * 100)}%</div>
-            <div className="text-sm text-purple-200">Cosmic Focus</div>
+            <div className="text-2xl font-light text-teal-300 mb-1">{Math.round(zoom * 100)}%</div>
+            <div className="text-sm text-teal-200">Cosmic Focus</div>
           </CardContent>
         </Card>
       </div>

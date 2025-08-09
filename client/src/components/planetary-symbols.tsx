@@ -15,11 +15,11 @@ export default function PlanetarySymbols() {
   ];
 
   return (
-    <div className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6">
+    <div className="bg-teal-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6">
       <div className="text-center mb-6">
         <h3 className="text-xl font-semibold mb-2" 
             style={{
-              color: 'hsl(51, 100%, 65%)',
+              color: 'hsl(30, 8%, 18%)',
               textShadow: '0 1px 3px rgba(0,0,0,0.3)'
             }}>Planetary Symbols</h3>
         <p className="text-sm" 
@@ -32,8 +32,8 @@ export default function PlanetarySymbols() {
       </div>
       <div className="grid grid-cols-2 gap-4">
         {planets.map((planet) => (
-          <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-purple-900/30">
-            <div className="text-2xl" style={{color: 'hsl(51, 100%, 65%)'}}>{planet.symbol}</div>
+          <div key={planet.name} className="flex items-center space-x-3 p-2 rounded-lg bg-teal-900/30">
+            <div className="text-2xl" style={{color: 'hsl(30, 8%, 18%)'}}>{planet.symbol}</div>
             <div>
               <div className="font-medium text-sm" style={{color: 'hsl(60, 10%, 96%)'}}>{planet.name}</div>
               <div className="text-xs" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>{planet.meaning}</div>

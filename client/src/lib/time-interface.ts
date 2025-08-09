@@ -78,7 +78,7 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       primary: 'hsl(44, 45%, 65%)',
       secondary: 'hsl(180, 25%, 55%)',
       accent: 'hsl(30, 8%, 18%)',
-      text: 'hsl(320, 20%, 90%)',
+      text: 'hsl(60, 10%, 96%)',
       card: 'rgba(255, 20, 147, 0.15)',
       greeting: 'Evening Reflection',
       cosmicElement: '🌇',
@@ -89,7 +89,7 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       primary: 'hsl(44, 45%, 65%)',
       secondary: 'hsl(180, 25%, 55%)',
       accent: 'hsl(30, 8%, 18%)',
-      text: 'hsl(260, 30%, 90%)',
+      text: 'hsl(60, 10%, 96%)',
       card: 'rgba(138, 43, 226, 0.2)',
       greeting: 'Mystical Night',
       cosmicElement: '🌙',
@@ -100,7 +100,7 @@ export function getTimeBasedTheme(): TimeBasedTheme {
       primary: 'hsl(44, 45%, 65%)',
       secondary: 'hsl(180, 25%, 55%)',
       accent: 'hsl(30, 8%, 18%)',
-      text: 'hsl(270, 40%, 85%)',
+      text: 'hsl(60, 10%, 96%)',
       card: 'rgba(75, 0, 130, 0.3)',
       greeting: 'Deep Midnight Wisdom',
       cosmicElement: '✨',
@@ -139,12 +139,12 @@ export function getDailyParticulars(): DailyParticulars {
   // Time-based colors
   const timeOfDay = getTimeOfDay();
   const colorSets = {
-    dawn: ['#FF6B35', '#F7931E', '#FFD23F'],
-    morning: ['#4ECDC4', '#44A08D', '#093637'],
-    afternoon: ['#667eea', '#764ba2', '#f093fb'],
-    evening: ['#ff6b6b', '#ee5a52', '#ff9068'],
-    night: ['#8360c3', '#2ebf91', '#8360c3'],
-    midnight: ['#2C1810', '#8E3A59', '#B83DBA']
+    dawn: ['hsl(44, 45%, 65%)', 'hsl(44, 45%, 65%)', 'hsl(44, 45%, 65%)'],
+    morning: ['hsl(180, 25%, 55%)', 'hsl(180, 25%, 55%)', 'hsl(30, 8%, 18%)'],
+    afternoon: ['hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(60, 10%, 96%)'],
+    evening: ['hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(60, 10%, 96%)'],
+    night: ['hsl(180, 25%, 55%)', 'hsl(30, 8%, 18%)', 'hsl(180, 25%, 55%)'],
+    midnight: ['hsl(30, 8%, 18%)', 'hsl(30, 5%, 66%)', 'hsl(180, 25%, 55%)']
   };
   
   return {

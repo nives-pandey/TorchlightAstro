@@ -118,7 +118,7 @@ export default function SimpleBirthForm({ onClose, onComplete }: SimpleBirthForm
 
   return (
     <Dialog open={true} onOpenChange={onClose}>
-      <DialogContent className="bg-purple-900/95 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="bg-teal-900/95 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="flex items-center justify-between">
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent text-2xl">

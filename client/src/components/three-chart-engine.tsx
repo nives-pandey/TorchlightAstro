@@ -542,7 +542,7 @@ export default function ThreeChartEngine({
   }, [isAnimating, rotationSpeed, cameraDistance]);
 
   return (
-    <div className="w-full bg-gradient-to-br from-slate-900 to-purple-900 rounded-lg overflow-hidden">
+    <div className="w-full bg-gradient-to-br from-slate-900 to-teal-900 rounded-lg overflow-hidden">
       {/* Controls */}
       <div className="p-4 bg-black/50 border-b border-yellow-600/30">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-4">

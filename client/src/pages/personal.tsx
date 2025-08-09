@@ -126,7 +126,7 @@ export default function Personal() {
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Create Your Astrological Profile
             </h1>
-            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+            <p className="text-xl text-teal-200 max-w-2xl mx-auto">
               Provide your birth details for accurate cosmic analysis across all systems
             </p>
           </div>
@@ -148,7 +148,7 @@ export default function Personal() {
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
             Personal Astrology
           </h1>
-          <p className="text-xl text-purple-200 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-teal-200 max-w-3xl mx-auto mb-8">
             Discover your complete cosmic blueprint with insights from Western, Vedic, Chinese astrology, Human Design, and Numerology
           </p>
           
@@ -179,18 +179,18 @@ export default function Personal() {
                 <Sun className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Natal Chart Analysis</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Complete birth chart interpretation across multiple systems
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Western tropical astrology</li>
                 <li>• Vedic sidereal calculations</li>
                 <li>• Chinese zodiac integration</li>
                 <li>• Planetary aspects & houses</li>
               </ul>
-              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-teal-300 border-yellow-500/30">
                 Swiss Ephemeris Precision
               </Badge>
             </CardContent>
@@ -199,22 +199,22 @@ export default function Personal() {
           {/* Complete Numerology */}
           <Card className="clean-card p-6 hover:shadow-2xl transition-all duration-300">
             <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-indigo-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+              <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-gray-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Calculator className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Complete Numerology</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Life path, destiny, soul urge, and personality analysis
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Life path number calculation</li>
                 <li>• Destiny number insights</li>
                 <li>• Soul urge revelations</li>
                 <li>• Personality number traits</li>
               </ul>
-              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-teal-300 border-yellow-500/30">
                 Traditional Methods
               </Badge>
             </CardContent>
@@ -227,12 +227,12 @@ export default function Personal() {
                 <Calendar className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Daily Guidance</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Personalized daily insights with optimal timing
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Daily planetary transits</li>
                 <li>• Lucky numbers & colors</li>
                 <li>• Optimal activity timing</li>
@@ -251,12 +251,12 @@ export default function Personal() {
                 <User className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Human Design</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Complete Human Design chart with strategy and authority
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Type and strategy identification</li>
                 <li>• Authority decision-making</li>
                 <li>• Centers and channels</li>
@@ -273,7 +273,7 @@ export default function Personal() {
         <div className="mt-16 text-center">
           <div className="p-8 bg-black/30 rounded-xl border border-yellow-500/20">
             <h3 className="text-2xl font-bold text-white mb-4">Ready to explore your cosmic blueprint?</h3>
-            <p className="text-purple-200 mb-6">Get comprehensive personal insights across all major astrological systems</p>
+            <p className="text-teal-200 mb-6">Get comprehensive personal insights across all major astrological systems</p>
             <button className="clean-button px-8 py-3">
               Create Your Profile
             </button>

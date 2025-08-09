@@ -386,7 +386,7 @@ export default function AstrologySystemsGuide() {
     switch (accuracy) {
       case 'Very High': return 'bg-green-100 text-green-800 border-green-300';
       case 'High': return 'bg-blue-100 text-blue-800 border-blue-300';
-      case 'Moderate': return 'bg-purple-100 text-purple-800 border-purple-300';
+      case 'Moderate': return 'bg-teal-100 text-teal-800 border-teal-300';
       default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   };
@@ -475,7 +475,7 @@ export default function AstrologySystemsGuide() {
                       <Badge className={`text-xs ${getDifficultyColor(system.difficulty)}`}>
                         {system.difficulty}
                       </Badge>
-                      <Badge variant="outline" className="text-xs text-purple-300 border-yellow-500">
+                      <Badge variant="outline" className="text-xs text-teal-300 border-yellow-500">
                         {system.timeRange}
                       </Badge>
                     </div>
@@ -532,7 +532,7 @@ export default function AstrologySystemsGuide() {
                   </div>
                   
                   <div>
-                    <h5 className="font-medium text-purple-300 mb-2">Key Predictions:</h5>
+                    <h5 className="font-medium text-teal-300 mb-2">Key Predictions:</h5>
                     <ul className="text-sm text-gray-300 space-y-1">
                       {system.predictions.slice(0, 3).map((prediction, index) => (
                         <li key={index} className="flex items-start gap-2">
@@ -544,7 +544,7 @@ export default function AstrologySystemsGuide() {
                   </div>
                   
                   <div>
-                    <h5 className="font-medium text-purple-300 mb-2">Special Features:</h5>
+                    <h5 className="font-medium text-teal-300 mb-2">Special Features:</h5>
                     <div className="flex flex-wrap gap-1">
                       {system.specialFeatures.slice(0, 3).map((feature, index) => (
                         <Badge key={index} variant="outline" className="text-xs text-gray-300 border-gray-500">
@@ -577,12 +577,12 @@ export default function AstrologySystemsGuide() {
                   <div className="grid lg:grid-cols-2 gap-8">
                     <div className="space-y-6">
                       <div>
-                        <h4 className="font-semibold text-purple-300 mb-3">System Overview</h4>
+                        <h4 className="font-semibold text-teal-300 mb-3">System Overview</h4>
                         <p className="text-gray-300">{system.detailedDescription}</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-purple-300 mb-3">What This System Predicts</h4>
+                        <h4 className="font-semibold text-teal-300 mb-3">What This System Predicts</h4>
                         <ul className="space-y-2">
                           {system.predictions.map((prediction, index) => (
                             <li key={index} className="flex items-start gap-3 text-gray-300">
@@ -596,7 +596,7 @@ export default function AstrologySystemsGuide() {
                     
                     <div className="space-y-6">
                       <div>
-                        <h4 className="font-semibold text-purple-300 mb-3">Required Information</h4>
+                        <h4 className="font-semibold text-teal-300 mb-3">Required Information</h4>
                         <div className="grid grid-cols-2 gap-4">
                           <div className={`p-3 rounded-lg border ${system.inputs.birthDate ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
                             <Calendar className="w-5 h-5 mb-2" />
@@ -633,10 +633,10 @@ export default function AstrologySystemsGuide() {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-purple-300 mb-3">Special Features & Techniques</h4>
+                        <h4 className="font-semibold text-teal-300 mb-3">Special Features & Techniques</h4>
                         <div className="flex flex-wrap gap-2">
                           {system.specialFeatures.map((feature, index) => (
-                            <Badge key={index} variant="outline" className="text-purple-300 border-yellow-500">
+                            <Badge key={index} variant="outline" className="text-teal-300 border-yellow-500">
                               {feature}
                             </Badge>
                           ))}
@@ -673,7 +673,7 @@ export default function AstrologySystemsGuide() {
           <CardContent>
             <div className="space-y-4">
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">For Beginners:</h4>
+                <h4 className="font-medium text-teal-300 mb-2">For Beginners:</h4>
                 <div className="flex gap-2">
                   {astrologySystem.filter(s => s.difficulty === 'Beginner').map(system => (
                     <Badge key={system.id} className="bg-green-500/20 text-green-300 border-green-500/30">
@@ -684,7 +684,7 @@ export default function AstrologySystemsGuide() {
               </div>
               
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Highest Accuracy:</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Highest Accuracy:</h4>
                 <div className="flex gap-2">
                   {astrologySystem.filter(s => s.accuracy === 'Very High').map(system => (
                     <Badge key={system.id} className="bg-blue-500/20 text-blue-300 border-blue-500/30">
@@ -695,10 +695,10 @@ export default function AstrologySystemsGuide() {
               </div>
               
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Ancient Wisdom:</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Ancient Wisdom:</h4>
                 <div className="flex gap-2">
                   {astrologySystem.filter(s => s.category === 'Ancient').map(system => (
-                    <Badge key={system.id} className="bg-yellow-600/20 text-purple-300 border-yellow-600/30">
+                    <Badge key={system.id} className="bg-yellow-600/20 text-teal-300 border-yellow-600/30">
                       {system.name}
                     </Badge>
                   ))}

@@ -191,7 +191,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-orange-400">Birth Information</CardTitle>
-            <Badge variant="outline" className="text-purple-300 border-yellow-500">
+            <Badge variant="outline" className="text-teal-300 border-yellow-500">
               Step {currentStep + 1} of {FORM_STEPS.length}
             </Badge>
           </div>
@@ -220,7 +220,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
       {/* Form Content */}
       <Card className="sanctuary-card">
         <CardHeader>
-          <CardTitle className="text-purple-300 flex items-center">
+          <CardTitle className="text-teal-300 flex items-center">
             {(() => {
               const IconComponent = FORM_STEPS[currentStep].icon;
               return <IconComponent className="mr-2 h-5 w-5" />;
@@ -465,7 +465,7 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                               Time Accuracy Notices
                             </div>
                             {timeAccuracyWarnings.map((warning, index) => (
-                              <p key={index} className="text-xs text-purple-300 mb-1">
+                              <p key={index} className="text-xs text-teal-300 mb-1">
                                 • {warning}
                               </p>
                             ))}
@@ -652,13 +652,13 @@ export default function EnhancedBirthForm({ onComplete, loading }: EnhancedBirth
                   </Card>
 
                   {/* Accuracy Warning */}
-                  <Card className="bg-purple-900/20 border-yellow-600/30">
+                  <Card className="bg-teal-900/20 border-yellow-600/30">
                     <CardContent className="pt-4">
                       <div className="flex items-start space-x-3">
                         <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
                         <div>
                           <h4 className="font-medium text-yellow-500 mb-2">Accuracy Notice</h4>
-                          <p className="text-purple-200 text-sm">
+                          <p className="text-teal-200 text-sm">
                             Astrological calculations require precise birth information. Small errors in time or location 
                             can significantly affect your analysis. Please verify all details are correct.
                           </p>

@@ -68,7 +68,7 @@ export default function Navigation() {
               <Button 
                 variant="ghost" 
                 size="sm"
-                className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 font-medium transition-all duration-200 hover:scale-105 shadow-md"
+                className="bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700 text-white border-0 font-medium transition-all duration-200 hover:scale-105 shadow-md"
               >
                 <Heart className="h-4 w-4 mr-1" />
                 Support
@@ -118,7 +118,7 @@ export default function Navigation() {
                     onClick={() => setMobileOpen(false)}
                     className={`mobile-button text-left min-h-[48px] flex items-center transition-all duration-200 ${
                       location === item.path
-                        ? "bg-yellow-600/30 text-purple-300 border-yellow-500"
+                        ? "bg-yellow-600/30 text-teal-300 border-yellow-500"
                         : "text-white hover:bg-yellow-600/20"
                     }`}
                   >

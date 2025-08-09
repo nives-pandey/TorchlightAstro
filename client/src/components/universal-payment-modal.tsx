@@ -175,7 +175,7 @@ function CryptoPaymentView({
       </div>
 
       {/* Payment Details */}
-      <div className="bg-purple-800/30 p-6 rounded-xl border border-yellow-500/50">
+      <div className="bg-teal-800/30 p-6 rounded-xl border border-yellow-500/50">
         <div className="space-y-4">
           {/* Amount */}
           <div className="flex justify-between items-center">
@@ -323,7 +323,7 @@ export default function UniversalPaymentModal({
         <h2 className="text-2xl font-bold text-white mb-2">
           Choose Payment Method
         </h2>
-        <p className="text-purple-200">
+        <p className="text-teal-200">
           Contributing <span className="font-bold text-yellow-400">${amount}</span> for {purpose}
         </p>
       </div>
@@ -341,12 +341,12 @@ export default function UniversalPaymentModal({
           ).map((method) => (
             <Card
               key={method.id}
-              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-yellow-500/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
+              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-yellow-500/30 hover:border-teal-300 bg-teal-800/40 backdrop-blur-sm"
               onClick={() => handleMethodSelect(method.id)}
             >
               <CardContent className="p-4">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900 dark:to-pink-900 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-teal-100 to-pink-100 dark:from-teal-900 dark:to-pink-900 rounded-full flex items-center justify-center">
                     {method.icon}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -358,15 +358,15 @@ export default function UniversalPaymentModal({
                         {method.popularity}
                       </Badge>
                     </div>
-                    <p className="text-sm text-purple-200 mb-2">
+                    <p className="text-sm text-teal-200 mb-2">
                       {method.description}
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-purple-300">
+                    <div className="flex items-center gap-4 text-xs text-teal-300">
                       <span>⚡ {method.processingTime}</span>
                       <span>💳 {method.fees}</span>
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-purple-300" />
+                  <ArrowRight className="w-5 h-5 text-teal-300" />
                 </div>
               </CardContent>
             </Card>
@@ -374,16 +374,16 @@ export default function UniversalPaymentModal({
         </TabsContent>
 
         <TabsContent value="crypto" className="space-y-4 mt-6">
-          <div className="text-sm text-purple-200 mb-4">
+          <div className="text-sm text-teal-200 mb-4">
             Cryptocurrency payments are perfect for international contributors with lowest fees.
           </div>
           {cryptoOptions.map((crypto) => (
             <Card
               key={crypto.symbol + crypto.network}
-              className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-purple-800/40 backdrop-blur-sm ${
+              className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-teal-800/40 backdrop-blur-sm ${
                 crypto.recommended 
                   ? 'border-green-400/50 bg-green-500/20' 
-                  : 'border-yellow-500/30 hover:border-purple-300'
+                  : 'border-yellow-500/30 hover:border-teal-300'
               }`}
               onClick={() => {
                 setSelectedCrypto(crypto);
@@ -402,10 +402,10 @@ export default function UniversalPaymentModal({
                         <Badge className="text-xs bg-green-500">Recommended</Badge>
                       )}
                     </div>
-                    <p className="text-sm text-purple-200 mb-1">
+                    <p className="text-sm text-teal-200 mb-1">
                       Network: {crypto.network}
                     </p>
-                    <div className="flex gap-4 text-xs text-purple-300">
+                    <div className="flex gap-4 text-xs text-teal-300">
                       <span>⚡ {crypto.confirmations}</span>
                       <span>💰 {crypto.fees}</span>
                     </div>
@@ -421,12 +421,12 @@ export default function UniversalPaymentModal({
           {paymentMethods.filter(m => m.id === 'bank_transfer').map((method) => (
             <Card
               key={method.id}
-              className="cursor-pointer transition-all duration-200 hover:shadow-lg border-2 hover:border-purple-300"
+              className="cursor-pointer transition-all duration-200 hover:shadow-lg border-2 hover:border-teal-300"
               onClick={() => handleMethodSelect(method.id)}
             >
               <CardContent className="p-4">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 rounded-full flex items-center justify-center">
+                  <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-blue-100 to-gray-100 dark:from-blue-900 dark:to-gray-900 rounded-full flex items-center justify-center">
                     {method.icon}
                   </div>
                   <div className="flex-1">
@@ -463,7 +463,7 @@ export default function UniversalPaymentModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-900/95 backdrop-blur-xl border border-yellow-500/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
+      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-gray-900/95 via-teal-900/95 to-pink-900/95 backdrop-blur-xl border border-yellow-500/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
         <DialogHeader>
           <DialogTitle className="sr-only">Universal Payment Options</DialogTitle>
         </DialogHeader>

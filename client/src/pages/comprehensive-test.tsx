@@ -62,7 +62,7 @@ export default function ComprehensiveTest() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
@@ -431,7 +431,7 @@ export default function ComprehensiveTest() {
                               <span className="font-medium">{transit.planet}</span>
                               <span className="text-sm text-gray-400">{transit.date}</span>
                             </div>
-                            <div className="text-sm text-purple-300">{transit.aspect}</div>
+                            <div className="text-sm text-teal-300">{transit.aspect}</div>
                             <div className="text-sm text-gray-300 mt-1">{transit.significance}</div>
                           </div>
                         ))}
@@ -482,7 +482,7 @@ export default function ComprehensiveTest() {
                           <div className="text-orange-300 text-sm mb-2">Career Path</div>
                           <div className="space-y-1">
                             {chartData.chart.synthesis.careerPath?.map((path: string, index: number) => (
-                              <div key={index} className="text-sm text-purple-300">• {path}</div>
+                              <div key={index} className="text-sm text-teal-300">• {path}</div>
                             ))}
                           </div>
                         </div>
@@ -490,7 +490,7 @@ export default function ComprehensiveTest() {
                           <div className="text-orange-300 text-sm mb-2">Spiritual Path</div>
                           <div className="space-y-1">
                             {chartData.chart.synthesis.spiritualPath?.map((path: string, index: number) => (
-                              <div key={index} className="text-sm text-purple-300">• {path}</div>
+                              <div key={index} className="text-sm text-teal-300">• {path}</div>
                             ))}
                           </div>
                         </div>

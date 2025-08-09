@@ -321,7 +321,7 @@ export default function GemstoneGuidance() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white">
       {/* Header */}
       <div className="border-b border-yellow-600/20 bg-black/20 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-6">
@@ -334,11 +334,11 @@ export default function GemstoneGuidance() {
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
                   Gemstone Guidance
                 </h1>
-                <p className="text-purple-300">Discover crystals aligned with your cosmic energy</p>
+                <p className="text-teal-300">Discover crystals aligned with your cosmic energy</p>
               </div>
             </div>
             <Link href="/home">
-              <Button variant="outline" className="border-yellow-600/30 text-purple-300 hover:bg-yellow-600/20">
+              <Button variant="outline" className="border-yellow-600/30 text-teal-300 hover:bg-yellow-600/20">
                 <Home className="h-4 w-4 mr-2" />
                 Home
               </Button>
@@ -353,7 +353,7 @@ export default function GemstoneGuidance() {
           <div className="lg:col-span-1">
             <Card className="bg-black/40 border-yellow-600/30">
               <CardHeader>
-                <CardTitle className="text-purple-300 flex items-center">
+                <CardTitle className="text-teal-300 flex items-center">
                   <Sparkles className="h-5 w-5 mr-2" />
                   Categories
                 </CardTitle>
@@ -366,7 +366,7 @@ export default function GemstoneGuidance() {
                     className={`w-full justify-start ${
                       activeCategory === category.id 
                         ? `${category.color} text-white` 
-                        : "text-purple-300 hover:bg-yellow-600/20"
+                        : "text-teal-300 hover:bg-yellow-600/20"
                     }`}
                     onClick={() => setActiveCategory(category.id)}
                   >
@@ -385,10 +385,10 @@ export default function GemstoneGuidance() {
             {/* Quick Reference */}
             <Card className="bg-black/40 border-yellow-600/30 mt-6">
               <CardHeader>
-                <CardTitle className="text-purple-300 text-sm">Quick Reference</CardTitle>
+                <CardTitle className="text-teal-300 text-sm">Quick Reference</CardTitle>
               </CardHeader>
               <CardContent className="text-sm space-y-2">
-                <div className="flex items-center text-purple-300">
+                <div className="flex items-center text-teal-300">
                   <Crown className="h-4 w-4 mr-2" />
                   Crown Chakra: Spiritual
                 </div>
@@ -426,14 +426,14 @@ export default function GemstoneGuidance() {
               <Card className="bg-black/40 border-yellow-600/30">
                 <CardContent className="text-center py-12">
                   <Gem className="h-16 w-16 mx-auto text-yellow-500 mb-4" />
-                  <h3 className="text-xl font-semibold text-purple-300 mb-2">
+                  <h3 className="text-xl font-semibold text-teal-300 mb-2">
                     Create Your Chart First
                   </h3>
                   <p className="text-yellow-500 mb-6">
                     Generate your birth chart to receive personalized gemstone recommendations based on your astrological profile.
                   </p>
                   <Link href="/home">
-                    <Button className="bg-yellow-600 hover:bg-purple-700">
+                    <Button className="bg-yellow-600 hover:bg-teal-700">
                       Create Chart
                     </Button>
                   </Link>
@@ -450,7 +450,7 @@ export default function GemstoneGuidance() {
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg text-purple-300">{gemstone.name}</CardTitle>
+                      <CardTitle className="text-lg text-teal-300">{gemstone.name}</CardTitle>
                       <div className={`w-6 h-6 rounded-full border-2 border-white/30 ${
                         gemstone.color.includes('Black') ? 'bg-black' :
                         gemstone.color.includes('Pink') ? 'bg-pink-400' :
@@ -469,24 +469,24 @@ export default function GemstoneGuidance() {
                   <CardContent>
                     <div className="space-y-3">
                       <div className="flex justify-between text-sm">
-                        <span className="text-purple-300">Chakra:</span>
+                        <span className="text-teal-300">Chakra:</span>
                         <span className="text-yellow-500">{gemstone.chakra}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-purple-300">Planet:</span>
+                        <span className="text-teal-300">Planet:</span>
                         <span className="text-yellow-500">{gemstone.planet}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-purple-300">Element:</span>
+                        <span className="text-teal-300">Element:</span>
                         <span className="text-yellow-500">{gemstone.element}</span>
                       </div>
                       
                       {/* Benefits */}
                       <div className="space-y-1">
-                        <p className="text-sm text-purple-300">Benefits:</p>
+                        <p className="text-sm text-teal-300">Benefits:</p>
                         <div className="flex flex-wrap gap-1">
                           {gemstone.benefits.slice(0, 3).map((benefit, i) => (
-                            <Badge key={i} variant="secondary" className="text-xs bg-yellow-600/20 text-purple-300">
+                            <Badge key={i} variant="secondary" className="text-xs bg-yellow-600/20 text-teal-300">
                               {benefit}
                             </Badge>
                           ))}
@@ -528,14 +528,14 @@ export default function GemstoneGuidance() {
                     'bg-gray-400'
                   }`}></div>
                   <div>
-                    <CardTitle className="text-xl text-purple-300">{selectedGemstone.name}</CardTitle>
+                    <CardTitle className="text-xl text-teal-300">{selectedGemstone.name}</CardTitle>
                     <p className="text-yellow-500">{selectedGemstone.purpose}</p>
                   </div>
                 </div>
                 <Button 
                   variant="ghost" 
                   onClick={() => setSelectedGemstone(null)}
-                  className="text-purple-300 hover:bg-yellow-600/20"
+                  className="text-teal-300 hover:bg-yellow-600/20"
                 >
                   ✕
                 </Button>
@@ -545,26 +545,26 @@ export default function GemstoneGuidance() {
               {/* Properties */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <p className="text-sm text-purple-300">Chakra</p>
+                  <p className="text-sm text-teal-300">Chakra</p>
                   <p className="text-yellow-500">{selectedGemstone.chakra}</p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-sm text-purple-300">Ruling Planet</p>
+                  <p className="text-sm text-teal-300">Ruling Planet</p>
                   <p className="text-yellow-500">{selectedGemstone.planet}</p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-sm text-purple-300">Element</p>
+                  <p className="text-sm text-teal-300">Element</p>
                   <p className="text-yellow-500">{selectedGemstone.element}</p>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-sm text-purple-300">Hardness</p>
+                  <p className="text-sm text-teal-300">Hardness</p>
                   <p className="text-yellow-500">{selectedGemstone.hardness}</p>
                 </div>
               </div>
 
               {/* Benefits */}
               <div>
-                <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                <h4 className="text-teal-300 font-semibold mb-3 flex items-center">
                   <Sparkles className="h-4 w-4 mr-2" />
                   Benefits
                 </h4>
@@ -580,7 +580,7 @@ export default function GemstoneGuidance() {
 
               {/* Wearing Instructions */}
               <div>
-                <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                <h4 className="text-teal-300 font-semibold mb-3 flex items-center">
                   <Clock className="h-4 w-4 mr-2" />
                   How to Wear
                 </h4>
@@ -591,7 +591,7 @@ export default function GemstoneGuidance() {
 
               {/* Cleansing */}
               <div>
-                <h4 className="text-purple-300 font-semibold mb-3 flex items-center">
+                <h4 className="text-teal-300 font-semibold mb-3 flex items-center">
                   <Moon className="h-4 w-4 mr-2" />
                   Cleansing & Charging
                 </h4>

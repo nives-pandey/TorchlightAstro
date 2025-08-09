@@ -34,7 +34,7 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: "stripe",
     name: "Credit/Debit Cards",
-    icon: <CreditCard className="w-5 h-5 text-purple-300" />,
+    icon: <CreditCard className="w-5 h-5 text-teal-300" />,
     description: "Visa, Mastercard, American Express - worldwide acceptance",
     regions: ["Global"],
     processingTime: "Instant",
@@ -44,7 +44,7 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: "paypal",
     name: "PayPal",
-    icon: <Wallet className="w-5 h-5 text-purple-300" />,
+    icon: <Wallet className="w-5 h-5 text-teal-300" />,
     description: "Digital wallet with 432M users, 200+ countries",
     regions: ["Global"],
     processingTime: "Instant", 
@@ -54,7 +54,7 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: "apple_pay",
     name: "Apple Pay",
-    icon: <Smartphone className="w-5 h-5 text-purple-300" />,
+    icon: <Smartphone className="w-5 h-5 text-teal-300" />,
     description: "Touch ID/Face ID payments, 90% US retailer acceptance",
     regions: ["78+ countries"],
     processingTime: "Instant",
@@ -64,7 +64,7 @@ const paymentMethods: PaymentMethod[] = [
   {
     id: "google_pay",
     name: "Google Pay",
-    icon: <Globe className="w-5 h-5 text-purple-300" />,
+    icon: <Globe className="w-5 h-5 text-teal-300" />,
     description: "Android wallet, 250M users, 86 countries",
     regions: ["86 countries"],
     processingTime: "Instant",
@@ -140,28 +140,28 @@ function CryptoPaymentView({
         <h3 className="text-xl font-bold text-white mb-2">
           Send {selectedCrypto.symbol} Payment
         </h3>
-        <p className="text-purple-200">
+        <p className="text-teal-200">
           Send exactly <span className="font-bold text-yellow-400">${amount} USDT</span> to the address below
         </p>
       </div>
 
       {/* Payment Details */}
-      <div className="bg-gradient-to-r from-purple-800/30 to-pink-800/30 p-6 rounded-xl border border-yellow-500/50">
+      <div className="bg-gradient-to-r from-teal-800/30 to-pink-800/30 p-6 rounded-xl border border-yellow-500/50">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <span className="text-purple-200">Amount:</span>
+            <span className="text-teal-200">Amount:</span>
             <span className="font-bold text-lg text-white">${amount} USDT</span>
           </div>
           
           <div className="flex justify-between items-center">
-            <span className="text-purple-200">Network:</span>
-            <Badge variant="outline" className="text-purple-300 border-yellow-500">
+            <span className="text-teal-200">Network:</span>
+            <Badge variant="outline" className="text-teal-300 border-yellow-500">
               {selectedCrypto.network}
             </Badge>
           </div>
           
           <div className="flex justify-between items-center">
-            <span className="text-purple-200">Network Fee:</span>
+            <span className="text-teal-200">Network Fee:</span>
             <span className="text-green-400 font-medium">{selectedCrypto.fees}</span>
           </div>
         </div>
@@ -169,14 +169,14 @@ function CryptoPaymentView({
 
       {/* Wallet Address */}
       <div className="space-y-3">
-        <label className="text-sm font-medium text-purple-200">
+        <label className="text-sm font-medium text-teal-200">
           Send to this {selectedCrypto.symbol} address:
         </label>
         <div className="flex gap-2">
           <Input
             value={selectedCrypto.address}
             readOnly
-            className="font-mono text-sm bg-purple-800/40 border-yellow-500/50 text-white"
+            className="font-mono text-sm bg-teal-800/40 border-yellow-500/50 text-white"
           />
           <Button
             variant="outline"
@@ -190,13 +190,13 @@ function CryptoPaymentView({
       </div>
 
       {/* QR Code Placeholder */}
-      <div className="bg-purple-800/40 p-8 rounded-xl border-2 border-dashed border-yellow-500/50">
+      <div className="bg-teal-800/40 p-8 rounded-xl border-2 border-dashed border-yellow-500/50">
         <div className="text-center space-y-3">
-          <QrCode className="w-16 h-16 mx-auto text-purple-300" />
-          <p className="text-sm text-purple-200">
+          <QrCode className="w-16 h-16 mx-auto text-teal-300" />
+          <p className="text-sm text-teal-200">
             QR Code for mobile wallet scanning
           </p>
-          <p className="text-xs text-purple-300">
+          <p className="text-xs text-teal-300">
             (QR generation requires backend integration)
           </p>
         </div>
@@ -226,7 +226,7 @@ function CryptoPaymentView({
         </Button>
         <Button 
           onClick={onComplete} 
-          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+          className="flex-1 bg-gradient-to-r from-yellow-600 to-pink-600 hover:from-teal-700 hover:to-pink-700"
         >
           I've Sent Payment
         </Button>
@@ -289,13 +289,13 @@ export default function CosmicPaymentModal({
         <h2 className="text-2xl font-bold text-white mb-2">
           Choose Payment Method
         </h2>
-        <p className="text-purple-200">
+        <p className="text-teal-200">
           Contributing <span className="font-bold text-yellow-400">${amount}</span> for {purpose}
         </p>
       </div>
 
       <Tabs defaultValue="popular" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 bg-purple-800/40">
+        <TabsList className="grid w-full grid-cols-2 bg-teal-800/40">
           <TabsTrigger value="popular" className="text-white">Most Popular</TabsTrigger>
           <TabsTrigger value="crypto" className="text-white">Cryptocurrency</TabsTrigger>
         </TabsList>
@@ -304,7 +304,7 @@ export default function CosmicPaymentModal({
           {paymentMethods.map((method) => (
             <Card
               key={method.id}
-              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-yellow-500/30 hover:border-purple-300 bg-purple-800/40 backdrop-blur-sm"
+              className="cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-[1.02] border-2 border-yellow-500/30 hover:border-teal-300 bg-teal-800/40 backdrop-blur-sm"
               onClick={() => handleMethodSelect(method.id)}
             >
               <CardContent className="p-4">
@@ -317,19 +317,19 @@ export default function CosmicPaymentModal({
                       <h3 className="font-semibold text-white">
                         {method.name}
                       </h3>
-                      <Badge variant="secondary" className="text-xs bg-yellow-600/50 text-purple-200">
+                      <Badge variant="secondary" className="text-xs bg-yellow-600/50 text-teal-200">
                         {method.popularity}
                       </Badge>
                     </div>
-                    <p className="text-sm text-purple-200 mb-2">
+                    <p className="text-sm text-teal-200 mb-2">
                       {method.description}
                     </p>
-                    <div className="flex items-center gap-4 text-xs text-purple-300">
+                    <div className="flex items-center gap-4 text-xs text-teal-300">
                       <span>⚡ {method.processingTime}</span>
                       <span>💳 {method.fees}</span>
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-purple-300" />
+                  <ArrowRight className="w-5 h-5 text-teal-300" />
                 </div>
               </CardContent>
             </Card>
@@ -337,16 +337,16 @@ export default function CosmicPaymentModal({
         </TabsContent>
 
         <TabsContent value="crypto" className="space-y-4 mt-6">
-          <div className="text-sm text-purple-200 mb-4">
+          <div className="text-sm text-teal-200 mb-4">
             Cryptocurrency payments are perfect for international contributors with lowest fees.
           </div>
           {cryptoOptions.map((crypto) => (
             <Card
               key={crypto.symbol + crypto.network}
-              className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-purple-800/40 backdrop-blur-sm ${
+              className={`cursor-pointer transition-all duration-200 hover:shadow-lg border-2 bg-teal-800/40 backdrop-blur-sm ${
                 crypto.recommended 
                   ? 'border-green-400/50 bg-green-500/20' 
-                  : 'border-yellow-500/30 hover:border-purple-300'
+                  : 'border-yellow-500/30 hover:border-teal-300'
               }`}
               onClick={() => handleCryptoSelect(crypto)}
             >
@@ -362,15 +362,15 @@ export default function CosmicPaymentModal({
                         <Badge className="text-xs bg-green-500 text-white">Recommended</Badge>
                       )}
                     </div>
-                    <p className="text-sm text-purple-200 mb-1">
+                    <p className="text-sm text-teal-200 mb-1">
                       Network: {crypto.network}
                     </p>
-                    <div className="flex gap-4 text-xs text-purple-300">
+                    <div className="flex gap-4 text-xs text-teal-300">
                       <span>⚡ {crypto.confirmations}</span>
                       <span>💰 {crypto.fees}</span>
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-purple-300" />
+                  <ArrowRight className="w-5 h-5 text-teal-300" />
                 </div>
               </CardContent>
             </Card>
@@ -382,7 +382,7 @@ export default function CosmicPaymentModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-indigo-900/95 via-purple-900/95 to-pink-900/95 backdrop-blur-xl border border-yellow-500/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
+      <DialogContent className="max-w-2xl mx-4 bg-gradient-to-br from-gray-900/95 via-teal-900/95 to-pink-900/95 backdrop-blur-xl border border-yellow-500/30 shadow-2xl max-h-[90vh] overflow-y-auto text-white">
         <DialogHeader>
           <DialogTitle className="sr-only">Cosmic Payment Options</DialogTitle>
         </DialogHeader>

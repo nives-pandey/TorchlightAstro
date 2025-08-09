@@ -269,7 +269,7 @@ export default function Home() {
       >
         {/* Static celestial background elements - same as landing page */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-pink-400 rounded-full opacity-60" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-80" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-teal-300 rounded-full opacity-80" />
         <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-yellow-500 rounded-full opacity-50" />
         <div className="absolute top-1/2 right-10 w-1 h-1 bg-rose-400 rounded-full opacity-70" />
         <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-gold-400 rounded-full opacity-60" />
@@ -287,7 +287,7 @@ export default function Home() {
               Torchlight
             </h1>
           </div>
-          <div className="text-sm text-purple-200/70">
+          <div className="text-sm text-teal-200/70">
             Welcome to Torchlight ✨
           </div>
         </div>
@@ -301,7 +301,7 @@ export default function Home() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight sm:leading-[1.1] tracking-tight font-heading px-2">
               <span 
                 style={{
-                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)', 
                   WebkitBackgroundClip: 'text', 
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
@@ -324,7 +324,7 @@ export default function Home() {
             {/* Enhanced subheadline */}
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 font-body px-4" 
                style={{
-                 color: 'hsl(240, 100%, 95%)', 
+                 color: 'hsl(60, 10%, 96%)', 
                  opacity: 0.95,
                  textShadow: '0 1px 4px rgba(0,0,0,0.2)'
                }}>
@@ -332,7 +332,7 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(51, 100%, 65%)',
+                  color: 'hsl(30, 8%, 18%)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
@@ -346,7 +346,7 @@ export default function Home() {
                 <Button 
                   className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 50%, hsl(51, 100%, 65%) 100%)',
+                    background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
                     border: 'none',
                     color: 'white',
                     textShadow: '0 2px 4px rgba(0,0,0,0.3)',
@@ -357,7 +357,7 @@ export default function Home() {
                   Begin Your Journey
                 </Button>
               </Link>
-              <p className="text-purple-200/70 text-sm mt-3">
+              <p className="text-teal-200/70 text-sm mt-3">
                 Create your complete astrological profile in minutes
               </p>
             </div>
@@ -387,7 +387,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6 pt-0">
-                    <CardDescription className="text-purple-100/80 text-xs sm:text-sm leading-relaxed">
+                    <CardDescription className="text-teal-100/80 text-xs sm:text-sm leading-relaxed">
                       Deep individual insights across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
@@ -409,7 +409,7 @@ export default function Home() {
               ]}
             >
               <Link href="/compatibility">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Heart className="w-6 h-6 text-pink-400" />
@@ -417,7 +417,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Relationship insights and compatibility analysis across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
@@ -440,7 +440,7 @@ export default function Home() {
               ]}
             >
               <Link href="/spaces">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Building2 className="w-6 h-6 text-green-400" />
@@ -448,7 +448,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Sacred space optimization using ancient Vaastu and Feng Shui principles
                     </CardDescription>
                   </CardContent>
@@ -470,7 +470,7 @@ export default function Home() {
               ]}
             >
               <Link href="/business">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
@@ -478,7 +478,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Professional astrology for optimal business timing and strategic decisions
                     </CardDescription>
                   </CardContent>
@@ -497,7 +497,7 @@ export default function Home() {
             {/* 5 Astrological Systems Grid */}
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
               {personalSystems.map((system, index) => (
-                <Card key={index} className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card key={index} className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-white text-sm text-center flex flex-col items-center gap-2">
                       <span className="text-2xl">{system.icon}</span>
@@ -505,7 +505,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <CardDescription className="text-purple-100/80 text-xs text-center">
+                    <CardDescription className="text-teal-100/80 text-xs text-center">
                       {system.description.length > 80 ? system.description.substring(0, 80) + "..." : system.description}
                     </CardDescription>
                   </CardContent>
@@ -530,7 +530,7 @@ export default function Home() {
                 <Link href="/demo-chart">
                   <Button 
                     variant="outline"
-                    className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                    className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
                     🔮 3D Cosmos
                   </Button>
@@ -540,7 +540,7 @@ export default function Home() {
               <Link href="/comprehensive-report">
                 <Button 
                   variant="outline"
-                  className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
                   📊 5-Page Report
                 </Button>
@@ -561,7 +561,7 @@ export default function Home() {
                 <Link href="/lifestyle-intelligence">
                   <Button 
                     variant="outline"
-                    className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                    className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                   >
                     🌟 Lifestyle
                   </Button>
@@ -571,7 +571,7 @@ export default function Home() {
               <Link href="/gemstone-lifestyle-pairing">
                 <Button 
                   variant="outline"
-                  className="sanctuary-card w-full bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 hover:border-purple-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
+                  className="sanctuary-card w-full bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 hover:border-teal-300/50 text-white font-semibold px-4 py-3 rounded-xl transform hover:scale-105 transition-all duration-300"
                 >
                   💎 Gemstone Analysis
                 </Button>
@@ -582,7 +582,7 @@ export default function Home() {
           {/* Ancient Wisdom For Everyone */}
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-white mb-4">Ancient Wisdom For Everyone</h2>
-            <p className="text-purple-200/80 max-w-3xl mx-auto mb-8">
+            <p className="text-teal-200/80 max-w-3xl mx-auto mb-8">
               Illuminating the cosmic connections between celestial movements and human experience through authentic calculations and traditional interpretations
             </p>
           </div>
@@ -591,7 +591,7 @@ export default function Home() {
           <div className="text-center mb-12 space-y-6">
             <Button 
               onClick={() => setShowBirthForm(true)}
-              className="sanctuary-button text-xl px-12 py-6 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-yellow-600 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              className="sanctuary-button text-xl px-12 py-6 bg-gradient-to-r from-yellow-600 to-gray-600 hover:from-yellow-600 hover:to-gray-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Begin Your Cosmic Journey Now ✨
             </Button>
@@ -616,7 +616,7 @@ export default function Home() {
               ]}
             >
               <Link href="/personal">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <UserCircle className="w-6 h-6 text-yellow-400" />
@@ -624,7 +624,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Complete natal chart analysis across all ancient systems with authentic astronomical calculations
                     </CardDescription>
                   </CardContent>
@@ -646,7 +646,7 @@ export default function Home() {
               ]}
             >
               <Link href="/compatibility">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Heart className="w-6 h-6 text-pink-400" />
@@ -654,7 +654,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Relationship insights and compatibility analysis across multiple astrological traditions
                     </CardDescription>
                   </CardContent>
@@ -677,7 +677,7 @@ export default function Home() {
               ]}
             >
               <Link href="/spaces">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Building2 className="w-6 h-6 text-green-400" />
@@ -685,7 +685,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Sacred space optimization using ancient Vaastu and Feng Shui principles
                     </CardDescription>
                   </CardContent>
@@ -707,7 +707,7 @@ export default function Home() {
               ]}
             >
               <Link href="/business">
-                <Card className="sanctuary-card bg-gradient-to-br from-purple-900/60 to-indigo-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-purple-800/70 hover:to-indigo-800/70 transition-all duration-300 transform hover:scale-105">
+                <Card className="sanctuary-card bg-gradient-to-br from-teal-900/60 to-gray-900/60 border-yellow-500/30 backdrop-blur-sm rounded-2xl cursor-pointer hover:from-teal-800/70 hover:to-gray-800/70 transition-all duration-300 transform hover:scale-105">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-white text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
@@ -715,7 +715,7 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-purple-100/80 text-sm">
+                    <CardDescription className="text-teal-100/80 text-sm">
                       Professional astrology for optimal business timing and strategic decisions
                     </CardDescription>
                   </CardContent>
@@ -727,7 +727,7 @@ export default function Home() {
           {/* Ancient Wisdom For Everyone */}
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-white mb-4">Ancient Wisdom For Everyone</h2>
-            <p className="text-purple-200/80 max-w-3xl mx-auto mb-8">
+            <p className="text-teal-200/80 max-w-3xl mx-auto mb-8">
               Illuminating the cosmic connections between celestial movements and human experience through authentic calculations and traditional interpretations
             </p>
           </div>
@@ -736,7 +736,7 @@ export default function Home() {
           <div className="text-center mb-12 space-y-6">
             <Button 
               onClick={() => setShowBirthForm(true)}
-              className="sanctuary-button text-xl px-12 py-6 bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-yellow-600 hover:to-indigo-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              className="sanctuary-button text-xl px-12 py-6 bg-gradient-to-r from-yellow-600 to-gray-600 hover:from-yellow-600 hover:to-gray-500 transform hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Begin Your Cosmic Journey Now ✨
             </Button>
@@ -802,7 +802,7 @@ export default function Home() {
 
                   <Button 
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                    className="bg-gradient-to-r from-blue-600 to-gray-600 hover:from-blue-500 hover:to-gray-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
                   >
                     <BookOpen className="w-5 h-5" />
                     <div>
@@ -816,7 +816,7 @@ export default function Home() {
                 <div className="grid grid-cols-3 gap-3">
                   <Button 
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="bg-gradient-to-r from-yellow-600 to-violet-600 hover:from-yellow-600 hover:to-violet-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
+                    className="bg-gradient-to-r from-yellow-600 to-neutral-600 hover:from-yellow-600 hover:to-neutral-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
                   >
                     <Stars className="w-5 h-5" />
                     <div>
@@ -854,8 +854,8 @@ export default function Home() {
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
                     className="bg-gradient-to-r from-gold-600 to-yellow-600 hover:from-gold-500 hover:to-yellow-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2"
                     style={{
-                      background: 'linear-gradient(135deg, #D4AF37 0%, #FFD700 100%)',
-                      color: '#1a1a1a'
+                      background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(44, 45%, 65%) 100%)',
+                      color: 'hsl(30, 8%, 18%)'
                     }}
                   >
                     <Shield className="w-5 h-5" />
@@ -867,7 +867,7 @@ export default function Home() {
 
                   <Button 
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="bg-gradient-to-r from-yellow-600 to-indigo-600 hover:from-yellow-600 hover:to-indigo-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2 border-2 border-yellow-500/50"
+                    className="bg-gradient-to-r from-yellow-600 to-gray-600 hover:from-yellow-600 hover:to-gray-500 text-white px-4 py-4 rounded-xl font-semibold transform hover:scale-105 transition-all duration-300 flex flex-col items-center gap-2 border-2 border-yellow-500/50"
                   >
                     <Users className="w-5 h-5" />
                     <div>
@@ -941,7 +941,7 @@ export default function Home() {
                   <Button 
                     variant="outline"
                     onClick={() => showModal({ type: 'manual', delay: 0 })}
-                    className="border-2 border-yellow-500/60 text-purple-200 hover:bg-yellow-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
+                    className="border-2 border-yellow-500/60 text-teal-200 hover:bg-yellow-600/30 px-4 py-3 rounded-xl font-medium transform hover:scale-105 transition-all duration-300 text-sm"
                   >
                     <Coins className="w-4 h-4 mr-1" />
                     Crypto
@@ -963,10 +963,10 @@ export default function Home() {
 
               {/* Can't Pay? Share the Love */}
               <div className="bg-yellow-600/10 rounded-lg p-4 border border-yellow-500/20 mt-6">
-                <p className="text-purple-200 text-center font-medium mb-2">
+                <p className="text-teal-200 text-center font-medium mb-2">
                   Can't Pay? Just Share the Love! 💜
                 </p>
-                <p className="text-purple-200/80 text-sm text-center">
+                <p className="text-teal-200/80 text-sm text-center">
                   Tell a friend, leave a review, or share on social media. Your support in spreading ancient wisdom is just as valuable as financial contributions.
                 </p>
               </div>
@@ -1022,7 +1022,7 @@ export default function Home() {
 
       {/* System Information Dialog */}
       <Dialog open={showSystemDialog} onOpenChange={setShowSystemDialog}>
-        <DialogContent className="bg-purple-900/30 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="bg-teal-900/30 backdrop-blur-lg border border-pink-300/30 max-w-2xl max-h-[80vh] overflow-y-auto">
           {selectedSystem && systemDetails[selectedSystem as keyof typeof systemDetails] && (
             <>
               <DialogHeader>
@@ -1039,7 +1039,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold mb-2" 
                       style={{
-                        color: 'hsl(51, 100%, 65%)',
+                        color: 'hsl(30, 8%, 18%)',
                         textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                       }}>Overview</h4>
                   <p className="leading-relaxed" 
@@ -1053,32 +1053,32 @@ export default function Home() {
 
                 {/* System Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-teal-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Globe className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <Globe className="h-4 w-4" style={{color: 'hsl(30, 8%, 18%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Origin</span>
                     </div>
                     <p style={{color: 'hsl(60, 10%, 96%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].origin}</p>
                   </div>
-                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-teal-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Clock className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <Clock className="h-4 w-4" style={{color: 'hsl(30, 8%, 18%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Heritage</span>
                     </div>
                     <p style={{color: 'hsl(60, 10%, 96%)'}}>{systemDetails[selectedSystem as keyof typeof systemDetails].timeRange}</p>
                   </div>
-                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-teal-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Star className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <Star className="h-4 w-4" style={{color: 'hsl(30, 8%, 18%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Accuracy</span>
                     </div>
                     <Badge variant="outline" className="text-green-400 border-green-400">
                       {systemDetails[selectedSystem as keyof typeof systemDetails].accuracy}
                     </Badge>
                   </div>
-                  <div className="p-4 bg-purple-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
+                  <div className="p-4 bg-teal-900/30 backdrop-blur-sm rounded-lg border border-pink-300/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <User className="h-4 w-4" style={{color: 'hsl(51, 100%, 65%)'}} />
+                      <User className="h-4 w-4" style={{color: 'hsl(30, 8%, 18%)'}} />
                       <span className="text-sm font-medium" style={{color: 'hsl(60, 10%, 96%)', opacity: 0.7}}>Difficulty</span>
                     </div>
                     <Badge variant="outline" className="text-yellow-500 border-yellow-500">
@@ -1092,7 +1092,7 @@ export default function Home() {
                   <h4 className="text-lg font-semibold text-white mb-3">Requirements</h4>
                   <div className="flex flex-wrap gap-2">
                     {systemDetails[selectedSystem as keyof typeof systemDetails].requirements.map((req, idx) => (
-                      <Badge key={idx} variant="secondary" className="bg-yellow-600/20 text-purple-300">
+                      <Badge key={idx} variant="secondary" className="bg-yellow-600/20 text-teal-300">
                         {req}
                       </Badge>
                     ))}
@@ -1152,7 +1152,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
               <span 
                 style={{
-                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)', 
                   WebkitBackgroundClip: 'text', 
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
@@ -1171,7 +1171,7 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(51, 100%, 65%)',
+                  color: 'hsl(30, 8%, 18%)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
@@ -1187,7 +1187,7 @@ export default function Home() {
                 <User className="h-6 w-6" style={{color: 'var(--brushed-gold)'}} />
                 <h3 className="text-2xl font-semibold" 
                     style={{
-                      color: 'hsl(51, 100%, 65%)',
+                      color: 'hsl(30, 8%, 18%)',
                       textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                     }}>Personal Systems</h3>
               </div>
@@ -1200,14 +1200,14 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
+                    className="bg-teal-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-4 sm:p-6 text-center hover:bg-teal-800/40 transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
                   >
                     <div className="text-3xl sm:text-4xl mb-3">
                       {system.icon}
                     </div>
                     <h3 className="font-semibold text-sm sm:text-base mb-1 transition-colors" 
                         style={{
-                          color: 'hsl(51, 100%, 65%)',
+                          color: 'hsl(30, 8%, 18%)',
                           textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                         }}>
                       {system.title}
@@ -1227,7 +1227,7 @@ export default function Home() {
                               opacity: 0.75
                             }}>
                           <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" 
-                                style={{backgroundColor: 'hsl(51, 100%, 65%)'}}></span>
+                                style={{backgroundColor: 'hsl(30, 8%, 18%)'}}></span>
                           {item}
                         </li>
                       ))}
@@ -1245,7 +1245,7 @@ export default function Home() {
                 <Globe className="h-6 w-6" style={{color: 'var(--sage-teal)'}} />
                 <h3 className="text-2xl font-semibold" 
                     style={{
-                      color: 'hsl(51, 100%, 65%)',
+                      color: 'hsl(30, 8%, 18%)',
                       textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                     }}>Space & Environment Systems</h3>
               </div>
@@ -1258,14 +1258,14 @@ export default function Home() {
                   className="group cursor-pointer"
                 >
                   <div 
-                    className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg hover:shadow-yellow-600/20"
+                    className="bg-teal-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-teal-800/40 transition-all duration-300 shadow-lg hover:shadow-yellow-600/20"
                   >
                     <div className="text-4xl mb-4">
                       {system.icon}
                     </div>
                     <h3 className="font-semibold text-lg mb-2 transition-colors" 
                         style={{
-                          color: 'hsl(51, 100%, 65%)',
+                          color: 'hsl(30, 8%, 18%)',
                           textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                         }}>
                       {system.title}
@@ -1285,7 +1285,7 @@ export default function Home() {
                               opacity: 0.75
                             }}>
                           <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" 
-                                style={{backgroundColor: 'hsl(51, 100%, 65%)'}}></span>
+                                style={{backgroundColor: 'hsl(30, 8%, 18%)'}}></span>
                           {item}
                         </li>
                       ))}
@@ -1299,12 +1299,12 @@ export default function Home() {
           {/* Synthesis Feature */}
           <div className="mt-16">
             <div 
-              className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
+              className="bg-teal-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-8 text-center shadow-lg"
             >
               <div className="text-5xl mb-6">🌟</div>
               <h3 className="font-semibold text-2xl mb-4" 
                   style={{
-                    background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                    background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)', 
                     WebkitBackgroundClip: 'text', 
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text'
@@ -1338,7 +1338,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
               <span 
                 style={{
-                  background: 'linear-gradient(135deg, hsl(275, 70%, 65%) 0%, hsl(285, 80%, 75%) 50%, hsl(51, 100%, 70%) 100%)', 
+                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)', 
                   WebkitBackgroundClip: 'text', 
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
@@ -1357,7 +1357,7 @@ export default function Home() {
               <span 
                 className="font-medium"
                 style={{
-                  color: 'hsl(51, 100%, 65%)',
+                  color: 'hsl(30, 8%, 18%)',
                   textShadow: '0 1px 3px rgba(0,0,0,0.3)'
                 }}
               >
@@ -1370,7 +1370,7 @@ export default function Home() {
             {dailyAreas.map((area, index) => (
               <div key={index}>
                 <div 
-                  className="bg-purple-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-purple-800/40 transition-all duration-300 shadow-lg"
+                  className="bg-teal-900/30 backdrop-blur-sm border border-pink-300/30 rounded-2xl p-6 text-center hover:bg-teal-800/40 transition-all duration-300 shadow-lg"
                 >
                   <area.icon className={`h-12 w-12 mx-auto mb-4 ${area.color}`} />
                   <h3 className="font-medium mb-2 font-accent" style={{color: 'var(--sage-teal)'}}>

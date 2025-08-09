@@ -11,8 +11,8 @@ interface ComingSoonProps {
 
 export default function ComingSoon({ feature, description, expectedDate }: ComingSoonProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
-      <Card className="bg-purple-900/40 border-white/20 backdrop-blur-sm rounded-2xl max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-teal-900 via-blue-900 to-gray-900 flex items-center justify-center p-4">
+      <Card className="bg-teal-900/40 border-white/20 backdrop-blur-sm rounded-2xl max-w-md w-full">
         <CardHeader className="text-center pb-3">
           <div className="mx-auto mb-4">
             <div className="w-16 h-16 bg-yellow-600/20 rounded-full flex items-center justify-center">
@@ -35,7 +35,7 @@ export default function ComingSoon({ feature, description, expectedDate }: Comin
           )}
           
           {expectedDate && (
-            <div className="flex items-center justify-center gap-2 text-purple-300">
+            <div className="flex items-center justify-center gap-2 text-teal-300">
               <Calendar className="w-4 h-4" />
               <span className="text-sm">Expected: {expectedDate}</span>
             </div>

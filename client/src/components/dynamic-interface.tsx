@@ -406,7 +406,7 @@ export default function DynamicInterface() {
                 }}
                 style={{ 
                   borderColor: theme.primary,
-                  color: userPrefs.personalizedGreeting ? '#ffffff' : theme.primary,
+                  color: userPrefs.personalizedGreeting ? 'hsl(60, 10%, 96%)' : theme.primary,
                   background: userPrefs.personalizedGreeting ? 
                     `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})` : 
                     `linear-gradient(135deg, ${theme.primary}20, ${theme.secondary}10)`,
@@ -436,7 +436,7 @@ export default function DynamicInterface() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = `linear-gradient(135deg, ${theme.secondary}, ${theme.accent})`;
-                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.color = 'hsl(60, 10%, 96%)';
                   e.currentTarget.style.boxShadow = `0 8px 25px ${theme.secondary}50`;
                   e.currentTarget.style.transform = 'scale(1.1) rotate(-2deg)';
                 }}
@@ -465,7 +465,7 @@ export default function DynamicInterface() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = `linear-gradient(135deg, ${theme.accent}, ${theme.primary})`;
-                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.color = 'hsl(60, 10%, 96%)';
                   e.currentTarget.style.boxShadow = `0 8px 25px ${theme.accent}50`;
                   e.currentTarget.style.transform = 'scale(1.1) rotate(2deg)';
                 }}
@@ -495,7 +495,7 @@ export default function DynamicInterface() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`;
-                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.color = 'hsl(60, 10%, 96%)';
                   e.currentTarget.style.boxShadow = `0 8px 25px ${theme.primary}50`;
                   e.currentTarget.style.transform = 'scale(1.1) rotate(-1deg)';
                 }}

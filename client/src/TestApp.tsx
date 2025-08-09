@@ -3,7 +3,7 @@ export default function TestApp() {
   return (
     <div style={{ 
       minHeight: '100vh', 
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 100%)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',

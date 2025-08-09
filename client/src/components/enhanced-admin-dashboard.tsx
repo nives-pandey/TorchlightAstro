@@ -123,7 +123,7 @@ export default function EnhancedAdminDashboard() {
     setAnalyticsData(mockData);
   };
 
-  const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7c7c', '#8dd1e1'];
+  const COLORS = ['hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(44, 45%, 65%)', 'hsl(30, 5%, 66%)', 'hsl(180, 25%, 55%)'];
 
   return (
     <div className="min-h-screen bg-cosmic-gradient p-6">
@@ -237,24 +237,24 @@ export default function EnhancedAdminDashboard() {
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={analyticsData.usageStats}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(30, 8%, 18%)" />
                       <XAxis 
                         dataKey="displayName" 
-                        tick={{ fill: '#9CA3AF', fontSize: 12 }}
+                        tick={{ fill: 'hsl(30, 5%, 66%)', fontSize: 12 }}
                         angle={-45}
                         textAnchor="end"
                         height={100}
                       />
-                      <YAxis tick={{ fill: '#9CA3AF' }} />
+                      <YAxis tick={{ fill: 'hsl(30, 5%, 66%)' }} />
                       <Tooltip 
                         contentStyle={{ 
-                          backgroundColor: '#1F2937', 
-                          border: '1px solid #374151',
+                          backgroundColor: 'hsl(30, 8%, 18%)', 
+                          border: '1px solid hsl(30, 5%, 66%)',
                           borderRadius: '8px',
-                          color: '#F3F4F6'
+                          color: 'hsl(60, 10%, 96%)'
                         }}
                       />
-                      <Bar dataKey="usageCount" fill="#C5A55A" />
+                      <Bar dataKey="usageCount" fill="hsl(44, 45%, 65%)" />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -269,23 +269,23 @@ export default function EnhancedAdminDashboard() {
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
                     <AreaChart data={analyticsData.usageStats}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                      <XAxis dataKey="region" tick={{ fill: '#9CA3AF' }} />
-                      <YAxis tick={{ fill: '#9CA3AF' }} domain={[0.8, 1]} />
+                      <CartesianGrid strokeDasharray="3 3" stroke="hsl(30, 8%, 18%)" />
+                      <XAxis dataKey="region" tick={{ fill: 'hsl(30, 5%, 66%)' }} />
+                      <YAxis tick={{ fill: 'hsl(30, 5%, 66%)' }} domain={[0.8, 1]} />
                       <Tooltip 
                         contentStyle={{ 
-                          backgroundColor: '#1F2937', 
-                          border: '1px solid #374151',
+                          backgroundColor: 'hsl(30, 8%, 18%)', 
+                          border: '1px solid hsl(30, 5%, 66%)',
                           borderRadius: '8px',
-                          color: '#F3F4F6'
+                          color: 'hsl(60, 10%, 96%)'
                         }}
                         formatter={(value: any) => [`${(Number(value) * 100).toFixed(1)}%`, 'Success Rate']}
                       />
                       <Area 
                         type="monotone" 
                         dataKey="successRate" 
-                        stroke="#10B981" 
-                        fill="#10B981" 
+                        stroke="hsl(180, 25%, 55%)" 
+                        fill="hsl(180, 25%, 55%)" 
                         fillOpacity={0.3}
                       />
                     </AreaChart>
@@ -365,7 +365,7 @@ export default function EnhancedAdminDashboard() {
                         labelLine={false}
                         label={({ name, percentage }) => `${name}: ${percentage}%`}
                         outerRadius={80}
-                        fill="#8884d8"
+                        fill="hsl(44, 45%, 65%)"
                         dataKey="value"
                       >
                         {Object.entries(analyticsData.qualityMetrics?.qualityScores || {}).map((entry, index) => (
@@ -374,10 +374,10 @@ export default function EnhancedAdminDashboard() {
                       </Pie>
                       <Tooltip 
                         contentStyle={{ 
-                          backgroundColor: '#1F2937', 
-                          border: '1px solid #374151',
+                          backgroundColor: 'hsl(30, 8%, 18%)', 
+                          border: '1px solid hsl(30, 5%, 66%)',
                           borderRadius: '8px',
-                          color: '#F3F4F6'
+                          color: 'hsl(60, 10%, 96%)'
                         }}
                       />
                     </PieChart>
@@ -421,7 +421,7 @@ export default function EnhancedAdminDashboard() {
                       <AlertTriangle className="h-4 w-4 mr-2" />
                       Quality Insights
                     </div>
-                    <ul className="text-xs text-purple-300 space-y-1">
+                    <ul className="text-xs text-teal-300 space-y-1">
                       <li>• {((analyticsData.qualityMetrics?.exactTimes || 0) / (analyticsData.qualityMetrics?.totalEntries || 1) * 100).toFixed(1)}% of users provide exact birth times</li>
                       <li>• {((analyticsData.qualityMetrics?.roundedTimes || 0) / (analyticsData.qualityMetrics?.totalEntries || 1) * 100).toFixed(1)}% provide rounded times (potential accuracy issues)</li>
                       <li>• Time precision affects {((89 + 156 + 234) / (analyticsData.qualityMetrics?.totalEntries || 1) * 100).toFixed(1)}% of charts significantly</li>

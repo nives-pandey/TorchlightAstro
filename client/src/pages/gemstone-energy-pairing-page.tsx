@@ -36,7 +36,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "amplifying",
       icon: Zap,
-      color: "#FFD700",
+      color: "hsl(44, 45%, 65%)",
       title: "Amplifying Stones",
       description: "Enhance and magnify your natural energies and intentions",
       examples: ["Clear Quartz", "Selenite", "Herkimer Diamond"]
@@ -44,7 +44,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "balancing",
       icon: Target,
-      color: "#32CD32", 
+      color: "hsl(180, 25%, 55%)", 
       title: "Balancing Stones",
       description: "Harmonize conflicting energies and restore equilibrium",
       examples: ["Fluorite", "Amazonite", "Prehnite"]
@@ -52,7 +52,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "protective",
       icon: Shield,
-      color: "#8B4513",
+      color: "hsl(30, 8%, 18%)",
       title: "Protective Stones", 
       description: "Shield against negative energies and psychic attacks",
       examples: ["Black Tourmaline", "Obsidian", "Hematite"]
@@ -60,7 +60,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "manifestation",
       icon: Wand2,
-      color: "#FF6347",
+      color: "hsl(44, 45%, 65%)",
       title: "Manifestation Stones",
       description: "Transform dreams into reality through focused intention",
       examples: ["Citrine", "Pyrite", "Tiger's Eye"]
@@ -68,7 +68,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "healing",
       icon: Heart,
-      color: "#FF69B4",
+      color: "hsl(44, 45%, 65%)",
       title: "Healing Stones",
       description: "Facilitate emotional, physical, and spiritual healing",
       examples: ["Rose Quartz", "Green Aventurine", "Malachite"]
@@ -76,7 +76,7 @@ export default function GemstoneEnergyPairingPage() {
     {
       type: "intuitive",
       icon: Brain,
-      color: "#6A9797",
+      color: "hsl(180, 25%, 55%)",
       title: "Intuitive Stones",
       description: "Awaken psychic abilities and spiritual awareness",
       examples: ["Amethyst", "Labradorite", "Moonstone"]
@@ -114,7 +114,7 @@ export default function GemstoneEnergyPairingPage() {
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
               Intuitive Gemstone Energy Visualizer
             </h1>
-            <p className="text-xl text-purple-200 max-w-3xl">
+            <p className="text-xl text-teal-200 max-w-3xl">
               Experience your gemstone energies through interactive visualization and real-time energy flow analysis
             </p>
           </div>
@@ -166,7 +166,7 @@ export default function GemstoneEnergyPairingPage() {
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-yellow-500 to-pink-400 bg-clip-text text-transparent">
             Gemstone Energy Pairing
           </h1>
-          <p className="text-xl text-purple-200 max-w-4xl mx-auto mb-8">
+          <p className="text-xl text-teal-200 max-w-4xl mx-auto mb-8">
             Discover the perfect gemstone combinations for your unique energy signature through advanced 
             astrological analysis and intuitive pairing technology
           </p>
@@ -177,7 +177,7 @@ export default function GemstoneEnergyPairingPage() {
               onClick={() => setActiveView('visualizer')}
               className="text-lg px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
               style={{
-                background: 'linear-gradient(135deg, hsl(275, 70%, 55%) 0%, hsl(285, 80%, 65%) 50%, hsl(51, 100%, 65%) 100%)',
+                background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
                 border: 'none',
                 color: 'white',
                 textShadow: '0 2px 4px rgba(0,0,0,0.3)'
@@ -263,7 +263,7 @@ export default function GemstoneEnergyPairingPage() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
         >
-          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-yellow-500/30">
+          <Card className="bg-gradient-to-br from-teal-900/40 to-pink-900/40 border-yellow-500/30">
             <CardHeader>
               <CardTitle className="text-white flex items-center">
                 <Sparkles className="mr-2 h-5 w-5 text-yellow-400" />
@@ -327,7 +327,7 @@ export default function GemstoneEnergyPairingPage() {
         >
           <Button
             onClick={() => setActiveView('visualizer')}
-            className="bg-gradient-to-r from-yellow-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl hover:shadow-yellow-600/25 transform hover:scale-105 transition-all duration-300 border-2 border-yellow-500"
+            className="bg-gradient-to-r from-yellow-600 via-pink-600 to-orange-500 hover:from-teal-700 hover:via-pink-700 hover:to-orange-600 text-white font-bold text-xl px-12 py-6 rounded-2xl shadow-2xl hover:shadow-yellow-600/25 transform hover:scale-105 transition-all duration-300 border-2 border-yellow-500"
           >
             <Gem className="mr-3 h-6 w-6" />
             Launch Gemstone Energy Pairing Visualizer

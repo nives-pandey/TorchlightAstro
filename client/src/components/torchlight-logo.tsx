@@ -57,38 +57,38 @@ export const TorchlightLogo: React.FC<TorchlightLogoProps> = ({
           />
           
           {/* Sanctuary sparkles - warm gold tones */}
-          <circle cx="20" cy="15" r="1.5" fill="#C5A55A" opacity="0.8">
+          <circle cx="20" cy="15" r="1.5" fill="hsl(44, 45%, 65%)" opacity="0.8">
             <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="40" cy="12" r="1" fill="#C5A55A" opacity="0.6">
+          <circle cx="40" cy="12" r="1" fill="hsl(44, 45%, 65%)" opacity="0.6">
             <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.5s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="15" cy="25" r="0.8" fill="#C5A55A" opacity="0.7">
+          <circle cx="15" cy="25" r="0.8" fill="hsl(44, 45%, 65%)" opacity="0.7">
             <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="45" cy="22" r="1.2" fill="#C5A55A" opacity="0.5">
+          <circle cx="45" cy="22" r="1.2" fill="hsl(44, 45%, 65%)" opacity="0.5">
             <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.2s" repeatCount="indefinite"/>
           </circle>
           
           {/* Sanctuary-aligned gradient definitions */}
           <defs>
             <linearGradient id="torchGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#B0A9A4" />
-              <stop offset="50%" stopColor="#C5A55A" />
-              <stop offset="100%" stopColor="#B0A9A4" />
+              <stop offset="0%" stopColor="hsl(30, 5%, 66%)" />
+              <stop offset="50%" stopColor="hsl(44, 45%, 65%)" />
+              <stop offset="100%" stopColor="hsl(30, 5%, 66%)" />
             </linearGradient>
             
             <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F5F5DC" />
-              <stop offset="30%" stopColor="#C5A55A" />
-              <stop offset="70%" stopColor="#6A9797" />
-              <stop offset="100%" stopColor="#C5A55A" />
+              <stop offset="0%" stopColor="hsl(60, 10%, 96%)" />
+              <stop offset="30%" stopColor="hsl(44, 45%, 65%)" />
+              <stop offset="70%" stopColor="hsl(180, 25%, 55%)" />
+              <stop offset="100%" stopColor="hsl(44, 45%, 65%)" />
             </linearGradient>
             
             <linearGradient id="innerFlameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F5F5DC" />
-              <stop offset="50%" stopColor="#C5A55A" />
-              <stop offset="100%" stopColor="#C5A55A" />
+              <stop offset="0%" stopColor="hsl(60, 10%, 96%)" />
+              <stop offset="50%" stopColor="hsl(44, 45%, 65%)" />
+              <stop offset="100%" stopColor="hsl(44, 45%, 65%)" />
             </linearGradient>
           </defs>
         </svg>
@@ -131,11 +131,11 @@ export const TorchlightLogo: React.FC<TorchlightLogoProps> = ({
         {/* Sanctuary text gradient - sophisticated gold */}
         <defs>
           <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#C5A55A" />
-            <stop offset="25%" stopColor="#F5F5DC" />
-            <stop offset="50%" stopColor="#C5A55A" />
-            <stop offset="75%" stopColor="#B0A9A4" />
-            <stop offset="100%" stopColor="#C5A55A" />
+            <stop offset="0%" stopColor="hsl(44, 45%, 65%)" />
+            <stop offset="25%" stopColor="hsl(60, 10%, 96%)" />
+            <stop offset="50%" stopColor="hsl(44, 45%, 65%)" />
+            <stop offset="75%" stopColor="hsl(30, 5%, 66%)" />
+            <stop offset="100%" stopColor="hsl(44, 45%, 65%)" />
           </linearGradient>
           
           <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -148,13 +148,13 @@ export const TorchlightLogo: React.FC<TorchlightLogoProps> = ({
         </defs>
         
         {/* Subtle sanctuary sparkles over text */}
-        <circle cx="50" cy="25" r="1" fill="#C5A55A" opacity="0">
+        <circle cx="50" cy="25" r="1" fill="hsl(44, 45%, 65%)" opacity="0">
           <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0s"/>
         </circle>
-        <circle cx="150" cy="30" r="0.8" fill="#F5F5DC" opacity="0">
+        <circle cx="150" cy="30" r="0.8" fill="hsl(60, 10%, 96%)" opacity="0">
           <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
         </circle>
-        <circle cx="240" cy="20" r="1.2" fill="#C5A55A" opacity="0">
+        <circle cx="240" cy="20" r="1.2" fill="hsl(44, 45%, 65%)" opacity="0">
           <animate attributeName="opacity" values="0;1;0" dur="2.8s" repeatCount="indefinite" begin="0.5s"/>
         </circle>
       </svg>

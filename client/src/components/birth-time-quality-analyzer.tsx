@@ -370,7 +370,7 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                   {assessment.impactAreas.risingSign.affected ? (
                     <div>
-                      <p className="text-sm text-purple-300 mb-2">Potential variation</p>
+                      <p className="text-sm text-teal-300 mb-2">Potential variation</p>
                       <p className="text-xs text-gray-400">
                         Could be: {assessment.impactAreas.risingSign.alternatives.join(" or ")}
                       </p>
@@ -396,7 +396,7 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                   {assessment.impactAreas.houses.affected ? (
                     <div>
-                      <p className="text-sm text-purple-300 mb-1">May shift ±{assessment.impactAreas.houses.shiftDegrees}°</p>
+                      <p className="text-sm text-teal-300 mb-1">May shift ±{assessment.impactAreas.houses.shiftDegrees}°</p>
                       <p className="text-xs text-gray-400">House cusps could move</p>
                     </div>
                   ) : (
@@ -420,7 +420,7 @@ export default function BirthTimeQualityAnalyzer({
                   </div>
                   {assessment.impactAreas.aspects.affected ? (
                     <div>
-                      <p className="text-sm text-purple-300 mb-1">{assessment.impactAreas.aspects.changedAspects} aspects affected</p>
+                      <p className="text-sm text-teal-300 mb-1">{assessment.impactAreas.aspects.changedAspects} aspects affected</p>
                       <p className="text-xs text-gray-400">Minor orb changes possible</p>
                     </div>
                   ) : (
@@ -536,7 +536,7 @@ export default function BirthTimeQualityAnalyzer({
 
                 <div className="p-4 bg-yellow-600/10 border border-yellow-600/20 rounded-lg">
                   <h5 className="font-medium text-yellow-500 mb-2">Solar Time Explanation</h5>
-                  <p className="text-sm text-purple-300">{solarTimeComparison.explanation}</p>
+                  <p className="text-sm text-teal-300">{solarTimeComparison.explanation}</p>
                 </div>
               </CardContent>
             </Card>

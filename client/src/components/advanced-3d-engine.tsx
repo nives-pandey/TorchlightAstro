@@ -54,7 +54,7 @@ export default function Advanced3DEngine({
   const [showOrbits, setShowOrbits] = useState(true);
   const [showAspects, setShowAspects] = useState(true);
   const [showConstellations, setShowConstellations] = useState(true);
-  const [viewMode, setViewMode] = useState<'cosmic' | 'geometric' | 'heliocentric'>('cosmic');
+  const [viewMode, setViewMode] = useState<'sanctuary' | 'geometric' | 'heliocentric'>('sanctuary');
   const [aspectFilter, setAspectFilter] = useState('all');
 
   // Three.js object references
@@ -487,7 +487,7 @@ export default function Advanced3DEngine({
       }
 
       // Camera orbital motion
-      if (viewMode === 'cosmic') {
+      if (viewMode === 'sanctuary') {
         const cameraAngle = timeRef.current * 0.1;
         cameraRef.current.position.x = Math.cos(cameraAngle) * cameraDistance[0] * 0.3;
         cameraRef.current.position.z = Math.sin(cameraAngle) * cameraDistance[0];
@@ -577,7 +577,7 @@ export default function Advanced3DEngine({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Animation Controls */}
             <div className="space-y-3">
-              <h4 className="font-medium text-purple-300">Animation</h4>
+              <h4 className="font-medium text-teal-300">Animation</h4>
               <div className="flex items-center gap-2">
                 <Button
                   onClick={toggleAnimation}
@@ -612,7 +612,7 @@ export default function Advanced3DEngine({
 
             {/* View Controls */}
             <div className="space-y-3">
-              <h4 className="font-medium text-purple-300">View Mode</h4>
+              <h4 className="font-medium text-teal-300">View Mode</h4>
               <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as any)}>
                 <TabsList className="grid w-full grid-cols-3 bg-slate-800">
                   <TabsTrigger value="cosmic">Cosmic</TabsTrigger>
@@ -635,7 +635,7 @@ export default function Advanced3DEngine({
 
             {/* Display Options */}
             <div className="space-y-3">
-              <h4 className="font-medium text-purple-300">Display</h4>
+              <h4 className="font-medium text-teal-300">Display</h4>
               <div className="space-y-2">
                 <label className="flex items-center gap-2">
                   <input

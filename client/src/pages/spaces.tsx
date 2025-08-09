@@ -10,7 +10,7 @@ export default function Spaces() {
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
             Homes & Business Harmony
           </h1>
-          <p className="text-xl text-purple-200 max-w-3xl mx-auto">
+          <p className="text-xl text-teal-200 max-w-3xl mx-auto">
             Create harmonious living and working spaces with ancient Vastu Shastra and Feng Shui principles
           </p>
         </div>
@@ -24,12 +24,12 @@ export default function Spaces() {
                 <Home className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Vastu Shastra</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Ancient Indian architectural principles for harmonious spaces
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Directional energy analysis</li>
                 <li>• Room placement guidance</li>
                 <li>• Element balance assessment</li>
@@ -48,12 +48,12 @@ export default function Spaces() {
                 <Compass className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Feng Shui</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Chinese geomancy for optimal energy flow
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Chi energy flow mapping</li>
                 <li>• Bagua area enhancement</li>
                 <li>• Five element balancing</li>
@@ -72,12 +72,12 @@ export default function Spaces() {
                 <Clock className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Auspicious Timing</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Best times for moving, renovating, or starting ventures
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Muhurta calculations</li>
                 <li>• Planetary transit timing</li>
                 <li>• Lunar phase optimization</li>
@@ -96,18 +96,18 @@ export default function Spaces() {
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-white">Space Remedies</CardTitle>
-              <CardDescription className="text-purple-200">
+              <CardDescription className="text-teal-200">
                 Color, crystal, and placement recommendations
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2 text-sm text-purple-100">
+              <ul className="space-y-2 text-sm text-teal-100">
                 <li>• Color therapy guidance</li>
                 <li>• Crystal placement maps</li>
                 <li>• Plant & mirror positioning</li>
                 <li>• Sound & light healing</li>
               </ul>
-              <Badge className="mt-4 bg-yellow-500/20 text-purple-300 border-yellow-500/30">
+              <Badge className="mt-4 bg-yellow-500/20 text-teal-300 border-yellow-500/30">
                 Holistic Healing
               </Badge>
             </CardContent>
@@ -118,7 +118,7 @@ export default function Spaces() {
         <div className="mt-16 text-center">
           <div className="p-8 bg-black/30 rounded-xl border border-green-400/20">
             <h3 className="text-2xl font-bold text-white mb-4">Ready to harmonize your space?</h3>
-            <p className="text-purple-200 mb-6">Get comprehensive guidance for creating balanced, prosperous living and working environments</p>
+            <p className="text-teal-200 mb-6">Get comprehensive guidance for creating balanced, prosperous living and working environments</p>
             <button className="clean-button px-8 py-3">
               Analyze Your Space
             </button>

@@ -115,7 +115,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
               <>
                 {/* Personal Information */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-purple-300 flex items-center">
+                  <h3 className="text-lg font-semibold text-teal-300 flex items-center">
                     <User className="mr-2 h-5 w-5" />
                     Personal Information
                   </h3>
@@ -182,7 +182,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
                 </div>
                 {/* Birth Date and Time */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-purple-300 flex items-center">
+                  <h3 className="text-lg font-semibold text-teal-300 flex items-center">
                     <Calendar className="mr-2 h-5 w-5" />
                     Birth Date & Time
                   </h3>
@@ -234,7 +234,7 @@ export default function BirthDataForm({ onSubmit, onClose, isLoading = false }: 
 
                 {/* Location */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-purple-300 flex items-center">
+                  <h3 className="text-lg font-semibold text-teal-300 flex items-center">
                     <MapPin className="mr-2 h-5 w-5" />
                     Birth Location
                   </h3>

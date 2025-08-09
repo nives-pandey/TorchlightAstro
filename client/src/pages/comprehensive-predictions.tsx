@@ -336,9 +336,9 @@ export default function ComprehensivePredictions() {
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return "var(--brushed-gold)";
-    if (score >= 70) return "#4ADE80";
-    if (score >= 60) return "#FCD34D";
-    return "#F87171";
+    if (score >= 70) return "hsl(180, 25%, 55%)";
+    if (score >= 60) return "hsl(44, 45%, 65%)";
+    return "hsl(30, 5%, 66%)";
   };
 
   const filteredPredictions = selectedSystem === "all" 
@@ -441,7 +441,7 @@ export default function ComprehensivePredictions() {
                             ))}
                           </div>
                           <div>
-                            <h5 className="text-sm font-medium mb-2 flex items-center gap-2" style={{color: '#F87171'}}>
+                            <h5 className="text-sm font-medium mb-2 flex items-center gap-2" style={{color: 'hsl(30, 5%, 66%)'}}>
                               <AlertTriangle className="w-3 h-3" />
                               Challenges:
                             </h5>
@@ -549,7 +549,7 @@ export default function ComprehensivePredictions() {
                     <ul className="space-y-2">
                       {comprehensiveReport.differences.map((item, idx) => (
                         <li key={idx} className="text-sm flex items-start gap-2" style={{color: 'var(--sage-teal)'}}>
-                          <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: '#F87171'}} />
+                          <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" style={{color: 'hsl(30, 5%, 66%)'}} />
                           {item}
                         </li>
                       ))}

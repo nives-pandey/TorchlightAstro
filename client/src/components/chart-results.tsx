@@ -167,7 +167,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
       content: (
         <div className="space-y-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-purple-300 mb-2">
+            <h3 className="text-2xl font-bold text-teal-300 mb-2">
               ☉ {insights.western.sign}
             </h3>
             <Badge variant="outline" className="text-white border-yellow-500">
@@ -176,7 +176,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Card className="bg-purple-800/40 border-yellow-500/30">
+            <Card className="bg-teal-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Star className="mr-2 h-4 w-4" />
@@ -187,7 +187,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
                 {insights.western?.analysis ? (
                   <div className="space-y-4">
                     <div className="bg-slate-800/50 p-4 rounded-lg">
-                      <h4 className="text-purple-300 font-semibold mb-2">Birth Location</h4>
+                      <h4 className="text-teal-300 font-semibold mb-2">Birth Location</h4>
                       <p className="text-xs text-gray-400">{getBirthLocation()}</p>
                     </div>
                     <div className="max-h-96 overflow-y-auto prose prose-sm prose-invert">
@@ -195,35 +195,35 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
                         {/* Comprehensive 5+ Page Western Analysis */}
                         <div className="space-y-6">
                           <div>
-                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 1: Core Personality Foundation</h4>
+                            <h4 className="text-lg font-bold text-teal-300 mb-3">Chapter 1: Core Personality Foundation</h4>
                             <p className="mb-3">Your Western astrological profile reveals deep insights into your personality structure. As a {insights.western.sign}, you carry the fundamental energy of the {insights.western.element} element, which influences every aspect of your being.</p>
                             <p className="mb-3">The Sun in {insights.western.sign} indicates your core identity, life purpose, and the essence of who you are becoming. This placement suggests strong leadership abilities, creative expression, and a natural magnetism that draws others to you.</p>
                             <p>Your {insights.western.element} nature manifests through passionate self-expression, confidence in your abilities, and an innate understanding of personal power and how to use it constructively.</p>
                           </div>
                           
                           <div>
-                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 2: Planetary Influences & Aspects</h4>
+                            <h4 className="text-lg font-bold text-teal-300 mb-3">Chapter 2: Planetary Influences & Aspects</h4>
                             <p className="mb-3">The planetary positions at your birth create a unique cosmic blueprint. Each planet represents different aspects of your personality and life experience.</p>
                             <p className="mb-3">Mercury influences your communication style and thought processes, suggesting you have a dynamic and expressive way of sharing ideas. Venus governs your approach to love and beauty, indicating deep appreciation for harmony and aesthetic experience.</p>
                             <p>Mars represents your drive and ambition, showing how you pursue goals and handle challenges. The outer planets (Jupiter, Saturn, Uranus, Neptune, Pluto) provide generational themes and deeper life purposes.</p>
                           </div>
                           
                           <div>
-                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 3: House System & Life Areas</h4>
+                            <h4 className="text-lg font-bold text-teal-300 mb-3">Chapter 3: House System & Life Areas</h4>
                             <p className="mb-3">The twelve houses represent different life areas where planetary energies express themselves. Your chart shows emphasis in certain houses, highlighting key life themes.</p>
                             <p className="mb-3">The First House (self-image), Fourth House (home/family), Seventh House (partnerships), and Tenth House (career/reputation) are particularly significant in your chart.</p>
                             <p>Each house placement reveals how you experience that life area and where you can focus energy for maximum growth and fulfillment.</p>
                           </div>
                           
                           <div>
-                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 4: Aspects & Planetary Relationships</h4>
+                            <h4 className="text-lg font-bold text-teal-300 mb-3">Chapter 4: Aspects & Planetary Relationships</h4>
                             <p className="mb-3">Aspects are angular relationships between planets that create dynamic energy patterns in your chart. These connections reveal internal tensions, talents, and growth opportunities.</p>
                             <p className="mb-3">Conjunctions blend planetary energies, trines create harmonious flow, squares generate productive tension, and oppositions require balance and integration.</p>
                             <p>Your aspect patterns suggest natural abilities in creative self-expression, leadership, and inspiring others through your authentic presence.</p>
                           </div>
                           
                           <div>
-                            <h4 className="text-lg font-bold text-purple-300 mb-3">Chapter 5: Life Purpose & Spiritual Path</h4>
+                            <h4 className="text-lg font-bold text-teal-300 mb-3">Chapter 5: Life Purpose & Spiritual Path</h4>
                             <p className="mb-3">Your North Node placement indicates your soul's growth direction in this lifetime. This represents qualities to develop and experiences to embrace for spiritual evolution.</p>
                             <p className="mb-3">The combination of your Sun sign, Midheaven, and North Node suggests a life purpose involving creative leadership, inspiring others, and expressing your unique authentic self.</p>
                             <p>Your chart indicates strong potential for making a positive impact through creative work, teaching, or any field where you can shine your light and help others discover their own inner radiance.</p>
@@ -241,7 +241,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-yellow-500/30">
+            <Card className="bg-teal-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Heart className="mr-2 h-4 w-4" />
@@ -253,7 +253,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-yellow-500/30">
+            <Card className="bg-teal-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg flex items-center">
                   <Briefcase className="mr-2 h-4 w-4" />
@@ -265,7 +265,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
               </CardContent>
             </Card>
 
-            <Card className="bg-purple-800/40 border-yellow-500/30">
+            <Card className="bg-teal-800/40 border-yellow-500/30">
               <CardHeader className="pb-3">
                 <CardTitle className="text-white text-lg">Current Transit</CardTitle>
               </CardHeader>
@@ -429,7 +429,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
             variant="ghost"
             size="icon"
             onClick={onClose}
-            className="absolute right-4 top-4 text-white hover:bg-purple-800/40"
+            className="absolute right-4 top-4 text-white hover:bg-teal-800/40"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -459,7 +459,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
 
         <CardContent className="space-y-6">
           <Tabs value={activeSystem} onValueChange={setActiveSystem} className="w-full">
-            <TabsList className="grid w-full grid-cols-4 bg-purple-800/40">
+            <TabsList className="grid w-full grid-cols-4 bg-teal-800/40">
               <TabsTrigger value="western" className="text-white data-[state=active]:bg-yellow-600">
                 Western
               </TabsTrigger>
@@ -476,7 +476,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
 
             {Object.entries(systemContent).map(([key, system]) => (
               <TabsContent key={key} value={key} className="mt-6">
-                <Card className="bg-purple-900/30 border-white/20">
+                <Card className="bg-teal-900/30 border-white/20">
                   <CardHeader>
                     <CardTitle className="text-white flex items-center text-xl">
                       {system.icon}
@@ -491,7 +491,7 @@ export default function ChartResults({ data, onClose }: ChartResultsProps) {
             ))}
           </Tabs>
 
-          <div className="text-center mt-8 p-4 bg-purple-900/30 rounded-lg border border-white/20">
+          <div className="text-center mt-8 p-4 bg-teal-900/30 rounded-lg border border-white/20">
             <p className="text-gray-300 text-sm">
               🌟 This analysis is based on authentic astronomical calculations using Swiss Ephemeris precision.
               <br />

@@ -40,7 +40,7 @@ export default function InteractiveExpandableCard({
                 {title}
               </CardTitle>
               {description && (
-                <CardDescription className="text-purple-200 mt-1">
+                <CardDescription className="text-teal-200 mt-1">
                   {description}
                 </CardDescription>
               )}
@@ -49,7 +49,7 @@ export default function InteractiveExpandableCard({
           <Button
             variant="ghost"
             size="sm"
-            className="text-purple-300 hover:text-white hover:bg-yellow-600/20 transition-colors"
+            className="text-teal-300 hover:text-white hover:bg-yellow-600/20 transition-colors"
           >
             {isExpanded ? (
               <ChevronUp className="h-5 w-5" />
@@ -77,7 +77,7 @@ export default function InteractiveExpandableCard({
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(false)}
-              className="text-purple-300 hover:text-white hover:bg-yellow-600/20"
+              className="text-teal-300 hover:text-white hover:bg-yellow-600/20"
             >
               Show Less
               <ChevronUp className="ml-2 h-4 w-4" />

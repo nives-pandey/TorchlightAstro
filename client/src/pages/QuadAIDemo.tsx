@@ -120,7 +120,7 @@ export default function QuadAIDemo() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 p-4">
       <div className="max-w-6xl mx-auto space-y-6 pt-8">
         
         {/* Header */}
@@ -128,7 +128,7 @@ export default function QuadAIDemo() {
           <h1 className="text-4xl font-bold text-white">
             🎉 World's First Quad-AI Astrology Platform
           </h1>
-          <p className="text-xl text-purple-200">
+          <p className="text-xl text-teal-200">
             Four AI Providers • Zero Downtime • Infinite Possibilities
           </p>
           <Badge variant="secondary" className="text-lg px-4 py-2">
@@ -205,7 +205,7 @@ export default function QuadAIDemo() {
             <Button 
               onClick={testQuadAI}
               disabled={testing}
-              className="w-full bg-gradient-to-r from-yellow-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              className="w-full bg-gradient-to-r from-yellow-600 to-blue-600 hover:from-teal-700 hover:to-blue-700"
             >
               {testing ? (
                 <>
@@ -254,14 +254,14 @@ export default function QuadAIDemo() {
         )}
 
         {/* Technical Achievement */}
-        <Card className="bg-gradient-to-r from-purple-900/50 to-blue-900/50 border-gold">
+        <Card className="bg-gradient-to-r from-teal-900/50 to-blue-900/50 border-gold">
           <CardHeader>
             <CardTitle className="text-white text-center text-2xl">
               🏆 Technical Achievement Unlocked
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center space-y-4">
-            <p className="text-purple-200 text-lg">
+            <p className="text-teal-200 text-lg">
               Torchlight is now the <strong>world's only astrology platform</strong> with:
             </p>
             <div className="grid grid-cols-2 gap-4 text-white">
@@ -270,7 +270,7 @@ export default function QuadAIDemo() {
               <div>✅ Google Gemini Integration</div>
               <div>✅ Meta LLaMA 3.1 Integration</div>
             </div>
-            <p className="text-purple-200">
+            <p className="text-teal-200">
               <strong>Quintuple-Tier Failover:</strong> OpenAI → Grok → Gemini → LLaMA → Traditional
             </p>
             <Badge variant="secondary" className="text-lg px-6 py-2">

@@ -147,7 +147,7 @@ export default function SystemComparison({ userChart, partnerChart, showDownload
                       </div>
                     </div>
                     {analysis.compatibility && (
-                      <Badge variant="outline" className="border-yellow-500 text-purple-300">
+                      <Badge variant="outline" className="border-yellow-500 text-teal-300">
                         {analysis.compatibility}% compatible
                       </Badge>
                     )}

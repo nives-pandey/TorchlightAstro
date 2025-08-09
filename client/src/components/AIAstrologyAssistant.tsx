@@ -153,7 +153,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
   };
 
   return (
-    <Card className={`h-[600px] flex flex-col cosmic-gradient border-purple-300/30 ${className}`}>
+    <Card className={`h-[600px] flex flex-col cosmic-gradient border-teal-300/30 ${className}`}>
       <CardHeader className="flex-shrink-0 pb-4">
         <CardTitle className="flex items-center gap-2 text-white">
           <Sparkles className="h-5 w-5 text-yellow-400" />
@@ -178,10 +178,10 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
 
       <CardContent className="flex-1 flex flex-col gap-4 p-4 pt-0">
         {/* Messages Area */}
-        <ScrollArea className="flex-1 border border-purple-300/20 rounded-lg" ref={scrollAreaRef}>
+        <ScrollArea className="flex-1 border border-teal-300/20 rounded-lg" ref={scrollAreaRef}>
           <div className="p-4 space-y-4">
             {messages.length === 0 && (
-              <div className="text-center text-purple-200 py-8">
+              <div className="text-center text-teal-200 py-8">
                 <Bot className="h-12 w-12 mx-auto mb-4 text-yellow-500" />
                 <p className="text-lg font-medium mb-2">Welcome to your AI Astrology Assistant!</p>
                 <p className="text-sm opacity-75">
@@ -204,7 +204,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                   <div className={`rounded-lg p-3 ${
                     message.type === 'user'
                       ? 'bg-yellow-600 text-white'
-                      : 'bg-white/10 text-white border border-purple-300/20'
+                      : 'bg-white/10 text-white border border-teal-300/20'
                   }`}>
                     <div className="whitespace-pre-wrap text-sm leading-relaxed">
                       {message.content}
@@ -233,7 +233,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-500 text-black flex items-center justify-center">
                     <Bot className="h-4 w-4" />
                   </div>
-                  <div className="bg-white/10 text-white border border-purple-300/20 rounded-lg p-3">
+                  <div className="bg-white/10 text-white border border-teal-300/20 rounded-lg p-3">
                     <div className="flex items-center gap-2">
                       <div className="flex gap-1">
                         <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
@@ -252,7 +252,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
         {/* Suggested Questions */}
         {messages.length === 0 && (
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm text-purple-200">
+            <div className="flex items-center gap-2 text-sm text-teal-200">
               <Stars className="h-4 w-4" />
               <span>Suggested questions:</span>
             </div>
@@ -262,7 +262,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                   key={index}
                   variant="outline"
                   size="sm"
-                  className="text-xs bg-white/5 border-purple-300/20 text-purple-200 hover:bg-white/10"
+                  className="text-xs bg-white/5 border-teal-300/20 text-teal-200 hover:bg-white/10"
                   onClick={() => askSuggestedQuestion(question)}
                 >
                   {question}
@@ -274,7 +274,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
 
         {/* Quick Education Links */}
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-sm text-purple-200">
+          <div className="flex items-center gap-2 text-sm text-teal-200">
             <BookOpen className="h-4 w-4" />
             <span>Learn about:</span>
           </div>
@@ -284,7 +284,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
                 key={concept}
                 variant="ghost"
                 size="sm"
-                className="text-xs text-purple-200 hover:bg-white/10"
+                className="text-xs text-teal-200 hover:bg-white/10"
                 onClick={() => explainConcept(concept)}
                 disabled={isLoading}
               >
@@ -294,7 +294,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
           </div>
         </div>
 
-        <Separator className="bg-purple-300/20" />
+        <Separator className="bg-teal-300/20" />
 
         {/* Input Area */}
         <div className="flex gap-2">
@@ -304,7 +304,7 @@ export function AIAstrologyAssistant({ birthData, className = '' }: AIAstrologyA
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
               placeholder="Ask about your chart, relationships, timing, or get cosmic guidance..."
-              className="bg-white/10 border-purple-300/20 text-white placeholder:text-purple-200/60 min-h-[44px] max-h-[120px] resize-none"
+              className="bg-white/10 border-teal-300/20 text-white placeholder:text-teal-200/60 min-h-[44px] max-h-[120px] resize-none"
               disabled={isLoading}
               rows={1}
             />

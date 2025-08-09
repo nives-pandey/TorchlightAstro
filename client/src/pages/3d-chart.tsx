@@ -77,25 +77,25 @@ export default function Chart3D() {
     console.log('Loading demo data for 3D visualization');
     // Demo planets for testing 3D visualization
     const demoPlanets = [
-      { name: 'Sun', longitude: 83.45, latitude: 0, distance: 1, color: '#FFA500', size: 20, speed: 0.9856 },
-      { name: 'Moon', longitude: 113.24, latitude: 0, distance: 0.38, color: '#C0C0C0', size: 12, speed: 13.1764 },
-      { name: 'Mercury', longitude: 75.12, latitude: 0, distance: 0.39, color: '#8C7853', size: 8, speed: 1.6071 },
-      { name: 'Venus', longitude: 91.33, latitude: 0, distance: 0.72, color: '#FFC649', size: 10, speed: 1.1767 },
-      { name: 'Mars', longitude: 156.78, latitude: 0, distance: 1.52, color: '#CD5C5C', size: 9, speed: 0.5240 },
-      { name: 'Jupiter', longitude: 67.89, latitude: 0, distance: 5.20, color: '#D2691E', size: 18, speed: 0.0831 },
-      { name: 'Saturn', longitude: 223.45, latitude: 0, distance: 9.54, color: '#FAD5A5', size: 16, speed: 0.0334 },
-      { name: 'Uranus', longitude: 345.67, latitude: 0, distance: 19.19, color: '#4FD0E7', size: 14, speed: 0.0117 },
-      { name: 'Neptune', longitude: 278.90, latitude: 0, distance: 30.07, color: '#4169E1', size: 14, speed: 0.0060 },
-      { name: 'Pluto', longitude: 201.23, latitude: 0, distance: 39.48, color: '#8B4513', size: 6, speed: 0.0040 }
+      { name: 'Sun', longitude: 83.45, latitude: 0, distance: 1, color: 'hsl(44, 45%, 65%)', size: 20, speed: 0.9856 },
+      { name: 'Moon', longitude: 113.24, latitude: 0, distance: 0.38, color: 'hsl(60, 10%, 96%)', size: 12, speed: 13.1764 },
+      { name: 'Mercury', longitude: 75.12, latitude: 0, distance: 0.39, color: 'hsl(30, 8%, 18%)', size: 8, speed: 1.6071 },
+      { name: 'Venus', longitude: 91.33, latitude: 0, distance: 0.72, color: 'hsl(44, 45%, 65%)', size: 10, speed: 1.1767 },
+      { name: 'Mars', longitude: 156.78, latitude: 0, distance: 1.52, color: 'hsl(30, 5%, 66%)', size: 9, speed: 0.5240 },
+      { name: 'Jupiter', longitude: 67.89, latitude: 0, distance: 5.20, color: 'hsl(30, 8%, 18%)', size: 18, speed: 0.0831 },
+      { name: 'Saturn', longitude: 223.45, latitude: 0, distance: 9.54, color: 'hsl(60, 10%, 96%)', size: 16, speed: 0.0334 },
+      { name: 'Uranus', longitude: 345.67, latitude: 0, distance: 19.19, color: 'hsl(180, 25%, 55%)', size: 14, speed: 0.0117 },
+      { name: 'Neptune', longitude: 278.90, latitude: 0, distance: 30.07, color: 'hsl(180, 25%, 55%)', size: 14, speed: 0.0060 },
+      { name: 'Pluto', longitude: 201.23, latitude: 0, distance: 39.48, color: 'hsl(30, 8%, 18%)', size: 6, speed: 0.0040 }
     ];
 
     const demoAspects = [
-      { planet1: 'Sun', planet2: 'Mercury', angle: 8, type: 'conjunction', orb: 8, strength: 0.9, color: '#FF0000' },
-      { planet1: 'Moon', planet2: 'Mars', angle: 43, type: 'semisextile', orb: 13, strength: 0.4, color: '#DDA0DD' },
-      { planet1: 'Venus', planet2: 'Jupiter', angle: 23, type: 'semisextile', orb: 7, strength: 0.6, color: '#DDA0DD' },
-      { planet1: 'Mars', planet2: 'Saturn', angle: 67, type: 'sextile', orb: 7, strength: 0.8, color: '#00CED1' },
-      { planet1: 'Jupiter', planet2: 'Uranus', angle: 82, type: 'square', orb: 8, strength: 0.7, color: '#FF1493' },
-      { planet1: 'Saturn', planet2: 'Neptune', angle: 55, type: 'sextile', orb: 5, strength: 0.9, color: '#00CED1' }
+      { planet1: 'Sun', planet2: 'Mercury', angle: 8, type: 'conjunction', orb: 8, strength: 0.9, color: 'hsl(44, 45%, 65%)' },
+      { planet1: 'Moon', planet2: 'Mars', angle: 43, type: 'semisextile', orb: 13, strength: 0.4, color: 'hsl(180, 25%, 55%)' },
+      { planet1: 'Venus', planet2: 'Jupiter', angle: 23, type: 'semisextile', orb: 7, strength: 0.6, color: 'hsl(180, 25%, 55%)' },
+      { planet1: 'Mars', planet2: 'Saturn', angle: 67, type: 'sextile', orb: 7, strength: 0.8, color: 'hsl(180, 25%, 55%)' },
+      { planet1: 'Jupiter', planet2: 'Uranus', angle: 82, type: 'square', orb: 8, strength: 0.7, color: 'hsl(44, 45%, 65%)' },
+      { planet1: 'Saturn', planet2: 'Neptune', angle: 55, type: 'sextile', orb: 5, strength: 0.9, color: 'hsl(180, 25%, 55%)' }
     ];
 
     setPlanets(demoPlanets);
@@ -105,16 +105,16 @@ export default function Chart3D() {
   const convertPlanetsTo3D = (chartPlanets: any[]): Planet[] => {
     console.log('Converting planets:', chartPlanets);
     const planetColors: Record<string, string> = {
-      Sun: '#FFA500',
-      Moon: '#C0C0C0', 
-      Mercury: '#8C7853',
-      Venus: '#FFC649',
-      Mars: '#CD5C5C',
-      Jupiter: '#D2691E',
-      Saturn: '#FAD5A5',
-      Uranus: '#4FD0E7',
-      Neptune: '#4169E1',
-      Pluto: '#8B4513'
+      Sun: 'hsl(44, 45%, 65%)',
+      Moon: 'hsl(60, 10%, 96%)', 
+      Mercury: 'hsl(30, 8%, 18%)',
+      Venus: 'hsl(44, 45%, 65%)',
+      Mars: 'hsl(30, 5%, 66%)',
+      Jupiter: 'hsl(30, 8%, 18%)',
+      Saturn: 'hsl(60, 10%, 96%)',
+      Uranus: 'hsl(180, 25%, 55%)',
+      Neptune: 'hsl(180, 25%, 55%)',
+      Pluto: 'hsl(30, 8%, 18%)'
     };
 
     return chartPlanets.map(planet => ({
@@ -122,7 +122,7 @@ export default function Chart3D() {
       longitude: planet.degree || planet.longitude || Math.random() * 360,
       latitude: 0,
       distance: getPlanetDistance(planet.name),
-      color: planetColors[planet.name] || '#FFFFFF',
+      color: planetColors[planet.name] || 'hsl(60, 10%, 96%)',
       size: getPlanetSize(planet.name),
       speed: getPlanetSpeed(planet.name)
     }));
@@ -131,13 +131,13 @@ export default function Chart3D() {
   const convertAspectsTo3D = (chartAspects: any[]): Aspect[] => {
     console.log('Converting aspects:', chartAspects);
     const aspectColors: Record<string, string> = {
-      conjunction: '#FF0000',
-      opposition: '#FF4500', 
-      trine: '#00FF00',
-      square: '#FF1493',
-      sextile: '#00CED1',
-      quincunx: '#6A9797',
-      semisextile: '#DDA0DD'
+      conjunction: 'hsl(44, 45%, 65%)',
+      opposition: 'hsl(44, 45%, 65%)', 
+      trine: 'hsl(180, 25%, 55%)',
+      square: 'hsl(44, 45%, 65%)',
+      sextile: 'hsl(180, 25%, 55%)',
+      quincunx: 'hsl(180, 25%, 55%)',
+      semisextile: 'hsl(180, 25%, 55%)'
     };
 
     return chartAspects.map(aspect => ({
@@ -147,7 +147,7 @@ export default function Chart3D() {
       type: aspect.aspect.toLowerCase(),
       orb: aspect.orb || 0,
       strength: aspect.exactness || 0.5,
-      color: aspectColors[aspect.aspect.toLowerCase()] || '#FFFFFF'
+      color: aspectColors[aspect.aspect.toLowerCase()] || 'hsl(60, 10%, 96%)'
     }));
   };
 
@@ -372,7 +372,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
 
   if (loading && !chartData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-8 h-8 animate-spin text-orange-400 mx-auto mb-4" />
           <p className="text-white text-lg">Loading cosmic visualization...</p>
@@ -382,7 +382,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 text-white p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header with Share Options */}
         <div className="text-center mb-8 relative">
@@ -401,7 +401,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 Share Your Mandala
               </Button>
             </DialogTrigger>
-            <DialogContent className="bg-gradient-to-br from-purple-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md">
+            <DialogContent className="bg-gradient-to-br from-teal-900/95 via-pink-900/90 to-rose-900/95 border-pink-300/30 backdrop-blur-md">
               <DialogHeader>
                 <DialogTitle className="text-rose-300 flex items-center gap-2">
                   <Share className="w-5 h-5" />
@@ -415,7 +415,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <Button 
                   onClick={exportAsImage}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-teal-800/40 hover:bg-teal-700/50 border border-pink-300/30"
                 >
                   <Image className="w-6 h-6 text-pink-300" />
                   <span className="text-sm text-rose-200">Save as Image</span>
@@ -423,15 +423,15 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 
                 <Button 
                   onClick={exportToPDF}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-teal-800/40 hover:bg-teal-700/50 border border-pink-300/30"
                 >
-                  <FileText className="w-6 h-6 text-purple-300" />
+                  <FileText className="w-6 h-6 text-teal-300" />
                   <span className="text-sm text-rose-200">Export PDF</span>
                 </Button>
                 
                 <Button 
                   onClick={copyShareLink}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-teal-800/40 hover:bg-teal-700/50 border border-pink-300/30"
                 >
                   <Link className="w-6 h-6 text-blue-300" />
                   <span className="text-sm text-rose-200">Copy Link</span>
@@ -439,7 +439,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 
                 <Button 
                   onClick={shareViaEmail}
-                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-purple-800/40 hover:bg-purple-700/50 border border-pink-300/30"
+                  className="rounded-2xl p-6 h-auto flex flex-col items-center gap-3 bg-teal-800/40 hover:bg-teal-700/50 border border-pink-300/30"
                 >
                   <Mail className="w-6 h-6 text-green-300" />
                   <span className="text-sm text-rose-200">Email Share</span>
@@ -647,7 +647,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
           <CardContent>
             <div className="grid md:grid-cols-3 gap-6">
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Mouse Controls</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Mouse Controls</h4>
                 <ul className="text-sm text-gray-300 space-y-1">
                   <li>• Click planets to select and view details</li>
                   <li>• Use sliders to rotate the cosmic view</li>
@@ -655,7 +655,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">View Modes</h4>
+                <h4 className="font-medium text-teal-300 mb-2">View Modes</h4>
                 <ul className="text-sm text-gray-300 space-y-1">
                   <li>• <strong>Cosmic:</strong> Immersive space visualization</li>
                   <li>• <strong>Geometric:</strong> Clean mathematical view</li>
@@ -663,7 +663,7 @@ Discover your own cosmic blueprint at Torchlight! 🌟
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-purple-300 mb-2">Chart Types</h4>
+                <h4 className="font-medium text-teal-300 mb-2">Chart Types</h4>
                 <ul className="text-sm text-gray-300 space-y-1">
                   <li>• <strong>Natal:</strong> Birth chart positions</li>
                   <li>• <strong>Transit:</strong> Current planetary influences</li>

@@ -25,7 +25,7 @@ export default function ColorEnhancedLanding() {
             </h1>
           </div>
           
-          <p className="text-xl md:text-2xl mb-12 text-purple-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl mb-12 text-teal-200 max-w-3xl mx-auto leading-relaxed">
             Discover your cosmic blueprint through 10+ ancient wisdom traditions
           </p>
           
@@ -75,7 +75,7 @@ export default function ColorEnhancedLanding() {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-gradient-to-r from-yellow-600/10 to-pink-500/10 rounded-lg border border-yellow-500/20">
-                    <h4 className="font-semibold text-purple-300 mb-2">Natal Chart</h4>
+                    <h4 className="font-semibold text-teal-300 mb-2">Natal Chart</h4>
                     <p className="text-sm text-gray-300">Planetary positions at your birth moment</p>
                   </div>
                   <div className="p-4 bg-gradient-to-r from-blue-500/10 to-yellow-600/10 rounded-lg border border-blue-400/20">
@@ -119,7 +119,7 @@ export default function ColorEnhancedLanding() {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg border border-yellow-500/20">
-                    <h4 className="font-semibold text-purple-300 mb-2">Planetary Transits</h4>
+                    <h4 className="font-semibold text-teal-300 mb-2">Planetary Transits</h4>
                     <p className="text-sm text-gray-300">Current cosmic influences on your chart</p>
                   </div>
                   <div className="p-4 bg-gradient-to-r from-blue-500/10 to-yellow-600/10 rounded-lg border border-blue-400/20">
@@ -142,7 +142,7 @@ export default function ColorEnhancedLanding() {
                   <p className="text-sm text-gray-300">Interactive planetary positions in cosmic space</p>
                 </div>
                 <div className="p-4 bg-gradient-to-r from-yellow-600/10 to-pink-500/10 rounded-lg border border-yellow-500/20">
-                  <h4 className="font-semibold text-purple-300 mb-2">Aspect Patterns</h4>
+                  <h4 className="font-semibold text-teal-300 mb-2">Aspect Patterns</h4>
                   <p className="text-sm text-gray-300">Visual representation of planetary relationships</p>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export default function ColorEnhancedLanding() {
             ))}
           </div>
           
-          <p className="text-purple-200 max-w-2xl mx-auto">
+          <p className="text-teal-200 max-w-2xl mx-auto">
             Our color-coded system helps you intuitively understand different aspects of your cosmic profile, 
             making complex astrological information accessible and beautiful.
           </p>

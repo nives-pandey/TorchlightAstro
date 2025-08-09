@@ -23,7 +23,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
   const [zoom, setZoom] = useState(1);
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
   const [aspectFilter, setAspectFilter] = useState<string[]>(['all']);
-  const [viewMode, setViewMode] = useState<'cosmic' | 'geometric' | 'traditional'>('cosmic');
+  const [viewMode, setViewMode] = useState<'sanctuary' | 'geometric' | 'traditional'>('sanctuary');
 
   // 3D Engine State
   const [camera, setCamera] = useState({
@@ -33,27 +33,27 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
 
   // Planet colors and sizes
   const planetData: Record<string, { color: string; size: number; orbitRadius: number }> = {
-    Sun: { color: '#FFA500', size: 20, orbitRadius: 0 },
-    Moon: { color: '#C0C0C0', size: 12, orbitRadius: 80 },
-    Mercury: { color: '#8C7853', size: 8, orbitRadius: 120 },
-    Venus: { color: '#FFC649', size: 10, orbitRadius: 160 },
-    Mars: { color: '#CD5C5C', size: 9, orbitRadius: 200 },
-    Jupiter: { color: '#D2691E', size: 18, orbitRadius: 280 },
-    Saturn: { color: '#FAD5A5', size: 16, orbitRadius: 360 },
-    Uranus: { color: '#4FD0E7', size: 14, orbitRadius: 440 },
-    Neptune: { color: '#4169E1', size: 14, orbitRadius: 520 },
-    Pluto: { color: '#8B4513', size: 6, orbitRadius: 600 }
+    Sun: { color: 'hsl(44, 45%, 65%)', size: 20, orbitRadius: 0 },
+    Moon: { color: 'hsl(60, 10%, 96%)', size: 12, orbitRadius: 80 },
+    Mercury: { color: 'hsl(30, 8%, 18%)', size: 8, orbitRadius: 120 },
+    Venus: { color: 'hsl(44, 45%, 65%)', size: 10, orbitRadius: 160 },
+    Mars: { color: 'hsl(30, 5%, 66%)', size: 9, orbitRadius: 200 },
+    Jupiter: { color: 'hsl(30, 8%, 18%)', size: 18, orbitRadius: 280 },
+    Saturn: { color: 'hsl(60, 10%, 96%)', size: 16, orbitRadius: 360 },
+    Uranus: { color: 'hsl(180, 25%, 55%)', size: 14, orbitRadius: 440 },
+    Neptune: { color: 'hsl(180, 25%, 55%)', size: 14, orbitRadius: 520 },
+    Pluto: { color: 'hsl(30, 8%, 18%)', size: 6, orbitRadius: 600 }
   };
 
   // Aspect types and their visual properties
   const aspectTypes: Record<string, { color: string; lineStyle: string; strength: number }> = {
-    conjunction: { color: '#FF0000', lineStyle: 'solid', strength: 1.0 },
-    opposition: { color: '#FF4500', lineStyle: 'solid', strength: 0.9 },
-    trine: { color: '#00FF00', lineStyle: 'solid', strength: 0.8 },
-    square: { color: '#FF1493', lineStyle: 'dashed', strength: 0.7 },
-    sextile: { color: '#00CED1', lineStyle: 'dotted', strength: 0.6 },
-    quincunx: { color: '#6A9797', lineStyle: 'dotted', strength: 0.4 },
-    semisextile: { color: '#DDA0DD', lineStyle: 'dotted', strength: 0.3 }
+    conjunction: { color: 'hsl(44, 45%, 65%)', lineStyle: 'solid', strength: 1.0 },
+    opposition: { color: 'hsl(44, 45%, 65%)', lineStyle: 'solid', strength: 0.9 },
+    trine: { color: 'hsl(180, 25%, 55%)', lineStyle: 'solid', strength: 0.8 },
+    square: { color: 'hsl(44, 45%, 65%)', lineStyle: 'dashed', strength: 0.7 },
+    sextile: { color: 'hsl(180, 25%, 55%)', lineStyle: 'dotted', strength: 0.6 },
+    quincunx: { color: 'hsl(180, 25%, 55%)', lineStyle: 'dotted', strength: 0.4 },
+    semisextile: { color: 'hsl(180, 25%, 55%)', lineStyle: 'dotted', strength: 0.3 }
   };
 
   useEffect(() => {
@@ -89,7 +89,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
     }
 
     // Draw planetary orbits if in cosmic mode
-    if (viewMode === 'cosmic') {
+    if (viewMode === 'sanctuary') {
       drawPlanetaryOrbits(ctx);
     }
 
@@ -100,7 +100,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
     drawPlanets(ctx);
 
     // Draw 3D effect layers
-    if (viewMode === 'cosmic') {
+    if (viewMode === 'sanctuary') {
       drawCosmicEffects(ctx);
     }
 
@@ -149,7 +149,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
       
       // Add twinkling effect
       if (Math.random() > 0.8) {
-        ctx.shadowColor = '#ffffff';
+        ctx.shadowColor = 'hsl(60, 10%, 96%)';
         ctx.shadowBlur = size * 3;
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -170,7 +170,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
       const radius = Math.random() * 150 + 50;
       
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-      const colors = ['rgba(197, 165, 90, 0.3)', 'rgba(106, 151, 151, 0.2)', 'rgba(255, 20, 147, 0.2)'];
+      const colors = ['rgba(197, 165, 90, 0.3)', 'rgba(106, 151, 151, 0.2)', 'rgba(197, 165, 90, 0.2)'];
       const color = colors[Math.floor(Math.random() * colors.length)];
       
       gradient.addColorStop(0, color);
@@ -194,8 +194,8 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
     ];
     
     const signColors = [
-      '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD',
-      '#F8B500', '#FF7675', '#6C5CE7', '#A29BFE', '#FD79A8', '#FDCB6E'
+      'hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(30, 8%, 18%)', 'hsl(30, 5%, 66%)', 'hsl(60, 10%, 96%)', 'hsl(180, 25%, 55%)',
+      'hsl(44, 45%, 65%)', 'hsl(180, 25%, 55%)', 'hsl(30, 8%, 18%)', 'hsl(30, 5%, 66%)', 'hsl(60, 10%, 96%)', 'hsl(44, 45%, 65%)'
     ];
 
     ctx.save();
@@ -288,7 +288,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
       const isSelected = selectedPlanet === planet.name;
       
       // Planet glow effect
-      if (isSelected || viewMode === 'cosmic') {
+      if (isSelected || viewMode === 'sanctuary') {
         ctx.shadowColor = planetInfo.color;
         ctx.shadowBlur = size * 2;
       }
@@ -315,7 +315,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
       }
       
       // Planet label
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = 'hsl(60, 10%, 96%)';
       ctx.font = 'bold 10px Arial';
       ctx.textAlign = 'center';
       ctx.fillText(planet.name, projectedX, projectedY + size + 15);
@@ -429,11 +429,11 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
     ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
     ctx.fillRect(10, 10, 200, 120);
     
-    ctx.strokeStyle = planetData[planet.name]?.color || '#ffffff';
+    ctx.strokeStyle = planetData[planet.name]?.color || 'hsl(60, 10%, 96%)';
     ctx.lineWidth = 2;
     ctx.strokeRect(10, 10, 200, 120);
     
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = 'hsl(60, 10%, 96%)';
     ctx.font = 'bold 14px Arial';
     ctx.fillText(planet.name, 20, 30);
     
@@ -455,11 +455,11 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
     ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
     ctx.fillRect(width - 150, 10, 140, 200);
     
-    ctx.strokeStyle = '#ffffff';
+    ctx.strokeStyle = 'hsl(60, 10%, 96%)';
     ctx.lineWidth = 1;
     ctx.strokeRect(width - 150, 10, 140, 200);
     
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = 'hsl(60, 10%, 96%)';
     ctx.font = 'bold 12px Arial';
     ctx.fillText('Aspects', width - 140, 30);
     
@@ -558,7 +558,7 @@ export default function Chart3DVisualization({ planets, aspects, chartType }: Ch
   };
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-purple-900 rounded-lg overflow-hidden">
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-teal-900 rounded-lg overflow-hidden">
       {/* Controls */}
       <div className="p-4 bg-black/50 border-b border-yellow-600/30">
         <div className="flex flex-wrap items-center justify-between gap-4">

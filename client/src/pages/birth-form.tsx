@@ -95,7 +95,7 @@ export default function BirthFormPage() {
               variant="ghost"
               size="sm"
               onClick={() => setLocation('/')}
-              className="text-purple-300 hover:text-white"
+              className="text-teal-300 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back
@@ -109,7 +109,7 @@ export default function BirthFormPage() {
               </h1>
             </div>
           </div>
-          <Badge className="bg-yellow-600/20 text-purple-300 border-yellow-500/30">
+          <Badge className="bg-yellow-600/20 text-teal-300 border-yellow-500/30">
             Birth Data Collection
           </Badge>
         </div>
@@ -123,7 +123,7 @@ export default function BirthFormPage() {
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               Complete Birth Information
             </h1>
-            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+            <p className="text-xl text-teal-200 max-w-2xl mx-auto">
               Provide accurate birth details for precise astrological analysis across all systems
             </p>
           </div>
@@ -142,14 +142,14 @@ export default function BirthFormPage() {
             <CardContent>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-medium text-purple-300 mb-3">Personal Details</h4>
+                  <h4 className="font-medium text-teal-300 mb-3">Personal Details</h4>
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li>• First and last name</li>
                     <li>• Gender at birth (for calculations)</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-medium text-purple-300 mb-3">Birth Details</h4>
+                  <h4 className="font-medium text-teal-300 mb-3">Birth Details</h4>
                   <ul className="space-y-2 text-sm text-gray-300">
                     <li>• Exact date of birth</li>
                     <li>• Precise time of birth</li>
@@ -159,8 +159,8 @@ export default function BirthFormPage() {
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-purple-900/20 border border-yellow-600/30 rounded-lg">
-                <p className="text-purple-200 text-sm">
+              <div className="mt-6 p-4 bg-teal-900/20 border border-yellow-600/30 rounded-lg">
+                <p className="text-teal-200 text-sm">
                   <strong>Accuracy Notice:</strong> Even small errors in birth time (±4 minutes) or location 
                   can significantly affect your astrological analysis. Please verify all information with 
                   your birth certificate if possible.
