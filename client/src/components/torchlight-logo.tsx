@@ -18,146 +18,57 @@ export const TorchlightLogo: React.FC<TorchlightLogoProps> = ({
     xl: 'h-20'
   };
 
-  const textSizes = {
-    sm: '24',
-    md: '36',
-    lg: '48',
-    xl: '60'
+  const iconSize = {
+    sm: { width: 30, height: 30, viewBox: "0 0 100 100" },
+    md: { width: 50, height: 50, viewBox: "0 0 100 100" },
+    lg: { width: 60, height: 60, viewBox: "0 0 100 100" },
+    xl: { width: 80, height: 80, viewBox: "0 0 100 100" }
+  };
+
+  const textSize = {
+    sm: 20,
+    md: 32,
+    lg: 40,
+    xl: 48
   };
 
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       {showIcon && (
         <svg 
-          className={`${sizeClasses[size]} w-auto`}
-          viewBox="0 0 60 60" 
-          fill="none" 
+          width={iconSize[size].width}
+          height={iconSize[size].height}
+          viewBox={iconSize[size].viewBox}
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Torch base */}
-          <rect 
-            x="26" 
-            y="35" 
-            width="8" 
-            height="20" 
-            rx="4" 
-            fill="url(#torchGradient)"
-          />
-          
-          {/* Flame */}
-          <path 
-            d="M30 5C25 8 22 15 25 25C28 20 32 20 35 25C38 15 35 8 30 5Z" 
-            fill="url(#flameGradient)"
-          />
-          
-          {/* Inner flame */}
-          <path 
-            d="M30 10C27 12 26 16 27.5 22C29 19 31 19 32.5 22C34 16 33 12 30 10Z" 
-            fill="url(#innerFlameGradient)"
-          />
-          
-          {/* Sanctuary sparkles - warm gold tones */}
-          <circle cx="20" cy="15" r="1.5" fill="hsl(44, 45%, 65%)" opacity="0.8">
-            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="40" cy="12" r="1" fill="hsl(44, 45%, 65%)" opacity="0.6">
-            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="1.5s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="15" cy="25" r="0.8" fill="hsl(44, 45%, 65%)" opacity="0.7">
-            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="45" cy="22" r="1.2" fill="hsl(44, 45%, 65%)" opacity="0.5">
-            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.2s" repeatCount="indefinite"/>
-          </circle>
-          
-          {/* Sanctuary-aligned gradient definitions */}
           <defs>
-            <linearGradient id="torchGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="hsl(30, 5%, 66%)" />
-              <stop offset="50%" stopColor="hsl(44, 45%, 65%)" />
-              <stop offset="100%" stopColor="hsl(30, 5%, 66%)" />
-            </linearGradient>
-            
-            <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="hsl(60, 10%, 96%)" />
-              <stop offset="30%" stopColor="hsl(44, 45%, 65%)" />
-              <stop offset="70%" stopColor="hsl(180, 25%, 55%)" />
-              <stop offset="100%" stopColor="hsl(44, 45%, 65%)" />
-            </linearGradient>
-            
-            <linearGradient id="innerFlameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="hsl(60, 10%, 96%)" />
-              <stop offset="50%" stopColor="hsl(44, 45%, 65%)" />
-              <stop offset="100%" stopColor="hsl(44, 45%, 65%)" />
-            </linearGradient>
+            <style>
+              {`.polished-gold { fill: #D4B35B; }`}
+            </style>
           </defs>
+
+          {/* The 'T' Stem (Torch Handle) */}
+          <rect className="polished-gold" x="45" y="40" width="10" height="45" rx="2" />
+
+          {/* The Flame (Top of the 'T') */}
+          <path className="polished-gold" d="M50 35 C 40 35, 35 25, 50 15 C 65 25, 60 35, 50 35 Z" />
+
+          {/* The Guiding Star */}
+          <path className="polished-gold" d="M50 0 L53 7 L60 10 L53 13 L50 20 L47 13 L40 10 L47 7 Z" />
         </svg>
       )}
       
-      <svg 
-        className={`${sizeClasses[size]} w-auto`}
-        viewBox="0 0 300 80" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
+      <span 
+        className="font-semibold"
+        style={{ 
+          fontFamily: "'Montserrat', sans-serif", 
+          fontWeight: 600,
+          fontSize: `${textSize[size]}px`,
+          color: '#F5F5DC' // Off-White
+        }}
       >
-        {/* Main text with gradient and glow */}
-        <text 
-          x="10" 
-          y="55" 
-          fontSize={textSizes[size]}
-          fontFamily="'Playfair Display', serif"
-          fontWeight="700"
-          fontStyle="italic"
-          fill="url(#textGradient)"
-          filter="url(#glow)"
-        >
-          Torchlight
-        </text>
-        
-        {/* Text shadow for depth */}
-        <text 
-          x="12" 
-          y="57" 
-          fontSize={textSizes[size]}
-          fontFamily="'Playfair Display', serif"
-          fontWeight="700"
-          fontStyle="italic"
-          fill="rgba(0,0,0,0.3)"
-          style={{ zIndex: -1 }}
-        >
-          Torchlight
-        </text>
-        
-        {/* Sanctuary text gradient - sophisticated gold */}
-        <defs>
-          <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(44, 45%, 65%)" />
-            <stop offset="25%" stopColor="hsl(60, 10%, 96%)" />
-            <stop offset="50%" stopColor="hsl(44, 45%, 65%)" />
-            <stop offset="75%" stopColor="hsl(30, 5%, 66%)" />
-            <stop offset="100%" stopColor="hsl(44, 45%, 65%)" />
-          </linearGradient>
-          
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-        
-        {/* Subtle sanctuary sparkles over text */}
-        <circle cx="50" cy="25" r="1" fill="hsl(44, 45%, 65%)" opacity="0">
-          <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="0s"/>
-        </circle>
-        <circle cx="150" cy="30" r="0.8" fill="hsl(60, 10%, 96%)" opacity="0">
-          <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite" begin="1s"/>
-        </circle>
-        <circle cx="240" cy="20" r="1.2" fill="hsl(44, 45%, 65%)" opacity="0">
-          <animate attributeName="opacity" values="0;1;0" dur="2.8s" repeatCount="indefinite" begin="0.5s"/>
-        </circle>
-      </svg>
+        Torchlight
+      </span>
     </div>
   );
 };
