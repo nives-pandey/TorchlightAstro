@@ -1,11 +1,12 @@
 // In server/ai-synthesizer-service.ts
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
 // Initialize with your API key from Replit Secrets
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
+const genAI = new GoogleGenAI({ 
+  apiKey: process.env.GEMINI_API_KEY || "" 
+});
 
 export async function getSynthesizedCompatibility(person1Data: any, person2Data: any) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
   const prompt = `
     **Role:** You are a master astrologer with deep expertise in Western, Vedic, Chinese, Numerology, and Human Design systems. You specialize in synthesizing multi-system compatibility analysis.
@@ -34,12 +35,13 @@ export async function getSynthesizedCompatibility(person1Data: any, person2Data:
   `;
 
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    const response = await genAI.models.generateContent({
+      model: "gemini-2.5-pro",
+      contents: prompt
+    });
     
     // Return this synthesized text to the user in the app
-    return text;
+    return response.text || '';
   } catch (error) {
     console.error('AI Synthesizer Error:', error);
     throw new Error('Failed to generate compatibility analysis');
@@ -47,7 +49,6 @@ export async function getSynthesizedCompatibility(person1Data: any, person2Data:
 }
 
 export async function getSynthesizedPersonalReading(personalData: any) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest" });
 
   const prompt = `
     **Role:** You are a master astrologer providing comprehensive personal guidance across multiple ancient wisdom systems.
@@ -71,11 +72,12 @@ export async function getSynthesizedPersonalReading(personalData: any) {
   `;
 
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    const response = await genAI.models.generateContent({
+      model: "gemini-2.5-pro",
+      contents: prompt
+    });
     
-    return text;
+    return response.text || '';
   } catch (error) {
     console.error('AI Synthesizer Error:', error);
     throw new Error('Failed to generate personal reading');

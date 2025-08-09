@@ -15,6 +15,7 @@ Update contribution section: Add "free forever" emphasis, include detailed reaso
 **Expert UX Consolidation (Jan 2025)**: Implemented expert-recommended single-flow approach by removing duplicate "Begin Your Journey" navigation button and consolidating to superior modal-based "Begin Your Cosmic Journey Now ✨" approach across all three CTA locations for maximum engagement and conversion.
 **Card Status Consistency**: Added missing "Coming Soon" badges to Business Analysis cards to match other inactive features.
 **Functional Sharing System**: Transformed "Share the Love" into comprehensive social sharing with Facebook, Twitter, WhatsApp, Email, Copy Link, and native mobile share API integration.
+**Production Deploy Fix (August 2025)**: Resolved critical deployment error by fixing incorrect `@google/generative-ai` import in `server/ai-synthesizer-service.ts` to use correct `@google/genai` package name, ensuring all Gemini AI integrations work properly in production builds.
 
 ## System Architecture
 The application employs a monorepo structure separating client, server, and shared components. The frontend is a React application built with Vite, the backend uses Express.js, and PostgreSQL with Drizzle ORM handles data persistence.
