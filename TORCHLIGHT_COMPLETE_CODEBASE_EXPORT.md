@@ -1,5 +1,10 @@
 # Torchlight Astrology Application - Complete Codebase Export
 
+**Export Timestamp**: August 9, 2025 - 4:42 AM UTC  
+**Version**: 1.2.0  
+**Status**: Production Ready  
+**Last Major Update**: Logo implementation and hero section refinement completed
+
 ## Project Overview
 Torchlight is a comprehensive astrology web application providing detailed natal chart analysis across 9 authentic astrological systems: Western, Vedic, Chinese, Human Design, Numerology, Vaastu, Feng Shui, Color & Gemstone guidance. Built with React, TypeScript, Express.js, and PostgreSQL.
 
@@ -851,7 +856,11 @@ To download and set up the project:
 
 ---
 
-**Last Updated**: August 2025
-**Version**: 1.0.0
-**Platform**: Replit
+## Version History
+- **v1.2.0** (Aug 9, 2025 - 4:42 AM): Logo implementation, hero section update, Tarot system removal
+- **v1.1.0** (Aug 9, 2025 - 1:57 AM): Complete codebase structure documentation
+- **v1.0.0** (Aug 8, 2025): Initial production release
+
+**Export Created**: August 9, 2025 - 4:42 AM UTC  
+**Platform**: Replit  
 **License**: Proprietary
