@@ -10,6 +10,7 @@ Focus on inclusive language that welcomes all seekers of astrological guidance.
 Brand name: "Torchlight" confirmed after SEO and relevance analysis - stronger than "Lamplight" for modern astrology applications.
 Remove mention of years from astrology systems display - maintain chronological order but without age badges or year references.
 Update contribution section: Add "free forever" emphasis, include detailed reasons for requesting contributions (volunteers, 1000s hours, centuries experience, technology costs), and add "Can't pay? Just share the love" section for those unable to contribute financially.
+**Critical Design Consistency**: External advisor review completed - all purple/cosmic elements removed from CSS, logo harmonized with sanctuary palette for authentic brand cohesion.
 
 ## System Architecture
 The application employs a monorepo structure separating client, server, and shared components. The frontend is a React application built with Vite, the backend uses Express.js, and PostgreSQL with Drizzle ORM handles data persistence.

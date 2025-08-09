@@ -82,16 +82,16 @@ This document provides comprehensive technical documentation of Torchlight's vis
 ```
 **Strategic Decision**: Single "sanctuary dark" theme rather than light/dark modes, as research shows spiritual/wellness users prefer consistent warm, enveloping experiences.
 
-### 1.4 Logo-Specific Color Scheme
+### 1.4 Logo-Specific Color Scheme (Sanctuary-Aligned)
 ```css
-/* Torchlight Logo Gradients */
-torchGradient: #8B4513 → #D2691E → #A0522D (Saddle Brown to Chocolate)
-flameGradient: #FFD700 → #FF8C00 → #FF4500 → #DC143C (Gold to Crimson)
-innerFlameGradient: #FFFF99 → #FFD700 → #FFA500 (Light Yellow to Orange)
-textGradient: #FFD700 → #FFA500 → #FF8C00 → #FFD700 → #FFFF99
+/* Torchlight Logo Gradients - Harmonized with Sanctuary Palette */
+torchGradient: #B0A9A4 → #C5A55A → #B0A9A4 (Warm Gray to Brushed Gold)
+flameGradient: #F5F5DC → #C5A55A → #6A9797 → #C5A55A (Warm Off-White to Sage Teal)
+innerFlameGradient: #F5F5DC → #C5A55A → #C5A55A (Warm Off-White to Brushed Gold)
+textGradient: #C5A55A → #F5F5DC → #C5A55A → #B0A9A4 → #C5A55A
 ```
 
-**Rationale**: Traditional fire colors that suggest illumination and guidance while maintaining brand consistency with brushed gold accents.
+**Rationale**: Harmonized with sanctuary palette to create cohesive brand experience. Maintains illumination symbolism through warm gold tones while eliminating fiery intensity that conflicts with calm wellness positioning.
 
 ---
 
@@ -297,10 +297,10 @@ const systemIcons = {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Deep shadow for elevation */
   backdrop-filter: blur(16px);            /* Glass morphism effect */
   background: linear-gradient(135deg, 
-    rgba(60, 30, 100, 0.85), 
-    rgba(90, 50, 140, 0.8)
+    hsla(30, 8%, 18%, 0.85), 
+    hsla(30, 6%, 22%, 0.9)
   );
-  border: 1px solid rgba(147, 51, 234, 0.4);
+  border: 1px solid var(--warm-gray);
   padding: clamp(1rem, 3vw, 1.5rem);
   min-height: 120px;
 }
@@ -308,7 +308,7 @@ const systemIcons = {
 
 **Design Elements**:
 - **Glass Morphism**: Backdrop blur creates modern, premium appearance
-- **Gradient Overlays**: Purple-based gradients maintain mystical feeling
+- **Sanctuary Gradients**: Warm charcoal-based gradients create safe, enveloping feel
 - **Generous Shadows**: Large shadow offset creates floating effect
 - **Responsive Padding**: Adapts to screen size while maintaining proportion
 
@@ -607,11 +607,12 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', s
 - Accent Colors: Gold (#FFD700), Silver (#C0C0C0), Neon Pink (#FF10F0)
 - **Issues**: Overwhelming cosmic themes, low accessibility, entertainment-focused
 
-**Torchlight Differentiation**:
+**Torchlight Differentiation** (Post-Advisor Review):
 - **Warm, Grounding Palette**: Earth-toned charcoal vs. harsh black
 - **Sophisticated Gold**: Brushed gold vs. bright metallic gold
 - **Calming Accents**: Sage teal vs. electric purples
-- **Result**: Professional wellness platform vs. entertainment astrology site
+- **Cohesive Brand Experience**: Logo and interface harmonized vs. conflicting aesthetics
+- **Result**: Professional wellness sanctuary vs. entertainment astrology site
 
 ### 8.2 Typography Positioning
 
@@ -851,9 +852,11 @@ h1 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
 
 Torchlight's design system strategically positions the platform as a premium wellness sanctuary rather than an entertainment astrology website. Through careful color psychology, professional typography, and sophisticated visual elements, the design builds trust and credibility with women seeking authentic spiritual guidance.
 
-The warm, sanctuary-like aesthetic differentiates Torchlight from typical cosmic-themed competitors while maintaining the mystical elements essential to astrological platforms. The comprehensive mobile optimization ensures accessibility across all devices, while the accessibility compliance demonstrates commitment to inclusive design.
+**Critical Design Evolution**: Following external advisor review, all purple/cosmic contradictions have been eliminated from the CSS codebase. The logo has been harmonized with the sanctuary palette, creating a cohesive brand experience that authentically delivers on the "warm wellness sanctuary" promise.
 
-This design system provides a solid foundation for the platform's growth toward the $240M Year 5 revenue target by establishing visual credibility that supports premium pricing and user retention.
+The warm, sanctuary-like aesthetic now consistently differentiates Torchlight from typical cosmic-themed competitors while maintaining the mystical elements essential to astrological platforms. The comprehensive mobile optimization ensures accessibility across all devices, while the accessibility compliance demonstrates commitment to inclusive design.
+
+This design system provides a solid foundation for the platform's growth toward the $240M Year 5 revenue target by establishing visual credibility that supports premium positioning and user retention through authentic brand consistency.
 
 ---
 
