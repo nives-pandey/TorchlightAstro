@@ -1,70 +1,46 @@
 import React from 'react';
 
-interface TorchlightLogoProps {
-  className?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  showIcon?: boolean;
-}
-
-export const TorchlightLogo: React.FC<TorchlightLogoProps> = ({ 
-  className = '', 
-  size = 'md',
-  showIcon = true 
-}) => {
-  const sizeClasses = {
-    sm: 'h-8',
-    md: 'h-12',
-    lg: 'h-16',
-    xl: 'h-20'
+// =============================================================================
+// The Official Logo Component
+// =============================================================================
+const TorchlightLogo = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
+  const sizes = {
+    sm: { width: 150, height: 108, fontSize: 28 },
+    md: { width: 250, height: 180, fontSize: 48 },
+    lg: { width: 350, height: 252, fontSize: 68 },
   };
-
-  const iconSize = {
-    sm: { width: 30, height: 30, viewBox: "0 0 100 100" },
-    md: { width: 50, height: 50, viewBox: "0 0 100 100" },
-    lg: { width: 60, height: 60, viewBox: "0 0 100 100" },
-    xl: { width: 80, height: 80, viewBox: "0 0 100 100" }
-  };
-
-  const textSize = {
-    sm: 20,
-    md: 32,
-    lg: 40,
-    xl: 48
-  };
+  const selectedSize = sizes[size];
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      {showIcon && (
-        <svg 
-          width={iconSize[size].width}
-          height={iconSize[size].height}
-          viewBox={iconSize[size].viewBox}
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ display: 'block' }}
-        >
-          {/* The 'T' Stem (Torch Handle) */}
-          <rect fill="#D4B35B" x="40" y="35" width="20" height="50" rx="3" />
-
-          {/* The Flame (Top of the 'T') */}
-          <path fill="#D4B35B" d="M50 30 C 35 30, 25 15, 50 5 C 75 15, 65 30, 50 30 Z" />
-
-          {/* The Guiding Star */}
-          <path fill="#D4B35B" d="M50 0 L55 10 L65 15 L55 20 L50 30 L45 20 L35 15 L45 10 Z" />
-        </svg>
-      )}
-      
-      <span 
-        className="font-semibold"
-        style={{ 
-          fontFamily: "'Montserrat', sans-serif", 
-          fontWeight: 600,
-          fontSize: `${textSize[size]}px`,
-          color: '#F5F5DC' // Off-White
-        }}
-      >
+    <svg 
+      width={selectedSize.width} 
+      height={selectedSize.height} 
+      viewBox="0 0 250 180" 
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Torchlight Logo"
+    >
+      <defs>
+        <style>
+          {`
+            .polished-gold { fill: #D4B35B; }
+            .off-white { fill: #F5F5DC; }
+            .wordmark {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                text-anchor: middle;
+            }
+          `}
+        </style>
+      </defs>
+      <g transform="translate(75, 0)">
+        <rect className="polished-gold" x="45" y="40" width="10" height="45" rx="2" />
+        <path className="polished-gold" d="M50 35 C 40 35, 35 25, 50 15 C 65 25, 60 35, 50 35 Z" />
+        <path className="polished-gold" d="M50 0 L53 7 L60 10 L53 13 L50 20 L47 13 L40 10 L47 7 Z" />
+      </g>
+      <text x="50%" y="150" className="wordmark off-white" style={{ fontSize: `${selectedSize.fontSize}px` }}>
         Torchlight
-      </span>
-    </div>
+      </text>
+    </svg>
   );
 };
 
