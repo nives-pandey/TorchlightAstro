@@ -341,23 +341,22 @@ export default function Home() {
               </span> systems.
             </p>
             
-            {/* Begin Your Journey CTA Button */}
+            {/* Primary CTA - Expert Recommended Modal Approach */}
             <div className="text-center mb-8 sm:mb-12">
-              <Link href="/personal">
-                <Button 
-                  className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl"
-                  style={{
-                    background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
-                    border: 'none',
-                    color: 'white',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                    boxShadow: '0 8px 32px rgba(197, 165, 90, 0.3)'
-                  }}
-                >
-                  <Stars className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
-                  Begin Your Journey
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => setShowBirthForm(true)}
+                className="text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(44, 45%, 65%) 0%, hsl(180, 25%, 55%) 50%, hsl(30, 8%, 18%) 100%)',
+                  border: 'none',
+                  color: 'white',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                  boxShadow: '0 8px 32px rgba(197, 165, 90, 0.3)'
+                }}
+              >
+                <Stars className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
+                Begin Your Cosmic Journey Now ✨
+              </Button>
               <p className="text-teal-200/70 text-sm mt-3">
                 Create your complete astrological profile in minutes
               </p>
@@ -478,6 +477,7 @@ export default function Home() {
                     <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
                       Business Analysis
+                      <span className="ml-auto text-xs bg-gray-600/30 text-gray-400 px-2 py-1 rounded-full">COMING SOON</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -718,6 +718,7 @@ export default function Home() {
                     <CardTitle className="text-gray-300 text-lg flex items-center gap-2">
                       <Briefcase className="w-6 h-6 text-blue-400" />
                       Business Analysis
+                      <span className="ml-auto text-xs bg-gray-600/30 text-gray-400 px-2 py-1 rounded-full">COMING SOON</span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>

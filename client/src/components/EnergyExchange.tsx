@@ -1,6 +1,6 @@
 // client/src/components/EnergyExchange.tsx
 import React, { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Copy, Facebook, Twitter, Mail, MessageCircle, Share2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -256,12 +256,12 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose }) => {
       <DialogContent className="max-w-md mx-auto bg-gray-900 border-gray-700">
         <DialogHeader>
           <DialogTitle className="text-white text-center">Share the Love 💜</DialogTitle>
+          <DialogDescription className="text-gray-300 text-sm text-center">
+            Help others discover authentic ancient wisdom! Choose how you'd like to share Torchlight:
+          </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-4">
-          <p className="text-gray-300 text-sm text-center">
-            Help others discover authentic ancient wisdom! Choose how you'd like to share Torchlight:
-          </p>
           
           <div className="grid grid-cols-2 gap-3">
             {shareOptions.map((option) => (
