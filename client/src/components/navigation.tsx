@@ -38,7 +38,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="hover:opacity-75 transition-opacity">
-            <TorchlightLogo size="sm" />
+            <TorchlightLogo size="sm" className="bg-gray-800/50 p-2 rounded-lg" />
           </Link>
           
           {/* Desktop Navigation */}
