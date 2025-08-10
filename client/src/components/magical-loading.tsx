@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Stars, Sun, Moon, Sparkles } from "lucide-react";
+import Navigation from "@/components/navigation";
 
 interface MagicalLoadingProps {
   isVisible: boolean;
@@ -51,7 +52,9 @@ export default function MagicalLoading({ isVisible, onComplete }: MagicalLoading
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
+    <>
+      <Navigation />
+      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
       <Card className="bg-gradient-to-br from-teal-900/90 to-pink-900/90 border-yellow-500/30 backdrop-blur-md max-w-md mx-4">
         <CardContent className="p-8 text-center">
           {/* Animated Astrological Wheel */}
@@ -128,7 +131,7 @@ export default function MagicalLoading({ isVisible, onComplete }: MagicalLoading
           </div>
         </CardContent>
       </Card>
-
+      </div>
       <style>{`
         @keyframes twinkle {
           0%, 100% { opacity: 0.3; transform: scale(0.8); }
@@ -150,6 +153,6 @@ export default function MagicalLoading({ isVisible, onComplete }: MagicalLoading
           animation: float 4s ease-in-out infinite;
         }
       `}</style>
-    </div>
+    </>
   );
 }

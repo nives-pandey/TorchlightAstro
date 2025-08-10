@@ -6,8 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Star, Sun, Moon, Calendar, MapPin, Clock, 
   Heart, Briefcase, Shield, Zap, Target, 
-  TrendingUp, Users, Home 
+  TrendingUp, Users, Home, ArrowLeft
 } from "lucide-react";
+import Navigation from "@/components/navigation";
+import { Link } from "wouter";
 
 // Krishna Raj's Profile Data
 const profileData = {
@@ -148,8 +150,20 @@ export default function ComprehensiveAnalysis() {
   const [activeTab, setActiveTab] = useState("overview");
 
   return (
-    <div className="min-h-screen bg-cosmic-gradient p-6">
-      <div className="max-w-7xl mx-auto">
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-cosmic-gradient p-6 pt-20">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Back Navigation */}
+          <div className="mb-6">
+            <Link href="/">
+              <Button variant="outline" className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/20">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Back to Home
+              </Button>
+            </Link>
+          </div>
         
         {/* Profile Header */}
         <Card className="sanctuary-card cosmic-glow mb-8">
@@ -628,7 +642,8 @@ export default function ComprehensiveAnalysis() {
             Life Coaching Session
           </Button>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

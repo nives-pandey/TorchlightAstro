@@ -3,9 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Sun, Moon, ArrowUp, Calendar, Heart, Briefcase, Gem, Users, Star, TrendingUp, Eye } from "lucide-react";
+import { Sun, Moon, ArrowUp, Calendar, Heart, Briefcase, Gem, Users, Star, TrendingUp, Eye, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
-import MobileNavigation from "@/components/mobile-navigation";
+import Navigation from "@/components/navigation";
 
 interface PersonalizedDashboardProps {
   chartData: any;
@@ -53,9 +53,19 @@ export default function PersonalizedDashboard({ chartData, userData }: Personali
 
   return (
     <>
-      <MobileNavigation />
+      <Navigation />
       <div className="min-h-screen p-4 pt-20" style={{background: 'var(--wellness-gradient-1)'}}>
         <div className="max-w-6xl mx-auto space-y-6">
+        
+        {/* Back Navigation */}
+        <div className="mb-6">
+          <Link href="/">
+            <Button variant="outline" className="border-yellow-600/50 text-yellow-400 hover:bg-yellow-600/20">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Home
+            </Button>
+          </Link>
+        </div>
         
         {/* Personalized Header */}
         <div className="text-center mb-8">
