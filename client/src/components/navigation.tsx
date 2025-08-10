@@ -11,6 +11,7 @@ import { useTranslation } from "@/lib/i18n";
 import TorchlightLogo from "@/components/torchlight-logo";
 import ThemeToggle from "@/components/theme-toggle";
 import CosmicColorCustomizer from "@/components/cosmic-color-customizer";
+import WhisperMode from "@/components/whisper-mode";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -80,6 +81,7 @@ export default function Navigation() {
           {/* Language Switcher & User Menu */}
           <div className="hidden md:flex items-center space-x-3">
             <div className="flex items-center space-x-3 p-3 bg-white/20 rounded-full backdrop-blur-sm border-2 border-yellow-400">
+              <WhisperMode />
               <ThemeToggle />
               <CosmicColorCustomizer />
               <Button 
@@ -153,7 +155,10 @@ export default function Navigation() {
                 <div className="mb-4 p-4 border-b border-white/20 bg-black/30 rounded-lg">
                   <div className="space-y-4">
                     <div className="text-center">
-                      <span className="text-white text-sm font-medium block mb-3">Color Controls</span>
+                      <span className="text-white text-sm font-medium block mb-3">Cosmic Controls</span>
+                      <div className="flex items-center justify-center space-x-2 mb-3">
+                        <WhisperMode />
+                      </div>
                       <div className="flex items-center justify-center space-x-3">
                         <ThemeToggle />
                         <CosmicColorCustomizer />
