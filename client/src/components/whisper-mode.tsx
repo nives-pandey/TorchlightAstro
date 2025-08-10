@@ -194,13 +194,13 @@ export default function WhisperMode() {
   return (
     <>
       {/* Whisper Mode Toggle */}
-      <div className="flex items-center space-x-2 p-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/10">
-        <Sparkles className="w-4 h-4 text-purple-400" />
-        <span className="text-sm text-white/80">Whisper Mode</span>
+      <div className="flex items-center space-x-2 p-2 rounded-lg bg-purple-600/30 border-2 border-purple-400 shadow-lg backdrop-blur-sm">
+        <Sparkles className="w-5 h-5 text-purple-200 animate-pulse" />
+        <span className="text-sm text-white font-medium">Whisper</span>
         <Switch
           checked={isEnabled}
           onCheckedChange={setIsEnabled}
-          className="data-[state=checked]:bg-purple-600"
+          className="data-[state=checked]:bg-purple-500 data-[state=unchecked]:bg-gray-600 border-2 border-purple-300"
         />
       </div>
 

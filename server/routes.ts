@@ -1083,17 +1083,54 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Birth data not found" });
       }
 
-      // Generate chart data based on selected systems
+      // Generate chart data based on selected systems using REAL CALCULATIONS
       const chartData: any = {};
       
-      // Add chart data for selected systems
+      // Validate that we have real city data, not fallbacks
+      if (!birthData.city || !birthData.latitude || !birthData.longitude || 
+          (birthData.latitude === 14.5995 && birthData.longitude === 120.9842)) {
+        return res.status(400).json({ 
+          error: "AUTHENTIC DATA REQUIRED: Please provide valid city with coordinates. No fallback data accepted for accurate astrological calculations." 
+        });
+      }
+      
+      // Add birth data validation to report
+      chartData.birthDataValidation = {
+        name: `${birthData.firstName} ${birthData.lastName}`,
+        birthDate: birthData.birthDate,
+        birthTime: birthData.birthTime,
+        birthPlace: `${birthData.city}, ${birthData.country}`,
+        coordinates: `${birthData.latitude}°, ${birthData.longitude}°`,
+        timezone: birthData.timezone,
+        inputValidated: true,
+        dataSource: "User Input - Verified"
+      };
+      
+      // Add chart data for selected systems with AUTHENTIC calculations
       if (birthData.systems.western) {
-        chartData.western = {
-          planets: { sun: "Leo", moon: "Pisces", mercury: "Virgo" },
-          houses: { first: "Leo", tenth: "Taurus" },
-          aspects: ["Sun trine Moon", "Mercury square Mars"],
-          interpretation: "Strong creative potential with emotional sensitivity."
-        };
+        // Import the comprehensive chart generator for authentic calculations
+        const { ComprehensiveChartGenerator } = await import('./comprehensive-chart-generator');
+        const generator = new ComprehensiveChartGenerator();
+        
+        try {
+          const westernChart = await generator.generateWesternChart({
+            day: new Date(birthData.birthDate).getDate(),
+            month: new Date(birthData.birthDate).getMonth() + 1,
+            year: new Date(birthData.birthDate).getFullYear(),
+            hour: parseInt(birthData.birthTime.split(':')[0]) || 12,
+            min: parseInt(birthData.birthTime.split(':')[1]) || 0,
+            lat: parseFloat(birthData.latitude),
+            lon: parseFloat(birthData.longitude),
+            tzone: parseFloat(birthData.timezone) || 0
+          }, birthData);
+          
+          chartData.western = westernChart;
+        } catch (error) {
+          console.error("Western chart generation failed:", error);
+          return res.status(500).json({ 
+            error: "Failed to generate authentic Western astrology chart. Please verify birth data accuracy." 
+          });
+        }
       }
       
       if (birthData.systems.vedic) {
@@ -1115,12 +1152,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       if (birthData.systems.humanDesign) {
-        chartData.humanDesign = {
-          type: "Generator",
-          strategy: "Respond",
-          authority: "Sacral",
-          interpretation: "Natural life force and sustainable energy."
-        };
+        // CRITICAL: Human Design requires authentic calculation system
+        return res.status(503).json({ 
+          error: "HUMAN DESIGN TEMPORARILY UNAVAILABLE: Authentic Human Design calculations require Ra Uru Hu's precise system integration. Currently implementing authentic BodyGraph calculations. Use other systems for now.",
+          availableSystems: ["Western", "Vedic", "Chinese", "Numerology"],
+          humanDesignStatus: "Coming Soon - Authentic Implementation Only"
+        });
       }
       
       // Add numerology calculations if selected
