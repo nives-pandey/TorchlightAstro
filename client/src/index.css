@@ -13,6 +13,10 @@
   --card-bg: rgba(54, 49, 46, 0.85); /* Card background */
   --gradient-from: #1a1814;    /* Gradient start */
   --gradient-to: #2d2620;      /* Gradient end */
+  
+  /* Navigation colors */
+  --nav-bg: rgba(0, 0, 0, 0.85);
+  --nav-text: white;
 }
 
 /* 2. ENFORCE THE PALETTE ON BASE HTML ELEMENTS */

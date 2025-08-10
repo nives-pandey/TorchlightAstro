@@ -132,7 +132,7 @@ export default function CosmicColorCustomizer() {
         <Button 
           variant="outline" 
           size="sm"
-          className="bg-purple-600/80 hover:bg-purple-500 text-white border-purple-400/50 hover:border-purple-300 transition-all duration-200 hover:scale-105 font-medium shadow-lg"
+          className="bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-300 hover:to-pink-300 text-gray-900 border-purple-300 hover:border-purple-200 transition-all duration-200 hover:scale-105 font-semibold shadow-lg"
         >
           <Sparkles className="h-4 w-4 mr-1" />
           <span className="hidden sm:inline">Customize</span>

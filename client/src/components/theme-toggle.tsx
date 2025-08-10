@@ -21,7 +21,7 @@ export default function ThemeToggle() {
         <Button 
           variant="outline" 
           size="sm"
-          className="bg-yellow-600/80 hover:bg-yellow-500 text-white border-yellow-400/50 hover:border-yellow-300 transition-all duration-200 hover:scale-105 font-medium shadow-lg"
+          className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-300 hover:to-orange-300 text-gray-900 border-yellow-300 hover:border-yellow-200 transition-all duration-200 hover:scale-105 font-semibold shadow-lg"
         >
           <Palette className="h-4 w-4 mr-1" />
           <span className="hidden sm:inline">Theme</span>

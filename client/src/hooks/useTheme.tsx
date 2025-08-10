@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-export type Theme = 'sanctuary' | 'cosmic' | 'ethereal' | 'mystic' | 'aurora' | 'ocean';
+export type Theme = 'sanctuary' | 'satin-elegance' | 'rose-mauve' | 'feminine-serenity';
 
 interface CustomTheme {
   id: string;
@@ -43,7 +43,7 @@ interface ThemeConfig {
 
 const themes: Record<Theme, ThemeConfig> = {
   sanctuary: {
-    name: 'Sanctuary',
+    name: 'Sanctuary (Default)',
     description: 'Warm charcoal with brushed gold',
     icon: '🕯️',
     colors: {
@@ -57,79 +57,49 @@ const themes: Record<Theme, ThemeConfig> = {
       gradientTo: '#2d2620'
     }
   },
-  cosmic: {
-    name: 'Cosmic Purple',
-    description: 'Deep space with amethyst accents',
-    icon: '🌌',
+  'satin-elegance': {
+    name: 'Satin Elegance',
+    description: 'Alabaster white with satin sheen accents',
+    icon: '✨',
     colors: {
-      background: '#1a0f2e',
-      primaryAccent: '#9d4edd',
-      secondaryAccent: '#7209b7',
-      textPrimary: '#e0aaff',
-      borderMuted: '#6a4c93',
-      cardBg: 'rgba(26, 15, 46, 0.85)',
-      gradientFrom: '#0f0820',
-      gradientTo: '#240046'
+      background: '#F7F7F2', // Alabaster White
+      primaryAccent: '#CEB78A', // Satin Sheen
+      secondaryAccent: '#2F2F2F', // Satin Black
+      textPrimary: '#2C2C2C', // Dark text for contrast
+      borderMuted: '#E8E8E0',
+      cardBg: 'rgba(255, 255, 255, 0.9)', // Silky White
+      gradientFrom: '#F7F7F2',
+      gradientTo: '#EFEFEA'
     }
   },
-  ethereal: {
-    name: 'Ethereal Pink',
-    description: 'Soft pastels with rose gold',
-    icon: '🌸',
+  'rose-mauve': {
+    name: 'Rose Mauve',
+    description: 'Mauve sophistication with rose gold elegance',
+    icon: '🌹',
     colors: {
-      background: '#2d1b2e',
-      primaryAccent: '#ff6b9d',
-      secondaryAccent: '#ffeaa7',
-      textPrimary: '#fdcb6e',
-      borderMuted: '#a29bfe',
-      cardBg: 'rgba(45, 27, 46, 0.85)',
-      gradientFrom: '#1a0e1a',
-      gradientTo: '#3d2a3d'
+      background: '#F5F0F5', // Light mauve background
+      primaryAccent: '#E8B4B8', // Rose Gold
+      secondaryAccent: '#C49CA3', // Mauve
+      textPrimary: '#4A3C4A', // Dark mauve text
+      borderMuted: '#D4BAC0',
+      cardBg: 'rgba(248, 245, 248, 0.95)', // Almost white with mauve tint
+      gradientFrom: '#F5F0F5',
+      gradientTo: '#F0E8F0'
     }
   },
-  mystic: {
-    name: 'Mystic Emerald',
-    description: 'Forest greens with golden highlights',
-    icon: '🌿',
+  'feminine-serenity': {
+    name: 'Feminine Serenity',
+    description: 'Light feminine blue with pleasant exotic green',
+    icon: '🌺',
     colors: {
-      background: '#0d2818',
-      primaryAccent: '#52b788',
-      secondaryAccent: '#f7dc6f',
-      textPrimary: '#d8f3dc',
-      borderMuted: '#74c69d',
-      cardBg: 'rgba(13, 40, 24, 0.85)',
-      gradientFrom: '#081c0f',
-      gradientTo: '#1b4332'
-    }
-  },
-  aurora: {
-    name: 'Aurora Borealis',
-    description: 'Nordic blues with electric accents',
-    icon: '❄️',
-    colors: {
-      background: '#0f1624',
-      primaryAccent: '#00d4ff',
-      secondaryAccent: '#7b2cbf',
-      textPrimary: '#caf0f8',
-      borderMuted: '#48cae4',
-      cardBg: 'rgba(15, 22, 36, 0.85)',
-      gradientFrom: '#03045e',
-      gradientTo: '#023e8a'
-    }
-  },
-  ocean: {
-    name: 'Ocean Depths',
-    description: 'Deep sea with coral highlights',
-    icon: '🌊',
-    colors: {
-      background: '#1e3a5f',
-      primaryAccent: '#ff6b35',
-      secondaryAccent: '#4ecdc4',
-      textPrimary: '#f1faee',
-      borderMuted: '#457b9d',
-      cardBg: 'rgba(30, 58, 95, 0.85)',
-      gradientFrom: '#0a1a2e',
-      gradientTo: '#16213e'
+      background: '#F0F8FF', // Light feminine blue background
+      primaryAccent: '#7FB3D3', // Light feminine blue
+      secondaryAccent: '#81C784', // Pleasant exotic green
+      textPrimary: '#2E4A62', // Deep blue-gray text
+      borderMuted: '#B8D4E3',
+      cardBg: 'rgba(255, 255, 255, 0.92)', // Silky white
+      gradientFrom: '#F0F8FF',
+      gradientTo: '#E8F4F8'
     }
   }
 };
@@ -160,6 +130,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.style.setProperty('--card-bg', customTheme.colors.background + 'CC');
       root.style.setProperty('--gradient-from', customTheme.colors.background);
       root.style.setProperty('--gradient-to', customTheme.colors.accent + '20');
+      root.style.setProperty('--nav-bg', 'rgba(0, 0, 0, 0.85)');
+      root.style.setProperty('--nav-text', 'white');
     } else if (themes[theme as keyof typeof themes]) {
       // Apply predefined theme colors
       const themeConfig = themes[theme as keyof typeof themes];
@@ -171,6 +143,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.style.setProperty('--card-bg', themeConfig.colors.cardBg);
       root.style.setProperty('--gradient-from', themeConfig.colors.gradientFrom);
       root.style.setProperty('--gradient-to', themeConfig.colors.gradientTo);
+      
+      // Set navigation colors based on theme brightness
+      const isLightTheme = ['satin-elegance', 'rose-mauve', 'feminine-serenity'].includes(theme);
+      if (isLightTheme) {
+        root.style.setProperty('--nav-bg', 'rgba(255, 255, 255, 0.95)');
+        root.style.setProperty('--nav-text', '#2C2C2C');
+      } else {
+        root.style.setProperty('--nav-bg', 'rgba(0, 0, 0, 0.85)');
+        root.style.setProperty('--nav-text', 'white');
+      }
     }
     
     // Save to localStorage

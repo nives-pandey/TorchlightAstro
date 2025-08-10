@@ -35,7 +35,7 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="clean-nav fixed top-0 w-full z-50">
+    <header className="clean-nav fixed top-0 w-full z-50" style={{ backgroundColor: 'var(--nav-bg)', backdropFilter: 'blur(10px)' }}>
       <nav className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -53,7 +53,7 @@ export default function Navigation() {
                 </div>
               </div>
               {/* Text */}
-              <span className="text-white font-montserrat font-semibold text-lg tracking-tight">
+              <span className="font-montserrat font-semibold text-lg tracking-tight" style={{ color: 'var(--nav-text)' }}>
                 Torchlight
               </span>
             </div>
@@ -68,8 +68,9 @@ export default function Navigation() {
                 className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   location === item.path
                     ? "bg-yellow-600/20 text-yellow-500"
-                    : "text-white hover:text-yellow-500"
+                    : "hover:text-yellow-500"
                 }`}
+                style={{ color: location === item.path ? undefined : 'var(--nav-text)' }}
               >
                 {item.label}
               </Link>
@@ -124,7 +125,7 @@ export default function Navigation() {
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="sm" className="md:hidden text-white hover:bg-yellow-600/20 min-h-[44px] min-w-[44px] touch-manipulation">
+              <Button variant="ghost" size="sm" className="md:hidden hover:bg-yellow-600/20 min-h-[44px] min-w-[44px] touch-manipulation" style={{ color: 'var(--nav-text)' }}>
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
