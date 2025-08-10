@@ -1357,17 +1357,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
         userId
       });
       
-      // Mock daily guidance generation
+      // Generate authentic guidance using Gemini AI
+      const { GeminiDailyGuidance } = await import('./gemini-daily-guidance');
+      const guidanceEngine = new GeminiDailyGuidance();
+      
+      // Get user's birth data for personalized guidance
+      const userBirthData = await storage.getBirthDataByUserId(userId);
+      
+      let guidanceResponse;
+      if (userBirthData) {
+        guidanceResponse = await guidanceEngine.generatePersonalizedGuidance({
+          birthDate: userBirthData.birthDate,
+          birthTime: userBirthData.birthTime,
+          city: userBirthData.city
+        });
+      } else {
+        guidanceResponse = await guidanceEngine.generateDailyGuidance({
+          guidanceType: 'daily',
+          systems: ['western', 'vedic', 'chinese', 'numerology']
+        });
+      }
+      
+      // Transform Gemini response to match existing schema
       const guidanceData = {
         horoscope: {
-          western: "Today brings creative opportunities and leadership chances",
-          vedic: "Favorable time for spiritual practices and learning",
-          chinese: "Lucky day for new beginnings and important decisions",
+          western: guidanceResponse.systems?.western || guidanceResponse.guidance?.overview || "Today brings creative opportunities",
+          vedic: guidanceResponse.systems?.vedic || "Favorable time for spiritual practices and learning",
+          chinese: guidanceResponse.systems?.chinese || "Lucky day for new beginnings and important decisions",
           humanDesign: "Trust your sacral response in all interactions"
         },
         transits: {
-          current: "Moon in favorable aspect to your Sun",
-          upcoming: "Mercury entering your career sector next week"
+          current: guidanceResponse.planetary?.significantTransits?.[0] || "Moon in favorable aspect to your Sun",
+          upcoming: guidanceResponse.planetary?.significantTransits?.[1] || "Mercury entering your career sector next week"
         },
         optimalTiming: {
           best_hours: ["9-11 AM", "2-4 PM", "7-9 PM"],
@@ -1375,14 +1396,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
           lucky_direction: "East"
         },
         luckyElements: {
-          colors: ["Gold", "Royal Blue"],
-          numbers: [3, 7],
+          colors: guidanceResponse.lucky?.colors || ["Gold", "Royal Blue"],
+          numbers: guidanceResponse.lucky?.numbers || [3, 7],
           activities: ["Creative work", "Leadership tasks", "Spiritual practice"]
         },
         systemInsights: {
-          western: "Focus on creative self-expression today",
-          vedic: "Good day for dharmic activities and service",
-          chinese: "Dragon energy supports bold initiatives",
+          western: guidanceResponse.guidance?.career || "Focus on creative self-expression today",
+          vedic: guidanceResponse.guidance?.spiritual || "Good day for dharmic activities and service",
+          chinese: guidanceResponse.systems?.chinese || "Dragon energy supports bold initiatives",
           humanDesign: "Generator energy is high - follow your gut feelings"
         }
       };

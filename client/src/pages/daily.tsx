@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import DailyGuidance from "@/components/daily-guidance";
+import GeminiDailyDisplay from "@/components/gemini-daily-display";
 import { 
   Satellite, 
   Scroll, 
@@ -24,9 +25,37 @@ export default function Daily() {
   const [selectedUserId] = useState(1); // In real app, get from auth context
   const today = new Date().toISOString().split('T')[0];
 
+  // Fetch from new Gemini-powered guidance API
   const { data: dailyGuidance, isLoading, error } = useQuery({
-    queryKey: ['/api/daily-guidance', selectedUserId, today],
-    enabled: !!selectedUserId,
+    queryKey: ['/api/guidance/today'],
+    queryFn: async () => {
+      // Try personalized guidance first if user has birth data
+      const storedBirthData = localStorage.getItem('torchlight_birth_data');
+      
+      if (storedBirthData) {
+        try {
+          const birthData = JSON.parse(storedBirthData);
+          const response = await fetch('/api/guidance/personal', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ birthData })
+          });
+          
+          if (response.ok) {
+            return await response.json();
+          }
+        } catch (personalError) {
+          console.log('Falling back to universal guidance');
+        }
+      }
+      
+      // Fall back to universal guidance
+      const response = await fetch('/api/guidance/today');
+      if (!response.ok) {
+        throw new Error('Failed to fetch daily guidance');
+      }
+      return await response.json();
+    }
   });
 
   if (isLoading) {
@@ -71,6 +100,11 @@ export default function Daily() {
         </div>
       </div>
     );
+  }
+
+  // Check if we have Gemini-powered data
+  if (dailyGuidance?.success && dailyGuidance?.source === "Gemini AI") {
+    return <GeminiDailyDisplay data={dailyGuidance} />;
   }
 
   if (!dailyGuidance) {

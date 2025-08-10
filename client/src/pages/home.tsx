@@ -1114,17 +1114,19 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Button 
-              className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
-              style={{
-                background: 'var(--cosmic-gradient-2)',
-                color: 'var(--sage-teal)',
-                border: 'none'
-              }}
-            >
-              <Clock className="mr-2 h-5 w-5" />
-              View Today's Guidance
-            </Button>
+            <Link to="/daily">
+              <Button 
+                className="font-semibold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all duration-300 font-accent"
+                style={{
+                  background: 'var(--cosmic-gradient-2)',
+                  color: 'var(--sage-teal)',
+                  border: 'none'
+                }}
+              >
+                <Clock className="mr-2 h-5 w-5" />
+                View Today's Guidance
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
