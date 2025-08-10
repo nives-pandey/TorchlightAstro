@@ -132,10 +132,16 @@ export default function CosmicColorCustomizer() {
         <Button 
           variant="outline" 
           size="sm"
-          className="bg-gradient-to-r from-purple-400 to-pink-400 hover:from-purple-300 hover:to-pink-300 text-gray-900 border-purple-300 hover:border-purple-200 transition-all duration-200 hover:scale-105 font-semibold shadow-lg"
+          className="bg-purple-500 hover:bg-purple-400 text-white border-2 border-purple-700 hover:border-purple-600 transition-all duration-200 hover:scale-105 font-bold shadow-xl min-w-[90px] min-h-[40px]"
+          style={{ 
+            backgroundColor: '#8B5CF6', 
+            color: '#FFFFFF', 
+            borderColor: '#7C3AED',
+            boxShadow: '0 4px 14px 0 rgba(139, 92, 246, 0.39)'
+          }}
         >
           <Sparkles className="h-4 w-4 mr-1" />
-          <span className="hidden sm:inline">Customize</span>
+          <span className="font-bold text-sm">CUSTOM</span>
         </Button>
       </DialogTrigger>
       

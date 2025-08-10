@@ -78,9 +78,11 @@ export default function Navigation() {
           </div>
           
           {/* Language Switcher & User Menu */}
-          <div className="hidden md:flex items-center space-x-4">
-            <ThemeToggle />
-            <CosmicColorCustomizer />
+          <div className="hidden md:flex items-center space-x-3">
+            <div className="flex items-center space-x-2 p-2 bg-black/20 rounded-lg backdrop-blur-sm">
+              <ThemeToggle />
+              <CosmicColorCustomizer />
+            </div>
             <LanguageSwitcher />
             
             {/* Contribution Button */}
@@ -132,14 +134,16 @@ export default function Navigation() {
             <SheetContent side="right" className="w-[300px] bg-slate-900/95 border-yellow-500/50 safe-top safe-bottom">
               <div className="flex flex-col space-y-2 mt-8 h-full overflow-y-auto swipeable">
                 {/* Mobile Theme Toggle */}
-                <div className="mb-4 p-3 border-b border-white/20">
-                  <div className="flex items-center justify-between">
-                    <span className="text-white text-sm font-medium">Choose Theme</span>
-                    <ThemeToggle />
-                  </div>
-                  <div className="flex items-center justify-between mt-3">
-                    <span className="text-white text-sm font-medium">Custom Colors</span>
-                    <CosmicColorCustomizer />
+                <div className="mb-4 p-4 border-b border-white/20 bg-black/30 rounded-lg">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-white text-sm font-medium">Choose Theme</span>
+                      <ThemeToggle />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-white text-sm font-medium">Custom Colors</span>
+                      <CosmicColorCustomizer />
+                    </div>
                   </div>
                 </div>
                 {navItems.map((item) => (
