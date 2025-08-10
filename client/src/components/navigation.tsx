@@ -35,9 +35,9 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="clean-nav fixed top-0 w-full z-50" style={{ backgroundColor: 'var(--nav-bg)', backdropFilter: 'blur(10px)' }}>
+    <header className="clean-nav fixed top-0 w-full z-50 bg-black border-b-4 border-yellow-500" style={{ backgroundColor: '#000000', minHeight: '70px' }}>
       <nav className="max-w-7xl mx-auto px-6">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16" style={{ minHeight: '70px' }}>
           {/* Logo */}
           <Link href="/" className="hover:opacity-75 transition-opacity flex items-center">
             <div className="flex items-center space-x-3">
@@ -53,7 +53,7 @@ export default function Navigation() {
                 </div>
               </div>
               {/* Text */}
-              <span className="font-montserrat font-semibold text-lg tracking-tight" style={{ color: 'var(--nav-text)' }}>
+              <span className="font-montserrat font-semibold text-lg tracking-tight text-white">
                 Torchlight
               </span>
             </div>
@@ -70,7 +70,7 @@ export default function Navigation() {
                     ? "bg-yellow-600/20 text-yellow-500"
                     : "hover:text-yellow-500"
                 }`}
-                style={{ color: location === item.path ? undefined : 'var(--nav-text)' }}
+                style={{ color: location === item.path ? '#FCD34D' : '#FFFFFF' }}
               >
                 {item.label}
               </Link>
@@ -79,7 +79,7 @@ export default function Navigation() {
           
           {/* Language Switcher & User Menu */}
           <div className="hidden md:flex items-center space-x-3">
-            <div className="flex items-center space-x-3 p-3 bg-black/20 rounded-full backdrop-blur-sm">
+            <div className="flex items-center space-x-3 p-3 bg-white/20 rounded-full backdrop-blur-sm border-2 border-yellow-400">
               <ThemeToggle />
               <CosmicColorCustomizer />
               <Button 

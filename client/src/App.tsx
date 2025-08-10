@@ -59,7 +59,12 @@ function Router() {
 
   // For demo purposes, show the main app without authentication
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{
+      background: `linear-gradient(135deg, var(--gradient-from), var(--gradient-to))`,
+      color: 'var(--text-primary)'
+    }}>
+      <Navigation />
+      <TimeAdaptiveNavigation />
       {/* Fixed starfield background */}
       <div className="fixed inset-0 starfield opacity-30 pointer-events-none"></div>
       
@@ -72,6 +77,7 @@ function Router() {
             exit="out"
             variants={pageVariants}
             transition={{ duration: 0.6, ease: "easeInOut" }}
+            style={{ paddingTop: '80px' }}
           >
             <Switch>
         <Route path="/" component={Home} />
