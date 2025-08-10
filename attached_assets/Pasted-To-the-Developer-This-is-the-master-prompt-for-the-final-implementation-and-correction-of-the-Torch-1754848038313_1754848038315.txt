@@ -1,0 +1,167 @@
+To the Developer: This is the master prompt for the final implementation and correction of the Torchlight application. The goal is to fix all outstanding UI issues (logo, color themes) and to integrate the core backend logic for authentic calculations and AI report generation. Please follow these five steps exactly.
+
+Step 1: Create the Official Reusable Logo Component
+First, we will create a new, self-contained component for the official Torchlight logo to ensure it can be used consistently in the header, footer, and elsewhere.
+
+Action: Create a new file at client/src/components/TorchlightLogo.tsx and paste the entire code block below into it.
+
+// client/src/components/TorchlightLogo.tsx
+import React from 'react';
+
+// This component uses Tailwind CSS classes for styling.
+// It assumes the global CSS variables for colors are set.
+export const TorchlightLogo = ({ size = 'md' }) => {
+  const sizes = {
+    sm: { container: 'h-8', icon: 30, text: 'text-xl' },
+    md: { container: 'h-12', icon: 50, text: 'text-3xl' },
+    lg: { container: 'h-16', icon: 60, text: 'text-4xl' },
+  };
+  const selected = sizes[size];
+
+  return (
+    <div className={`flex items-center gap-3 ${selected.container}`}>
+      <svg 
+        width={selected.icon} 
+        height={selected.icon} 
+        viewBox="0 0 100 100" 
+        xmlns="http://www.w3.org/2000/svg"
+        className="fill-primary"
+      >
+        <rect x="45" y="40" width="10" height="45" rx="2" />
+        <path d="M50 35 C 40 35, 35 25, 50 15 C 65 25, 60 35, 50 35 Z" />
+        <path d="M50 0 L53 7 L60 10 L53 13 L50 20 L47 13 L40 10 L47 7 Z" />
+      </svg>
+      <span className={`font-sans font-semibold text-foreground ${selected.text}`}>
+        Torchlight
+      </span>
+    </div>
+  );
+};
+
+Step 2: Implement the Global Theme System
+Next, we will implement the three distinct color themes and fix all visibility issues.
+
+Action: Go to the main global CSS file (e.g., client/src/index.css) and replace its entire contents with the following code. This correctly sets up the themes.
+
+/* In your global CSS file, e.g., client/src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Theme 1: Atelier (Default) */
+  .theme-atelier {
+    --background: 30 20% 98%;      /* #FCFBF9 - Alabaster White */
+    --foreground: 30 8% 18%;       /* #36312E - Warm Charcoal Text */
+    --card: 29 25% 95%;          /* #F5F2F0 - Parchment Card */
+    --primary: 44 45% 55%;        /* #B89B4C - Old Money Gold */
+    --secondary: 354 41% 31%;      /* #722F37 - Merlot */
+    --muted-foreground: 30 5% 45%; /* #7D7875 */
+    --border: 30 15% 88%;        /* #E6E2DE */
+  }
+
+  /* Theme 2: Illuminated Sanctuary */
+  .theme-sanctuary {
+    --background: 29 25% 95%;      /* #F5F2F0 - Parchment */
+    --foreground: 30 8% 18%;       /* #36312E - Warm Charcoal Text */
+    --card: 30 20% 98%;           /* #FCFBF9 - Alabaster */
+    --primary: 44 45% 55%;        /* #B89B4C - Softer Gold */
+    --secondary: 0 40% 85%;         /* #E6C2C2 - Muted Rose */
+    --muted-foreground: 30 5% 45%; /* #7D7875 */
+    --border: 30 15% 88%;        /* #E6E2DE */
+  }
+
+  /* Theme 3: Midnight Bloom */
+  .theme-midnight-bloom {
+    --background: 30 8% 18%;       /* #36312E - Warm Charcoal */
+    --foreground: 29 25% 95%;      /* #F5F2F0 - Parchment Text */
+    --card: 30 6% 22%;           /* #3D3835 */
+    --primary: 44 45% 65%;        /* #C5A55A - Brushed Gold */
+    --secondary: 328 81% 69%;      /* #F472B6 - Fuchsia/Vibrant Pink */
+    --muted-foreground: 30 5% 66%; /* #B0A9A4 */
+    --border: 30 6% 25%;         /* #45403C */
+  }
+
+  :root {
+    /* Default to the Atelier theme */
+    @apply theme-atelier;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lora', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, button, [role="button"] {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+Step 3: Integrate the Logo and Theme Toggle
+Now, use the new logo and create the theme toggle.
+
+Action:
+
+In your main header component (e.g., Navigation.tsx), import and use the <TorchlightLogo /> component.
+
+In your settings menu or another appropriate location, add a simple dropdown to allow users to switch themes. This dropdown will change the class on the <body> element.
+
+// Example of using the logo in a header component
+import { TorchlightLogo } from './TorchlightLogo';
+
+const Header = () => (
+  <header className="p-4 border-b border-border">
+    <TorchlightLogo size="sm" />
+  </header>
+);
+
+// Example of a theme toggle component
+const ThemeToggle = () => {
+  const setTheme = (theme) => {
+    document.body.className = ''; // Clear existing theme
+    document.body.classList.add(theme);
+  };
+
+  return (
+    <select onChange={(e) => setTheme(e.target.value)} className="bg-card text-card-foreground p-2 rounded-md border border-border">
+      <option value="theme-atelier">Atelier</option>
+      <option value="theme-sanctuary">Sanctuary</option>
+      <option value="theme-midnight-bloom">Midnight Bloom</option>
+    </select>
+  );
+};
+
+Step 4: The Backend "Hacks" for Authentic Data
+These are instructions for the backend to fix the data authenticity issues.
+
+Action: Provide these instructions to your developer.
+
+A. The Swiss Ephemeris Fix (Cost: $0)
+
+Instruction: "Install and integrate the astrite library, a free and professional open-source tool for Swiss Ephemeris calculations. Replace all simplified calculations with this authentic source."
+
+Command to run in Shell: npm install astrite
+
+B. The AI Report Engine (Cost: Your Gemini Subscription)
+
+Instruction: "The 5-page report must be generated by the Gemini API. When a user requests a report, gather all authentic astrological data, then feed it into the following master prompt to generate the complete, multi-page narrative."
+
+The Master Prompt:
+
+**Role:** You are a master astrologer with the soul of a poet. Your name is Lyra.
+**Task:** Generate a comprehensive, 5-page astrological report for a user based on the following raw data. The tone must be deeply soothing, wise, and empowering.
+**[RAW ASTROLOGICAL DATA]**
+{ "western": { ... }, "vedic": { ... }, "numerology": { ... }, "chinese": { ... } }
+**Report Structure:**
+* **Page 1: Your Cosmic Blueprint.** A synthesis of Sun, Moon, Rising, and Life Path number.
+* **Page 2: The Gifts of Your Spirit.** Focus on strengths and powerful planetary placements.
+* **Page 3: The Shadows & The Lessons.** Gently discuss challenges as chosen soul lessons.
+* **Page 4: Your Path to Purpose.** Actionable guidance for career and relationships.
+* **Page 5: Your Personal Sanctuary.** Personalized lifestyle recommendations (gemstones, colors) and an uplifting final message.
+**Output Format:** A complete, multi-page report in Markdown format.
+
+Step 5: Clean Up Technical Debt
+Action: Instruct your developer to resolve the 29 LSP diagnostics in server/routes.ts. These are not "cosmetic"; they are real bugs and type errors that must be fixed for the application to be stable and maintainable.

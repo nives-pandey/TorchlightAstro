@@ -8,8 +8,8 @@ import { Menu, LogOut, User, Heart, Music } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
-import TorchlightLogo from "@/components/torchlight-logo";
-import ThemeToggle from "@/components/theme-toggle";
+import { TorchlightLogo } from "@/components/TorchlightLogo";
+import { ThemeToggle as NewThemeToggle } from "@/components/ThemeToggle";
 import CosmicColorCustomizer from "@/components/cosmic-color-customizer";
 import WhisperMode from "@/components/whisper-mode";
 
@@ -41,42 +41,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16" style={{ minHeight: '70px' }}>
           {/* Logo */}
           <Link href="/" className="hover:opacity-75 transition-opacity flex items-center">
-            <div className="flex items-center space-x-3">
-              <div className="flex flex-col items-center justify-center">
-                {/* Torch Logo */}
-                <svg width="28" height="28" viewBox="0 0 28 28" className="text-yellow-400">
-                  {/* Flame */}
-                  <path 
-                    d="M14 2 C16 5, 18 7, 16 10 C18 12, 16 15, 14 12 C12 15, 10 12, 12 10 C10 7, 12 5, 14 2 Z" 
-                    fill="#FCD34D" 
-                    className="drop-shadow-sm"
-                  />
-                  {/* Torch Handle */}
-                  <rect 
-                    x="12.5" 
-                    y="10" 
-                    width="3" 
-                    height="16" 
-                    fill="#D97706" 
-                    rx="1.5"
-                    className="drop-shadow-sm"
-                  />
-                  {/* Torch Base */}
-                  <rect 
-                    x="11.5" 
-                    y="24" 
-                    width="5" 
-                    height="2" 
-                    fill="#92400E" 
-                    rx="1"
-                  />
-                </svg>
-              </div>
-              {/* Text */}
-              <span className="font-montserrat font-semibold text-lg tracking-tight text-white">
-                Torchlight
-              </span>
-            </div>
+            <TorchlightLogo size="sm" />
           </Link>
           
           {/* Desktop Navigation */}
@@ -101,7 +66,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-3">
             <div className="flex items-center space-x-3 p-3 bg-white/20 rounded-full backdrop-blur-sm border-2 border-yellow-400">
               <WhisperMode />
-              <ThemeToggle />
+              <NewThemeToggle />
               <CosmicColorCustomizer />
               <Button 
                 variant="outline" 
@@ -179,7 +144,7 @@ export default function Navigation() {
                         <WhisperMode />
                       </div>
                       <div className="flex items-center justify-center space-x-3">
-                        <ThemeToggle />
+                        <NewThemeToggle />
                         <CosmicColorCustomizer />
                         <Button 
                           variant="outline" 
