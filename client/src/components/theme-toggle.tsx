@@ -19,9 +19,9 @@ export default function ThemeToggle() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button 
-          variant="ghost" 
+          variant="outline" 
           size="sm"
-          className="bg-white/10 hover:bg-white/20 text-white border-0 transition-all duration-200 hover:scale-105"
+          className="bg-yellow-600/80 hover:bg-yellow-500 text-white border-yellow-400/50 hover:border-yellow-300 transition-all duration-200 hover:scale-105 font-medium shadow-lg"
         >
           <Palette className="h-4 w-4 mr-1" />
           <span className="hidden sm:inline">Theme</span>

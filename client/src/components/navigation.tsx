@@ -131,7 +131,7 @@ export default function Navigation() {
                 {/* Mobile Theme Toggle */}
                 <div className="mb-4 p-3 border-b border-white/20">
                   <div className="flex items-center justify-between">
-                    <span className="text-white text-sm font-medium">Theme</span>
+                    <span className="text-white text-sm font-medium">Choose Theme</span>
                     <ThemeToggle />
                   </div>
                 </div>
