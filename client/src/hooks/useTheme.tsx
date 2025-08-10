@@ -2,10 +2,27 @@ import { createContext, useContext, useEffect, useState, ReactNode } from 'react
 
 export type Theme = 'sanctuary' | 'cosmic' | 'ethereal' | 'mystic' | 'aurora' | 'ocean';
 
+interface CustomTheme {
+  id: string;
+  name: string;
+  description: string;
+  colors: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    text: string;
+    border: string;
+  };
+  gradient: string;
+}
+
 interface ThemeContextType {
-  theme: Theme;
+  theme: Theme | 'custom';
   setTheme: (theme: Theme) => void;
   themes: Record<Theme, ThemeConfig>;
+  customTheme?: CustomTheme;
+  setCustomTheme: (theme: CustomTheme) => void;
 }
 
 interface ThemeConfig {
@@ -120,39 +137,57 @@ const themes: Record<Theme, ThemeConfig> = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('sanctuary');
+  const [theme, setThemeState] = useState<Theme | 'custom'>('sanctuary');
+  const [customTheme, setCustomThemeState] = useState<CustomTheme | undefined>();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('torchlight-theme') as Theme;
-    if (savedTheme && themes[savedTheme]) {
+    const savedTheme = localStorage.getItem('torchlight-theme') as Theme | 'custom';
+    if (savedTheme && (themes[savedTheme as Theme] || savedTheme === 'custom')) {
       setThemeState(savedTheme);
     }
   }, []);
 
   useEffect(() => {
-    const themeConfig = themes[theme];
     const root = document.documentElement;
     
-    // Apply theme colors to CSS variables
-    root.style.setProperty('--background', themeConfig.colors.background);
-    root.style.setProperty('--primary-accent', themeConfig.colors.primaryAccent);
-    root.style.setProperty('--secondary-accent', themeConfig.colors.secondaryAccent);
-    root.style.setProperty('--text-primary', themeConfig.colors.textPrimary);
-    root.style.setProperty('--border-muted', themeConfig.colors.borderMuted);
-    root.style.setProperty('--card-bg', themeConfig.colors.cardBg);
-    root.style.setProperty('--gradient-from', themeConfig.colors.gradientFrom);
-    root.style.setProperty('--gradient-to', themeConfig.colors.gradientTo);
+    if (theme === 'custom' && customTheme) {
+      // Apply custom theme colors
+      root.style.setProperty('--background', customTheme.colors.background);
+      root.style.setProperty('--primary-accent', customTheme.colors.primary);
+      root.style.setProperty('--secondary-accent', customTheme.colors.secondary);
+      root.style.setProperty('--text-primary', customTheme.colors.text);
+      root.style.setProperty('--border-muted', customTheme.colors.border);
+      root.style.setProperty('--card-bg', customTheme.colors.background + 'CC');
+      root.style.setProperty('--gradient-from', customTheme.colors.background);
+      root.style.setProperty('--gradient-to', customTheme.colors.accent + '20');
+    } else if (themes[theme as keyof typeof themes]) {
+      // Apply predefined theme colors
+      const themeConfig = themes[theme as keyof typeof themes];
+      root.style.setProperty('--background', themeConfig.colors.background);
+      root.style.setProperty('--primary-accent', themeConfig.colors.primaryAccent);
+      root.style.setProperty('--secondary-accent', themeConfig.colors.secondaryAccent);
+      root.style.setProperty('--text-primary', themeConfig.colors.textPrimary);
+      root.style.setProperty('--border-muted', themeConfig.colors.borderMuted);
+      root.style.setProperty('--card-bg', themeConfig.colors.cardBg);
+      root.style.setProperty('--gradient-from', themeConfig.colors.gradientFrom);
+      root.style.setProperty('--gradient-to', themeConfig.colors.gradientTo);
+    }
     
     // Save to localStorage
     localStorage.setItem('torchlight-theme', theme);
-  }, [theme]);
+  }, [theme, customTheme]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
   };
 
+  const setCustomTheme = (newCustomTheme: CustomTheme) => {
+    setCustomThemeState(newCustomTheme);
+    setThemeState('custom');
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, themes }}>
+    <ThemeContext.Provider value={{ theme, setTheme, themes, customTheme, setCustomTheme }}>
       {children}
     </ThemeContext.Provider>
   );

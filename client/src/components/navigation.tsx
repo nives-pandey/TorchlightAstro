@@ -10,6 +10,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
 import TorchlightLogo from "@/components/torchlight-logo";
 import ThemeToggle from "@/components/theme-toggle";
+import CosmicColorCustomizer from "@/components/cosmic-color-customizer";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -78,6 +79,7 @@ export default function Navigation() {
           {/* Language Switcher & User Menu */}
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
+            <CosmicColorCustomizer />
             <LanguageSwitcher />
             
             {/* Contribution Button */}
@@ -133,6 +135,10 @@ export default function Navigation() {
                   <div className="flex items-center justify-between">
                     <span className="text-white text-sm font-medium">Choose Theme</span>
                     <ThemeToggle />
+                  </div>
+                  <div className="flex items-center justify-between mt-3">
+                    <span className="text-white text-sm font-medium">Custom Colors</span>
+                    <CosmicColorCustomizer />
                   </div>
                 </div>
                 {navItems.map((item) => (
