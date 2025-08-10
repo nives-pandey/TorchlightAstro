@@ -21,16 +21,14 @@ export default function ThemeToggle() {
         <Button 
           variant="outline" 
           size="sm"
-          className="bg-yellow-400 hover:bg-yellow-300 text-black border-2 border-yellow-600 hover:border-yellow-500 transition-all duration-200 hover:scale-105 font-bold shadow-xl min-w-[80px] min-h-[40px]"
+          className="w-12 h-12 rounded-full bg-white hover:bg-gray-100 border-4 border-black hover:border-red-600 transition-all duration-200 hover:scale-110 shadow-xl flex items-center justify-center p-0"
           style={{ 
-            backgroundColor: '#FBBF24', 
-            color: '#000000', 
-            borderColor: '#D97706',
-            boxShadow: '0 4px 14px 0 rgba(251, 191, 36, 0.39)'
+            backgroundColor: '#FFFFFF', 
+            borderColor: '#000000',
+            boxShadow: '0 4px 14px 0 rgba(0, 0, 0, 0.3)'
           }}
         >
-          <Palette className="h-4 w-4 mr-1" />
-          <span className="font-bold text-sm">THEME</span>
+          <Palette className="h-5 w-5 text-black" />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px] bg-slate-900/95 border border-white/20 backdrop-blur-md">
