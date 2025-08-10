@@ -3,13 +3,16 @@
 @import "tailwindcss/utilities";
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
-/* 1. DEFINE THE GLOBAL SANCTUARY PALETTE */
+/* 1. DEFINE THE GLOBAL SANCTUARY PALETTE - Dynamic Theme Support */
 :root {
   --background: #36312E;       /* Warm Charcoal */
   --primary-accent: #D4B35B;   /* Polished Gold */
   --secondary-accent: #208B8B; /* Vibrant Teal */
   --text-primary: #F5F5DC;     /* Off-White */
   --border-muted: #B0A9A4;     /* Warm Gray ("Greige") */
+  --card-bg: rgba(54, 49, 46, 0.85); /* Card background */
+  --gradient-from: #1a1814;    /* Gradient start */
+  --gradient-to: #2d2620;      /* Gradient end */
 }
 
 /* 2. ENFORCE THE PALETTE ON BASE HTML ELEMENTS */
@@ -209,14 +212,22 @@ a:hover {
   color: var(--secondary-accent) !important;
 }
 
-/* Sanctuary Card Style - warm charcoal base with subtle transparency */
+/* Sanctuary Card Style - dynamic theme support */
 .sanctuary-card {
-  background: linear-gradient(135deg, 
-    hsla(30, 8%, 18%, 0.85) 0%, 
-    hsla(30, 6%, 22%, 0.9) 100%);
+  background: var(--card-bg);
   border: 1px solid var(--border-muted);
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
+}
+
+/* Dynamic gradient backgrounds */
+.theme-gradient {
+  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+}
+
+.theme-button {
+  background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+  color: var(--background);
 }
 
 /* Mobile-Specific Classes */
@@ -493,11 +504,11 @@ input:focus, textarea:focus, select:focus, button:focus {
   
   /* Ensure all page backgrounds have sufficient contrast */
   .min-h-screen {
-    background-color: #1a1814 !important; /* Solid fallback */
+    background-color: var(--gradient-from) !important; /* Dynamic fallback */
     background-image: linear-gradient(135deg, 
-      #1a1814 0%, 
-      #2d2620 50%, 
-      #1a1814 100%) !important;
+      var(--gradient-from) 0%, 
+      var(--gradient-to) 50%, 
+      var(--gradient-from) 100%) !important;
   }
   
   /* Fix Hero section visibility */

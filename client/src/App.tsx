@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/useAuth";
 import { PageTransition } from "@/components/page-transition";
 import Navigation from "@/components/navigation";
+import { ThemeProvider } from "@/hooks/useTheme";
 import TimeAdaptiveNavigation from "@/components/time-adaptive-navigation";
 import Landing from "@/pages/landing";
 import Home from "@/pages/home";
@@ -122,10 +123,12 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

@@ -9,6 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useTranslation } from "@/lib/i18n";
 import TorchlightLogo from "@/components/torchlight-logo";
+import ThemeToggle from "@/components/theme-toggle";
 
 export default function Navigation() {
   const [location] = useLocation();
@@ -76,6 +77,7 @@ export default function Navigation() {
           
           {/* Language Switcher & User Menu */}
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <LanguageSwitcher />
             
             {/* Contribution Button */}
@@ -126,6 +128,13 @@ export default function Navigation() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] bg-slate-900/95 border-yellow-500/50 safe-top safe-bottom">
               <div className="flex flex-col space-y-2 mt-8 h-full overflow-y-auto swipeable">
+                {/* Mobile Theme Toggle */}
+                <div className="mb-4 p-3 border-b border-white/20">
+                  <div className="flex items-center justify-between">
+                    <span className="text-white text-sm font-medium">Theme</span>
+                    <ThemeToggle />
+                  </div>
+                </div>
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
