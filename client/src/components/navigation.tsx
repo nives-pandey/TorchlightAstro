@@ -43,15 +43,34 @@ export default function Navigation() {
           <Link href="/" className="hover:opacity-75 transition-opacity flex items-center">
             <div className="flex items-center space-x-3">
               <div className="flex flex-col items-center justify-center">
-                {/* Candle Icon */}
-                <div className="relative">
-                  {/* Star/Flame */}
-                  <svg width="16" height="16" viewBox="0 0 16 16" className="text-yellow-400 mb-1">
-                    <path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z" fill="currentColor" />
-                  </svg>
-                  {/* Candle Body */}
-                  <div className="w-3 h-8 bg-gradient-to-b from-yellow-400 to-yellow-600 rounded-sm mx-auto"></div>
-                </div>
+                {/* Torch Logo */}
+                <svg width="28" height="28" viewBox="0 0 28 28" className="text-yellow-400">
+                  {/* Flame */}
+                  <path 
+                    d="M14 2 C16 5, 18 7, 16 10 C18 12, 16 15, 14 12 C12 15, 10 12, 12 10 C10 7, 12 5, 14 2 Z" 
+                    fill="#FCD34D" 
+                    className="drop-shadow-sm"
+                  />
+                  {/* Torch Handle */}
+                  <rect 
+                    x="12.5" 
+                    y="10" 
+                    width="3" 
+                    height="16" 
+                    fill="#D97706" 
+                    rx="1.5"
+                    className="drop-shadow-sm"
+                  />
+                  {/* Torch Base */}
+                  <rect 
+                    x="11.5" 
+                    y="24" 
+                    width="5" 
+                    height="2" 
+                    fill="#92400E" 
+                    rx="1"
+                  />
+                </svg>
               </div>
               {/* Text */}
               <span className="font-montserrat font-semibold text-lg tracking-tight text-white">
