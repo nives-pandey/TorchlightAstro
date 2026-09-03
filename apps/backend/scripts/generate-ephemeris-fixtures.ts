@@ -1,4 +1,14 @@
 /**
+ * Torchlight — ephemeris reference fixture generator
+ *
+ * Copyright (c) 2026 Nives Pandey. All rights reserved.
+ * Author: Nives Pandey, Founder & CEO, EagleCortex.
+ *
+ * PROPRIETARY AND CONFIDENTIAL. Unauthorised copying, distribution, or use of
+ * this file, via any medium, is strictly prohibited. See LICENSE.
+ */
+
+/**
  * Generates ephemeris test fixtures from NASA JPL Horizons.
  *
  * Run deliberately (`npx tsx scripts/generate-ephemeris-fixtures.ts`), not in

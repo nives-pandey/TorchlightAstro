@@ -1,4 +1,14 @@
 /**
+ * Torchlight — house reference fixture generator
+ *
+ * Copyright (c) 2026 Nives Pandey. All rights reserved.
+ * Author: Nives Pandey, Founder & CEO, EagleCortex.
+ *
+ * PROPRIETARY AND CONFIDENTIAL. Unauthorised copying, distribution, or use of
+ * this file, via any medium, is strictly prohibited. See LICENSE.
+ */
+
+/**
  * Generates house/angle fixtures from Swiss Ephemeris.
  *
  * Run deliberately, never in CI. `swisseph-v2` is a native module that must

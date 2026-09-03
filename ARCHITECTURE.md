@@ -1,6 +1,11 @@
-# CLAUDE.md — Torchlight
+# Torchlight — Architecture
 
-Guidance for working in this repository.
+**Copyright (c) 2026 Nives Pandey. All rights reserved.**
+**Author: Nives Pandey, Founder & CEO, EagleCortex.**
+
+Proprietary and confidential. See [LICENSE](LICENSE).
+
+Engineering reference for this repository.
 
 ---
 

@@ -1,3 +1,13 @@
+/**
+ * Torchlight — nutation and obliquity of the ecliptic — verification suite
+ *
+ * Copyright (c) 2026 Nives Pandey. All rights reserved.
+ * Author: Nives Pandey, Founder & CEO, EagleCortex.
+ *
+ * PROPRIETARY AND CONFIDENTIAL. Unauthorised copying, distribution, or use of
+ * this file, via any medium, is strictly prohibited. See LICENSE.
+ */
+
 import { equationOfEquinoxes, meanObliquityOfEcliptic, nutation, trueObliquity } from './nutation';
 import { julianCenturies, toJulianDay, utToTT } from './time';
 
