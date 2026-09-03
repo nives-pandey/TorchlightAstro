@@ -8,8 +8,9 @@ import { normalizeDegrees } from './time';
  * These come from `astronomy-engine`, which implements VSOP87 for the planets
  * and ELP2000 for the Moon and is validated against JPL ephemerides by its
  * author. Our own suite re-checks it against NASA JPL Horizons fixtures; the
- * worst disagreement across the committed cases is about 11 arcseconds, roughly
- * five times better than the one-arcminute bar this engine is held to.
+ * worst disagreement across the committed cases is 17.2 arcseconds (Neptune,
+ * 2010), against the one-arcminute bar this engine is held to. The Sun and Moon
+ * — the two bodies a reading leans on hardest — agree to within 2 arcseconds.
  *
  * The alternative — hand-truncating VSOP87 series in this file — was rejected
  * deliberately. A truncated series is easy to write and very hard to know you

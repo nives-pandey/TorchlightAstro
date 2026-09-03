@@ -64,19 +64,102 @@ export function julianCenturies(jd: number): number {
 }
 
 /**
+ * Observed ΔT, in seconds, at the start of each year.
+ *
+ * Earth's rotation is measured, not predicted, so for years where an
+ * observation exists the observation wins over any polynomial. The
+ * Espenak & Meeus fits below are smooth approximations to this same data and
+ * drift from it by a couple of seconds in recent decades — measured against
+ * Swiss Ephemeris, the 2024 fit was 2.92s out, which is 44 arcseconds of
+ * sidereal time and therefore 44 arcseconds on the ascendant.
+ *
+ * Values from IERS Bulletin A / USNO historical series.
+ *
+ * These deliberately disagree with Swiss Ephemeris after 2022, and this table
+ * is the correct one. Swiss extrapolates linearly at +0.5s/year from its build
+ * date, giving 71.00s for 2024. That cannot be right: ΔT = 32.184 + (TAI−UTC) −
+ * (UT1−UTC), no leap second has been inserted since 2016-12-31, so TAI−UTC has
+ * been fixed at 37s — ΔT cannot have grown two seconds without one. Earth has
+ * in fact been rotating slightly *faster* since 2020, so ΔT has been flat to
+ * mildly falling, which is what these values show.
+ *
+ * Extend this table when IERS publishes new values rather than trusting any
+ * library's forward projection.
+ */
+const OBSERVED_DELTA_T: ReadonlyArray<readonly [number, number]> = [
+  [1960, 33.15],
+  [1962, 34.03],
+  [1964, 35.73],
+  [1966, 37.43],
+  [1968, 39.2],
+  [1970, 40.18],
+  [1972, 42.23],
+  [1974, 44.49],
+  [1976, 46.48],
+  [1978, 48.53],
+  [1980, 50.54],
+  [1982, 52.17],
+  [1984, 53.79],
+  [1986, 54.87],
+  [1988, 55.82],
+  [1990, 56.86],
+  [1992, 58.31],
+  [1994, 60.06],
+  [1996, 61.63],
+  [1998, 62.97],
+  [2000, 63.83],
+  [2002, 64.3],
+  [2004, 64.57],
+  [2006, 64.85],
+  [2008, 65.46],
+  [2010, 66.07],
+  [2012, 66.74],
+  [2014, 67.28],
+  [2016, 68.1],
+  [2018, 68.97],
+  [2020, 69.36],
+  [2022, 69.29],
+  [2024, 69.22],
+  [2026, 69.1],
+] as const;
+
+/**
+ * Interpolates the observed series, or returns null outside its range.
+ *
+ * Linear interpolation is sufficient: ΔT changes by under a second per year in
+ * this era, so the interpolation error is well below a tenth of a second.
+ */
+function observedDeltaT(decimalYear: number): number | null {
+  const first = OBSERVED_DELTA_T[0] as readonly [number, number];
+  const last = OBSERVED_DELTA_T[OBSERVED_DELTA_T.length - 1] as readonly [number, number];
+  if (decimalYear < first[0] || decimalYear > last[0]) return null;
+
+  for (let i = 0; i < OBSERVED_DELTA_T.length - 1; i += 1) {
+    const [y0, d0] = OBSERVED_DELTA_T[i] as readonly [number, number];
+    const [y1, d1] = OBSERVED_DELTA_T[i + 1] as readonly [number, number];
+    if (decimalYear >= y0 && decimalYear <= y1) {
+      return d0 + ((d1 - d0) * (decimalYear - y0)) / (y1 - y0);
+    }
+  }
+
+  return null;
+}
+
+/**
  * ΔT = TT − UT, in seconds.
  *
- * Espenak & Meeus polynomial fits, as published by NASA for the canonical
- * eclipse catalogue. Earth's rotation is not predictable from theory — it is
- * measured — so any expression is an empirical fit to observation, and values
- * past the present are extrapolation rather than fact.
- *
- * Only the ranges reachable from a valid birth year are implemented, plus a
- * conservative tail for future dates used in transits.
+ * Uses observed values where they exist (see the table above) and falls back to
+ * the Espenak & Meeus polynomial fits published by NASA for the canonical
+ * eclipse catalogue. Earth's rotation is measured, not predicted, so anything
+ * outside the observed range is a fit and anything past it is extrapolation.
  */
 export function deltaT(year: number, month = 6): number {
   // Decimal year, taking mid-month as the reference point.
   const y = year + (month - 0.5) / 12;
+
+  // Observation beats any fit where one exists.
+  const observed = observedDeltaT(y);
+  if (observed !== null) return observed;
 
   if (y < 1600) {
     // Outside the app's input range; the far-past fit, included so transit and
