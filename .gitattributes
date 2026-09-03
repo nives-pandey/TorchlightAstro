@@ -1,0 +1,11 @@
+# Torchlight — Copyright (c) 2026 Nives Pandey. All rights reserved.
+
+* text=auto eol=lf
+
+# Generated reference data — do not diff or merge by hand.
+apps/backend/src/astrology/__fixtures__/*.json linguist-generated=true
+apps/backend/drizzle/**                        linguist-generated=true
+package-lock.json                              linguist-generated=true
+
+# Reference material, excluded from language statistics: not authored here.
+reference/** linguist-vendored=true

@@ -86,3 +86,34 @@ jobs:
 
       - name: Check formatting
         run: npm run format:check
+
+  attribution:
+    name: Attribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      # This repository is proprietary and solely authored. A third-party
+      # attribution trailer reaching main would misstate ownership, so it is
+      # blocked here rather than caught in review.
+      - name: Reject third-party attribution in commit messages
+        run: |
+          if git log --format='%B' origin/main..HEAD 2>/dev/null | grep -qiE '^Co-Authored-By:|generated with'; then
+            echo "::error::A commit message carries a third-party attribution trailer."
+            exit 1
+          fi
+          echo "Commit messages clean."
+
+      - name: Verify licence and copyright headers
+        run: |
+          test -f LICENSE || { echo "::error::LICENSE is missing."; exit 1; }
+          missing=0
+          for f in $(git ls-files 'apps/**/*.ts' 'packages/**/*.ts'); do
+            if ! head -12 "$f" | grep -q 'Copyright (c) 2026 Nives Pandey'; then
+              echo "::error file=$f::Missing copyright header."
+              missing=1
+            fi
+          done
+          exit $missing
