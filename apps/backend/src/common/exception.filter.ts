@@ -17,7 +17,28 @@ import {
   Logger,
 } from '@nestjs/common';
 import type { Request, Response } from 'express';
-import { ZodError } from 'zod';
+import type { ZodIssue } from 'zod';
+
+/**
+ * Recognises a Zod validation error structurally rather than by `instanceof`.
+ *
+ * The backend and `@torchlight/shared-types` each resolve their own copy of
+ * zod, so a schema defined in the shared package throws a ZodError whose
+ * prototype chain belongs to a different module instance. `instanceof` is
+ * therefore always false across that boundary, and every validation failure was
+ * falling through to a flat 500 — losing both the 400 status and the per-field
+ * detail that makes a validation error useful.
+ *
+ * Checking the shape works regardless of how many copies are installed.
+ */
+function isZodError(error: unknown): error is { issues: ZodIssue[] } {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    (error as { name?: unknown }).name === 'ZodError' &&
+    Array.isArray((error as { issues?: unknown }).issues)
+  );
+}
 
 /**
  * Turns every thrown error into the `{ ok: false, error, statusCode }` shape.
@@ -45,7 +66,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     let message = 'Something went wrong. Please try again.';
     let details: Record<string, string[]> | undefined;
 
-    if (exception instanceof ZodError) {
+    if (isZodError(exception)) {
       statusCode = HttpStatus.BAD_REQUEST;
       message = 'Some of the details provided are not valid.';
       details = {};

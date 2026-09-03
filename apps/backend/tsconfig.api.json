@@ -2,7 +2,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    "allowJs": true
+    "allowJs": true,
+    // The main config pins rootDir to src/ so nest emits a flat dist/. This
+    // config checks api/, which sits outside that root and never emits, so the
+    // constraint does not apply here.
+    "rootDir": "."
   },
   "include": ["api/**/*"]
 }

@@ -1,7 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": true
+    "noEmit": true,
+    // Same reason as tsconfig.api.json: scripts/ sits outside the emit root and
+    // is only ever typechecked, never built.
+    "rootDir": "."
   },
   "include": ["scripts/**/*"]
 }

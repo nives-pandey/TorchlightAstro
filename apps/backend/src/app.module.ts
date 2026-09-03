@@ -13,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 
 import { validateEnv } from './config/env';
+import { ChartModule } from './chart/chart.module';
 import { DbModule } from './db/db.module';
 import { HealthModule } from './health/health.module';
 
@@ -31,6 +32,7 @@ import { HealthModule } from './health/health.module';
     ThrottlerModule.forRoot([{ ttl: 60_000, limit: 60 }]),
     DbModule,
     HealthModule,
+    ChartModule,
   ],
 })
 export class AppModule {}

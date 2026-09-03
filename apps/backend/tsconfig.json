@@ -22,8 +22,9 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "strictPropertyInitialization": false,
+    "rootDir": "./src",
     "paths": {
-      "@torchlight/shared-types": ["../../packages/shared-types/src/index.ts"]
+      "@torchlight/shared-types": ["../../packages/shared-types/dist/index.d.ts"]
     }
   },
   "include": ["src/**/*"],
