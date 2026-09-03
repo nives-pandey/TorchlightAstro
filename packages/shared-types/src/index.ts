@@ -13,3 +13,4 @@ export * from './auth/schemas';
 export * from './astrology/birth-profile';
 export * from './astrology/systems';
 export * from './astrology/chart-request';
+export * from './astrology/profile-request';

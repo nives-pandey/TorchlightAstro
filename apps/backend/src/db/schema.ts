@@ -83,11 +83,19 @@ export const birthProfiles = pgTable(
 );
 
 /**
- * A computed chart, cached per (profile, system). Recomputing is deterministic
- * and cheap, but readings generated from a chart are not, so charts are stored
- * to keep those stable.
+ * A computed chart, cached per birth profile.
  *
- * `engineVersion` is what makes a correction shippable: fixing the ephemeris
+ * One row per profile, not per system. The engine assembles all ten systems and
+ * the cross-system synthesis in a single pass, and they share the same
+ * astronomical basis — storing them separately would mean a profile could hold
+ * a Vedic section computed under one engine version beside a Western section
+ * computed under another.
+ *
+ * Recomputing is deterministic and takes about thirty milliseconds, so caching
+ * is not about the arithmetic. It is about everything downstream: an AI reading
+ * generated from a chart must stay attached to exactly the chart it described.
+ *
+ * `engineVersion` is what makes a correction shippable. Fixing the ephemeris
  * means bumping it and letting stale rows regenerate, rather than hunting for
  * which cached charts are now wrong.
  */
@@ -97,17 +105,16 @@ export const charts = pgTable(
     id: uuid('id').primaryKey().defaultRandom(),
     birthProfileId: uuid('birth_profile_id')
       .notNull()
-      .references(() => birthProfiles.id, { onDelete: 'cascade' }),
-    system: varchar('system', { length: 32 }).notNull(),
+      .references(() => birthProfiles.id, { onDelete: 'cascade' })
+      .unique(),
+    /** The complete Chart object the engine produced. */
     data: jsonb('data').notNull(),
-    provenance: jsonb('provenance').notNull(),
+    /** Which house system this was computed with, since it changes the result. */
+    houseSystem: varchar('house_system', { length: 16 }).notNull(),
     engineVersion: varchar('engine_version', { length: 32 }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (table) => [
-    uniqueIndex('charts_profile_system_unique').on(table.birthProfileId, table.system),
-    index('charts_profile_idx').on(table.birthProfileId),
-  ],
+  (table) => [index('charts_profile_idx').on(table.birthProfileId)],
 );
 
 /** Long-lived refresh tokens, stored hashed so a database leak cannot mint sessions. */

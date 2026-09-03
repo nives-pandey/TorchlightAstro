@@ -8,7 +8,7 @@
  * this file, via any medium, is strictly prohibited. See LICENSE.
  */
 
-import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
+import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 import type { ZodSchema } from 'zod';
 
 /**
@@ -26,7 +26,16 @@ import type { ZodSchema } from 'zod';
 export class ZodValidationPipe<T> implements PipeTransform<unknown, T> {
   constructor(private readonly schema: ZodSchema<T>) {}
 
-  transform(value: unknown, _metadata: ArgumentMetadata): T {
+  transform(value: unknown, metadata: ArgumentMetadata): T {
+    // A missing body reaches here as undefined, and Zod then reports every
+    // field as required — which reads as though the client sent an empty
+    // object rather than nothing at all. The usual cause is a request without
+    // a JSON content-type, so Express never parsed it, and saying so directly
+    // is far more useful than a list of fields the caller did send.
+    if (value === undefined && metadata.type === 'body') {
+      throw new BadRequestException('Request body is missing or was not sent as application/json');
+    }
+
     return this.schema.parse(value);
   }
 }
