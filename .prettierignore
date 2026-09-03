@@ -7,3 +7,7 @@ reference/
 apps/mobile/android
 apps/mobile/ios
 package-lock.json
+
+# Drizzle rewrites these on every db:generate, so formatting them just makes
+# the next migration fail the format check.
+apps/backend/drizzle/
