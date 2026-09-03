@@ -1,6 +1,51 @@
-node_modules
-dist
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# builds
+dist/
+build/
+*.tsbuildinfo
+
+# turbo
+.turbo/
+
+# vercel
+.vercel/
+
+# env — never commit secrets
+.env
+.env.*
+!.env.example
+
+# testing
+coverage/
+
+# react native / metro
+.metro-health-check*
+apps/mobile/android/app/build/
+apps/mobile/android/build/
+apps/mobile/android/.gradle/
+apps/mobile/android/local.properties
+apps/mobile/android/app/*.keystore
+!apps/mobile/android/app/debug.keystore
+apps/mobile/ios/Pods/
+apps/mobile/ios/build/
+*.hprof
+
+# android signing — must never be committed
+*.jks
+keystore.properties
+
+# os / editor
 .DS_Store
-server/public
-vite.config.ts.*
-*.tar.gz
+*.pem
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# logs
+npm-debug.log*
+yarn-error.log*
+*.log

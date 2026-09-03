@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [prod, main]
+
+jobs:
+  backend:
+    name: Backend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/backend/package-lock.json
+
+      # --include=dev is required: Vercel and CI both set NODE_ENV=production,
+      # which makes npm skip devDependencies. Without it, tsc and the Nest CLI
+      # are never installed and the build fails with a confusing exit 127.
+      - name: Install
+        run: npm ci --include=dev
+
+      # Build BEFORE typecheck, which looks backwards but is not.
+      #
+      # api/index.ts deliberately imports the compiled app from ../dist rather
+      # than the TypeScript source — decorator metadata must match what Nest
+      # emitted, or dependency injection fails at runtime. dist/ is gitignored,
+      # so on a fresh checkout it does not exist and the api typecheck cannot
+      # resolve that import until the build has run.
+      - name: Build
+        run: npm run build
+
+      - name: Typecheck (src)
+        run: npm run typecheck
+
+      - name: Typecheck (api entry, against built dist)
+        run: npx tsc -p tsconfig.api.json
+
+      - name: Typecheck (migration scripts)
+        run: npx tsc -p tsconfig.scripts.json
+
+      - name: Lint
+        run: npm run lint:ci
+
+      - name: Test
+        run: npm test --if-present
+
+  shared-types:
+    name: Shared types
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/shared-types
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install root tooling
+        run: npm install --no-audit --no-fund --ignore-scripts
+
+      - name: Check formatting
+        run: npm run format:check
