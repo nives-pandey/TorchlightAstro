@@ -1,0 +1,344 @@
+{
+  "source": "NASA JPL Horizons — apparent geocentric ecliptic coordinates of date",
+  "endpoint": "https://ssd.jpl.nasa.gov/api/horizons.api",
+  "generatedAt": "2026-09-03T11:31:39.341Z",
+  "note": "Regenerate with scripts/generate-ephemeris-fixtures.ts. Review any diff.",
+  "fixtures": [
+    {
+      "label": "J2000 epoch",
+      "utc": "2000-01-01 12:00",
+      "longitudes": {
+        "Sun": 280.3689092,
+        "Moon": 223.323786,
+        "Mercury": 271.8892699,
+        "Venus": 241.5657794,
+        "Mars": 327.9632921,
+        "Jupiter": 25.2530685,
+        "Saturn": 40.3956366,
+        "Uranus": 314.809168,
+        "Neptune": 303.1930007,
+        "Pluto": 251.4547644
+      },
+      "latitudes": {
+        "Sun": 0.0002381,
+        "Moon": 5.1707422,
+        "Mercury": -0.994819,
+        "Venus": 2.0663548,
+        "Mars": -1.0677752,
+        "Jupiter": -1.2621868,
+        "Saturn": -2.4448533,
+        "Uranus": -0.658324,
+        "Neptune": 0.2350026,
+        "Pluto": 10.8552605
+      }
+    },
+    {
+      "label": "midnight UTC",
+      "utc": "2000-01-01 00:00",
+      "longitudes": {
+        "Sun": 279.8592049,
+        "Moon": 217.2933209,
+        "Mercury": 271.1117994,
+        "Venus": 240.9614017,
+        "Mars": 327.5754592,
+        "Jupiter": 25.2331086,
+        "Saturn": 40.4058374,
+        "Uranus": 314.7840519,
+        "Neptune": 303.1752432,
+        "Pluto": 251.43715
+      },
+      "latitudes": {
+        "Sun": 0.0002403,
+        "Moon": 5.2312994,
+        "Mercury": -0.9456805,
+        "Venus": 2.0802345,
+        "Mars": -1.0740062,
+        "Jupiter": -1.2647766,
+        "Saturn": -2.4472226,
+        "Uranus": -0.6584479,
+        "Neptune": 0.2351174,
+        "Pluto": 10.8545444
+      }
+    },
+    {
+      "label": "early 20th century",
+      "utc": "1901-06-15 08:30",
+      "longitudes": {
+        "Sun": 83.5176996,
+        "Moon": 66.9548049,
+        "Mercury": 108.1209209,
+        "Venus": 95.6664187,
+        "Mars": 164.8475453,
+        "Jupiter": 280.08449,
+        "Saturn": 284.5506384,
+        "Uranus": 254.5364881,
+        "Neptune": 88.7397795,
+        "Pluto": 77.3255929
+      },
+      "latitudes": {
+        "Sun": 0.0000476,
+        "Moon": -1.3182257,
+        "Mercury": 1.088505,
+        "Venus": 0.8785969,
+        "Mars": 0.9030675,
+        "Jupiter": 0.0718396,
+        "Saturn": 0.4949722,
+        "Uranus": -0.0203926,
+        "Neptune": -1.1469951,
+        "Pluto": -9.0364379
+      }
+    },
+    {
+      "label": "pre-WWII",
+      "utc": "1936-11-03 23:45",
+      "longitudes": {
+        "Sun": 221.3841505,
+        "Moon": 106.0964076,
+        "Mercury": 212.5252839,
+        "Venus": 254.4126247,
+        "Mars": 173.6034579,
+        "Jupiter": 264.0202168,
+        "Saturn": 345.9879655,
+        "Uranus": 37.426826,
+        "Neptune": 168.347964,
+        "Pluto": 118.7571214
+      },
+      "latitudes": {
+        "Sun": -0.0000464,
+        "Moon": -1.8515815,
+        "Mercury": 1.2711278,
+        "Venus": -1.3549063,
+        "Mars": 1.4105934,
+        "Jupiter": 0.1698244,
+        "Saturn": -2.2439767,
+        "Uranus": -0.4794581,
+        "Neptune": 1.0177809,
+        "Pluto": 2.4412208
+      }
+    },
+    {
+      "label": "mid-century",
+      "utc": "1962-03-15 06:15",
+      "longitudes": {
+        "Sun": 354.1891271,
+        "Moon": 108.041809,
+        "Mercury": 329.6826766,
+        "Venus": 5.58863,
+        "Mars": 332.2979675,
+        "Jupiter": 327.6295737,
+        "Saturn": 307.9374942,
+        "Uranus": 147.4275295,
+        "Neptune": 223.2568357,
+        "Pluto": 158.4574307
+      },
+      "latitudes": {
+        "Sun": -0.0000827,
+        "Moon": -2.5752887,
+        "Mercury": -1.8354564,
+        "Venus": -1.205434,
+        "Mars": -1.134784,
+        "Jupiter": -0.7524252,
+        "Saturn": -0.4243042,
+        "Uranus": 0.784588,
+        "Neptune": 1.8125617,
+        "Pluto": 13.5167705
+      }
+    },
+    {
+      "label": "leap day",
+      "utc": "1976-02-29 12:00",
+      "longitudes": {
+        "Sun": 340.0354729,
+        "Moon": 334.7364059,
+        "Mercury": 316.5979483,
+        "Venus": 312.0715022,
+        "Mars": 82.7787226,
+        "Jupiter": 24.3307279,
+        "Saturn": 116.6973683,
+        "Uranus": 216.9876897,
+        "Neptune": 253.9051264,
+        "Pluto": 191.1414171
+      },
+      "latitudes": {
+        "Sun": 0.0000986,
+        "Moon": 4.7407604,
+        "Mercury": -1.4478164,
+        "Venus": -0.4713588,
+        "Mars": 2.5814726,
+        "Jupiter": -1.0673028,
+        "Saturn": 0.35453,
+        "Uranus": 0.50684,
+        "Neptune": 1.5243326,
+        "Pluto": 17.3800345
+      }
+    },
+    {
+      "label": "summer 1985",
+      "utc": "1985-07-22 14:20",
+      "longitudes": {
+        "Sun": 119.7105473,
+        "Moon": 178.3437923,
+        "Mercury": 144.1184468,
+        "Venus": 77.8206175,
+        "Mars": 118.3359758,
+        "Jupiter": 313.6737577,
+        "Saturn": 231.4760076,
+        "Uranus": 254.3647825,
+        "Neptune": 271.5020012,
+        "Pluto": 211.9542994
+      },
+      "latitudes": {
+        "Sun": 0.0000833,
+        "Moon": 3.6718032,
+        "Mercury": -2.3705378,
+        "Venus": -2.2575658,
+        "Mars": 1.0570576,
+        "Jupiter": -0.8246007,
+        "Saturn": 2.1680438,
+        "Uranus": -0.0357198,
+        "Neptune": 1.1543625,
+        "Pluto": 16.7008582
+      }
+    },
+    {
+      "label": "year boundary",
+      "utc": "1999-12-31 23:59",
+      "longitudes": {
+        "Sun": 279.858497,
+        "Moon": 217.2849159,
+        "Mercury": 271.1107205,
+        "Venus": 240.9605625,
+        "Mars": 327.5749205,
+        "Jupiter": 25.2330815,
+        "Saturn": 40.4058519,
+        "Uranus": 314.7840171,
+        "Neptune": 303.1752185,
+        "Pluto": 251.4371255
+      },
+      "latitudes": {
+        "Sun": 0.0002403,
+        "Moon": 5.2313435,
+        "Mercury": -0.9456117,
+        "Venus": 2.0802535,
+        "Mars": -1.0740148,
+        "Jupiter": -1.2647802,
+        "Saturn": -2.4472259,
+        "Uranus": -0.6584481,
+        "Neptune": 0.2351176,
+        "Pluto": 10.8545434
+      }
+    },
+    {
+      "label": "Mercury retrograde",
+      "utc": "2001-11-08 09:00",
+      "longitudes": {
+        "Sun": 226.0199107,
+        "Moon": 134.1958292,
+        "Mercury": 210.8357182,
+        "Venus": 209.7670132,
+        "Mars": 308.0801792,
+        "Jupiter": 105.6369481,
+        "Saturn": 73.4276966,
+        "Uranus": 320.9397225,
+        "Neptune": 306.1202356,
+        "Pluto": 254.0292256
+      },
+      "latitudes": {
+        "Sun": 0.0001474,
+        "Moon": 3.7393089,
+        "Mercury": 1.8844062,
+        "Venus": 1.4187074,
+        "Mars": -1.9141584,
+        "Jupiter": -0.1135016,
+        "Saturn": -1.8839594,
+        "Uranus": -0.7289383,
+        "Neptune": 0.1174667,
+        "Pluto": 9.8508362
+      }
+    },
+    {
+      "label": "post-2000",
+      "utc": "2010-05-20 18:45",
+      "longitudes": {
+        "Sun": 59.646564,
+        "Moon": 146.9148929,
+        "Mercury": 35.5864865,
+        "Venus": 90.8817246,
+        "Mars": 141.2667687,
+        "Jupiter": 357.469957,
+        "Saturn": 177.9171363,
+        "Uranus": 359.764145,
+        "Neptune": 328.6697468,
+        "Pluto": 274.9595377
+      },
+      "latitudes": {
+        "Sun": -0.00014,
+        "Moon": -3.6027617,
+        "Mercury": -3.4521769,
+        "Venus": 1.5757245,
+        "Mars": 1.6265975,
+        "Jupiter": -1.1082148,
+        "Saturn": 2.4655612,
+        "Uranus": -0.7339309,
+        "Neptune": -0.4535591,
+        "Pluto": 5.1558418
+      }
+    },
+    {
+      "label": "recent",
+      "utc": "2024-09-14 03:30",
+      "longitudes": {
+        "Sun": 171.8181484,
+        "Moon": 297.4422499,
+        "Mercury": 157.6955728,
+        "Venus": 199.0678903,
+        "Mars": 95.5219552,
+        "Jupiter": 80.3095834,
+        "Saturn": 345.5725614,
+        "Uranus": 57.1912108,
+        "Neptune": 358.7045162,
+        "Pluto": 299.8213824
+      },
+      "latitudes": {
+        "Sun": -0.0001185,
+        "Moon": -4.9363322,
+        "Mercury": 1.5816167,
+        "Venus": 0.533609,
+        "Mars": 0.1583291,
+        "Jupiter": -0.7064365,
+        "Saturn": -2.1952175,
+        "Uranus": -0.2655834,
+        "Neptune": -1.3248504,
+        "Pluto": -3.2651498
+      }
+    },
+    {
+      "label": "southern-hemisphere date",
+      "utc": "1993-08-07 21:10",
+      "longitudes": {
+        "Sun": 135.3540364,
+        "Moon": 15.0690072,
+        "Mercury": 116.7029066,
+        "Venus": 96.8282713,
+        "Mars": 177.3886251,
+        "Jupiter": 190.8325037,
+        "Saturn": 327.8563115,
+        "Uranus": 289.198771,
+        "Neptune": 289.0735967,
+        "Pluto": 232.7280623
+      },
+      "latitudes": {
+        "Sun": 0.0001244,
+        "Moon": 4.1295879,
+        "Mercury": -0.7138871,
+        "Venus": -1.3967807,
+        "Mars": 0.6168655,
+        "Jupiter": 1.1779168,
+        "Saturn": -1.5061622,
+        "Uranus": -0.4818308,
+        "Neptune": 0.6780175,
+        "Pluto": 14.3299539
+      }
+    }
+  ]
+}
