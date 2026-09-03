@@ -77,7 +77,17 @@ interface GeoNamesResponse {
   status?: { message: string; value: number };
 }
 
-const GEONAMES_BASE = 'http://api.geonames.org';
+/**
+ * The TLS endpoint, not `api.geonames.org`.
+ *
+ * Two reasons. The username travels in the query string, so plain HTTP would
+ * put it in cleartext across every hop. And a serverless runtime may refuse
+ * outbound plain HTTP entirely — which is how this surfaced: place search
+ * worked locally and silently returned only bundled cities in production,
+ * because every live request failed and fell through to the fallback. That
+ * looks like a working endpoint returning thin results rather than an error.
+ */
+const GEONAMES_BASE = 'https://secure.geonames.org';
 
 /**
  * How long a search result stays cached.
