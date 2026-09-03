@@ -48,6 +48,12 @@ const envSchema = z.object({
   /** Google Sign-In audience. Optional until Google auth is wired. */
   GOOGLE_CLIENT_ID: z.string().optional(),
 
+  /**
+   * GeoNames account for place lookup. Optional: without it the service falls
+   * back to a bundled city list, which covers major cities but not villages.
+   */
+  GEONAMES_USERNAME: z.string().optional(),
+
   PORT: z.coerce.number().int().positive().default(3000),
 });
 
