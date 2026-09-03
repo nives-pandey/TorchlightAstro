@@ -47,10 +47,11 @@ app itself.
 ## ARCHITECTURE
 
 ```
-apps/backend        NestJS 11 API, deployed to Vercel as a single function
-apps/mobile         React Native 0.82 (bare), Android-first
-packages/shared-types  Zod schemas — the API contract, shared by both
+apps/backend                 NestJS 11 API, deployed to Vercel as a single function
+apps/mobile                  React Native 0.82 (bare), Android-first
+packages/shared-types        Zod schemas — the API contract, shared by both
 reference/legacy-algorithms  Old astrology code, kept to port from. NOT imported.
+reference/product-vision     Original spec, design system, and contribution psychology.
 ```
 
 **`apps/backend` is deliberately NOT an npm workspace.** It has its own `package-lock.json`
@@ -222,4 +223,4 @@ for only after real value has been delivered. The restraint is the entire point:
 - Calculation engine not started
 - Mobile app not scaffolded
 - `apps/backend/drizzle/` migration generated but never applied to a real database
-- Old Replit web app still present in the working tree pending cleanup
+- Neon database not created and Vercel project not linked
