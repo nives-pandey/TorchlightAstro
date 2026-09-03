@@ -11,3 +11,7 @@ package-lock.json
 # Drizzle rewrites these on every db:generate, so formatting them just makes
 # the next migration fail the format check.
 apps/backend/drizzle/
+
+# Generated from NASA JPL and Swiss Ephemeris by scripts/generate-*-fixtures.ts.
+# Formatting them would only make the next regeneration fail the check.
+apps/backend/src/astrology/__fixtures__/

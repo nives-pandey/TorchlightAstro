@@ -62,7 +62,7 @@
     "tsx": "^4.19.2",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.69.0",
-    "swisseph-v2": "^2.10.3"
+    "swisseph-v2": "^1.1.0"
   },
   "engines": {
     "node": ">=20"
