@@ -133,7 +133,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           <View style={styles.headerText}>
             <Text variant="display">{user?.displayName ?? 'Your chart'}</Text>
             <Text variant="caption" tone="subtle" style={styles.subtitle}>
-              {synthesis.systems.length} traditions read your birth
+              {synthesis.systems.length} traditions compared, {settled.length} in full agreement
             </Text>
           </View>
           <Button label="Sign out" variant="quiet" onPress={() => { void signOut(); }} />

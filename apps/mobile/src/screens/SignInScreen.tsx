@@ -74,7 +74,7 @@ export function SignInScreen(): React.JSX.Element {
         <View style={styles.header}>
           <Text variant="display">Torchlight</Text>
           <Text variant="body" tone="muted" style={styles.tagline}>
-            Your chart, read through ten traditions.
+            One birth, read through every tradition at once.
           </Text>
         </View>
 
