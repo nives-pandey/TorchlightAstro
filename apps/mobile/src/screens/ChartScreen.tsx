@@ -27,6 +27,7 @@ import {
   type Chart,
   type ChartResponse,
   type DimensionSynthesis,
+  type Reading,
   type TraitReading,
 } from '../api/chart-types';
 import { useAuth } from '../auth/AuthProvider';
@@ -60,6 +61,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
   const { user, signOut } = useAuth();
 
   const [chart, setChart] = useState<Chart | null>(null);
+  const [reading, setReading] = useState<Reading | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -68,6 +70,15 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
       const response = await api.get<ChartResponse>(`/profiles/${profileId}/chart`);
       setChart(response.chart);
       setError(null);
+
+      // Requested after the chart rather than alongside it. A reading is
+      // generated on first request and takes seconds; the placements should be
+      // on screen long before it arrives, and its absence costs a section
+      // rather than the screen.
+      api
+        .get<Reading | null>(`/profiles/${profileId}/reading`)
+        .then(setReading)
+        .catch(() => setReading(null));
     } catch (caught) {
       setError(
         caught instanceof ApiError
@@ -145,6 +156,25 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
               Without a birth time, your houses and rising sign are left out rather than guessed.
             </Text>
           </Card>
+        ) : null}
+
+        {reading ? (
+          <>
+            <SectionHeading title="Where you are now" />
+            <Card style={styles.card}>
+              <Text variant="body">{reading.now}</Text>
+            </Card>
+
+            <SectionHeading title="What stands out" />
+            <Card style={styles.card}>
+              <Text variant="body">{reading.standsOut}</Text>
+            </Card>
+
+            <SectionHeading title="How the traditions read you" />
+            <Card style={styles.card}>
+              <Text variant="body">{reading.character}</Text>
+            </Card>
+          </>
         ) : null}
 
         {settled.length > 0 ? (

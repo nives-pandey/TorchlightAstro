@@ -232,6 +232,23 @@ export interface Chart {
 }
 
 /**
+ * The plain-language reading of a chart.
+ *
+ * Null when the reading layer is unavailable — the app renders the placements
+ * either way, so a missing reading omits a section rather than breaking a screen.
+ */
+export interface Reading {
+  /** The period they are living through now. */
+  now: string;
+  /** What stands out in the chart. */
+  standsOut: string;
+  /** What the traditions say about character. */
+  character: string;
+  model: string;
+  generatedAt: string;
+}
+
+/**
  * What `GET /profiles/:id/chart` returns.
  *
  * The chart is wrapped rather than returned bare: a chart is expensive to
