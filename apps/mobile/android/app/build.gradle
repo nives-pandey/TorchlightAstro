@@ -35,6 +35,13 @@ react {
     codegenDir = file("$rootNodeModules/@react-native/codegen")
     cliFile = file("$rootNodeModules/react-native/cli.js")
 
+    // React Native 0.87 ships the Hermes compiler as its own `hermes-compiler`
+    // package, but the Gradle plugin still looks for it inside react-native at
+    // the path it used to live. Without this the release build fails at
+    // bytecode compilation — debug builds never hit it, because they load
+    // plain JavaScript from a dev server instead.
+    hermesCommand = "$rootNodeModules/hermes-compiler/hermesc/%OS-BIN%/hermesc"
+
     /* Variants */
     //   The list of variants to that are debuggable. For those we're going to
     //   skip the bundling of the JS bundle and the assets. Default is "debug", "debugOptimized".
