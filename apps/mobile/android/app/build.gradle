@@ -132,6 +132,29 @@ android {
     }
 }
 
+
+/**
+ * Make the JavaScript bundle rebuild when the JavaScript changes.
+ *
+ * Twice now a release build has finished in seconds and shipped an APK
+ * containing the previous bundle — the native side had nothing to redo, and
+ * Gradle judged the bundle task up to date while `src/` had changed under it.
+ * The React Native plugin derives that task's inputs from the project root, and
+ * in this monorepo that derivation misses the app's own sources.
+ *
+ * Declaring them explicitly is what makes `assembleRelease` trustworthy. The
+ * alternative — remembering to type `clean` every time — is a rule that works
+ * until the once it does not, and the failure is silent: a build that succeeds
+ * and installs while missing the change it was built for.
+ */
+tasks.matching { it.name.startsWith("createBundle") && it.name.endsWith("JsAndAssets") }.configureEach {
+    inputs.files(fileTree("../../src")).withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.file("../../index.js")
+    inputs.file("../../App.tsx")
+    inputs.file("../../metro.config.js")
+    inputs.file("../../package.json")
+}
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
