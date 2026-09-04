@@ -104,6 +104,36 @@ describe('findHighlights', () => {
     expect(notable.some((h) => h.kind === 'stellium')).toBe(false);
   });
 
+  /**
+   * The bug this exists to prevent, found in production rather than here.
+   *
+   * A chart is computed once and stored as jsonb, so every chart after the
+   * first is read back through JSON — where a Date becomes an ISO string. Every
+   * test above builds its chart in memory, where the dates are real objects, so
+   * all of them passed while the stored path threw `start.getTime is not a
+   * function` on the first request that hit it.
+   *
+   * Round-tripping is what makes this test resemble production.
+   */
+  it('reads a chart that has been through JSON, as a stored one has', () => {
+    const stored = JSON.parse(JSON.stringify(buildChart(RICH))) as ReturnType<typeof buildChart>;
+
+    expect(() => findHighlights(stored, NOW)).not.toThrow();
+
+    const { now } = findHighlights(stored, NOW);
+    expect(now?.mahadasha.ruler).toBe('Jupiter');
+    expect(now?.next?.ruler).toBe('Saturn');
+    // The window still resolves to real dates, not "Invalid Date".
+    expect(Number.isNaN(new Date(now?.mahadasha.endsAt ?? '').getTime())).toBe(false);
+  });
+
+  it('agrees with itself whether the chart came from memory or storage', () => {
+    const live = buildChart(RICH);
+    const stored = JSON.parse(JSON.stringify(live)) as typeof live;
+
+    expect(findHighlights(stored, NOW)).toEqual(findHighlights(live, NOW));
+  });
+
   it('is deterministic for the same chart and moment', () => {
     const chart = buildChart(RICH);
 

@@ -87,14 +87,32 @@ const MASTER_NUMBERS = new Set([11, 22, 33]);
 /** Below this many planets, a house is not a stellium. */
 const STELLIUM_THRESHOLD = 3;
 
-function toWindow(period: { planet: string; start: Date; end: Date; years: number }, at: Date): TimeWindow {
-  const span = period.end.getTime() - period.start.getTime();
-  const through = at.getTime() - period.start.getTime();
+/**
+ * Coerces a date that may have been through JSON.
+ *
+ * A chart straight from the engine carries real `Date` objects. The same chart
+ * loaded from storage carries ISO strings, because JSON has no date type and
+ * `jsonb` round-trips whatever it was given. Both reach this module, and the
+ * type says `Date` for both — so the string case type-checked cleanly and threw
+ * at runtime the first time a stored chart was read.
+ */
+function asDate(value: Date | string): Date {
+  return value instanceof Date ? value : new Date(value);
+}
+
+function toWindow(
+  period: { planet: string; start: Date | string; end: Date | string; years: number },
+  at: Date,
+): TimeWindow {
+  const start = asDate(period.start);
+  const end = asDate(period.end);
+  const span = end.getTime() - start.getTime();
+  const through = at.getTime() - start.getTime();
 
   return {
     ruler: period.planet,
-    startsAt: period.start.toISOString(),
-    endsAt: period.end.toISOString(),
+    startsAt: start.toISOString(),
+    endsAt: end.toISOString(),
     years: period.years,
     // Clamped: a period that has not started, or has ended, should not report
     // a fraction outside its own bounds.
@@ -241,7 +259,9 @@ export function findHighlights(chart: Chart, at: Date = new Date()): ChartHighli
 
   // The period after the running one, so the app can say what comes next.
   const next = mahadasha
-    ? (chart.vedic.dashas.find((d) => d.start.getTime() > mahadasha.start.getTime()) ?? null)
+    ? (chart.vedic.dashas.find(
+        (d) => asDate(d.start).getTime() > asDate(mahadasha.start).getTime(),
+      ) ?? null)
     : null;
 
   return {
