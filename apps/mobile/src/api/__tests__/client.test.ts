@@ -28,7 +28,7 @@ describe('the API client', () => {
 
   beforeEach(() => {
     fetchMock = jest.fn();
-    global.fetch = fetchMock as unknown as typeof fetch;
+    globalThis.fetch = fetchMock as unknown as typeof fetch;
     configureClient(
       async () => 'access-token',
       async () => null,

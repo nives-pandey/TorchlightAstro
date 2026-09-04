@@ -13,7 +13,13 @@ import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 
 import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError, api } from '../api/client';
-import { DIMENSION_POLES, type Chart, type DimensionSynthesis } from '../api/chart-types';
+import {
+  DIMENSION_POLES,
+  TROPICAL_SIGNS,
+  type Chart,
+  type ChartResponse,
+  type DimensionSynthesis,
+} from '../api/chart-types';
 import { useAuth } from '../auth/AuthProvider';
 import { Button, Card, Screen, Text } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
@@ -37,7 +43,8 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
 
   const load = useCallback(async (): Promise<void> => {
     try {
-      setChart(await api.get<Chart>(`/profiles/${profileId}/chart`));
+      const response = await api.get<ChartResponse>(`/profiles/${profileId}/chart`);
+      setChart(response.chart);
       setError(null);
     } catch (caught) {
       setError(
@@ -146,10 +153,24 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           {vedic.currentDasha ? (
             <Detail
               label="Current dasha"
-              value={`${vedic.currentDasha.planet} · to ${formatYear(vedic.currentDasha.end)}`}
+              value={`${vedic.currentDasha.mahadasha.planet} · to ${formatYear(
+                vedic.currentDasha.mahadasha.end,
+              )}`}
             />
           ) : null}
-          <Detail label="Tithi" value={vedic.panchanga.tithi.name} last />
+          {vedic.currentDasha?.antardasha ? (
+            <Detail
+              label="Sub-period"
+              value={`${vedic.currentDasha.antardasha.planet} · to ${formatYear(
+                vedic.currentDasha.antardasha.end,
+              )}`}
+            />
+          ) : null}
+          <Detail
+            label="Tithi"
+            value={`${vedic.panchanga.tithi.name} · ${vedic.panchanga.tithi.paksha} paksha`}
+            last
+          />
         </Card>
 
         <Section title="Western" />
@@ -158,7 +179,9 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
             <Detail
               key={planet.name}
               label={planet.name}
-              value={`${planet.sign}${planet.house ? ` · house ${planet.house}` : ''}`}
+              value={`${TROPICAL_SIGNS[planet.signIndex] ?? ''}${
+                planet.house ? ` · house ${planet.house}` : ''
+              }`}
               last={index === 2}
             />
           ))}
@@ -166,7 +189,10 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
 
         <Section title="Chinese" />
         <Card style={styles.card}>
-          <Detail label="Day master" value={chinese.dayMaster} />
+          <Detail
+            label="Day master"
+            value={`${chinese.dayMaster.yang ? "Yang" : "Yin"} ${chinese.dayMaster.element} · ${chinese.dayMaster.pinyin}`}
+          />
           <Detail label="Year" value={`${chinese.year.pinyin} · ${chinese.year.ganZhi}`} />
           <Detail label="Day" value={`${chinese.day.pinyin} · ${chinese.day.ganZhi}`} last />
         </Card>

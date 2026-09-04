@@ -36,11 +36,17 @@ export interface NakshatraInfo {
   fraction: number;
 }
 
+/** The twelve tropical signs, indexed by a planet's `signIndex`. */
+export const TROPICAL_SIGNS = [
+  'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+  'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces',
+] as const;
+
 export interface PlacedPlanet {
   name: string;
   longitude: number;
+  /** 0-11. The response carries the index; the name is looked up locally. */
   signIndex: number;
-  sign: string;
   siderealLongitude: number;
   siderealSign: RashiInfo;
   nakshatra: NakshatraInfo;
@@ -51,7 +57,14 @@ export interface PlacedPlanet {
 
 export interface WesternSection {
   planets: PlacedPlanet[];
-  houses: { ascendant: number; midheaven: number; cusps: number[] } | null;
+  houses: {
+    system: string;
+    ascendant: number;
+    midheaven: number;
+    cusps: number[];
+    /** True when Placidus was undefined at this latitude and whole-sign was used. */
+    fellBackToWholeSign: boolean;
+  } | null;
   northNode: number;
   southNode: number;
 }
@@ -65,7 +78,7 @@ export interface DashaPeriod {
 }
 
 export interface Panchanga {
-  tithi: { index: number; name: string; paksha: string };
+  tithi: { index: number; indexInPaksha: number; name: string; paksha: string };
   nakshatra: NakshatraInfo;
   yoga: { index: number; name: string };
   karana: { index: number; name: string };
@@ -78,13 +91,27 @@ export interface VedicSection {
   moonRashi: RashiInfo;
   ascendantRashi: RashiInfo | null;
   dashas: DashaPeriod[];
-  currentDasha: { planet: string; start: string; end: string; years: number } | null;
+  currentDasha: { mahadasha: DashaPeriod; antardasha: DashaPeriod | null } | null;
   panchanga: Panchanga;
 }
 
+export interface Stem {
+  chinese: string;
+  pinyin: string;
+  element: string;
+  yang: boolean;
+}
+
+export interface Branch {
+  chinese: string;
+  pinyin: string;
+  animal: string;
+  element: string;
+}
+
 export interface Pillar {
-  stem: string;
-  branch: string;
+  stem: Stem;
+  branch: Branch;
   ganZhi: string;
   pinyin: string;
 }
@@ -94,7 +121,7 @@ export interface FourPillars {
   month: Pillar;
   day: Pillar;
   hour: Pillar;
-  dayMaster: string;
+  dayMaster: Stem;
   elementCounts: Record<string, number>;
 }
 
@@ -187,6 +214,19 @@ export interface Chart {
   colours: ColourRecommendation[];
   synthesis: Synthesis;
   engineVersion: string;
+}
+
+/**
+ * What `GET /profiles/:id/chart` returns.
+ *
+ * The chart is wrapped rather than returned bare: a chart is expensive to
+ * compute and is cached, and the caller is told which it got and when it was
+ * computed.
+ */
+export interface ChartResponse {
+  chart: Chart;
+  cached: boolean;
+  computedAt: string;
 }
 
 /**

@@ -24,10 +24,13 @@ jest.mock('react-native-keychain', () => ({
 // contract — a name, a size, a colour — so a test can still assert on which
 // icon was asked for.
 jest.mock('@react-native-vector-icons/feather', () => {
+  const React = require('react');
   const { Text } = require('react-native');
   return {
     __esModule: true,
-    default: ({ name }) => Text({ children: name }),
+    // createElement rather than calling Text directly: React 19 rejects a
+    // component invoked as a plain function.
+    default: ({ name }) => React.createElement(Text, null, name),
   };
 });
 

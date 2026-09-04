@@ -1,0 +1,1611 @@
+{
+  "chart": {
+    "input": {
+      "year": 1990,
+      "month": 8,
+      "day": 15,
+      "utcOffsetHours": 5.5,
+      "latitude": 26.39271,
+      "longitude": 81.47594,
+      "name": "Flow Test",
+      "hour": 14,
+      "minute": 30,
+      "houseSystem": "placidus"
+    },
+    "hasBirthTime": true,
+    "utc": "1990-08-15T09:00:00.000Z",
+    "western": {
+      "planets": [
+        {
+          "name": "Sun",
+          "longitude": 142.28523472700894,
+          "latitude": -2.78026063032508e-05,
+          "distance": 1.0127800476486037,
+          "speed": 0.9609757852008727,
+          "retrograde": false,
+          "signIndex": 5,
+          "siderealLongitude": 118.55917081259017,
+          "siderealSign": {
+            "index": 4,
+            "name": "Karka",
+            "degreesInto": 28.559170812590168
+          },
+          "nakshatra": {
+            "index": 9,
+            "name": "Ashlesha",
+            "ruler": "Mercury",
+            "pada": 4,
+            "degreesInto": 11.892504145923496,
+            "fraction": 0.8919378109442622
+          },
+          "house": 8
+        },
+        {
+          "name": "Moon",
+          "longitude": 75.03728199357181,
+          "latitude": 4.165589714560223,
+          "distance": 0.0024670577441012116,
+          "speed": 14.260133213139227,
+          "retrograde": false,
+          "signIndex": 3,
+          "siderealLongitude": 51.311218079153036,
+          "siderealSign": {
+            "index": 2,
+            "name": "Vrishabha",
+            "degreesInto": 21.311218079153036
+          },
+          "nakshatra": {
+            "index": 4,
+            "name": "Rohini",
+            "ruler": "Moon",
+            "pada": 4,
+            "degreesInto": 11.311218079153036,
+            "fraction": 0.8483413559364776
+          },
+          "house": 6
+        },
+        {
+          "name": "Mercury",
+          "longitude": 169.30473825592696,
+          "latitude": -2.3942703956617075,
+          "distance": 0.8448564657556173,
+          "speed": 0.7668354904832029,
+          "retrograde": false,
+          "signIndex": 6,
+          "siderealLongitude": 145.5786743415082,
+          "siderealSign": {
+            "index": 5,
+            "name": "Simha",
+            "degreesInto": 25.57867434150819
+          },
+          "nakshatra": {
+            "index": 11,
+            "name": "Purva Phalguni",
+            "ruler": "Venus",
+            "pada": 4,
+            "degreesInto": 12.245341008174847,
+            "fraction": 0.9184005756131135
+          },
+          "house": 9
+        },
+        {
+          "name": "Venus",
+          "longitude": 121.77611873632877,
+          "latitude": 0.41850168709726004,
+          "distance": 1.5744996824183741,
+          "speed": 1.2212775697865084,
+          "retrograde": false,
+          "signIndex": 5,
+          "siderealLongitude": 98.05005482191,
+          "siderealSign": {
+            "index": 4,
+            "name": "Karka",
+            "degreesInto": 8.050054821909995
+          },
+          "nakshatra": {
+            "index": 8,
+            "name": "Pushya",
+            "ruler": "Saturn",
+            "pada": 2,
+            "degreesInto": 4.716721488576653,
+            "fraction": 0.35375411164324894
+          },
+          "house": 8
+        },
+        {
+          "name": "Mars",
+          "longitude": 51.31288249908139,
+          "latitude": -1.9253365034639176,
+          "distance": 0.944142441602745,
+          "speed": 0.5763004598188957,
+          "retrograde": false,
+          "signIndex": 2,
+          "siderealLongitude": 27.58681858466262,
+          "siderealSign": {
+            "index": 1,
+            "name": "Mesha",
+            "degreesInto": 27.58681858466262
+          },
+          "nakshatra": {
+            "index": 3,
+            "name": "Krittika",
+            "ruler": "Sun",
+            "pada": 1,
+            "degreesInto": 0.9201519179959519,
+            "fraction": 0.06901139384969639
+          },
+          "house": 5
+        },
+        {
+          "name": "Jupiter",
+          "longitude": 119.37238700621478,
+          "latitude": 0.2819812553543671,
+          "distance": 6.151201064024776,
+          "speed": 0.21452737124488408,
+          "retrograde": false,
+          "signIndex": 4,
+          "siderealLongitude": 95.646323091796,
+          "siderealSign": {
+            "index": 4,
+            "name": "Karka",
+            "degreesInto": 5.646323091796006
+          },
+          "nakshatra": {
+            "index": 8,
+            "name": "Pushya",
+            "ruler": "Saturn",
+            "pada": 1,
+            "degreesInto": 2.3129897584626633,
+            "fraction": 0.17347423188469974
+          },
+          "house": 8
+        },
+        {
+          "name": "Saturn",
+          "longitude": 289.86850464377994,
+          "latitude": 0.029019771827380136,
+          "distance": 9.1368185927142,
+          "speed": -0.05621386570555842,
+          "retrograde": true,
+          "signIndex": 10,
+          "siderealLongitude": 266.14244072936117,
+          "siderealSign": {
+            "index": 9,
+            "name": "Dhanu",
+            "degreesInto": 26.14244072936117
+          },
+          "nakshatra": {
+            "index": 20,
+            "name": "Purva Ashadha",
+            "ruler": "Venus",
+            "pada": 4,
+            "degreesInto": 12.809107396027827,
+            "fraction": 0.9606830547020869
+          },
+          "house": 1
+        },
+        {
+          "name": "Uranus",
+          "longitude": 275.97290801260493,
+          "latitude": -0.3298382726440836,
+          "distance": 18.706007016880736,
+          "speed": -0.02367514402425286,
+          "retrograde": true,
+          "signIndex": 10,
+          "siderealLongitude": 252.24684409818616,
+          "siderealSign": {
+            "index": 9,
+            "name": "Dhanu",
+            "degreesInto": 12.246844098186159
+          },
+          "nakshatra": {
+            "index": 19,
+            "name": "Mula",
+            "ruler": "Ketu",
+            "pada": 4,
+            "degreesInto": 12.246844098186159,
+            "fraction": 0.9185133073639619
+          },
+          "house": 1
+        },
+        {
+          "name": "Neptune",
+          "longitude": 282.19549765983965,
+          "latitude": 0.8617822971600495,
+          "distance": 29.421294513741643,
+          "speed": -0.01901258748921464,
+          "retrograde": true,
+          "signIndex": 10,
+          "siderealLongitude": 258.4694337454209,
+          "siderealSign": {
+            "index": 9,
+            "name": "Dhanu",
+            "degreesInto": 18.469433745420872
+          },
+          "nakshatra": {
+            "index": 20,
+            "name": "Purva Ashadha",
+            "ruler": "Venus",
+            "pada": 2,
+            "degreesInto": 5.136100412087529,
+            "fraction": 0.3852075309065647
+          },
+          "house": 1
+        },
+        {
+          "name": "Pluto",
+          "longitude": 225.08687368209434,
+          "latitude": 15.321423061457745,
+          "distance": 29.76319966108432,
+          "speed": 0.011549977616283513,
+          "retrograde": false,
+          "signIndex": 8,
+          "siderealLongitude": 201.36080976767556,
+          "siderealSign": {
+            "index": 7,
+            "name": "Tula",
+            "degreesInto": 21.360809767675562
+          },
+          "nakshatra": {
+            "index": 16,
+            "name": "Vishakha",
+            "ruler": "Jupiter",
+            "pada": 1,
+            "degreesInto": 1.360809767675562,
+            "fraction": 0.10206073257566714
+          },
+          "house": 11
+        }
+      ],
+      "aspects": [
+        {
+          "from": "Mercury",
+          "to": "Saturn",
+          "type": "trine",
+          "exactAngle": 120,
+          "separation": 120.56376638785298,
+          "orb": 0.5637663878529793,
+          "allowedOrb": 8,
+          "applying": true,
+          "major": true,
+          "strength": 0.9295292015183776
+        },
+        {
+          "from": "Sun",
+          "to": "Mars",
+          "type": "square",
+          "exactAngle": 90,
+          "separation": 90.97235222792756,
+          "orb": 0.9723522279275585,
+          "allowedOrb": 9,
+          "applying": false,
+          "major": true,
+          "strength": 0.8919608635636046
+        },
+        {
+          "from": "Mars",
+          "to": "Saturn",
+          "type": "trine",
+          "exactAngle": 120,
+          "separation": 121.44437785530144,
+          "orb": 1.4443778553014397,
+          "allowedOrb": 8,
+          "applying": false,
+          "major": true,
+          "strength": 0.81945276808732
+        },
+        {
+          "from": "Mercury",
+          "to": "Mars",
+          "type": "trine",
+          "exactAngle": 120,
+          "separation": 117.99185575684558,
+          "orb": 2.008144243154419,
+          "allowedOrb": 8,
+          "applying": true,
+          "major": true,
+          "strength": 0.7489819696056976
+        },
+        {
+          "from": "Venus",
+          "to": "Jupiter",
+          "type": "conjunction",
+          "exactAngle": 0,
+          "separation": 2.4037317301139893,
+          "orb": 2.4037317301139893,
+          "allowedOrb": 8,
+          "applying": false,
+          "major": true,
+          "strength": 0.6995335337357513
+        },
+        {
+          "from": "Moon",
+          "to": "Mercury",
+          "type": "square",
+          "exactAngle": 90,
+          "separation": 94.26745626235515,
+          "orb": 4.267456262355154,
+          "allowedOrb": 9,
+          "applying": true,
+          "major": true,
+          "strength": 0.5258381930716496
+        },
+        {
+          "from": "Neptune",
+          "to": "Pluto",
+          "type": "sextile",
+          "exactAngle": 60,
+          "separation": 57.10862397774531,
+          "orb": 2.89137602225469,
+          "allowedOrb": 6,
+          "applying": false,
+          "major": true,
+          "strength": 0.5181039962908851
+        },
+        {
+          "from": "Mercury",
+          "to": "Pluto",
+          "type": "sextile",
+          "exactAngle": 60,
+          "separation": 55.78213542616737,
+          "orb": 4.217864573832628,
+          "allowedOrb": 6,
+          "applying": false,
+          "major": true,
+          "strength": 0.2970225710278953
+        },
+        {
+          "from": "Uranus",
+          "to": "Neptune",
+          "type": "conjunction",
+          "exactAngle": 0,
+          "separation": 6.222589647234713,
+          "orb": 6.222589647234713,
+          "allowedOrb": 8,
+          "applying": false,
+          "major": true,
+          "strength": 0.22217629409566086
+        },
+        {
+          "from": "Mars",
+          "to": "Pluto",
+          "type": "opposition",
+          "exactAngle": 180,
+          "separation": 173.77399118301295,
+          "orb": 6.226008816987047,
+          "allowedOrb": 8,
+          "applying": false,
+          "major": true,
+          "strength": 0.2217488978766191
+        },
+        {
+          "from": "Saturn",
+          "to": "Pluto",
+          "type": "sextile",
+          "exactAngle": 60,
+          "separation": 64.78163096168561,
+          "orb": 4.781630961685607,
+          "allowedOrb": 6,
+          "applying": true,
+          "major": true,
+          "strength": 0.20306150638573206
+        },
+        {
+          "from": "Sun",
+          "to": "Pluto",
+          "type": "square",
+          "exactAngle": 90,
+          "separation": 82.8016389550854,
+          "orb": 7.198361044914606,
+          "allowedOrb": 9,
+          "applying": false,
+          "major": true,
+          "strength": 0.2001821061205994
+        },
+        {
+          "from": "Mercury",
+          "to": "Neptune",
+          "type": "trine",
+          "exactAngle": 120,
+          "separation": 112.89075940391268,
+          "orb": 7.109240596087318,
+          "allowedOrb": 8,
+          "applying": false,
+          "major": true,
+          "strength": 0.11134492548908526
+        },
+        {
+          "from": "Sun",
+          "to": "Moon",
+          "type": "sextile",
+          "exactAngle": 60,
+          "separation": 67.24795273343713,
+          "orb": 7.247952733437131,
+          "allowedOrb": 8,
+          "applying": true,
+          "major": true,
+          "strength": 0.0940059083203586
+        },
+        {
+          "from": "Saturn",
+          "to": "Neptune",
+          "type": "conjunction",
+          "exactAngle": 0,
+          "separation": 7.673006983940297,
+          "orb": 7.673006983940297,
+          "allowedOrb": 8,
+          "applying": true,
+          "major": true,
+          "strength": 0.040874127007462846
+        }
+      ],
+      "houses": {
+        "system": "placidus",
+        "cusps": [
+          258.82292442961625,
+          290.6536959965154,
+          325.5287860149981,
+          359.9882541711572,
+          30.149828984420992,
+          55.69268676885065,
+          78.82292442961625,
+          110.65369599651541,
+          145.5287860149981,
+          179.98825417115722,
+          210.149828984421,
+          235.69268676885065
+        ],
+        "ascendant": 258.82292442961625,
+        "midheaven": 179.98825417115722,
+        "fellBackToWholeSign": false
+      },
+      "northNode": 306.4707512715841,
+      "southNode": 126.4707512715841
+    },
+    "vedic": {
+      "ayanamsaDegrees": 23.726063914418773,
+      "moonNakshatra": {
+        "index": 4,
+        "name": "Rohini",
+        "ruler": "Moon",
+        "pada": 4,
+        "degreesInto": 11.311218079153036,
+        "fraction": 0.8483413559364776
+      },
+      "moonRashi": {
+        "index": 2,
+        "name": "Vrishabha",
+        "degreesInto": 21.311218079153036
+      },
+      "ascendantRashi": {
+        "index": 8,
+        "name": "Vrischika",
+        "degreesInto": 25.096860515197477
+      },
+      "dashas": [
+        {
+          "planet": "Moon",
+          "start": "1990-08-15T09:00:00.000Z",
+          "end": "1992-02-20T07:23:48.258Z",
+          "years": 1.5165864406352236
+        },
+        {
+          "planet": "Mars",
+          "start": "1992-02-20T07:23:48.258Z",
+          "end": "1999-02-20T01:23:48.258Z",
+          "years": 7
+        },
+        {
+          "planet": "Rahu",
+          "start": "1999-02-20T01:23:48.258Z",
+          "end": "2017-02-19T13:23:48.258Z",
+          "years": 18
+        },
+        {
+          "planet": "Jupiter",
+          "start": "2017-02-19T13:23:48.258Z",
+          "end": "2033-02-19T13:23:48.258Z",
+          "years": 16
+        },
+        {
+          "planet": "Saturn",
+          "start": "2033-02-19T13:23:48.258Z",
+          "end": "2052-02-20T07:23:48.258Z",
+          "years": 19
+        },
+        {
+          "planet": "Mercury",
+          "start": "2052-02-20T07:23:48.258Z",
+          "end": "2069-02-19T13:23:48.258Z",
+          "years": 17
+        },
+        {
+          "planet": "Ketu",
+          "start": "2069-02-19T13:23:48.258Z",
+          "end": "2076-02-20T07:23:48.258Z",
+          "years": 7
+        },
+        {
+          "planet": "Venus",
+          "start": "2076-02-20T07:23:48.258Z",
+          "end": "2096-02-20T07:23:48.258Z",
+          "years": 20
+        },
+        {
+          "planet": "Sun",
+          "start": "2096-02-20T07:23:48.258Z",
+          "end": "2102-02-20T19:23:48.258Z",
+          "years": 6
+        }
+      ],
+      "currentDasha": {
+        "mahadasha": {
+          "planet": "Jupiter",
+          "start": "2017-02-19T13:23:48.258Z",
+          "end": "2033-02-19T13:23:48.258Z",
+          "years": 16
+        },
+        "antardasha": {
+          "planet": "Venus",
+          "start": "2025-01-01T20:35:48.258Z",
+          "end": "2027-09-02T20:35:48.258Z",
+          "years": 2.6666666666666665
+        }
+      },
+      "moonVargas": {
+        "D1": {
+          "varga": "D1",
+          "signIndex": 2,
+          "signName": "Vrishabha",
+          "division": 1
+        },
+        "D2": {
+          "varga": "D2",
+          "signIndex": 5,
+          "signName": "Simha",
+          "division": 2
+        },
+        "D3": {
+          "varga": "D3",
+          "signIndex": 10,
+          "signName": "Makara",
+          "division": 3
+        },
+        "D4": {
+          "varga": "D4",
+          "signIndex": 8,
+          "signName": "Vrischika",
+          "division": 3
+        },
+        "D7": {
+          "varga": "D7",
+          "signIndex": 12,
+          "signName": "Meena",
+          "division": 5
+        },
+        "D9": {
+          "varga": "D9",
+          "signIndex": 4,
+          "signName": "Karka",
+          "division": 7
+        },
+        "D10": {
+          "varga": "D10",
+          "signIndex": 5,
+          "signName": "Simha",
+          "division": 8
+        },
+        "D12": {
+          "varga": "D12",
+          "signIndex": 10,
+          "signName": "Makara",
+          "division": 9
+        },
+        "D16": {
+          "varga": "D16",
+          "signIndex": 4,
+          "signName": "Karka",
+          "division": 12
+        },
+        "D20": {
+          "varga": "D20",
+          "signIndex": 11,
+          "signName": "Kumbha",
+          "division": 15
+        },
+        "D24": {
+          "varga": "D24",
+          "signIndex": 9,
+          "signName": "Dhanu",
+          "division": 18
+        },
+        "D27": {
+          "varga": "D27",
+          "signIndex": 11,
+          "signName": "Kumbha",
+          "division": 20
+        },
+        "D30": {
+          "varga": "D30",
+          "signIndex": 10,
+          "signName": "Makara",
+          "division": 22
+        },
+        "D40": {
+          "varga": "D40",
+          "signIndex": 11,
+          "signName": "Kumbha",
+          "division": 29
+        },
+        "D45": {
+          "varga": "D45",
+          "signIndex": 12,
+          "signName": "Meena",
+          "division": 32
+        },
+        "D60": {
+          "varga": "D60",
+          "signIndex": 8,
+          "signName": "Vrischika",
+          "division": 43
+        }
+      },
+      "panchanga": {
+        "tithi": {
+          "index": 25,
+          "indexInPaksha": 10,
+          "name": "Dashami",
+          "paksha": "Krishna",
+          "fraction": 0.3960039388802367
+        },
+        "nakshatra": {
+          "index": 4,
+          "name": "Rohini",
+          "ruler": "Moon",
+          "pada": 4,
+          "degreesInto": 11.311218079153036,
+          "fraction": 0.8483413559364776
+        },
+        "yoga": {
+          "index": 13,
+          "name": "Vyaghata",
+          "fraction": 0.7402791668807397
+        },
+        "karana": {
+          "index": 49,
+          "name": "Vanija",
+          "fraction": 0.7920078777604734,
+          "fixed": false
+        },
+        "elongation": 292.75204726656284
+      }
+    },
+    "chinese": {
+      "year": {
+        "stemIndex": 6,
+        "branchIndex": 6,
+        "stem": {
+          "chinese": "庚",
+          "pinyin": "Geng",
+          "element": "Metal",
+          "yang": true
+        },
+        "branch": {
+          "chinese": "午",
+          "pinyin": "Wu",
+          "animal": "Horse",
+          "element": "Fire"
+        },
+        "ganZhi": "庚午",
+        "pinyin": "Geng Wu"
+      },
+      "month": {
+        "stemIndex": 0,
+        "branchIndex": 8,
+        "stem": {
+          "chinese": "甲",
+          "pinyin": "Jia",
+          "element": "Wood",
+          "yang": true
+        },
+        "branch": {
+          "chinese": "申",
+          "pinyin": "Shen",
+          "animal": "Monkey",
+          "element": "Metal"
+        },
+        "ganZhi": "甲申",
+        "pinyin": "Jia Shen"
+      },
+      "day": {
+        "stemIndex": 8,
+        "branchIndex": 0,
+        "stem": {
+          "chinese": "壬",
+          "pinyin": "Ren",
+          "element": "Water",
+          "yang": true
+        },
+        "branch": {
+          "chinese": "子",
+          "pinyin": "Zi",
+          "animal": "Rat",
+          "element": "Water"
+        },
+        "ganZhi": "壬子",
+        "pinyin": "Ren Zi"
+      },
+      "hour": {
+        "stemIndex": 3,
+        "branchIndex": 7,
+        "stem": {
+          "chinese": "丁",
+          "pinyin": "Ding",
+          "element": "Fire",
+          "yang": false
+        },
+        "branch": {
+          "chinese": "未",
+          "pinyin": "Wei",
+          "animal": "Goat",
+          "element": "Earth"
+        },
+        "ganZhi": "丁未",
+        "pinyin": "Ding Wei"
+      },
+      "dayMaster": {
+        "chinese": "壬",
+        "pinyin": "Ren",
+        "element": "Water",
+        "yang": true
+      },
+      "elementCounts": {
+        "Wood": 1,
+        "Fire": 2,
+        "Earth": 1,
+        "Metal": 2,
+        "Water": 2
+      }
+    },
+    "numerology": {
+      "system": "pythagorean",
+      "lifePath": 6,
+      "expression": 3,
+      "soulUrge": 11,
+      "personality": 1,
+      "birthday": 6,
+      "maturity": 9,
+      "challenges": {
+        "first": 2,
+        "second": 5,
+        "third": 3,
+        "fourth": 7
+      }
+    },
+    "humanDesign": {
+      "personality": {
+        "activations": {
+          "Sun": {
+            "gate": 7,
+            "line": 4,
+            "degreesInto": 3.410234727008941,
+            "longitude": 142.28523472700894
+          },
+          "Moon": {
+            "gate": 16,
+            "line": 4,
+            "degreesInto": 3.66228199357181,
+            "longitude": 75.03728199357181
+          },
+          "Mercury": {
+            "gate": 64,
+            "line": 3,
+            "degreesInto": 2.3047382559269636,
+            "longitude": 169.30473825592696
+          },
+          "Venus": {
+            "gate": 62,
+            "line": 6,
+            "degreesInto": 5.401118736328769,
+            "longitude": 121.77611873632877
+          },
+          "Mars": {
+            "gate": 2,
+            "line": 3,
+            "degreesInto": 2.4378824990813897,
+            "longitude": 51.31288249908139
+          },
+          "Jupiter": {
+            "gate": 62,
+            "line": 4,
+            "degreesInto": 2.9973870062147796,
+            "longitude": 119.37238700621478
+          },
+          "Saturn": {
+            "gate": 38,
+            "line": 6,
+            "degreesInto": 4.743504643779943,
+            "longitude": 289.86850464377994
+          },
+          "Uranus": {
+            "gate": 10,
+            "line": 3,
+            "degreesInto": 2.0979080126049325,
+            "longitude": 275.97290801260493
+          },
+          "Neptune": {
+            "gate": 58,
+            "line": 3,
+            "degreesInto": 2.6954976598396456,
+            "longitude": 282.19549765983965
+          },
+          "Pluto": {
+            "gate": 44,
+            "line": 2,
+            "degreesInto": 1.8368736820943354,
+            "longitude": 225.08687368209434
+          },
+          "North Node": {
+            "gate": 60,
+            "line": 5,
+            "degreesInto": 4.470751271584106,
+            "longitude": 306.4707512715841
+          },
+          "South Node": {
+            "gate": 56,
+            "line": 5,
+            "degreesInto": 4.470751271584106,
+            "longitude": 126.4707512715841
+          }
+        },
+        "moment": "1990-08-15T09:00:00.000Z"
+      },
+      "design": {
+        "activations": {
+          "Sun": {
+            "gate": 2,
+            "line": 6,
+            "degreesInto": 5.410234718365622,
+            "longitude": 54.28523471836562
+          },
+          "Moon": {
+            "gate": 54,
+            "line": 6,
+            "degreesInto": 4.996445842175149,
+            "longitude": 295.74644584217515
+          },
+          "Mercury": {
+            "gate": 27,
+            "line": 1,
+            "degreesInto": 0.4013622620253372,
+            "longitude": 38.02636226202534
+          },
+          "Venus": {
+            "gate": 17,
+            "line": 4,
+            "degreesInto": 3.1875606078931664,
+            "longitude": 12.687560607893166
+          },
+          "Mars": {
+            "gate": 63,
+            "line": 2,
+            "degreesInto": 1.2488661254152476,
+            "longitude": 348.24886612541525
+          },
+          "Jupiter": {
+            "gate": 52,
+            "line": 1,
+            "degreesInto": 0.02012297717034528,
+            "longitude": 99.52012297717035
+          },
+          "Saturn": {
+            "gate": 54,
+            "line": 5,
+            "degreesInto": 4.501319548170272,
+            "longitude": 295.2513195481703
+          },
+          "Uranus": {
+            "gate": 10,
+            "line": 6,
+            "degreesInto": 5.310444542540438,
+            "longitude": 279.18544454254044
+          },
+          "Neptune": {
+            "gate": 58,
+            "line": 6,
+            "degreesInto": 4.854330986127366,
+            "longitude": 284.35433098612737
+          },
+          "Pluto": {
+            "gate": 44,
+            "line": 4,
+            "degreesInto": 2.9212763151516867,
+            "longitude": 226.1712763151517
+          },
+          "North Node": {
+            "gate": 41,
+            "line": 4,
+            "degreesInto": 3.7169538501688635,
+            "longitude": 311.34195385016886
+          },
+          "South Node": {
+            "gate": 31,
+            "line": 4,
+            "degreesInto": 3.7169538501688635,
+            "longitude": 131.34195385016886
+          }
+        },
+        "moment": "1990-05-15T09:14:49.157Z"
+      },
+      "activeGates": [
+        2,
+        7,
+        10,
+        16,
+        17,
+        27,
+        31,
+        38,
+        41,
+        44,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62,
+        63,
+        64
+      ],
+      "personalitySun": {
+        "gate": 7,
+        "line": 4,
+        "degreesInto": 3.410234727008941,
+        "longitude": 142.28523472700894
+      },
+      "designSun": {
+        "gate": 2,
+        "line": 6,
+        "degreesInto": 5.410234718365622,
+        "longitude": 54.28523471836562
+      },
+      "profile": "4/6"
+    },
+    "tarot": {
+      "sum": 33,
+      "cards": [
+        {
+          "number": 6,
+          "name": "The Lovers"
+        }
+      ],
+      "primary": {
+        "number": 6,
+        "name": "The Lovers"
+      }
+    },
+    "gemstones": [
+      {
+        "basis": "ascendant-ruler",
+        "gemstone": {
+          "graha": "Mars",
+          "stone": "Red Coral",
+          "sanskrit": "Moonga",
+          "finger": "Ring",
+          "metal": "Copper",
+          "day": "Tuesday"
+        }
+      },
+      {
+        "basis": "moon-sign-ruler",
+        "gemstone": {
+          "graha": "Venus",
+          "stone": "Diamond",
+          "sanskrit": "Heera",
+          "finger": "Middle",
+          "metal": "Silver",
+          "day": "Friday"
+        }
+      },
+      {
+        "basis": "current-dasha",
+        "gemstone": {
+          "graha": "Jupiter",
+          "stone": "Yellow Sapphire",
+          "sanskrit": "Pukhraj",
+          "finger": "Index",
+          "metal": "Gold",
+          "day": "Thursday"
+        }
+      }
+    ],
+    "colours": [
+      {
+        "basis": "ascendant-ruler",
+        "colour": {
+          "name": "Red",
+          "hex": "#C0392B"
+        },
+        "source": "Mars"
+      },
+      {
+        "basis": "moon-sign-ruler",
+        "colour": {
+          "name": "White",
+          "hex": "#EFE9DC"
+        },
+        "source": "Venus"
+      },
+      {
+        "basis": "day-master-phase",
+        "colour": {
+          "name": "Black",
+          "hex": "#1F2A33"
+        },
+        "source": "Water"
+      }
+    ],
+    "synthesis": {
+      "dimensions": [
+        {
+          "dimension": "expression",
+          "consensus": 0.32333333333333336,
+          "pole": "Outgoing",
+          "agreement": "mixed",
+          "spread": 0.5356715411518517,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "expression",
+              "value": 0.8,
+              "confidence": "strong",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "humanDesign",
+              "dimension": "expression",
+              "value": 0.23,
+              "confidence": "moderate",
+              "source": "Profile 4/6"
+            },
+            {
+              "system": "numerology",
+              "dimension": "expression",
+              "value": 0.2,
+              "confidence": "moderate",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "expression",
+              "value": -0.6,
+              "confidence": "strong",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "expression",
+              "value": 0.9,
+              "confidence": "strong",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [
+            "chinese",
+            "humanDesign",
+            "numerology",
+            "western"
+          ],
+          "opposing": [
+            "vedic"
+          ]
+        },
+        {
+          "dimension": "stability",
+          "consensus": 0.5166666666666666,
+          "pole": "Steady",
+          "agreement": "mixed",
+          "spread": 0.4322904116447646,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "stability",
+              "value": -0.2,
+              "confidence": "strong",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "numerology",
+              "dimension": "stability",
+              "value": 0.6,
+              "confidence": "moderate",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "stability",
+              "value": 0.8,
+              "confidence": "strong",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "stability",
+              "value": 0.9,
+              "confidence": "strong",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [
+            "numerology",
+            "vedic",
+            "western"
+          ],
+          "opposing": [
+            "chinese"
+          ]
+        },
+        {
+          "dimension": "orientation",
+          "consensus": -0.5142857142857142,
+          "pole": "Feeling",
+          "agreement": "converged",
+          "spread": 0.15811388300841894,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "orientation",
+              "value": -0.6,
+              "confidence": "moderate",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "numerology",
+              "dimension": "orientation",
+              "value": -0.4,
+              "confidence": "indicative",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "orientation",
+              "value": -0.7,
+              "confidence": "moderate",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "orientation",
+              "value": -0.3,
+              "confidence": "moderate",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [],
+          "opposing": [
+            "chinese",
+            "numerology",
+            "vedic",
+            "western"
+          ]
+        },
+        {
+          "dimension": "relation",
+          "consensus": 0.6225,
+          "pole": "Connective",
+          "agreement": "aligned",
+          "spread": 0.3126915412990892,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "relation",
+              "value": 0.4,
+              "confidence": "indicative",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "humanDesign",
+              "dimension": "relation",
+              "value": 0.6900000000000001,
+              "confidence": "moderate",
+              "source": "Profile 4/6"
+            },
+            {
+              "system": "numerology",
+              "dimension": "relation",
+              "value": 0.9,
+              "confidence": "moderate",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "relation",
+              "value": 0.7,
+              "confidence": "moderate",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "relation",
+              "value": 0,
+              "confidence": "indicative",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [
+            "chinese",
+            "humanDesign",
+            "numerology",
+            "vedic"
+          ],
+          "opposing": []
+        },
+        {
+          "dimension": "structure",
+          "consensus": -0.27499999999999997,
+          "pole": "Improvising",
+          "agreement": "mixed",
+          "spread": 0.39607448794387146,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "structure",
+              "value": -0.4,
+              "confidence": "moderate",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "numerology",
+              "dimension": "structure",
+              "value": 0.4,
+              "confidence": "moderate",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "structure",
+              "value": -0.6,
+              "confidence": "moderate",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "structure",
+              "value": -0.5,
+              "confidence": "moderate",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [
+            "numerology"
+          ],
+          "opposing": [
+            "chinese",
+            "vedic",
+            "western"
+          ]
+        }
+      ],
+      "tensions": [
+        {
+          "dimension": "expression",
+          "oneSide": {
+            "systems": [
+              "chinese",
+              "humanDesign",
+              "numerology",
+              "western"
+            ],
+            "pole": "Outgoing"
+          },
+          "otherSide": {
+            "systems": [
+              "vedic"
+            ],
+            "pole": "Reflective"
+          },
+          "intensity": 0.5356715411518517
+        },
+        {
+          "dimension": "stability",
+          "oneSide": {
+            "systems": [
+              "numerology",
+              "vedic",
+              "western"
+            ],
+            "pole": "Steady"
+          },
+          "otherSide": {
+            "systems": [
+              "chinese"
+            ],
+            "pole": "Changeable"
+          },
+          "intensity": 0.4322904116447646
+        },
+        {
+          "dimension": "structure",
+          "oneSide": {
+            "systems": [
+              "numerology"
+            ],
+            "pole": "Structured"
+          },
+          "otherSide": {
+            "systems": [
+              "chinese",
+              "vedic",
+              "western"
+            ],
+            "pole": "Improvising"
+          },
+          "intensity": 0.39607448794387146
+        }
+      ],
+      "agreements": [
+        {
+          "dimension": "relation",
+          "consensus": 0.6225,
+          "pole": "Connective",
+          "agreement": "aligned",
+          "spread": 0.3126915412990892,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "relation",
+              "value": 0.4,
+              "confidence": "indicative",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "humanDesign",
+              "dimension": "relation",
+              "value": 0.6900000000000001,
+              "confidence": "moderate",
+              "source": "Profile 4/6"
+            },
+            {
+              "system": "numerology",
+              "dimension": "relation",
+              "value": 0.9,
+              "confidence": "moderate",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "relation",
+              "value": 0.7,
+              "confidence": "moderate",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "relation",
+              "value": 0,
+              "confidence": "indicative",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [
+            "chinese",
+            "humanDesign",
+            "numerology",
+            "vedic"
+          ],
+          "opposing": []
+        },
+        {
+          "dimension": "orientation",
+          "consensus": -0.5142857142857142,
+          "pole": "Feeling",
+          "agreement": "converged",
+          "spread": 0.15811388300841894,
+          "readings": [
+            {
+              "system": "chinese",
+              "dimension": "orientation",
+              "value": -0.6,
+              "confidence": "moderate",
+              "source": "Day Master: Ren (Yang Water)"
+            },
+            {
+              "system": "numerology",
+              "dimension": "orientation",
+              "value": -0.4,
+              "confidence": "indicative",
+              "source": "Life Path 6"
+            },
+            {
+              "system": "vedic",
+              "dimension": "orientation",
+              "value": -0.7,
+              "confidence": "moderate",
+              "source": "Moon in Vrishabha, Moon nakshatra"
+            },
+            {
+              "system": "western",
+              "dimension": "orientation",
+              "value": -0.3,
+              "confidence": "moderate",
+              "source": "Sun in Leo"
+            }
+          ],
+          "supporting": [],
+          "opposing": [
+            "chinese",
+            "numerology",
+            "vedic",
+            "western"
+          ]
+        }
+      ],
+      "systems": [
+        "chinese",
+        "humanDesign",
+        "numerology",
+        "vedic",
+        "western"
+      ]
+    },
+    "traitReadings": [
+      {
+        "system": "western",
+        "dimension": "expression",
+        "value": 0.9,
+        "confidence": "strong",
+        "source": "Sun in Leo"
+      },
+      {
+        "system": "western",
+        "dimension": "stability",
+        "value": 0.9,
+        "confidence": "strong",
+        "source": "Sun in Leo"
+      },
+      {
+        "system": "western",
+        "dimension": "orientation",
+        "value": -0.3,
+        "confidence": "moderate",
+        "source": "Sun in Leo"
+      },
+      {
+        "system": "western",
+        "dimension": "relation",
+        "value": 0,
+        "confidence": "indicative",
+        "source": "Sun in Leo"
+      },
+      {
+        "system": "western",
+        "dimension": "structure",
+        "value": -0.5,
+        "confidence": "moderate",
+        "source": "Sun in Leo"
+      },
+      {
+        "system": "vedic",
+        "dimension": "expression",
+        "value": -0.6,
+        "confidence": "strong",
+        "source": "Moon in Vrishabha, Moon nakshatra"
+      },
+      {
+        "system": "vedic",
+        "dimension": "stability",
+        "value": 0.8,
+        "confidence": "strong",
+        "source": "Moon in Vrishabha, Moon nakshatra"
+      },
+      {
+        "system": "vedic",
+        "dimension": "orientation",
+        "value": -0.7,
+        "confidence": "moderate",
+        "source": "Moon in Vrishabha, Moon nakshatra"
+      },
+      {
+        "system": "vedic",
+        "dimension": "relation",
+        "value": 0.7,
+        "confidence": "moderate",
+        "source": "Moon in Vrishabha, Moon nakshatra"
+      },
+      {
+        "system": "vedic",
+        "dimension": "structure",
+        "value": -0.6,
+        "confidence": "moderate",
+        "source": "Moon in Vrishabha, Moon nakshatra"
+      },
+      {
+        "system": "chinese",
+        "dimension": "expression",
+        "value": 0.8,
+        "confidence": "strong",
+        "source": "Day Master: Ren (Yang Water)"
+      },
+      {
+        "system": "chinese",
+        "dimension": "stability",
+        "value": -0.2,
+        "confidence": "strong",
+        "source": "Day Master: Ren (Yang Water)"
+      },
+      {
+        "system": "chinese",
+        "dimension": "orientation",
+        "value": -0.6,
+        "confidence": "moderate",
+        "source": "Day Master: Ren (Yang Water)"
+      },
+      {
+        "system": "chinese",
+        "dimension": "relation",
+        "value": 0.4,
+        "confidence": "indicative",
+        "source": "Day Master: Ren (Yang Water)"
+      },
+      {
+        "system": "chinese",
+        "dimension": "structure",
+        "value": -0.4,
+        "confidence": "moderate",
+        "source": "Day Master: Ren (Yang Water)"
+      },
+      {
+        "system": "numerology",
+        "dimension": "expression",
+        "value": 0.2,
+        "confidence": "moderate",
+        "source": "Life Path 6"
+      },
+      {
+        "system": "numerology",
+        "dimension": "stability",
+        "value": 0.6,
+        "confidence": "moderate",
+        "source": "Life Path 6"
+      },
+      {
+        "system": "numerology",
+        "dimension": "orientation",
+        "value": -0.4,
+        "confidence": "indicative",
+        "source": "Life Path 6"
+      },
+      {
+        "system": "numerology",
+        "dimension": "relation",
+        "value": 0.9,
+        "confidence": "moderate",
+        "source": "Life Path 6"
+      },
+      {
+        "system": "numerology",
+        "dimension": "structure",
+        "value": 0.4,
+        "confidence": "moderate",
+        "source": "Life Path 6"
+      },
+      {
+        "system": "humanDesign",
+        "dimension": "expression",
+        "value": 0.23,
+        "confidence": "moderate",
+        "source": "Profile 4/6"
+      },
+      {
+        "system": "humanDesign",
+        "dimension": "relation",
+        "value": 0.6900000000000001,
+        "confidence": "moderate",
+        "source": "Profile 4/6"
+      }
+    ],
+    "engineVersion": "1.0.0"
+  },
+  "cached": false,
+  "computedAt": "2026-09-04T04:20:12.287Z"
+}

@@ -1,6 +1,27 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+/**
+ * Torchlight — Gradle settings
+ *
+ * Copyright (c) 2026 Nives Pandey. All rights reserved.
+ * Author: Nives Pandey, Founder & CEO, EagleCortex.
+ */
+
+/**
+ * React Native's Gradle plugin lives in the workspace root's node_modules.
+ *
+ * The scaffold ships `../node_modules`, which assumes the app owns its
+ * dependencies. npm hoists shared packages to the repository root instead, so
+ * that path does not exist here and the build fails while evaluating this file,
+ * before any task runs.
+ *
+ * The path is written out rather than computed. Gradle requires
+ * `pluginManagement` to be the first thing in a settings file — no statement may
+ * precede it — and a plugin resolved through a variable assigned inside that
+ * block is not visible to the `plugins` block that follows. Both were tried;
+ * this is the form that works.
+ */
+pluginManagement { includeBuild("../../../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
 extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
 rootProject.name = 'TorchlightMobile'
 include ':app'
-includeBuild('../node_modules/@react-native/gradle-plugin')
+includeBuild('../../../node_modules/@react-native/gradle-plugin')

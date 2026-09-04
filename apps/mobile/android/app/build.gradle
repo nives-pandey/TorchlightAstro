@@ -3,19 +3,37 @@ apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
 /**
+ * Where the workspace's node_modules is.
+ *
+ * npm hoists shared packages to the repository root, but keeps a package local
+ * when its version conflicts with another workspace's. Both locations are
+ * checked so a future dependency change cannot quietly break the build.
+ */
+def rootNodeModules = [
+    file("../../node_modules"),
+    file("../../../../node_modules"),
+].find { new File(it, "react-native").exists() }?.canonicalPath
+
+if (rootNodeModules == null) {
+    throw new GradleException("Could not find react-native in node_modules. Run `npm install` from the repository root.")
+}
+
+/**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 react {
     /* Folders */
-    //   The root of your project, i.e. where "package.json" lives. Default is '../..'
-    // root = file("../../")
-    //   The folder where the react-native NPM package is. Default is ../../node_modules/react-native
-    // reactNativeDir = file("../../node_modules/react-native")
-    //   The folder where the react-native Codegen package is. Default is ../../node_modules/@react-native/codegen
-    // codegenDir = file("../../node_modules/@react-native/codegen")
-    //   The cli.js file which is the React Native CLI entrypoint. Default is ../../node_modules/react-native/cli.js
-    // cliFile = file("../../node_modules/react-native/cli.js")
+
+    // Every default here assumes the app owns its dependencies, at
+    // `apps/mobile/node_modules`. npm hoists shared packages to the workspace
+    // root instead, so each path that reaches into node_modules is repointed
+    // there. `root` stays at the app, since that is where package.json and the
+    // JavaScript entry point live.
+    root = file("../../")
+    reactNativeDir = file("$rootNodeModules/react-native")
+    codegenDir = file("$rootNodeModules/@react-native/codegen")
+    cliFile = file("$rootNodeModules/react-native/cli.js")
 
     /* Variants */
     //   The list of variants to that are debuggable. For those we're going to
