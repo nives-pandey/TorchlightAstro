@@ -10,6 +10,7 @@
 
 import type { Chart } from '../chart';
 import { tropicalSignName } from '../chart';
+import { houseSignification, westernNameFor } from '../systems/significations';
 
 /**
  * What stands out in a chart, and what is happening in it now.
@@ -124,10 +125,13 @@ export function findHighlights(chart: Chart, at: Date = new Date()): ChartHighli
 
     for (const [house, planets] of [...byHouse].sort(([a], [b]) => a - b)) {
       if (planets.length < STELLIUM_THRESHOLD) continue;
+      const meaning = houseSignification(house);
       notable.push({
         kind: 'stellium',
         notability: planets.length >= 4 ? 'rare' : 'uncommon',
-        statement: `${planets.length} planets sit together in your ${ordinal(house)} house.`,
+        statement:
+          `${planets.length} planets sit together in your ${ordinal(house)} house` +
+          (meaning ? `, ${meaning.tone} — it concerns ${meaning.domains.join(', ')}.` : '.'),
         basis: planets.map((name) => `${name} in house ${house}`),
       });
     }
@@ -214,10 +218,13 @@ export function findHighlights(chart: Chart, at: Date = new Date()): ChartHighli
   if (sun) {
     const tropical = tropicalSignName(sun.longitude);
     const sidereal = sun.siderealSign.name;
+    const siderealInWestern = westernNameFor(sidereal);
     notable.push({
       kind: 'zodiac-divergence',
       notability: 'ordinary',
-      statement: `Western reads your Sun as ${tropical}; Vedic reads it as ${sidereal}. Both are right — they measure from different starting points, ${chart.vedic.ayanamsaDegrees.toFixed(2)}° apart.`,
+      statement: `Western reads your Sun as ${tropical}; Vedic reads it as ${sidereal}${
+        siderealInWestern ? ` (${siderealInWestern})` : ''
+      }. Both are right — they measure from different starting points, ${chart.vedic.ayanamsaDegrees.toFixed(2)}° apart.`,
       basis: [
         `Sun tropical ${sun.longitude.toFixed(2)}°`,
         `Sun sidereal ${sun.siderealLongitude.toFixed(2)}°`,

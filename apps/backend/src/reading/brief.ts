@@ -27,6 +27,7 @@ const SYSTEM_NAMES: Readonly<Record<string, string>> = {
 };
 
 const named = (system: string): string => SYSTEM_NAMES[system] ?? system;
+import { grahaSignification } from '../astrology/systems/significations';
 import { findHighlights, type ChartHighlights } from '../astrology/synthesis/highlights';
 import type { BriefFact, ReadingBrief } from './reading.types';
 
@@ -47,6 +48,12 @@ const NAMED_PLANETS = ['Sun', 'Moon', 'Ascendant'] as const;
 
 function yearOf(iso: string): number {
   return new Date(iso).getFullYear();
+}
+
+/** Joins domains readably: "expansion, teaching and study". */
+function listOf(items: readonly string[]): string {
+  if (items.length <= 1) return items[0] ?? '';
+  return `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 }
 
 /** Describes how far through a period someone is, without a decimal. */
@@ -70,30 +77,38 @@ export function buildBrief(
   if (highlights.now) {
     const { mahadasha, antardasha, next } = highlights.now;
 
+    const ruling = grahaSignification(mahadasha.ruler);
+
     now.push({
       label: 'Current period',
-      statement: `They are ${progressWord(mahadasha.elapsed)} a ${mahadasha.ruler} period that runs from ${yearOf(
-        mahadasha.startsAt,
-      )} to ${yearOf(mahadasha.endsAt)} — ${mahadasha.years} years in total.`,
+      statement:
+        `They are ${progressWord(mahadasha.elapsed)} a ${mahadasha.ruler} period that runs from ${yearOf(
+          mahadasha.startsAt,
+        )} to ${yearOf(mahadasha.endsAt)} — ${mahadasha.years} years in total.` +
+        (ruling
+          ? ` The tradition associates ${mahadasha.ruler} with ${listOf(ruling.domains)}: ${ruling.tone}.`
+          : ''),
       basis: [`Vimshottari mahadasha: ${mahadasha.ruler}`],
     });
 
     if (antardasha) {
+      const sub = grahaSignification(antardasha.ruler);
       now.push({
         label: 'Sub-period within it',
-        statement: `Inside that, a shorter ${antardasha.ruler} phase runs until ${yearOf(
-          antardasha.endsAt,
-        )}.`,
+        statement:
+          `Inside that, a shorter ${antardasha.ruler} phase runs until ${yearOf(antardasha.endsAt)}.` +
+          (sub ? ` ${antardasha.ruler} is associated with ${listOf(sub.domains)}.` : ''),
         basis: [`Vimshottari antardasha: ${antardasha.ruler}`],
       });
     }
 
     if (next) {
+      const following = grahaSignification(next.ruler);
       now.push({
         label: 'What follows',
-        statement: `The ${mahadasha.ruler} period gives way to a ${next.ruler} period in ${yearOf(
-          next.startsAt,
-        )}.`,
+        statement:
+          `The ${mahadasha.ruler} period gives way to a ${next.ruler} period in ${yearOf(next.startsAt)}.` +
+          (following ? ` That one is ${following.tone}.` : ''),
         basis: [`Next mahadasha: ${next.ruler}`],
       });
     }

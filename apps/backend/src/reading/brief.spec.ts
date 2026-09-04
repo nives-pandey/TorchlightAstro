@@ -92,6 +92,43 @@ describe('the reading brief', () => {
     }
   });
 
+  /**
+   * The brief must carry the tradition's meanings, not merely its names.
+   *
+   * When it did not, a model filled the gap from its own training: that Jupiter
+   * concerns expansion, that the 8th house concerns shared resources. Those
+   * happened to be right, and none of them was auditable or came from this
+   * engine. A model that recalls eight meanings correctly will eventually
+   * recall a ninth wrongly with identical confidence.
+   */
+  it('supplies the meaning of the ruling graha, not just its name', () => {
+    const period = brief.now.find((f) => f.label === 'Current period');
+
+    expect(period?.statement).toMatch(/tradition associates Jupiter with/);
+    expect(period?.statement).toMatch(/expansion/);
+  });
+
+  it('supplies what a house governs wherever it names one', () => {
+    const stelliums = brief.notable.filter((f) => /planets sit together/.test(f.statement));
+
+    expect(stelliums.length).toBeGreaterThan(0);
+    for (const stellium of stelliums) {
+      // Naming a house without saying what it concerns leaves the reader — and
+      // the model — to supply the meaning.
+      expect(stellium.statement).toMatch(/it concerns /);
+    }
+  });
+
+  it('translates sidereal sign names rather than leaving them to be recalled', () => {
+    const divergence = brief.notable.find(
+      (f) => f.label === 'Why two traditions name different signs',
+    );
+
+    // The Western equivalent is given in the brief, so the model never has to
+    // know that Karka is Cancer.
+    expect(divergence?.statement).toMatch(/\(\w+\)/);
+  });
+
   it('is deterministic for the same chart and moment', () => {
     expect(renderBrief(buildBrief(chart, 'Test Person', NOW))).toBe(rendered);
   });
