@@ -15,7 +15,9 @@ import type { Chart } from '../astrology/chart';
 import { ENGINE_VERSION } from '../astrology/chart';
 import { ChartService } from '../chart/chart.service';
 import { DB, type Database } from '../db/db.module';
-import { birthProfiles, charts, users, type BirthProfileRow } from '../db/schema';
+import { birthProfiles, charts, readings, users, type BirthProfileRow } from '../db/schema';
+import { ReadingService } from '../reading/reading.service';
+import type { Reading } from '../reading/reading.types';
 
 /**
  * Stored birth profiles, and the charts computed from them.
@@ -58,6 +60,7 @@ export class ProfilesService {
   constructor(
     @Inject(DB) private readonly db: Database,
     private readonly chartService: ChartService,
+    private readonly reading: ReadingService,
   ) {}
 
   /**
@@ -129,6 +132,59 @@ export class ProfilesService {
     }
 
     return profile;
+  }
+
+
+  /**
+   * The reading for a profile's chart, generating it on first request.
+   *
+   * Separate from `getChart` rather than folded into it: a chart is served from
+   * storage in milliseconds, while a reading takes seconds and costs money to
+   * produce. Coupling them would make every chart open pay for prose the reader
+   * may not have scrolled to.
+   *
+   * Returns null when the reading layer is unavailable — no API key configured,
+   * or the model declined. A chart without a reading is still a whole product,
+   * and the app renders the placements either way.
+   */
+  async getReading(
+    userId: string,
+    profileId: string,
+    houseSystem: 'placidus' | 'whole-sign' = 'placidus',
+  ): Promise<Reading | null> {
+    const profile = await this.findOne(userId, profileId);
+
+    // Ensures the chart exists and is current before anything is written
+    // against it.
+    await this.getChart(userId, profileId, houseSystem);
+
+    const [chartRow] = await this.db
+      .select()
+      .from(charts)
+      .where(eq(charts.birthProfileId, profile.id))
+      .limit(1);
+
+    if (!chartRow) return null;
+
+    const [existing] = await this.db
+      .select()
+      .from(readings)
+      .where(eq(readings.chartId, chartRow.id))
+      .limit(1);
+
+    if (existing) return existing.data as Reading;
+
+    const generated = await this.reading.generate(chartRow.data as Chart, profile.displayName);
+    if (!generated) return null;
+
+    // A concurrent request may have written one first; keep whichever landed
+    // rather than paying for a second generation.
+    await this.db
+      .insert(readings)
+      .values({ chartId: chartRow.id, data: generated, model: generated.model })
+      .onConflictDoNothing({ target: readings.chartId });
+
+    return generated;
   }
 
   /**

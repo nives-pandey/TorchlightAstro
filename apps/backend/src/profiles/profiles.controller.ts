@@ -26,6 +26,7 @@ import { createProfileSchema, type CreateProfileRequest } from '@torchlight/shar
 import { AuthGuard, CurrentUser } from '../auth/auth.guard';
 import type { AccessTokenPayload } from '../auth/token.service';
 import { ZodValidationPipe } from '../common/zod-validation.pipe';
+import type { Reading } from '../reading/reading.types';
 import { ProfilesService, type StoredChart } from './profiles.service';
 import type { BirthProfileRow } from '../db/schema';
 
@@ -84,6 +85,28 @@ export class ProfilesController {
   ): Promise<StoredChart> {
     const system = houseSystem === 'whole-sign' ? 'whole-sign' : 'placidus';
     return this.profiles.getChart(user.sub, id, system);
+  }
+
+
+  /**
+   * The plain-language reading for a profile's chart.
+   *
+   * A chart states facts in the vocabulary of the traditions that produced them.
+   * Knowing you are in a Jupiter mahadasha is not the same as knowing what that
+   * means, and this endpoint closes that gap.
+   *
+   * Generated on first request and stored, since it costs money to produce and
+   * the inputs never change. Returns null when the layer is unavailable, which
+   * the app renders by simply omitting the section.
+   */
+  @Get(':id/reading')
+  getReading(
+    @CurrentUser() user: AccessTokenPayload,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Query('houseSystem') houseSystem?: string,
+  ): Promise<Reading | null> {
+    const system = houseSystem === 'whole-sign' ? 'whole-sign' : 'placidus';
+    return this.profiles.getReading(user.sub, id, system);
   }
 
   /** Deletes a profile and its stored chart. */

@@ -18,6 +18,7 @@ import { ChartModule } from './chart/chart.module';
 import { DbModule } from './db/db.module';
 import { GeocodingModule } from './geocoding/geocoding.module';
 import { ProfilesModule } from './profiles/profiles.module';
+import { ReadingModule } from './reading/reading.module';
 import { HealthModule } from './health/health.module';
 
 @Module({
@@ -38,6 +39,7 @@ import { HealthModule } from './health/health.module';
     AuthModule,
     ChartModule,
     ProfilesModule,
+    ReadingModule,
     GeocodingModule,
   ],
 })

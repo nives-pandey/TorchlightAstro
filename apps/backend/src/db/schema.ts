@@ -117,6 +117,36 @@ export const charts = pgTable(
   (table) => [index('charts_profile_idx').on(table.birthProfileId)],
 );
 
+/**
+ * Generated readings, one per chart.
+ *
+ * Stored rather than generated per request for three reasons: a reading costs
+ * money to produce, takes seconds rather than milliseconds, and is deterministic
+ * in its inputs — the same chart yields the same brief forever, so regenerating
+ * it on every open would buy nothing.
+ *
+ * Cascading from `charts` rather than from `birth_profiles` is deliberate. A
+ * chart is recomputed when the engine version or house system changes, and a
+ * reading written against the old placements is then wrong. Hanging it off the
+ * chart means that staleness is impossible to forget about.
+ */
+export const readings = pgTable(
+  'readings',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    chartId: uuid('chart_id')
+      .notNull()
+      .references(() => charts.id, { onDelete: 'cascade' })
+      .unique(),
+    /** The three prose sections, as the model returned them. */
+    data: jsonb('data').notNull(),
+    /** Which model wrote it, so a reading can be regenerated deliberately. */
+    model: varchar('model', { length: 64 }).notNull(),
+    createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [index('readings_chart_idx').on(table.chartId)],
+);
+
 /** Long-lived refresh tokens, stored hashed so a database leak cannot mint sessions. */
 export const refreshTokens = pgTable(
   'refresh_tokens',
@@ -141,4 +171,5 @@ export type NewUser = typeof users.$inferInsert;
 export type BirthProfileRow = typeof birthProfiles.$inferSelect;
 export type NewBirthProfileRow = typeof birthProfiles.$inferInsert;
 export type ChartRow = typeof charts.$inferSelect;
+export type ReadingRow = typeof readings.$inferSelect;
 export type RefreshTokenRow = typeof refreshTokens.$inferSelect;

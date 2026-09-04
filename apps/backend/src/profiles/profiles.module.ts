@@ -12,11 +12,12 @@ import { Module } from '@nestjs/common';
 
 import { AuthModule } from '../auth/auth.module';
 import { ChartModule } from '../chart/chart.module';
+import { ReadingModule } from '../reading/reading.module';
 import { ProfilesController } from './profiles.controller';
 import { ProfilesService } from './profiles.service';
 
 @Module({
-  imports: [AuthModule, ChartModule],
+  imports: [AuthModule, ChartModule, ReadingModule],
   controllers: [ProfilesController],
   providers: [ProfilesService],
 })
