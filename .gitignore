@@ -49,3 +49,13 @@ keystore.properties
 npm-debug.log*
 yarn-error.log*
 *.log
+# Written by `vercel link`; holds the project and org ids.
+.vercel
+
+# Real environment files never get committed. The pattern is deliberately not
+# `.env*`, which would also swallow `.env.example` — that file is how anyone
+# setting the project up learns which variables it needs.
+.env
+.env.local
+.env.*.local
+.env.production
