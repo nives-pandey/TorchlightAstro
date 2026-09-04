@@ -14,6 +14,7 @@ import { ChartScreen } from '../ChartScreen';
 import { AuthProvider } from '../../auth/AuthProvider';
 import { ThemeProvider } from '../../ui/ThemeProvider';
 import fixture from './fixtures/chart-response.json';
+import splitFixture from './fixtures/chart-split.json';
 
 /**
  * Renders the chart screen against a real API response.
@@ -146,6 +147,27 @@ describe('the chart screen', () => {
 
     expect(rendered).toContain('Human Design');
     expect(rendered).not.toContain('humanDesign');
+  });
+
+  /**
+   * The engine returns a null pole whenever the weighted consensus lands near
+   * zero, and that happens for two opposite reasons: every tradition reading
+   * the person as moderate, or the traditions splitting evenly and cancelling
+   * out. Both rendered as "Balanced", which is the reverse of the truth for the
+   * second — and it printed directly above a sentence naming two opposed camps.
+   */
+  it('calls an even split contested, not balanced', async () => {
+    globalThis.fetch = jest.fn(async () => ({
+      status: 200,
+      json: async () => ({ ok: true, data: splitFixture }),
+    })) as unknown as typeof fetch;
+
+    const rendered = textOf(await renderScreen());
+
+    expect(rendered).toContain('Split');
+    // Both camps are named, so the label has to agree with the sentence below it.
+    expect(rendered).toContain('read you as outgoing');
+    expect(rendered).toContain('read you as reflective');
   });
 
   it('reports a failure rather than rendering an empty chart', async () => {

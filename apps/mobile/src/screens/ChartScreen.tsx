@@ -144,7 +144,9 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           <View style={styles.headerText}>
             <Text variant="display">{user?.displayName ?? 'Your chart'}</Text>
             <Text variant="caption" tone="subtle" style={styles.subtitle}>
-              {synthesis.systems.length} traditions compared, {settled.length} in full agreement
+              {settled.length > 0
+                ? `${synthesis.systems.length} traditions compared, ${settled.length} in full agreement`
+                : `${synthesis.systems.length} traditions compared — none of them fully agree`}
             </Text>
           </View>
           <Button label="Sign out" variant="quiet" onPress={() => { void signOut(); }} />
@@ -335,6 +337,22 @@ function DimensionCard({
   const poles = DIMENSION_POLES[dimension.dimension];
   const readings = [...dimension.readings].sort((a, b) => b.value - a.value);
 
+  /**
+   * What to call a dimension whose consensus is near zero.
+   *
+   * The engine returns a null pole when the weighted average lands mid-scale,
+   * which happens for two opposite reasons: every tradition reads the person as
+   * moderate, or the traditions split evenly and cancel out. "Balanced" is true
+   * of the first and the reverse of the second — and it was being printed above
+   * text naming two opposed camps.
+   *
+   * The readings themselves tell the two apart: a real split has traditions at
+   * both ends, a genuine middle does not.
+   */
+  const hasBothSides =
+    readings.some((r) => r.value > 0.15) && readings.some((r) => r.value < -0.15);
+  const claim = dimension.pole ?? (hasBothSides ? 'Split' : 'Balanced');
+
   // For a contested dimension the two camps are the story, so name them.
   const majority = dimension.consensus >= 0 ? poles.high : poles.low;
   const minority = dimension.consensus >= 0 ? poles.low : poles.high;
@@ -352,7 +370,7 @@ function DimensionCard({
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setOpen((previous) => !previous);
       }}
-      accessibilityLabel={`${poles.question} ${dimension.pole ?? 'Balanced'}. Tap to see each tradition's reading.`}
+      accessibilityLabel={`${poles.question} ${claim}. Tap to see each tradition's reading.`}
     >
       <View style={styles.dimensionHead}>
         <View style={styles.dimensionHeadText}>
@@ -360,7 +378,7 @@ function DimensionCard({
             {poles.question}
           </Text>
           <Text variant="title" style={styles.dimensionClaim}>
-            {dimension.pole ?? 'Balanced'}
+            {claim}
           </Text>
         </View>
         <Feather
