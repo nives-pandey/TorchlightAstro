@@ -9,16 +9,25 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  LayoutAnimation,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  View,
+} from 'react-native';
 import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError, api } from '../api/client';
 import {
   DIMENSION_POLES,
+  SYSTEM_NAMES,
   TROPICAL_SIGNS,
   type Chart,
   type ChartResponse,
   type DimensionSynthesis,
+  type TraitReading,
 } from '../api/chart-types';
 import { useAuth } from '../auth/AuthProvider';
 import { Button, Card, Screen, Text } from '../ui/components';
@@ -27,11 +36,24 @@ import { useTheme } from '../ui/ThemeProvider';
 /**
  * What a person sees when they open the app.
  *
- * The ordering is the product's argument. Ten traditions read the same birth,
- * so the consensus across them comes first — that is the thing no single
- * tradition can tell you. Where they disagree comes second, shown as a real
- * finding rather than smoothed away. Each tradition's own detail follows, for
- * the person who came for their nakshatra or their day master specifically.
+ * The engine computes, for each of five dimensions, every tradition's reading
+ * traced back to the placement that produced it — "Sun in Leo, strongly
+ * outgoing" — along with how much the traditions agree and how far apart they
+ * sit. An earlier version of this screen averaged all that into one dot on a
+ * line, which was actively misleading: when Western reads +0.90 and Vedic reads
+ * −0.60, a dot at +0.32 describes nobody. The disagreement *was* the finding,
+ * and averaging destroyed it.
+ *
+ * So the ordering here follows what is actually known, strongest first:
+ *
+ *   what every tradition agrees on   — the firmest thing the chart says
+ *   where they genuinely disagree    — what no single tradition can tell you
+ *   each tradition's own placements  — for the reader who came for their
+ *                                      nakshatra or their day master
+ *
+ * Every dimension opens to show its working: each system, what it read, how
+ * strongly, and from which placement. A reading that cannot show where it came
+ * from is indistinguishable from one that was invented.
  */
 export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Element {
   const theme = useTheme();
@@ -48,7 +70,9 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
       setError(null);
     } catch (caught) {
       setError(
-        caught instanceof ApiError ? caught.message : 'Could not load your chart. Check your connection.',
+        caught instanceof ApiError
+          ? caught.message
+          : 'Could not load your chart. Check your connection.',
       );
     }
   }, [profileId]);
@@ -83,6 +107,13 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
 
   const { synthesis, vedic, western, chinese, numerology, humanDesign, tarot } = chart;
 
+  // Sorted so the firmest findings lead. `spread` is the standard deviation of
+  // the contributing readings: low means the traditions landed close together.
+  const settled = [...synthesis.agreements].sort((a, b) => a.spread - b.spread);
+  const contested = [...synthesis.dimensions]
+    .filter((d) => !synthesis.agreements.some((a) => a.dimension === d.dimension))
+    .sort((a, b) => b.spread - a.spread);
+
   return (
     <Screen>
       <ScrollView
@@ -102,7 +133,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           <View style={styles.headerText}>
             <Text variant="display">{user?.displayName ?? 'Your chart'}</Text>
             <Text variant="caption" tone="subtle" style={styles.subtitle}>
-              {synthesis.systems.length} traditions
+              {synthesis.systems.length} traditions read your birth
             </Text>
           </View>
           <Button label="Sign out" variant="quiet" onPress={() => { void signOut(); }} />
@@ -116,31 +147,35 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           </Card>
         ) : null}
 
-        <Section title="Where they agree" />
-        {synthesis.dimensions.map((dimension) => (
-          <DimensionRow key={dimension.dimension} dimension={dimension} />
-        ))}
-
-        {synthesis.tensions.length > 0 ? (
+        {settled.length > 0 ? (
           <>
-            <Section title="Where they differ" />
-            {synthesis.tensions.map((tension) => (
-              <Card key={tension.dimension} style={styles.card}>
-                <Text variant="bodyStrong">{DIMENSION_POLES[tension.dimension].question}</Text>
-                <Text variant="caption" tone="muted" style={styles.tensionLine}>
-                  {tension.oneSide.systems.join(', ')} read you as{' '}
-                  {tension.oneSide.pole.toLowerCase()}.
-                </Text>
-                <Text variant="caption" tone="muted">
-                  {tension.otherSide.systems.join(', ')} read you as{' '}
-                  {tension.otherSide.pole.toLowerCase()}.
-                </Text>
-              </Card>
+            <SectionHeading
+              title="What they all agree on"
+              caption={
+                settled.length === 1
+                  ? 'One reading every tradition arrived at independently.'
+                  : `${settled.length} readings every tradition arrived at independently.`
+              }
+            />
+            {settled.map((dimension) => (
+              <DimensionCard key={dimension.dimension} dimension={dimension} settled />
             ))}
           </>
         ) : null}
 
-        <Section title="Vedic" />
+        {contested.length > 0 ? (
+          <>
+            <SectionHeading
+              title="Where they disagree"
+              caption="Traditions built on different premises reach different conclusions. The disagreement is a finding, not an error."
+            />
+            {contested.map((dimension) => (
+              <DimensionCard key={dimension.dimension} dimension={dimension} settled={false} />
+            ))}
+          </>
+        ) : null}
+
+        <SectionHeading title="Vedic" />
         <Card style={styles.card}>
           <Detail label="Moon sign" value={vedic.moonRashi.name} />
           <Detail
@@ -152,7 +187,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           ) : null}
           {vedic.currentDasha ? (
             <Detail
-              label="Current dasha"
+              label="Current period"
               value={`${vedic.currentDasha.mahadasha.planet} · to ${formatYear(
                 vedic.currentDasha.mahadasha.end,
               )}`}
@@ -160,7 +195,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           ) : null}
           {vedic.currentDasha?.antardasha ? (
             <Detail
-              label="Sub-period"
+              label="Within it"
               value={`${vedic.currentDasha.antardasha.planet} · to ${formatYear(
                 vedic.currentDasha.antardasha.end,
               )}`}
@@ -173,7 +208,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           />
         </Card>
 
-        <Section title="Western" />
+        <SectionHeading title="Western" />
         <Card style={styles.card}>
           {western.planets.slice(0, 3).map((planet, index) => (
             <Detail
@@ -187,11 +222,13 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           ))}
         </Card>
 
-        <Section title="Chinese" />
+        <SectionHeading title="Chinese" />
         <Card style={styles.card}>
           <Detail
             label="Day master"
-            value={`${chinese.dayMaster.yang ? "Yang" : "Yin"} ${chinese.dayMaster.element} · ${chinese.dayMaster.pinyin}`}
+            value={`${chinese.dayMaster.yang ? 'Yang' : 'Yin'} ${chinese.dayMaster.element} · ${
+              chinese.dayMaster.pinyin
+            }`}
           />
           <Detail label="Year" value={`${chinese.year.pinyin} · ${chinese.year.ganZhi}`} />
           <Detail label="Day" value={`${chinese.day.pinyin} · ${chinese.day.ganZhi}`} last />
@@ -199,7 +236,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
 
         {numerology ? (
           <>
-            <Section title="Numerology" />
+            <SectionHeading title="Numerology" />
             <Card style={styles.card}>
               <Detail label="Life path" value={String(numerology.lifePath)} />
               <Detail label="Expression" value={String(numerology.expression)} />
@@ -208,7 +245,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           </>
         ) : null}
 
-        <Section title="Human Design" />
+        <SectionHeading title="Human Design" />
         <Card style={styles.card}>
           <Detail label="Profile" value={humanDesign.profile} />
           <Detail
@@ -218,7 +255,7 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
           />
         </Card>
 
-        <Section title="Tarot" />
+        <SectionHeading title="Tarot" />
         <Card style={styles.card}>
           <Detail label="Birth card" value={tarot.primary.name} last />
         </Card>
@@ -227,65 +264,162 @@ export function ChartScreen({ profileId }: { profileId: string }): React.JSX.Ele
   );
 }
 
-/** A labelled section break. */
-function Section({ title }: { title: string }): React.JSX.Element {
+function SectionHeading({
+  title,
+  caption,
+}: {
+  title: string;
+  caption?: string;
+}): React.JSX.Element {
   return (
-    <Text variant="label" tone="muted" style={styles.section}>
-      {title.toUpperCase()}
-    </Text>
+    <View style={styles.section}>
+      <Text variant="label" tone="muted">
+        {title.toUpperCase()}
+      </Text>
+      {caption ? (
+        <Text variant="caption" tone="subtle" style={styles.sectionCaption}>
+          {caption}
+        </Text>
+      ) : null}
+    </View>
   );
 }
 
 /**
- * One dimension, drawn as a position on its axis.
+ * One dimension, stated as a sentence and openable to show its working.
  *
- * The bar carries the finding better than a number does: a person can see at a
- * glance whether the traditions place them near a pole or near the middle, and
- * the middle is a real answer rather than a missing one.
+ * The headline is the claim in plain words. Tapping reveals every contributing
+ * reading — which tradition, how strongly, and from which placement — because a
+ * claim that cannot show its source is indistinguishable from an invented one.
  */
-function DimensionRow({ dimension }: { dimension: DimensionSynthesis }): React.JSX.Element {
+function DimensionCard({
+  dimension,
+  settled,
+}: {
+  dimension: DimensionSynthesis;
+  settled: boolean;
+}): React.JSX.Element {
   const theme = useTheme();
-  const poles = DIMENSION_POLES[dimension.dimension];
+  const [open, setOpen] = useState(false);
 
-  // −1..+1 becomes 0..1 across the track.
-  const position = (dimension.consensus + 1) / 2;
+  const poles = DIMENSION_POLES[dimension.dimension];
+  const readings = [...dimension.readings].sort((a, b) => b.value - a.value);
+
+  // For a contested dimension the two camps are the story, so name them.
+  const majority = dimension.consensus >= 0 ? poles.high : poles.low;
+  const minority = dimension.consensus >= 0 ? poles.low : poles.high;
+  const withMajority = readings.filter((r) =>
+    dimension.consensus >= 0 ? r.value > 0 : r.value < 0,
+  );
+  const withMinority = readings.filter((r) =>
+    dimension.consensus >= 0 ? r.value < 0 : r.value > 0,
+  );
 
   return (
-    <View style={styles.dimension}>
-      <View style={styles.dimensionLabels}>
-        <Text variant="caption" tone="subtle">
-          {poles.low}
-        </Text>
-        <Text variant="caption" tone="subtle">
-          {poles.high}
-        </Text>
+    <Card
+      style={styles.card}
+      onPress={() => {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setOpen((previous) => !previous);
+      }}
+      accessibilityLabel={`${poles.question} ${dimension.pole ?? 'Balanced'}. Tap to see each tradition's reading.`}
+    >
+      <View style={styles.dimensionHead}>
+        <View style={styles.dimensionHeadText}>
+          <Text variant="caption" tone="subtle">
+            {poles.question}
+          </Text>
+          <Text variant="title" style={styles.dimensionClaim}>
+            {dimension.pole ?? 'Balanced'}
+          </Text>
+        </View>
+        <Feather
+          name={open ? 'chevron-up' : 'chevron-down'}
+          size={18}
+          color={theme.colors.iconMuted}
+        />
       </View>
 
+      {settled ? (
+        <Text variant="caption" tone="muted">
+          All {dimension.readings.length} traditions that read this agree.
+        </Text>
+      ) : (
+        <Text variant="caption" tone="muted">
+          {namesOf(withMajority)} read you as {majority.toLowerCase()};{' '}
+          {namesOf(withMinority)} {withMinority.length === 1 ? 'reads' : 'read'} you as{' '}
+          {minority.toLowerCase()}.
+        </Text>
+      )}
+
+      {open ? (
+        <View style={[styles.workings, { borderTopColor: theme.colors.border }]}>
+          {readings.map((reading) => (
+            <ReadingRow key={reading.system} reading={reading} poles={poles} />
+          ))}
+        </View>
+      ) : null}
+    </Card>
+  );
+}
+
+/** One tradition's reading, with the placement it came from. */
+function ReadingRow({
+  reading,
+  poles,
+}: {
+  reading: TraitReading;
+  poles: { low: string; high: string };
+}): React.JSX.Element {
+  const theme = useTheme();
+
+  const pole = reading.value >= 0 ? poles.high : poles.low;
+  const strength = Math.abs(reading.value);
+  const qualifier = strength >= 0.6 ? 'strongly ' : strength >= 0.3 ? '' : 'slightly ';
+
+  return (
+    <View style={styles.reading}>
+      <View style={styles.readingHead}>
+        <Text variant="bodyStrong">{SYSTEM_NAMES[reading.system] ?? reading.system}</Text>
+        <Text variant="caption" tone="muted">
+          {qualifier}
+          {pole.toLowerCase()}
+        </Text>
+      </View>
+      <Text variant="caption" tone="subtle">
+        {reading.source}
+      </Text>
+
+      {/* The bar is the reading's own strength, not an average — so a firm
+          reading and a faint one cannot look alike. */}
       <View
         style={[
-          styles.track,
+          styles.readingTrack,
           { backgroundColor: theme.colors.surface2, borderRadius: theme.radius.pill },
         ]}
-        accessible
-        accessibilityRole="progressbar"
-        accessibilityLabel={`${poles.question} ${dimension.pole ?? 'Balanced'}`}
       >
         <View
           style={[
-            styles.marker,
+            styles.readingFill,
             {
-              backgroundColor: theme.colors.primary,
-              left: `${position * 100}%`,
+              backgroundColor:
+                reading.confidence === 'indicative' ? theme.colors.borderStrong : theme.colors.primary,
+              width: `${Math.max(strength, 0.04) * 100}%`,
+              borderRadius: theme.radius.pill,
             },
           ]}
         />
       </View>
-
-      <Text variant="caption" tone="muted" style={styles.dimensionPole}>
-        {dimension.pole ?? 'Balanced'}
-      </Text>
     </View>
   );
+}
+
+/** Joins system names into readable prose: "Western, Vedic and Chinese". */
+function namesOf(readings: readonly TraitReading[]): string {
+  const names = readings.map((r) => SYSTEM_NAMES[r.system] ?? r.system);
+  if (names.length === 0) return 'No tradition';
+  if (names.length === 1) return names[0] as string;
+  return `${names.slice(0, -1).join(', ')} and ${names[names.length - 1] as string}`;
 }
 
 function Detail({
@@ -303,7 +437,9 @@ function Detail({
     <View
       style={[
         styles.detail,
-        last ? null : { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.colors.border },
+        last
+          ? null
+          : { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.colors.border },
       ]}
     >
       <Text variant="caption" tone="muted">
@@ -326,15 +462,16 @@ const styles = StyleSheet.create({
   headerText: { flex: 1 },
   subtitle: { marginTop: 4 },
   notice: { marginTop: 16 },
-  section: { marginTop: 32, marginBottom: 12 },
-  card: { marginBottom: 8 },
-  dimension: { marginBottom: 20 },
-  dimensionLabels: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 },
-  track: { height: 4, justifyContent: 'center' },
-  // Pulled back by half its width so it centres on the value rather than
-  // starting at it.
-  marker: { position: 'absolute', width: 12, height: 12, borderRadius: 6, marginLeft: -6 },
-  dimensionPole: { marginTop: 8, textAlign: 'center' },
+  section: { marginTop: 34, marginBottom: 12 },
+  sectionCaption: { marginTop: 6 },
+  card: { marginBottom: 10 },
+  dimensionHead: { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' },
+  dimensionHeadText: { flex: 1 },
+  dimensionClaim: { marginTop: 2, marginBottom: 6 },
+  workings: { marginTop: 16, paddingTop: 4, borderTopWidth: StyleSheet.hairlineWidth },
+  reading: { marginTop: 14 },
+  readingHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between' },
+  readingTrack: { height: 3, marginTop: 8, overflow: 'hidden' },
+  readingFill: { height: 3 },
   detail: { paddingVertical: 10 },
-  tensionLine: { marginTop: 8, marginBottom: 2 },
 });

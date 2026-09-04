@@ -36,6 +36,21 @@ export interface NakshatraInfo {
   fraction: number;
 }
 
+/**
+ * How each tradition is named in prose.
+ *
+ * The engine identifies systems by the keys it uses internally — `humanDesign`,
+ * `chinese`. Those are fine in JSON and wrong in a sentence a person reads.
+ */
+export const SYSTEM_NAMES: Readonly<Record<string, string>> = {
+  western: 'Western',
+  vedic: 'Vedic',
+  chinese: 'Chinese',
+  numerology: 'Numerology',
+  humanDesign: 'Human Design',
+  tarot: 'Tarot',
+};
+
 /** The twelve tropical signs, indexed by a planet's `signIndex`. */
 export const TROPICAL_SIGNS = [
   'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',

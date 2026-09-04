@@ -79,7 +79,7 @@ function textOf(tree: ReactTestRenderer.ReactTestRenderer): string {
   const root = tree.toJSON();
   for (const node of Array.isArray(root) ? root : [root]) walk(node);
 
-  return found.join(' | ');
+  return found.join('');
 }
 
 describe('the chart screen', () => {
@@ -120,13 +120,32 @@ describe('the chart screen', () => {
     expect(rendered).toContain('Venus');
   });
 
-  it('shows every trait dimension the synthesis returned', async () => {
+  it('states each dimension as a claim rather than a position on a line', async () => {
     const rendered = textOf(await renderScreen());
 
-    // Both poles of each axis are labelled, so the position means something.
-    expect(rendered).toContain('Reflective');
-    expect(rendered).toContain('Outgoing');
-    expect(rendered).toContain('Improvising');
+    // The question being answered, and the answer.
+    expect(rendered).toContain('What do you trust when deciding?');
+    expect(rendered).toContain('Feeling');
+    expect(rendered).toContain('Connective');
+  });
+
+  it('separates unanimous findings from contested ones', async () => {
+    const rendered = textOf(await renderScreen());
+
+    expect(rendered).toContain('WHAT THEY ALL AGREE ON');
+    expect(rendered).toContain('WHERE THEY DISAGREE');
+
+    // A contested dimension names both camps, so the disagreement is legible
+    // rather than averaged away.
+    expect(rendered).toContain('read you as outgoing');
+    expect(rendered).toContain('Vedic reads you as reflective');
+  });
+
+  it('names traditions in prose, not by their internal keys', async () => {
+    const rendered = textOf(await renderScreen());
+
+    expect(rendered).toContain('Human Design');
+    expect(rendered).not.toContain('humanDesign');
   });
 
   it('reports a failure rather than rendering an empty chart', async () => {
