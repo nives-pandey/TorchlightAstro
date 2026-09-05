@@ -62,10 +62,18 @@ Design these fourteen. Where a screen has an empty, loading, or error state,
 show it.
 
 **Onboarding and account**
-1. **Splash** — wordmark on the ground, nothing else.
-2. **Sign in / create account** — one screen with a toggle between the two
-   modes. Fields: name (only when creating), email, password. Per-field error
-   messages sit under their own field.
+1. **Splash** — wordmark on the ground, nothing else. This is what a returning
+   person sees for the half second the stored session is being checked, so it
+   must not flash anything that looks like a sign-in prompt.
+2. **Sign in** — a single Google button and nothing else. No email field, no
+   password field, no create-account toggle: there is one way in, and signing in
+   for the first time *is* creating the account. Below the button, a line of
+   small print naming what the app will read from the Google account (name and
+   email, nothing more) and a link to the privacy policy — Google's branding
+   rules require the button to be recognisably theirs, so keep its shape and
+   wording conventional rather than restyling it into the palette. The screen
+   also needs its failed state: the sign-in was cancelled or refused, stated
+   plainly with a way to try again.
 3. **Birth details** — date, time, and place. Time is explicitly optional and
    the screen says what is lost without it. Place is a search field; results
    appear as a list, and once a place is chosen a second list offers nearby
@@ -93,11 +101,20 @@ show it.
 
 **Around the edges**
 11. **Profiles** — a list of saved birth profiles, with the person's own marked.
-12. **Settings** — account, house system (Placidus or Whole Sign), ayanamsa
-    (four options), theme, and account deletion.
+12. **Settings** — account (showing which Google account is signed in), house
+    system (Placidus or Whole Sign), ayanamsa (four options), theme, sign out,
+    and account deletion. Deletion is required by Google Play and must be
+    reachable here, with a confirmation that says plainly what is destroyed.
 13. **Contribution** — a voluntary support screen. This must never pressure,
     never gate content, and never imply anything is withheld.
 14. **Empty and error states** — no chart yet, offline, reading unavailable.
+
+### Authentication
+
+Google Sign-In is the only way in. There is no email-and-password path, no
+password reset, and no separate registration flow to design — a first sign-in
+creates the account silently. This removes four screens most apps need, and the
+ones that remain should feel like there was never a decision to make.
 
 ### What the screens actually contain
 
