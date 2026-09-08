@@ -22,7 +22,8 @@
  * Empty until the OAuth client exists in Google Cloud. The sign-in button
  * reports that plainly rather than failing silently.
  */
-export const GOOGLE_CLIENT_ID = '';
+export const GOOGLE_CLIENT_ID =
+  '337353731774-a3gogg4eh61m5rtbegco501jloun7bin.apps.googleusercontent.com';
 
 /** Whether Google sign-in can work at all in this build. */
 export const GOOGLE_SIGN_IN_AVAILABLE = GOOGLE_CLIENT_ID.length > 0;
