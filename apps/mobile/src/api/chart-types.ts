@@ -100,6 +100,13 @@ export interface Panchanga {
   elongation: number;
 }
 
+/** One planet's place in a divisional chart. */
+export interface VargaPlacement {
+  planet: string;
+  signIndex: number;
+  signName: string;
+}
+
 export interface VedicSection {
   ayanamsaDegrees: number;
   moonNakshatra: NakshatraInfo;
@@ -108,6 +115,8 @@ export interface VedicSection {
   dashas: DashaPeriod[];
   currentDasha: { mahadasha: DashaPeriod; antardasha: DashaPeriod | null } | null;
   panchanga: Panchanga;
+  /** Every planet's sign in each of the sixteen divisional charts. */
+  vargaCharts: Record<string, VargaPlacement[]>;
 }
 
 export interface Stem {
@@ -170,7 +179,15 @@ export interface TarotBirthCards {
 
 export interface GemstoneRecommendation {
   basis: 'ascendant-ruler' | 'moon-sign-ruler' | 'current-dasha';
-  gemstone: { name: string; planet: string; hex?: string };
+  gemstone: {
+    graha: string;
+    stone: string;
+    /** The traditional name, kept alongside the English one. */
+    sanskrit: string;
+    finger: string;
+    metal: string;
+    day: string;
+  };
 }
 
 export interface ColourRecommendation {

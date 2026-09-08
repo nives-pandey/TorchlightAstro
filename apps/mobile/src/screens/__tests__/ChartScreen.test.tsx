@@ -96,65 +96,35 @@ describe('the chart screen', () => {
     expect(tree.toJSON()).toBeTruthy();
   });
 
-  it('shows the placements a person came for', async () => {
+  it('shows the three placements a reader recognises first', async () => {
     const rendered = textOf(await renderScreen());
 
-    // Vedic: the Moon's sign and nakshatra.
+    // Rising, Sun and Moon, in the vocabulary each tradition uses for them.
+    expect(rendered).toContain('Rising');
     expect(rendered).toContain('Vrishabha');
-    expect(rendered).toContain('Rohini');
-
-    // Chinese: the day master, which is a stem object rather than a string.
-    expect(rendered).toContain('Yang Water');
-
-    // Human Design and tarot.
-    expect(rendered).toContain('4/6');
-    expect(rendered).toContain('The Lovers');
-
-    // Western: a sign name looked up from the index the response carries.
-    expect(rendered).toContain('Virgo');
   });
 
-  it('names the running dasha and its sub-period', async () => {
+  it('states every dimension with its tally', async () => {
     const rendered = textOf(await renderScreen());
 
-    expect(rendered).toContain('Jupiter');
-    expect(rendered).toContain('Venus');
+    expect(rendered).toContain('Expression');
+    expect(rendered).toContain('Orientation');
+    // A contested dimension shows the split rather than an averaged pole.
+    expect(rendered).toMatch(/Split \d–\d/);
   });
 
-  it('states each dimension as a claim rather than a position on a line', async () => {
+  it('lists the traditions as a way in, not as raw keys', async () => {
     const rendered = textOf(await renderScreen());
 
-    // The question being answered, and the answer.
-    expect(rendered).toContain('What do you trust when deciding?');
-    expect(rendered).toContain('Feeling');
-    expect(rendered).toContain('Connective');
-  });
-
-  it('separates unanimous findings from contested ones', async () => {
-    const rendered = textOf(await renderScreen());
-
-    expect(rendered).toContain('WHAT THEY ALL AGREE ON');
-    expect(rendered).toContain('WHERE THEY DISAGREE');
-
-    // A contested dimension names both camps, so the disagreement is legible
-    // rather than averaged away.
-    expect(rendered).toContain('read you as outgoing');
-    expect(rendered).toContain('Vedic reads you as reflective');
-  });
-
-  it('names traditions in prose, not by their internal keys', async () => {
-    const rendered = textOf(await renderScreen());
-
-    expect(rendered).toContain('Human Design');
+    expect(rendered).toContain('THE TRADITIONS');
     expect(rendered).not.toContain('humanDesign');
   });
 
   /**
-   * The engine returns a null pole whenever the weighted consensus lands near
-   * zero, and that happens for two opposite reasons: every tradition reading
-   * the person as moderate, or the traditions splitting evenly and cancelling
-   * out. Both rendered as "Balanced", which is the reverse of the truth for the
-   * second — and it printed directly above a sentence naming two opposed camps.
+   * The engine returns a null pole when the weighted consensus lands near zero,
+   * which happens both when every tradition reads the person as moderate and
+   * when they split evenly and cancel out. Calling the second "balanced" states
+   * the reverse of the truth.
    */
   it('calls an even split contested, not balanced', async () => {
     globalThis.fetch = jest.fn(async () => ({
@@ -164,10 +134,8 @@ describe('the chart screen', () => {
 
     const rendered = textOf(await renderScreen());
 
-    expect(rendered).toContain('Split');
-    // Both camps are named, so the label has to agree with the sentence below it.
-    expect(rendered).toContain('read you as outgoing');
-    expect(rendered).toContain('read you as reflective');
+    expect(rendered).toMatch(/Split \d–\d/);
+    expect(rendered).not.toContain('Balanced');
   });
 
   it('reports a failure rather than rendering an empty chart', async () => {

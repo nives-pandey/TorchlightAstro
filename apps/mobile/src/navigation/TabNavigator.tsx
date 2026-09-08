@@ -8,7 +8,7 @@
  * this file, via any medium, is strictly prohibited. See LICENSE.
  */
 
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Feather from '@react-native-vector-icons/feather';
 
@@ -17,6 +17,7 @@ import { LifeAreasScreen } from '../screens/LifeAreasScreen';
 import { TimelineScreen } from '../screens/TimelineScreen';
 import { TodayScreen } from '../screens/TodayScreen';
 import { YouScreen } from '../screens/YouScreen';
+import type { HouseSystem } from '../screens/SettingsScreen';
 import { fontFamilyForWeight } from '../ui/theme';
 import { useTheme } from '../ui/ThemeProvider';
 
@@ -48,25 +49,40 @@ const Tab = createBottomTabNavigator<TabParamList>();
  * unmounting the tab and remounting it — losing scroll position and forcing a
  * refetch each time the theme or a parent state changes.
  */
-const ProfileContext = createContext<string | null>(null);
-
-function useProfileId(): string {
-  const id = useContext(ProfileContext);
-  if (id === null) throw new Error('useProfileId must be used inside TabNavigator');
-  return id;
+interface TabState {
+  profileId: string;
+  houseSystem: HouseSystem;
+  setHouseSystem: (system: HouseSystem) => void;
 }
+
+const ProfileContext = createContext<TabState | null>(null);
+
+function useTabState(): TabState {
+  const state = useContext(ProfileContext);
+  if (state === null) throw new Error('useTabState must be used inside TabNavigator');
+  return state;
+}
+
 
 function TodayTab(): React.JSX.Element {
-  return <TodayScreen profileId={useProfileId()} />;
+  const { profileId, houseSystem } = useTabState();
+  return <TodayScreen profileId={profileId} houseSystem={houseSystem} />;
 }
 function ChartTab(): React.JSX.Element {
-  return <ChartScreen profileId={useProfileId()} />;
+  const { profileId, houseSystem } = useTabState();
+  return <ChartScreen profileId={profileId} houseSystem={houseSystem} />;
 }
 function LifeTab(): React.JSX.Element {
-  return <LifeAreasScreen profileId={useProfileId()} />;
+  const { profileId, houseSystem } = useTabState();
+  return <LifeAreasScreen profileId={profileId} houseSystem={houseSystem} />;
 }
 function TimelineTab(): React.JSX.Element {
-  return <TimelineScreen profileId={useProfileId()} />;
+  const { profileId, houseSystem } = useTabState();
+  return <TimelineScreen profileId={profileId} houseSystem={houseSystem} />;
+}
+function YouTab(): React.JSX.Element {
+  const { houseSystem, setHouseSystem } = useTabState();
+  return <YouScreen houseSystem={houseSystem} onHouseSystemChange={setHouseSystem} />;
 }
 
 const ICONS: Record<keyof TabParamList, 'sun' | 'circle' | 'compass' | 'clock' | 'user'> = {
@@ -79,10 +95,17 @@ const ICONS: Record<keyof TabParamList, 'sun' | 'circle' | 'compass' | 'clock' |
 
 export function TabNavigator({ profileId }: { profileId: string }): React.JSX.Element {
   const theme = useTheme();
-  const profile = useMemo(() => profileId, [profileId]);
+  // The house system lives here because it changes what every chart-reading tab
+  // requests, not only what Settings displays.
+  const [houseSystem, setHouseSystem] = useState<HouseSystem>('placidus');
+
+  const state = useMemo<TabState>(
+    () => ({ profileId, houseSystem, setHouseSystem }),
+    [profileId, houseSystem],
+  );
 
   return (
-    <ProfileContext.Provider value={profile}>
+    <ProfileContext.Provider value={state}>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
@@ -113,7 +136,7 @@ export function TabNavigator({ profileId }: { profileId: string }): React.JSX.El
       <Tab.Screen name="Chart" component={ChartTab} />
       <Tab.Screen name="Life" component={LifeTab} />
       <Tab.Screen name="Timeline" component={TimelineTab} />
-      <Tab.Screen name="You" component={YouScreen} />
+      <Tab.Screen name="You" component={YouTab} />
     </Tab.Navigator>
     </ProfileContext.Provider>
   );

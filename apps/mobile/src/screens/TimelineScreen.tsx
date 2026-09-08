@@ -9,12 +9,12 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError, api } from '../api/client';
 import type { Chart, ChartResponse } from '../api/chart-types';
-import { Button, Card, Screen, Text } from '../ui/components';
+import { Panel, Screen, Text } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
 
 /**
@@ -24,7 +24,13 @@ import { useTheme } from '../ui/ThemeProvider';
  * show a whole life at once with real dates rather than a mood. The period
  * running now is marked and expanded; the rest stay readable but quiet.
  */
-export function TimelineScreen({ profileId }: { profileId: string }): React.JSX.Element {
+export function TimelineScreen({
+  profileId,
+  houseSystem = 'placidus',
+}: {
+  profileId: string;
+  houseSystem?: 'placidus' | 'whole-sign';
+}): React.JSX.Element {
   const theme = useTheme();
 
   const [chart, setChart] = useState<Chart | null>(null);
@@ -33,13 +39,13 @@ export function TimelineScreen({ profileId }: { profileId: string }): React.JSX.
 
   const load = useCallback(async (): Promise<void> => {
     try {
-      const response = await api.get<ChartResponse>(`/profiles/${profileId}/chart`);
+      const response = await api.get<ChartResponse>(`/profiles/${profileId}/chart?houseSystem=${houseSystem}`);
       setChart(response.chart);
       setError(null);
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : 'Could not reach Torchlight.');
     }
-  }, [profileId]);
+  }, [profileId, houseSystem]);
 
   useEffect(() => {
     void load();
@@ -53,7 +59,15 @@ export function TimelineScreen({ profileId }: { profileId: string }): React.JSX.
           <Text variant="body" tone="muted" style={styles.errorText}>
             {error}
           </Text>
-          <Button label="Try again" variant="secondary" onPress={() => { void load(); }} />
+          <Pressable
+            onPress={() => { void load(); }}
+            accessibilityRole="button"
+            style={[styles.retry, { borderColor: theme.colors.rule }]}
+          >
+            <Text variant="bodyStrong" tone="primary">
+              Try again
+            </Text>
+          </Pressable>
         </View>
       </Screen>
     );
@@ -100,7 +114,7 @@ export function TimelineScreen({ profileId }: { profileId: string }): React.JSX.
           const finished = end.getTime() <= now;
 
           return (
-            <Card
+            <Panel
               key={`${period.planet}-${period.start}`}
               style={running ? { ...styles.card, borderColor: theme.colors.primary } : styles.card}
             >
@@ -130,7 +144,7 @@ export function TimelineScreen({ profileId }: { profileId: string }): React.JSX.
                   ) : null}
                 </View>
               </View>
-            </Card>
+            </Panel>
           );
         })}
 
@@ -144,6 +158,13 @@ export function TimelineScreen({ profileId }: { profileId: string }): React.JSX.
 }
 
 const styles = StyleSheet.create({
+  retry: {
+    borderWidth: 2,
+    height: 48,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   centred: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   errorText: { textAlign: 'center', marginVertical: 16 },
   subtitle: { marginTop: 6, marginBottom: 24 },

@@ -26,3 +26,14 @@ export const GOOGLE_CLIENT_ID = '';
 
 /** Whether Google sign-in can work at all in this build. */
 export const GOOGLE_SIGN_IN_AVAILABLE = GOOGLE_CLIENT_ID.length > 0;
+
+/**
+ * Whether contributions can be taken.
+ *
+ * False until the payment route is decided. Google Play requires its own
+ * billing for anything that unlocks content, and permits external processors
+ * only for what does not — the choice changes both the integration and the
+ * store listing, so the button says it is not open rather than opening a
+ * checkout that cannot complete.
+ */
+export const PAYMENTS_AVAILABLE = false;

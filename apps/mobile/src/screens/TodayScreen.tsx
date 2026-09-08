@@ -9,14 +9,14 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError, api } from '../api/client';
 import type { ChartResponse, LifeAreasResult, Reading } from '../api/chart-types';
 import type { Chart } from '../api/chart-types';
 import { AREA_ICONS, AREA_TONES } from '../ui/lifeAreas';
-import { Button, Card, Screen, Text } from '../ui/components';
+import { Panel, Screen, Text } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
 
 /**
@@ -27,7 +27,13 @@ import { useTheme } from '../ui/ThemeProvider';
  * Anything that needs a sentence explaining why it is on screen belongs behind
  * a tab instead.
  */
-export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Element {
+export function TodayScreen({
+  profileId,
+  houseSystem = 'placidus',
+}: {
+  profileId: string;
+  houseSystem?: 'placidus' | 'whole-sign';
+}): React.JSX.Element {
   const theme = useTheme();
 
   const [chart, setChart] = useState<Chart | null>(null);
@@ -38,14 +44,14 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
 
   const load = useCallback(async (): Promise<void> => {
     try {
-      const response = await api.get<ChartResponse>(`/profiles/${profileId}/chart`);
+      const response = await api.get<ChartResponse>(`/profiles/${profileId}/chart?houseSystem=${houseSystem}`);
       setChart(response.chart);
       setError(null);
 
       // Both are independent of the chart render, so neither blocks it and a
       // failure in one costs a section rather than the screen.
       api
-        .get<LifeAreasResult>(`/profiles/${profileId}/life-areas`)
+        .get<LifeAreasResult>(`/profiles/${profileId}/life-areas?houseSystem=${houseSystem}`)
         .then(setAreas)
         .catch(() => setAreas(null));
       api
@@ -57,7 +63,7 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
         caught instanceof ApiError ? caught.message : 'Could not reach Torchlight.',
       );
     }
-  }, [profileId]);
+  }, [profileId, houseSystem]);
 
   useEffect(() => {
     void load();
@@ -71,7 +77,15 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
           <Text variant="body" tone="muted" style={styles.errorText}>
             {error}
           </Text>
-          <Button label="Try again" variant="secondary" onPress={() => { void load(); }} />
+          <Pressable
+            onPress={() => { void load(); }}
+            accessibilityRole="button"
+            style={[styles.retry, { borderColor: theme.colors.rule }]}
+          >
+            <Text variant="bodyStrong" tone="primary">
+              Try again
+            </Text>
+          </Pressable>
         </View>
       </Screen>
     );
@@ -124,7 +138,7 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
             <Text variant="label" tone="muted" style={styles.section}>
               THE LONG WEATHER
             </Text>
-            <Card>
+            <Panel>
               <Text variant="body">
                 You are in a {dasha.mahadasha.planet} period that runs to{' '}
                 {new Date(dasha.mahadasha.end).getFullYear()}
@@ -134,7 +148,7 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
                     ).getFullYear()}.`
                   : '.'}
               </Text>
-            </Card>
+            </Panel>
           </>
         ) : null}
 
@@ -144,7 +158,7 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
               ACTIVE NOW · {active.length} OF {areas.areas.length} AREAS
             </Text>
             {active.map((area) => (
-              <Card key={area.key} style={styles.areaCard}>
+              <Panel key={area.key} style={styles.areaCard}>
                 <View style={styles.areaRow}>
                   <View
                     style={[
@@ -168,18 +182,18 @@ export function TodayScreen({ profileId }: { profileId: string }): React.JSX.Ele
                     </Text>
                   </View>
                 </View>
-              </Card>
+              </Panel>
             ))}
           </>
         ) : null}
 
         {areas && !areas.available ? (
-          <Card style={styles.notice}>
+          <Panel style={styles.notice}>
             <Text variant="caption" tone="muted">
               Life areas need a birth time. Without one the houses would be guesses, so they
               are left out.
             </Text>
-          </Card>
+          </Panel>
         ) : null}
       </ScrollView>
     </Screen>
@@ -193,6 +207,13 @@ function firstSentence(text: string): string {
 }
 
 const styles = StyleSheet.create({
+  retry: {
+    borderWidth: 2,
+    height: 48,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   centred: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   errorText: { textAlign: 'center', marginVertical: 16 },
   headline: { marginTop: 8 },

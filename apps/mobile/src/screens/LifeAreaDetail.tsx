@@ -14,7 +14,7 @@ import Feather from '@react-native-vector-icons/feather';
 
 import type { Chart, LifeAreaReading } from '../api/chart-types';
 import { AREA_ICONS, AREA_TONES } from '../ui/lifeAreas';
-import { Card, Screen, Text } from '../ui/components';
+import { Panel, Screen, Text } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
 
 /**
@@ -89,20 +89,20 @@ export function LifeAreaDetail({
         </View>
 
         {/* What the tradition says these houses concern. */}
-        <Card style={styles.card}>
+        <Panel style={styles.card}>
           <Text variant="body">This area covers {area.domains.join(', ')}.</Text>
           <Text variant="caption" tone="subtle" style={styles.source}>
             Ruled by {area.rulers.join(' and ')} · {area.houses.map((h) => ordinal(h)).join(', ')}{' '}
             from {chart.vedic.ascendantRashi?.name ?? 'the ascendant'} rising
           </Text>
-        </Card>
+        </Panel>
 
         {area.occupants.length > 0 ? (
           <>
             <Text variant="label" tone="muted" style={styles.section}>
               WHAT SITS HERE
             </Text>
-            <Card style={styles.card}>
+            <Panel style={styles.card}>
               {area.occupants.map((occupant, index) => (
                 <View
                   key={`${occupant.planet}-${occupant.house}`}
@@ -125,7 +125,7 @@ export function LifeAreaDetail({
                   </Text>
                 </View>
               ))}
-            </Card>
+            </Panel>
           </>
         ) : null}
 
@@ -134,7 +134,7 @@ export function LifeAreaDetail({
         </Text>
 
         {past.length > 0 ? (
-          <Card style={styles.card}>
+          <Panel style={styles.card}>
             <Text variant="caption" tone="subtle">
               Until {new Date(past[past.length - 1]?.end ?? 0).getFullYear()}
             </Text>
@@ -146,11 +146,11 @@ export function LifeAreaDetail({
                     .join(' and ')} ruled here in earlier periods, so this area had its turns before now.`
                 : 'No earlier period was ruled by a planet that owns this area.'}
             </Text>
-          </Card>
+          </Panel>
         ) : null}
 
         {running ? (
-          <Card style={{ ...styles.card, borderColor: tone.ink }}>
+          <Panel style={{ ...styles.card, borderColor: tone.ink }}>
             <Text variant="caption" tone="primary">
               Now · to {new Date(running.end).getFullYear()}
             </Text>
@@ -172,11 +172,11 @@ export function LifeAreaDetail({
                   ).getFullYear()}`
                 : ''}
             </Text>
-          </Card>
+          </Panel>
         ) : null}
 
         {ahead.length > 0 ? (
-          <Card style={styles.card}>
+          <Panel style={styles.card}>
             <Text variant="caption" tone="subtle">
               From {new Date(ahead[0]?.start ?? 0).getFullYear()}
             </Text>
@@ -189,7 +189,7 @@ export function LifeAreaDetail({
                     .join(', and ')} — this area comes forward again then.`
                 : `The next period is ruled by ${ahead[0]?.planet}, which does not own this area.`}
             </Text>
-          </Card>
+          </Panel>
         ) : null}
       </ScrollView>
     </Screen>

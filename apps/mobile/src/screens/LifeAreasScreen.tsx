@@ -9,13 +9,13 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, ScrollView, StyleSheet, View } from 'react-native';
 import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError, api } from '../api/client';
 import type { Chart, ChartResponse, LifeAreaReading, LifeAreasResult } from '../api/chart-types';
 import { AREA_ICONS, AREA_TONES } from '../ui/lifeAreas';
-import { Button, Card, Screen, Text } from '../ui/components';
+import { Panel, Screen, Text } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
 import { LifeAreaDetail } from './LifeAreaDetail';
 
@@ -26,7 +26,13 @@ import { LifeAreaDetail } from './LifeAreaDetail';
  * rules the running period or sub-period, which is why the screen can say
  * something true about now rather than describing a fixed disposition.
  */
-export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX.Element {
+export function LifeAreasScreen({
+  profileId,
+  houseSystem = 'placidus',
+}: {
+  profileId: string;
+  houseSystem?: 'placidus' | 'whole-sign';
+}): React.JSX.Element {
   const theme = useTheme();
 
   const [result, setResult] = useState<LifeAreasResult | null>(null);
@@ -38,8 +44,8 @@ export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX
   const load = useCallback(async (): Promise<void> => {
     try {
       const [areas, chartResponse] = await Promise.all([
-        api.get<LifeAreasResult>(`/profiles/${profileId}/life-areas`),
-        api.get<ChartResponse>(`/profiles/${profileId}/chart`),
+        api.get<LifeAreasResult>(`/profiles/${profileId}/life-areas?houseSystem=${houseSystem}`),
+        api.get<ChartResponse>(`/profiles/${profileId}/chart?houseSystem=${houseSystem}`),
       ]);
       setResult(areas);
       setChart(chartResponse.chart);
@@ -47,7 +53,7 @@ export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX
     } catch (caught) {
       setError(caught instanceof ApiError ? caught.message : 'Could not reach Torchlight.');
     }
-  }, [profileId]);
+  }, [profileId, houseSystem]);
 
   useEffect(() => {
     void load();
@@ -65,7 +71,15 @@ export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX
           <Text variant="body" tone="muted" style={styles.errorText}>
             {error}
           </Text>
-          <Button label="Try again" variant="secondary" onPress={() => { void load(); }} />
+          <Pressable
+            onPress={() => { void load(); }}
+            accessibilityRole="button"
+            style={[styles.retry, { borderColor: theme.colors.rule }]}
+          >
+            <Text variant="bodyStrong" tone="primary">
+              Try again
+            </Text>
+          </Pressable>
         </View>
       </Screen>
     );
@@ -121,7 +135,7 @@ export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX
         {result.areas.map((area) => {
           const tone = AREA_TONES(theme)[area.key];
           return (
-            <Card
+            <Panel
               key={area.key}
               style={styles.card}
               onPress={() => setOpen(area)}
@@ -154,7 +168,7 @@ export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX
                   </Text>
                 </View>
               </View>
-            </Card>
+            </Panel>
           );
         })}
 
@@ -168,6 +182,13 @@ export function LifeAreasScreen({ profileId }: { profileId: string }): React.JSX
 }
 
 const styles = StyleSheet.create({
+  retry: {
+    borderWidth: 2,
+    height: 48,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   centred: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   errorText: { textAlign: 'center', marginVertical: 16 },
   emptyTitle: { marginTop: 16, textAlign: 'center' },
