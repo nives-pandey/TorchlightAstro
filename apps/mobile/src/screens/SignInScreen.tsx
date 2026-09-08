@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
   },
-  primaryLabel: { marginLeft: 12, fontWeight: '800' },
+  primaryLabel: { marginLeft: 12, fontWeight: '800' as const },
   error: { marginTop: 16 },
   foot: { marginTop: 'auto' },
   rule: { height: 2, marginBottom: 10 },

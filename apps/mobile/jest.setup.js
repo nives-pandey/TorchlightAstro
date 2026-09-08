@@ -20,6 +20,19 @@ jest.mock('react-native-keychain', () => ({
   resetGenericPassword: jest.fn(async () => true),
 }));
 
+// Google Sign-In talks to Play Services, which does not exist in Node. The
+// stand-in lets the sign-in screen render; a test that needs a successful
+// sign-in overrides these per case.
+jest.mock('@react-native-google-signin/google-signin', () => ({
+  GoogleSignin: {
+    configure: jest.fn(),
+    hasPlayServices: jest.fn(async () => true),
+    signIn: jest.fn(async () => ({ data: { idToken: 'test-token' } })),
+    signOut: jest.fn(async () => undefined),
+  },
+  statusCodes: { SIGN_IN_CANCELLED: 'SIGN_IN_CANCELLED' },
+}));
+
 // Icons render through a native font. The stand-in keeps the component's
 // contract — a name, a size, a colour — so a test can still assert on which
 // icon was asked for.

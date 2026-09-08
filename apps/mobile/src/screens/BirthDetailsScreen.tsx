@@ -14,7 +14,7 @@ import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError, api } from '../api/client';
 import { useAuth } from '../auth/AuthProvider';
-import { Button, Card, Screen, Text, TextField } from '../ui/components';
+import { Screen, Text, TextField } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
 
 export interface Place {
@@ -28,20 +28,23 @@ export interface Place {
   timezone: string;
 }
 
-interface BirthProfile {
-  id: string;
-}
+/** How well the person knows their birth time. */
+type Certainty = 'exact' | 'within15' | 'unknown';
 
 /**
  * Where a person enters their birth.
  *
- * The place field is the interesting part. A plain text search fails for Indian
- * villages, where transliteration has no canonical spelling — a village a
- * person calls "Lodhwariya" is stored as "Lodhauria", and neither exact nor
- * fuzzy matching finds it. So once a place is chosen, nearby settlements are
- * offered: pick the town you know, then narrow to the village.
+ * Two things here are load-bearing.
  *
- * That also happens to be how someone describes where they were born.
+ * The place field, because a plain text search fails for Indian villages, where
+ * transliteration has no canonical spelling — a village its residents call
+ * "Lodhwariya" is stored as "Lodhauria", and neither exact nor fuzzy matching
+ * finds it. Choosing a place offers the settlements around it, so a person
+ * reaches their village by narrowing from the town they know.
+ *
+ * And the time certainty, because "unknown" is a different answer from a guess.
+ * Someone who half-remembers an afternoon birth should not have that recorded
+ * as 14:30 exactly, and the chart is honest about what it cannot compute.
  */
 export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.JSX.Element {
   const theme = useTheme();
@@ -49,6 +52,7 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
 
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [certainty, setCertainty] = useState<Certainty>('exact');
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Place[]>([]);
   const [nearby, setNearby] = useState<Place[]>([]);
@@ -92,8 +96,6 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
     setResults([]);
     setQuery(chosen.name);
 
-    // Offer smaller settlements around the chosen point. Silent on failure —
-    // this is a refinement, and the chosen place is already usable.
     try {
       setNearby(
         await api.get<Place[]>(
@@ -112,10 +114,12 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
     setError(null);
 
     try {
-      await api.post<BirthProfile>('/profiles', {
+      await api.post('/profiles', {
         displayName: user?.displayName ?? 'My chart',
         birthDate: date.trim(),
-        ...(time.trim() ? { birthTime: time.trim() } : {}),
+        // An unknown time is sent as absent rather than as a guess, so the
+        // engine omits houses instead of computing wrong ones.
+        ...(certainty !== 'unknown' && time.trim() ? { birthTime: time.trim() } : {}),
         placeName: [place.name, place.region, place.country].filter(Boolean).join(', '),
         countryCode: place.countryCode,
         timezone: place.timezone,
@@ -125,45 +129,84 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
       });
       onSaved();
     } catch (caught) {
-      setError(
-        caught instanceof ApiError ? caught.message : 'Could not save. Check your connection.',
-      );
+      setError(caught instanceof ApiError ? caught.message : 'Could not save. Check your connection.');
     } finally {
       setBusy(false);
     }
   };
 
-  const ready = /^\d{4}-\d{2}-\d{2}$/.test(date.trim()) && place !== null;
+  const ready =
+    /^\d{4}-\d{2}-\d{2}$/.test(date.trim()) &&
+    place !== null &&
+    (certainty === 'unknown' || /^\d{1,2}:\d{2}$/.test(time.trim()));
 
   return (
     <Screen scroll avoidKeyboard>
-      <View style={[styles.content, { padding: theme.spacing.xl }]}>
-        <Text variant="display">Your birth</Text>
-        <Text variant="body" tone="muted" style={styles.intro}>
-          The time shapes your houses and rising sign. Leave it blank if you do not know it.
-        </Text>
+      <View style={[styles.content, { padding: theme.spacing.lg + 4 }]}>
+        <Text variant="display">Birth details</Text>
+        <View style={[styles.underline, { backgroundColor: theme.colors.rule }]} />
 
         <TextField
-          label="Date"
+          label="Date of birth"
           value={date}
           onChangeText={setDate}
-          placeholder="1985-07-22"
+          placeholder="1990-08-15"
           keyboardType="numbers-and-punctuation"
           autoCorrect={false}
         />
 
-        <TextField
-          label="Time"
-          value={time}
-          onChangeText={setTime}
-          placeholder="14:20"
-          keyboardType="numbers-and-punctuation"
-          autoCorrect={false}
-          hint="24-hour clock"
-        />
+        {certainty !== 'unknown' ? (
+          <TextField
+            label="Time"
+            value={time}
+            onChangeText={setTime}
+            placeholder="14:30"
+            keyboardType="numbers-and-punctuation"
+            autoCorrect={false}
+            hint="24-hour clock"
+          />
+        ) : null}
+
+        <Text variant="label" tone="muted" style={styles.groupLabel}>
+          How sure are you of the time?
+        </Text>
+        <View style={styles.segments}>
+          {(
+            [
+              ['exact', 'Exact'],
+              ['within15', 'Within 15 min'],
+              ['unknown', 'Unknown'],
+            ] as const
+          ).map(([value, label]) => {
+            const selected = certainty === value;
+            return (
+              <Pressable
+                key={value}
+                onPress={() => setCertainty(value)}
+                accessibilityRole="radio"
+                accessibilityState={{ selected }}
+                style={[
+                  styles.segment,
+                  selected ? { backgroundColor: theme.colors.primary } : styles.segmentIdle,
+                  { borderColor: theme.colors.rule },
+                ]}
+              >
+                <Text
+                  variant="caption"
+                  style={[
+                    styles.segmentLabel,
+                    { color: selected ? theme.colors.primaryContrast : theme.colors.text },
+                  ]}
+                >
+                  {label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
 
         <TextField
-          label="Place"
+          label="Place of birth"
           value={query}
           onChangeText={(text) => {
             setQuery(text);
@@ -183,22 +226,23 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
         ))}
 
         {place ? (
-          <Card style={styles.chosen}>
+          <View style={[styles.chosen, { borderColor: theme.colors.rule }]}>
             <View style={styles.chosenRow}>
               <Feather name="map-pin" size={16} color={theme.colors.primary} />
               <View style={styles.chosenText}>
                 <Text variant="bodyStrong">{place.name}</Text>
-                <Text variant="caption" tone="muted">
-                  {[place.region, place.country].filter(Boolean).join(', ')} · {place.timezone}
+                <Text variant="caption" tone="subtle">
+                  {place.latitude.toFixed(4)}° N, {place.longitude.toFixed(4)}° E ·{' '}
+                  {place.timezone}
                 </Text>
               </View>
             </View>
-          </Card>
+          </View>
         ) : null}
 
         {nearby.length > 0 ? (
           <View style={styles.nearby}>
-            <Text variant="label" tone="muted" style={styles.nearbyLabel}>
+            <Text variant="label" tone="muted" style={styles.groupLabel}>
               Nearby
             </Text>
             {nearby.slice(0, 8).map((option) => (
@@ -215,31 +259,46 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
           </View>
         ) : null}
 
+        <View style={[styles.why, { borderColor: theme.colors.rule }]}>
+          <Text variant="label" tone="primary">
+            Why the time matters
+          </Text>
+          <Text variant="caption" tone="muted" style={styles.whyBody}>
+            Your rising sign, the sixteen divisional charts and the quarter of your moon star
+            all move with the clock. Eight minutes can change them.
+          </Text>
+        </View>
+
         {error ? (
-          <View
-            style={[
-              styles.banner,
-              {
-                backgroundColor: theme.colors.dangerSurface,
-                borderRadius: theme.radius.md,
-                padding: theme.spacing.md,
-              },
-            ]}
-          >
+          <View style={[styles.error, { backgroundColor: theme.colors.dangerSurface }]}>
             <Text variant="caption" tone="danger">
               {error}
             </Text>
           </View>
         ) : null}
 
-        <Button
-          label="Continue"
+        <Pressable
           onPress={() => { void save(); }}
-          loading={busy}
-          disabled={!ready}
-          block
-          style={styles.submit}
-        />
+          disabled={!ready || busy}
+          accessibilityRole="button"
+          style={({ pressed }) => [
+            styles.submit,
+            {
+              backgroundColor: ready ? theme.colors.primary : theme.colors.surface2,
+              opacity: pressed ? 0.8 : 1,
+            },
+          ]}
+        >
+          <Text
+            variant="bodyStrong"
+            style={[
+              styles.submitLabel,
+              { color: ready ? theme.colors.primaryContrast : theme.colors.textSubtle },
+            ]}
+          >
+            {busy ? 'Reading…' : 'Read my chart'}
+          </Text>
+        </Pressable>
       </View>
     </Screen>
   );
@@ -255,11 +314,7 @@ function PlaceRow({ place, onPress }: { place: Place; onPress: () => void }): Re
       accessibilityLabel={`${place.name}, ${place.region}`}
       style={({ pressed }) => [
         styles.row,
-        {
-          borderBottomColor: theme.colors.border,
-          paddingVertical: theme.spacing.md,
-          opacity: pressed ? 0.6 : 1,
-        },
+        { borderBottomColor: theme.colors.border, opacity: pressed ? 0.6 : 1 },
       ]}
     >
       <View style={styles.rowText}>
@@ -274,21 +329,35 @@ function PlaceRow({ place, onPress }: { place: Place; onPress: () => void }): Re
 }
 
 const styles = StyleSheet.create({
-  content: { flex: 1, justifyContent: 'center' },
-  intro: { marginTop: 8, marginBottom: 28 },
+  content: { flex: 1 },
+  underline: { width: 56, height: 2, marginTop: 8, marginBottom: 24 },
+  groupLabel: { marginTop: 16, marginBottom: 10 },
+  segments: { flexDirection: 'row', gap: 8, marginBottom: 8 },
+  segment: {
+    flex: 1,
+    height: 44,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  segmentIdle: { backgroundColor: 'transparent' },
+  segmentLabel: { fontWeight: '700' },
+  submitLabel: { fontWeight: '800' },
   spinner: { marginVertical: 12 },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingVertical: 12,
   },
   rowText: { flex: 1 },
-  chosen: { marginTop: 4, marginBottom: 8 },
+  chosen: { borderWidth: 2, padding: 12, marginTop: 8 },
   chosenRow: { flexDirection: 'row', alignItems: 'center' },
   chosenText: { marginLeft: 10, flex: 1 },
-  nearby: { marginTop: 16 },
-  nearbyLabel: { marginBottom: 4 },
-  banner: { marginTop: 16 },
-  submit: { marginTop: 24 },
+  nearby: { marginTop: 8 },
+  why: { borderWidth: 2, padding: 14, marginTop: 24 },
+  whyBody: { marginTop: 8 },
+  error: { padding: 12, marginTop: 16 },
+  submit: { height: 56, alignItems: 'center', justifyContent: 'center', marginTop: 20 },
 });

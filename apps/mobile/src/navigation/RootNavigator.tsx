@@ -9,13 +9,12 @@
  */
 
 import React from 'react';
-import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
 import { useAuth } from '../auth/AuthProvider';
 import { BirthDetailsScreen } from '../screens/BirthDetailsScreen';
 import { TabNavigator } from './TabNavigator';
 import { SignInScreen } from '../screens/SignInScreen';
-import { useTheme } from '../ui/ThemeProvider';
+import { SplashScreen } from '../screens/SplashScreen';
 
 /**
  * Which screen a person sees, decided by what the session knows.
@@ -37,17 +36,12 @@ import { useTheme } from '../ui/ThemeProvider';
  * is where it goes when that happens.
  */
 export function RootNavigator(): React.JSX.Element {
-  const theme = useTheme();
   const { user, restoring, reloadUser } = useAuth();
 
   // The stored session is being checked. Showing sign-in first and then
   // replacing it a moment later reads as a flicker and looks broken.
   if (restoring) {
-    return (
-      <View style={[styles.splash, { backgroundColor: theme.colors.bg }]}>
-        <ActivityIndicator color={theme.colors.primary} />
-      </View>
-    );
+    return <SplashScreen />;
   }
 
   if (!user) {
@@ -63,6 +57,3 @@ export function RootNavigator(): React.JSX.Element {
   return <TabNavigator profileId={user.primaryBirthProfileId} />;
 }
 
-const styles = StyleSheet.create({
-  splash: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-});

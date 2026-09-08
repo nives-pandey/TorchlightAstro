@@ -15,7 +15,7 @@ module.exports = {
    * and have to be run through Babel like first-party source.
    */
   transformIgnorePatterns: [
-    'node_modules/(?!(?:@react-native|react-native|@react-navigation|react-native-keychain)/)',
+    'node_modules/(?!(?:@react-native|react-native|@react-navigation|react-native-keychain|@react-native-google-signin)/)',
   ],
 
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
