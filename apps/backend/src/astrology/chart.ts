@@ -31,7 +31,13 @@ import { nakshatraOf, rashiOf, type NakshatraInfo, type RashiInfo } from './syst
 import { numerologyProfile, type NumerologyProfile } from './systems/numerology';
 import { panchangaOf, type Panchanga } from './systems/panchanga';
 import { tarotBirthCards, type TarotBirthCards } from './systems/tarot';
-import { allVargas, type VargaPosition, type VargaType } from './systems/varga';
+import {
+  VARGA_TYPES,
+  allVargas,
+  vargaOf,
+  type VargaPosition,
+  type VargaType,
+} from './systems/varga';
 
 /**
  * Assembles a complete chart from one birth.
@@ -111,6 +117,14 @@ export interface VedicSection {
   currentDasha: ReturnType<typeof activeDasha>;
   /** Divisional charts for the Moon, the primary Vedic significator. */
   moonVargas: Record<VargaType, VargaPosition>;
+  /**
+   * Every planet's position in every divisional chart.
+   *
+   * A varga is a re-reading of the same sidereal longitudes at a finer
+   * resolution, so this adds no astronomy — but a divisional chart is a chart,
+   * and showing only the Moon's place in it is showing a twelfth of the answer.
+   */
+  vargaCharts: Record<VargaType, { planet: string; signIndex: number; signName: string }[]>;
   panchanga: Panchanga;
 }
 
@@ -143,6 +157,36 @@ export interface Chart {
  * affects rather than requiring a guess about which are stale.
  */
 export const ENGINE_VERSION = '1.0.0';
+
+/**
+ * Every planet's sign in every divisional chart.
+ *
+ * A varga divides each sign into equal parts and maps them onto the twelve
+ * signs again, so this is a re-reading of longitudes the engine has already
+ * resolved rather than fresh astronomy — but a divisional chart is a whole
+ * chart, and the Moon alone is a twelfth of it.
+ */
+function buildVargaCharts(
+  planets: PlacedPlanet[],
+): Record<VargaType, { planet: string; signIndex: number; signName: string }[]> {
+  const charts = {} as Record<
+    VargaType,
+    { planet: string; signIndex: number; signName: string }[]
+  >;
+
+  for (const varga of VARGA_TYPES) {
+    charts[varga] = planets.map((planet) => {
+      const position = vargaOf(planet.siderealLongitude, varga);
+      return {
+        planet: planet.name,
+        signIndex: position.signIndex,
+        signName: position.signName,
+      };
+    });
+  }
+
+  return charts;
+}
 
 /** Tropical sign index, 1-12, from a longitude. */
 function signIndexOf(longitude: number): number {
@@ -242,6 +286,7 @@ export function buildChart(input: BirthInput): Chart {
     dashas,
     currentDasha: activeDasha(dashas, new Date()),
     moonVargas: allVargas(moon.siderealLongitude),
+    vargaCharts: buildVargaCharts(planets),
     panchanga: panchangaOf(sun.siderealLongitude, moon.siderealLongitude),
   };
 

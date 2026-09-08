@@ -309,4 +309,52 @@ describe('tropicalSignName', () => {
     expect(tropicalSignName(370)).toBe('Aries');
     expect(tropicalSignName(-10)).toBe('Pisces');
   });
+
+  /**
+   * A divisional chart is a whole chart, and the engine previously exposed only
+   * the Moon's place in each — a twelfth of the answer, which is not enough to
+   * draw one.
+   */
+  describe('divisional charts', () => {
+    const chart = buildChart(DELHI);
+
+    it('places every planet in all sixteen divisions', () => {
+      const divisions = Object.keys(chart.vedic.vargaCharts);
+      expect(divisions).toHaveLength(16);
+
+      for (const division of divisions) {
+        const positions = chart.vedic.vargaCharts[division as keyof typeof chart.vedic.vargaCharts];
+        expect(positions).toHaveLength(chart.western.planets.length);
+
+        for (const position of positions) {
+          expect(position.signIndex).toBeGreaterThanOrEqual(1);
+          expect(position.signIndex).toBeLessThanOrEqual(12);
+          expect(position.signName.length).toBeGreaterThan(0);
+        }
+      }
+    });
+
+    it('agrees with the Moon-only vargas it already computed', () => {
+      // Two routes to the same number: if the new bulk path disagrees with the
+      // verified single-planet one, the bulk path is wrong.
+      for (const [division, moonPosition] of Object.entries(chart.vedic.moonVargas)) {
+        const fromChart = chart.vedic.vargaCharts[
+          division as keyof typeof chart.vedic.vargaCharts
+        ].find((p) => p.planet === 'Moon');
+
+        expect(fromChart?.signIndex).toBe(moonPosition.signIndex);
+        expect(fromChart?.signName).toBe(moonPosition.signName);
+      }
+    });
+
+    it('leaves D1 identical to the sidereal signs in the main chart', () => {
+      // D1 is the birth chart itself, so any difference is an error in the
+      // division arithmetic rather than a finer reading.
+      for (const position of chart.vedic.vargaCharts.D1) {
+        const planet = chart.western.planets.find((p) => p.name === position.planet);
+        expect(position.signIndex).toBe(planet?.siderealSign.index);
+      }
+    });
+  });
+
 });

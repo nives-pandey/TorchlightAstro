@@ -18,8 +18,10 @@ import React, {
   useState,
   type ReactNode,
 } from 'react';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import * as Keychain from 'react-native-keychain';
 
+import { GOOGLE_CLIENT_ID } from '../config';
 import { api, configureClient } from '../api/client';
 
 /**
@@ -56,6 +58,8 @@ interface AuthContextValue {
   restoring: boolean;
   signUp: (email: string, password: string, displayName: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
+  /** Signs in with Google, creating the account on first use. */
+  signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   /** Refreshes the cached user after something changes it server-side. */
   reloadUser: () => Promise<void>;
@@ -64,6 +68,16 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 const KEYCHAIN_SERVICE = 'app.torchlight.session';
+
+/**
+ * The OAuth client Google issues tokens for.
+ *
+ * This is the *web* client id, not the Android one: the Android client
+ * authorises the app to ask, while the id token is minted for the web client
+ * and that is what the backend verifies its audience against. Using the Android
+ * id here produces a token the server correctly refuses.
+ */
+const GOOGLE_WEB_CLIENT_ID = GOOGLE_CLIENT_ID;
 
 export function AuthProvider({ children }: { children: ReactNode }): React.JSX.Element {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -166,6 +180,35 @@ export function AuthProvider({ children }: { children: ReactNode }): React.JSX.E
     [persist],
   );
 
+
+  const signInWithGoogle = useCallback(async (): Promise<void> => {
+    // Configured on demand rather than at module load, so a missing client id
+    // surfaces when someone taps the button instead of crashing the app on
+    // launch.
+    GoogleSignin.configure({ webClientId: GOOGLE_WEB_CLIENT_ID });
+
+    let idToken: string | null = null;
+    try {
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      const result = await GoogleSignin.signIn();
+      idToken = result.data?.idToken ?? null;
+    } catch (error) {
+      // Dismissing the account picker is a decision, not a failure.
+      const code = (error as { code?: string }).code;
+      if (code === statusCodes.SIGN_IN_CANCELLED) {
+        throw new Error('cancelled');
+      }
+      throw error;
+    }
+
+    if (!idToken) {
+      throw new Error('Google returned no identity token');
+    }
+
+    const session = await api.post<Session>('/auth/google', { idToken }, true);
+    await persist(session);
+  }, [persist]);
+
   const signOut = useCallback(async (): Promise<void> => {
     const stored = refreshToken.current;
 
@@ -188,8 +231,8 @@ export function AuthProvider({ children }: { children: ReactNode }): React.JSX.E
   }, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ user, restoring, signUp, signIn, signOut, reloadUser }),
-    [user, restoring, signUp, signIn, signOut, reloadUser],
+    () => ({ user, restoring, signUp, signIn, signInWithGoogle, signOut, reloadUser }),
+    [user, restoring, signUp, signIn, signInWithGoogle, signOut, reloadUser],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

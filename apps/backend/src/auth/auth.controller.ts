@@ -21,11 +21,13 @@ import {
 import { Throttle } from '@nestjs/throttler';
 import {
   refreshInputSchema,
+  googleSignInInputSchema,
   signInInputSchema,
   signUpInputSchema,
   type AuthSession,
   type AuthUser,
   type RefreshInput,
+  type GoogleSignInInput,
   type SignInInput,
   type SignUpInput,
 } from '@torchlight/shared-types';
@@ -51,6 +53,22 @@ export class AuthController {
   @UsePipes(new ZodValidationPipe(signUpInputSchema))
   signUp(@Body() input: SignUpInput): Promise<AuthSession> {
     return this.auth.signUp(input.email, input.password, input.displayName);
+  }
+
+
+  /**
+   * Signs in with Google, creating the account on first use.
+   *
+   * Throttled more loosely than the password route: there is no secret to
+   * guess here, since the token is verified against Google's own keys and a
+   * forged one fails that check rather than this limit.
+   */
+  @Post('google')
+  @HttpCode(200)
+  @Throttle({ default: { limit: 30, ttl: 3_600_000 } })
+  @UsePipes(new ZodValidationPipe(googleSignInInputSchema))
+  signInWithGoogle(@Body() input: GoogleSignInInput): Promise<AuthSession> {
+    return this.auth.signInWithGoogle(input.idToken);
   }
 
   /**

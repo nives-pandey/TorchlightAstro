@@ -9,120 +9,97 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
+import Feather from '@react-native-vector-icons/feather';
 
 import { ApiError } from '../api/client';
 import { useAuth } from '../auth/AuthProvider';
-import { Button, Screen, Text, TextField } from '../ui/components';
+import { GOOGLE_SIGN_IN_AVAILABLE } from '../config';
+import { Screen, Text } from '../ui/components';
 import { useTheme } from '../ui/ThemeProvider';
 
 /**
- * One screen for both signing in and creating an account.
+ * One way in.
  *
- * Separate screens would mean a person who guessed wrong has to find their way
- * to the other one. A single toggle is one tap, and the fields differ by
- * exactly one.
+ * No email field, no password field, no create-account toggle: signing in for
+ * the first time *is* creating the account. That removes four screens most apps
+ * need — registration, password reset, forgot-password, email verification —
+ * and none of them was ever worth the reader's attention.
  */
 export function SignInScreen(): React.JSX.Element {
   const theme = useTheme();
-  const { signIn, signUp } = useAuth();
+  const { signInWithGoogle } = useAuth();
 
-  const [creating, setCreating] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const submit = async (): Promise<void> => {
+  const google = async (): Promise<void> => {
+    if (!GOOGLE_SIGN_IN_AVAILABLE) {
+      // Better to say so than to open a Google dialog that cannot complete.
+      setError('Google sign-in is not configured in this build yet.');
+      return;
+    }
+
     setBusy(true);
     setError(null);
-    setFieldErrors({});
 
     try {
-      if (creating) {
-        await signUp(email.trim(), password, name.trim());
-      } else {
-        await signIn(email.trim(), password);
-      }
+      await signInWithGoogle();
     } catch (caught) {
-      if (caught instanceof ApiError) {
-        setError(caught.message);
-        // Per-field messages from the server are shown against their field
-        // rather than collapsed into one banner, so the person can see which
-        // input to fix.
-        const fields: Record<string, string> = {};
-        for (const key of ['email', 'password', 'displayName']) {
-          const message = caught.fieldError(key);
-          if (message) fields[key] = message;
-        }
-        setFieldErrors(fields);
+      // A cancelled sign-in is a decision, not a failure, and should not be
+      // reported as one.
+      if (caught instanceof Error && caught.message === 'cancelled') {
+        setError(null);
       } else {
-        setError('Could not reach Torchlight. Check your connection.');
+        setError(
+          caught instanceof ApiError
+            ? caught.message
+            : 'Could not sign in with Google. Try again.',
+        );
       }
     } finally {
       setBusy(false);
     }
   };
 
-  const ready = email.trim().length > 0 && password.length > 0 && (!creating || name.trim().length > 0);
-
   return (
-    <Screen scroll avoidKeyboard>
-      <View style={[styles.content, { padding: theme.spacing.xl }]}>
-        <View style={styles.header}>
-          <Text variant="display">Torchlight</Text>
-          <Text variant="body" tone="muted" style={styles.tagline}>
-            One birth, read through every tradition at once.
+    <Screen>
+      <View style={[styles.content, { padding: theme.spacing.lg + 4 }]}>
+        <View style={styles.head}>
+          <Text variant="label" tone="primary">
+            Account
           </Text>
+          <Text variant="display" style={styles.title}>
+            Sign in
+          </Text>
+          <View style={[styles.underline, { backgroundColor: theme.colors.rule }]} />
         </View>
 
-        {creating ? (
-          <TextField
-            label="Name"
-            value={name}
-            onChangeText={setName}
-            autoCapitalize="words"
-            autoComplete="name"
-            textContentType="name"
-            error={fieldErrors.displayName}
-          />
-        ) : null}
+        <Text variant="body" tone="muted" style={styles.blurb}>
+          One account so your charts follow you to a new phone. Nothing else is asked for.
+        </Text>
 
-        <TextField
-          label="Email"
-          value={email}
-          onChangeText={setEmail}
-          autoCapitalize="none"
-          autoCorrect={false}
-          keyboardType="email-address"
-          autoComplete="email"
-          textContentType="emailAddress"
-          error={fieldErrors.email}
-        />
-
-        <TextField
-          label="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          autoCapitalize="none"
-          autoComplete={creating ? 'new-password' : 'current-password'}
-          textContentType={creating ? 'newPassword' : 'password'}
-          error={fieldErrors.password}
-          hint={creating ? 'At least 10 characters' : undefined}
-        />
+        <Pressable
+          onPress={() => { void google(); }}
+          disabled={busy}
+          accessibilityRole="button"
+          accessibilityLabel="Continue with Google"
+          style={({ pressed }) => [
+            styles.primary,
+            { backgroundColor: theme.colors.primary, opacity: pressed || busy ? 0.75 : 1 },
+          ]}
+        >
+          <Feather name="user" size={20} color={theme.colors.primaryContrast} />
+          <Text variant="bodyStrong" style={[styles.primaryLabel, { color: theme.colors.primaryContrast }]}>
+            {busy ? 'Signing in…' : 'Continue with Google'}
+          </Text>
+        </Pressable>
 
         {error ? (
           <View
             style={[
-              styles.banner,
-              {
-                backgroundColor: theme.colors.dangerSurface,
-                borderRadius: theme.radius.md,
-                padding: theme.spacing.md,
-              },
+              styles.error,
+              { backgroundColor: theme.colors.dangerSurface, padding: theme.spacing.md },
             ]}
           >
             <Text variant="caption" tone="danger">
@@ -131,34 +108,32 @@ export function SignInScreen(): React.JSX.Element {
           </View>
         ) : null}
 
-        <Button
-          label={creating ? 'Create account' : 'Sign in'}
-          onPress={() => { void submit(); }}
-          loading={busy}
-          disabled={!ready}
-          block
-          style={styles.submit}
-        />
-
-        <Button
-          label={creating ? 'I already have an account' : 'Create an account'}
-          variant="quiet"
-          onPress={() => {
-            setCreating((previous) => !previous);
-            setError(null);
-            setFieldErrors({});
-          }}
-          block
-        />
+        <View style={styles.foot}>
+          <View style={[styles.rule, { backgroundColor: theme.colors.rule }]} />
+          <Text variant="caption" tone="muted">
+            Your birth details and every chart are stored against this account, so they
+            follow you to a new phone.
+          </Text>
+        </View>
       </View>
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  content: { flex: 1, justifyContent: 'center' },
-  header: { marginBottom: 40 },
-  tagline: { marginTop: 8 },
-  banner: { marginBottom: 16 },
-  submit: { marginTop: 8, marginBottom: 8 },
+  content: { flex: 1 },
+  head: { marginBottom: 22 },
+  title: { marginTop: 8 },
+  underline: { width: 56, height: 2, marginTop: 8 },
+  blurb: { marginBottom: 22 },
+  primary: {
+    height: 56,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+  },
+  primaryLabel: { marginLeft: 12, fontWeight: '800' },
+  error: { marginTop: 16 },
+  foot: { marginTop: 'auto' },
+  rule: { height: 2, marginBottom: 10 },
 });

@@ -142,10 +142,23 @@ export const spacing = {
 } as const;
 
 export const radius = {
-  sm: 6,
-  md: 10,
-  lg: 14,
+  /**
+   * Square, throughout.
+   *
+   * The design system is Modernist: structure comes from 2px rules and hard
+   * edges rather than from rounded corners, and a radius anywhere reads as a
+   * different app. `pill` survives only for genuinely circular things.
+   */
+  sm: 0,
+  md: 0,
+  lg: 0,
   pill: 999,
+} as const;
+
+/** Rule weights. The heavy rule is structural; the hairline only separates. */
+export const rules = {
+  hairline: 1,
+  heavy: 2,
 } as const;
 
 /**
@@ -177,22 +190,28 @@ export const fontFamilyForWeight: Readonly<Record<string, string>> = {
   '500': 'Archivo-Medium',
   '600': 'Archivo-SemiBold',
   '700': 'Archivo-Bold',
+  '800': 'Archivo-ExtraBold',
 };
 
 export const typography = {
-  /** Screen titles. Serif, set large and quiet. */
-  display: { fontSize: 30, lineHeight: 38, fontWeight: '600' as const },
-  title: { fontSize: 22, lineHeight: 30, fontWeight: '600' as const },
-  heading: { fontSize: 17, lineHeight: 24, fontWeight: '600' as const },
+  /** The splash wordmark, and nothing else. */
+  wordmark: { fontSize: 66, lineHeight: 57, fontWeight: '800' as const, letterSpacing: -2 },
+  /** Screen titles. */
+  display: { fontSize: 34, lineHeight: 34, fontWeight: '800' as const, letterSpacing: -0.7 },
+  title: { fontSize: 22, lineHeight: 28, fontWeight: '700' as const, letterSpacing: -0.3 },
+  heading: { fontSize: 17, lineHeight: 24, fontWeight: '700' as const },
   body: { fontSize: 15, lineHeight: 22, fontWeight: '400' as const },
-  bodyStrong: { fontSize: 15, lineHeight: 22, fontWeight: '600' as const },
-  caption: { fontSize: 13, lineHeight: 18, fontWeight: '400' as const },
-  /** Uppercase labels get letter-spacing; without it they read as shouting. */
+  bodyStrong: { fontSize: 15, lineHeight: 22, fontWeight: '700' as const },
+  caption: { fontSize: 12, lineHeight: 18, fontWeight: '400' as const },
+  /**
+   * The eyebrow above a heading. Small, heavy and widely spaced — at this size
+   * the letter-spacing is what makes it read as a label rather than as shouting.
+   */
   label: {
-    fontSize: 11,
+    fontSize: 10,
     lineHeight: 14,
-    fontWeight: '600' as const,
-    letterSpacing: 0.8,
+    fontWeight: '800' as const,
+    letterSpacing: 1.8,
   },
 } as const;
 
@@ -208,6 +227,7 @@ export type Theme = {
   colors: ThemeColors;
   spacing: typeof spacing;
   radius: typeof radius;
+  rules: typeof rules;
   typography: typeof typography;
   fonts: typeof fonts;
   isDark: boolean;
@@ -217,6 +237,7 @@ export const lightTheme: Theme = {
   colors: lightColors,
   spacing,
   radius,
+  rules,
   typography,
   fonts,
   isDark: false,
@@ -226,6 +247,7 @@ export const darkTheme: Theme = {
   colors: darkColors,
   spacing,
   radius,
+  rules,
   typography,
   fonts,
   isDark: true,

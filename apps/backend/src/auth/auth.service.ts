@@ -11,6 +11,7 @@
 import { ConflictException, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import type { AuthSession, AuthUser } from '@torchlight/shared-types';
 import bcrypt from 'bcrypt';
+import { OAuth2Client } from 'google-auth-library';
 import { eq } from 'drizzle-orm';
 
 import { DB, type Database } from '../db/db.module';
@@ -134,6 +135,85 @@ export class AuthService {
     }
 
     return this.issueSession(user);
+  }
+
+
+  /**
+   * Signs in with a Google ID token, creating the account on first use.
+   *
+   * The token is verified against Google's published keys rather than decoded:
+   * a JWT is readable by anyone, so trusting its claims without checking the
+   * signature would let a caller sign in as any email they cared to type.
+   *
+   * Matching is by `sub` — Google's stable account identifier — rather than by
+   * email, because an email can be changed and reassigned while the subject
+   * never is. An existing password account with the same address is linked to
+   * the Google identity rather than duplicated.
+   */
+  async signInWithGoogle(idToken: string): Promise<AuthSession> {
+    const clientId = process.env.GOOGLE_CLIENT_ID;
+
+    if (!clientId) {
+      // Configuration rather than a caller error: the layer is off.
+      throw new UnauthorizedException('Google sign-in is not configured');
+    }
+
+    let payload;
+    try {
+      const ticket = await new OAuth2Client(clientId).verifyIdToken({
+        idToken,
+        audience: clientId,
+      });
+      payload = ticket.getPayload();
+    } catch {
+      throw new UnauthorizedException('Google sign-in could not be verified');
+    }
+
+    if (!payload?.sub || !payload.email) {
+      throw new UnauthorizedException('Google sign-in returned no account');
+    }
+
+    // Google says whether it has confirmed the address. An unverified one must
+    // not be allowed to claim an existing account by matching on email.
+    const verified = payload.email_verified === true;
+    const displayName = payload.name?.trim() || payload.email.split('@')[0] || 'Torchlight';
+
+    const [bySub] = await this.db
+      .select()
+      .from(users)
+      .where(eq(users.googleSub, payload.sub))
+      .limit(1);
+
+    if (bySub) return this.issueSession(bySub);
+
+    const [byEmail] = verified
+      ? await this.db.select().from(users).where(eq(users.email, payload.email)).limit(1)
+      : [];
+
+    if (byEmail) {
+      // Same person arriving through Google for the first time.
+      const [linked] = await this.db
+        .update(users)
+        .set({ googleSub: payload.sub, updatedAt: new Date() })
+        .where(eq(users.id, byEmail.id))
+        .returning();
+
+      return this.issueSession(linked ?? byEmail);
+    }
+
+    const [created] = await this.db
+      .insert(users)
+      .values({
+        email: payload.email,
+        displayName,
+        googleSub: payload.sub,
+        passwordHash: null,
+      })
+      .returning();
+
+    if (!created) throw new Error('Account creation returned no row');
+
+    return this.issueSession(created);
   }
 
   /**
