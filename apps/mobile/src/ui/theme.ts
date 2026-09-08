@@ -47,9 +47,21 @@ export type ThemeColors = {
   iconMuted: string;
   /** The single accent. Gold means action. */
   primary: string;
+  /** Gold at text contrast, for a label on the page ground. */
+  primaryDeep: string;
+  /** Gold at surface strength, for an icon tile behind a gold glyph. */
+  primaryTint: string;
   primaryContrast: string;
   /** Weight and emphasis, not error. */
   accent: string;
+  accentDeep: string;
+  accentTint: string;
+  /** The third life-area colour. Calm rather than urgent. */
+  calm: string;
+  calmDeep: string;
+  calmTint: string;
+  /** Hairline rules that carry structure rather than separation. */
+  rule: string;
   /** Genuine errors only. */
   danger: string;
   dangerSurface: string;
@@ -57,49 +69,60 @@ export type ThemeColors = {
   successSurface: string;
 };
 
-/** Gold, the signature. Shared by both themes so the brand does not drift. */
-const GOLD_LIGHT = '#B89B4C';
-/** Lifted for the dark ground, where the light gold loses contrast. */
-const GOLD_DARK = '#C5A55A';
-
 export const lightColors: ThemeColors = {
-  bg: '#FCFBF9', // Alabaster
-  surface: '#F5F2F0', // Parchment
+  bg: '#F5F1EC',
+  surface: '#FCFAF7',
   surface2: '#EFEAE6',
-  text: '#36312E', // Warm charcoal — never pure black on a warm ground
-  textMuted: '#7D7875',
-  textSubtle: '#A29B96',
-  border: '#E6E2DE',
-  borderStrong: '#D6D0CA',
-  icon: '#36312E',
+  text: '#2E2A27',
+  textMuted: '#5C5651',
+  textSubtle: '#7D7875',
+  border: '#DDD5CC',
+  borderStrong: '#DDD5CC',
+  rule: '#2E2A27',
+  icon: '#2E2A27',
   iconMuted: '#7D7875',
-  primary: GOLD_LIGHT,
-  primaryContrast: '#FFFFFF',
-  accent: '#722F37', // Merlot
+  primary: '#B89B4C',
+  primaryDeep: '#8A7134',
+  primaryTint: '#F0E6CC',
+  primaryContrast: '#2E2A27',
+  accent: '#722F37',
+  accentDeep: '#722F37',
+  accentTint: '#F1DFE1',
+  calm: '#4A7373',
+  calmDeep: '#3A5C5C',
+  calmTint: '#DEEAEA',
   danger: '#A8442A',
   dangerSurface: '#F7E9E4',
   success: '#4A7373',
-  successSurface: '#E6EFEF',
+  successSurface: '#DEEAEA',
 };
 
 export const darkColors: ThemeColors = {
-  bg: '#36312E', // Warm charcoal, not cold black
-  surface: '#3D3835',
-  surface2: '#45403C',
-  text: '#F5F2F0',
-  textMuted: '#B0A9A4',
-  textSubtle: '#8A837E',
-  border: '#45403C',
-  borderStrong: '#544E49',
-  icon: '#F5F2F0',
-  iconMuted: '#B0A9A4',
-  primary: GOLD_DARK,
-  primaryContrast: '#2A2624',
-  accent: '#C48B93', // Merlot lifted for legibility on a dark ground
+  bg: '#2B2724',
+  surface: '#36312E',
+  surface2: '#413B37',
+  text: '#F2EDE7',
+  textMuted: '#C3BCB4',
+  textSubtle: '#938C85',
+  border: '#56504B',
+  borderStrong: '#56504B',
+  rule: '#F2EDE7',
+  icon: '#F2EDE7',
+  iconMuted: '#938C85',
+  primary: '#C5A55A',
+  primaryDeep: '#D9BE7B',
+  primaryTint: '#4A4028',
+  primaryContrast: '#2E2A27',
+  accent: '#C48B93',
+  accentDeep: '#D6A6AC',
+  accentTint: '#4E3034',
+  calm: '#8FB5B5',
+  calmDeep: '#A8C7C7',
+  calmTint: '#2E4747',
   danger: '#D98A6A',
   dangerSurface: '#4A3530',
-  success: '#6A9797',
-  successSurface: '#2F3D3D',
+  success: '#8FB5B5',
+  successSurface: '#2E4747',
 };
 
 /**
@@ -137,9 +160,24 @@ export const radius = {
  * is a one-line change rather than a sweep through every component.
  */
 export const fonts = {
-  display: undefined as string | undefined, // 'Lora' once bundled
-  body: undefined as string | undefined, // 'Montserrat' once bundled
+  display: 'Archivo' as string | undefined,
+  body: 'Archivo' as string | undefined,
 } as const;
+
+/**
+ * Weight to font file, for Android.
+ *
+ * Android resolves a font by family plus style name rather than by a numeric
+ * weight, so asking for `fontWeight: '600'` on a family with one registered
+ * face silently renders the only face there is. Naming the face directly is
+ * what makes the weights actually differ on device.
+ */
+export const fontFamilyForWeight: Readonly<Record<string, string>> = {
+  '400': 'Archivo-Regular',
+  '500': 'Archivo-Medium',
+  '600': 'Archivo-SemiBold',
+  '700': 'Archivo-Bold',
+};
 
 export const typography = {
   /** Screen titles. Serif, set large and quiet. */

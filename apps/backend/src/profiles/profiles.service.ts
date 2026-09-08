@@ -12,6 +12,7 @@ import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { and, desc, eq } from 'drizzle-orm';
 
 import type { Chart } from '../astrology/chart';
+import { readLifeAreas, type LifeAreasResult } from '../astrology/synthesis/life-areas';
 import { ENGINE_VERSION } from '../astrology/chart';
 import { ChartService } from '../chart/chart.service';
 import { DB, type Database } from '../db/db.module';
@@ -185,6 +186,23 @@ export class ProfilesService {
       .onConflictDoNothing({ target: readings.chartId });
 
     return generated;
+  }
+
+
+  /**
+   * The life areas for a profile's chart.
+   *
+   * Reads the stored chart rather than recomputing: the areas are a regrouping
+   * of houses the engine already resolved, so this is arithmetic over data that
+   * is already correct rather than a second pass at the astronomy.
+   */
+  async getLifeAreas(
+    userId: string,
+    profileId: string,
+    houseSystem: 'placidus' | 'whole-sign' = 'placidus',
+  ): Promise<LifeAreasResult> {
+    const { chart } = await this.getChart(userId, profileId, houseSystem);
+    return readLifeAreas(chart);
   }
 
   /**

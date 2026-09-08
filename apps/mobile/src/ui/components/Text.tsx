@@ -11,6 +11,7 @@
 import React from 'react';
 import { Text as RNText, type TextProps as RNTextProps, type TextStyle } from 'react-native';
 
+import { fontFamilyForWeight } from '../theme';
 import { useTheme } from '../ThemeProvider';
 import type { typography } from '../theme';
 
@@ -47,15 +48,26 @@ export function Text({
     contrast: theme.colors.primaryContrast,
   };
 
+  const scale = theme.typography[variant];
+
+  /**
+   * Android picks a font face by family *and* style name, not by a numeric
+   * weight. A family registered with four separate faces will render whichever
+   * one it has for the requested family and ignore `fontWeight` entirely — so
+   * asking for 600 silently gives you 400. Naming the face directly is what
+   * makes the weights differ on device.
+   *
+   * `fontWeight` is still passed so iOS and the web preview behave, and so a
+   * missing face degrades to the right thickness rather than to nothing.
+   */
+  const face = fontFamilyForWeight[scale.fontWeight];
+
   // Composed in one expression: TextStyle's properties are readonly, so the
   // conditional parts are spread rather than assigned afterwards.
-  const family =
-    variant === 'display' || variant === 'title' ? theme.fonts.display : theme.fonts.body;
-
   const base: TextStyle = {
-    ...theme.typography[variant],
+    ...scale,
     color: colour[tone],
-    ...(family ? { fontFamily: family } : {}),
+    ...(face ? { fontFamily: face } : {}),
     ...(variant === 'label' ? { textTransform: 'uppercase' as const } : {}),
   };
 

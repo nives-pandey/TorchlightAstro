@@ -26,6 +26,7 @@ import { createProfileSchema, type CreateProfileRequest } from '@torchlight/shar
 import { AuthGuard, CurrentUser } from '../auth/auth.guard';
 import type { AccessTokenPayload } from '../auth/token.service';
 import { ZodValidationPipe } from '../common/zod-validation.pipe';
+import type { LifeAreasResult } from '../astrology/synthesis/life-areas';
 import type { Reading } from '../reading/reading.types';
 import { ProfilesService, type StoredChart } from './profiles.service';
 import type { BirthProfileRow } from '../db/schema';
@@ -107,6 +108,24 @@ export class ProfilesController {
   ): Promise<Reading | null> {
     const system = houseSystem === 'whole-sign' ? 'whole-sign' : 'placidus';
     return this.profiles.getReading(user.sub, id, system);
+  }
+
+
+  /**
+   * The life areas — money, work, love, health — for a profile's chart.
+   *
+   * The twelve houses regrouped under names a reader recognises. Returns
+   * `available: false` without a birth time rather than guessing, since every
+   * house would be wrong.
+   */
+  @Get(':id/life-areas')
+  getLifeAreas(
+    @CurrentUser() user: AccessTokenPayload,
+    @Param('id', ParseUUIDPipe) id: string,
+    @Query('houseSystem') houseSystem?: string,
+  ): Promise<LifeAreasResult> {
+    const system = houseSystem === 'whole-sign' ? 'whole-sign' : 'placidus';
+    return this.profiles.getLifeAreas(user.sub, id, system);
   }
 
   /** Deletes a profile and its stored chart. */

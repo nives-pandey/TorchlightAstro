@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Archivo-Bold.ttf",
+      "sha1": "2b49d7f75831507e708f28d23338e2784d03d4a8"
+    },
+    {
+      "path": "src/assets/fonts/Archivo-Medium.ttf",
+      "sha1": "30394888328a531916e60f66072b54241c0e6874"
+    },
+    {
+      "path": "src/assets/fonts/Archivo-Regular.ttf",
+      "sha1": "a9ed649751a528be28909dceba7cda3fff8576b3"
+    },
+    {
+      "path": "src/assets/fonts/Archivo-SemiBold.ttf",
+      "sha1": "6bfa812c8dfb738232e2c480262b9b4e19f51101"
+    }
+  ]
+}
