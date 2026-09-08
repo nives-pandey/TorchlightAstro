@@ -8,7 +8,16 @@
  * this file, via any medium, is strictly prohibited. See LICENSE.
  */
 
-import { Body, Controller, Get, HttpCode, Post, UseGuards, UsePipes } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Post,
+  UseGuards,
+  UsePipes,
+} from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
 import {
   refreshInputSchema,
@@ -101,4 +110,18 @@ export class AuthController {
   me(@CurrentUser() user: AccessTokenPayload): Promise<AuthUser> {
     return this.auth.findById(user.sub);
   }
+
+  /**
+   * Deletes the signed-in account and all of its data.
+   *
+   * Required by Google Play to be reachable in-app. Returns 204 because there
+   * is nothing left to describe.
+   */
+  @Delete('me')
+  @UseGuards(AuthGuard)
+  @HttpCode(204)
+  async deleteMe(@CurrentUser() user: AccessTokenPayload): Promise<void> {
+    await this.auth.deleteAccount(user.sub);
+  }
+
 }

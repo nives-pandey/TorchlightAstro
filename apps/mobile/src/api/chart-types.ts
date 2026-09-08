@@ -231,6 +231,38 @@ export interface Chart {
   engineVersion: string;
 }
 
+/** One of the eight parts of a life the app groups the houses into. */
+export type LifeAreaKey =
+  | 'money'
+  | 'work'
+  | 'love'
+  | 'home'
+  | 'health'
+  | 'learning'
+  | 'depth'
+  | 'self';
+
+export interface LifeAreaReading {
+  key: LifeAreaKey;
+  name: string;
+  houses: number[];
+  summary: string;
+  /** The grahas ruling this area's houses. */
+  rulers: string[];
+  occupants: { planet: string; house: number; retrograde: boolean }[];
+  /** True when a ruler of this area also rules the running period. */
+  active: boolean;
+  activatedBy: 'period' | 'sub-period' | null;
+  quietUntil: number | null;
+  domains: string[];
+}
+
+export interface LifeAreasResult {
+  areas: LifeAreaReading[];
+  /** False without a birth time — houses need one, so nothing is guessed. */
+  available: boolean;
+}
+
 /**
  * The plain-language reading of a chart.
  *

@@ -13,7 +13,7 @@ import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
 import { useAuth } from '../auth/AuthProvider';
 import { BirthDetailsScreen } from '../screens/BirthDetailsScreen';
-import { ChartScreen } from '../screens/ChartScreen';
+import { TabNavigator } from './TabNavigator';
 import { SignInScreen } from '../screens/SignInScreen';
 import { useTheme } from '../ui/ThemeProvider';
 
@@ -60,7 +60,7 @@ export function RootNavigator(): React.JSX.Element {
     return <BirthDetailsScreen onSaved={() => { void reloadUser(); }} />;
   }
 
-  return <ChartScreen profileId={user.primaryBirthProfileId} />;
+  return <TabNavigator profileId={user.primaryBirthProfileId} />;
 }
 
 const styles = StyleSheet.create({

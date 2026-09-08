@@ -179,4 +179,18 @@ export class AuthService {
     }
     return this.toAuthUser(user);
   }
+
+  /**
+   * Deletes an account and everything hanging off it.
+   *
+   * Google Play requires deletion to be reachable inside the app, and the
+   * schema was built for it: birth profiles cascade from the user, charts from
+   * the profile, readings from the chart, and refresh tokens from the user. One
+   * delete removes the lot, which is the only way to be sure nothing is
+   * orphaned.
+   */
+  async deleteAccount(userId: string): Promise<void> {
+    await this.db.delete(users).where(eq(users.id, userId));
+  }
+
 }
