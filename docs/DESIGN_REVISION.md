@@ -1,161 +1,148 @@
 # Torchlight — revision brief
 
-Paste this into Claude Design as the next instruction. It replaces the parts of
-the first brief it contradicts and leaves the tokens alone.
+Paste this into Claude Design. The first fourteen screens are structurally
+sound: the sourcing discipline, the "NOT BALANCED" dissent panel and the
+partial-chart honesty are all correct and should survive unchanged. What follows
+fixes who the app is written for, adds the navigation it lacks, and corrects
+factual errors.
 
 ---
 
-## What to change
+## Part 1 — factual corrections
 
-The current designs read like a marketing site for the product rather than the
-product. Make it a working app someone opens daily.
+Several values on screen do not match what the engine produces. Fix these
+first; they are wrong, not merely different.
 
-### 1. Bottom navigation — five tabs, Feather icons, labels underneath
-
-The app has no navigation. Add a persistent bottom bar, which is what every
-Android app of this kind uses and what a US audience expects:
-
-| Tab | Icon | What it holds |
+| Screen | Shown | Correct |
 |---|---|---|
-| Today | `sun` | What is happening now, and what it means |
-| Chart | `circle` | The birth chart, all ten traditions |
+| 06 Tradition detail | Lahiri ayanamsa `23°44′` | `23°43′34″` (23.7261°) |
+| 05 Dimension detail | Human Design "Defined throat · channel 20–34" | The engine computes gates, lines and profile only — no channels or centres. Use "Profile 4/6 · Sun gate 7.4" |
+| 08 Panchanga | Five limbs including "02 VARA · Budhavara" | The engine returns four limbs. Vara depends on local sunrise and is deliberately not computed. Show four, or add sunrise to the engine first |
+| 04, 11 | "10/10" completeness badge | The engine ships **eight** systems for a chart. Use 8/8, or drop the badge |
+| 05 Dimension detail | Numerology "birthday 15 → 6" | Birthday number is `6`, life path `6`. The arrow implies a reduction the app must not perform |
+
+The gemstone screen is correct — the engine really does return stone, finger,
+metal and day. Only the **weight (5.25 ratti) is invented**; remove it or add it
+to the engine.
+
+---
+
+## Part 2 — the register is wrong for the buyer
+
+The screens are written for someone who already reads charts. Sanskrit appears
+untranslated as primary labels: *Guru*, *Shukra*, *Vrischika*, *Budhavara*,
+*mahadasha*, *antardasha*, *Vimshottari*, *navamsha*. A US reader who knows
+their sun sign and nothing else cannot enter this.
+
+Rule: **English first, tradition second, once.**
+
+- "Jupiter period (*mahadasha*)" — then "Jupiter period" thereafter
+- "Scorpio rising (*Vrischika lagna*)"
+- "Venus (*Shukra*)"
+- Never a Sanskrit word alone as a heading
+
+The `SOURCE` captions may stay technical. That is where precision belongs, and
+it is what makes the app credible. The headings must not.
+
+---
+
+## Part 3 — navigation
+
+Screens 04–12 show a four-item bar reading `CHART TIME VARGA MORE`. Replace it.
+"VARGA" means nothing to the buyer and "MORE" hides half the app.
+
+Five tabs, Feather icons above short labels, active in gold `#B89B4C`:
+
+| Tab | Icon | Holds |
+|---|---|---|
+| Today | `sun` | The current period and what is live now |
+| Chart | `circle` | All eight systems, dimensions inside |
 | Life | `compass` | The life areas — money, work, love, health |
-| Timeline | `clock` | Past, present and future periods |
+| Timeline | `clock` | Periods from birth onward |
 | You | `user` | Profiles, settings, account |
 
-Active tab in gold, inactive in muted text. Icon above a short label. No badges,
-no centre-raised button.
+---
 
-### 2. Replace the five-dimension display entirely
+## Part 4 — what is missing entirely
 
-Cut the trait-axis cards from the home screen. They answer "what sort of person
-are you" with adjectives, which is the least specific thing this app knows and
-the thing every competitor already does badly.
+The engine computes two things the design never shows, and they are what a
+paying user actually wants.
 
-Put the **life areas** there instead. These come from the twelve houses, which
-the engine already computes — this is not new data, it was simply never
-surfaced:
+### Life areas — a new tab and its detail screen
 
-- **Money & resources** — 2nd and 11th house
-- **Work & vocation** — 6th and 10th house
-- **Love & partnership** — 5th and 7th house
-- **Home & family** — 4th house
-- **Health & routine** — 6th house
-- **Learning & belief** — 9th house
-- **Transformation & depth** — 8th house
-- **Self & how you appear** — 1st house
+The twelve houses **are** life areas, already computed to arcsecond precision:
 
-Design these as a grid of cards, each with its own Feather icon
-(`dollar-sign`, `briefcase`, `heart`, `home`, `activity`, `book-open`,
-`layers`, `user`). Tapping one opens that area's reading: which planets sit
-there, which traditions have something to say, and what the current period means
-for that part of life specifically.
+- **Money & resources** `dollar-sign` — 2nd, 11th
+- **Work & vocation** `briefcase` — 6th, 10th
+- **Love & partnership** `heart` — 5th, 7th
+- **Home & family** `home` — 4th
+- **Health & routine** `activity` — 6th
+- **Learning & belief** `book-open` — 9th
+- **Depth & transformation** `layers` — 8th
+- **Self & appearance** `user` — 1st
 
-The trait comparison does not disappear — it moves to a section inside Chart,
-where a curious reader can find it. It stops being the headline.
+A grid of cards, each with its icon in a tinted tile. Tapping one opens: which
+planets sit in those houses, what the running period means for that area, and
+which traditions have something to say. This is the screen someone opens weekly.
 
-### 3. Past, present, future is the spine
+### A "Today" home screen
 
-This is what people pay for, and the engine already computes it: nine planetary
-periods spanning a lifetime, each with real dates.
+There is no home. Screen 04 is a chart reference, not somewhere to return. Today
+holds four things and stops:
 
-Design the **Timeline** tab as a vertical sequence running from birth to old
-age. The period running now is marked and expanded. Past periods are collapsed
-but readable. Future periods are named with their years. Tapping any period
-shows what that period governs and, when a life area is selected, what it meant
-or will mean for that area.
-
-Real example from the engine — use these values, do not invent others:
-
-```
-Moon      1990–1992
-Mars      1992–1999
-Rahu      1999–2017
-Jupiter   2017–2033   ← running now
-Saturn    2033–2052
-Mercury   2052–2069
-Ketu      2069–2076
-Venus     2076–2096
-Sun       2096–2102
-```
-
-### 4. Uncrowd the home screen
-
-The Today tab holds four things and stops:
-
-1. The date, and the one thing most worth knowing today
-2. The period running now, in one sentence, with the year it ends
-3. Three or four life-area cards — the ones most active right now, not all eight
-4. One quiet line to the full chart
-
-Everything else moves behind a tab. If a section needs a paragraph to explain
-why it is on screen, it does not belong on the home screen.
-
-### 5. Colour — keep the palette, use more of it
-
-The tokens stay exactly as they are. The problem is that only two of them are
-being used. Widen the range within the same family:
-
-- Give each life area its own tint drawn from the existing palette — merlot
-  `#722F37` for love, teal `#4A7373` for health, gold `#B89B4C` for money, warm
-  charcoal for work — used as a small icon tile or a left edge on the card, not
-  as a filled background.
-- Use `surface2` `#EFEAE6` for nested content, so a card inside a card reads as
-  a different depth.
-- The dark theme should not be a straight inversion. On `#36312E` the gold
-  `#C5A55A` and merlot `#C48B93` carry more weight than they do in light — let
-  them.
-
-Still one gold *action* per screen. Tints are not actions.
-
-### 6. Register — this is for a US audience
-
-Write for someone in the United States who may know their sun sign and nothing
-else.
-
-- Use the English name first, the traditional term second: "your Jupiter period
-  (*mahadasha*)", not the reverse.
-- Never use an untranslated Sanskrit term as a heading.
-- Section headers stay two or three words, uppercase, letter-spaced.
-- No exclamation marks, no "unlock", no "discover", no "your cosmic journey".
-- The tone is a knowledgeable person explaining something carefully — closer to
-  a good doctor than a horoscope column.
-
-### 7. What a paying user gets
-
-Design the value as visible, not as a locked door. On the life-area screens and
-the timeline, the depth is the product: what each period means for money, for
-work, for a relationship. Show that depth working. Do not design paywall
-overlays, blurred text, or countdowns — if a contribution screen appears at all,
-it asks once, quietly, and never blocks anything.
+1. The date and the single most relevant thing about it
+2. The running period in one sentence, with the year it ends
+3. Three or four life areas that are active now — not all eight
+4. One quiet line into the full chart
 
 ---
 
-## What not to change
+## Part 5 — the five dimensions move
 
-- Every colour, type size, spacing value and radius from the first brief
-- Bordered cards, never shadowed
-- Feather icons only, no emoji
-- One gold action per screen
-- Disagreement between traditions is a finding, and an even split is *contested*,
-  never "balanced"
-- Every claim sits next to the placement it came from
+Screen 04 leads with all five dimension bars stacked. Keep the design — the
+split bars and dissent captions are good work — but move it inside **Chart**.
+
+It answers "what sort of person are you" with five adjectives, which is the
+least specific thing this engine knows. Lead with what is *happening* and to
+*which part of life*. The dissent panel stays exactly as designed; it is the
+strongest screen in the set and belongs one level in, where a curious reader
+finds it.
 
 ---
 
-## Screens after this revision
+## Part 6 — colour
 
-Twelve, replacing the fourteen in the first brief.
+The palette has ten tokens and the designs use two. Widen it without changing it:
 
-1. Splash
-2. Sign in — Google button only
-3. Birth details — date, optional time, place with nearby-village narrowing
-4. **Today** — the home tab
-5. **Life areas** — the grid
-6. **Life area detail** — one area opened up
-7. **Timeline** — periods from birth onward
-8. **Period detail** — one period, and what it governs
-9. **Chart** — all ten traditions, with the trait comparison inside it
-10. **Tradition detail** — one tradition's placements
-11. **You** — profiles, settings, account deletion
-12. Empty and error states
+- Each life area gets a tint as an icon tile or a left edge — merlot `#722F37`
+  love, teal `#4A7373` health, gold `#B89B4C` money, warm charcoal work. Never a
+  filled card background.
+- `surface2` `#EFEAE6` for nested content, so a card inside a card reads deeper.
+- Dark theme is not an inversion. On `#36312E`, gold `#C5A55A` and merlot
+  `#C48B93` carry more weight than in light — let them.
+
+One gold **action** per screen still holds. Tints are not actions.
+
+---
+
+## Part 7 — smaller notes
+
+- **Screen 02**: the brief said Google-only. Email and password fields are still
+  there. Remove them; leave the Google button alone. Also drop "computes charts
+  locally" — charts are computed server-side.
+- **Screen 13**: rupee amounts, but the app is for US users. Use dollars.
+- **Screen 03**: "STEP 1 OF 1" is noise on a single-step form.
+- **Screen 11**: "Profiles stay on this device. Sync is off." is untrue —
+  profiles are stored server-side.
+- **Screen 01**: "V2.4 SWISS EPHEMERIS 2.10" — the engine version is 1.0.0, and
+  Swiss is a dev-time reference that does not ship. Remove both.
+
+---
+
+## What must not change
+
+- Every colour, type size, spacing value and radius
+- Bordered cards, never shadowed · Feather icons only, no emoji
+- The `SOURCE` caption under every claim — this is the product
+- "NOT BALANCED": a four-against-one split is a dissent, never a middle position
+- The partial-chart screen that says four of ten cannot run rather than guessing
