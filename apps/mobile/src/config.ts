@@ -23,7 +23,7 @@
  * reports that plainly rather than failing silently.
  */
 export const GOOGLE_CLIENT_ID =
-  '337353731774-a3gogg4eh61m5rtbegco501jloun7bin.apps.googleusercontent.com';
+  '337353731774-tcfakmag835s696i4qv86uuia69lik4t.apps.googleusercontent.com';
 
 /** Whether Google sign-in can work at all in this build. */
 export const GOOGLE_SIGN_IN_AVAILABLE = GOOGLE_CLIENT_ID.length > 0;
