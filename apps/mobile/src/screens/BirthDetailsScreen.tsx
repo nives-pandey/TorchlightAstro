@@ -107,6 +107,21 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
     }
   };
 
+  /**
+   * Pads a single-digit hour, so "9:30" becomes "09:30".
+   *
+   * The server requires HH:MM and rejects "9:30", which is a perfectly natural
+   * thing to type. Correcting it here is kinder than refusing it, and safer
+   * than loosening the schema — the engine's whole contract is that a time is
+   * unambiguous.
+   */
+  const normalisedTime = (): string => {
+    const raw = time.trim();
+    const [hours, minutes] = raw.split(':');
+    if (hours === undefined || minutes === undefined) return raw;
+    return `${hours.padStart(2, '0')}:${minutes}`;
+  };
+
   const save = async (): Promise<void> => {
     if (!place) return;
 
@@ -119,7 +134,7 @@ export function BirthDetailsScreen({ onSaved }: { onSaved: () => void }): React.
         birthDate: date.trim(),
         // An unknown time is sent as absent rather than as a guess, so the
         // engine omits houses instead of computing wrong ones.
-        ...(certainty !== 'unknown' && time.trim() ? { birthTime: time.trim() } : {}),
+        ...(certainty !== 'unknown' && time.trim() ? { birthTime: normalisedTime() } : {}),
         placeName: [place.name, place.region, place.country].filter(Boolean).join(', '),
         countryCode: place.countryCode,
         timezone: place.timezone,
